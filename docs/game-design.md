@@ -35,8 +35,8 @@ calls made without a dedicated question. It builds on two predecessors:
 | Golden Rule | A rule, sigil, or number is kept only if simulation shows it meets the metrics ([§12](#12-metrics-what-fun-means)) |
 | Run | 8 rounds; each round is a shop, then a deal of Spades |
 | Spades | Partners' bids add up to a team contract; nil; spades must be broken; no blind nil; no bags |
-| Scoring | (10 × contract + contract points + nil points) × (1 + Σ +multipliers) × Π ×multipliers; overtricks score nothing |
-| Failure | A set team loses its contract points and scores (−10 × contract + nil points) × its multipliers |
+| Scoring | (10 × contract + contract points + nil score) × (1 + Σ +multipliers) × Π ×multipliers; overtricks score nothing |
+| Failure | A set team loses its contract points and scores (−10 × contract + nil score) × its multipliers |
 | Victory | Most points after round 8; equal totals draw |
 | Sigils | Up to 7 per team, shared by both partners; hidden from opponents until they first trigger |
 | Cards | Each card exists once; a bought card is dealt to its owner every round; at most 8 owned per player |
@@ -143,8 +143,8 @@ The Wild engraving ([§7](#7-engravings)) makes a card count as every suit:
 
 ```
 round score = ( 10 × B               base contract
-              + contract points      earned from sigils and engravings this round
-              + nil points )         +100 plus nil bonuses per made nil, −100 per failed nil
+              + contract points      added by sigils and engravings this round
+              + nil score )          each made nil: +100 plus nil points; each failed nil: −100
             × (1 + Σ +contract multipliers)
             × Π ×contract multipliers
 ```
@@ -156,19 +156,19 @@ a set scores −70.
 
 | Category | Balatro analog | Example (not final) |
 | --- | --- | --- |
-| +Contract points | Chips | "Tricks you win with an ace: +20 contract points." "Your high contracts: +60 contract points." |
-| +Contract multiplier | +Mult | "+1× contract multiplier if your team wins the last trick." |
-| ×Contract multiplier | ×Mult | "×1.5 contract multiplier if your team makes exactly its contract." |
+| +Contract points | Chips | "Whenever you win a trick with an ace, add +20 contract points." |
+| +Contract multiplier | +Mult | "If you win the last trick of a round, add +1× contract multiplier." |
+| ×Contract multiplier | ×Mult | "If your team makes its contract exactly, add ×1.5 contract multiplier." |
 
 - **+Contract multipliers add up.** Two +1× sigils make ×3.
 - **×Contract multipliers compound** and apply last, so their order never
   matters. They can appear at any rarity, as in Balatro, and the
   [skeleton](#10-sigil-pool-skeleton) sets how many sit at each one.
-- **Contract points accumulate during the round.** They come per event ("each
-  trick you win with an ace") or flat ("for your high contracts").
-- **Nil bonuses raise nil points instead.** A sigil such as "Your made nils are
-  worth +50 more" adds to nil points, so it counts even when the contract is
-  set.
+- **Contract points accumulate during the round.** They come per event
+  ("whenever you win a trick with an ace") or once ("if your team bid a high
+  contract").
+- **Nil points go to made nils instead.** "Add +50 nil points." adds 50 to
+  each nil your team makes, so it counts even when the contract is set.
 
 ### Made contracts, sets, and nils
 
@@ -181,9 +181,9 @@ a set scores −70.
   - Multipliers still apply, except those whose condition requires making the
     contract.
   - So multipliers cut both ways: a strong build that overreaches loses more.
-- **Nil points** count whether the contract is made or set.
+- **The nil score** counts whether the contract is made or set.
 - Contract points triggered by a trick that a nil bidder wins don't count.
-- A team whose partners both bid nil has no contract. Its nil points are still
+- A team whose partners both bid nil has no contract. Its nil score is still
   multiplied, and any contract points are lost.
 
 ### Worked examples
@@ -194,7 +194,7 @@ a set scores −70.
 | Bids 4 + 3, win 6 | −70 | −70 |
 | Bid 7, win 8; "aces: +20" fires twice; one +1× holds | (70 + 40) × 2 | 220 |
 | Same, but win 6 | −70 × 2 | −140 |
-| Partner bids 5 and wins 6; you make nil; "made nils +50"; one +1× | (50 + 150) × 2 | 400 |
+| Partner bids 5 and wins 6; you make nil; "+50 nil points"; one +1× | (50 + 150) × 2 | 400 |
 | Same, but your nil fails | (50 − 100) × 2 | −100 |
 | Late run: bid 9 and make it; 210 contract points; +3× from sigils; one ×1.5 | (90 + 210) × 4 × 1.5 | 1,800 |
 | Same, set, with every multiplier's condition still met | −90 × 4 × 1.5 | −540 |
@@ -207,9 +207,9 @@ bid safe and drain the tension from the bidding. The pool is built against
 this:
 
 - At least a third of contract-point sigils and a quarter of multipliers scale
-  with or require the contract size. Examples: "+5 contract points for each
-  trick in your contract", "+1× contract multiplier for your high
-  contracts".
+  with or require the contract size: "Add +5 contract points for each trick
+  in your team's contract." "After bidding, if your team bid a high contract,
+  add +1× contract multiplier."
 - Bid High is a major archetype ([§9](#bid-high)).
 - The Skill and bidding family of the fun score watches late-run overtricks and
   set rates ([§12](#fun-score)).
@@ -243,17 +243,22 @@ and sets. It grows about ×1.39 per round, ×10 over the run:
 - Sigils never have activated abilities. A sigil may offer a choice at a fixed
   moment, such as "Before bidding, you may pass a card to your partner."
 
-### Scope words
+### Terms
 
-| Phrase | Meaning |
+These terms extend the standard Spades vocabulary, following the terms table of
+1.0's [rules-text guide](../../rsp/docs/rules-text.md#terms).
+
+| Term | Meaning |
 | --- | --- |
-| Tricks you win | Tricks either partner wins, except tricks a nil bidder wins |
-| Your team holds | Both partners' hands at the start of bidding |
-| Your longest suit | For each player, the suit they hold the most cards of at the start of bidding. Every tied suit counts, and spades count |
-| Your contract | The team's contract, B |
-| A high contract | A contract of 8 or more |
-| A low card | A card ranked 2 through 10 |
-| Tricks you lead with | Pays when the card is led, whether or not the trick is won |
+| **you, your** | Your team. "Whenever you win a trick" counts tricks either partner wins, except tricks a nil bidder wins |
+| **contract points** | Points added to your team's contract, paid only if the contract is made |
+| **contract multiplier** | Written `+1×` when it adds up with others, or `×1.5` when it compounds. It multiplies your team's round score, made or set |
+| **nil points** | Points added to each nil your team makes. A failed nil still costs 100 |
+| **your team holds** | Both partners' hands after bidding |
+| **longest suit** | For each player, the suit they hold the most cards of after bidding. Every tied suit counts, and spades count |
+| **high contract** | A team contract of 8 or more |
+| **low card** | A two through a ten |
+| **streak** | Tricks your team wins in a row |
 
 ### Visibility
 
@@ -275,7 +280,7 @@ The three point categories are **payoffs**. Utility comes in three families:
   more often ([§9](#payoffs-and-enablers)).
 - **Rule benders and deal control:**
   - Rule benders change how cards play, one rule each, at uncommon and above:
-    "Your aces can't be trumped." "You may lead spades at any time."
+    "Your aces can't be trumped." "You can lead spades at any time."
   - Deal control is pre-bid card movement between partners.
 
 Two families are excluded:
@@ -290,14 +295,55 @@ Two families are excluded:
 
 - Every sigil has one trigger or condition and one effect, with no riders, at
   every rarity.
-- Commons have one noun and one effect, in about 12 words: "Tricks you win with
-  an ace: +20 contract points."
-- Uncommons and above may add one threshold ("10 or more") or one run-long
-  counter ("for each … this run"). Counting a noun ("for each ♥ your team
+- Commons have one noun and one effect, in about 12 words: "Whenever you win a
+  trick with an ace, add +20 contract points."
+- Uncommons and above may add one threshold ("10 or more") or one growth
+  trigger that lasts the run. Counting a noun ("for each heart your team
   holds") is fine at any rarity.
 - Rules text is generated from the sigil's data
   ([§13](#declarative-sigils)), so it always matches behavior. A lint enforces
   these limits.
+
+### Rules text
+
+Rules text follows Rogue Spades 1.0's
+[rules-text guide](../../rsp/docs/rules-text.md): plain English, one sentence,
+when it happens and then what happens, its standard opening for each timing
+window, and its conventions.
+
+| Timing | Example |
+| --- | --- |
+| Always on | "Add +40 contract points." |
+| Before bidding | "Before bidding, swap a card with your partner." |
+| When you bid | "When you bid nil, add +1× contract multiplier." |
+| After bidding | "After bidding, add +20 contract points for each ace your team holds." |
+| Whenever you … | "Whenever you win a trick with an ace, add +20 contract points." |
+| Each round, once … | "Each round, once you've won three tricks by trumping, add +1× contract multiplier." |
+| Conditional scoring | "If your team makes its contract exactly, add ×1.5 contract multiplier." |
+| Growth that lasts the run | "Add +0× contract multiplier. Whenever your team makes a high contract, this sigil gains 1× contract multiplier." |
+| Engraving | "When this card wins a trick, add +20 contract points." |
+| Shop | "Sigils in your shop cost 10 gold less." |
+
+2.0 departs from 1.0's guide in a few places:
+
+- **"Add" with a sign.** Score increases use "add" and a signed number: "add +20
+  contract points", "add +1× contract multiplier", "add ×1.5 contract
+  multiplier", "add +50 nil points". Gold still uses "gain": "gain +20 gold".
+  Rank changes and a sigil's own growth stay unsigned: "gains 1 rank", "this
+  sigil gains 5 contract points".
+- **"You" is your team** in every sigil.
+- **2.0's terms** replace 1.0's: contract points and nil points instead of
+  contract value and nil value, plus ×contract multipliers, high contracts, low
+  cards, and streaks ([terms](#terms)).
+- **Repeated multipliers stack.** 1.0 counted each sigil's multiplier at most
+  once per round. In 2.0, a "whenever" trigger adds its multiplier every time,
+  like Balatro's +Mult on each scored card.
+- **"Your longest suit" is a regular term,** judged after bidding, because the
+  adaptive suit sigils rely on it.
+- **Only engravings say "this card,"** since sigils are never engraved.
+  Resonances and affinities are gone.
+- **Lead triggers** fire when the card is led, whether or not the trick is
+  won.
 
 ### Rarity and price
 
@@ -364,15 +410,20 @@ bought alone, take no sigil slot, and stay with the card while it's owned.
 
 The catalog has seven types in two families:
 
-| Engraving | Family | Effect | Premium |
+| Engraving | Family | Rules text | Premium |
 | --- | --- | --- | --- |
-| Bonus | Scoring | +20 contract points when this card wins a trick | 25 |
-| Herald | Scoring | +20 contract points when you lead this card | 25 |
-| Multiplier | Scoring | +1× contract multiplier when this card wins a trick; offered half as often | 50 |
-| Wild | Identity | Counts as every suit ([wild cards](#wild-cards)) | 50 |
-| Converted ♣ / ♦ / ♥ / ♠ | Identity | This card is the named suit; four versions sharing one offer type | 25 |
-| Crowned | Identity | Counts as an ace for your sigils, but plays at its own rank | 25 |
-| Raised | Identity | +1 rank, up to ace | 25 |
+| Bonus | Scoring | When this card wins a trick, add +20 contract points. | 25 |
+| Herald | Scoring | When you lead with this card, add +20 contract points. | 25 |
+| Multiplier | Scoring | When this card wins a trick, add +1× contract multiplier. | 50 |
+| Wild | Identity | This card counts as every suit. | 50 |
+| Converted | Identity | This card becomes a heart. | 25 |
+| Crowned | Identity | This card counts as an ace for your sigils. | 25 |
+| Raised | Identity | This card gains 1 rank. | 25 |
+
+- Multiplier is offered half as often as the other types.
+- Wild follows the [wild card rules](#wild-cards).
+- Converted has four versions, one per suit, that share one offer type.
+- Crowned still plays at its own rank, and Raised stops at ace.
 
 Identity engravings are an enabler channel, and they combine with payoffs in
 ways players discover. A Converted card lengthens a suit, a Crowned card adds
@@ -459,12 +510,12 @@ instead of competing.
 
 | Trigger | What it checks | Example |
 | --- | --- | --- |
-| Hold | Both partners' hands at the start of bidding | +20 contract points for each ace your team holds. |
-| Lead | Cards your team leads | Tricks you lead with an ace: +15 contract points. |
-| Win | The card that wins a trick for your team | Tricks you win with an ace: +20 contract points. |
-| Trump | Winning a trick by trumping | Tricks you win by trumping: +20 contract points. |
-| Bid | The contract's size, or a nil bid | +1× contract multiplier for your high contracts. |
-| Make | The round's result | +1× contract multiplier if your team makes exactly its contract. |
+| Hold | Both partners' hands after bidding | After bidding, add +20 contract points for each ace your team holds. |
+| Lead | Cards your team leads | Whenever you lead an ace, add +15 contract points. |
+| Win | The card that wins a trick for your team | Whenever you win a trick with an ace, add +20 contract points. |
+| Trump | Winning a trick by trumping | Whenever you win a trick by trumping, add +20 contract points. |
+| Bid | The contract's size, or a nil bid | After bidding, if your team bid a high contract, add +1× contract multiplier. |
+| Make | The round's result | If your team makes its contract exactly, add +1× contract multiplier. |
 
 ### Payoffs and enablers
 
@@ -475,8 +526,8 @@ make that thing happen more often. Enablers come from three places:
   dense, so this is the main enabler.
 - **Engravings:** Converted makes length, Crowned and Raised make aces, and
   Wild makes rainbows.
-- **Enabler sigils:** shop steering ("one card offer in each of your shops is
-  from the suit you own the most cards of"), discounts, and rule benders.
+- **Enabler sigils:** shop steering ("One of your card offers in each shop is
+  from the suit you own the most cards of."), discounts, and rule benders.
 
 Rules for the pool:
 
@@ -503,13 +554,13 @@ two lines of one archetype that share its sigils:
   "can't be trumped" enablers.
 
 **Cycles.** Three templates have identical members in ♣, ♦, ♥, and ♠, so
-learning one member teaches them all. They are shown for ♥:
+learning one member teaches them all. They are shown for hearts:
 
 | Template | Rarity, category | Text |
 | --- | --- | --- |
-| Win | C, points | Tricks you win with a ♥: +15 contract points. |
-| Hold | C, points | +10 contract points for each ♥ your team holds. |
-| Honors | U, +mult | +2× contract multiplier if your team holds the A, K, and Q of ♥. |
+| Win | C, points | Whenever you win a trick with a heart, add +15 contract points. |
+| Hold | C, points | After bidding, add +10 contract points for each heart your team holds. |
+| Honors | U, +mult | After bidding, if your team holds the ace, king, and queen of hearts, add +2× contract multiplier. |
 
 The ♠ members also feed the Spades major.
 
@@ -519,19 +570,19 @@ your longest suit reliably.
 
 | Rarity, category | Text |
 | --- | --- |
-| C, points | Tricks you win with your longest suit: +10 contract points. |
-| C, points | Tricks you lead with your longest suit: +10 contract points. |
-| C, points | +5 contract points for each card in your longest suit. |
-| U, +mult | +1× contract multiplier if a player on your team holds seven or more cards of one suit. |
-| U, ×mult | ×1.5 contract multiplier if your team wins five or more tricks with one suit. |
-| R, +mult | +1× contract multiplier for each card beyond six in your longest suit. |
+| C, points | Whenever you win a trick with your longest suit, add +10 contract points. |
+| C, points | Whenever you lead your longest suit, add +10 contract points. |
+| C, points | After bidding, add +5 contract points for each card in your longest suit. |
+| U, +mult | After bidding, if a player on your team holds seven or more cards of one suit, add +1× contract multiplier. |
+| U, ×mult | If you win five or more tricks with one suit in a round, add ×1.5 contract multiplier. |
+| R, +mult | After bidding, add +1× contract multiplier for each card beyond six in your longest suit. |
 
 **Enablers:**
 
-- [C] One card offer in each of your shops is from the suit you own the most
+- [C] One of your card offers in each shop is from the suit you own the most
   cards of.
-- [C] Cards of the suit you own the most of cost you 10 less.
-- [R, rule] Cards of your longest suit can't be trumped.
+- [C] Cards of the suit you own the most of cost 10 gold less.
+- [R, rule] Your longest suit can't be trumped.
 
 **Notes:**
 
@@ -546,20 +597,20 @@ and low spades trump. The ♠ members of the suit cycles score here too.
 
 **Enablers:**
 
-- [C] Spades cost you 15 less.
-- [U, rule] You may lead spades at any time.
-- [R, rule] The first trick you trump each round can't be overtrumped.
+- [C] Spades cost 15 gold less.
+- [U, rule] You can lead spades at any time.
+- [R, rule] The first time each round you trump, you win that trick.
 
 **Payoffs:**
 
 | Trigger | Example |
 | --- | --- |
-| Trump | [C, points] Tricks you win by trumping: +20 contract points. |
-| Lead | [C, points] Tricks you lead with a spade: +10 contract points. |
-| Hold | [U, points] +15 contract points for each spade your team holds beyond five. |
-| Trump | [U, +mult] +1× contract multiplier if your team wins three or more tricks by trumping. |
-| Hold | [R, +mult] +1× contract multiplier for each spade your team holds beyond seven. |
-| Win | [R, ×mult] ×2 contract multiplier if your team wins the last four tricks with spades. |
+| Trump | [C, points] Whenever you win a trick by trumping, add +20 contract points. |
+| Lead | [C, points] Whenever you lead a spade, add +10 contract points. |
+| Hold | [U, points] After bidding, add +15 contract points for each spade your team holds beyond five. |
+| Trump | [U, +mult] Each round, once you've won three tricks by trumping, add +1× contract multiplier. |
+| Hold | [R, +mult] After bidding, add +1× contract multiplier for each spade your team holds beyond seven. |
+| Win | [R, ×mult] If you win the last four tricks of a round with spades, add ×2 contract multiplier. |
 
 **Notes:**
 
@@ -573,7 +624,7 @@ win in every side suit and cost the most. A few sigils pay for kings instead.
 
 **Enablers:**
 
-- [C] Aces cost you 25 less.
+- [C] Aces cost 25 gold less.
 - [U, rule] Your kings count as aces for your sigils.
 - [R, rule] Your aces can't be trumped.
 
@@ -581,13 +632,13 @@ win in every side suit and cost the most. A few sigils pay for kings instead.
 
 | Trigger | Example |
 | --- | --- |
-| Win | [C, points] Tricks you win with an ace: +20 contract points. |
-| Hold | [C, points] +20 contract points for each ace your team holds. |
-| Lead | [C, points] Tricks you lead with an ace: +15 contract points. |
-| Win | [C, points] Tricks you win with a king: +15 contract points. |
-| Hold | [U, +mult] +2× contract multiplier if your team holds all four aces. |
-| Win | [U, ×mult] ×1.5 contract multiplier if your team wins three or more tricks with aces. |
-| Win | [R, +mult] +1× contract multiplier for each trick you win with an ace. |
+| Win | [C, points] Whenever you win a trick with an ace, add +20 contract points. |
+| Hold | [C, points] After bidding, add +20 contract points for each ace your team holds. |
+| Lead | [C, points] Whenever you lead an ace, add +15 contract points. |
+| Win | [C, points] Whenever you win a trick with a king, add +15 contract points. |
+| Hold | [U, +mult] After bidding, if your team holds all four aces, add +2× contract multiplier. |
+| Win | [U, ×mult] Each round, once you've won three tricks with aces, add ×1.5 contract multiplier. |
+| Win | [R, +mult] Whenever you win a trick with an ace, add +1× contract multiplier. |
 
 **Notes:**
 
@@ -602,22 +653,22 @@ you.
 
 **Enablers:**
 
-- [C] Cards ranked 10 through ace cost you 10 less.
-- [U, rule] Your high contracts are made with one trick fewer.
-- [R, rule] Tricks you win with an ace count as two tricks toward your
+- [C] Tens, face cards, and aces cost 10 gold less.
+- [U, rule] Your team needs one trick fewer to make a high contract.
+- [R, rule] Each trick you win with an ace counts as two tricks toward your
   contract.
 
 **Payoffs:**
 
 | Trigger | Example |
 | --- | --- |
-| Bid | [C, points] +5 contract points for each trick in your contract. |
-| Bid | [C, points] Your high contracts: +60 contract points. |
-| Bid | [C, +mult] +1× contract multiplier for your high contracts. |
-| Bid | [U, +mult] +2× contract multiplier if your contract is 10 or more. |
-| Bid | [U, points] +15 contract points for each trick in your contract beyond seven. |
-| Make | [R, +mult] +1× contract multiplier for each high contract your team has made this run. |
-| Bid | [R, ×mult] ×2 contract multiplier if your contract is 11 or more. |
+| Bid | [C, points] Add +5 contract points for each trick in your team's contract. |
+| Bid | [C, points] After bidding, if your team bid a high contract, add +60 contract points. |
+| Bid | [C, +mult] After bidding, if your team bid a high contract, add +1× contract multiplier. |
+| Bid | [U, +mult] After bidding, if your team's contract is 10 or more tricks, add +2× contract multiplier. |
+| Bid | [U, points] Add +15 contract points for each trick in your team's contract beyond seven. |
+| Make | [R, +mult] Add +0× contract multiplier. Whenever your team makes a high contract, this sigil gains 1× contract multiplier. |
+| Bid | [R, ×mult] After bidding, if your team's contract is 11 or more tricks, add ×2 contract multiplier. |
 
 **Notes:**
 
@@ -627,23 +678,24 @@ you.
 
 ### Nil
 
-**Plan.** Bid nil and make it. Nil points join the base, so every multiplier
-also grows your nils, and a failed nil costs more as the build grows.
+**Plan.** Bid nil and make it. The nil score joins the base, so every
+multiplier also grows your nils, and a failed nil costs more as the build
+grows.
 
 **Enablers:**
 
-- [C] Cards ranked 2 through 6 cost you 5 less.
-- [U, movement] Before bidding, each of you may pass a card to your partner.
-- [U, rule] Your nil bidders' aces count as twos.
+- [C] Twos through sixes cost 5 gold less.
+- [U, movement] Before bidding, swap a card with your partner.
+- [U, rule] After bidding, your nil bidders' aces become twos.
 
 **Payoffs:**
 
 | Trigger | Example |
 | --- | --- |
-| Make | [C, points] Your made nils are worth +50 more. |
-| Bid | [C, +mult] +1× contract multiplier if a player on your team bids nil. |
-| Make | [U, ×mult] ×1.5 contract multiplier if your team makes a nil. |
-| Make | [R, points] Your made nils are worth +40 more for each nil your team has made this run. |
+| Make | [C, points] Add +50 nil points. |
+| Bid | [C, +mult] When you bid nil, add +1× contract multiplier. |
+| Make | [U, ×mult] If your team makes a nil, add ×1.5 contract multiplier. |
+| Make | [R, points] Add +0 nil points. Whenever your team makes a nil, this sigil gains 40 nil points. |
 
 **Notes:**
 
@@ -656,14 +708,15 @@ also grows your nils, and a failed nil costs more as the build grows.
 cards win through length, by trumping, and after the honors are gone.
 
 - **Enablers:**
-  - [C] Low cards cost you 5 less.
+  - [C] Low cards cost 5 gold less.
   - [U, rule] Your jacks count as low cards for your sigils.
 - **Payoffs:**
-  - [C, points] Tricks you win with a low card: +15 contract points.
-  - [C, points] Tricks you lead with a low card: +10 contract points.
-  - [U, +mult] +1× contract multiplier if your team wins four or more tricks
-    with low cards.
-  - [R, points] Tricks you win with a 2: +150 contract points.
+  - [C, points] Whenever you win a trick with a low card, add +15 contract
+    points.
+  - [C, points] Whenever you lead a low card, add +10 contract points.
+  - [U, +mult] If you win four or more tricks with low cards in a round, add
+    +1× contract multiplier.
+  - [R, points] Whenever you win a trick with a two, add +150 contract points.
 
 ### Rainbow
 
@@ -672,15 +725,17 @@ the set, which makes Wild the build's key engraving.
 
 - **Enablers:**
   - [C] Your card offers carry Wild engravings twice as often.
-  - [U, rule] Tricks you win by trumping count as the suit led for your
-    sigils.
+  - [U, rule] Tricks you win by trumping count as won with the suit led, for
+    your sigils.
 - **Payoffs:**
-  - [C, points] The first trick you win with each suit: +25 contract points.
-  - [C, +mult] +1× contract multiplier if your team wins tricks with all four
-    suits.
-  - [U, ×mult] ×1.5 contract multiplier if your team leads all four suits.
-  - [R, ×mult] ×2 contract multiplier if your team wins two or more tricks
-    with each suit.
+  - [C, points] The first time each round you win a trick with each suit, add
+    +25 contract points.
+  - [C, +mult] If you win tricks with all four suits in a round, add +1×
+    contract multiplier.
+  - [U, ×mult] If you lead all four suits in a round, add ×1.5 contract
+    multiplier.
+  - [R, ×mult] If you win two or more tricks with each suit in a round, add ×2
+    contract multiplier.
 
 ### Streaks
 
@@ -688,16 +743,17 @@ the set, which makes Wild the build's key engraving.
 your losers at the right moment, then keep the lead.
 
 - **Enablers:**
-  - [C] The first trick your team loses each round doesn't break a streak for
-    your sigils.
-  - [U, rule] Your team leads the first trick.
+  - [C] The first trick you lose each round doesn't break your streak.
+  - [U, rule] After bidding, choose which of you leads the first trick.
 - **Payoffs:**
-  - [C, points] Each trick you win: +10 contract points for each trick you won
-    in a row before it.
-  - [C, +mult] +1× contract multiplier if your team wins the last trick.
-  - [U, +mult] +2× contract multiplier if your team wins four tricks in a row.
-  - [R, ×mult] ×2 contract multiplier if your team wins every trick after the
-    first one it loses.
+  - [C, points] Whenever you win a trick, add +10 contract points for each
+    trick you won in a row before it.
+  - [C, +mult] If you win the last trick of a round, add +1× contract
+    multiplier.
+  - [U, +mult] Each round, once you've won four tricks in a row, add +2×
+    contract multiplier.
+  - [R, ×mult] If you win every trick after the first one you lose in a round,
+    add ×2 contract multiplier.
 
 ### Exact
 
@@ -705,41 +761,43 @@ your losers at the right moment, then keep the lead.
 Exact pays for avoiding them. Exact pairs naturally with Nil and Low Cards.
 
 - **Enablers:**
-  - [C] One card offer in each of your shops is a 2 through 5.
-  - [U, rule] Once your team has made its contract, its aces and kings count
-    as twos.
+  - [C] One of your card offers in each shop is a two through five.
+  - [U, rule] Each round, once your team has made its contract, your aces and
+    kings become twos.
 - **Payoffs:**
-  - [C, points] +50 contract points if your team makes exactly its contract.
-  - [C, +mult] +1× contract multiplier if your team makes exactly its
-    contract.
-  - [U, ×mult] ×1.5 contract multiplier if each partner wins exactly their own
-    bid.
-  - [R, +mult] +1× contract multiplier for each exact contract your team has
-    made this run.
+  - [C, points] If your team makes its contract exactly, add +50 contract
+    points.
+  - [C, +mult] If your team makes its contract exactly, add +1× contract
+    multiplier.
+  - [U, ×mult] If you and your partner each take exactly your own bid, add
+    ×1.5 contract multiplier.
+  - [R, +mult] Add +0× contract multiplier. Whenever your team makes its
+    contract exactly, this sigil gains 1× contract multiplier.
 
 ### Generic
 
 Generic point sigils fit any build and carry runs while a plan comes together:
 
-- [C, points] +5 contract points for each trick your team wins.
-- [C, points] +40 contract points.
-- [U, +mult] +1× contract multiplier.
-- [R, ×mult] ×1.5 contract multiplier.
-- [L, ×mult] ×2 contract multiplier.
+- [C, points] Whenever you win a trick, add +5 contract points.
+- [C, points] Add +40 contract points.
+- [U, +mult] Add +1× contract multiplier.
+- [R, ×mult] Add ×1.5 contract multiplier.
+- [L, ×mult] Add ×2 contract multiplier.
 
 Generic enablers steer offers toward whatever you're already building. They
 are also the [card-lean lever](#15-risks-and-tuning-levers), offered as
 sigils:
 
 - [U] Your card offers favor cards that your sigils mention.
-- [U] Your shops offer a fourth sigil.
+- [U] You see four sigil offers instead of three.
 
 Utility examples:
 
-- **Economy and shop:** the first reroll in each shop is free; your interest
-  cap rises by 50; sigils cost you 10 less; this sigil's sell value rises by
-  15 after each round.
-- **Legendary utility:** +1 sigil slot.
+- **Economy and shop:** "The first reroll in each shop is free." "You can
+  earn up to 100 gold of interest each round instead of 50." "Sigils in your
+  shop cost 10 gold less." "After scoring, this sigil's sell value gains 15
+  gold."
+- **Legendary utility:** "Your team can own one more sigil."
 
 ## 10. Sigil pool skeleton
 
@@ -944,7 +1002,7 @@ from the data. For example:
 }
 ```
 
-generates "Tricks you win with an ace: +20 contract points." A rule bender
+generates "Whenever you win a trick with an ace, add +20 contract points." A rule bender
 names one of a small set of rule hooks written in code:
 
 ```json
@@ -1112,7 +1170,7 @@ measured.
 | # | Question | Decision |
 | --- | --- | --- |
 | 1 | Which tricks score | Overtricks score nothing, and there are no bags. First decided as "the team scores its B best tricks"; that became 10 × B once #3 dropped per-trick values |
-| 2 | Nil scoring | Nil points join the base and are multiplied with it |
+| 2 | Nil scoring | The nil score joins the base and is multiplied with it |
 | 3 | Scoring categories | +Contract points, +contract multiplier, and ×contract multiplier, with ×multipliers at any rarity. This revised an earlier "exactly three layers: trick value, contract value, contract multiplier" |
 | 4 | Score growth | Par about ×10 from round 1 to round 8, 60 to 600 |
 | 5 | Card ownership | Each player owns at most 8 cards, all dealt to them every round |
@@ -1132,12 +1190,13 @@ measured.
 | 19 | Simulation configuration | Single-player first: one card-owning seat per team |
 | 20 | Staging | Kernel, cards, commons (hand level, then run level), engravings, uncommons, rares, validation; UI port at stage 1 |
 | 21 | Candidate generation | Enumerate commons from the grammar; hand-design higher rarities in waves seeded from 1.0 |
+| 22 | Rules text | Follows 1.0's rules-text templates, with "add" and a signed number for score increases and 2.0's terms; settled after the interview |
 
 ## Appendix B: Calls made without a dedicated question
 
 These are vetoable defaults.
 
-- A set team scores (−10 × B + nil points) × its multipliers and loses all
+- A set team scores (−10 × B + nil score) × its multipliers and loses all
   contract points. Multipliers whose condition requires making the contract
   don't count.
 - Blind nil leaves the base rules and exists only as a one-off sigil.
@@ -1156,10 +1215,12 @@ These are vetoable defaults.
 - Every random draw comes from a named, seeded stream.
 - Contract points earned on overtricks count. Contract points from tricks a
   nil bidder wins don't. A double-nil team's contract points are lost.
-- Nil bonuses raise nil points rather than contract points, so they survive a
+- Nil points go to made nils rather than to the contract, so they survive a
   set.
-- "High contract" (8 or more) and "low card" (2 through 10) are keywords, so
-  commons can name them as one noun.
+- "High contract" (8 or more), "low card" (two through ten), and "streak" are
+  terms, so commons can name them as one noun.
+- A multiplier from a repeated trigger stacks each time it triggers, unlike
+  1.0's once-per-round cap.
 - Ties go to the first card played.
 - A hidden sigil reveals itself the first time it changes a score, a legal
   play, or a trick's winner.
@@ -1172,13 +1233,13 @@ These are vetoable defaults.
   two humans, each offer's tag is random.
 - Rarity odds are 69/25/5/1, with legendaries in normal offers; prices are
   50/75/100/150.
-- "Longest suit" is judged per player at the start of bidding. Ties count
-  every tied suit, spades count, and wild cards don't.
-- Hold sigils count both partners' hands at the start of bidding.
+- "Longest suit" is judged per player after bidding. Ties count every tied
+  suit, spades count, and wild cards don't.
+- Hold sigils count both partners' hands after bidding.
 - Both teams may own the same sigil.
 - Income is 100 base gold, plus 10 per contract trick if made, plus 50 per
   made nil, with interest of 10 per 50 held up to 50.
-- Lead sigils pay on the lead, whether or not the trick is won.
+- Lead triggers fire on the lead, whether or not the trick is won.
 - In multiplayer, the first partner to act on an offer gets it, and a team's
   shop closes when both partners press Done.
 - Conflicting rule benders resolve by a fixed priority defined in the kernel.
@@ -1196,7 +1257,7 @@ the generic budget.
 | Swap meet | Pre-bid card movement sigils, mostly serving as Nil enablers |
 | Your partner winning tricks | Mostly moot, since team-scoped sigils treat both partners' tricks alike |
 | Bonus chaser | Generic contract-point sigils |
-| Contract attacker | A few "if the opponents are set" sigils; gate 3 applies |
+| Contract attacker | A few "If the opponents miss their contract, …" sigils; gate 3 applies |
 | Nil guard | Pre-bid passing serves it as a Nil enabler |
 | Gold miner | Economy utility only; no sigil scores from gold held |
 
@@ -1211,8 +1272,8 @@ hand-designed waves. Colors and resonances are dropped.
 | Regal Summit (RE-C02) | Your kings become aces. | Ranks: "Your kings count as aces for your sigils" |
 | Rosy Spectacles (BL-U11) | Your team's hearts can't be trumped. | Suits rule bender, with ♣ ♦ ♥ versions as an option |
 | Arena's Law (RE-U01) | You can lead spades at any time. | Spades rule-bender enabler |
-| Mauling Bear (GR-U03) | The first time each round you trump, you win that trick. | Spades: "The first trick you trump each round can't be overtrumped" |
-| Headsman's Axe (RE-C08) | Whenever you win a trick with a spade, gain +10 contract value. | Suit cycle Win template, ♠ member |
+| Mauling Bear (GR-U03) | The first time each round you trump, you win that trick. | Spades rule-bender enabler, as written |
+| Headsman's Axe (RE-C08) | Whenever you win a trick with a spade, gain +10 contract value. | Suit cycle Win template, spades member |
 | Schooling Fish (GR-C13) | If you win three or more tricks with diamonds in a round, gain +40 contract value. | Suit cycle, uncommon threshold variant |
 | Evening Melody (GR-R03) | If you win three or more tricks with hearts in a round, gain +1× contract multiplier. | Suit cycle +mult variant |
 | Laurel Finale (DU-R01) | If your team wins the last trick of a round with a heart, gain +1× contract multiplier. | Streaks or Suits |
@@ -1220,11 +1281,11 @@ hand-designed waves. Colors and resonances are dropped.
 | Early Sprint (RE-C05) | Whenever you win one of the first three tricks, gain +10 contract value. | Streaks common |
 | Honest Ruler (BL-C10) | If your team makes its contract exactly, gain +30 contract value. | Exact common |
 | True Aim (BL-R04) | If your team makes its contract exactly, gain +1× contract multiplier. | Exact +mult |
-| Balanced Yin-Yang (DU-S13) | If you take exactly your own bid, gain +1× contract multiplier. | Exact: "each partner wins exactly their own bid" |
-| Square Meal (GY-R04) | After bidding, if your team's contract is 9 or more tricks, gain +1× contract multiplier. | Bid High: "+1× contract multiplier for your high contracts" |
+| Balanced Yin-Yang (DU-S13) | If you take exactly your own bid, gain +1× contract multiplier. | Exact: "If you and your partner each take exactly your own bid, add ×1.5 contract multiplier." |
+| Square Meal (GY-R04) | After bidding, if your team's contract is 9 or more tricks, gain +1× contract multiplier. | Bid High: "After bidding, if your team bid a high contract, add +1× contract multiplier." |
 | Gambler's Wheel (OR-R01) | If your team's contract is 10 or more tricks, gain +2× contract multiplier. | Bid High uncommon +mult |
-| Planner's Whiteboard (GY-C18) | Gain +5 contract value for each trick your partner bids. | Bid High: "+5 contract points for each trick in your contract" |
-| Vigil Candle (PU-C10) | Gain +30 nil value. | Nil: "Your made nils are worth +50 more" |
+| Planner's Whiteboard (GY-C18) | Gain +5 contract value for each trick your partner bids. | Bid High: "Add +5 contract points for each trick in your team's contract." |
+| Vigil Candle (PU-C10) | Gain +30 nil value. | Nil: "Add +50 nil points." |
 | Widening Circle (PU-R04) | Your nil value is doubled. | Nil ×mult |
 | Sealed Letter (TE-C02) | Before bidding, pass a card to your partner. | Nil enabler (pre-bid movement) |
 | Tricolor Triangle (RE-U07) | If you lead three different suits in a round, gain +50 contract value. | Rainbow lead payoff |
