@@ -11,10 +11,12 @@ thousands of simulated runs. A rule, sigil, or number stays in the game only if
 those runs show it meets the weighted fun metrics in
 [§12](#12-metrics-what-fun-means).
 
-This document records the design agreed in the design interview of 2026-10-05.
-[Appendix A](#appendix-a-decision-log) lists each decision, and
-[Appendix B](#appendix-b-calls-made-without-a-dedicated-question) lists the
-calls made without a dedicated question. It builds on two predecessors:
+This document records the starting design from the design interview of
+2026-10-05. [Appendix A](#appendix-a-decision-records) holds a record for each
+decision, with the alternatives considered.
+[Appendix B](#appendix-b-parameter-register) lists every number to test, and
+[Appendix C](#appendix-c-unexamined-assumptions) lists the assumptions made
+without a dedicated question. It builds on two predecessors:
 
 - **Rogue Spades 1.0** (`~/rsp`): its
   [rules](../../rsp/docs/game-overview.md),
@@ -25,12 +27,32 @@ calls made without a dedicated question. It builds on two predecessors:
   of the shop, owned cards, engravings, payoffs and enablers, the pool
   skeleton, and sigil validation.
 
-> **Every sigil and number in this document is an example or a starting
-> value.** Each one must pass simulation before it enters the game.
+## Status: provisional
 
-## At a glance
+This is version 0 of the design, written before any simulation has run.
+Everything in it is a hypothesis for the first round of testing:
 
-| Topic | Rule |
+- **Rules and structure,** such as scoring, owned cards, engravings, and the
+  shop, are starting choices. Each has a decision record in
+  [Appendix A](#appendix-a-decision-records) that lists the alternatives
+  considered and the experiment that will choose between them.
+- **Numbers,** such as shop sizes, prices, gold, slots, caps, odds, and sigil
+  budgets, are starting values. [Appendix B](#appendix-b-parameter-register)
+  lists each one with a range to test.
+- **Sigils** are illustrative. None has evidence yet, and most will change or
+  be cut.
+- **Metric thresholds and weights** are placeholders until the harness runs.
+
+A decision is settled only when its record shows the alternatives and the
+numbers that chose between them. A sigil enters the game only when its record
+shows the evidence for its inclusion
+([§16](#16-evidence-and-design-records)).
+
+## Starting design at a glance
+
+Every row is a starting hypothesis.
+
+| Topic | Starting hypothesis |
 | --- | --- |
 | Golden Rule | A rule, sigil, or number is kept only if simulation shows it meets the metrics ([§12](#12-metrics-what-fun-means)) |
 | Run | 8 rounds; each round is a shop, then a deal of Spades |
@@ -49,10 +71,12 @@ calls made without a dedicated question. It builds on two predecessors:
 
 ## Design pillars
 
-1. **Simulation decides.** Design questions are answered by experiments, not
-   intuition. This document defines fun as measurable metrics. The game is
-   built so the AI can play, bid, buy, and measure a sigil the moment it is
-   written.
+1. **Simulation decides, and the evidence is written down.** Design questions
+   are answered by experiments, not intuition. Every decision records the
+   alternatives considered and the numbers that chose between them, and every
+   sigil records the evidence for its inclusion. This document defines fun as
+   measurable metrics, and the game is built so the AI can play, bid, buy, and
+   measure a sigil the moment it is written.
 2. **Real Spades underneath.** With no sigils and no cards, a round plays and
    scores as partnership Spades without bags.
 3. **Direct scoring.** Most sigils say "you get points for doing X" in one of
@@ -71,6 +95,9 @@ calls made without a dedicated question. It builds on two predecessors:
 
 ## 1. The table, the run, and victory
 
+> **Status:** provisional. The run length is parameter P1 in
+> [Appendix B](#appendix-b-parameter-register).
+
 - Four seats form two teams, with partners opposite.
 - A run is 8 rounds. A round is a shop, a deal, bidding, 13 tricks, scoring,
   and income.
@@ -84,6 +111,9 @@ calls made without a dedicated question. It builds on two predecessors:
 - Multiplayer is covered in [§11](#11-multiplayer).
 
 ## 2. The lifecycle of a round
+
+> **Status:** provisional. The shop and income steps follow
+> [D7](#d7-offer-density) and [D9](#d9-income).
 
 1. **Shop.** Both teams shop at once ([§8](#8-shops-and-economy)). The first
    shop opens before round 1, with starting gold.
@@ -100,6 +130,10 @@ calls made without a dedicated question. It builds on two predecessors:
 
 ## 3. Spades rules
 
+> **Status:** provisional. Overtricks are [D1](#d1-which-tricks-score). Blind
+> nil, ties, and the other base rules are assumptions in
+> [Appendix C](#appendix-c-unexamined-assumptions).
+
 ### Bidding
 
 - Each player bids **nil** or a number from 1 to 13.
@@ -109,7 +143,7 @@ calls made without a dedicated question. It builds on two predecessors:
   toward the partner's contract. If both partners bid nil, the team has no
   contract.
 - **Blind nil** is not part of the base rules. A one-off sigil can grant it
-  ([Appendix C](#appendix-c-one-offs-not-archetypes)).
+  ([Appendix C](#appendix-d-one-offs-not-archetypes)).
 
 ### Play
 
@@ -127,6 +161,11 @@ calls made without a dedicated question. It builds on two predecessors:
   one played wins.
 
 ## 4. Scoring
+
+> **Status:** provisional. The formula comes from [D1](#d1-which-tricks-score),
+> [D2](#d2-nil-scoring), [D3](#d3-scoring-categories), and
+> [D8](#d8-bid-tension), and the par curve from [D4](#d4-score-growth). Every
+> number is a parameter in [Appendix B](#appendix-b-parameter-register).
 
 ### The formula
 
@@ -219,6 +258,11 @@ and sets. It grows about ×1.39 per round, ×10 over the run:
   ([§10](#budgets)) are swept toward this curve in simulation.
 
 ## 5. Sigils
+
+> **Status:** provisional. Visibility is [D10](#d10-sigil-visibility), the
+> effect families [D13](#d13-effect-families), and rules text
+> [D22](#d22-rules-text). Slots, rarity odds, and prices are
+> [parameters](#appendix-b-parameter-register) P3, P14, and P15.
 
 ### Slots and ownership
 
@@ -353,6 +397,10 @@ window, and its conventions.
 
 ## 6. Cards
 
+> **Status:** provisional. Ownership is [D5](#d5-owned-cards). The card cap,
+> the number of card offers, and every card price are
+> [parameters](#appendix-b-parameter-register) P2, P5, and P16.
+
 - The deck is the standard 52 cards. Each real card exists once;
   [synthetic cards](#synthetic-cards) are extra copies that replace other
   cards.
@@ -390,6 +438,11 @@ An engraved card costs its price plus the engraving's premium.
 3. All other cards are shuffled and dealt to fill every hand to 13.
 
 ## 7. Engravings
+
+> **Status:** provisional. The catalog is [D6](#d6-engraving-catalog) and
+> [D23](#d23-identity-engravings). The engraved share of card offers, the
+> premiums, and the cards a synthetic copy can replace are
+> [parameters](#appendix-b-parameter-register) P17–P19.
 
 An engraving is a fixed modifier printed on a card offer. Engravings can't be
 bought alone, take no sigil slot, and stay with the card while it's owned.
@@ -438,6 +491,10 @@ players discover: a synthetic heart lengthens a hearts build, a synthetic ace
 feeds Ranks, and a synthetic spade adds a trump.
 
 ## 8. Shops and economy
+
+> **Status:** provisional. Purely random offers are [D7](#d7-offer-density),
+> and income is [D9](#d9-income). Every count, price, and gold amount in this
+> section is a starting value to test: [parameters](#appendix-b-parameter-register) P4–P15.
 
 ### Shop
 
@@ -489,6 +546,10 @@ random offers:
 
 ## 9. Archetypes
 
+> **Status:** provisional. The roster is [D11](#d11-archetype-roster) and the
+> suit structure [D12](#d12-suit-structure). Every sigil in this section is an
+> illustrative candidate for the first round of testing, with no evidence yet.
+
 An archetype is a plan a team can build a run around. Archetypes are a design
 and simulation tool only. The game never names them, tags sigils with them, or
 steers offers by them.
@@ -509,7 +570,7 @@ steers offers by them.
 - **Minors** have about five point sigils, and usually join a major.
 - **Generic** point sigils support every build. Ideas too narrow for an
   archetype become one-offs
-  ([Appendix C](#appendix-c-one-offs-not-archetypes)).
+  ([Appendix C](#appendix-d-one-offs-not-archetypes)).
 
 ### Ways to score
 
@@ -811,6 +872,10 @@ Utility examples:
 
 ## 10. Sigil pool skeleton
 
+> **Status:** provisional. The category split follows
+> [D3](#d3-scoring-categories), pool sizes are [parameters](#appendix-b-parameter-register) P21, and every
+> budget is a starting size for number sweeps.
+
 The pool has 145 sigils. Following Bridge of Rogues, about 70% of commons, 50%
 of uncommons, 75% of rares, and 60% of legendaries score points.
 
@@ -888,6 +953,9 @@ Checks against par:
 
 ## 11. Multiplayer
 
+> **Status:** provisional, and untested until stage 7
+> ([D19](#d19-simulation-configuration)).
+
 The first prototype is single-player. Every rule is symmetric, so multiplayer
 needs only these additions:
 
@@ -903,6 +971,10 @@ needs only these additions:
 - Teams shop at the same time, and card offers never overlap.
 
 ## 12. Metrics: what fun means
+
+> **Status:** provisional. The structure is [D14](#d14-metric-structure), and
+> every threshold, band, and weight is a placeholder until the harness runs:
+> [parameters](#appendix-b-parameter-register) P25–P27.
 
 The metrics answer one question: what does it mean for Rogue Spades to be fun?
 They come in two layers:
@@ -959,12 +1031,16 @@ These are tracked but not weighted:
 
 ### Results
 
-- Each sigil's data file records its latest gate numbers and the stage that
-  produced them, so later changes are compared against numbers.
+- Gate and fun-score results go into the sigil records and decision records
+  described in [§16](#16-evidence-and-design-records).
 - A sigil that fails is retuned, usually by a number sweep, or cut.
 - An archetype whose sigils keep failing drops to one-offs.
 
 ## 13. Simulation
+
+> **Status:** provisional. The architecture follows
+> [D15](#d15-sigil-representation)–[D18](#d18-throughput), and the tier budgets
+> are [parameters](#appendix-b-parameter-register) P24.
 
 ### The chicken-and-egg answer
 
@@ -1133,6 +1209,9 @@ deck as standard.
 
 ## 14. Staging
 
+> **Status:** provisional ([D20](#d20-staging),
+> [D21](#d21-candidate-generation)).
+
 The simulation and the pool grow together, one rarity at a time. Each stage's
 exit gate unlocks the next. Cards come before sigils on purpose: they're the
 main enabler, so their prices must be stable before any payoff can be
@@ -1153,12 +1232,16 @@ measured.
   Designers choose among passing candidates for variety, clarity, and
   archetype coverage. For example, the 42 common payoffs are picked from the
   enumerated survivors.
+- **Records at every exit.** A stage isn't done until the decision, parameter,
+  and sigil records its experiments touched are written
+  ([§16](#16-evidence-and-design-records)), so the documentation grows with
+  the pool.
 - **Hand play from stage 1.** The ported UI lets the designer play each
   stage's pool by hand. Hand play checks the goals simulation can't measure,
   such as simplicity and the feel of railroading, and catches AI blind spots
   early.
 - **Mining 1.0.** Higher-rarity waves start from the 1.0 sigils that fit
-  2.0's rules ([Appendix D](#appendix-d-seeds-from-rogue-spades-10)).
+  2.0's rules ([Appendix D](#appendix-e-seeds-from-rogue-spades-10)).
 
 ## 15. Risks and tuning levers
 
@@ -1178,37 +1261,435 @@ measured.
 | Nil is weak in single-player, where the AI partner decides its own nils | The partner bids nil by expected score, including team sigils |
 | Experiments run too slowly | Tier budgets, and fewer runs thanks to paired seeds |
 
-## Appendix A: Decision log
+## 16. Evidence and design records
 
-| # | Question | Decision |
-| --- | --- | --- |
-| 1 | Which tricks score | Overtricks score nothing, and there are no bags. First decided as "the team scores its B best tricks"; that became 10 × B once #3 dropped per-trick values |
-| 2 | Nil scoring | The nil score joins the base and is multiplied with it |
-| 3 | Scoring categories | +Contract points, +contract multiplier, and ×contract multiplier, with ×multipliers at any rarity. This revised an earlier "exactly three layers: trick value, contract value, contract multiplier" |
-| 4 | Score growth | Par about ×10 from round 1 to round 8, 60 to 600 |
-| 5 | Card ownership | Each player owns at most 8 cards, all dealt to them every round |
-| 6 | Engravings | A small fixed catalog of scoring and identity engravings on card offers from shop 3 |
-| 7 | Offer density | Purely random within rarity; density levers held in reserve for the metrics |
-| 8 | Bid tension | A set loses all contract points; the pool scales with contract size; a bidding-health metric watches late rounds |
-| 9 | Income | Base gold + 10 per trick in a made contract, plus interest |
-| 10 | Sigil visibility | Opponents' sigils are hidden until they first trigger |
-| 11 | Archetype roster | Majors: Suits, Spades, Ranks, Bid High, Nil. Minors: Low Cards, Rainbow, Streaks, Exact |
-| 12 | Suit structure | Three-template ♣ ♦ ♥ cycles (with ♠ where the text fits) plus about 6 "longest suit" sigils |
-| 13 | Effect families | Rule benders and pre-bid card movement allowed; information and post-deal randomness excluded |
-| 14 | Metric structure | Per-sigil gates plus a weighted fun score: Close and live 30, Commitment 20, Archetypes viable 20, Synergy 15, Skill and bidding 15 |
-| 15 | Sigil representation | Declarative data with generated text and named rule hooks |
-| 16 | AI architecture | One rules kernel shared by the game and the AI search |
-| 17 | Shop AI | Value offers by playing sampled hands with and without them; fitted values for rule benders and economy |
-| 18 | Throughput | Three AI tiers; a standard experiment takes about 10 minutes |
-| 19 | Simulation configuration | Single-player first: one card-owning seat per team |
-| 20 | Staging | Kernel, cards, commons (hand level, then run level), engravings, uncommons, rares, validation; UI port at stage 1 |
-| 21 | Candidate generation | Enumerate commons from the grammar; hand-design higher rarities in waves seeded from 1.0 |
-| 22 | Rules text | Follows 1.0's rules-text templates, with "add" and a signed number for score increases and 2.0's terms; settled after the interview |
-| 23 | Identity engravings | Engravings never change a card's suit or rank: Converted, Raised, Crowned, and Wild give way to synthetic copies of any card, which replace another named card; settled after the interview |
+The project's lasting output is its design documentation as much as the game.
+Every design decision records the alternatives considered and the numbers that
+chose between them. Every sigil records the evidence for its inclusion. The
+harness writes most of this itself, so the evidence stays current and anyone
+can reproduce it.
 
-## Appendix B: Calls made without a dedicated question
+### Decision records
 
-These are vetoable defaults.
+[Appendix A](#appendix-a-decision-records) holds one record per decision:
+
+| Field | Contents |
+| --- | --- |
+| Starting choice | What the design does now |
+| Alternatives | Every option considered, including the ones rejected in the interview |
+| Prior reasoning | Arguments and numbers from before any simulation, labeled as such |
+| Decided by | The metrics that will choose between the alternatives, named before any experiment runs |
+| Test | The experiment: its arms, stage, AI tier, and run count |
+| Evidence | Results for every arm, with 90% confidence intervals and links to experiment reports |
+| Status | Hypothesis, supported, revised, or rejected |
+
+- **Settling a decision.** A decision is supported when its choice beats every
+  alternative on its deciding metrics, or ties with them and is simpler. If an
+  alternative wins, the decision is revised, and the record keeps the old
+  choice with its numbers.
+- **Kinds of decision.** Design decisions are judged by the gates and the fun
+  score. Method decisions, such as the AI architecture, are judged by harness
+  measurements like play quality, throughput, and agreement between tiers.
+  Where simulation can't measure a question, such as rules-text style, the
+  record says it rests on designer judgment and playtests.
+- **Assumptions** in [Appendix C](#appendix-c-unexamined-assumptions) get a
+  record when an experiment first examines them.
+
+### Parameter records
+
+[Appendix B](#appendix-b-parameter-register) lists every number with its
+starting value, a range to test, and the metrics that set it. Once a number is
+tested, its row links to the sweep that chose it, which shows the results at
+every value tried.
+
+### Sigil records
+
+Every sigil candidate gets a record. The harness writes it into the sigil's
+data file and into a generated catalog, so nobody edits evidence by hand.
+
+| Field | Contents |
+| --- | --- |
+| Identity | Rules text, rarity, archetypes, and role |
+| Status | Candidate, included, revised, or cut, and the stage that decided it |
+| Gates | Base and committed trigger rates, win-rate lift over its control, decisive share, enabler lift, and the counter scan where it applies, each with a confidence interval and run count |
+| Sweep | Every amount tried, with its lift and points per round, and the amount chosen |
+| Synergy | Its strongest pairs, and how far they beat the sum of their parts |
+| Alternatives | Other amounts, triggers, or wordings tried for the same slot, and why they lost |
+| Reports | Links to the experiment reports behind every number |
+
+The sigils in this document are illustrative and have no records yet. The
+first records come from stage 2.
+
+### Experiment reports
+
+Every experiment writes a report listing:
+
+- its question and the record it updates;
+- its arms, configuration, AI tier, seeds, and run count;
+- the code and pool versions it ran against;
+- its results, with confidence intervals;
+- the command that reproduces it.
+
+Records cite reports, so every number in the design documentation traces back
+to runs anyone can repeat.
+
+### Keeping evidence current
+
+Evidence goes stale when the rules or the pool change. Each record names the
+code and pool versions behind its numbers. At each stage's exit, the harness
+re-runs every record whose evidence predates a change that could affect it,
+and flags any conclusion that flips.
+
+## Appendix A: Decision records
+
+Every record follows the format in [§16](#decision-records). No experiment has
+run yet, so every record is a hypothesis with pending evidence.
+
+- **Design decisions** (D1–D13 and D23) are judged by the gates and the fun
+  score.
+- **Method decisions** (D14–D21) are judged by harness measurements or designer
+  judgment.
+- **Presentation** (D22) rests on designer judgment and playtests.
+
+### D1. Which tricks score
+
+- **Starting choice:** overtricks score nothing, and there are no bags. This was
+  first chosen as "the team scores its B best tricks", which became 10 × B once
+  [D3](#d3-scoring-categories) dropped per-trick values.
+- **Alternatives:**
+  - every trick scores, and every 5 bags cost 50 × the multiplier;
+  - every trick scores, with no bags;
+  - 1.0's rule: every trick scores, and 10 bags cost 100.
+- **Prior reasoning:** under 1.0's rule the expected-score AI bid low, taking
+  1.24 bags per made contract, and an 8-round run reaches 10 bags about once.
+  Without bags, underbidding costs nothing.
+- **Decided by:** Skill and bidding, then Close and live.
+- **Test:** one arm per alternative, on plain Spades at stage 0 and with
+  commons at stage 3.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D2. Nil scoring
+
+- **Starting choice:** the nil score joins the base and is multiplied with it.
+- **Alternatives:**
+  - a separate nil pipeline with its own multipliers;
+  - 1.0's flat ±100, which multipliers never touch.
+- **Prior reasoning:** flat nil faded late in 1.0 runs, so Nil couldn't scale
+  like the other archetypes.
+- **Decided by:** Archetypes viable (Nil's committed win rate), and Synergy
+  (pairs involving Nil).
+- **Test:** Nil commitment trials under each rule at stages 3 and 5.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D3. Scoring categories
+
+- **Starting choice:** +contract points, +contract multiplier, and ×contract
+  multiplier, with ×multipliers at any rarity.
+- **Alternatives:**
+  - trick value, contract value, and +contract multiplier, with nothing
+    compounding (chosen first, then revised);
+  - those three plus ×multipliers at rare and legendary only;
+  - Bridge of Rogues' five categories, including per-trick multipliers.
+- **Prior reasoning:** the categories mirror Balatro's chips, +Mult, and ×Mult,
+  and compounding is the main source of "broken" combos.
+- **Decided by:** Synergy and combos, Close and live, and the power ceiling.
+- **Test:** pool variants with and without ×multipliers at each rarity, at
+  stages 3–6.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D4. Score growth
+
+- **Starting choice:** par grows about ×10 from round 1 to round 8, from 60 to
+  600 (parameter P20).
+- **Alternatives:**
+  - about ×5;
+  - about ×20, as in Bridge of Rogues;
+  - no fixed curve, tuned only to the closeness metrics.
+- **Prior reasoning:** with constant growth per round, rounds 1–4 hold 28% of
+  points at ×5, 21% at ×10, and 15% at ×20. A 7-sigil build would naturally
+  reach ×20 or more.
+- **Decided by:** Close and live.
+- **Test:** budget sweeps at stages 3–6 that land the pool on each curve.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D5. Owned cards
+
+- **Starting choice:** each player owns at most 8 cards, and all of them are
+  dealt every round.
+- **Alternatives:**
+  - own any number of cards and receive a random 8;
+  - own up to 13, as in Bridge of Rogues.
+- **Prior reasoning:** without a cap, a single-player human could own a fixed
+  13-card hand by mid-run.
+- **Decided by:** input randomness (random cards per hand), Commitment works,
+  and Close and live.
+- **Test:** card-only runs with caps of 6, 8, 10, and 13 at stage 1, then the
+  chosen rule again at stage 3.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D6. Engraving catalog
+
+- **Starting choice:** a small fixed catalog of scoring engravings plus
+  Synthetic, as revised by [D23](#d23-identity-engravings).
+- **Alternatives:**
+  - a large designed pool, like 1.0's engraving sigils;
+  - identity engravings only;
+  - scoring engravings only.
+- **Decided by:** Commitment works and Synergy, with designer judgment on
+  simplicity.
+- **Test:** catalog variants as arms at stage 4.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D7. Offer density
+
+- **Starting choice:** sigil offers are purely random within rarity.
+- **Alternatives:**
+  - hidden run pools of K archetypes, plus card offers that lean toward cards
+    your sigils reward;
+  - affinity weighting toward archetypes you already own;
+  - card lean only.
+- **Prior reasoning:** with about 48 sigil offers per run, a major archetype
+  appears about 4 times and a minor one about twice.
+- **Decided by:** Commitment works, and Archetypes viable (the spread of
+  winning builds).
+- **Test:** each lever as an arm at stage 3, if Commitment works fails at
+  baseline.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D8. Bid tension
+
+- **Starting choice:** a set loses all contract points, and at least a third of
+  contract-point sigils and a quarter of multipliers scale with the contract
+  (parameter P23).
+- **Alternatives:**
+  - event points are banked even through a set;
+  - a symmetric stake, where a set loses the full contract value;
+  - accept safe bidding.
+- **Prior reasoning:** late in a run, bidding 5 instead of 7 lowers a made
+  score only from 1,080 to 1,000 while sharply cutting the risk of a set, so
+  an expected-score bidder sandbags.
+- **Decided by:** Skill and bidding.
+- **Test:** rule arms at stages 3 and 5, plus a sweep of the bid-scaled share
+  from none to half.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D9. Income
+
+- **Starting choice:** base gold, plus 10 gold per trick in a made contract,
+  plus interest.
+- **Alternatives:**
+  - 10 gold per trick won;
+  - flat income;
+  - catch-up gold for the trailing team.
+- **Prior reasoning:** contract gold gives early rounds an economic stake and
+  rewards ambitious bids, and two extra sets cost about one sigil over a run.
+- **Decided by:** Close and live, then Skill and bidding.
+- **Test:** income arms at stages 1 and 3.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D10. Sigil visibility
+
+- **Starting choice:** opponents' sigils stay hidden until they first trigger.
+- **Alternatives:**
+  - always public;
+  - hidden all run.
+- **Decided by:** No invalidation (gate 3) and Skill and bidding, plus how
+  readable playtesters find the table.
+- **Test:** visibility arms at stage 3. In each arm the AI reasons only about
+  what it can see.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D11. Archetype roster
+
+- **Starting choice:** majors Suits, Spades, Ranks, Bid High, and Nil; minors
+  Low Cards, Rainbow, Streaks, and Exact.
+- **Alternatives:**
+  - honors and length as separate archetypes;
+  - seven archetypes, with Exact and Streaks cut to one-offs and Rainbow folded
+    into Suits;
+  - Nil as a minor.
+- **Decided by:** Archetypes viable and Commitment works.
+- **Test:** commitment trials for every archetype at stages 3 and 5. An
+  archetype whose sigils keep failing drops to one-offs.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D12. Suit structure
+
+- **Starting choice:** three-template cycles in ♣, ♦, and ♥, with ♠ members
+  where the text fits, plus about six "longest suit" sigils.
+- **Alternatives:**
+  - pure cycles;
+  - adaptive sigils only;
+  - six-template cycles.
+- **Prior reasoning:** under purely random offers, a single suit sees about 3
+  relevant offers per run with the adaptive sigils, and under 2 without them.
+- **Decided by:** Commitment works for each suit, and Archetypes viable.
+- **Test:** pool variants at stage 3.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D13. Effect families
+
+- **Starting choice:** rule benders and pre-bid card movement are allowed;
+  information effects and randomness after the deal are excluded.
+- **Alternatives:**
+  - allow information effects;
+  - allow randomness after the deal.
+- **Decided by:** gates 1 and 3 for rule benders. The exclusions rest on
+  designer judgment, from the brief's preference for input randomness over
+  output randomness.
+- **Test:** rule benders go through the normal gates at stages 5 and 6.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D14. Metric structure
+
+- **Starting choice:** per-sigil gates plus a weighted fun score: Close and live
+  30, Commitment works 20, Archetypes viable 20, Synergy 15, and Skill and
+  bidding 15.
+- **Alternatives:**
+  - one weighted score with no gates;
+  - the same gates, with weights that favor synergy.
+- **Decided by:** designer judgment. The weights are revisited at stage 7 if
+  the fun score disagrees with playtests.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D15. Sigil representation
+
+- **Starting choice:** declarative data, with generated text and named rule
+  hooks.
+- **Alternatives:**
+  - 1.0's per-sigil handlers;
+  - handlers that read their numbers from a parameter table.
+- **Decided by:** whether the grammar can express every candidate worth
+  testing, and how fast number sweeps run.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D16. AI architecture
+
+- **Starting choice:** one rules kernel shared by the game and the AI search.
+- **Alternatives:**
+  - patch 1.0's plain-Spades search;
+  - search with perfect information in simulation.
+- **Decided by:** AI play quality and throughput at stage 0.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D17. Shop AI
+
+- **Starting choice:** value offers by playing sampled hands with and without
+  them, with fitted values for rule benders and economy sigils.
+- **Alternatives:**
+  - fitted values only;
+  - hand-written heuristics.
+- **Decided by:** shop skill at stage 3: on paired seeds, the rescoring shopper
+  should beat the simpler ones.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D18. Throughput
+
+- **Starting choice:** three AI tiers, with a standard experiment taking about
+  10 minutes (parameters P24 and P27).
+- **Alternatives:**
+  - full search only, with experiments run overnight;
+  - heuristic bots, plus full-search spot checks.
+- **Decided by:** agreement between tiers (whether tiers 0 and 1 rank sigils
+  the way tier 2 does) and measured run times.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D19. Simulation configuration
+
+- **Starting choice:** balance for single-player first, with one card-owning
+  seat per team.
+- **Alternatives:**
+  - balance for teams of two humans first;
+  - AI teams always own cards in both seats.
+- **Decided by:** product priority. The two-human configuration is checked at
+  stage 7.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D20. Staging
+
+- **Starting choice:** kernel, cards, commons (hand level, then run level),
+  engravings, uncommons, rares, then validation, with the UI port at stage 1.
+- **Alternatives:**
+  - UI after the commons pass;
+  - UI only at the end.
+- **Decided by:** designer judgment.
+- **Evidence:** not applicable. **Status:** hypothesis.
+
+### D21. Candidate generation
+
+- **Starting choice:** enumerate common payoffs from the grammar, and design
+  higher rarities by hand in waves seeded from 1.0.
+- **Alternatives:**
+  - hand-designed waves at every rarity;
+  - enumeration at every rarity.
+- **Decided by:** how many candidates from each source pass their gates.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D22. Rules text
+
+- **Starting choice:** 1.0's templates, with "add" and a signed number for score
+  increases. Chosen after the interview.
+- **Alternatives:**
+  - colon shorthand: "Tricks you win with an ace: +20 contract points.";
+  - 1.0's "gain".
+- **Decided by:** designer judgment and how well playtesters understand the
+  text.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D23. Identity engravings
+
+- **Starting choice:** engravings never change a card's suit or rank, and
+  synthetic copies of any card take the place of Converted, Raised, Crowned,
+  and Wild. Chosen after the interview.
+- **Alternatives:**
+  - the original identity catalog of Converted, Raised, Crowned, and Wild.
+- **Prior reasoning:** an engraving that changes an offered card's suit or rank
+  just offers a different card in a more complicated way.
+- **Decided by:** Commitment works, with designer judgment on simplicity.
+- **Test:** stage 4, with Wild as a separate arm for Rainbow.
+- **Evidence:** pending. **Status:** hypothesis.
+
+## Appendix B: Parameter register
+
+Every number below is a starting value. Each row lists the range to test, the
+metrics that set it, and the stage that tests it. Once tested, a row links to
+the sweep that chose its value ([§16](#parameter-records)).
+
+| # | Parameter | Starting value | Range to test | Decided by | Stage |
+| --- | --- | --- | --- | --- | --- |
+| P1 | Rounds per run | 8 | 6–10 | Close and live | 3 |
+| P2 | Owned cards per player | 8 | 6–10, and 13 | Input randomness; Commitment works | 1 |
+| P3 | Sigil slots per team | 7 | 5–9 | Synergy; Archetypes viable | 3 |
+| P4 | Sigil offers per shop | 3 | 2–5 | Commitment works | 3 |
+| P5 | Card offers per shop | 3 | 2–5 | Commitment works | 1 |
+| P6 | Purchases per shop | Unlimited | 1, 2, or unlimited | Commitment works; economy diagnostics | 3 |
+| P7 | Reroll cost | 50, plus 10 per further reroll | 25–100 to start | Commitment works | 3 |
+| P8 | Sell value | Half price, rounded down to a multiple of 5 | 25–75% | Economy diagnostics | 3 |
+| P9 | Starting gold | 150 | 100–250 | Close and live (early share) | 1 |
+| P10 | Base income | 100 per round | 50–150 | Economy diagnostics | 1 |
+| P11 | Contract gold | 10 per trick in a made contract | 0–20 | Skill and bidding; Close and live | 1 |
+| P12 | Nil gold | 50 per made nil | 0–100 | Archetypes viable (Nil) | 3 |
+| P13 | Interest | 10 per 50 held, up to 50 | Cap of 0–100 | Economy diagnostics | 1 |
+| P14 | Rarity odds | 69 / 25 / 5 / 1% | Each tier halved or doubled | Commitment works; power ceiling | 3 |
+| P15 | Sigil prices | 50 / 75 / 100 / 150 | ±50% | Economy diagnostics; Archetypes viable | 3 |
+| P16 | Card prices | The [§6](#prices) table | Set from each card's simulated value | Value per gold roughly equal across cards | 1 |
+| P17 | Engraved share of card offers | 25% at shop 3, plus 10 points per shop | 0–100% | Commitment works | 4 |
+| P18 | Engraving premiums | 25, or 50 for Multiplier | 0–100 | Economy diagnostics | 4 |
+| P19 | Cards a synthetic copy can replace | Unowned twos through nines | Any rank | Input randomness; Archetypes viable | 4 |
+| P20 | Par growth over a run | ×10, from 60 to 600 | ×5–×20 | Close and live | 3–6 |
+| P21 | Pool sizes and category split | 60 / 60 / 20 / 5, split as in [§10](#10-sigil-pool-skeleton) | ±25% per rarity | Commitment works; Archetypes viable | 3–6 |
+| P22 | Nil base value | ±100 | 50–150 | Archetypes viable (Nil) | 0 |
+| P23 | Bid-scaled share of the pool | A third of contract-point sigils, a quarter of multipliers | None to half | Skill and bidding | 3–5 |
+| P24 | AI tier budgets | About 0.3 s, 3 s, and 20 s per run | Per tier | Agreement between tiers; run time | 0 |
+| P25 | Fun score weights | 30 / 20 / 20 / 15 / 15 | Any | Designer judgment, checked against playtests | 7 |
+| P26 | Gate thresholds and fun score bands | As in [§12](#12-metrics-what-fun-means) | Any | Calibrated once the harness runs, and again at stage 7 | 3, 7 |
+| P27 | Experiment size | 2,000 paired runs | 1,000–10,000 | Width of confidence intervals | 0 |
+
+## Appendix C: Unexamined assumptions
+
+These starting assumptions were made without a dedicated question. They are
+hypotheses like everything else, and each gets a decision record when an
+experiment first examines it.
 
 - A set team scores (−10 × B + nil score) × its multipliers and loses all
   contract points. Multipliers whose condition requires making the contract
@@ -1263,10 +1744,10 @@ These are vetoable defaults.
   shop closes when both partners press Done.
 - Conflicting rule benders resolve by a fixed priority defined in the kernel.
 
-## Appendix C: One-offs, not archetypes
+## Appendix D: One-offs, not archetypes
 
-These ideas aren't fun as archetypes, but they can appear as single sigils from
-the generic budget.
+The brief judged these ideas weak as archetypes, so they appear only as single
+sigils from the generic budget.
 
 | Idea | As a one-off |
 | --- | --- |
@@ -1280,7 +1761,7 @@ the generic budget.
 | Nil guard | Pre-bid passing serves it as a Nil enabler |
 | Gold miner | Economy utility only; no sigil scores from gold held |
 
-## Appendix D: Seeds from Rogue Spades 1.0
+## Appendix E: Seeds from Rogue Spades 1.0
 
 These 1.0 sigils fit 2.0's rules with light rewording, and they seed the
 hand-designed waves. Colors and resonances are dropped.
