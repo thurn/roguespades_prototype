@@ -39,8 +39,8 @@ calls made without a dedicated question. It builds on two predecessors:
 | Failure | A set team loses its contract points and scores (−10 × contract + nil score) × its multipliers |
 | Victory | Most points after round 8; equal totals draw |
 | Sigils | Up to 7 per team, shared by both partners; hidden from opponents until they first trigger |
-| Cards | Each card exists once; a bought card is dealt to its owner every round; at most 8 owned per player |
-| Engravings | Seven fixed types on card offers from shop 3; never bought alone |
+| Cards | A bought card is dealt to its owner every round; at most 8 owned per player; later offers include synthetic copies of any card |
+| Engravings | Four fixed types on card offers from shop 3, one of them Synthetic; never bought alone, and never change a card's suit or rank |
 | Shop | 3 sigil and 3 card offers per team; unlimited purchases; purely random offers within rarity |
 | Income | 100 base gold + 10 per trick in a made contract + interest |
 | Archetypes | Majors: Suits (♣ ♦ ♥), Spades, Ranks, Bid High, Nil. Minors: Low Cards, Rainbow, Streaks, Exact. Never named in the game |
@@ -118,24 +118,13 @@ calls made without a dedicated question. It builds on two predecessors:
   led suit wins.
 - Spades can't be led until a spade has been played on another suit, unless
   the leader holds only spades.
-- **Effective cards.** Engravings and rule benders can change a card's suit or
-  rank. A changed card counts at its new identity everywhere: following suit,
-  winning tricks, and sigil conditions. Ranks cap at ace.
-- **Ties.** Two cards can share an effective suit and rank. Between equal
-  cards, the first one played wins.
-
-### Wild cards
-
-The Wild engraving ([§7](#7-engravings)) makes a card count as every suit:
-
-- It is always a legal play, and it counts as the suit led.
-- When its holder leads it, they name its suit. They may name spades only if
-  spades are broken, or if they hold nothing but spades and wild cards.
-- It never forces its holder to follow suit. A player holding a wild may still
-  trump or discard.
-- It wins only as the led suit. It is never a trump unless spades were led.
-- For sigils, a trick won with a wild counts as won with every suit. Longest
-  suits and voids are judged on non-wild cards only.
+- **Effective cards.** Rule benders can change a card's rank or suit, as in
+  "After bidding, your nil bidders' aces become twos." A changed card counts at
+  its new identity everywhere: following suit, winning tricks, and sigil
+  conditions. Ranks cap at ace.
+- **Ties.** [Synthetic cards](#synthetic-cards) and rule benders can put two
+  cards of the same suit and rank in one trick. Between equal cards, the first
+  one played wins.
 
 ## 4. Scoring
 
@@ -364,7 +353,9 @@ window, and its conventions.
 
 ## 6. Cards
 
-- The deck is the standard 52 cards, and each card exists once.
+- The deck is the standard 52 cards. Each real card exists once;
+  [synthetic cards](#synthetic-cards) are extra copies that replace other
+  cards.
 - Buying a card means it is **dealt to its owner every round**.
 - Each player owns **at most 8 cards**, so every hand keeps at least 5 random
   cards. Selling a card makes room. The cap is a tuning lever.
@@ -373,8 +364,8 @@ window, and its conventions.
   - In single-player, your team's cards always go to you. Each AI team has one
     card-owning seat, chosen at random for the run.
   - On a team of two humans, each offer is tagged to one partner at random.
-- Card offers are drawn uniformly from cards nobody owns and nobody else is
-  being offered, so two teams never compete for the same offer.
+- Real card offers are drawn uniformly from cards nobody owns and nobody else
+  is being offered, so two teams never compete for the same offer.
 - Owned cards are known to the partner, since the team shops together. They're
   hidden from opponents until played.
 - A card sells for half its price, rounded down to a multiple of 5. It returns
@@ -394,8 +385,9 @@ An engraved card costs its price plus the engraving's premium.
 
 ### Dealing
 
-1. Each player receives all of their owned cards.
-2. All other cards are shuffled and dealt to fill every hand to 13.
+1. Each player receives all of their owned cards, synthetic ones included.
+2. Cards replaced by owned synthetic cards are set aside for the round.
+3. All other cards are shuffled and dealt to fill every hand to 13.
 
 ## 7. Engravings
 
@@ -403,31 +395,47 @@ An engraving is a fixed modifier printed on a card offer. Engravings can't be
 bought alone, take no sigil slot, and stay with the card while it's owned.
 
 - Card offers carry engravings from **shop 3** on: a quarter of card offers in
-  shop 3, rising by 10 points per shop to three quarters in shop 8.
+  shop 3, rising by 10 points per shop to three quarters in shop 8. Card
+  offers therefore grow more powerful as the run goes on.
 - Each card holds at most one engraving.
 - An engraving works for the card's holder, who is always its owner.
 - Engravings are hidden from opponents until the card is played.
 
-The catalog has seven types in two families:
+Engravings never change a card's suit or rank. When an offer should be a
+different card, the shop offers that card instead, as a synthetic copy. The
+catalog has four types in two families:
 
 | Engraving | Family | Rules text | Premium |
 | --- | --- | --- | --- |
 | Bonus | Scoring | When this card wins a trick, add +20 contract points. | 25 |
 | Herald | Scoring | When you lead with this card, add +20 contract points. | 25 |
 | Multiplier | Scoring | When this card wins a trick, add +1× contract multiplier. | 50 |
-| Wild | Identity | This card counts as every suit. | 50 |
-| Converted | Identity | This card becomes a heart. | 25 |
-| Crowned | Identity | This card counts as an ace for your sigils. | 25 |
-| Raised | Identity | This card gains 1 rank. | 25 |
+| Synthetic | Identity | While you own this copy, the four of clubs is removed from the deck. | 25 |
 
 - Multiplier is offered half as often as the other types.
-- Wild follows the [wild card rules](#wild-cards).
-- Converted has four versions, one per suit, that share one offer type.
-- Crowned still plays at its own rank, and Raised stops at ace.
+- The Synthetic text is shown for a copy that replaces the four of clubs.
 
-Identity engravings are an enabler channel, and they combine with payoffs in
-ways players discover. A Converted card lengthens a suit, a Crowned card adds
-an ace for Ranks, and a Wild card completes a Rainbow.
+### Synthetic cards
+
+A synthetic card is an extra copy of a real card, such as a second ace of
+hearts. It lets a build grow past what the 52-card deck allows, such as a
+fifth ace or a second ace of spades.
+
+- It counts as the card it copies everywhere. A synthetic ace of hearts is an
+  ace and a heart for following suit, winning tricks, and sigils.
+- Each synthetic offer names the real card it replaces, an unowned card from
+  two through nine chosen at random. While you own the copy, the replaced card
+  is removed from the deck, so every hand still gets 13 cards. Selling the copy
+  puts the replaced card back.
+- The copied card can be any card, even one somebody owns. Copies favor higher
+  ranks in later shops.
+- A synthetic card costs the copied card's price plus the premium, counts
+  toward the 8-card cap, and holds no other engraving.
+- A copy and its original can meet in one trick, and the first one played wins.
+
+Synthetic cards are the late-run enabler, and they combine with payoffs in ways
+players discover: a synthetic heart lengthens a hearts build, a synthetic ace
+feeds Ranks, and a synthetic spade adds a trump.
 
 ## 8. Shops and economy
 
@@ -524,8 +532,8 @@ make that thing happen more often. Enablers come from three places:
 
 - **Cards:** buying the suit, rank, or length a payoff counts. Card offers are
   dense, so this is the main enabler.
-- **Engravings:** Converted makes length, Crowned and Raised make aces, and
-  Wild makes rainbows.
+- **Synthetic cards:** late-run copies that grow a collection past the deck's
+  limits, such as a fifth ace or a second ace of spades.
 - **Enabler sigils:** shop steering ("One of your card offers in each shop is
   from the suit you own the most cards of."), discounts, and rule benders.
 
@@ -544,9 +552,9 @@ by rarity (C, U, R, L) and category.
 
 ### Suits
 
-**Plan.** Pick a side suit (♣, ♦, or ♥). Buy its honors or its length,
-Convert cards into it, and hold, lead, and win with it. Honors and length are
-two lines of one archetype that share its sigils:
+**Plan.** Pick a side suit (♣, ♦, or ♥). Buy its honors or its length, add
+synthetic copies late in the run, and hold, lead, and win with it. Honors and
+length are two lines of one archetype that share its sigils:
 
 - The **honors** line owns the A, K, and Q and cashes them early.
 - The **length** line owns many cards of the suit. Long side suits get trumped
@@ -587,7 +595,7 @@ your longest suit reliably.
 **Notes:**
 
 - **Buys:** the suit's honors, or its cheap low cards for length.
-- **Engraves:** Converted into the suit; Raised on its honors.
+- **Later:** synthetic copies of the suit's honors, or more of its length.
 - **Threat:** opponents void the suit and trump it.
 
 ### Spades
@@ -642,7 +650,7 @@ win in every side suit and cost the most. A few sigils pay for kings instead.
 
 **Notes:**
 
-- **Buys:** aces, kings to Raise, and Crowned cards.
+- **Buys:** aces, then synthetic aces in later shops.
 - **Threat:** aces cost the most, and they get trumped once a suit runs out.
 
 ### Bid High
@@ -720,11 +728,13 @@ cards win through length, by trumping, and after the honors are gone.
 
 ### Rainbow
 
-**Plan.** Win tricks with cards of all four suits. One Wild card can complete
-the set, which makes Wild the build's key engraving.
+**Plan.** Win tricks with cards of all four suits. That takes a winner in
+every suit, so Rainbow buys an ace or king of each and fills gaps with
+synthetic copies.
 
 - **Enablers:**
-  - [C] Your card offers carry Wild engravings twice as often.
+  - [C] One of your card offers in each shop is from the suit you own the
+    fewest cards of.
   - [U, rule] Tricks you win by trumping count as won with the suit led, for
     your sigils.
 - **Payoffs:**
@@ -1058,7 +1068,9 @@ AI seats see exactly what a human in their seat would see:
 - opposing sigils, but only once revealed.
 
 Searches sample hidden hands that are consistent with voids, bids, and known
-cards. No tier ever reads hidden cards.
+cards. No tier ever reads hidden cards. Opponents' synthetic cards, and the
+cards they replace, stay unknown until played, so searches treat the unseen
+deck as standard.
 
 ### Shop AI
 
@@ -1132,7 +1144,7 @@ measured.
 | 1. Cards | The card shop, the 8-card cap, income and interest, and rerolls, with no sigils; 1.0's UI ported onto the kernel | Card prices give roughly equal value per gold; no card dominates; hands keep their variety; the game is playable by hand |
 | 2. Commons, hand level | The grammar, text generation, and lint; about 270 enumerated common payoffs; hand-designed common enablers and utility | Gate 2 from hand-level trials; numbers swept to the common budget; at least 1.5 surviving candidates per common slot |
 | 3. Commons, run level | The rescoring shop AI and its policies | 60 commons pass gates 1–3; the fun score is recorded; density levers are decided here if Commitment works fails |
-| 4. Engravings | The seven-type catalog on card offers | The same gates, by engraving type |
+| 4. Engravings | The four-type catalog on card offers, including synthetic cards | The same gates, by engraving type |
 | 5. Uncommons | Hand-designed waves of about 1.5 candidates per slot, seeded from 1.0, including most enablers and rule benders | The same gates, plus enabler lift |
 | 6. Rares and legendaries | The last 25 sigils | The same gates, plus the power ceiling |
 | 7. Validation | The full pool at tier 2 | Thresholds recalibrated; tiers calibrated; the two-human configuration checked; human playtests |
@@ -1155,7 +1167,8 @@ measured.
 | Purely random offers leave committed builds thin | Run pools (K random archetypes per run, never named), affinity weighting, card lean, a fourth sigil offer, cheaper rerolls |
 | Late-run teams bid safe despite the bid-scaled pool | Share of bid-scaled sigils, Bid High budgets, and the set penalty |
 | Low-rarity ×multipliers overshoot the ×10 curve | ×Multiplier counts and sizes per rarity |
-| Long side suits get trumped, so the Suits length line fails | Hold and Lead payoffs, "can't be trumped" enablers, and Converted engravings |
+| Long side suits get trumped, so the Suits length line fails | Hold and Lead payoffs, "can't be trumped" enablers, and synthetic cards |
+| Synthetic duplicates confuse card counting | Copies are visibly synthetic when played; synthetic offer share |
 | Hidden sigils make AI opponents misread builds | A prior over unrevealed sigils, built from offer odds |
 | The 8-card cap is too loose or too tight for input randomness | The cap, between 6 and 10 |
 | Two-human teams (16 cards) outscore single-player par | A per-mode cap; otherwise accepted as a secondary configuration |
@@ -1191,6 +1204,7 @@ measured.
 | 20 | Staging | Kernel, cards, commons (hand level, then run level), engravings, uncommons, rares, validation; UI port at stage 1 |
 | 21 | Candidate generation | Enumerate commons from the grammar; hand-design higher rarities in waves seeded from 1.0 |
 | 22 | Rules text | Follows 1.0's rules-text templates, with "add" and a signed number for score increases and 2.0's terms; settled after the interview |
+| 23 | Identity engravings | Engravings never change a card's suit or rank: Converted, Raised, Crowned, and Wild give way to synthetic copies of any card, which replace another named card; settled after the interview |
 
 ## Appendix B: Calls made without a dedicated question
 
@@ -1225,8 +1239,13 @@ These are vetoable defaults.
 - A hidden sigil reveals itself the first time it changes a score, a legal
   play, or a trick's winner.
 - Engravings are hidden from opponents until their card is played, and are
-  destroyed when the card is sold. A gold engraving was left out to keep the
-  catalog to the agreed two families.
+  destroyed when the card is sold. A gold engraving was left out.
+- Wild left with the other suit- and rank-changing engravings, taking its
+  special rules with it. Rainbow now leans on synthetic cards and a card-offer
+  enabler.
+- A synthetic offer replaces a random unowned card from two through nine,
+  named on the offer. Copies favor higher ranks in later shops, and selling
+  one puts the replaced card back.
 - A run is one 8-round match. Equal totals draw, scores can go negative, and
   meta-progression is out of scope.
 - Each AI team's card-owning seat is chosen at random per run. On a team of
@@ -1234,7 +1253,7 @@ These are vetoable defaults.
 - Rarity odds are 69/25/5/1, with legendaries in normal offers; prices are
   50/75/100/150.
 - "Longest suit" is judged per player after bidding. Ties count every tied
-  suit, spades count, and wild cards don't.
+  suit, and spades count.
 - Hold sigils count both partners' hands after bidding.
 - Both teams may own the same sigil.
 - Income is 100 base gold, plus 10 per contract trick if made, plus 50 per
@@ -1293,8 +1312,6 @@ hand-designed waves. Colors and resonances are dropped.
 | Ticking Bomb (RE-R02) | Each round, once you've trumped three times, gain +1× contract multiplier. | Spades +mult |
 | Crown Jewel (RE-C07) | When this card wins a trick, gain +25 contract value. | Bonus engraving |
 | Opening Bell (OR-C02) | When you lead with this card, gain +20 contract value. | Herald engraving |
-| Faithful Dog (GR-C04) | This card counts as all suits. | Wild engraving |
-| Honed Edge (RE-C01) | This card gains 1 rank. | Raised engraving |
 | Loaded Dice (GY-C01) | Shop rerolls cost 20 gold less. | Economy common |
 | Collector's Album (GY-C05) | At least one of your shop offers is always uncommon or rare. | Economy common |
 | Grand Treasury (OR-U05) | You can earn up to 100 gold of interest each round instead of 50. | Economy uncommon |
