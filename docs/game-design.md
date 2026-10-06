@@ -335,9 +335,10 @@ Two families are excluded:
   tricks by trumping. Prefer a named suit to a computed suit and a team result
   to separate conditions for each partner.
 - Rules text is generated from the sigil's data
-  ([§13](#declarative-sigils)). The text lint checks these conventions;
-  simulation sweeps amounts and cuts candidates that cannot meet the gates
-  without extra bookkeeping. No sigil has an activated ability.
+  ([§13](#declarative-sigils)). The text lint checks these conventions, while
+  the [simplicity rubric](#simplicity-rubric) penalizes mechanical complexity
+  in the fun score. Simulation sweeps amounts and cuts candidates that cannot
+  meet the gates without extra bookkeeping. No sigil has an activated ability.
 
 ### Rules text
 
@@ -958,7 +959,7 @@ needs only these additions:
 
 > **Status:** provisional. The structure is [D14](#d14-metric-structure), and
 > every threshold, band, and weight is a placeholder until the harness runs:
-> [parameters](#appendix-b-parameter-register) P25–P27.
+> [parameters](#appendix-b-parameter-register) P25–P28.
 
 The metrics answer one question: what does it mean for Rogue Spades to be fun?
 They come in two layers:
@@ -984,22 +985,78 @@ and recalibrated at stage 7.
 
 | Family | Weight | Your goal | Sub-metrics and starting bands |
 | --- | --- | --- | --- |
-| 4. Close and live | 30 | Close and meaningful at every stage, with no runaway leader | Median final margin at most 20% of the winner's score; the team trailing after round 5 wins at least 25% of runs; rounds 1–4 hold at least 20% of all points |
-| 5. Commitment works | 20 | I can "do the thing" if I commit | Builds committed by shop 2 are online by round 4 in at least 60% of runs; committed teams win at least as often as flexible ones |
-| 6. Archetypes viable | 20 | Every archetype is viable, no build is forced, nothing railroads | Each archetype's committed win rate is 40–60% against a flexible field; no archetype appears in more than 25% of winning flexible builds; two-archetype builds win within 5 points of pure ones |
+| 4. Close and live | 25 | Close and meaningful at every stage, with no runaway leader | Median final margin at most 20% of the winner's score; the team trailing after round 5 wins at least 25% of runs; rounds 1–4 hold at least 20% of all points |
+| 5. Commitment works | 15 | I can "do the thing" if I commit | Builds committed by shop 2 are online by round 4 in at least 60% of runs; committed teams win at least as often as flexible ones |
+| 6. Archetypes viable | 15 | Every archetype is viable, no build is forced, nothing railroads | Each archetype's committed win rate is 40–60% against a flexible field; no archetype appears in more than 25% of winning flexible builds; two-archetype builds win within 5 points of pure ones |
 | 7. Synergy and combos | 15 | Pieces multiply each other, and broken combos are there to discover | Same-archetype pairs beat the sum of their parts by at least 25% on average; at least 15 strong pairs (50% over their parts), at least 5 of them crossing archetypes |
 | 8. Skill and bidding | 15 | Good play wins, and bidding stays tense | Tier 2 beats tier 0 in at least 65% of paired runs; late-run (rounds 6–8) overtricks average at most 1 per made contract; set rate 10–25% |
+| 9. Simplicity | 15 | Each piece is easy to understand and track; depth comes from combinations | Mean per-sigil simplicity score from the rubric below; fewer arithmetic riders, extra conditions, and tracked states score higher |
 
-- **Scoring the families.** Each sub-metric scores 1 inside its band and falls
-  linearly to 0 at a tolerance listed with it. A family scores the mean of its
-  sub-metrics. The fun score is the weighted sum, from 0 to 100.
+- **Scoring the families.** In families 4–8, each sub-metric scores 1 inside
+  its band and falls linearly to 0 at a tolerance listed with it. A family
+  scores the mean of its sub-metrics. Family 9 uses the rubric below. The fun
+  score is the weighted sum, from 0 to 100.
 - **Using it.** A change to the pool or a lever is kept when every gate still
-  passes and the fun score doesn't fall.
+  passes and the fun score does not fall. A more complex replacement must
+  demonstrate a net improvement after its simplicity penalty; if the paired
+  90% confidence interval for that improvement includes zero, prefer the
+  simpler candidate. Complexity never excuses a failed gate or a forbidden
+  design pattern in [§5](#simplicity-rules).
 - **Online** means holding two of the archetype's payoffs and one of its
   enablers. Three owned cards that its payoffs reward count as an enabler.
 - **Flexible and committed teams.** A flexible team buys by plain value. A
   committed team adds a bonus for its archetype's sigils and for the cards
   they reward ([shop AI](#shop-ai)).
+
+### Simplicity rubric
+
+Score the behavior in the sigil data, not the length of its generated text.
+Renaming "beyond five" or hiding it behind a keyword does not remove its cost.
+The baseline is one ordinary trigger (such as win, lead, bid, or hold), one
+named card filter, and one direct benefit. Ordinary scoring arithmetic and
+counting a whole quantity are free; restrictions on that baseline cost extra.
+
+Add the following **complexity costs** to get C:
+
+| Burden | Cost | Example |
+| --- | --- | --- |
+| Arithmetic rider on the quantity rewarded | +2 per operation | "For each ♠ beyond five" requires subtracting five and treating negative results as zero; count that combined rider once |
+| Numeric threshold or exact-count check | +1 per check | "Wins three tricks by trumping" or "makes its contract exactly" |
+| Additional independent condition or exception | +1 per clause beyond the first | Requiring both a particular suit and the last trick, or checking each partner's result separately |
+| Computed card selector | +1 per selector | "Longest suit" requires comparing suits instead of naming ♦ |
+| Extra tracked state | +1 per counter or remembered fact | A sigil-specific milestone count, a streak, a once-only flag, or a growth counter carried between rounds |
+
+A single burden is charged once: the implicit cutoff in "beyond five" is
+included in its +2 arithmetic cost, not charged again as a threshold. Distinct
+burdens add: a three-trump milestone costs +1 for the threshold and +1 for
+tracking trump wins. Reuse of an ordinary Spades fact, such as the contract,
+tricks won, or cards currently held, adds no state cost. Increasing rarity or
+showing a counter in the UI does not erase the underlying burden.
+
+The per-sigil simplicity score is **S = 1 / (1 + C)**. Family 9 is the mean S
+across all sigils in the candidate pool, counting each once, including utility
+and rule benders; an empty pool scores 1. Report each candidate's costs and compare
+replacements in the same pool slot so unrelated simple filler cannot mask a
+rider's cost. The existing one-effect rule remains mandatory at every rarity.
+
+| Candidate | C | S |
+| --- | --- | --- |
+| +5 contract points for each ♠ your team holds | 0 | 1 |
+| +5 contract points for each ♠ your team holds beyond five | 2 | 1/3 |
+| +1 contract multiplier when your team wins three tricks by trumping | 2 | 1/3 |
+
+Thus "beyond five" strictly lowers the score with everything else held equal,
+even if both versions pass the balance gates. For a useful balance comparison,
+sweep each version's payout against the same gates and par targets on paired
+seeds; compare their best passing versions, not just identical amounts with
+very different power. The old rider may be an experiment control, but remains
+excluded from the shipped pool by §5.
+
+These costs and the 15-point family weight are provisional designer choices,
+not simulated evidence about human comprehension. Simulations measure whether
+complexity buys better play; playtests calibrate the rubric using time to
+explain a sigil and errors predicting when it pays. Record both in the decision
+report before changing the rubric ([P28](#appendix-b-parameter-register)).
 
 ### Diagnostics
 
@@ -1009,7 +1066,8 @@ These are tracked but not weighted:
   or more. There's no randomness after the deal, by rule.
 - **Economy:** gold unspent at the end of a run; purchases and rerolls per
   shop.
-- **Simplicity:** the text lint ([§5](#simplicity-rules)).
+- **Text quality:** the wording lint ([§5](#simplicity-rules)); mechanical
+  simplicity is scored in family 9, not left as an unweighted diagnostic.
 - **AI play quality:** 1.0's bench checks, such as wasted overtakes, missed
   nil covers, and nil suicides.
 
@@ -1214,16 +1272,16 @@ measured.
 
 - **Choosing the pool.** Simulation decides pass or fail and the numbers.
   Designers choose among passing candidates for variety, clarity, and
-  archetype coverage. For example, the 42 common payoffs are picked from the
-  enumerated survivors.
+  archetype coverage, using the simplicity rubric and its comparison rule.
+  For example, the 42 common payoffs are picked from the enumerated survivors.
 - **Records at every exit.** A stage isn't done until the decision, parameter,
   and sigil records its experiments touched are written
   ([§16](#16-evidence-and-design-records)), so the documentation grows with
   the pool.
 - **Hand play from stage 1.** The ported UI lets the designer play each
-  stage's pool by hand. Hand play checks the goals simulation can't measure,
-  such as simplicity and the feel of railroading, and catches AI blind spots
-  early.
+  stage's pool by hand. Hand play measures comprehension to calibrate the
+  structural simplicity score, checks the feel of railroading, and catches
+  AI blind spots early.
 - **Mining 1.0.** Higher-rarity waves start from the 1.0 sigils that fit
   2.0's rules ([Appendix D](#appendix-e-seeds-from-rogue-spades-10)).
 
@@ -1298,6 +1356,7 @@ data file and into a generated catalog, so nobody edits evidence by hand.
 | Gates | Base and committed trigger rates, win-rate lift over its control, decisive share, enabler lift, and the counter scan where it applies, each with a confidence interval and run count |
 | Sweep | Every amount tried, with its lift and points per round, and the amount chosen |
 | Synergy | Its strongest pairs, and how far they beat the sum of their parts |
+| Simplicity | Itemized complexity costs, C and S, the rubric version, and comparison with a simpler alternative after payout tuning |
 | Alternatives | Other amounts, triggers, or wordings tried for the same slot, and why they lost |
 | Reports | Links to the experiment reports behind every number |
 
@@ -1311,11 +1370,12 @@ Every experiment writes a report listing:
 - its question and the record it updates;
 - its arms, configuration, AI tier, seeds, and run count;
 - the code and pool versions it ran against;
-- its results, with confidence intervals;
+- its results, with confidence intervals, the simplicity cost breakdown, and
+  the net fun-score change after the complexity penalty;
 - the command that reproduces it.
 
-Records cite reports, so every number in the design documentation traces back
-to runs anyone can repeat.
+Records cite reports, so empirical claims trace back to runs anyone can
+repeat; designer-set rubric costs and weights remain labeled as such.
 
 ### Keeping evidence current
 
@@ -1330,7 +1390,7 @@ Every record follows the format in [§16](#decision-records). No experiment has
 run yet, so balance records remain hypotheses with pending evidence;
 wording conventions can be chosen by designer direction.
 
-- **Design decisions** (D1–D13 and D23) are judged by the gates and the fun
+- **Design decisions** (D1–D13 and D23–D24) are judged by the gates and the fun
   score.
 - **Method decisions** (D14–D21) are judged by harness measurements or designer
   judgment.
@@ -1530,14 +1590,18 @@ wording conventions can be chosen by designer direction.
 
 ### D14. Metric structure
 
-- **Starting choice:** per-sigil gates plus a weighted fun score: Close and live
-  30, Commitment works 20, Archetypes viable 20, Synergy 15, and Skill and
-  bidding 15.
+- **Starting choice:** per-sigil gates plus a weighted fun score: Close and
+  live 25, Commitment works 15, Archetypes viable 15, Synergy 15, Skill and
+  bidding 15, and Simplicity 15. Mechanical complexity is scored from sigil
+  data; more complex replacements need a demonstrated net improvement.
 - **Alternatives:**
   - one weighted score with no gates;
-  - the same gates, with weights that favor synergy.
-- **Decided by:** designer judgment. The weights are revisited at stage 7 if
-  the fun score disagrees with playtests.
+  - the same gates, with weights that favor synergy;
+  - the previous five-family score with simplicity only as a diagnostic.
+- **Decided by:** designer judgment for the starting rubric and weights,
+  calibrated against comprehension playtests and simulation comparisons of
+  simpler and more complex candidates; revisit at stage 7 if the score
+  disagrees with playtests.
 - **Evidence:** pending. **Status:** hypothesis.
 
 ### D15. Sigil representation
@@ -1648,9 +1712,11 @@ wording conventions can be chosen by designer direction.
 - **Alternatives:** the previous restricted candidates as experiment controls;
   smaller payouts or fewer candidates if the simple versions dominate.
 - **Decided by:** all sigil gates and the weighted fun score, especially the
-  power ceiling, Skill and bidding, and Commitment works.
+  power ceiling, Skill and bidding, Commitment works, and the explicit
+  Simplicity cost in family 9.
 - **Test:** paired-seed comparisons in stages 2–6, sweeping payout, price, and
-  rarity. In particular, compare the former +15 per ♠ beyond five with whole
+  rarity, recording both mechanical complexity and the net fun-score change.
+  In particular, compare the former +15 per ♠ beyond five with whole
   holdings payouts starting at +5 per ♠; also remeasure the revised Spades,
   Bid High, Rainbow, Streaks, and Exact candidates. Cut failures instead of
   restoring fiddly clauses.
@@ -1689,9 +1755,10 @@ the sweep that chose its value ([§16](#parameter-records)).
 | P22 | Nil base value | ±100 | 50–150 | Archetypes viable (Nil) | 0 |
 | P23 | Bid-scaled share of the pool | A third of contract-point sigils, a quarter of multipliers | None to half | Skill and bidding | 3–5 |
 | P24 | AI tier budgets | About 0.3 s, 3 s, and 20 s per run | Per tier | Agreement between tiers; run time | 0 |
-| P25 | Fun score weights | 30 / 20 / 20 / 15 / 15 | Any | Designer judgment, checked against playtests | 7 |
+| P25 | Fun score weights | 25 / 15 / 15 / 15 / 15 / 15 (families 4–9) | Any | Designer judgment, checked against playtests | 7 |
 | P26 | Gate thresholds and fun score bands | As in [§12](#12-metrics-what-fun-means) | Any | Calibrated once the harness runs, and again at stage 7 | 3, 7 |
 | P27 | Experiment size | 2,000 paired runs | 1,000–10,000 | Width of confidence intervals | 0 |
+| P28 | Simplicity rubric | Arithmetic rider 2; threshold, extra clause, computed selector, or tracked state 1 each; S = 1 / (1 + C) | Positive costs; compare 1–3 per burden | Designer judgment, calibrated by comprehension playtests and paired simulation tradeoffs | 2–7 |
 
 ## Appendix C: Unexamined assumptions
 
