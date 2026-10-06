@@ -119,13 +119,15 @@ Every row is a starting hypothesis.
    shop opens before round 1, with starting gold.
 2. **Deal.** Each player receives their owned cards. The rest are shuffled and
    dealt to fill every hand to 13 ([§6](#6-cards)).
-3. **Before bidding.** Pre-bid card movement sigils resolve, such as passing a
-   card to your partner.
+3. **Before bidding.** Pre-bid hand changes resolve, including swaps and
+   chosen changes to ranks or suits.
 4. **Bid.** Starting left of the dealer, each player bids nil or 1–13.
-5. **Play.** The player left of the dealer leads, and 13 tricks follow.
-6. **Score.** Each team scores ([§4](#4-scoring)).
-7. **Income.** Each team gains interest, then base and contract gold.
-8. **Next round.** The deal passes clockwise. After round 8 the run ends
+5. **After bidding.** Post-bid hand changes resolve, then Hold payoffs count
+   the resulting hands once.
+6. **Play.** The player left of the dealer leads, and 13 tricks follow.
+7. **Score.** Each team scores ([§4](#4-scoring)).
+8. **Income.** Each team gains interest, then base and contract gold.
+9. **Next round.** The deal passes clockwise. After round 8 the run ends
    without a shop.
 
 ## 3. Spades rules
@@ -142,8 +144,7 @@ Every row is a starting hypothesis.
 - **Nil** promises to win no tricks. Tricks won by a nil bidder never count
   toward the partner's contract. If both partners bid nil, the team has no
   contract.
-- **Blind nil** is not part of the base rules. A one-off sigil can grant it
-  ([Appendix C](#appendix-d-one-offs-not-archetypes)).
+- **Blind nil** is not part of the rules or the current sigil pool.
 
 ### Play
 
@@ -153,8 +154,8 @@ Every row is a starting hypothesis.
 - Spades can't be led until a spade has been played on another suit, unless
   the leader holds only spades.
 - **Effective cards.** Rule benders can change a card's rank or suit, as in
-  "Your team's nil bidders' Aces become twos after bidding". A changed card counts at
-  its new identity everywhere: following suit, winning tricks, and sigil
+  "Upgrade four cards your team holds to Kings after bidding". A changed card
+  counts at its new identity everywhere: following suit, winning tricks, and sigil
   conditions. Ranks cap at ace.
 - **Ties.** [Synthetic cards](#synthetic-cards) and rule benders can put two
   cards of the same suit and rank in one trick. Between equal cards, the first
@@ -202,8 +203,7 @@ conditions ([D25](#d25-multiplier-scale)).
   matters. They can appear at any rarity, as in Balatro, and the
   [skeleton](#10-sigil-pool-skeleton) sets how many sit at each one.
 - **Contract points accumulate during the round.** They come per event
-  ("when your team wins a trick with an Ace") or once ("when your team bids a
-  high contract").
+  ("when your team wins a trick with an Ace") or once ("when your team bids 8 or more").
 - **Nil points go to made nils instead.** "+50 nil points" adds 50 to
   each nil your team makes, so it counts even when the contract is set.
 
@@ -245,8 +245,7 @@ this:
 
 - At least a third of contract-point sigils and a quarter of multipliers scale
   with or require the contract size: "+5 contract points for each trick in
-  your team's contract" and "+15 contract multiplier when your team bids a
-  high contract".
+  your team's contract" and "+15 contract multiplier when your team bids 8 or more".
 - Bid High is a major archetype ([§9](#bid-high)).
 - The Skill and bidding family of the fun score watches late-run overtricks and
   set rates ([§12](#fun-score)).
@@ -272,21 +271,22 @@ and sets. It grows about ×1.39 per round, ×10 over the run:
 ## 5. Sigils
 
 > **Status:** provisional. Visibility is [D10](#d10-sigil-visibility), the
-> effect families [D13](#d13-effect-families), and rules text
+> effect families [D13](#d13-effect-families), the enabler redesign
+> [D26](#d26-enablers-worth-taking-before-payoffs), and rules text
 > [D22](#d22-rules-text). Slots, rarity odds, and prices are
 > [parameters](#appendix-b-parameter-register) P3, P14, and P15.
 
 ### Slots and ownership
 
 - Sigils belong to the team, **up to 7 per team**. Buying one needs a free
-  slot, so a full team sells first. Utility sigils can add slots.
+  slot, so a full team sells first.
 - Sigil text explicitly says "your team". A trick either partner wins counts
   as a team win, except tricks won by a nil bidder.
 - A team is never offered a sigil it already owns. Both teams may own the same
   sigil.
 - A sigil sells for half its price, rounded down to a multiple of 5.
 - Sigils never have activated abilities. A sigil may offer a choice at a fixed
-  moment, such as "Pass a card to your partner before bidding".
+  moment, such as "Swap three cards with your partner before bidding".
 
 ### Terms
 
@@ -299,10 +299,7 @@ These terms extend the standard Spades vocabulary, following the terms table of
 | **contract points** | Points added to your team's contract, paid only if the contract is made |
 | **contract multiplier** | Written `+15` when it adds up with others, or `×1.5` when it compounds. It multiplies your team's round score, made or set |
 | **nil points** | Points added to each nil your team makes. A failed nil still costs 100 before multipliers |
-| **your team holds** | Both partners' hands after bidding |
-| **high contract** | A team contract of 8 or more |
-| **low card** | A two through a ten |
-| **streak** | Tricks your team wins in a row |
+| **your team holds** | Cards currently in either partner's hand; Hold payoffs take their snapshot after post-bid changes resolve |
 
 ### Visibility
 
@@ -316,24 +313,27 @@ These terms extend the standard Spades vocabulary, following the terms table of
 
 ### Categories and families
 
-The three point categories are **payoffs**. Utility comes in three families:
+The three scoring categories are **payoffs**. The other sigils are **enablers**:
+substantial changes to the hand or to how tricks can be played. They must be
+worth taking before the player owns any matching payoff. Supporting several
+payoffs is a consequence of a useful effect, not its only purpose.
 
-- **Economy and shop:** gold, interest, cheaper or free rerolls, extra offers,
-  and better rarity odds.
-- **Enablers:** effects aimed at one archetype that make its payoffs trigger
-  more often ([§9](#payoffs-and-enablers)).
-- **Rule benders and deal control:**
-  - Rule benders change how cards play, one rule each, at uncommon and above:
-    "Your team's Aces can't be trumped" or "Your team can lead ♠ at any time".
-  - Deal control is pre-bid card movement between partners.
+The shared catalog in [§9](#shared-enabler-candidates) covers hand reshaping,
+control of the lead, and freedom to play cards. Simple hand changes can be
+common; rarity follows power and complexity, not an automatic rule-bender tax.
 
-Two families are excluded:
+The current pool excludes:
 
-- **Information** effects, such as revealing an opponent's cards. Their
-  contribution is hard to prove, and they weaken the AI's deal sampling.
-- **Randomness after the deal**, such as random ranks during play. That is
-  output randomness. Random effects at the deal are input randomness and are
-  allowed.
+- Shop and economy modifiers: discounts, offer steering, extra offers,
+  reroll or interest bonuses, and sell-value growth. The base shop still sells
+  cards, but sigils do not make its small adjustments their whole benefit.
+- Effects that only rename cards for payoff checks, and exceptions that alter
+  the number of tricks needed to make a bid. Enablers change actual play.
+- Information effects such as revealing an opponent's cards.
+- Randomness after the deal. Hand changes use deliberate choices or
+  deterministic rules, never random post-deal upgrades.
+- Activated abilities. Choices happen only at a specified resolution window
+  or during the ordinary choice of a legal card.
 
 ### Simplicity rules
 
@@ -346,6 +346,9 @@ Two families are excluded:
 - Use a threshold only when reaching it is the idea, such as winning three
   tricks by trumping. Prefer a named suit to a computed suit and a team result
   to separate conditions for each partner.
+- Use familiar Spades language. Say "bids 8 or more", not "bids a high
+  contract", and "wins four tricks in a row", not a named counter. New
+  vocabulary incurs a complexity cost, doubled at common.
 - Rules text is generated from the sigil's data
   ([§13](#declarative-sigils)). The text lint checks these conventions, while
   the [simplicity rubric](#simplicity-rubric) penalizes mechanical complexity
@@ -366,9 +369,9 @@ These templates replace 1.0's timing-first rules-text guide for 2.0.
 | Milestone | +15 contract multiplier when your team wins three tricks by trumping |
 | Holdings | +20 contract points for each Ace your team holds |
 | Bid | +15 contract multiplier when your team bids nil |
-| Growth | This sigil gains ×5 contract multiplier every time your team makes a high contract (currently ×0) |
-| Card movement | Swap a card with your partner before bidding |
-| Shop | Sigils cost you 10 gold less |
+| Growth | This sigil gains ×5 contract multiplier every time your team makes a contract of 8 or more (currently ×0) |
+| Card movement | Swap three cards with your partner before bidding |
+| Hand improvement | Upgrade four cards your team holds to Kings after bidding |
 | Engraving | +5 contract multiplier when this card wins a trick |
 | Synthetic | Replaces 4♣ |
 
@@ -377,8 +380,7 @@ These templates replace 1.0's timing-first rules-text guide for 2.0.
   "add" or "gain". Additive multipliers use `+15`, never `+15×`.
 - **Always name "your team"** for bids, holdings, leads, wins, and results;
   never use "you" as shorthand for the team. Possessives use "your team's".
-  Direct choices may say "your partner", engravings say "this card", and
-  discounts may say "cost you".
+  Direct choices may say "your partner", and engravings say "this card".
 - **Omit obvious scope and timing.** No "each round", "in a round", "after
   bidding" on holdings, "in your shop", or redundant "once". Keep timing
   that changes a choice or a rule, such as "before bidding" on a swap or
@@ -391,8 +393,8 @@ These templates replace 1.0's timing-first rules-text guide for 2.0.
   every matching trick. A milestone pays when its count is first reached;
   three trump wins do not pay again at six. Numeric thresholds mean at least
   that many unless the text says "exactly". Holdings are counted once after
-  bidding, and result conditions once at scoring. A nil-bid trigger fires
-  for each partner who bids nil. These defaults live in the rules, not on
+  post-bid hand changes, and result conditions once at scoring. A nil-bid
+  trigger fires for each partner who bids nil. These defaults live in the rules, not on
   every sigil.
 - **Round effects reset; growth persists.** Ordinary points, multipliers,
   and event counters reset between rounds. Growth says "This sigil gains …
@@ -408,14 +410,15 @@ These templates replace 1.0's timing-first rules-text guide for 2.0.
 
 | Rarity | Offer odds | Price | Pool size |
 | --- | --- | --- | --- |
-| Common | 69% | 50 | 60 |
-| Uncommon | 25% | 75 | 60 |
-| Rare | 5% | 100 | 20 |
-| Legendary | 1% | 150 | 5 |
+| Common | 69% | 50 | 44 |
+| Uncommon | 25% | 75 | 33 |
+| Rare | 5% | 100 | 17 |
+| Legendary | 1% | 150 | 3 |
 
 ### Timing
 
-- Gold effects resolve when they trigger.
+- Before-bid changes resolve before the first bid; after-bid changes resolve
+  after the last bid and before Hold payoffs.
 - Contract points and multipliers accumulate as events happen and apply at
   scoring. Sums and products make sigil order irrelevant.
 - Conflicting rule benders resolve by a fixed priority, defined once in the
@@ -477,7 +480,8 @@ bought alone, take no sigil slot, and stay with the card while it's owned.
   shop 3, rising by 10 points per shop to three quarters in shop 8. Card
   offers therefore grow more powerful as the run goes on.
 - Each card holds at most one engraving.
-- An engraving works for the card's holder, who is always its owner.
+- An engraving works for the card's current holder, including after a partner
+  swap; ownership and the next round's guaranteed deal do not change.
 - Engravings are hidden from opponents until the card is played.
 
 Engravings never change a card's suit or rank. When an offer should be a
@@ -561,9 +565,9 @@ random offers:
 
 | Target | Sigils in pool | Relevant offers per run |
 | --- | --- | --- |
-| A major archetype | about 13 payoffs and enablers | about 4 |
-| A minor archetype | about 7 | about 2 |
-| One side suit: named-suit payoffs and enablers | Depends on the tested suit allocation | Remeasure after the pool revision |
+| A major archetype | Its payoffs plus whichever shared enablers help in trials | Remeasure with the smaller pool |
+| A minor archetype | About 5 payoffs plus shared support | Remeasure with the smaller pool |
+| One side suit | Named-suit payoffs plus hand reshaping and lead control | Depends on the tested suit allocation |
 | One specific card | — | seen in about two runs out of three |
 
 - **Cards are the dense enabler.** A team sees most cards at some point,
@@ -587,14 +591,15 @@ steers offers by them.
 | Suits ♣ ♦ ♥ | Major family | Own one side suit, its honors or its length; hold, lead, and win with it | Ranks, Low Cards, Streaks |
 | Spades | Major | Own long or high spades; win and trump with them | Bid High, Streaks |
 | Ranks | Major | Collect one rank, mostly aces; hold, lead, and win with it | Suits, Bid High, Rainbow |
-| Bid High | Major | Bid high contracts (8 or more) and make them | Spades, Ranks, Streaks |
+| Bid High | Major | Bid 8 or more and make the contract | Spades, Ranks, Streaks |
 | Nil | Major | Bid nil and make it | Low Cards, Exact |
 | Low Cards | Minor | Win with 2s through 10s | Suits, Spades, Nil |
 | Rainbow | Minor | Win tricks with all four suits | Ranks, Suits |
 | Streaks | Minor | Win tricks in a row | Bid High, Spades |
 | Exact | Minor | Make exactly your contract | Nil, Low Cards |
 
-- **Majors** have sigils at every rarity and can carry a run.
+- **Majors** are intended to carry a run; simulation decides how much support
+  they need, without a dedicated-enabler quota.
 - **Minors** have about five point sigils, and usually join a major.
 - **Generic** point sigils support every build. Ideas too narrow for an
   archetype become one-offs
@@ -607,36 +612,69 @@ instead of competing.
 
 | Trigger | What it checks | Example |
 | --- | --- | --- |
-| Hold | Both partners' hands after bidding | +20 contract points for each Ace your team holds |
+| Hold | Both partners' hands after post-bid changes | +20 contract points for each Ace your team holds |
 | Lead | Cards your team leads | +15 contract points when your team leads an Ace |
 | Win | The card that wins a trick for your team | +20 contract points when your team wins a trick with an Ace |
 | Trump | Winning a trick by trumping | +20 contract points when your team wins a trick by trumping |
-| Bid | The contract's size, or a nil bid | +15 contract multiplier when your team bids a high contract |
+| Bid | The contract's size, or a nil bid | +15 contract multiplier when your team bids 8 or more |
 | Make | The round's result | +15 contract multiplier if your team makes its contract exactly |
 
 ### Payoffs and enablers
 
-Point sigils are **payoffs**: they score when something happens. **Enablers**
-make that thing happen more often. Enablers come from three places:
+**Payoffs** reward a result. **Enablers** make the underlying Spades hand better
+or give the team meaningful control, even with no payoff sigils. A useful
+question is: "Would I buy this before knowing what my scoring build will be?"
+An answer that only names a future combo is insufficient.
 
-- **Cards:** buying the suit, rank, or length a payoff counts. Card offers are
-  dense, so this is the main enabler.
-- **Synthetic cards:** late-run copies that grow a collection past the deck's
-  limits, such as a fifth ace or a second ace of spades.
-- **Enabler sigils:** shop steering ("One card offer is ♦"), discounts, and rule benders.
+Owned cards and same-suit synthetic upgrades remain sources of reliable
+strength. Enabler sigils provide larger interventions in play, shared across
+archetypes. No archetype is entitled to bespoke enablers, and the pool is not
+padded with discounts or tiny offer adjustments to fill slots.
 
-Rules for the pool:
+An enabler must pass the [standalone-value gate](#standalone-enabler-value),
+then show additional support for at least two payoff families. It need not be
+good in every hand: making a nil practical, for example, is already useful in
+ordinary Spades. Every payoff must still work without an enabler.
 
-- Every archetype has at least one common and one uncommon enabler sigil, and
-  each major has at least three.
-- Rule-bending enablers are uncommon or above.
-- An enabler must read clearly on its own: a player who buys it should see what
-  it makes happen.
-- Every payoff fires at a real base rate before its enablers arrive. Gate 2
-  measures this ([§12](#gates)).
+### Shared enabler candidates
 
-Each archetype below lists its enablers before its payoffs. Examples are tagged
-by rarity (C, U, R, L) and category.
+These seven candidates replace the previous enabler and utility lists. Values
+and rarities are hypotheses, not simulated balance results. The benefit must
+be visible in actual cards, legal plays, or who leads; none modifies the shop
+or only changes how a payoff labels a card.
+
+| Rarity | Rules text | Why take it before payoffs? | Further uses |
+| --- | --- | --- | --- |
+| C | Swap three cards with your partner before bidding | Move winners to one hand, offload dangerous cards, or create a void | Nil, suits, trumping, bidding 8 or more |
+| C | Turn four cards your team holds into twos before bidding | Convert a dangerous hand into a possible nil or remove unwanted winners | Nil, exact bids, 2–10 payoffs |
+| U | Upgrade four cards your team holds to Kings after bidding | Turn four weak cards into potential winners to help make the bid | Larger bids, rank payoffs, winning in several suits |
+| U | Change the suits of four cards your team holds before bidding | Create trumps, remove a suit from a hand, or put winners into missing suits | Suits, trumping, Rainbow, Nil |
+| U | Choose which partner leads after your team wins a trick | Reach the partner's winners and choose which hand controls the next lead | Consecutive wins, protecting nils, suit play |
+| R | Raise every card your team holds by two ranks after bidding | Improve the whole team's hand, including its trumps | Larger bids, ranks, consecutive wins |
+| R | Your team can play any suit on the last three tricks | Cash trumps or shed dangerous cards even when the led suit remains in hand | Nil, exact bids, last-trick payoffs |
+
+**Resolution defaults:**
+
+- Selection is optional and up to the stated count. Team-wide counts are
+  shared between the two hands; each holder chooses their own affected cards
+  using only the information available to that seat. Effects reveal no extra
+  cards from a partner's hand. These are fixed-window choices, not abilities
+  that can be activated later.
+- A swap exchanges equal numbers simultaneously and keeps both hands at 13.
+  Cards and their engravings move together; ownership does not transfer.
+- Rank and suit changes last for the round and change the card's real
+  effective identity for following suit, winning, and scoring. A rank upgrade
+  only raises ranks, capped at Ace; the Kings effect selects cards below King.
+  Suit changes preserve rank and let the holder choose each new suit.
+- The lead-choice effect moves the next lead between partners; the actual
+  trick winner and trick count do not change. Playing any suit on the last
+  three tricks overrides following suit, not the rule about leading unbroken
+  spades. Ordinary trump priority and tie-breaking still apply.
+- Effects resolve in the kernel's fixed priority. Hold payoffs count after
+  all post-bid changes; temporary changes expire before the next deal.
+
+The archetypes below retain their payoffs. Names such as Bid High, Low Cards,
+and Streaks are internal labels, never keywords printed on a sigil.
 
 ### Suits
 
@@ -646,8 +684,8 @@ length are two lines of one archetype that share its sigils:
 
 - The **honors** line owns the A, K, and Q and cashes them early.
 - The **length** line owns many cards of the suit. Long side suits get trumped
-  once opponents run out, so this line leans on Hold and Lead payoffs and on
-  "can't be trumped" enablers.
+  once opponents run out, so this line leans on Hold and Lead payoffs, suit
+  changes, and control of which partner leads.
 
 **Named suits.** Start with ♦ examples rather than an adaptive suit package.
 Use ♣, ♥, or ♠ versions only where simulation shows they earn their pool
@@ -665,12 +703,6 @@ three side suits makes each build too thin ([D12](#d12-suit-structure)).
 | Make | U, ×mult | ×1.5 contract multiplier if your team wins five tricks with ♦ |
 | Win | R, +mult | +2 contract multiplier when your team wins a trick with ♦ |
 
-**Enablers:**
-
-- [C] One card offer is ♦
-- [U] ♦ cost you 10 gold less
-- [R, rule] Your team's ♦ can't be trumped
-
 **Notes:**
 
 - **Buys:** the named suit's honors, or its cheap low cards for length.
@@ -681,12 +713,6 @@ three side suits makes each build too thin ([D12](#d12-suit-structure)).
 
 **Plan.** Own long or high spades. Spades win in every hand: high spades cash,
 and low spades trump. Named-♠ versions of suit payoffs can score here too.
-
-**Enablers:**
-
-- [C] ♠ cost you 15 gold less
-- [U, rule] Your team can lead ♠ at any time
-- [R, rule] Your team wins the first trick it trumps
 
 **Payoffs:**
 
@@ -709,12 +735,6 @@ and low spades trump. Named-♠ versions of suit payoffs can score here too.
 **Plan.** Collect one rank, usually aces, and hold, lead, and win with it. Aces
 win in every side suit and cost the most. A few sigils pay for kings instead.
 
-**Enablers:**
-
-- [C] Aces cost you 25 gold less
-- [U, rule] Your team's Kings count as Aces for sigils
-- [R, rule] Your team's Aces can't be trumped
-
 **Payoffs:**
 
 | Trigger | Example |
@@ -734,27 +754,21 @@ win in every side suit and cost the most. A few sigils pay for kings instead.
 
 ### Bid High
 
-**Plan.** Bid high contracts, 8 or more, and make them. Bid High pays for
+**Plan.** Bid 8 or more and make the contract. Bid High pays for
 bidding high, so its risk lives in the bidding, and a set multiplies against
 you.
-
-**Enablers:**
-
-- [C] Tens, face cards, and Aces cost you 10 gold less
-- [U, rule] Your team needs one trick fewer to make a high contract.
-- [R, rule] Tricks your team wins with an Ace count as two toward your team's contract
 
 **Payoffs:**
 
 | Trigger | Example |
 | --- | --- |
 | Bid | [C, points] +5 contract points for each trick in your team's contract |
-| Bid | [C, points] +60 contract points when your team bids a high contract |
-| Bid | [C, +mult] +15 contract multiplier when your team bids a high contract |
+| Bid | [C, points] +60 contract points when your team bids 8 or more |
+| Bid | [C, +mult] +15 contract multiplier when your team bids 8 or more |
 | Bid | [U, +mult] +20 contract multiplier if your team's contract is 10 or more tricks |
 | Bid | [U, points] +10 contract points for each trick in your team's contract |
-| Make | [R, +mult] This sigil gains ×5 contract multiplier every time your team makes a high contract (currently ×0) |
-| Make | [R, ×mult] ×2 contract multiplier if your team makes a high contract |
+| Make | [R, +mult] This sigil gains ×5 contract multiplier every time your team makes a contract of 8 or more (currently ×0) |
+| Make | [R, ×mult] ×2 contract multiplier if your team makes a contract of 8 or more |
 
 **Notes:**
 
@@ -767,12 +781,6 @@ you.
 **Plan.** Bid nil and make it. The nil score joins the base, so every
 multiplier also grows your nils, and a failed nil costs more as the build
 grows.
-
-**Enablers:**
-
-- [C] Twos through sixes cost you 5 gold less
-- [U, movement] Swap a card with your partner before bidding
-- [U, rule] Your team's nil bidders' Aces become twos after bidding
 
 **Payoffs:**
 
@@ -793,13 +801,10 @@ grows.
 **Plan.** Win tricks with 2s through 10s, the cheapest cards in the shop. Low
 cards win through length, by trumping, and after the honors are gone.
 
-- **Enablers:**
-  - [C] Low cards cost you 5 gold less
-  - [U, rule] Your team's Jacks count as low cards for sigils
 - **Payoffs:**
-  - [C, points] +15 contract points when your team wins a trick with a low card
-  - [C, points] +10 contract points when your team leads a low card
-  - [U, +mult] +15 contract multiplier when your team wins four tricks with low cards
+  - [C, points] +15 contract points when your team wins a trick with a 2 through 10
+  - [C, points] +10 contract points when your team leads a 2 through 10
+  - [U, +mult] +15 contract multiplier when your team wins four tricks with 2s through 10s
   - [R, points] +150 contract points when your team wins a trick with a two
 
 ### Rainbow
@@ -808,9 +813,6 @@ cards win through length, by trumping, and after the honors are gone.
 every suit, so Rainbow buys an ace or king of each and fills gaps with
 synthetic copies.
 
-- **Enablers:**
-  - [C] One card offer is from the suit your team owns the fewest cards of
-  - [U, rule] Tricks your team wins by trumping count as won with the suit led for sigils
 - **Payoffs:**
   - [C, points] +25 contract points when your team wins its first trick with each suit
   - [C, +mult] +15 contract multiplier if your team wins tricks with all four suits
@@ -822,9 +824,6 @@ synthetic copies.
 **Plan.** Win tricks in a row. Each hand becomes a sequencing puzzle: give up
 your losers at the right moment, then keep the lead.
 
-- **Enablers:**
-  - [C] Your team's streak survives its first lost trick
-  - [U, rule] Choose which partner on your team leads the first trick after bidding
 - **Payoffs:**
   - [C, points] +10 contract points when your team wins consecutive tricks
   - [C, +mult] +15 contract multiplier when your team wins the last trick of a round
@@ -836,9 +835,6 @@ your losers at the right moment, then keep the lead.
 **Plan.** Make exactly your team's contract. Overtricks already score
 nothing, and Exact pays for avoiding them. Exact pairs naturally with Nil and Low Cards.
 
-- **Enablers:**
-  - [C] One card offer is a two through five
-  - [U, rule] Your team's Aces and Kings become twos when your team makes its contract
 - **Payoffs:**
   - [C, points] +50 contract points if your team makes its contract exactly
   - [C, +mult] +15 contract multiplier if your team makes its contract exactly
@@ -855,19 +851,9 @@ Generic point sigils fit any build and carry runs while a plan comes together:
 - [R, ×mult] ×1.5 contract multiplier
 - [L, ×mult] ×2 contract multiplier
 
-Generic enablers steer offers toward whatever you're already building. They
-are also the [card-lean lever](#15-risks-and-tuning-levers), offered as
-sigils:
-
-- [U] Card offers favor cards your team's sigils mention
-- [U] +1 sigil offer
-
-Utility examples:
-
-- **Economy and shop:** "The first reroll is free", "+50 maximum interest",
-  "Sigils cost you 10 gold less", and "This sigil gains 15 gold in sell value
-  after scoring".
-- **Legendary utility:** "+1 sigil slot".
+Generic builds use the shared enablers above. There is no separate economy or
+shop-modifier sigil pool: a sigil slot should buy a substantial scoring effect
+or a new way to play the hand.
 
 ## 10. Sigil pool skeleton
 
@@ -875,18 +861,20 @@ Utility examples:
 > [D3](#d3-scoring-categories), pool sizes are [parameters](#appendix-b-parameter-register) P21, and every
 > budget is a starting size for number sweeps.
 
-The pool has 145 sigils. Following Bridge of Rogues, about 70% of commons, 50%
-of uncommons, 75% of rares, and 60% of legendaries score points.
+The working pool has **97 candidates: 90 payoffs and 7 shared enablers**.
+The payoff allocation is retained; the former 55 utility slots are retired.
+There is no target utility percentage and no requirement to refill those
+slots. Cut candidates that fail the gates, even if the final pool is smaller.
 
 ### By rarity and category
 
 | Rarity | +Points | +Mult | ×Mult | Utility | Total |
 | --- | --- | --- | --- | --- | --- |
-| Common | 30 | 9 | 3 | 18 | 60 |
-| Uncommon | 10 | 14 | 6 | 30 | 60 |
-| Rare | 4 | 5 | 6 | 5 | 20 |
-| Legendary | — | — | 3 | 2 | 5 |
-| **Total** | **44** | **28** | **18** | **55** | **145** |
+| Common | 30 | 9 | 3 | 2 | 44 |
+| Uncommon | 10 | 14 | 6 | 3 | 33 |
+| Rare | 4 | 5 | 6 | 2 | 17 |
+| Legendary | — | — | 3 | — | 3 |
+| **Total** | **44** | **28** | **18** | **7** | **97** |
 
 At least 15 of the 44 contract-point sigils, and at least 12 of the 46
 multipliers, scale with or require the contract size
@@ -915,15 +903,13 @@ and the split between side suits are measured in stage 3, not assumed.
 
 | Family | Common | Uncommon | Rare | Legendary | Total |
 | --- | --- | --- | --- | --- | --- |
-| Economy and shop | 6 | 9 | 1 | — | 16 |
-| Enablers | 9 | 12 | 3 | 1 | 25 |
-| Rule benders and deal control | 3 | 9 | 1 | 1 | 14 |
-| **Total** | **18** | **30** | **5** | **2** | **55** |
+| Hand reshaping | 2 | 2 | 1 | — | 5 |
+| Lead control | — | 1 | — | — | 1 |
+| Freedom to play cards | — | — | 1 | — | 1 |
+| **Total** | **2** | **3** | **2** | **—** | **7** |
 
-- The 25 enablers are three for each major, two for each minor, and two
-  generic offer steerers.
-- The three common rule-bender and deal-control slots are pre-bid card
-  movement, since rule benders themselves start at uncommon.
+These are the shared candidates in §9, not separate enablers for each
+archetype. Shop and economy sigils receive no allocation.
 
 ### Budgets
 
@@ -983,7 +969,7 @@ needs only these additions:
 
 > **Status:** provisional. The structure is [D14](#d14-metric-structure), and
 > every threshold, band, and weight is a placeholder until the harness runs:
-> [parameters](#appendix-b-parameter-register) P25–P28.
+> [parameters](#appendix-b-parameter-register) P25–P28 and P30.
 
 The metrics answer one question: what does it mean for Rogue Spades to be fun?
 They come in two layers:
@@ -1001,9 +987,46 @@ and recalibrated at stage 7.
 | Gate | Your goal | Measured as | Starting bar |
 | --- | --- | --- | --- |
 | 1. Choices matter | Every sigil contributes measurably to victory | Forced-pick win-rate lift over a same-rarity control. For point sigils, the decisive share: the holder's wins that become losses or draws when rescored without the sigil | Lift above 0; decisive in at least 5% of wins |
-| 2. Payoffs are doable | If a sigil needs X, X is consistently possible; if a sigil enables X, X matters | A payoff's trigger rate per round in random hands (base) and with typical support (committed). An enabler's lift on its payoffs' trigger rates | Base at least 10% of rounds; committed at least 60%; enabler lift at least 15 points, plus a win-rate lift above 0 |
+| 2. Payoffs are doable | Payoffs work naturally; enablers are worth buying before payoffs | Base and committed payoff trigger rates; standalone enabler value under the trials below; additional trigger lift for at least two payoff families | Payoff base at least 10% of rounds and committed at least 60%; enablers pass the standalone gate and add at least 15 percentage points to trigger rates in each of two families |
 | 3. No invalidation | Opponents can't turn a strategy into a non-game | For each archetype and each sigil that touches opponents, the drop in the archetype's win rate when the opponents hold it | At most 15 points |
 | Power ceiling | No dominant best build | Forced-pick lift; win rate of the strongest pairs | Lift at most 12 points; no pair above a 65% win rate |
+
+### Standalone enabler value
+
+Gate 1's "lift above zero" is insufficient for enablers: a tiny shop
+improvement might technically help or become useful only beside a narrow
+payoff. Every enabler must also pass these tests before combo trials:
+
+- **Material benefit without payoffs.** On paired seeds, give the team the
+  candidate while both teams otherwise play without sigils; prohibit further
+  sigil purchases in both arms, but retain ordinary card purchases and the
+  base economy.
+  Compare against the same run with the candidate disabled, charging the
+  same gold and reserving the same slot in both arms. The lower bound of the
+  90% confidence interval for win-rate lift must be at least **3 percentage
+  points**. Test buys at shops 1, 3, and 5 separately; each must pass.
+- **Worth its slot and price.** In that same no-other-sigils setting, compare
+  buying it with buying the same-rarity flat-points control at the same price.
+  The lower bound of the paired 90% interval must be no worse than **−2
+  percentage points** at each purchase stage. Winning over a blank alone is
+  insufficient if an ordinary payoff makes it a poor purchase.
+- **Breadth after the standalone pass.** Run support trials for at least two
+  different payoff families, using the measured trigger-lift bar in gate 2.
+  A sigil cannot pass by having a spectacular combo in only one build.
+- **A reason to want it.** In playtests, offer the candidate beside that
+  same-price generic payoff before any other sigils are owned. As a starting
+  bar, at least **40%** of choices should favor the enabler, with players able
+  to explain a useful change to their hand or play without invoking a future
+  payoff. Report sample size and reasons; simulation lift alone does not prove
+  an effect is interesting.
+
+These are provisional acceptance bars, not evidence that the seven candidates
+pass. Report results by purchase stage and compare a range of ordinary hands,
+not a hand chosen to flatter the effect. If the confidence intervals remain
+inconclusive, gather more runs or leave the candidate unapproved. Tune the
+amount or cut it; do not rescue a weak enabler with shop steering, payoff-only
+identity changes, or extra restrictions. The power ceiling and opponent
+counter scans still apply, especially to freedom from following suit.
 
 ### Fun score
 
@@ -1047,13 +1070,15 @@ Add the following **complexity costs** to get C:
 | Boolean condition | +1 per atomic check | Whether your team wins, holds a card, makes its contract exactly, or whether a card is ♠; count every check in an AND, OR, or exception, not just the whole clause |
 | Arithmetic rider on the quantity rewarded | +2 per operation | Subtracting five and flooring at zero in "beyond five" is one combined arithmetic rider, in addition to its number and cutoff condition |
 | Computed card selector | +1 per selector | "Longest suit" requires comparing suits instead of naming ♦ |
-| Extra tracked state | +1 per counter or remembered fact | A sigil-specific milestone count, a streak, a once-only flag, or a growth counter carried between rounds |
+| Extra tracked state | +1 per counter or remembered fact | A sigil-specific milestone count, consecutive-win count, a once-only flag, or a growth counter carried between rounds |
+| New player-facing term | +2 per term; +4 at common | A special keyword such as "high contract" or "streak" that requires learning a definition beyond normal Spades |
 
 Count rule-level checks, including triggers and filters, regardless of whether
 the text says "when", "if", or "for each". A numeric threshold charges both
-for its number and for its comparison. "High contract" still charges for the
-hidden 8 and the check against it. Repeating the same numeral in different
-roles charges each occurrence; a rule field and the text generated from that
+for its number and for its comparison. The removed "high contract" shorthand
+would still charge for its hidden 8 and comparison, plus the new-term penalty.
+Write "bids 8 or more" instead. Repeating the same numeral in different roles
+charges each occurrence; a rule field and the text generated from that
 field are one occurrence, not two. A changing "currently ×0" display charges
 one numeric value plus the cost of remembering that state.
 
@@ -1064,6 +1089,16 @@ evaluations of the same check; charge the distinct checks the player must
 understand. Reusing an ordinary Spades fact adds no state cost, but a condition
 on that fact still costs. Increasing rarity or adding a UI counter waives none
 of these costs.
+
+The vocabulary penalty is additional to the mechanics it names. Putting a
+term in a glossary or reusing it across the pool does not waive the per-sigil
+cost. Familiar card and Spades language (face cards, suits, trump, nil, bid,
+contract) and the three core scoring labels are the baseline vocabulary;
+new shorthand is not. "High contract" adds 4 complexity at common compared
+with spelling out "8 or more"; "streak" likewise adds 4 on top of tracking
+consecutive wins. Internal archetype labels carry no cost because players
+never see them. The removed lost-trick exception does not return under a new
+name.
 
 The per-sigil simplicity score is **S = 1 / (1 + C)**. Family 9 is the mean S
 across all sigils in the candidate pool, counting each once, including utility
@@ -1127,8 +1162,8 @@ sigil-specific knowledge**:
 - Play and bidding search the real rules and scoring through the rules kernel,
   so a new sigil changes their choices the moment it exists.
 - The shop values an offer by playing sampled hands with and without it.
-- Only rule benders and economy sigils, which sampled hands value poorly, use
-  values fitted from earlier batches.
+- Hand changes and play-rule enablers need new rollouts with their choices
+  enabled; any fitted estimates come from those measured outcomes.
 
 Fidelity therefore grows by stage, through search budgets and fitted values,
 and never through per-sigil AI code ([§14](#14-staging)).
@@ -1141,7 +1176,7 @@ One kernel runs the game, the UI, and every AI search:
   game. 1.0's engine runs `structuredClone` on the whole state for every
   action.
 - **Hook tables.** Sigil data compiles into tables for legal plays, each card's
-  effective suit and rank, the trick winner, scoring events, and shop rules.
+  effective suit and rank, legal plays, the next leader, and scoring events.
 - **A ledger** records every contract point and multiplier each sigil
   contributes, so any score can be recomputed without any set of sigils.
 - **Plain TypeScript with no globals.** Randomness comes from explicit seeded
@@ -1169,24 +1204,24 @@ A rule bender names one of a small set of rule hooks written in code:
 
 ```json
 {
-  "id": "aces-untrumpable",
-  "rarity": "Rare",
-  "archetypes": ["Ranks"],
+  "id": "four-kings",
+  "rarity": "Uncommon",
+  "archetypes": ["Bid High", "Ranks", "Rainbow"],
   "role": "enabler",
-  "effect": { "type": "rule", "rule": "cantBeTrumped", "card": { "rank": "A" } }
+  "effect": { "type": "upgradeRank", "rank": "K", "count": 4, "on": "afterBidding", "selection": "holderChoice" }
 }
 ```
 
 The grammar covers:
 
 - **Events:** hold, lead, play, win, trump, bid, make, exact, nil made, first
-  and last trick, and streaks.
+  and last trick, and consecutive wins.
 - **Card filters:** rank, rank range, and named suit (including ♠).
 - **Scaling:** per card held, per trick in the contract, and per run-long
   counter.
 - **Thresholds:** simple milestones; no subtraction from a held-card count.
-- **Effects:** contract points, +multiplier, ×multiplier, gold, a rule hook, a
-  shop rule, and pre-bid card movement.
+- **Effects:** contract points, +multiplier, ×multiplier, fixed-window hand
+  changes, and play-rule hooks. No shop-modifier hooks are needed.
 
 Keeping sigils as data makes three things possible:
 
@@ -1231,9 +1266,11 @@ deck as standard.
   without the offer. That gives the change in points per round. A fitted curve
   from score margin by round to win rate turns this into win probability over
   the remaining rounds, which is then divided by price.
-- **Fitted values** cover rule benders and economy sigils, which rescoring
-  values poorly. They come from regressing outcomes on holdings in earlier
-  batches.
+- **Enabler values** come from replaying hands through the changed rules,
+  including swap, rank, suit, and lead choices with each seat's actual
+  information. Rescoring an unchanged sequence of plays cannot value them.
+  Fitted estimates may approximate those rollout results, then get checked
+  against the standalone trials.
 - **Buying.**
   - Buy the best value per gold while it clears a bar that accounts for
     interest.
@@ -1263,6 +1300,9 @@ deck as standard.
   - The control arm forces a same-rarity plain sigil instead: "+N contract
     points", with N at its rarity's flat budget.
   - The opponents are a flexible field.
+- **Standalone enabler trials.** Run the no-payoff comparisons in
+  [§12](#standalone-enabler-value) before granting any synergy credit; retain
+  stage-specific results and a comparison to a same-price generic payoff.
 - **Commitment trials.** One team commits to an archetype at shop 1. The trial
   measures online rates and win rates against a flexible field.
 - **Counter scans.** A committed archetype plays against opponents forced to
@@ -1298,10 +1338,10 @@ measured.
 | 0. Kernel | The rules kernel, AI tiers 0–2, seeded streams, and the parallel experiment runner | Plain 8-round Spades: the AI meets 1.0's play targets (set rate, nil success, bid error); a 2,000-run experiment takes about 10 minutes |
 | 1. Cards | The card shop, the 8-card cap, income and interest, and rerolls, with no sigils; 1.0's UI ported onto the kernel | Card prices give roughly equal value per gold; no card dominates; hands keep their variety; the game is playable by hand |
 | 2. Commons, hand level | The grammar, text generation, and lint; about 270 enumerated common payoffs; hand-designed common enablers and utility | Gate 2 from hand-level trials; numbers swept to the common budget; at least 1.5 surviving candidates per common slot |
-| 3. Commons, run level | The rescoring shop AI and its policies | 60 commons pass gates 1–3; the fun score is recorded; density levers are decided here if Commitment works fails |
+| 3. Commons, run level | The rescoring shop AI and its policies | Up to 44 commons pass gates 1–3 and the standalone enabler gate; the fun score is recorded; density levers are decided here if Commitment works fails |
 | 4. Engravings | The four-type catalog on card offers, including synthetic cards | The same gates, by engraving type |
-| 5. Uncommons | Hand-designed waves of about 1.5 candidates per slot, seeded from 1.0, including most enablers and rule benders | The same gates, plus enabler lift |
-| 6. Rares and legendaries | The last 25 sigils | The same gates, plus the power ceiling |
+| 5. Uncommons | Hand-designed waves of about 1.5 candidates per slot, seeded from 1.0, including shared enablers | The same gates, including standalone value and support for two payoff families |
+| 6. Rares and legendaries | Up to 20 candidates | The same gates, plus the power ceiling |
 | 7. Validation | The full pool at tier 2 | Thresholds recalibrated; tiers calibrated; the two-human configuration checked; human playtests |
 
 - **Choosing the pool.** Simulation decides pass or fail and the numbers.
@@ -1326,12 +1366,12 @@ measured.
 | Purely random offers leave committed builds thin | Run pools (K random archetypes per run, never named), affinity weighting, card lean, a fourth sigil offer, cheaper rerolls |
 | Late-run teams bid safe despite the bid-scaled pool | Share of bid-scaled sigils, Bid High budgets, and the set penalty |
 | Low-rarity ×multipliers overshoot the ×10 curve | ×Multiplier counts and sizes per rarity |
-| Long side suits get trumped, so the Suits length line fails | Hold and Lead payoffs, "can't be trumped" enablers, and synthetic cards |
+| Long side suits get trumped, so the Suits length line fails | Hold and Lead payoffs, suit changes, partner lead selection, and synthetic cards |
 | Synthetic duplicates confuse card counting | Copies are visibly synthetic when played; synthetic offer share |
 | Hidden sigils make AI opponents misread builds | A prior over unrevealed sigils, built from offer odds |
 | The 8-card cap is too loose or too tight for input randomness | The cap, between 6 and 10 |
 | Two-human teams (16 cards) outscore single-player par | A per-mode cap; otherwise accepted as a secondary configuration |
-| Rescoring undervalues enablers and rule benders | Fitted values and committed-policy bonuses |
+| Rescoring undervalues enablers | Fresh rollouts through changed rules and choices; standalone trials before synergy credit |
 | Tiers 0 and 1 rank sigils differently from tier 2 | Calibration at each stage; borderline sigils promoted to tier 2 trials |
 | Partners knowing each other's owned cards distorts Spades play | Accepted; the AI uses the same information |
 | Nil is weak in single-player, where the AI partner decides its own nils | The partner bids nil by expected score, including team sigils |
@@ -1387,7 +1427,8 @@ data file and into a generated catalog, so nobody edits evidence by hand.
 | --- | --- |
 | Identity | Rules text, rarity, archetypes, and role |
 | Status | Candidate, included, revised, or cut, and the stage that decided it |
-| Gates | Base and committed trigger rates, win-rate lift over its control, decisive share, enabler lift, and the counter scan where it applies, each with a confidence interval and run count |
+| Gates | Base and committed trigger rates, win-rate lift over its control, decisive share, standalone enabler lifts against disabled and flat-points controls by purchase stage, support lift in two payoff families, and counter scans, each with confidence intervals and run counts |
+| Standalone appeal | No-payoff playtest choice rate, sample size, and the concrete reasons players give for taking or rejecting an enabler |
 | Sweep | Every amount tried, with its lift and points per round, and the amount chosen |
 | Synergy | Its strongest pairs, and how far they beat the sum of their parts |
 | Simplicity | Itemized complexity costs, C and S, the rubric version, and comparison with a simpler alternative after payout tuning |
@@ -1424,7 +1465,7 @@ Every record follows the format in [§16](#decision-records). No experiment has
 run yet, so balance records remain hypotheses with pending evidence;
 wording conventions can be chosen by designer direction.
 
-- **Design decisions** (D1–D13 and D23–D25) are judged by the gates and the fun
+- **Design decisions** (D1–D13 and D23–D26) are judged by the gates and the fun
   score.
 - **Method decisions** (D14–D21) are judged by harness measurements or designer
   judgment.
@@ -1595,7 +1636,8 @@ wording conventions can be chosen by designer direction.
 
 ### D12. Suit structure
 
-- **Starting choice:** named-suit payoffs and enablers, using ♦ as the example;
+- **Starting choice:** named-suit payoffs, using ♦ as the example, with shared
+  hand changes and lead control as enablers;
   18 payoff slots formerly divided between cycles and adaptive suits now
   serve named suits. No required cycles and no adaptive family.
 - **Alternatives:** spread the named-suit slots across ♣, ♦, and ♥, with ♠
@@ -1612,15 +1654,17 @@ wording conventions can be chosen by designer direction.
 
 ### D13. Effect families
 
-- **Starting choice:** rule benders and pre-bid card movement are allowed;
-  information effects and randomness after the deal are excluded.
-- **Alternatives:**
-  - allow information effects;
-  - allow randomness after the deal.
-- **Decided by:** gates 1 and 3 for rule benders. The exclusions rest on
-  designer judgment, from the brief's preference for input randomness over
-  output randomness.
-- **Test:** rule benders go through the normal gates at stages 5 and 6.
+- **Starting choice:** payoffs plus shared hand reshaping, lead control, and
+  freedom to play cards. Every enabler must stand alone before payoffs.
+- **Excluded:** shop/economy modifiers, payoff-only identity aliases,
+  contract-count exceptions, information effects, post-deal randomness, and
+  activated abilities.
+- **Alternatives:** the previous archetype-specific utility catalog, retained
+  only as a historical experiment control; payoff-only pools.
+- **Decided by:** the standalone gate, all existing gates, Simplicity, and
+  player judgments of whether the effect is worth taking before a combo.
+- **Test:** stages 2–6 compare each new candidate alone, beside a generic
+  payoff, and as support for two payoff families; no family gets a quota.
 - **Evidence:** pending. **Status:** hypothesis.
 
 ### D14. Metric structure
@@ -1663,7 +1707,7 @@ wording conventions can be chosen by designer direction.
 ### D17. Shop AI
 
 - **Starting choice:** value offers by playing sampled hands with and without
-  them, with fitted values for rule benders and economy sigils.
+  them, with fresh rule-aware rollouts for hand changes and play-rule enablers.
 - **Alternatives:**
   - fitted values only;
   - hand-written heuristics.
@@ -1781,6 +1825,27 @@ wording conventions can be chosen by designer direction.
 - **Evidence:** pending; no simulator exists yet. The arithmetic examples are
   checks of the formula, not empirical balance results. **Status:** hypothesis.
 
+### D26. Enablers worth taking before payoffs
+
+- **Starting choice:** retire the old enabler and utility catalog and its
+  55-slot quota. Start with seven shared candidates that change actual hands,
+  lead control, or legal plays, leaving the 90-payoff allocation intact.
+- **Alternatives:** the old per-archetype utility quota as a control;
+  payoffs plus owned cards with no enabler sigils.
+- **Prior reasoning:** tiny discounts and offer adjustments may give a positive
+  win-rate lift without being appealing purchases. Payoff-only card aliases
+  have no value before the matching payoff. Mandatory archetype slots reward
+  filler, while strong shared effects can support several builds naturally.
+- **Decided by:** standalone win-rate lift, competitiveness with a generic
+  payoff, support for two payoff families, the power ceiling, the fun score,
+  and no-payoff playtest choices. Invented terms pay an additional complexity
+  cost, especially at common.
+- **Test:** the staged comparisons in [§12](#standalone-enabler-value), followed
+  by full-pool trials against the payoff-only arm. Remeasure offer coverage
+  and synergy targets with the smaller pool; do not count a rewritten rule
+  as empirically validated until those trials run.
+- **Evidence:** pending; no simulator exists yet. **Status:** hypothesis.
+
 ## Appendix B: Parameter register
 
 Every number below is a starting value. Each row lists the range to test, the
@@ -1809,15 +1874,16 @@ the sweep that chose its value ([§16](#parameter-records)).
 | P18 | Engraving premiums | 25, or 50 for Multiplier | 0–100 | Economy diagnostics | 4 |
 | P19 | Synthetic replacement range and copied ranks | Unowned 2–9 of the same suit; copies J/Q/K/A | Replacement ranks below J; weights across J/Q/K/A | Input randomness; Commitment works; Archetypes viable; power ceiling | 4 |
 | P20 | Par growth over a run | ×10, from 600 to 6,000 | ×5–×20 | Close and live | 3–6 |
-| P21 | Pool sizes and category split | 60 / 60 / 20 / 5, split as in [§10](#10-sigil-pool-skeleton) | ±25% per rarity | Commitment works; Archetypes viable | 3–6 |
+| P21 | Pool sizes and category split | 44 / 33 / 17 / 3: 90 payoffs and 7 shared enablers | Cut failed candidates; expand only with demonstrated standalone value | Commitment works; Archetypes viable | 3–6 |
 | P22 | Nil base value before multipliers | ±100 | 50–150 | Archetypes viable (Nil) | 0 |
 | P23 | Bid-scaled share of the pool | A third of contract-point sigils, a quarter of multipliers | None to half | Skill and bidding | 3–5 |
 | P24 | AI tier budgets | About 0.3 s, 3 s, and 20 s per run | Per tier | Agreement between tiers; run time | 0 |
 | P25 | Fun score weights | 25 / 15 / 15 / 15 / 15 / 15 (families 4–9) | Any | Designer judgment, checked against playtests | 7 |
 | P26 | Gate thresholds and fun score bands | As in [§12](#12-metrics-what-fun-means) | Any | Calibrated once the harness runs, and again at stage 7 | 3, 7 |
 | P27 | Experiment size | 2,000 paired runs | 1,000–10,000 | Width of confidence intervals | 0 |
-| P28 | Simplicity rubric | Each numeric value and boolean check 1; arithmetic rider 2; computed selector or tracked state 1; S = 1 / (1 + C) | Positive costs; compare 1–3 per burden; no free numbers or conditions | Designer judgment, calibrated by comprehension playtests and paired simulation tradeoffs | 2–7 |
+| P28 | Simplicity rubric | Number/check 1; arithmetic rider 2; selector/state 1; new term 2, or 4 at common; S = 1 / (1 + C) | Positive costs; compare 1–3 per burden and twice the term cost at common; no free numbers, conditions, or new terms | Designer judgment, calibrated by comprehension playtests and paired simulation tradeoffs | 2–7 |
 | P29 | Starting contract multiplier and +mult scale | Start at 10; +2–5 repeated rewards, +10–20 one-time rewards | Starting values 1, 5, 10, 15; sweep rewards jointly | Power ceiling; Close and live; Skill and bidding; Simplicity | 3–6 |
+| P30 | Standalone enabler acceptance | 90% lower bounds: ≥3 percentage-point lift over disabled effect; ≥−2 versus same-price flat payoff; ≥40% no-payoff playtest preference; support two families | Lift 1–5 points; comparison tolerance 0–3 points; preference 30–60% | Material benefit; standalone appeal; breadth; power ceiling | 2–7 |
 
 ## Appendix C: Unexamined assumptions
 
@@ -1828,7 +1894,7 @@ experiment first examines it.
 - A set team scores (−10 × B + nil score) × its multipliers and loses all
   contract points. Multipliers whose condition requires making the contract
   don't count.
-- Blind nil leaves the base rules and exists only as a one-off sigil.
+- Blind nil is excluded from the rules and current sigil pool.
 - 1.0's other base rules stay: individual bids add up to the team contract,
   nil, spades must be broken, the first lead comes from the dealer's left, and
   the deal rotates.
@@ -1846,8 +1912,9 @@ experiment first examines it.
   nil bidder wins don't. A double-nil team's contract points are lost.
 - Nil points go to made nils rather than to the contract, so they survive a
   set.
-- "High contract" (8 or more), "low card" (two through ten), and "streak" are
-  terms, so commons can name them as one noun.
+- Sigil text spells out bids of 8 or more, ranks 2–10, and consecutive wins;
+  invented shorthand carries an additional complexity penalty, doubled at
+  common. Internal archetype names are not player-facing terms.
 - A multiplier from a repeated trigger stacks each time it triggers, unlike
   1.0's once-per-round cap.
 - Ties go to the first card played.
@@ -1856,8 +1923,8 @@ experiment first examines it.
 - Engravings are hidden from opponents until their card is played, and are
   destroyed when the card is sold. A gold engraving was left out.
 - Wild left with the other suit- and rank-changing engravings, taking its
-  special rules with it. Rainbow now leans on synthetic cards and a card-offer
-  enabler.
+  special rules with it. Rainbow now leans on synthetic cards, deliberate
+  suit changes, and rank upgrades that also help ordinary Spades hands.
 - A synthetic offer is J, Q, K, or A and replaces a random unowned 2–9 of the
   same suit, named on the offer. Selling it puts the replaced card back.
 - A run is one 8-round match. Equal totals draw, scores can go negative, and
@@ -1868,7 +1935,7 @@ experiment first examines it.
   50/75/100/150.
 - Named suits replace the adaptive suit family; any adaptive one-off needs
   its own explicit definition and evidence.
-- Hold sigils count both partners' hands after bidding.
+- Hold sigils count both partners' hands after post-bid hand changes.
 - Both teams may own the same sigil.
 - Income is 100 base gold, plus 10 per contract trick if made, plus 50 per
   made nil, with interest of 10 per 50 held up to 50.
@@ -1884,29 +1951,21 @@ sigils from the generic budget.
 
 | Idea | As a one-off |
 | --- | --- |
-| Bidding blind | A sigil that grants blind nil, worth ±200 |
 | Throwing off cards | A generic discard payoff or two |
 | While held | At most one or two sigils; no engraving uses it |
-| Swap meet | Pre-bid card movement sigils, mostly serving as Nil enablers |
 | Your partner winning tricks | Mostly moot, since team-scoped sigils treat both partners' tricks alike |
 | Bonus chaser | Generic contract-point sigils |
 | Contract attacker | A few payoffs ending "if the opponents miss their contract"; gate 3 applies |
-| Nil guard | Pre-bid passing serves it as a Nil enabler |
-| Gold miner | Economy utility only; no sigil scores from gold held |
 
 ## Appendix E: Seeds from Rogue Spades 1.0
 
-These 1.0 sigils seed the hand-designed waves. The historical 1.0 text below
-is quoted unchanged; every 2.0 candidate must use [§5](#rules-text), simplify
-its conditions under D24, and pass simulation. Colors and resonances are dropped.
+These 1.0 payoffs seed the hand-designed waves; the previous enabler and
+shop-utility seeds are removed. The historical 1.0 text below is quoted
+unchanged; every 2.0 candidate must use [§5](#rules-text), simplify
+its conditions under D24, and pass simulation; enablers follow D26. Colors and resonances are dropped.
 
 | 1.0 sigil | 1.0 text | 2.0 seed |
 | --- | --- | --- |
-| Unclouded Sun (DU-S01) | Your aces can't be trumped. | Ranks rule-bender enabler |
-| Regal Summit (RE-C02) | Your kings become aces. | Ranks: "Your team's Kings count as Aces for sigils" |
-| Rosy Spectacles (BL-U11) | Your team's hearts can't be trumped. | Suits rule bender, with ♣ ♦ ♥ versions as an option |
-| Arena's Law (RE-U01) | You can lead spades at any time. | Spades rule-bender enabler |
-| Mauling Bear (GR-U03) | The first time each round you trump, you win that trick. | Spades: "Your team wins the first trick it trumps" |
 | Headsman's Axe (RE-C08) | Whenever you win a trick with a spade, gain +10 contract value. | Named-♠ Win payoff |
 | Schooling Fish (GR-C13) | If you win three or more tricks with diamonds in a round, gain +40 contract value. | Named-♦ milestone payoff |
 | Evening Melody (GR-R03) | If you win three or more tricks with hearts in a round, gain +1× contract multiplier. | Named-♥ multiplier candidate |
@@ -1916,17 +1975,13 @@ its conditions under D24, and pass simulation. Colors and resonances are dropped
 | Honest Ruler (BL-C10) | If your team makes its contract exactly, gain +30 contract value. | Exact common |
 | True Aim (BL-R04) | If your team makes its contract exactly, gain +1× contract multiplier. | Exact +mult |
 | Balanced Yin-Yang (DU-S13) | If you take exactly your own bid, gain +1× contract multiplier. | Exact: "×1.5 contract multiplier if your team makes its contract exactly" |
-| Square Meal (GY-R04) | After bidding, if your team's contract is 9 or more tricks, gain +1× contract multiplier. | Bid High: "+15 contract multiplier when your team bids a high contract" |
+| Square Meal (GY-R04) | After bidding, if your team's contract is 9 or more tricks, gain +1× contract multiplier. | Bid High: "+15 contract multiplier when your team bids 8 or more" |
 | Gambler's Wheel (OR-R01) | If your team's contract is 10 or more tricks, gain +2× contract multiplier. | Bid High uncommon +mult |
 | Planner's Whiteboard (GY-C18) | Gain +5 contract value for each trick your partner bids. | Bid High: "+5 contract points for each trick in your team's contract" |
 | Vigil Candle (PU-C10) | Gain +30 nil value. | Nil: "+50 nil points" |
 | Widening Circle (PU-R04) | Your nil value is doubled. | Nil ×mult |
-| Sealed Letter (TE-C02) | Before bidding, pass a card to your partner. | Nil enabler (pre-bid movement) |
 | Tricolor Triangle (RE-U07) | If you lead three different suits in a round, gain +50 contract value. | Rainbow lead payoff |
 | Clean Bullseye (BL-U03) | If you win four or more tricks with cards that aren't spades in a round, gain +1× contract multiplier. | Suits or Rainbow +mult |
 | Ticking Bomb (RE-R02) | Each round, once you've trumped three times, gain +1× contract multiplier. | Spades +mult |
 | Crown Jewel (RE-C07) | When this card wins a trick, gain +25 contract value. | Bonus engraving |
 | Opening Bell (OR-C02) | When you lead with this card, gain +20 contract value. | Herald engraving |
-| Loaded Dice (GY-C01) | Shop rerolls cost 20 gold less. | Economy common |
-| Collector's Album (GY-C05) | At least one of your shop offers is always uncommon or rare. | Economy common |
-| Grand Treasury (OR-U05) | You can earn up to 100 gold of interest each round instead of 50. | Economy uncommon |
