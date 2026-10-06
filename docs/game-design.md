@@ -990,7 +990,7 @@ and recalibrated at stage 7.
 | 6. Archetypes viable | 15 | Every archetype is viable, no build is forced, nothing railroads | Each archetype's committed win rate is 40–60% against a flexible field; no archetype appears in more than 25% of winning flexible builds; two-archetype builds win within 5 points of pure ones |
 | 7. Synergy and combos | 15 | Pieces multiply each other, and broken combos are there to discover | Same-archetype pairs beat the sum of their parts by at least 25% on average; at least 15 strong pairs (50% over their parts), at least 5 of them crossing archetypes |
 | 8. Skill and bidding | 15 | Good play wins, and bidding stays tense | Tier 2 beats tier 0 in at least 65% of paired runs; late-run (rounds 6–8) overtricks average at most 1 per made contract; set rate 10–25% |
-| 9. Simplicity | 15 | Each piece is easy to understand and track; depth comes from combinations | Mean per-sigil simplicity score from the rubric below; fewer arithmetic riders, extra conditions, and tracked states score higher |
+| 9. Simplicity | 15 | Each piece is easy to understand and track; depth comes from combinations | Mean per-sigil simplicity score from the rubric below; fewer numeric values, boolean conditions, arithmetic riders, and tracked states score higher |
 
 - **Scoring the families.** In families 4–8, each sub-metric scores 1 inside
   its band and falls linearly to 0 at a tolerance listed with it. A family
@@ -1010,40 +1010,50 @@ and recalibrated at stage 7.
 
 ### Simplicity rubric
 
-Score the behavior in the sigil data, not the length of its generated text.
-Renaming "beyond five" or hiding it behind a keyword does not remove its cost.
-The baseline is one ordinary trigger (such as win, lead, bid, or hold), one
-named card filter, and one direct benefit. Ordinary scoring arithmetic and
-counting a whole quantity are free; restrictions on that baseline cost extra.
+Score the player-facing rule in the sigil data and its canonical text, not
+just sentence length. **Every numeric value and every boolean condition has a
+positive cost**, including the payout and the first condition. Nothing becomes
+free by spelling a number out, renaming a condition, or hiding it in a keyword.
 
 Add the following **complexity costs** to get C:
 
 | Burden | Cost | Example |
 | --- | --- | --- |
-| Arithmetic rider on the quantity rewarded | +2 per operation | "For each ♠ beyond five" requires subtracting five and treating negative results as zero; count that combined rider once |
-| Numeric threshold or exact-count check | +1 per check | "Wins three tricks by trumping" or "makes its contract exactly" |
-| Additional independent condition or exception | +1 per clause beyond the first | Requiring both a particular suit and the last trick, or checking each partner's result separately |
+| Numeric value | +1 per occurrence | Payouts, multipliers, thresholds, card numbers, range endpoints, explicit quantities, ordinals, and displayed growth totals all count; +20 is one value, not two digits |
+| Boolean condition | +1 per atomic check | Whether your team wins, holds a card, makes its contract exactly, or whether a card is ♠; count every check in an AND, OR, or exception, not just the whole clause |
+| Arithmetic rider on the quantity rewarded | +2 per operation | Subtracting five and flooring at zero in "beyond five" is one combined arithmetic rider, in addition to its number and cutoff condition |
 | Computed card selector | +1 per selector | "Longest suit" requires comparing suits instead of naming ♦ |
 | Extra tracked state | +1 per counter or remembered fact | A sigil-specific milestone count, a streak, a once-only flag, or a growth counter carried between rounds |
 
-A single burden is charged once: the implicit cutoff in "beyond five" is
-included in its +2 arithmetic cost, not charged again as a threshold. Distinct
-burdens add: a three-trump milestone costs +1 for the threshold and +1 for
-tracking trump wins. Reuse of an ordinary Spades fact, such as the contract,
-tricks won, or cards currently held, adds no state cost. Increasing rarity or
-showing a counter in the UI does not erase the underlying burden.
+Count rule-level checks, including triggers and filters, regardless of whether
+the text says "when", "if", or "for each". A numeric threshold charges both
+for its number and for its comparison. "High contract" still charges for the
+hidden 8 and the check against it. Repeating the same numeral in different
+roles charges each occurrence; a rule field and the text generated from that
+field are one occurrence, not two. A changing "currently ×0" display charges
+one numeric value plus the cost of remembering that state.
+
+Ordinary score addition and multiplication add no arithmetic-rider cost, but
+their printed amounts always incur the numeric cost. "Your team" establishes
+scope without another check. Do not charge implementation guards or repeated
+evaluations of the same check; charge the distinct checks the player must
+understand. Reusing an ordinary Spades fact adds no state cost, but a condition
+on that fact still costs. Increasing rarity or adding a UI counter waives none
+of these costs.
 
 The per-sigil simplicity score is **S = 1 / (1 + C)**. Family 9 is the mean S
 across all sigils in the candidate pool, counting each once, including utility
-and rule benders; an empty pool scores 1. Report each candidate's costs and compare
-replacements in the same pool slot so unrelated simple filler cannot mask a
-rider's cost. The existing one-effect rule remains mandatory at every rarity.
+and rule benders; an empty pool scores 1. Report each candidate's costs and
+compare replacements in the same pool slot so unrelated simple filler cannot
+mask a rider's cost. The one-effect rule remains mandatory at every rarity.
 
-| Candidate | C | S |
-| --- | --- | --- |
-| +5 contract points for each ♠ your team holds | 0 | 1 |
-| +5 contract points for each ♠ your team holds beyond five | 2 | 1/3 |
-| +1 contract multiplier when your team wins three tricks by trumping | 2 | 1/3 |
+| Candidate | Cost breakdown | C | S |
+| --- | --- | --- | --- |
+| +40 contract points | One number | 1 | 1/2 |
+| ×1.5 contract multiplier if your team makes its contract exactly | One number, one condition | 2 | 1/3 |
+| +20 contract points when your team wins a trick with an Ace | One number, two conditions: team wins and winning rank is Ace | 3 | 1/4 |
+| +5 contract points for each ♠ your team holds | One number, two conditions: held by your team and suit is ♠ | 3 | 1/4 |
+| +5 contract points for each ♠ your team holds beyond five | Two numbers, three conditions (including count > 5), one arithmetic rider worth 2 | 7 | 1/8 |
 
 Thus "beyond five" strictly lowers the score with everything else held equal,
 even if both versions pass the balance gates. For a useful balance comparison,
@@ -1593,7 +1603,8 @@ wording conventions can be chosen by designer direction.
 - **Starting choice:** per-sigil gates plus a weighted fun score: Close and
   live 25, Commitment works 15, Archetypes viable 15, Synergy 15, Skill and
   bidding 15, and Simplicity 15. Mechanical complexity is scored from sigil
-  data; more complex replacements need a demonstrated net improvement.
+  data, with a positive cost for every numeric value and boolean condition;
+  more complex replacements need a demonstrated net improvement.
 - **Alternatives:**
   - one weighted score with no gates;
   - the same gates, with weights that favor synergy;
@@ -1758,7 +1769,7 @@ the sweep that chose its value ([§16](#parameter-records)).
 | P25 | Fun score weights | 25 / 15 / 15 / 15 / 15 / 15 (families 4–9) | Any | Designer judgment, checked against playtests | 7 |
 | P26 | Gate thresholds and fun score bands | As in [§12](#12-metrics-what-fun-means) | Any | Calibrated once the harness runs, and again at stage 7 | 3, 7 |
 | P27 | Experiment size | 2,000 paired runs | 1,000–10,000 | Width of confidence intervals | 0 |
-| P28 | Simplicity rubric | Arithmetic rider 2; threshold, extra clause, computed selector, or tracked state 1 each; S = 1 / (1 + C) | Positive costs; compare 1–3 per burden | Designer judgment, calibrated by comprehension playtests and paired simulation tradeoffs | 2–7 |
+| P28 | Simplicity rubric | Each numeric value and boolean check 1; arithmetic rider 2; computed selector or tracked state 1; S = 1 / (1 + C) | Positive costs; compare 1–3 per burden; no free numbers or conditions | Designer judgment, calibrated by comprehension playtests and paired simulation tradeoffs | 2–7 |
 
 ## Appendix C: Unexamined assumptions
 
