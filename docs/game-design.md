@@ -56,16 +56,16 @@ Every row is a starting hypothesis.
 | --- | --- |
 | Golden Rule | A rule, sigil, or number is kept only if simulation shows it meets the metrics ([§12](#12-metrics-what-fun-means)) |
 | Run | 8 rounds; each round is a shop, then a deal of Spades |
-| Spades | Partners' bids add up to a team contract; nil; spades must be broken; no blind nil; no bags |
+| Spades | Partners' bids add up to a team contract; nil; [♠]s must be broken; no blind nil; no bags |
 | Scoring | (10 × contract + contract points + nil score) × (10 + Σ +multipliers) × Π ×multipliers; overtricks score nothing |
 | Failure | A set team loses its contract points and scores (−10 × contract + nil score) × its multipliers |
 | Victory | Most points after round 8; equal totals draw |
 | Sigils | Up to 7 per team, shared by both partners; hidden from opponents until they first trigger |
-| Cards | A bought card is dealt to its owner every round; at most 8 owned per player; later offers include synthetic Jacks, Queens, Kings, and Aces that replace lower cards of the same suit |
+| Cards | A bought card is dealt to its owner every round; at most 8 owned per player; later offers include synthetic [J]s, [Q]s, [K]s, and [A]s that replace lower cards of the same suit |
 | Engravings | Four fixed types on card offers from shop 3, one of them Synthetic; never bought alone, and never change a card's suit or rank |
 | Shop | 3 sigil and 3 card offers per team; unlimited purchases; purely random offers within rarity |
 | Income | 100 base gold + 10 per trick in a made contract + interest |
-| Archetypes | Majors: Suits (♣ ♦ ♥), Spades, Ranks, Bid High, Nil. Minors: Low Cards, Rainbow, Streaks, Exact. Never named in the game |
+| Archetypes | Majors: Suits ([♣] [♦] [♥]), Spades, Ranks, Bid High, Nil. Minors: Low Cards, Rainbow, Streaks, Exact. Never named in the game |
 | Simulation | Declarative sigils on one rules kernel shared by the game and the AI; three AI tiers; 2,000-run experiments in about 10 minutes |
 | Prototype | Single-player: you and an AI partner against an AI team |
 
@@ -84,7 +84,7 @@ Every row is a starting hypothesis.
    payoff comes with **enablers** that make X happen more often.
 4. **Simple pieces, emergent combos.** Each sigil does one thing. Archetypes
    are an internal design tool and are never named to players. Sigils share
-   plain nouns such as aces, hearts, and the last trick, so players discover
+   plain nouns such as [A]s, [♥]s, and the last trick, so players discover
    combinations themselves.
 5. **Commitment without railroading.** Shop offers are purely random within
    rarity, as in Balatro. Commitment works because cards are always for sale,
@@ -119,15 +119,15 @@ Every row is a starting hypothesis.
    shop opens before round 1, with starting gold.
 2. **Deal.** Each player receives their owned cards. The rest are shuffled and
    dealt to fill every hand to 13 ([§6](#6-cards)).
-3. **Before bidding.** Pre-bid hand changes resolve, including swaps and
-   chosen changes to ranks or suits.
-4. **Bid.** Starting left of the dealer, each player bids nil or 1–13.
-5. **After bidding.** Post-bid hand changes resolve, then Hold payoffs count
-   the resulting hands once.
-6. **Play.** The player left of the dealer leads, and 13 tricks follow.
-7. **Score.** Each team scores ([§4](#4-scoring)).
-8. **Income.** Each team gains interest, then base and contract gold.
-9. **Next round.** The deal passes clockwise. After round 8 the run ends
+3. **Opening.** Resolve every `Opening:` effect after the deal and before
+   any bids. Random card changes finish here, so players bid on the resulting
+   hands.
+4. **Bid.** Starting left of the dealer, each player bids nil or 1–13. After
+   the last bid, Hold payoffs count the resulting hands once.
+5. **Play.** The player left of the dealer leads, and 13 tricks follow.
+6. **Score.** Each team scores ([§4](#4-scoring)).
+7. **Income.** Each team gains interest, then base and contract gold.
+8. **Next round.** The deal passes clockwise. After round 8 the run ends
    without a shop.
 
 ## 3. Spades rules
@@ -149,14 +149,14 @@ Every row is a starting hypothesis.
 ### Play
 
 - Players must follow suit if able. A player who can't may play any card.
-- Spades are trump. The highest spade wins; otherwise the highest card of the
+- [♠]s are trump. The highest [♠] wins; otherwise the highest card of the
   led suit wins.
-- Spades can't be led until a spade has been played on another suit, unless
-  the leader holds only spades.
+- [♠]s can't be led until a [♠] has been played on another suit, unless
+  the leader holds only [♠]s.
 - **Effective cards.** Rule benders can change a card's rank or suit, as in
-  "Upgrade four cards your team holds to Kings after bidding". A changed card
+  "Opening: Four cards your team holds become [K]s". A changed card
   counts at its new identity everywhere: following suit, winning tricks, and sigil
-  conditions. Ranks cap at ace.
+  conditions. Ranks cap at [A].
 - **Ties.** [Synthetic cards](#synthetic-cards) and rule benders can put two
   cards of the same suit and rank in one trick. Between equal cards, the first
   one played wins.
@@ -193,7 +193,7 @@ conditions ([D25](#d25-multiplier-scale)).
 
 | Category | Balatro analog | Example (not final) |
 | --- | --- | --- |
-| +Contract points | Chips | "+20 contract points when your team wins a trick with an Ace" |
+| +Contract points | Chips | "+20 contract points when your team wins a trick with an [A]" |
 | +Contract multiplier | +Mult | "+15 contract multiplier when your team wins the last trick of a round" |
 | ×Contract multiplier | ×Mult | "×1.5 contract multiplier if your team makes its contract exactly" |
 
@@ -203,7 +203,7 @@ conditions ([D25](#d25-multiplier-scale)).
   matters. They can appear at any rarity, as in Balatro, and the
   [skeleton](#10-sigil-pool-skeleton) sets how many sit at each one.
 - **Contract points accumulate during the round.** They come per event
-  ("when your team wins a trick with an Ace") or once ("when your team bids 8 or more").
+  ("when your team wins a trick with an [A]") or once ("when your team bids 8 or more").
 - **Nil points go to made nils instead.** "+50 nil points" adds 50 to
   each nil your team makes, so it counts even when the contract is set.
 
@@ -229,7 +229,7 @@ conditions ([D25](#d25-multiplier-scale)).
 | --- | --- | --- |
 | Bids 4 + 3, win 9, no sigils | 70 × 10 | 700 |
 | Bids 4 + 3, win 6, no sigils | −70 × 10 | −700 |
-| Bid 7, win 8; "aces: +20" fires twice; one +15 holds | (70 + 40) × 25 | 2,750 |
+| Bid 7, win 8; "[A]s: +20" fires twice; one +15 holds | (70 + 40) × 25 | 2,750 |
 | Same, but win 6 | −70 × 25 | −1,750 |
 | Partner bids 5 and wins 6; you make nil; "+50 nil points"; one +15 | (50 + 150) × 25 | 5,000 |
 | Same, but your nil fails | (50 − 100) × 25 | −1,250 |
@@ -272,7 +272,8 @@ and sets. It grows about ×1.39 per round, ×10 over the run:
 
 > **Status:** provisional. Visibility is [D10](#d10-sigil-visibility), the
 > effect families [D13](#d13-effect-families), the enabler redesign
-> [D26](#d26-enablers-worth-taking-before-payoffs), and rules text
+> [D26](#d26-enablers-worth-taking-before-payoffs), Opening
+> [D27](#d27-opening-and-random-card-changes), and rules text
 > [D22](#d22-rules-text). Slots, rarity odds, and prices are
 > [parameters](#appendix-b-parameter-register) P3, P14, and P15.
 
@@ -286,7 +287,7 @@ and sets. It grows about ×1.39 per round, ×10 over the run:
   sigil.
 - A sigil sells for half its price, rounded down to a multiple of 5.
 - Sigils never have activated abilities. A sigil may offer a choice at a fixed
-  moment, such as "Swap three cards with your partner before bidding".
+  moment, such as "Opening: Swap three cards with your partner".
 
 ### Terms
 
@@ -299,7 +300,8 @@ These terms extend the standard Spades vocabulary, following the terms table of
 | **contract points** | Points added to your team's contract, paid only if the contract is made |
 | **contract multiplier** | Written `+15` when it adds up with others, or `×1.5` when it compounds. It multiplies your team's round score, made or set |
 | **nil points** | Points added to each nil your team makes. A failed nil still costs 100 before multipliers |
-| **your team holds** | Cards currently in either partner's hand; Hold payoffs take their snapshot after post-bid changes resolve |
+| **your team holds** | Cards currently in either partner's hand; Hold payoffs take their snapshot after bidding, once Opening has resolved |
+| **Opening:** | Resolve after dealing and before the first bid; the keyword carries the new-term complexity cost |
 
 ### Visibility
 
@@ -330,8 +332,9 @@ The current pool excludes:
 - Effects that only rename cards for payoff checks, and exceptions that alter
   the number of tricks needed to make a bid. Enablers change actual play.
 - Information effects such as revealing an opponent's cards.
-- Randomness after the deal. Hand changes use deliberate choices or
-  deterministic rules, never random post-deal upgrades.
+- Randomness once bidding begins. Random deal and Opening effects are input
+  randomness: they finish before players commit their bids. No later random
+  changes are allowed.
 - Activated abilities. Choices happen only at a specified resolution window
   or during the ordinary choice of a legal card.
 
@@ -340,8 +343,8 @@ The current pool excludes:
 - Every sigil has one trigger or condition and one effect, with no riders, at
   every rarity. Higher rarity buys power, not more clauses.
 - Commons name one thing and give one benefit: "+20 contract points when your
-  team wins a trick with an Ace".
-- Count the whole quantity: "for each ♠ your team holds", never "beyond five".
+  team wins a trick with an [A]".
+- Count the whole quantity: "for each [♠] your team holds", never "beyond five".
   Balance with the payout, price, or rarity before adding a restriction.
 - Use a threshold only when reaching it is the idea, such as winning three
   tricks by trumping. Prefer a named suit to a computed suit and a team result
@@ -358,22 +361,26 @@ The current pool excludes:
 ### Rules text
 
 Use plain English, one short sentence, **benefit first, then condition**.
-These templates replace 1.0's timing-first rules-text guide for 2.0.
+`Opening:` is the timing-prefix exception: put it first on every effect that
+resolves before bidding. These templates replace 1.0's rules-text guide.
 
 | Kind | Example |
 | --- | --- |
 | Always on | +40 contract points |
-| Trick event | +20 contract points when your team wins a trick with an Ace |
+| Trick event | +20 contract points when your team wins a trick with an [A] |
 | Last trick | +15 contract multiplier when your team wins the last trick of a round |
 | Result | ×1.5 contract multiplier if your team makes its contract exactly |
 | Milestone | +15 contract multiplier when your team wins three tricks by trumping |
-| Holdings | +20 contract points for each Ace your team holds |
+| Holdings | +20 contract points for each [A] your team holds |
 | Bid | +15 contract multiplier when your team bids nil |
 | Growth | This sigil gains ×5 contract multiplier every time your team makes a contract of 8 or more (currently ×0) |
-| Card movement | Swap three cards with your partner before bidding |
-| Hand improvement | Upgrade four cards your team holds to Kings after bidding |
+| Card movement | Opening: Swap three cards with your partner |
+| Rank change | Opening: Four cards your team holds become [2]s |
+| Rank change | Opening: Four cards your team holds become [K]s |
+| Suit change | Opening: Four cards your team holds become [♥]s |
+| Rank increase | Opening: Raise every card your team holds by two ranks |
 | Engraving | +5 contract multiplier when this card wins a trick |
-| Synthetic | Replaces 4♣ |
+| Synthetic | Replaces [4♣] |
 
 - **Lead with the amount.** Use "+20 contract points", "+15 contract
   multiplier", "×1.5 contract multiplier", or "+50 nil points", without
@@ -381,21 +388,29 @@ These templates replace 1.0's timing-first rules-text guide for 2.0.
 - **Always name "your team"** for bids, holdings, leads, wins, and results;
   never use "you" as shorthand for the team. Possessives use "your team's".
   Direct choices may say "your partner", and engravings say "this card".
+- **Use `Opening:` consistently.** Every before-bidding effect starts with
+  it; omit the redundant words "before bidding". All current hand-change
+  enablers use this window, including effects previously placed after bidding.
+- **Use "X cards your team holds become Y"** for a fixed-count transformation.
+  It means a random selection, not a player choice; the destination rank or
+  suit is fixed by Y. Do not add "random" to every card. "Every card" affects
+  the whole hand and needs no random selection.
 - **Omit obvious scope and timing.** No "each round", "in a round", "after
-  bidding" on holdings, "in your shop", or redundant "once". Keep timing
-  that changes a choice or a rule, such as "before bidding" on a swap or
-  "after bidding" on a rank change. "The last trick of a round" identifies
-  the trick and is fine.
-- **Use explicit cards.** Write suits as ♣, ♦, ♥, and ♠; write ranks as Ace,
-  King, Queen, and Jack, and specific cards as A♦ or 4♣. Name ♦ rather than
-  "your longest suit". Adaptive effects are at most a one-off, not a family.
+  bidding" on holdings, "in your shop", or redundant "once". Keep distinctive
+  play timing such as "the last trick of a round".
+- **Bracket ranks and suits.** Use `[A]`, `[K]`, `[Q]`, `[J]`, `[10]` through
+  `[2]`, and `[♣]`, `[♦]`, `[♥]`, `[♠]`. Pluralize outside the brackets, as
+  `[2]s` and `[K]s`; write a specific card as `[4♣]`. Counts such as "Four
+  cards" and changes such as "two ranks" are not card identities and stay
+  unbracketed. Name `[♦]` rather than "your longest suit". Brackets are a
+  display convention, not a way to change complexity costs.
 - **Use "when" for events and "if" for results.** A trick event pays on
   every matching trick. A milestone pays when its count is first reached;
   three trump wins do not pay again at six. Numeric thresholds mean at least
   that many unless the text says "exactly". Holdings are counted once after
-  post-bid hand changes, and result conditions once at scoring. A nil-bid
-  trigger fires for each partner who bids nil. These defaults live in the rules, not on
-  every sigil.
+  bidding, after Opening has resolved, and result conditions once at scoring.
+  A nil-bid trigger fires for each partner who bids nil. These defaults live
+  in the rules, not on every sigil.
 - **Round effects reset; growth persists.** Ordinary points, multipliers,
   and event counters reset between rounds. Growth says "This sigil gains …
   every time … (currently …)" and keeps its accumulated benefit for the run.
@@ -417,8 +432,8 @@ These templates replace 1.0's timing-first rules-text guide for 2.0.
 
 ### Timing
 
-- Before-bid changes resolve before the first bid; after-bid changes resolve
-  after the last bid and before Hold payoffs.
+- Opening effects resolve after the deal and before the first bid. All
+  current hand changes happen there; Hold payoffs count once after bidding.
 - Contract points and multipliers accumulate as events happen and apply at
   scoring. Sums and products make sigil order irrelevant.
 - Conflicting rule benders resolve by a fixed priority, defined once in the
@@ -453,10 +468,10 @@ These templates replace 1.0's timing-first rules-text guide for 2.0.
 Stage 1 ([§14](#14-staging)) sets card prices from each card's simulated value
 per gold. Starting values:
 
-| Rank | A | K | Q | J | 10 | 2–9 |
+| Rank | [A] | [K] | [Q] | [J] | [10] | [2]–[9] |
 | --- | --- | --- | --- | --- | --- | --- |
-| ♣ ♦ ♥ | 80 | 60 | 45 | 35 | 25 | 15 |
-| ♠ | 120 | 90 | 70 | 50 | 40 | 25 |
+| [♣] [♦] [♥] | 80 | 60 | 45 | 35 | 25 | 15 |
+| [♠] | 120 | 90 | 70 | 50 | 40 | 25 |
 
 An engraved card costs its price plus the engraving's premium.
 
@@ -493,33 +508,32 @@ catalog has four types in two families:
 | Bonus | Scoring | +20 contract points when this card wins a trick | 25 |
 | Herald | Scoring | +20 contract points when your team leads this card | 25 |
 | Multiplier | Scoring | +5 contract multiplier when this card wins a trick | 50 |
-| Synthetic | Identity | Replaces 4♣ | 25 |
+| Synthetic | Identity | Replaces [4♣] | 25 |
 
 - Multiplier is offered half as often as the other types.
-- The Synthetic text is shown for a J♣, Q♣, K♣, or A♣ that replaces 4♣.
+- The Synthetic text is shown for a [J♣], [Q♣], [K♣], or [A♣] that replaces [4♣].
 
 ### Synthetic cards
 
-A synthetic card is an extra copy of a real card, such as a second ace of
-hearts. It lets a build grow past what the 52-card deck allows, such as a
-fifth ace or a second ace of spades.
+A synthetic card is an extra copy of a real card, such as a second [A♥]. It lets a build grow past what the 52-card deck allows, such as a
+fifth [A] or a second [A♠].
 
-- It counts as the card it copies everywhere. A synthetic ace of hearts is an
-  ace and a heart for following suit, winning tricks, and sigils.
+- It counts as the card it copies everywhere. A synthetic [A♥] is an
+  [A] and a [♥] for following suit, winning tricks, and sigils.
 - Each synthetic offer names the real card it replaces, an unowned card from
-  two through nine of the **same suit**, chosen at random. While the copy is
+  [2] through [9] of the **same suit**, chosen at random. While the copy is
   owned, the replaced card is removed from the deck, so every hand still gets
   13 cards. Selling the copy puts the replaced card back.
-- The copied card is always a **Jack, Queen, King, or Ace**, even one somebody
-  owns. Synthetic copies raise rank without changing suit: A♣ can replace 4♣,
-  but A♦ cannot. If no eligible replacement is available, omit that offer.
+- The copied card is always a **[J], [Q], [K], or [A]**, even one somebody
+  owns. Synthetic copies raise rank without changing suit: [A♣] can replace [4♣],
+  but [A♦] cannot. If no eligible replacement is available, omit that offer.
 - A synthetic card costs the copied card's price plus the premium, counts
   toward the 8-card cap, and holds no other engraving.
 - A copy and its original can meet in one trick, and the first one played wins.
 
 Synthetic cards are the late-run enabler, and they combine with payoffs in ways
-players discover: a synthetic A♦ strengthens a diamonds build and feeds
-Ranks, and a synthetic A♠ upgrades a trump. Suit counts in the deck stay the
+players discover: a synthetic [A♦] strengthens a [♦] build and feeds
+Ranks, and a synthetic [A♠] upgrades a trump. Suit counts in the deck stay the
 same; ownership guarantees the stronger card to its buyer.
 
 ## 8. Shops and economy
@@ -571,7 +585,7 @@ random offers:
 | One specific card | — | seen in about two runs out of three |
 
 - **Cards are the dense enabler.** A team sees most cards at some point,
-  including about four ace offers per run.
+  including about four [A] offers per run.
 - **Sigil payoffs are the thin resource.** The
   [Commitment works](#fun-score) family decides whether density levers are
   needed.
@@ -588,12 +602,12 @@ steers offers by them.
 
 | Archetype | Weight | Plan | Natural partners |
 | --- | --- | --- | --- |
-| Suits ♣ ♦ ♥ | Major family | Own one side suit, its honors or its length; hold, lead, and win with it | Ranks, Low Cards, Streaks |
-| Spades | Major | Own long or high spades; win and trump with them | Bid High, Streaks |
-| Ranks | Major | Collect one rank, mostly aces; hold, lead, and win with it | Suits, Bid High, Rainbow |
+| Suits [♣] [♦] [♥] | Major family | Own one side suit, its honors or its length; hold, lead, and win with it | Ranks, Low Cards, Streaks |
+| Spades | Major | Own long or high [♠]s; win and trump with them | Bid High, Streaks |
+| Ranks | Major | Collect one rank, mostly [A]s; hold, lead, and win with it | Suits, Bid High, Rainbow |
 | Bid High | Major | Bid 8 or more and make the contract | Spades, Ranks, Streaks |
 | Nil | Major | Bid nil and make it | Low Cards, Exact |
-| Low Cards | Minor | Win with 2s through 10s | Suits, Spades, Nil |
+| Low Cards | Minor | Win with [2]s through [10]s | Suits, Spades, Nil |
 | Rainbow | Minor | Win tricks with all four suits | Ranks, Suits |
 | Streaks | Minor | Win tricks in a row | Bid High, Spades |
 | Exact | Minor | Make exactly your contract | Nil, Low Cards |
@@ -612,9 +626,9 @@ instead of competing.
 
 | Trigger | What it checks | Example |
 | --- | --- | --- |
-| Hold | Both partners' hands after post-bid changes | +20 contract points for each Ace your team holds |
-| Lead | Cards your team leads | +15 contract points when your team leads an Ace |
-| Win | The card that wins a trick for your team | +20 contract points when your team wins a trick with an Ace |
+| Hold | Both partners' hands after Opening and bidding | +20 contract points for each [A] your team holds |
+| Lead | Cards your team leads | +15 contract points when your team leads an [A] |
+| Win | The card that wins a trick for your team | +20 contract points when your team wins a trick with an [A] |
 | Trump | Winning a trick by trumping | +20 contract points when your team wins a trick by trumping |
 | Bid | The contract's size, or a nil bid | +15 contract multiplier when your team bids 8 or more |
 | Make | The round's result | +15 contract multiplier if your team makes its contract exactly |
@@ -645,63 +659,69 @@ or only changes how a payoff labels a card.
 
 | Rarity | Rules text | Why take it before payoffs? | Further uses |
 | --- | --- | --- | --- |
-| C | Swap three cards with your partner before bidding | Move winners to one hand, offload dangerous cards, or create a void | Nil, suits, trumping, bidding 8 or more |
-| C | Turn four cards your team holds into twos before bidding | Convert a dangerous hand into a possible nil or remove unwanted winners | Nil, exact bids, 2–10 payoffs |
-| U | Upgrade four cards your team holds to Kings after bidding | Turn four weak cards into potential winners to help make the bid | Larger bids, rank payoffs, winning in several suits |
-| U | Change the suits of four cards your team holds before bidding | Create trumps, remove a suit from a hand, or put winners into missing suits | Suits, trumping, Rainbow, Nil |
+| C | Opening: Swap three cards with your partner | Move winners to one hand, offload dangerous cards, or create a void | Nil, suits, trumping, bidding 8 or more |
+| C | Opening: Four cards your team holds become [2]s | See a lower hand before deciding whether to bid nil; some winners may be lost | Nil, exact bids, [2]–[10] payoffs |
+| U | Opening: Four cards your team holds become [K]s | Gain potential winners before choosing a bid, with a risk of changing [A]s too | Larger bids, rank payoffs, winning in several suits |
+| U | Opening: Four cards your team holds become [♥]s | Concentrate [♥]s and sometimes create a void before choosing how to bid | Suits, trumping, Nil; Rainbow only where trials show a benefit |
 | U | Choose which partner leads after your team wins a trick | Reach the partner's winners and choose which hand controls the next lead | Consecutive wins, protecting nils, suit play |
-| R | Raise every card your team holds by two ranks after bidding | Improve the whole team's hand, including its trumps | Larger bids, ranks, consecutive wins |
+| R | Opening: Raise every card your team holds by two ranks | Improve the whole team's hand, including its trumps | Larger bids, ranks, consecutive wins |
 | R | Your team can play any suit on the last three tricks | Cash trumps or shed dangerous cards even when the led suit remains in hand | Nil, exact bids, last-trick payoffs |
 
 **Resolution defaults:**
 
-- Selection is optional and up to the stated count. Team-wide counts are
-  shared between the two hands; each holder chooses their own affected cards
-  using only the information available to that seat. Effects reveal no extra
-  cards from a partner's hand. These are fixed-window choices, not abilities
-  that can be activated later.
-- A swap exchanges equal numbers simultaneously and keeps both hands at 13.
-  Cards and their engravings move together; ownership does not transfer.
-- Rank and suit changes last for the round and change the card's real
-  effective identity for following suit, winning, and scoring. A rank upgrade
-  only raises ranks, capped at Ace; the Kings effect selects cards below King.
-  Suit changes preserve rank and let the holder choose each new suit.
+- "X cards your team holds become Y" samples exactly X distinct cards
+  uniformly without replacement from both partners' current hands combined,
+  then applies the change automatically. Partners do not choose, split the
+  count evenly, decline, or reroll. Cards already matching Y remain eligible
+  and count toward X. An [A] selected to become a [K] is downgraded.
+- A rank destination changes only rank; a suit destination changes only suit.
+  The destination is fixed, not random. "Raise every card" changes all cards
+  by the stated number of ranks, capped at [A]. These changes affect following
+  suit, trick strength, and payoff checks, and expire before the next deal.
+- Opening effects resolve in the kernel's fixed priority. Each random effect
+  draws from a seeded Opening stream; a later effect can select a card changed
+  by an earlier one. Random changes finish before bids, never during play.
+- The swap's explicit instruction offers a choice of up to three cards per
+  partner, using each seat's existing information, and exchanges equal counts
+  simultaneously. It does not use the random "become" template. Cards and
+  engravings move together; ownership and the next guaranteed deal do not.
 - The lead-choice effect moves the next lead between partners; the actual
   trick winner and trick count do not change. Playing any suit on the last
   three tricks overrides following suit, not the rule about leading unbroken
-  spades. Ordinary trump priority and tie-breaking still apply.
-- Effects resolve in the kernel's fixed priority. Hold payoffs count after
-  all post-bid changes; temporary changes expire before the next deal.
+  [♠]s. Ordinary trump priority and tie-breaking still apply.
+- Opening results are visible to the affected card's holder before bidding;
+  they do not reveal extra cards from a partner's hand. Hold payoffs count
+  once after bidding. No effect is an activated ability.
 
 The archetypes below retain their payoffs. Names such as Bid High, Low Cards,
 and Streaks are internal labels, never keywords printed on a sigil.
 
 ### Suits
 
-**Plan.** Pick a side suit (♣, ♦, or ♥). Buy its honors or its length, add
+**Plan.** Pick a side suit ([♣], [♦], or [♥]). Buy its honors or its length, add
 synthetic copies late in the run, and hold, lead, and win with it. Honors and
 length are two lines of one archetype that share its sigils:
 
-- The **honors** line owns the A, K, and Q and cashes them early.
+- The **honors** line owns the [A], [K], and [Q] and cashes them early.
 - The **length** line owns many cards of the suit. Long side suits get trumped
   once opponents run out, so this line leans on Hold and Lead payoffs, suit
   changes, and control of which partner leads.
 
-**Named suits.** Start with ♦ examples rather than an adaptive suit package.
-Use ♣, ♥, or ♠ versions only where simulation shows they earn their pool
+**Named suits.** Start with [♦] examples rather than an adaptive suit package.
+Use [♣], [♥], or [♠] versions only where simulation shows they earn their pool
 slots; complete cycles are not required. The Suits budget stays at 18 payoff
 slots, with the former six adaptive slots reassigned to named-suit candidates.
-Concentrating support on ♦ is an explicit alternative if spreading it across
+Concentrating support on [♦] is an explicit alternative if spreading it across
 three side suits makes each build too thin ([D12](#d12-suit-structure)).
 
 | Trigger | Rarity, category | Text |
 | --- | --- | --- |
-| Win | C, points | +10 contract points when your team wins a trick with ♦ |
-| Hold | C, points | +10 contract points for each ♦ your team holds |
-| Lead | C, points | +10 contract points when your team leads ♦ |
-| Win | U, +mult | +15 contract multiplier when your team wins three tricks with ♦ |
-| Make | U, ×mult | ×1.5 contract multiplier if your team wins five tricks with ♦ |
-| Win | R, +mult | +2 contract multiplier when your team wins a trick with ♦ |
+| Win | C, points | +10 contract points when your team wins a trick with [♦] |
+| Hold | C, points | +10 contract points for each [♦] your team holds |
+| Lead | C, points | +10 contract points when your team leads [♦] |
+| Win | U, +mult | +15 contract multiplier when your team wins three tricks with [♦] |
+| Make | U, ×mult | ×1.5 contract multiplier if your team wins five tricks with [♦] |
+| Win | R, +mult | +2 contract multiplier when your team wins a trick with [♦] |
 
 **Notes:**
 
@@ -711,46 +731,46 @@ three side suits makes each build too thin ([D12](#d12-suit-structure)).
 
 ### Spades
 
-**Plan.** Own long or high spades. Spades win in every hand: high spades cash,
-and low spades trump. Named-♠ versions of suit payoffs can score here too.
+**Plan.** Own long or high [♠]s. [♠]s win in every hand: high [♠]s cash,
+and low [♠]s trump. Named-[♠] versions of suit payoffs can score here too.
 
 **Payoffs:**
 
 | Trigger | Example |
 | --- | --- |
 | Trump | [C, points] +20 contract points when your team wins a trick by trumping |
-| Lead | [C, points] +10 contract points when your team leads ♠ |
-| Hold | [U, points] +5 contract points for each ♠ your team holds |
+| Lead | [C, points] +10 contract points when your team leads [♠] |
+| Hold | [U, points] +5 contract points for each [♠] your team holds |
 | Trump | [U, +mult] +15 contract multiplier when your team wins three tricks by trumping |
-| Win | [R, +mult] +2 contract multiplier when your team wins a trick with ♠ |
-| Win | [R, ×mult] ×2 contract multiplier if your team wins five tricks with ♠ |
+| Win | [R, +mult] +2 contract multiplier when your team wins a trick with [♠] |
+| Win | [R, ×mult] ×2 contract multiplier if your team wins five tricks with [♠] |
 
 **Notes:**
 
-- **Buys:** spades, both high and low.
-- **Threat:** opponents strip trumps by leading spades.
+- **Buys:** [♠]s, both high and low.
+- **Threat:** opponents strip trumps by leading [♠]s.
 
 ### Ranks
 
-**Plan.** Collect one rank, usually aces, and hold, lead, and win with it. Aces
-win in every side suit and cost the most. A few sigils pay for kings instead.
+**Plan.** Collect one rank, usually [A]s, and hold, lead, and win with it. [A]s
+win in every side suit and cost the most. A few sigils pay for [K]s instead.
 
 **Payoffs:**
 
 | Trigger | Example |
 | --- | --- |
-| Win | [C, points] +20 contract points when your team wins a trick with an Ace |
-| Hold | [C, points] +20 contract points for each Ace your team holds |
-| Lead | [C, points] +15 contract points when your team leads an Ace |
-| Win | [C, points] +15 contract points when your team wins a trick with a King |
-| Hold | [U, +mult] +20 contract multiplier if your team holds four Aces |
-| Win | [U, ×mult] ×1.5 contract multiplier when your team wins three tricks with Aces |
-| Win | [R, +mult] +5 contract multiplier when your team wins a trick with an Ace |
+| Win | [C, points] +20 contract points when your team wins a trick with an [A] |
+| Hold | [C, points] +20 contract points for each [A] your team holds |
+| Lead | [C, points] +15 contract points when your team leads an [A] |
+| Win | [C, points] +15 contract points when your team wins a trick with a [K] |
+| Hold | [U, +mult] +20 contract multiplier if your team holds four [A]s |
+| Win | [U, ×mult] ×1.5 contract multiplier when your team wins three tricks with [A]s |
+| Win | [R, +mult] +5 contract multiplier when your team wins a trick with an [A] |
 
 **Notes:**
 
-- **Buys:** aces, then synthetic aces in later shops.
-- **Threat:** aces cost the most, and they get trumped once a suit runs out.
+- **Buys:** [A]s, then synthetic [A]s in later shops.
+- **Threat:** [A]s cost the most, and they get trumped once a suit runs out.
 
 ### Bid High
 
@@ -772,7 +792,7 @@ you.
 
 **Notes:**
 
-- **Buys:** high cards and spades.
+- **Buys:** high cards and [♠]s.
 - **Threat:** a set multiplies against you, and opponents defend hard against
   big contracts.
 
@@ -793,24 +813,24 @@ grows.
 
 **Notes:**
 
-- **Buys:** low cards. Nil teams avoid owning aces and high spades.
+- **Buys:** low cards. Nil teams avoid owning [A]s and high [♠]s.
 - **Threat:** opponents lead low to force the nil bidder to win a trick.
 
 ### Low Cards
 
-**Plan.** Win tricks with 2s through 10s, the cheapest cards in the shop. Low
+**Plan.** Win tricks with [2]s through [10]s, the cheapest cards in the shop. Low
 cards win through length, by trumping, and after the honors are gone.
 
 - **Payoffs:**
-  - [C, points] +15 contract points when your team wins a trick with a 2 through 10
-  - [C, points] +10 contract points when your team leads a 2 through 10
-  - [U, +mult] +15 contract multiplier when your team wins four tricks with 2s through 10s
+  - [C, points] +15 contract points when your team wins a trick with a [2] through [10]
+  - [C, points] +10 contract points when your team leads a [2] through [10]
+  - [U, +mult] +15 contract multiplier when your team wins four tricks with [2]s through [10]s
   - [R, points] +150 contract points when your team wins a trick with a two
 
 ### Rainbow
 
 **Plan.** Win tricks with cards of all four suits. That takes a winner in
-every suit, so Rainbow buys an ace or king of each and fills gaps with
+every suit, so Rainbow buys an [A] or [K] of each and fills gaps with
 synthetic copies.
 
 - **Payoffs:**
@@ -884,7 +904,7 @@ multipliers, scale with or require the contract size
 
 | Archetype | Common | Uncommon | Rare | Total |
 | --- | --- | --- | --- | --- |
-| Named suits (♦ first; ♣ ♥ ♠ variants tested) | 11 | 6 | 1 | 18 |
+| Named suits ([♦] first; [♣] [♥] [♠] variants tested) | 11 | 6 | 1 | 18 |
 | Spades | 3 | 3 | 2 | 8 |
 | Ranks | 4 | 3 | 2 | 9 |
 | Bid High | 4 | 3 | 2 | 9 |
@@ -896,7 +916,7 @@ multipliers, scale with or require the contract size
 | Generic and one-offs | 6 | 7 | 2 | 15 |
 | **Total** | **42** | **30** | **15** | **87, plus 3 legendary = 90** |
 
-Any ♠ variants in the named-suit allocation also support Spades. Their count
+Any [♠] variants in the named-suit allocation also support Spades. Their count
 and the split between side suits are measured in stage 3, not assumed.
 
 ### Utility by family
@@ -924,7 +944,7 @@ its lift band.
 | Rare | +50 per event, or a run-long counter | +2 to +5 per repeated event or growth step | ×2 broadly, or ×3 narrowly |
 | Legendary | — | — | ×2 to ×3 broadly |
 
-Repeated-event rewards start smaller than one-time rewards: +2 on each ♦
+Repeated-event rewards start smaller than one-time rewards: +2 on each [♦]
 win, +15 for the last trick, and +5 on a winning engraved card are illustrative
 candidates. Tune amounts to trigger frequency and total contribution, not by
 multiplying every old +mult value by the same constant. ×Multipliers retain
@@ -1066,12 +1086,12 @@ Add the following **complexity costs** to get C:
 
 | Burden | Cost | Example |
 | --- | --- | --- |
-| Numeric value | +1 per occurrence | Payouts, multipliers, thresholds, card numbers, range endpoints, explicit quantities, ordinals, and displayed growth totals all count; +20 is one value, not two digits |
-| Boolean condition | +1 per atomic check | Whether your team wins, holds a card, makes its contract exactly, or whether a card is ♠; count every check in an AND, OR, or exception, not just the whole clause |
+| Numeric value or rank literal | +1 per occurrence | Payouts, counts, thresholds, rank literals, range endpoints, ordinals, and displayed totals all count; "Four" costs 1, `[2]s` costs 1, and `[K]s` also costs 1; +20 is one value, not two digits |
+| Boolean condition | +1 per atomic check | Whether your team wins, holds a card, makes its contract exactly, or whether a card is [♠]; count every check in an AND, OR, or exception, not just the whole clause |
 | Arithmetic rider on the quantity rewarded | +2 per operation | Subtracting five and flooring at zero in "beyond five" is one combined arithmetic rider, in addition to its number and cutoff condition |
-| Computed card selector | +1 per selector | "Longest suit" requires comparing suits instead of naming ♦ |
+| Computed selector or variable destination | +1 per selector | "Longest suit" compares suits; "become low cards" needs a destination-selection rule beyond naming one rank |
 | Extra tracked state | +1 per counter or remembered fact | A sigil-specific milestone count, consecutive-win count, a once-only flag, or a growth counter carried between rounds |
-| New player-facing term | +2 per term; +4 at common | A special keyword such as "high contract" or "streak" that requires learning a definition beyond normal Spades |
+| New player-facing term | +2 per term; +4 at common | `Opening:` is an intentional new keyword and pays this cost, as would shorthand such as "high contract", "low cards", or "streak" |
 
 Count rule-level checks, including triggers and filters, regardless of whether
 the text says "when", "if", or "for each". A numeric threshold charges both
@@ -1100,6 +1120,26 @@ consecutive wins. Internal archetype labels carry no cost because players
 never see them. The removed lost-trick exception does not return under a new
 name.
 
+**Expand hidden complexity before scoring.** Rank names, symbols, and aliases
+have the same cost: `[2]` and its spelled-out name are one rank literal, as
+is `[K]`. The plural "s" is not another value. The count "Four cards" is
+independent of its destination rank and always adds its own point.
+For random transformations, charge the team-held filter once; it establishes
+the eligible cards, with no invented condition for each sampled card.
+
+"Become low cards" is not a cheaper replacement for "become [2]s". Using the
+old meaning [2] through [10], it hides two rank endpoints and a rule for picking
+an output rank, in addition to the term cost. Charge that expanded structure
+plus every actual boolean check. The effect is incomplete until it defines
+which ranks can result and how they are selected. A range and an equivalent
+list of ranks normalize to the same structure before scoring; changing the
+wording cannot lower the cost. Even familiar classes such as "face cards"
+still pay for their underlying rank set and output-selection rule.
+
+`Opening:` does not waive its new-term penalty just because it is now an
+approved template. At common, the four-[2] transformation pays 4 for Opening,
+1 for Four, 1 for [2], and 1 for the team-held filter, totaling 7.
+
 The per-sigil simplicity score is **S = 1 / (1 + C)**. Family 9 is the mean S
 across all sigils in the candidate pool, counting each once, including utility
 and rule benders; an empty pool scores 1. Report each candidate's costs and
@@ -1110,9 +1150,11 @@ mask a rider's cost. The one-effect rule remains mandatory at every rarity.
 | --- | --- | --- | --- |
 | +40 contract points | One number | 1 | 1/2 |
 | ×1.5 contract multiplier if your team makes its contract exactly | One number, one condition | 2 | 1/3 |
-| +20 contract points when your team wins a trick with an Ace | One number, two conditions: team wins and winning rank is Ace | 3 | 1/4 |
-| +5 contract points for each ♠ your team holds | One number, two conditions: held by your team and suit is ♠ | 3 | 1/4 |
-| +5 contract points for each ♠ your team holds beyond five | Two numbers, three conditions (including count > 5), one arithmetic rider worth 2 | 7 | 1/8 |
+| +20 contract points when your team wins a trick with an [A] | Payout and rank literal, two conditions: team wins and winning rank is [A] | 4 | 1/5 |
+| +5 contract points for each [♠] your team holds | One number, two conditions: held by your team and suit is [♠] | 3 | 1/4 |
+| +5 contract points for each [♠] your team holds beyond five | Two numbers, three conditions (including count > 5), one arithmetic rider worth 2 | 7 | 1/8 |
+| Opening: Four cards your team holds become [2]s (Common) | Opening 4, Four 1, [2] 1, team-held filter 1 | 7 | 1/8 |
+| Opening: Four cards your team holds become low cards (Common; rejected shorthand) | Opening 4, Four 1, hidden [2]/[10] endpoints 2, destination selector 1, "low cards" term 4, team-held filter 1; further checks cost extra | ≥13 | ≤1/14 |
 
 Thus "beyond five" strictly lowers the score with everything else held equal,
 even if both versions pass the balance gates. For a useful balance comparison,
@@ -1132,7 +1174,9 @@ report before changing the rubric ([P28](#appendix-b-parameter-register)).
 These are tracked but not weighted:
 
 - **Input randomness:** random cards per hand, which the card cap keeps at 5
-  or more. There's no randomness after the deal, by rule.
+  or more. Opening draws are also input randomness and finish before bidding;
+  log their effects on hand strength and nil feasibility separately from the
+  number of randomly dealt cards.
 - **Economy:** gold unspent at the end of a run; purchases and rerolls per
   shop.
 - **Text quality:** the wording lint ([§5](#simplicity-rules)); mechanical
@@ -1199,7 +1243,7 @@ from the data. For example:
 }
 ```
 
-generates "+20 contract points when your team wins a trick with an Ace".
+generates "+20 contract points when your team wins a trick with an [A]".
 A rule bender names one of a small set of rule hooks written in code:
 
 ```json
@@ -1208,15 +1252,15 @@ A rule bender names one of a small set of rule hooks written in code:
   "rarity": "Uncommon",
   "archetypes": ["Bid High", "Ranks", "Rainbow"],
   "role": "enabler",
-  "effect": { "type": "upgradeRank", "rank": "K", "count": 4, "on": "afterBidding", "selection": "holderChoice" }
+  "effect": { "type": "setRank", "rank": "K", "count": 4, "on": "opening", "selection": "uniformWithoutReplacement", "scope": "teamHands" }
 }
 ```
 
 The grammar covers:
 
-- **Events:** hold, lead, play, win, trump, bid, make, exact, nil made, first
+- **Events:** opening, hold, lead, play, win, trump, bid, make, exact, nil made, first
   and last trick, and consecutive wins.
-- **Card filters:** rank, rank range, and named suit (including ♠).
+- **Card filters:** rank, rank range, and named suit (including [♠]).
 - **Scaling:** per card held, per trick in the contract, and per run-long
   counter.
 - **Thresholds:** simple milestones; no subtraction from a held-card count.
@@ -1267,8 +1311,8 @@ deck as standard.
   from score margin by round to win rate turns this into win probability over
   the remaining rounds, which is then divided by price.
 - **Enabler values** come from replaying hands through the changed rules,
-  including swap, rank, suit, and lead choices with each seat's actual
-  information. Rescoring an unchanged sequence of plays cannot value them.
+  including seeded Opening changes and swap or lead choices with each seat's
+  actual information. Bidding sees the resulting hand, never future draws. Rescoring an unchanged sequence of plays cannot value them.
   Fitted estimates may approximate those rollout results, then get checked
   against the standalone trials.
 - **Buying.**
@@ -1284,6 +1328,7 @@ deck as standard.
 
 - **Seeded streams.** Every random draw comes from a named stream:
   - deals, one stream per round;
+  - Opening selections, streams keyed by round, team, and sigil identity;
   - offers, one stream per team, shop, and reroll;
   - AI search, one stream per seat.
 
@@ -1357,7 +1402,7 @@ measured.
   structural simplicity score, checks the feel of railroading, and catches
   AI blind spots early.
 - **Mining 1.0.** Higher-rarity waves start from the 1.0 sigils that fit
-  2.0's rules ([Appendix D](#appendix-e-seeds-from-rogue-spades-10)).
+  2.0's rules ([Appendix D](#appendix-e-seeds-from-rogue-[♠]s-10)).
 
 ## 15. Risks and tuning levers
 
@@ -1465,7 +1510,7 @@ Every record follows the format in [§16](#decision-records). No experiment has
 run yet, so balance records remain hypotheses with pending evidence;
 wording conventions can be chosen by designer direction.
 
-- **Design decisions** (D1–D13 and D23–D26) are judged by the gates and the fun
+- **Design decisions** (D1–D13 and D23–D27) are judged by the gates and the fun
   score.
 - **Method decisions** (D14–D21) are judged by harness measurements or designer
   judgment.
@@ -1636,12 +1681,12 @@ wording conventions can be chosen by designer direction.
 
 ### D12. Suit structure
 
-- **Starting choice:** named-suit payoffs, using ♦ as the example, with shared
+- **Starting choice:** named-suit payoffs, using [♦] as the example, with shared
   hand changes and lead control as enablers;
   18 payoff slots formerly divided between cycles and adaptive suits now
   serve named suits. No required cycles and no adaptive family.
-- **Alternatives:** spread the named-suit slots across ♣, ♦, and ♥, with ♠
-  variants where useful; concentrate side-suit support on ♦; allow one
+- **Alternatives:** spread the named-suit slots across [♣], [♦], and [♥], with [♠]
+  variants where useful; concentrate side-suit support on [♦]; allow one
   adaptive one-off from the generic budget.
 - **Prior reasoning:** explicit suits are easier to read and track. The old
   estimate of three relevant offers per suit depended on adaptive sigils and
@@ -1657,8 +1702,8 @@ wording conventions can be chosen by designer direction.
 - **Starting choice:** payoffs plus shared hand reshaping, lead control, and
   freedom to play cards. Every enabler must stand alone before payoffs.
 - **Excluded:** shop/economy modifiers, payoff-only identity aliases,
-  contract-count exceptions, information effects, post-deal randomness, and
-  activated abilities.
+  contract-count exceptions, information effects, randomness from bidding
+  onward, and activated abilities. Seeded random Opening changes are allowed.
 - **Alternatives:** the previous archetype-specific utility catalog, retained
   only as a historical experiment control; payoff-only pools.
 - **Decided by:** the standalone gate, all existing gates, Simplicity, and
@@ -1760,8 +1805,9 @@ wording conventions can be chosen by designer direction.
 ### D22. Rules text
 
 - **Starting choice:** benefit first, then condition; explicit "your team";
-  no redundant timing or shop scope; named suits; `+15` for additive
-  multipliers. The full templates and timing defaults are in [§5](#rules-text).
+  no redundant timing or shop scope; bracketed ranks and suits; `+15` for
+  additive multipliers; `Opening:` on all before-bidding effects. The full
+  templates and timing defaults are in [§5](#rules-text).
 - **Alternatives:** 1.0's timing-first "gain"; the previous "add" templates;
   colon shorthand.
 - **Decided by:** the designer's 2026-10-06 wording preference, checked for
@@ -1771,17 +1817,17 @@ wording conventions can be chosen by designer direction.
 
 ### D23. Identity engravings
 
-- **Starting choice:** synthetic offers copy only J, Q, K, or A, replacing an
-  unowned 2–9 of the same suit. The offer shows its resulting identity and
-  "Replaces 4♣"; the engraving never changes that printed identity in play.
+- **Starting choice:** synthetic offers copy only [J], [Q], [K], or [A], replacing an
+  unowned [2]–[9] of the same suit. The offer shows its resulting identity and
+  "Replaces [4♣]"; the engraving never changes that printed identity in play.
 - **Alternatives:** the earlier unrestricted synthetic copies; the original
   identity catalog of Converted, Raised, Crowned, and Wild.
 - **Prior reasoning:** synthetic cards upgrade ranks without moving cards
   between suits, and the replacement label says only what the player needs.
-- **Decided by:** the designer's same-suit and J-or-higher constraints, then
+- **Decided by:** the designer's same-suit and [J]-or-higher constraints, then
   Commitment works, Archetypes viable, and the power ceiling for balance.
 - **Test:** stage 4 sweeps premiums, offer share, replacement rank range, and
-  J/Q/K/A weights within those constraints, including Rainbow and Nil runs.
+  [J]/[Q]/[K]/[A] weights within those constraints, including Rainbow and Nil runs.
 - **Evidence:** pending; no simulator exists yet. **Status:** hypothesis.
 
 ### D24. Simpler sigil conditions
@@ -1796,8 +1842,8 @@ wording conventions can be chosen by designer direction.
   Simplicity cost in family 9.
 - **Test:** paired-seed comparisons in stages 2–6, sweeping payout, price, and
   rarity, recording both mechanical complexity and the net fun-score change.
-  In particular, compare the former +15 per ♠ beyond five with whole
-  holdings payouts starting at +5 per ♠; also remeasure the revised Spades,
+  In particular, compare the former +15 per [♠] beyond five with whole
+  holdings payouts starting at +5 per [♠]; also remeasure the revised Spades,
   Bid High, Rainbow, Streaks, and Exact candidates. Cut failures instead of
   restoring fiddly clauses.
 - **Evidence:** pending; no simulator exists yet. All revised amounts are
@@ -1846,6 +1892,27 @@ wording conventions can be chosen by designer direction.
   as empirically validated until those trials run.
 - **Evidence:** pending; no simulator exists yet. **Status:** hypothesis.
 
+### D27. Opening and random card changes
+
+- **Starting choice:** `Opening:` means after dealing and before bidding.
+  Fixed-count changes use "X cards your team holds become Y", choosing X
+  distinct cards uniformly from both hands without replacement and applying
+  the specified rank or suit automatically. All current rank and suit changes
+  move to this window. Whole-hand rank increases affect every card.
+- **Alternatives:** the previous holder-selected changes, some after bidding;
+  excluding cards already matching the destination from the random pool.
+- **Prior reasoning:** the same short template exposes the size and result of
+  an effect. Random selection is input randomness that resolves before any
+  bid; it may hit existing winners or cards already at the destination.
+- **Decided by:** standalone enabler value, all gates and the fun score,
+  including input-randomness diagnostics and the full simplicity cost of
+  Opening, counts, ranks, filters, and any hidden category definitions.
+- **Test:** paired-seed trials with the dedicated Opening streams, sweeping
+  counts and rank increases and measuring standalone value, nil feasibility,
+  bid choices, and how often changes help, hurt, or leave a card unchanged.
+  Compare only after players have seen their own resulting hands.
+- **Evidence:** pending; no simulator exists yet. **Status:** hypothesis.
+
 ## Appendix B: Parameter register
 
 Every number below is a starting value. Each row lists the range to test, the
@@ -1872,7 +1939,7 @@ the sweep that chose its value ([§16](#parameter-records)).
 | P16 | Card prices | The [§6](#prices) table | Set from each card's simulated value | Value per gold roughly equal across cards | 1 |
 | P17 | Engraved share of card offers | 25% at shop 3, plus 10 points per shop | 0–100% | Commitment works | 4 |
 | P18 | Engraving premiums | 25, or 50 for Multiplier | 0–100 | Economy diagnostics | 4 |
-| P19 | Synthetic replacement range and copied ranks | Unowned 2–9 of the same suit; copies J/Q/K/A | Replacement ranks below J; weights across J/Q/K/A | Input randomness; Commitment works; Archetypes viable; power ceiling | 4 |
+| P19 | Synthetic replacement range and copied ranks | Unowned [2]–[9] of the same suit; copies [J]/[Q]/[K]/[A] | Replacement ranks below [J]; weights across [J]/[Q]/[K]/[A] | Input randomness; Commitment works; Archetypes viable; power ceiling | 4 |
 | P20 | Par growth over a run | ×10, from 600 to 6,000 | ×5–×20 | Close and live | 3–6 |
 | P21 | Pool sizes and category split | 44 / 33 / 17 / 3: 90 payoffs and 7 shared enablers | Cut failed candidates; expand only with demonstrated standalone value | Commitment works; Archetypes viable | 3–6 |
 | P22 | Nil base value before multipliers | ±100 | 50–150 | Archetypes viable (Nil) | 0 |
@@ -1881,9 +1948,10 @@ the sweep that chose its value ([§16](#parameter-records)).
 | P25 | Fun score weights | 25 / 15 / 15 / 15 / 15 / 15 (families 4–9) | Any | Designer judgment, checked against playtests | 7 |
 | P26 | Gate thresholds and fun score bands | As in [§12](#12-metrics-what-fun-means) | Any | Calibrated once the harness runs, and again at stage 7 | 3, 7 |
 | P27 | Experiment size | 2,000 paired runs | 1,000–10,000 | Width of confidence intervals | 0 |
-| P28 | Simplicity rubric | Number/check 1; arithmetic rider 2; selector/state 1; new term 2, or 4 at common; S = 1 / (1 + C) | Positive costs; compare 1–3 per burden and twice the term cost at common; no free numbers, conditions, or new terms | Designer judgment, calibrated by comprehension playtests and paired simulation tradeoffs | 2–7 |
+| P28 | Simplicity rubric | Number/rank/check 1; arithmetic rider 2; selector/state 1; new term including Opening 2, or 4 at common; S = 1 / (1 + C) | Positive costs; compare 1–3 per burden; twice the term cost at common; expand aliases and rank classes before scoring | Designer judgment, calibrated by comprehension playtests and paired simulation tradeoffs | 2–7 |
 | P29 | Starting contract multiplier and +mult scale | Start at 10; +2–5 repeated rewards, +10–20 one-time rewards | Starting values 1, 5, 10, 15; sweep rewards jointly | Power ceiling; Close and live; Skill and bidding; Simplicity | 3–6 |
 | P30 | Standalone enabler acceptance | 90% lower bounds: ≥3 percentage-point lift over disabled effect; ≥−2 versus same-price flat payoff; ≥40% no-payoff playtest preference; support two families | Lift 1–5 points; comparison tolerance 0–3 points; preference 30–60% | Material benefit; standalone appeal; breadth; power ceiling | 2–7 |
+| P31 | Opening card changes | Four random cards become [2]s, [K]s, or [♥]s; all-card increase of two ranks | Random count 1–6; rank increase 1–3; named destination variants tested separately | Standalone enabler value; bidding; input randomness; power ceiling | 2–7 |
 
 ## Appendix C: Unexamined assumptions
 
@@ -1896,7 +1964,7 @@ experiment first examines it.
   don't count.
 - Blind nil is excluded from the rules and current sigil pool.
 - 1.0's other base rules stay: individual bids add up to the team contract,
-  nil, spades must be broken, the first lead comes from the dealer's left, and
+  nil, [♠]s must be broken, the first lead comes from the dealer's left, and
   the deal rotates.
 - Partners know each other's owned cards; opponents don't. The AI gets exactly
   the same information.
@@ -1907,12 +1975,13 @@ experiment first examines it.
   price, and a team is never offered a sigil it owns.
 - A shop opens before round 1 with 150 starting gold, for 8 shops per run.
 - The simplicity rules in [§5](#simplicity-rules).
-- Every random draw comes from a named, seeded stream.
+- Every random draw comes from a named, seeded stream. Random transformations
+  happen during Opening, before bidding; none occur after bids begin.
 - Contract points earned on overtricks count. Contract points from tricks a
   nil bidder wins don't. A double-nil team's contract points are lost.
 - Nil points go to made nils rather than to the contract, so they survive a
   set.
-- Sigil text spells out bids of 8 or more, ranks 2–10, and consecutive wins;
+- Sigil text spells out bids of 8 or more, ranks [2]–[10], and consecutive wins;
   invented shorthand carries an additional complexity penalty, doubled at
   common. Internal archetype names are not player-facing terms.
 - A multiplier from a repeated trigger stacks each time it triggers, unlike
@@ -1923,9 +1992,9 @@ experiment first examines it.
 - Engravings are hidden from opponents until their card is played, and are
   destroyed when the card is sold. A gold engraving was left out.
 - Wild left with the other suit- and rank-changing engravings, taking its
-  special rules with it. Rainbow now leans on synthetic cards, deliberate
-  suit changes, and rank upgrades that also help ordinary Spades hands.
-- A synthetic offer is J, Q, K, or A and replaces a random unowned 2–9 of the
+  special rules with it. Rainbow now leans on synthetic cards and random
+  Opening suit and rank changes that also affect ordinary Spades hands.
+- A synthetic offer is [J], [Q], [K], or [A] and replaces a random unowned [2]–[9] of the
   same suit, named on the offer. Selling it puts the replaced card back.
 - A run is one 8-round match. Equal totals draw, scores can go negative, and
   meta-progression is out of scope.
@@ -1935,7 +2004,7 @@ experiment first examines it.
   50/75/100/150.
 - Named suits replace the adaptive suit family; any adaptive one-off needs
   its own explicit definition and evidence.
-- Hold sigils count both partners' hands after post-bid hand changes.
+- Hold sigils count both partners' hands after Opening and bidding.
 - Both teams may own the same sigil.
 - Income is 100 base gold, plus 10 per contract trick if made, plus 50 per
   made nil, with interest of 10 per 50 held up to 50.
@@ -1966,9 +2035,9 @@ its conditions under D24, and pass simulation; enablers follow D26. Colors and r
 
 | 1.0 sigil | 1.0 text | 2.0 seed |
 | --- | --- | --- |
-| Headsman's Axe (RE-C08) | Whenever you win a trick with a spade, gain +10 contract value. | Named-♠ Win payoff |
-| Schooling Fish (GR-C13) | If you win three or more tricks with diamonds in a round, gain +40 contract value. | Named-♦ milestone payoff |
-| Evening Melody (GR-R03) | If you win three or more tricks with hearts in a round, gain +1× contract multiplier. | Named-♥ multiplier candidate |
+| Headsman's Axe (RE-C08) | Whenever you win a trick with a spade, gain +10 contract value. | Named-[♠] Win payoff |
+| Schooling Fish (GR-C13) | If you win three or more tricks with diamonds in a round, gain +40 contract value. | Named-[♦] milestone payoff |
+| Evening Melody (GR-R03) | If you win three or more tricks with hearts in a round, gain +1× contract multiplier. | Named-[♥] multiplier candidate |
 | Laurel Finale (DU-R01) | If your team wins the last trick of a round with a heart, gain +1× contract multiplier. | Streaks or Suits |
 | Rising Flame (RE-C10) | Whenever you win a trick after winning the previous one, gain +10 contract value. | Streaks common |
 | Early Sprint (RE-C05) | Whenever you win one of the first three tricks, gain +10 contract value. | Streaks common |
