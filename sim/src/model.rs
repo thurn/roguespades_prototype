@@ -103,7 +103,7 @@ impl Model {
             card_shop: 0.0,
             w_scale,
             w_final: 0.588 * 1.2 * 6000.0,
-            nil_handicap: 300.0,
+            nil_handicap: 550.0,
             round_scale: par.to_vec(),
         }
     }

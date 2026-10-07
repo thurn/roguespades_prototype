@@ -1,6 +1,5 @@
 //! A full run: eight shops and rounds between two teams, with grants, run records, and ledgers.
 
-use crate::ai::heuristic::swap_choice;
 use crate::ai::search::*;
 use crate::cards::*;
 use crate::kernel::*;
@@ -842,6 +841,11 @@ impl<'a> Runner<'a> {
             scale: m.w_scale[left.min(8)],
             growth: [8.0 * nfut, future / 15.0, future, 2.0 * nfut],
             nil_handicap: m.nil_handicap,
+            gold: if round < self.cfg.rounds {
+                m.lambda[(round + 1) as usize] / 2.0
+            } else {
+                0.0
+            },
         }
     }
 
@@ -911,8 +915,17 @@ impl<'a> Runner<'a> {
                 let (a, b) = (kt, kt + 2);
                 match r {
                     Rule::Swap(n) => {
-                        let ga = swap_choice(&play, a as u8, n);
-                        let gb = swap_choice(&play, b as u8, n);
+                        let tier = self.cfg.tiers[ti];
+                        let view = self.view_rules(&rules, kt);
+                        let u = self.utility(kt, round);
+                        let mut ga = 0;
+                        let mut gb = 0;
+                        for (seat, g) in [(a, &mut ga), (b, &mut gb)] {
+                            let know = self.knowledge(&play, seat as u8, &known, &[[false; 4]; 4]);
+                            let mut r =
+                                Rng::stream(self.seed, &[S_AI, round as u64, seat as u64, 77]);
+                            *g = choose_swap(&play, &view, &know, &u, &tier, &mut r, n);
+                        }
                         let n = ga.count_ones().min(gb.count_ones());
                         let (ga, gb) = (trim(ga, n), trim(gb, n));
                         play.hands[a] = (play.hands[a] & !ga) | gb;
@@ -1133,7 +1146,7 @@ impl<'a> Runner<'a> {
         let b = &mut self.recs[ti].bench;
         let legal = play.legal();
         let would_win = |c: u8| play.tlen == 0 || play.beats(c, play.trick[play.winning_index()]);
-        if play.bids[s as usize] == 0 {
+        if play.bids[s as usize] == 0 && play.won[s as usize] == 0 {
             b.nil_plays += 1;
             if play.tlen > 0 && would_win(m) && Bits(legal).any(|c| !would_win(c)) {
                 b.nil_suicides += 1;

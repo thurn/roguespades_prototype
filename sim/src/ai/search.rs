@@ -71,6 +71,8 @@ pub struct Utility {
     pub growth: [f64; 4],
     /// Margin penalty for bidding nil, in points (rollouts are kind to nils).
     pub nil_handicap: f64,
+    /// Win probability per gold of next round's income (0 in the last round).
+    pub gold: f64,
 }
 
 impl Utility {
@@ -86,7 +88,15 @@ impl Utility {
                 }
             }
         }
-        1.0 / (1.0 + (-(self.margin + d) / self.scale).exp())
+        let income = |s: &TeamScore| {
+            (if s.made {
+                10.0 * s.contract as f64
+            } else {
+                0.0
+            }) + 50.0 * s.nil_made as f64
+        };
+        let g = self.gold * (income(&sc[team]) - income(&sc[1 - team]));
+        1.0 / (1.0 + (-(self.margin + d) / self.scale).exp()) + g
     }
 }
 
@@ -505,4 +515,88 @@ pub fn choose_bid(
         }
     }
     best
+}
+
+/// Opening swap: the heuristic alone at tier 0; at higher tiers, about six candidate give-sets
+/// evaluated by rollouts over deals sampled from this seat's information.
+pub fn choose_swap(
+    truth: &Play,
+    rules: &Rules,
+    k: &Knowledge,
+    u: &Utility,
+    tier: &Tier,
+    rng: &mut Rng,
+    n: u8,
+) -> Mask {
+    let me = k.seat;
+    let heur = swap_choice(truth, me, n);
+    if tier.level == 0 {
+        return heur;
+    }
+    let hand = truth.hands[me as usize];
+    let take = |order: &mut dyn FnMut(Mask) -> u8, from: Mask| {
+        let mut out: Mask = 0;
+        let mut h = from;
+        while out.count_ones() < (n as u32).min(hand.count_ones()) && h != 0 {
+            let c = order(h);
+            out |= bit(c);
+            h &= !bit(c);
+        }
+        let mut rest = hand & !out;
+        while out.count_ones() < (n as u32).min(hand.count_ones()) {
+            let c = lowest(truth, rest);
+            out |= bit(c);
+            rest &= !bit(c);
+        }
+        out
+    };
+    let spades = truth.id.suit_mask[SPADES as usize];
+    let mut cands = vec![
+        heur,
+        take(&mut |h| highest(truth, h), hand),
+        take(&mut |h| lowest(truth, h), hand),
+        take(&mut |h| highest(truth, h), hand & spades),
+        take(&mut |h| lowest(truth, h), hand & !spades),
+        take(&mut |h| highest(truth, h), hand & !spades),
+    ];
+    cands.sort();
+    cands.dedup();
+    let team = (me % 2) as usize;
+    let partner = ((me + 2) % 4) as usize;
+    let nd = (tier.bid_rollouts / 2).max(8);
+    let deals = deal_pool(truth, k, rng, nd, nd);
+    let seed = rng.next_u64();
+    let mut best = heur;
+    let mut bv = f64::MIN;
+    for &g in &cands {
+        let mut sum = 0.0;
+        for (j, d) in deals.iter().enumerate() {
+            let mut p = *d;
+            let pg = swap_choice(&p, partner as u8, n);
+            let cnt = g.count_ones().min(pg.count_ones());
+            let (g2, pg2) = (first_bits(g, cnt), first_bits(pg, cnt));
+            p.hands[me as usize] = (p.hands[me as usize] & !g2) | pg2;
+            p.hands[partner] = (p.hands[partner] & !pg2) | g2;
+            for s in 0..4 {
+                p.bids[s] = heuristic_bid(p.hands[s], &p.id);
+            }
+            p.post_bid(rules);
+            let mut r = Rng::new(seed ^ (j as u64).wrapping_mul(0x9E3779B97F4A7C15));
+            rollout(&mut p, rules, &mut r);
+            sum += u.reward(&p, rules, team);
+        }
+        if sum > bv {
+            bv = sum;
+            best = g;
+        }
+    }
+    best
+}
+
+fn first_bits(m: Mask, n: u32) -> Mask {
+    let mut out = 0;
+    for c in Bits(m).take(n as usize) {
+        out |= bit(c);
+    }
+    out
 }
