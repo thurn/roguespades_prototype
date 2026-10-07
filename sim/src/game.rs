@@ -103,6 +103,8 @@ pub struct RunCfg<'a> {
     pub rounds: u8,
     /// Whether the shop sells cards.
     pub cards: bool,
+    /// Share of shop visits checked by tier-0 rollout rescoring.
+    pub validate: f64,
 }
 
 #[derive(Clone, Debug)]
@@ -137,6 +139,7 @@ struct CardOffer {
     price: i32,
 }
 
+#[derive(Clone)]
 struct Team {
     sigils: Vec<OwnedSigil>,
     history: Vec<OwnedSigil>,
@@ -224,6 +227,8 @@ pub struct RunRec {
     /// Team A's result: 1 win, 0.5 draw, 0 loss.
     pub win: f64,
     pub margin: f64,
+    pub clean: bool,
+    pub checks: Vec<ShopCheck>,
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -274,6 +279,7 @@ fn sell_value(price: i32) -> i32 {
     (price / 2) / 5 * 5
 }
 
+#[derive(Clone)]
 pub struct Runner<'a> {
     cfg: &'a RunCfg<'a>,
     seed: u64,
@@ -282,6 +288,18 @@ pub struct Runner<'a> {
     taken: Mask,
     recs: [TeamRec; 2],
     rule_cache: Vec<Compiled>,
+    tier_override: Option<Tier>,
+    checks: Vec<ShopCheck>,
+}
+
+/// One rollout-rescoring check of the shop model at a shop visit.
+#[derive(Serialize, Default, Clone)]
+pub struct ShopCheck {
+    pub team: u8,
+    pub shop: u8,
+    pub ids: Vec<String>,
+    pub model: Vec<f64>,
+    pub rescored: Vec<f64>,
 }
 
 impl<'a> Runner<'a> {
@@ -312,6 +330,8 @@ impl<'a> Runner<'a> {
             taken: 0,
             recs: Default::default(),
             rule_cache,
+            tier_override: None,
+            checks: vec![],
         }
     }
 
@@ -665,6 +685,9 @@ impl<'a> Runner<'a> {
         let mut orng = Rng::stream(self.seed, &[S_OFFER, ti as u64, shop as u64, reroll]);
         let mut sig = self.sigil_offers(ti, &mut orng);
         let mut cards = self.card_offers(shop, &mut orng, other_offers);
+        if self.cfg.validate > 0.0 && sig.len() >= 2 && rng.chance(self.cfg.validate) {
+            self.check_offers(ti, shop, &sig);
+        }
         for _ in 0..30 {
             // (net gain, is_sigil, offer index)
             let mut opts: Vec<(f64, bool, usize)> = vec![];
@@ -915,7 +938,7 @@ impl<'a> Runner<'a> {
                 let (a, b) = (kt, kt + 2);
                 match r {
                     Rule::Swap(n) => {
-                        let tier = self.cfg.tiers[ti];
+                        let tier = self.tier_override.unwrap_or(self.cfg.tiers[ti]);
                         let view = self.view_rules(&rules, kt);
                         let u = self.utility(kt, round);
                         let mut ga = 0;
@@ -970,7 +993,7 @@ impl<'a> Runner<'a> {
         for k in 0..4 {
             let s = ((dealer + 1 + k) % 4) as usize;
             let kt = s % 2;
-            let tier = self.cfg.tiers[self.tidx(kt)];
+            let tier = self.tier_override.unwrap_or(self.cfg.tiers[self.tidx(kt)]);
             let know = self.knowledge(&play, s as u8, &known, &voids);
             let u = self.utility(kt, round);
             let b = choose_bid(&play, &views[kt], &know, &u, &tier, &mut ai[s]);
@@ -986,7 +1009,7 @@ impl<'a> Runner<'a> {
                 play.turn
             };
             let kt = (s % 2) as usize;
-            let tier = self.cfg.tiers[self.tidx(kt)];
+            let tier = self.tier_override.unwrap_or(self.cfg.tiers[self.tidx(kt)]);
             let views = [self.view_rules(&rules, 0), self.view_rules(&rules, 1)];
             let know = self.knowledge(&play, s, &known, &voids);
             let u = self.utility(kt, round);
@@ -1171,6 +1194,94 @@ impl<'a> Runner<'a> {
         }
     }
 
+    /// Tier-0 rollout rescoring: plays this round on sampled deals with and without each offer.
+    fn check_offers(&mut self, ti: usize, shop: u8, offers: &[usize]) {
+        const K: u64 = 12;
+        let lambda = self.cfg.model.lambda[shop as usize];
+        let model: Vec<f64> = offers
+            .iter()
+            .map(|&d| {
+                self.sigil_value(ti, d, shop, None) - lambda * self.cfg.pool.defs[d].price() as f64
+            })
+            .collect();
+        let margin = |extra: Option<usize>, k: u64| {
+            let mut r = self.clone();
+            r.seed = derive(self.seed, &[999, ti as u64, shop as u64, k]);
+            r.tier_override = Some(Tier::get(0));
+            r.checks.clear();
+            if let Some(d) = extra {
+                if r.teams[ti].sigils.len() >= MAX_SIGILS {
+                    if let Some((w, _)) = r.weakest_sigil(ti, shop, None) {
+                        r.teams[ti].sigils.remove(w);
+                    }
+                }
+                r.teams[ti].sigils.push(OwnedSigil {
+                    def: d,
+                    amount: None,
+                    ratio: 0.0,
+                    shop,
+                    grant: false,
+                    price: 0,
+                    grow: 0.0,
+                    revealed: false,
+                    sold: None,
+                    fires: 0,
+                });
+                r.teams[ti].gold -= self.cfg.pool.defs[d].price();
+            }
+            let before = r.teams[ti].score - r.teams[1 - ti].score;
+            r.play_round(shop);
+            r.teams[ti].score - r.teams[1 - ti].score - before
+        };
+        let base: f64 = (0..K).map(|k| margin(None, k)).sum::<f64>() / K as f64;
+        let rescored: Vec<f64> = offers
+            .iter()
+            .map(|&d| (0..K).map(|k| margin(Some(d), k)).sum::<f64>() / K as f64 - base)
+            .collect();
+        self.checks.push(ShopCheck {
+            team: ti as u8,
+            shop,
+            ids: offers
+                .iter()
+                .map(|&d| self.cfg.pool.defs[d].id.clone())
+                .collect(),
+            model,
+            rescored,
+        });
+    }
+
+    /// Hand-level screen: team A holds `sigils` and owns `cards` (identities) for one round.
+    pub fn screen_round(mut self, sigils: &[usize], cards: &[u8], round: u8) -> RoundRec {
+        for &d in sigils {
+            self.teams[0].sigils.push(OwnedSigil {
+                def: d,
+                amount: None,
+                ratio: 0.0,
+                shop: round,
+                grant: true,
+                price: 0,
+                grow: 0.0,
+                revealed: false,
+                sold: None,
+                fires: 0,
+            });
+        }
+        for &c in cards {
+            self.taken |= bit(c);
+            self.teams[0].cards.push(OwnedCard {
+                ident: c,
+                slot: c,
+                eng: ENG_NONE,
+                price: 0,
+                grant: true,
+                shop: round,
+            });
+        }
+        self.sync_records();
+        self.play_round(round);
+        self.recs[0].rounds.pop().unwrap()
+    }
+
     pub fn run(mut self, board: u64) -> RunRec {
         for round in 1..=self.cfg.rounds {
             // Teams shop at once; card offers never overlap.
@@ -1210,6 +1321,8 @@ impl<'a> Runner<'a> {
                 0.5
             },
             margin,
+            clean: false,
+            checks: std::mem::take(&mut self.checks),
         }
     }
 }
