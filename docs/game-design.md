@@ -68,7 +68,7 @@ Every row is a starting hypothesis.
 | Shop | 3 sigil and 3 card offers per team; unlimited purchases; purely random offers within rarity |
 | Income | 100 base gold + 10 per trick in a made contract + interest |
 | Archetypes | Majors: Suits ([♣] [♦] [♥]), Spades, Ranks, Bid High, Nil. Minors: Low Cards, Rainbow, Streaks, Exact. Never named in the game |
-| Simulation | Declarative sigils on one rules kernel shared by the game and the AI; three AI tiers; 2,000-run experiments in about 10 minutes |
+| Simulation | Declarative sigils on a native Rust simulator; three AI tiers; duplicate grant tournaments measure every sigil at once ([§13](#experiments)) |
 | Prototype | Single-player: you and an AI partner against an AI team |
 
 ## Design pillars
@@ -1021,10 +1021,10 @@ recalibrated at stage 7.
 
 | Metric | Your goal | Measured as | Starting target band |
 | --- | --- | --- | --- |
-| 1. Choices matter | Every sigil contributes measurably to victory | Forced-pick win-rate lift over a same-rarity control. For point sigils, the decisive share: the holder's wins that become losses or draws when rescored without the sigil | Lift above 0; decisive in at least 5% of wins |
+| 1. Choices matter | Every sigil contributes measurably to victory | Win-rate lift over a same-rarity control, from randomized grants ([§13](#experiments)). For point sigils, the decisive share: the holder's wins that become losses or draws when rescored without the sigil | Lift above 0; decisive in at least 5% of wins |
 | 2. Payoffs are doable | Payoffs work naturally; enablers are worth buying before payoffs | Base and committed payoff trigger rates; standalone enabler value under the trials below; additional trigger lift for at least two payoff families | Payoff base at least 10% of rounds and committed at least 60%; enablers show standalone value and add at least 15 percentage points to trigger rates in each of two families |
 | 3. No invalidation | Opponents can't turn a strategy into a non-game | For each archetype and each sigil that touches opponents, the drop in the archetype's win rate when the opponents hold it | At most 15 points |
-| Power ceiling | No dominant best build | Forced-pick lift; win rate of the strongest pairs | Lift at most 12 points; no pair above a 65% win rate |
+| Power ceiling | No dominant best build | Lift; win rate of the strongest pairs and the strongest attainable builds | Lift at most 12 points; no pair above a 65% win rate |
 
 Distance from a band is a signal, not a verdict. A sigil far below its band on
 Choices matter probably needs a bigger number or a new shape. One slightly over
@@ -1219,8 +1219,12 @@ These are tracked but not weighted:
 ## 13. Simulation
 
 > **Status:** provisional. The architecture follows
-> [D15](#d15-sigil-representation)–[D18](#d18-throughput), and the tier budgets
-> are [parameters](#appendix-b-parameter-register) P24.
+> [D15](#d15-sigil-representation)–[D18](#d18-throughput), the measurement
+> design [D28](#d28-measurement-design), and the simulator language
+> [D29](#d29-simulator-language). The tier budgets and experiment precision are
+> [parameters](#appendix-b-parameter-register) P24 and P27. The
+> [sigil design plan](sigil-design-plan.md#the-measurement-engine) gives the
+> full measurement engine.
 
 ### The chicken-and-egg answer
 
@@ -1230,7 +1234,8 @@ sigil-specific knowledge**:
 
 - Play and bidding search the real rules and scoring through the rules kernel,
   so a new sigil changes their choices the moment it exists.
-- The shop values an offer by playing sampled hands with and without it.
+- The shop values an offer with a model fitted to randomized simulation,
+  checked against playing sampled hands with and without it.
 - Hand changes and play-rule enablers need new rollouts with their choices
   enabled; any fitted estimates come from those measured outcomes.
 
@@ -1239,18 +1244,19 @@ and never through per-sigil AI code ([§14](#14-staging)).
 
 ### The rules kernel
 
-One kernel runs the game, the UI, and every AI search:
+One kernel runs every simulation and AI search. It is native Rust, for
+throughput ([D29](#d29-simulator-language)). The playable game comes later and
+must share its rules, through WASM or a port checked by replaying seeds.
 
-- **Compact state with apply-and-undo moves,** so search never deep-copies the
-  game. 1.0's engine runs `structuredClone` on the whole state for every
-  action.
+- **Compact state with apply-and-undo moves,** with cards as 64-bit masks, so
+  search never deep-copies the game. 1.0's engine runs `structuredClone` on
+  the whole state for every action.
 - **Hook tables.** Sigil data compiles into tables for legal plays, each card's
   effective suit and rank, legal plays, the next leader, and scoring events.
 - **A ledger** records every contract point and multiplier each sigil
   contributes, so any score can be recomputed without any set of sigils.
-- **Plain TypeScript with no globals.** Randomness comes from explicit seeded
-  streams. The harness runs under Node 24's built-in type stripping, without
-  Vite.
+- **No globals.** Randomness comes from explicit seeded streams, and runs are
+  deterministic: the same seed and configuration give the same record.
 
 ### Declarative sigils
 
@@ -1294,8 +1300,9 @@ The grammar covers:
 
 Keeping sigils as data makes three things possible:
 
-- **Number sweeps.** The harness searches for the amount that puts a sigil
-  inside its budget and lift band.
+- **Number sweeps.** Grant tournaments randomize each sigil's amount, which
+  measures its dose-response, and the amount moves toward its target lift
+  ([experiments](#experiments)).
 - **Enumeration.** Common payoffs are enumerated from the grammar, roughly
   6 triggers × 15 nouns × 3 effects ≈ 270 candidates.
 - **Targeting.** The grammar shows which sigils touch opponents, so the No
@@ -1303,17 +1310,25 @@ Keeping sigils as data makes three things possible:
 
 ### AI tiers
 
-| Tier | Play | Bidding | Shop | Target per run | Used for |
+| Tier | Play | Bidding | Shop | Throughput target (18 cores) | Used for |
 | --- | --- | --- | --- | --- | --- |
-| 0 | Heuristic: 1.0's rollout policy on the kernel, plus a one-trick lookahead scored with sigils | Trick estimate, then expected score over the scoring model | Rescoring with 16 sampled hands | About 0.3 s | Sweeps, enumeration, screening |
-| 1 | Information-set MCTS, about 200 iterations over 32 deals that fit the bids | Expected score over 40 rollouts | Rescoring with 32 hands | About 3 s | Sigil metrics and the fun score |
-| 2 | Information-set MCTS, 1,500 iterations over the best 64 of 512 deals | Expected score over 160 rollouts | Rescoring with 64 hands | About 20 s | Final checks, tier calibration, and the shipped AI |
+| 0 | Heuristic: 1.0's rollout policy on the kernel, plus a one-trick lookahead scored with sigils | Trick estimate, then expected value over the scoring model | Fitted value model | At least 100 runs per second | Grant tournaments, sweeps, screening |
+| 1 | Information-set MCTS, about 200 iterations over 32 deals that fit the bids | Expected value over 40 rollouts | Fitted value model | At least 5 runs per second | Calibration and confirmation |
+| 2 | Information-set MCTS, 1,500 iterations over the best 64 of 512 deals | Expected value over 160 rollouts | Rescoring with 64 hands | At least 0.5 runs per second | Final checks, tier calibration, and the shipped AI |
 
-- The algorithms are 1.0's: deals sampled to fit the bids, UCB search,
-  heuristic rollouts, tie-breaking among near-equal moves, and expected-score
-  bidding and nil decisions.
-- Tier 0 and 1 results stand in for tier 2 only while they rank sigils the
-  same way. Spot checks at each stage, and stage 7, confirm it.
+- The algorithms are 1.0's, ported to Rust: deals sampled to fit the bids,
+  UCB search, heuristic rollouts, tie-breaking among near-equal moves, and
+  bidding and nil decisions by expected value.
+- **Value means win probability** over the rest of the run, not round score.
+  A fitted curve converts each outcome's score margin and the rounds left into
+  win probability, so trailing teams take risks late, as people do. Growth
+  counters and gold are valued with the shop value model, so the AI plays
+  toward run-long effects.
+- **Opening choices,** such as a swap, are chosen from about 10 heuristic
+  candidates by rollouts at tiers 1 and 2; tier 0 uses the heuristic alone.
+- Tier-0 estimates are corrected toward tier 1 by a calibration subset on
+  shared seeds, and tier 2 spot-checks rankings at the end
+  ([experiments](#experiments)).
 
 ### Information and fairness
 
@@ -1330,16 +1345,22 @@ deck as standard.
 
 ### Shop AI
 
-- **Value by rescoring.** For each offer, the AI samples hands built from the
-  team's owned cards plus random fill, and plays them on tier 0 with and
-  without the offer. That gives the change in points per round. A fitted curve
-  from score margin by round to win rate turns this into win probability over
-  the remaining rounds, which is then divided by price.
-- **Enabler values** come from replaying hands through the changed rules,
-  including seeded Opening changes and swap or lead choices with each seat's
-  actual information. Bidding sees the resulting hand, never future draws. Rescoring an unchanged sequence of plays cannot value them.
-  Fitted estimates may approximate those rollout results, then get checked
-  against the standalone trials.
+- **Value from a fitted model** ([D17](#d17-shop-ai)). Each offer's value is
+  its predicted gain in win probability, net of its price at that shop's
+  value of gold. It comes from the outcome model fitted to the latest grant
+  tournament: the sigil's value by shop, its pair terms with owned sigils, and
+  its coherence with the build. Cards use the same form.
+- **Enabler values** come from the same randomized grants, so they include
+  play under the changed rules, seeded Opening changes, and swap or lead
+  choices made with each seat's actual information.
+- **Validation by rescoring.** On a subsample of shop visits, the AI samples
+  hands built from the team's owned cards plus random fill, and plays them on
+  tier 0 with and without each offer. The model's ranking is checked against
+  that, and clearly mispriced offers are corrected.
+- **New sigils** start from a feature model (rarity, category, trigger type,
+  and hand-level trigger rate) until a tournament has measured them.
+- **Exploration.** In simulation, about 5% of purchases are random among
+  affordable offers, so the model keeps seeing alternatives.
 - **Buying.**
   - Buy the best value per gold while it clears a bar that accounts for
     interest.
@@ -1347,7 +1368,8 @@ deck as standard.
   - Sell when a slot is needed and an offer beats an owned item by more than
     the sale loses.
 - **Policies.** A flexible team uses plain values. A committed team adds a
-  bonus for one archetype's sigils and for the cards they reward.
+  bonus for one archetype's sigils and for the cards they reward. A
+  build-chaser buys one target build's pieces when offered.
 
 ### Experiments
 
@@ -1359,26 +1381,49 @@ deck as standard.
 
   The arms of an experiment share deals and offers until their choices
   diverge.
-- **Paired runs.** Arms run on the same seeds. A standard experiment is 2,000
-  paired runs, which takes about 10 minutes at tier 1 on 16 worker processes.
-  Results report 90% confidence intervals.
+- **Stable dealing.** Each round's deal is a fixed permutation of the deck.
+  Owned cards are pulled out, and the random fill takes the next cards in
+  order, so arms whose owned cards differ slightly still get nearly the same
+  hands.
+- **Duplicate boards.** Every seed is played twice with the teams swapping
+  seats, as in duplicate bridge, which cancels most deal luck between them. The
+  pair of runs, a **board**, is the unit of analysis. Its outcome is the score
+  margin smoothed through the fitted margin-to-win curve, which carries more
+  information than a win or loss.
+- **Grant tournaments** ([D28](#d28-measurement-design)) are the main
+  experiment. Both teams shop normally, and at random shops each team is
+  forced to buy random sigils at full price. One regression over all boards
+  estimates every sigil's value at once. It has terms for amount, acquiring
+  shop, coherence with the team's build, and pairs (a factorization machine),
+  with empirical-Bayes shrinkage and cluster-bootstrap 90% intervals.
+  - **Grants** mix uniform draws with draws coherent with a build, and favor
+    uncertain sigils. Candidates enter only through grants.
+  - **Randomized amounts and gold** measure each sigil's dose-response and the
+    value of gold at each shop.
+  - **Clean boards,** about a tenth, have no grants and measure the game as
+    played.
+- **Precision targets.** Experiments are sized to a target interval width
+  (P27) from measured throughput, not to a fixed run count.
+- **Calibration.** A tier-1 subset of each tournament, on shared seeds,
+  corrects tier-0 estimates and measures each sigil's skill gradient.
 - **Hand-level trials** (stage 2). Fixed builds of sigils and owned cards play
   single rounds against random deals, measuring trigger rates, points per
   round, and set rates. They're cheap, and they don't depend on the shop AI.
-- **Forced-pick trials.** A candidate is forced into one team at shop 1, 3, or
-  5, and that team builds around it.
-  - The control arm forces a same-rarity plain sigil instead: "+N contract
-    points", with N at its rarity's flat budget.
-  - The opponents are a flexible field.
-- **Standalone enabler trials.** Run the no-payoff comparisons in
-  [§12](#standalone-enabler-value) before granting any synergy credit; retain
-  stage-specific results and a comparison to a same-price generic payoff.
+- **Controls.** Every tournament grants same-rarity plain sigils, "+N
+  contract points" with N at the rarity's flat budget, so every lift is
+  measured against them in the same runs. Forced-pick trials on a few sigils
+  check the tournament's estimates.
+- **Standalone enabler trials.** A tournament whose shops sell cards but no
+  sigils, granting only enablers and controls, runs the no-payoff comparisons
+  in [§12](#standalone-enabler-value) by purchase stage.
 - **Commitment trials.** One team commits to an archetype at shop 1. The trial
   measures online rates and win rates against a flexible field.
-- **Counter scans.** A committed archetype plays against opponents forced to
-  hold a sigil that touches opponents.
-- **Pair trials.** Forced pairs run against each sigil alone, for the synergy
-  family.
+- **Counter scans.** In commitment trials, opponents receive random grants of
+  sigils that touch opponents, measuring each archetype's loss.
+- **Pairs and builds.** The strongest predicted pairs are oversampled as joint
+  grants and confirmed on fresh seeds. A search over attainable builds feeds
+  build-chaser arms, narrowed by successive halving, to find the power
+  ceiling.
 - **Secondary configuration.** Teams of two humans with 16 owned cards are
   checked at stage 7, but not balanced for.
 
@@ -1386,12 +1431,12 @@ deck as standard.
 
 | Keep | Rebuild |
 | --- | --- |
-| The card model and rendering; the table, hand, trick, shop, and scoreboard components; styles | The engine core: `reduce`, `drain`, and the per-action `structuredClone` become the kernel |
+| The card model and rendering; the table, hand, trick, shop, and scoreboard components; styles | The engine core: `reduce`, `drain`, and the per-action `structuredClone` become the Rust kernel |
 | The Spades rules logic, as the kernel's reference | Sigil handlers and the 28-window `Ctx` API become declarative data and rule hooks |
-| The AI algorithms: deal sampling fitted to bids, MCTS, tie-breaking, expected-score bidding, and nil logic | The scoring probes, which the kernel's exact scoring replaces |
+| The AI algorithms, ported to Rust: deal sampling fitted to bids, MCTS, tie-breaking, expected-score bidding, and nil logic | The scoring probes, which the kernel's exact scoring replaces |
 | The bench metric definitions: set rate, overtakes, and nil covers | The shop, which becomes team-level and sells cards with engravings |
 | — | Randomness: seeded streams instead of patching `Math.random` |
-| — | The bench, which becomes parallel paired runs with win rates and per-sigil ledgers |
+| — | The bench, which becomes duplicate grant tournaments with per-sigil ledgers and run records |
 
 ## 14. Staging
 
@@ -1406,7 +1451,7 @@ their prices must be stable before any payoff can be measured.
 
 | Stage | Builds | Moves on when |
 | --- | --- | --- |
-| 0. Kernel | The rules kernel, AI tiers 0–2, seeded streams, and the parallel experiment runner | Plain 8-round Spades: the AI meets 1.0's play targets (set rate, nil success, bid error); a 2,000-run experiment takes about 10 minutes |
+| 0. Kernel | The Rust rules kernel, AI tiers 0–2, seeded streams, the experiment runner, and the analysis pipeline | Plain 8-round Spades: the AI meets 1.0's play targets (set rate, nil success, bid error); measured throughput per tier sizes every experiment; the pipeline recovers planted effects |
 | 1. Cards | The card shop, the 8-card cap, income and interest, and rerolls, with no sigils; 1.0's UI ported onto the kernel | Card prices give roughly equal value per gold; no card dominates; hands keep their variety; the game is playable by hand |
 | 2. Commons, hand level | The grammar, text generation, and lint; about 270 enumerated common payoffs; hand-designed common enablers and utility | Hand-level trigger rates and swept numbers for every candidate; about 1.5 promising candidates for each common the pool needs |
 | 3. Commons, run level | The rescoring shop AI and its policies | A first common pool chosen on sigil metrics, standalone enabler value, and elegance; the fun score is recorded; density levers are decided here if Commitment works lags its band |
@@ -1540,7 +1585,7 @@ wording conventions can be chosen by designer direction.
 
 - **Design decisions** (D1–D13 and D23–D27) are judged by the sigil metrics,
   the fun score, and designer judgment.
-- **Method decisions** (D14–D21) are judged by harness measurements or designer
+- **Method decisions** (D14–D21, D28, and D29) are judged by harness measurements or designer
   judgment.
 - **Presentation** (D22) rests on designer judgment and playtests.
 
@@ -1777,7 +1822,9 @@ wording conventions can be chosen by designer direction.
 
 ### D16. AI architecture
 
-- **Starting choice:** one rules kernel shared by the game and the AI search.
+- **Starting choice:** one rules kernel shared by the simulation and the AI
+  search, in Rust ([D29](#d29-simulator-language)); the later playable game
+  must share its rules.
 - **Alternatives:**
   - patch 1.0's plain-Spades search;
   - search with perfect information in simulation.
@@ -1786,20 +1833,29 @@ wording conventions can be chosen by designer direction.
 
 ### D17. Shop AI
 
-- **Starting choice:** value offers by playing sampled hands with and without
-  them, with fresh rule-aware rollouts for hand changes and play-rule enablers.
+- **Starting choice:** value offers with a model fitted to each round's grant
+  tournament, refit every round, with random exploration. Rescoring sampled
+  hands with and without an offer checks the model on a subsample.
 - **Alternatives:**
-  - fitted values only;
+  - rescoring in every shop, the previous starting choice. It was revised on
+    2026-10-06 by designer direction: about 200 hand simulations per shop
+    visit dwarf the run itself and make measuring the whole pool every round
+    unaffordable;
   - hand-written heuristics.
-- **Decided by:** shop skill at stage 3: on paired seeds, the rescoring shopper
-  should beat the simpler ones.
+- **Decided by:** rank agreement with rescoring on a subsample, and shop skill
+  at stage 3: on paired boards, the model shopper should match or beat the
+  rescoring shopper.
 - **Evidence:** pending. **Status:** hypothesis.
 
 ### D18. Throughput
 
-- **Starting choice:** three AI tiers, with a standard experiment taking about
-  10 minutes (parameters P24 and P27).
+- **Starting choice:** three AI tiers. Bulk tournaments run at tier 0 and are
+  corrected toward tier 1 by a calibration subset on shared seeds. Experiments
+  are sized to precision targets from measured throughput (parameters P24 and
+  P27).
 - **Alternatives:**
+  - fixed 2,000-run paired experiments at tier 1, the previous starting
+    choice;
   - full search only, with experiments run overnight;
   - heuristic bots, plus full-search spot checks.
 - **Decided by:** agreement between tiers (whether tiers 0 and 1 rank sigils
@@ -1949,6 +2005,53 @@ wording conventions can be chosen by designer direction.
   Compare only after players have seen their own resulting hands.
 - **Evidence:** pending; no simulator exists yet. **Status:** hypothesis.
 
+### D28. Measurement design
+
+- **Starting choice:** grant tournaments. These are normal games where both
+  teams shop, plus random forced purchases at full price, played as duplicate
+  boards with seats swapped. One regression over all boards estimates every
+  sigil's value at once, with terms for amount, acquiring shop, coherence, and
+  pairs, empirical-Bayes shrinkage, and cluster-bootstrap intervals.
+  Commitment, standalone, pair-confirmation, and build-chaser arms cover what
+  single-sigil estimates can't. The
+  [sigil design plan](sigil-design-plan.md#the-measurement-engine) has the
+  detail.
+- **Alternatives:**
+  - separate paired forced-pick trials for each sigil, the previous design;
+  - fully random loadouts with no sigil shopping;
+  - estimates from ordinary shop purchases.
+- **Prior reasoning:** these are estimates, made before any measurement.
+  - A 2,000-run paired trial resolves about ±2 win-rate points. One trial per
+    sigil and purchase stage costs more than a round's budget, while each
+    tournament board informs about six sigils.
+  - Shop-chosen purchases are confounded with being ahead.
+  - Fully random loadouts ignore building around a sigil, and undervalue
+    payoffs that need support.
+- **Decided by:** pipeline validation (planted effects recovered, and the
+  same sigil under two ids estimated alike), interval width per run, and
+  agreement with forced-pick trials on a sample of sigils.
+- **Test:** the pilot in Phase 0 of the plan, plus forced-pick trials on
+  about ten sigils compared with their tournament estimates.
+- **Evidence:** pending. **Status:** hypothesis.
+
+### D29. Simulator language
+
+- **Starting choice:** a native Rust simulator for the kernel, AI, shop, and
+  runner, with Python for analysis and a TypeScript sigil viewer. The playable
+  game is deferred. When built, it must share the kernel's rules, through WASM
+  or a port checked by replaying seeds.
+- **Alternatives:**
+  - TypeScript on Node worker threads, as previously planned;
+  - a Rust core compiled to WASM for the game from the start;
+  - TypeScript first, porting the hot path only if it proves slow.
+- **Prior reasoning:** tier 1 at about 3 seconds per run needs roughly 700,000
+  card plays per second per core. Measuring the whole pool every round needs
+  far more runs than per-sigil trials did. This is an estimate, not a
+  measurement.
+- **Decided by:** designer direction on 2026-10-06, and measured throughput in
+  Phase 0 of the plan.
+- **Evidence:** pending. **Status:** hypothesis.
+
 ## Appendix B: Parameter register
 
 Every number below is a starting value. Each row lists the range to test, the
@@ -1980,10 +2083,10 @@ the sweep that chose its value ([§16](#parameter-records)).
 | P21 | Pool sizes and category split | 44 / 33 / 17 / 3: 90 payoffs and 7 shared enablers | Cut candidates that don't improve the game; expand only with demonstrated standalone value | Commitment works; Archetypes viable | 3–6 |
 | P22 | Nil base value before multipliers | ±100 | 50–150 | Archetypes viable (Nil) | 0 |
 | P23 | Bid-scaled share of the pool | A third of contract-point sigils, a quarter of multipliers | None to half | Skill and bidding | 3–5 |
-| P24 | AI tier budgets | About 0.3 s, 3 s, and 20 s per run | Per tier | Agreement between tiers; run time | 0 |
+| P24 | AI tier budgets | Search budgets as in [§13](#ai-tiers); at least 100, 5, and 0.5 runs per second on 18 cores | Per tier | Agreement between tiers; run time | 0 |
 | P25 | Fun score weights | 25 / 15 / 15 / 15 / 15 / 15 (families 4–9) | Any | Designer judgment, checked against playtests | 7 |
 | P26 | Sigil-metric target bands and fun score bands | As in [§12](#12-metrics-what-fun-means) | Any | Calibrated once the harness runs, and again at stage 7 | 3, 7 |
-| P27 | Experiment size | 2,000 paired runs | 1,000–10,000 | Width of confidence intervals | 0 |
+| P27 | Experiment precision | Median 90% interval half-width of 1.5 win-rate points per sigil | 1–3 points | Run time; decision quality | 0 |
 | P28 | Simplicity rubric | Number/rank/check 1; arithmetic rider 2; selector/state 1; new term including Opening 2, or 4 at common; S = 1 / (1 + C) | Positive costs; compare 1–3 per burden; twice the term cost at common; expand aliases and rank classes before scoring | Designer judgment, calibrated by comprehension playtests and paired simulation tradeoffs | 2–7 |
 | P29 | Starting contract multiplier and +mult scale | Start at 10; +2–5 repeated rewards, +10–20 one-time rewards | Starting values 1, 5, 10, 15; sweep rewards jointly | Power ceiling; Close and live; Skill and bidding; Simplicity | 3–6 |
 | P30 | Standalone enabler acceptance | 90% lower bounds: ≥3 percentage-point lift over disabled effect; ≥−2 versus same-price flat payoff; ≥40% no-payoff playtest preference; support two families | Lift 1–5 points; comparison tolerance 0–3 points; preference 30–60% | Material benefit; standalone appeal; breadth; power ceiling | 2–7 |
