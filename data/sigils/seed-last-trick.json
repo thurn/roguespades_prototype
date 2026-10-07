@@ -16,9 +16,9 @@
     }
   },
   "design": {
-    "decision": "",
-    "opponent": "",
-    "rationale": "GDD illustrative seed (§9).",
+    "decision": "Plays to win tricks with the named cards or pattern, timing them before opponents can void or trump.",
+    "opponent": "Revealed when it first fires; opponents trump, duck, or break runs to deny it.",
+    "rationale": "GDD illustrative seed (§9). Kept on its measured lift and archetype coverage (see history).",
     "partners": [],
     "critic": {
       "verdict": "keep",
@@ -52,12 +52,20 @@
     {
       "step": "round-2",
       "note": "round-2: amount 20 -> 15 by global scale x0.70 toward the par curve."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: named Emptying Hourglass (hourglass)."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: final reading lift +0.8 [-0.4, +2.0] pts, fire 49%, skill gradient -0.3; inside or overlapping its band in the final fit."
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Emptying Hourglass",
+  "icon": "hourglass",
+  "iconFamily": "hourglass",
+  "iconWord": "Hourglass",
   "gddText": "+15 contract multiplier when your team wins the last trick of a round",
   "price": 50,
   "text": "+15 contract multiplier when your team wins the last trick of a round",
@@ -88,55 +96,55 @@
   },
   "lint": [],
   "estimates": {
-    "step": "round-2",
-    "exposures": 2667,
+    "step": "round-3",
+    "exposures": 3637,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 5.77,
-        "lo": 4.36,
-        "hi": 7.17,
+        "value": 0.78,
+        "lo": -0.39,
+        "hi": 1.96,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 2667
+        "n": 3637
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 2.01,
-        "lo": 0.61,
-        "hi": 3.42,
+        "value": 1.1,
+        "lo": -0.07,
+        "hi": 2.27,
         "bandLo": null,
         "bandHi": null,
-        "n": 2667
+        "n": 3637
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 48.55,
+        "value": 48.56,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 57920
+        "n": 185267
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 49.25,
+        "value": 48.38,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 26690
+        "n": 94297
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 0.95,
-        "lo": -0.61,
-        "hi": 2.51,
+        "value": 3.05,
+        "lo": 1.96,
+        "hi": 4.15,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -144,9 +152,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 3.75,
-        "lo": 1.76,
-        "hi": 5.75,
+        "value": -0.32,
+        "lo": -2.44,
+        "hi": 1.81,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -167,43 +175,43 @@
       }
     ],
     "amountSlope": {
-      "value": 0.95,
-      "lo": -0.61,
-      "hi": 2.51
+      "value": 3.05,
+      "lo": 1.96,
+      "hi": 4.15
     },
     "skillGradient": {
-      "value": 3.75,
-      "lo": 1.76,
-      "hi": 5.75
+      "value": -0.32,
+      "lo": -2.44,
+      "hi": 1.81
     },
     "pairs": [
       {
-        "with": "seed-raise",
-        "synergy": 0.08
+        "with": "r2-twos-beat-rare",
+        "synergy": 0.62
       },
       {
-        "with": "ua-side-raise",
-        "synergy": 0.03
+        "with": "r2-diamonds-beat",
+        "synergy": 0.36
       },
       {
-        "with": "ra-ace-win-x",
-        "synergy": 0.03
+        "with": "ub-become-four-spades",
+        "synergy": 0.33
       },
       {
-        "with": "r1-faces-untrumpable",
-        "synergy": 0.02
+        "with": "r2-queens-beat",
+        "synergy": 0.29
       },
       {
-        "with": "ra-ace-hold-x",
-        "synergy": 0.01
+        "with": "seed-two-win",
+        "synergy": 0.28
       }
     ],
     "raw": {
-      "liftU": 0.032642037603485795,
-      "seU": 0.01383243651708084,
-      "slopeU": 0.0221928260929424,
-      "slopeSeU": 0.02213722574813742,
-      "k": 1.23358094413778
+      "liftU": 0.012964192341564432,
+      "seU": 0.008417795961394007,
+      "slopeU": 0.051908258522322656,
+      "slopeSeU": 0.011328310753871916,
+      "k": 1.696995597363072
     }
   },
   "reports": [
@@ -214,7 +222,9 @@
     "reports/round-1-dashboard.md",
     "docs/sigils/rounds/round-1.md",
     "reports/round-2-dashboard.md",
-    "docs/sigils/rounds/round-2.md"
+    "docs/sigils/rounds/round-2.md",
+    "reports/round-3-dashboard.md",
+    "docs/sigils/rounds/round-3.md"
   ],
   "sources": [
     "enumerated",

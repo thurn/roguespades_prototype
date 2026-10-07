@@ -18,9 +18,9 @@
     }
   },
   "design": {
-    "decision": "",
-    "opponent": "",
-    "rationale": "GDD illustrative seed (§9).",
+    "decision": "Plays to win tricks with the named cards or pattern, timing them before opponents can void or trump.",
+    "opponent": "Revealed when it first fires; opponents trump, duck, or break runs to deny it.",
+    "rationale": "GDD illustrative seed (§9). Kept on its measured lift and archetype coverage (see history).",
     "partners": [],
     "critic": {
       "verdict": "keep",
@@ -50,12 +50,28 @@
     {
       "step": "round-2",
       "note": "round-2: amount 5 -> 4 by retune; lift +8.7 pts against target +5, slope +5.1 pts per doubling."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: named Hero's Badge (badge)."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: amount 4 -> 5 by retune; lift -0.0 pts against target +5, slope +3.4 pts per doubling."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: amount kept at the measured 4; the final retune proposal (4 -> 5) is recorded for a later round instead of shipping an unmeasured amount."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: final reading lift -0.0 [-1.4, +1.4] pts, fire 84%, skill gradient -2.1; inside or overlapping its band in the final fit."
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Hero's Badge",
+  "icon": "badge",
+  "iconFamily": "badge",
+  "iconWord": "Badge",
   "gddText": "+5 contract multiplier when your team wins a trick with an [A]",
   "price": 100,
   "text": "+4 contract multiplier when your team wins a trick with an [A]",
@@ -91,55 +107,55 @@
   },
   "lint": [],
   "estimates": {
-    "step": "round-2",
-    "exposures": 4348,
+    "step": "round-3",
+    "exposures": 3110,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 8.66,
-        "lo": 7.43,
-        "hi": 9.89,
+        "value": -0.01,
+        "lo": -1.38,
+        "hi": 1.35,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 4348
+        "n": 3110
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 4.54,
-        "lo": 3.31,
-        "hi": 5.77,
+        "value": 2.07,
+        "lo": 0.7,
+        "hi": 3.43,
         "bandLo": null,
         "bandHi": null,
-        "n": 4348
+        "n": 3110
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 88.56,
+        "value": 84.48,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 117242
+        "n": 112958
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 90.96,
+        "value": 89.73,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 79237
+        "n": 49295
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 5.11,
-        "lo": 3.76,
-        "hi": 6.46,
+        "value": 3.37,
+        "lo": 1.95,
+        "hi": 4.79,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -147,9 +163,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 4.12,
-        "lo": 1.99,
-        "hi": 6.25,
+        "value": -2.08,
+        "lo": -4.71,
+        "hi": 0.55,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -167,46 +183,50 @@
       {
         "step": "round-2",
         "amount": 5
+      },
+      {
+        "step": "round-3",
+        "amount": 4
       }
     ],
     "amountSlope": {
-      "value": 5.11,
-      "lo": 3.76,
-      "hi": 6.46
+      "value": 3.37,
+      "lo": 1.95,
+      "hi": 4.79
     },
     "skillGradient": {
-      "value": 4.12,
-      "lo": 1.99,
-      "hi": 6.25
+      "value": -2.08,
+      "lo": -4.71,
+      "hi": 0.55
     },
     "pairs": [
       {
         "with": "seed-raise",
-        "synergy": 0.34
-      },
-      {
-        "with": "ua-side-raise",
-        "synergy": 0.14
+        "synergy": 0.2
       },
       {
         "with": "ra-ace-win-x",
-        "synergy": 0.13
+        "synergy": 0.16
       },
       {
         "with": "r1-faces-untrumpable",
-        "synergy": 0.12
+        "synergy": 0.11
       },
       {
-        "with": "ra-ace-hold-x",
-        "synergy": 0.07
+        "with": "ua-side-raise",
+        "synergy": 0.05
+      },
+      {
+        "with": "ra-jq-become-aces",
+        "synergy": 0.03
       }
     ],
     "raw": {
-      "liftU": 0.073644833616014,
-      "seU": 0.012107223409817078,
-      "slopeU": 0.11960252424638528,
-      "slopeSeU": 0.019209053562075633,
-      "k": 1.23358094413778
+      "liftU": 0.024354619493591887,
+      "seU": 0.009776927477588671,
+      "slopeU": 0.05729637207219934,
+      "slopeSeU": 0.014663914885811384,
+      "k": 1.696995597363072
     }
   },
   "reports": [
@@ -217,7 +237,9 @@
     "reports/round-1-dashboard.md",
     "docs/sigils/rounds/round-1.md",
     "reports/round-2-dashboard.md",
-    "docs/sigils/rounds/round-2.md"
+    "docs/sigils/rounds/round-2.md",
+    "reports/round-3-dashboard.md",
+    "docs/sigils/rounds/round-3.md"
   ],
   "gddEffect": {
     "type": "mult",

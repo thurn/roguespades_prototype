@@ -32,7 +32,7 @@
       "elegance": 4
     }
   },
-  "status": "candidate",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -46,6 +46,10 @@
     {
       "step": "draft-rare",
       "note": "draft-rare: restored: the hand-level screen plays one round with no run score, so 'behind' could never hold there; measured in round 1 instead."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: cut: it measured -6.2 [-5.9, -3.8] pts in round 1 and was never kept; the comeback idea is recorded as an open design direction."
     }
   ],
   "name": null,

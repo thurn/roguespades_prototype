@@ -18,9 +18,9 @@
     }
   },
   "design": {
-    "decision": "",
-    "opponent": "",
-    "rationale": "Enumerated from the grammar (D21).",
+    "decision": "Spends leads on the named cards even when another lead is safer.",
+    "opponent": "Revealed on the first qualifying lead; opponents void the suit or duck to make those leads cost tricks.",
+    "rationale": "Enumerated from the grammar (D21). Kept on its measured lift and archetype coverage (see history).",
     "partners": []
   },
   "status": "kept",
@@ -49,12 +49,28 @@
     {
       "step": "round-2",
       "note": "round-2: amount 4 -> 3 by global scale x0.70 toward the par curve."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: named Advancing Monarch (chess-king)."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: amount 3 -> 5 by retune; lift -6.0 pts against target +2, slope +1.9 pts per doubling."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: amount kept at the measured 3; the final retune proposal (3 -> 5) is recorded for a later round instead of shipping an unmeasured amount."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: final reading lift -6.0 [-7.1, -4.8] pts, fire 51%, skill gradient -2.6; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Advancing Monarch",
+  "icon": "chess-king",
+  "iconFamily": "chess-king",
+  "iconWord": "Monarch",
   "price": 50,
   "text": "+3 contract multiplier when your team leads a [K]",
   "category": "mult",
@@ -89,55 +105,55 @@
   },
   "lint": [],
   "estimates": {
-    "step": "round-2",
-    "exposures": 4816,
+    "step": "round-3",
+    "exposures": 2992,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 0.39,
-        "lo": -0.84,
-        "hi": 1.61,
+        "value": -5.96,
+        "lo": -7.12,
+        "hi": -4.8,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 4816
+        "n": 2992
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -1.48,
-        "lo": -2.71,
-        "hi": -0.26,
+        "value": -3.37,
+        "lo": -4.53,
+        "hi": -2.22,
         "bandLo": null,
         "bandHi": null,
-        "n": 4816
+        "n": 2992
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 51.25,
+        "value": 51.02,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 474315
+        "n": 200042
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 50.2,
+        "value": 50.63,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 287118
+        "n": 70131
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 0.99,
-        "lo": -0.07,
-        "hi": 2.05,
+        "value": 1.86,
+        "lo": 0.61,
+        "hi": 3.11,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -145,9 +161,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 1.87,
-        "lo": 0.1,
-        "hi": 3.64,
+        "value": -2.59,
+        "lo": -4.84,
+        "hi": -0.34,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -168,43 +184,43 @@
       }
     ],
     "amountSlope": {
-      "value": 0.99,
-      "lo": -0.07,
-      "hi": 2.05
+      "value": 1.86,
+      "lo": 0.61,
+      "hi": 3.11
     },
     "skillGradient": {
-      "value": 1.87,
-      "lo": 0.1,
-      "hi": 3.64
+      "value": -2.59,
+      "lo": -4.84,
+      "hi": -0.34
     },
     "pairs": [
       {
         "with": "seed-raise",
-        "synergy": 0.3
+        "synergy": 0.21
       },
       {
         "with": "ra-ace-win-x",
-        "synergy": 0.14
-      },
-      {
-        "with": "ua-side-raise",
-        "synergy": 0.12
+        "synergy": 0.16
       },
       {
         "with": "r1-faces-untrumpable",
         "synergy": 0.11
       },
       {
-        "with": "ra-ace-hold-x",
-        "synergy": 0.06
+        "with": "ua-side-raise",
+        "synergy": 0.05
+      },
+      {
+        "with": "ra-jq-become-aces",
+        "synergy": 0.03
       }
     ],
     "raw": {
-      "liftU": -0.0240367565456285,
-      "seU": 0.012056177284647153,
-      "slopeU": 0.023162154484389755,
-      "slopeSeU": 0.015099388422543778,
-      "k": 1.23358094413778
+      "liftU": -0.03976230731879149,
+      "seU": 0.008297693023464987,
+      "slopeU": 0.031598277852565,
+      "slopeSeU": 0.01288866978211549,
+      "k": 1.696995597363072
     }
   },
   "reports": [
@@ -213,6 +229,8 @@
     "reports/round-1-dashboard.md",
     "docs/sigils/rounds/round-1.md",
     "reports/round-2-dashboard.md",
-    "docs/sigils/rounds/round-2.md"
+    "docs/sigils/rounds/round-2.md",
+    "reports/round-3-dashboard.md",
+    "docs/sigils/rounds/round-3.md"
   ]
 }

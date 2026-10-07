@@ -12,11 +12,22 @@ from . import steps as S
 from .common import RUNS, load_sigils
 
 
-def run(step: str, extra: list, builds: bool, recenter: bool, prev_pickle: str | None) -> None:
+def run(
+    step: str,
+    extra: list,
+    builds: bool,
+    recenter: bool,
+    prev_pickle: str | None,
+    calib: float = 0.2,
+    boards_mult: float = 1.0,
+) -> None:
     sig = load_sigils()
     pool = S.kept_ids(sig)
     prev_m = pickle.load(open(prev_pickle, "rb")) if prev_pickle else None
-    out = RO.measure_round(step, pool, extra=extra, prev_m=prev_m, calib_share=0.2, builds=builds)
+    nb = int(S.boards_for(len(pool) + len(extra) + 8, half_width=1.5) * boards_mult)
+    out = RO.measure_round(
+        step, pool, extra=extra, prev_m=prev_m, calib_share=calib, builds=builds, boards=nb
+    )
     m = out["m"]
     sig = load_sigils()
     notes = {}

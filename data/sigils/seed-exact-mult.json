@@ -16,9 +16,9 @@
     }
   },
   "design": {
-    "decision": "",
-    "opponent": "",
-    "rationale": "GDD illustrative seed (§9).",
+    "decision": "Changes the bid: whether to reach, avoid, or land exactly on the contract that pays.",
+    "opponent": "Revealed at bidding or scoring; opponents defend harder against a contract worth more.",
+    "rationale": "GDD illustrative seed (§9). Kept on its measured lift and archetype coverage (see history).",
     "partners": [],
     "critic": {
       "verdict": "keep",
@@ -52,12 +52,28 @@
     {
       "step": "round-2",
       "note": "round-2: amount 20 -> 10 by retune; lift +4.6 pts against target +2, slope +1.6 pts per doubling."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: named Fitted Puzzle (puzzle)."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: amount 10 -> 20 by retune; lift -4.1 pts against target +2, slope +1.2 pts per doubling."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: amount kept at the measured 10; the final retune proposal (10 -> 20) is recorded for a later round instead of shipping an unmeasured amount."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: final reading lift -4.1 [-5.3, -3.0] pts, fire 23%, skill gradient -0.3; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Fitted Puzzle",
+  "icon": "puzzle",
+  "iconFamily": "puzzle",
+  "iconWord": "Puzzle",
   "gddText": "+15 contract multiplier if your team makes its contract exactly",
   "price": 50,
   "text": "+10 contract multiplier if your team makes its contract exactly",
@@ -83,55 +99,55 @@
   },
   "lint": [],
   "estimates": {
-    "step": "round-2",
-    "exposures": 5182,
+    "step": "round-3",
+    "exposures": 9472,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 4.56,
-        "lo": 2.41,
-        "hi": 6.72,
+        "value": -4.12,
+        "lo": -5.27,
+        "hi": -2.96,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 5182
+        "n": 9472
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 1.13,
-        "lo": -1.03,
-        "hi": 3.29,
+        "value": -3.84,
+        "lo": -4.99,
+        "hi": -2.68,
         "bandLo": null,
         "bandHi": null,
-        "n": 5182
+        "n": 9472
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 21.73,
+        "value": 23.26,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 60632
+        "n": 107973
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 21.62,
+        "value": 23.8,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 3150
+        "n": 12663
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 1.63,
-        "lo": 0.61,
-        "hi": 2.65,
+        "value": 1.22,
+        "lo": 0.44,
+        "hi": 1.99,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -139,9 +155,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 3.43,
-        "lo": 1.19,
-        "hi": 5.67,
+        "value": -0.28,
+        "lo": -2.82,
+        "hi": 2.25,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -155,46 +171,50 @@
       {
         "step": "round-2",
         "amount": 20
+      },
+      {
+        "step": "round-3",
+        "amount": 10
       }
     ],
     "amountSlope": {
-      "value": 1.63,
-      "lo": 0.61,
-      "hi": 2.65
+      "value": 1.22,
+      "lo": 0.44,
+      "hi": 1.99
     },
     "skillGradient": {
-      "value": 3.43,
-      "lo": 1.19,
-      "hi": 5.67
+      "value": -0.28,
+      "lo": -2.82,
+      "hi": 2.25
     },
     "pairs": [
       {
-        "with": "seed-raise",
-        "synergy": 0.11
+        "with": "r2-twos-beat-rare",
+        "synergy": 0.38
       },
       {
-        "with": "ra-ace-win-x",
-        "synergy": 0.05
+        "with": "r2-diamonds-beat",
+        "synergy": 0.23
       },
       {
-        "with": "r1-faces-untrumpable",
-        "synergy": 0.04
+        "with": "ub-become-four-spades",
+        "synergy": 0.21
       },
       {
-        "with": "ua-side-raise",
-        "synergy": 0.03
+        "with": "r2-queens-beat",
+        "synergy": 0.18
       },
       {
-        "with": "ra-ace-hold-x",
-        "synergy": 0.02
+        "with": "seed-two-win",
+        "synergy": 0.17
       }
     ],
     "raw": {
-      "liftU": 0.01834441654023866,
-      "seU": 0.02126564402561886,
-      "slopeU": 0.03808942217977025,
-      "slopeSeU": 0.014547367381345768,
-      "k": 1.23358094413778
+      "liftU": -0.04521207316986594,
+      "seU": 0.008264544386690546,
+      "slopeU": 0.02069545906111495,
+      "slopeSeU": 0.008016523621884302,
+      "k": 1.696995597363072
     }
   },
   "reports": [
@@ -205,7 +225,9 @@
     "reports/round-1-dashboard.md",
     "docs/sigils/rounds/round-1.md",
     "reports/round-2-dashboard.md",
-    "docs/sigils/rounds/round-2.md"
+    "docs/sigils/rounds/round-2.md",
+    "reports/round-3-dashboard.md",
+    "docs/sigils/rounds/round-3.md"
   ],
   "sources": [
     "enumerated",

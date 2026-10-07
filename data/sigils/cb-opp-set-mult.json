@@ -62,12 +62,20 @@
     {
       "step": "round-2",
       "note": "round-2: amount 20 -> 15 by global scale x0.70 toward the par curve."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: named Toppled Rook (chess-rook)."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: final reading lift -0.1 [-1.1, +0.8] pts, fire 41%, skill gradient -0.2; inside or overlapping its band in the final fit."
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Toppled Rook",
+  "icon": "chess-rook",
+  "iconFamily": "chess-rook",
+  "iconWord": "Rook",
   "price": 50,
   "text": "+15 contract multiplier if the opponents miss their contract",
   "category": "mult",
@@ -96,38 +104,38 @@
     "enumerated"
   ],
   "estimates": {
-    "step": "round-2",
-    "exposures": 1570,
+    "step": "round-3",
+    "exposures": 4151,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 5.54,
-        "lo": 4.01,
-        "hi": 7.07,
+        "value": -0.15,
+        "lo": -1.15,
+        "hi": 0.85,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 1570
+        "n": 4151
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 1.88,
-        "lo": 0.34,
-        "hi": 3.41,
+        "value": 0.02,
+        "lo": -0.98,
+        "hi": 1.02,
         "bandLo": null,
         "bandHi": null,
-        "n": 1570
+        "n": 4151
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 44.81,
+        "value": 41.14,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 19362
+        "n": 57095
       },
       {
         "key": "fireCommitted",
@@ -142,9 +150,9 @@
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 1.89,
-        "lo": -0.13,
-        "hi": 3.91,
+        "value": 0.79,
+        "lo": -0.45,
+        "hi": 2.03,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -152,9 +160,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 3.66,
-        "lo": 1.62,
-        "hi": 5.7,
+        "value": -0.17,
+        "lo": -2.26,
+        "hi": 1.92,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -175,43 +183,43 @@
       }
     ],
     "amountSlope": {
-      "value": 1.89,
-      "lo": -0.13,
-      "hi": 3.91
+      "value": 0.79,
+      "lo": -0.45,
+      "hi": 2.03
     },
     "skillGradient": {
-      "value": 3.66,
-      "lo": 1.62,
-      "hi": 5.7
+      "value": -0.17,
+      "lo": -2.26,
+      "hi": 1.92
     },
     "pairs": [
       {
         "with": "seed-raise",
-        "synergy": 0.17
+        "synergy": 0.54
       },
       {
         "with": "ra-ace-win-x",
-        "synergy": 0.07
-      },
-      {
-        "with": "ua-side-raise",
-        "synergy": 0.07
+        "synergy": 0.42
       },
       {
         "with": "r1-faces-untrumpable",
-        "synergy": 0.06
+        "synergy": 0.3
       },
       {
-        "with": "ra-ace-hold-x",
-        "synergy": 0.03
+        "with": "ua-side-raise",
+        "synergy": 0.13
+      },
+      {
+        "with": "ra-jq-become-aces",
+        "synergy": 0.09
       }
     ],
     "raw": {
-      "liftU": 0.030439734410188338,
-      "seU": 0.015113496020762672,
-      "slopeU": 0.044288512150028506,
-      "slopeSeU": 0.028703725886672724,
-      "k": 1.23358094413778
+      "liftU": 0.00022926122615573056,
+      "seU": 0.007153506579160638,
+      "slopeU": 0.013435577962484976,
+      "slopeSeU": 0.012806301462200936,
+      "k": 1.696995597363072
     }
   },
   "reports": [
@@ -220,6 +228,8 @@
     "reports/round-1-dashboard.md",
     "docs/sigils/rounds/round-1.md",
     "reports/round-2-dashboard.md",
-    "docs/sigils/rounds/round-2.md"
+    "docs/sigils/rounds/round-2.md",
+    "reports/round-3-dashboard.md",
+    "docs/sigils/rounds/round-3.md"
   ]
 }

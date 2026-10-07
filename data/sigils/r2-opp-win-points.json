@@ -44,12 +44,28 @@
     {
       "step": "round-2",
       "note": "round-2: kept (added): lift +10.3 [+9.4, +11.2] pts, C 2; a decision-rich Exact piece (duck once the contract is safe), inside the band."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: named Silver-Lined Cloud (cloud)."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: amount 15 -> 10 by retune; lift +7.2 pts against target +3, slope +7.6 pts per doubling."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: amount kept at the measured 15; the final retune proposal (15 -> 10) is recorded for a later round instead of shipping an unmeasured amount."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: final reading lift +7.2 [+6.2, +8.1] pts, fire 99%, skill gradient -0.0; inside or overlapping its band in the final fit."
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Silver-Lined Cloud",
+  "icon": "cloud",
+  "iconFamily": "cloud",
+  "iconWord": "Cloud",
   "price": 75,
   "text": "+15 contract points when the opponents win a trick",
   "category": "points",
@@ -74,65 +90,65 @@
   },
   "lint": [],
   "estimates": {
-    "step": "round-2",
-    "exposures": 21316,
+    "step": "round-3",
+    "exposures": 13066,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 10.34,
-        "lo": 9.45,
-        "hi": 11.23,
+        "value": 7.18,
+        "lo": 6.22,
+        "hi": 8.14,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 21316
+        "n": 13066
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 6.09,
-        "lo": 5.2,
-        "hi": 6.98,
+        "value": 7.21,
+        "lo": 6.24,
+        "hi": 8.17,
         "bandLo": null,
         "bandHi": null,
-        "n": 21316
+        "n": 13066
       },
       {
         "key": "decisive",
         "label": "Decisive share of holder's wins (%)",
-        "value": 25.15,
-        "lo": 24.7,
-        "hi": 25.62,
+        "value": 23.08,
+        "lo": 22.52,
+        "hi": 23.66,
         "bandLo": 5.0,
         "bandHi": null,
-        "n": 24051
+        "n": 14739
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 98.71,
+        "value": 99.37,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 239468
+        "n": 145549
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 98.38,
+        "value": 99.4,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 149796
+        "n": 96319
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 8.44,
-        "lo": 7.94,
-        "hi": 8.94,
+        "value": 7.63,
+        "lo": 6.95,
+        "hi": 8.32,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -140,9 +156,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 4.25,
-        "lo": 0.9,
-        "hi": 7.6,
+        "value": -0.03,
+        "lo": -2.43,
+        "hi": 2.37,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -155,47 +171,49 @@
       }
     ],
     "amountSlope": {
-      "value": 8.44,
-      "lo": 7.94,
-      "hi": 8.94
+      "value": 7.63,
+      "lo": 6.95,
+      "hi": 8.32
     },
     "skillGradient": {
-      "value": 4.25,
-      "lo": 0.9,
-      "hi": 7.6
+      "value": -0.03,
+      "lo": -2.43,
+      "hi": 2.37
     },
     "pairs": [
       {
-        "with": "r2-queens-become-aces",
-        "synergy": 0.02
+        "with": "r2-twos-beat-rare",
+        "synergy": 0.93
       },
       {
-        "with": "r2-low-to-two-aces",
-        "synergy": 0.02
+        "with": "r2-diamonds-beat",
+        "synergy": 0.55
       },
       {
-        "with": "ra-jq-become-aces",
-        "synergy": 0.02
+        "with": "ub-become-four-spades",
+        "synergy": 0.5
       },
       {
-        "with": "ub-low-to-aces",
-        "synergy": 0.01
+        "with": "r2-queens-beat",
+        "synergy": 0.44
       },
       {
-        "with": "r2-kings-untrumpable",
-        "synergy": 0.01
+        "with": "seed-two-win",
+        "synergy": 0.42
       }
     ],
     "raw": {
-      "liftU": 0.06590974446173505,
-      "seU": 0.005868697013099725,
-      "slopeU": 0.1318306281144031,
-      "slopeSeU": 0.004723910051096466,
-      "k": 1.8478502507936985
+      "liftU": 0.08495121392864517,
+      "seU": 0.006904579614651875,
+      "slopeU": 0.12976145757763413,
+      "slopeSeU": 0.00707198700896481,
+      "k": 1.696995597363072
     }
   },
   "reports": [
     "reports/round-2-focused.md",
-    "docs/sigils/rounds/round-2.md"
+    "docs/sigils/rounds/round-2.md",
+    "reports/round-3-dashboard.md",
+    "docs/sigils/rounds/round-3.md"
   ]
 }

@@ -47,12 +47,20 @@
     {
       "step": "draft-uncommon",
       "note": "draft-uncommon: kept: lift -2.7 [-3.7, -1.7] pts (n 13427), fire 0%, C 5; kept for coverage of BidHigh, Spades, Streaks, Generic; a target for the optimization rounds."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: named Eclipsed Planet (planet)."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: final reading lift +8.2 [+7.0, +9.3] pts, fire 0%, skill gradient +6.4; inside or overlapping its band in the final fit."
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Eclipsed Planet",
+  "icon": "planet",
+  "iconFamily": "planet",
+  "iconWord": "Planet",
   "price": 75,
   "text": "Opening: Four cards other than [♠] your team holds become [♠]s",
   "category": "enabler",
@@ -87,28 +95,28 @@
   },
   "lint": [],
   "estimates": {
-    "step": "round-2",
-    "exposures": 6665,
+    "step": "round-3",
+    "exposures": 18217,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 12.37,
-        "lo": 10.97,
-        "hi": 13.78,
+        "value": 8.17,
+        "lo": 7.01,
+        "hi": 9.33,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 6665
+        "n": 18217
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 5.4,
-        "lo": 4.0,
-        "hi": 6.81,
+        "value": 1.78,
+        "lo": 0.61,
+        "hi": 2.94,
         "bandLo": null,
         "bandHi": null,
-        "n": 6665
+        "n": 18217
       },
       {
         "key": "slope",
@@ -123,9 +131,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 6.97,
-        "lo": 4.14,
-        "hi": 9.8,
+        "value": 6.39,
+        "lo": 3.96,
+        "hi": 8.83,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -133,9 +141,9 @@
       {
         "key": "standalone1",
         "label": "Standalone: lift over a blank, bought at shop 1",
-        "value": 12.48,
-        "lo": 7.68,
-        "hi": 17.27,
+        "value": 13.55,
+        "lo": 8.95,
+        "hi": 18.15,
         "bandLo": 3.0,
         "bandHi": null,
         "n": null
@@ -143,9 +151,9 @@
       {
         "key": "standalone3",
         "label": "Standalone: lift over a blank, bought at shop 3",
-        "value": 7.45,
-        "lo": 4.71,
-        "hi": 10.18,
+        "value": 7.65,
+        "lo": 4.68,
+        "hi": 10.63,
         "bandLo": 3.0,
         "bandHi": null,
         "n": null
@@ -153,9 +161,9 @@
       {
         "key": "standalone5",
         "label": "Standalone: lift over a blank, bought at shop 5",
-        "value": 2.42,
-        "lo": -1.64,
-        "hi": 6.47,
+        "value": 1.76,
+        "lo": -2.22,
+        "hi": 5.73,
         "bandLo": 3.0,
         "bandHi": null,
         "n": null
@@ -163,9 +171,9 @@
       {
         "key": "standaloneVsControl1",
         "label": "Standalone: lift over the flat control, bought at shop 1",
-        "value": -9.54,
-        "lo": -14.28,
-        "hi": -4.8,
+        "value": -1.97,
+        "lo": -7.05,
+        "hi": 3.11,
         "bandLo": -2.0,
         "bandHi": null,
         "n": null
@@ -173,9 +181,9 @@
       {
         "key": "standaloneVsControl3",
         "label": "Standalone: lift over the flat control, bought at shop 3",
-        "value": -7.71,
-        "lo": -10.46,
-        "hi": -4.95,
+        "value": -1.36,
+        "lo": -4.53,
+        "hi": 1.8,
         "bandLo": -2.0,
         "bandHi": null,
         "n": null
@@ -183,9 +191,9 @@
       {
         "key": "standaloneVsControl5",
         "label": "Standalone: lift over the flat control, bought at shop 5",
-        "value": -5.87,
-        "lo": -10.43,
-        "hi": -1.32,
+        "value": -0.75,
+        "lo": -5.7,
+        "hi": 4.2,
         "bandLo": -2.0,
         "bandHi": null,
         "n": null
@@ -198,38 +206,38 @@
       "hi": 0.0
     },
     "skillGradient": {
-      "value": 6.97,
-      "lo": 4.14,
-      "hi": 9.8
+      "value": 6.39,
+      "lo": 3.96,
+      "hi": 8.83
     },
     "pairs": [
       {
-        "with": "uc-twos-beat",
-        "synergy": 3.78
+        "with": "r2-twos-beat-rare",
+        "synergy": 3.44
+      },
+      {
+        "with": "r2-diamonds-beat",
+        "synergy": 2.02
+      },
+      {
+        "with": "r2-queens-beat",
+        "synergy": 1.63
+      },
+      {
+        "with": "seed-two-win",
+        "synergy": 1.53
       },
       {
         "with": "rc-low-win-x",
-        "synergy": 2.86
-      },
-      {
-        "with": "rc-low-win-contract-points",
-        "synergy": 1.3
-      },
-      {
-        "with": "r1-low-hold-mult",
-        "synergy": 0.82
-      },
-      {
-        "with": "uc-low-discard",
-        "synergy": 0.63
+        "synergy": 1.36
       }
     ],
     "raw": {
-      "liftU": 0.08762922182672933,
-      "seU": 0.013839716119621188,
+      "liftU": 0.02095027095581739,
+      "seU": 0.008335547288800267,
       "slopeU": 0.0,
       "slopeSeU": 0.0,
-      "k": 1.23358094413778
+      "k": 1.696995597363072
     }
   },
   "reports": [
@@ -238,6 +246,8 @@
     "reports/round-1-dashboard.md",
     "docs/sigils/rounds/round-1.md",
     "reports/round-2-dashboard.md",
-    "docs/sigils/rounds/round-2.md"
+    "docs/sigils/rounds/round-2.md",
+    "reports/round-3-dashboard.md",
+    "docs/sigils/rounds/round-3.md"
   ]
 }

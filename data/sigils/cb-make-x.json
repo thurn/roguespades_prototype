@@ -32,7 +32,7 @@
       "elegance": 5
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -62,12 +62,20 @@
     {
       "step": "round-2",
       "note": "round-2: amount 1.25 -> 1.15 by global scale x0.70 toward the par curve."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: named Stamp of Approval (stamp)."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: cut in the final audit: lift -7.3 [-8.3, -6.2] pts, fire 54%; below the control with a flat slope; one of three make-contract commons, and cb-make-mult is the simplest."
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Stamp of Approval",
+  "icon": "stamp",
+  "iconFamily": "stamp",
+  "iconWord": "Stamp",
   "price": 50,
   "text": "×1.15 contract multiplier if your team makes its contract",
   "category": "xmult",
@@ -96,38 +104,38 @@
     "enumerated"
   ],
   "estimates": {
-    "step": "round-2",
-    "exposures": 1574,
+    "step": "round-3",
+    "exposures": 3145,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 2.82,
-        "lo": 1.48,
-        "hi": 4.16,
+        "value": -7.26,
+        "lo": -8.29,
+        "hi": -6.22,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 1574
+        "n": 3145
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 0.5,
-        "lo": -0.84,
-        "hi": 1.84,
+        "value": -1.9,
+        "lo": -2.94,
+        "hi": -0.87,
         "bandLo": null,
         "bandHi": null,
-        "n": 1574
+        "n": 3145
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 59.3,
+        "value": 54.16,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 143944
+        "n": 112737
       },
       {
         "key": "fireCommitted",
@@ -142,9 +150,9 @@
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 2.06,
-        "lo": 0.15,
-        "hi": 3.98,
+        "value": 0.9,
+        "lo": -0.46,
+        "hi": 2.27,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -152,9 +160,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 2.32,
-        "lo": 0.15,
-        "hi": 4.5,
+        "value": -5.35,
+        "lo": -8.16,
+        "hi": -2.54,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -175,43 +183,43 @@
       }
     ],
     "amountSlope": {
-      "value": 2.06,
-      "lo": 0.15,
-      "hi": 3.98
+      "value": 0.9,
+      "lo": -0.46,
+      "hi": 2.27
     },
     "skillGradient": {
-      "value": 2.32,
-      "lo": 0.15,
-      "hi": 4.5
+      "value": -5.35,
+      "lo": -8.16,
+      "hi": -2.54
     },
     "pairs": [
       {
-        "with": "uc-twos-beat",
-        "synergy": 0.27
-      },
-      {
-        "with": "rc-low-win-x",
-        "synergy": 0.21
-      },
-      {
-        "with": "rc-low-win-contract-points",
+        "with": "seed-raise",
         "synergy": 0.09
       },
       {
-        "with": "ub-become-four-spades",
-        "synergy": 0.08
+        "with": "ra-ace-win-x",
+        "synergy": 0.07
       },
       {
-        "with": "r1-low-hold-mult",
-        "synergy": 0.06
+        "with": "r1-faces-untrumpable",
+        "synergy": 0.05
+      },
+      {
+        "with": "ua-side-raise",
+        "synergy": 0.02
+      },
+      {
+        "with": "ra-jq-become-aces",
+        "synergy": 0.01
       }
     ],
     "raw": {
-      "liftU": 0.008055468741723762,
-      "seU": 0.013202326299340744,
-      "slopeU": 0.04828024617403433,
-      "slopeSeU": 0.027218204700999383,
-      "k": 1.23358094413778
+      "liftU": -0.022442238318469337,
+      "seU": 0.007429023661940056,
+      "slopeU": 0.015367325368060215,
+      "slopeSeU": 0.014121581174064556,
+      "k": 1.696995597363072
     }
   },
   "reports": [
@@ -220,6 +228,8 @@
     "reports/round-1-dashboard.md",
     "docs/sigils/rounds/round-1.md",
     "reports/round-2-dashboard.md",
-    "docs/sigils/rounds/round-2.md"
+    "docs/sigils/rounds/round-2.md",
+    "reports/round-3-dashboard.md",
+    "docs/sigils/rounds/round-3.md"
   ]
 }

@@ -85,3 +85,12 @@ or changed these points. Each entry says what changed and why.
 - **Density levers were not tested.** Commitment works lags its band (online by round 4 in about
   a quarter of committed runs), which [D7](../game-design.md#d7-offer-density) says should
   trigger lever arms; they are rule changes outside sigil design and are left as an open risk.
+- **Three optimization rounds, not up to four.** The fun-score trend had not plateaued
+  (55.8, 47.6, 51.5); round 3 was run as the final round to finish the plan.
+- **The final round made no structural redesigns.** Its changes came from the audit: 12 cuts of
+  below-control pieces with flat slopes or redundant twins, and the post-measurement retunes were
+  reverted so every shipped amount is a measured one (proposals are recorded in each history).
+- **Naming ran before the final cuts**, so names were drawn for 129 sigils and 117 kept them.
+- **Forced-pick trials (D28) were replaced** by tier-2 spot checks of 24 sigils.
+- **Pair confirmations** were folded into the main tournaments as joint grants of the top
+  predicted pairs; no separate fresh-seed confirmation runs.

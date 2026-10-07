@@ -597,9 +597,13 @@ random offers:
 
 ## 9. Archetypes
 
-> **Status:** provisional. The roster is [D11](#d11-archetype-roster) and the
-> suit structure [D12](#d12-suit-structure). Every sigil in this section is an
-> illustrative candidate for the first round of testing, with no evidence yet.
+> **Status:** the sigil pool now lives in the data files `data/sigils/` (one per
+> candidate, with evidence and reasoning), the compact [registry](sigils/registry.md),
+> and the viewer (`npm --prefix viewer run dev`, then `/sigils`). The
+> [final report](sigils/final-report.md) summarizes the pool of 117 sigils and its
+> open risks. The illustrative sigils below are the original seeds, kept as history;
+> each one's fate is in its data file. The roster is [D11](#d11-archetype-roster) and
+> the suit structure [D12](#d12-suit-structure).
 
 An archetype is a plan a team can build a run around. Archetypes are a design
 and simulation tool only. The game never names them, tags sigils with them, or
@@ -882,9 +886,10 @@ or a new way to play the hand.
 
 ## 10. Sigil pool skeleton
 
-> **Status:** superseded by the soft pool targets of [D30](#d30-pool-shape);
-> kept for history until the final report points this section at the data
-> files and the viewer.
+> **Status:** superseded by the soft pool targets of [D30](#d30-pool-shape). The
+> pool is in `data/sigils/`, the [registry](sigils/registry.md), and the viewer; see
+> the [final report](sigils/final-report.md) for counts by rarity, category, and
+> archetype. The tables below are kept as history.
 >
 > **Earlier status:** provisional. The category split follows
 > [D3](#d3-scoring-categories), pool sizes are [parameters](#appendix-b-parameter-register) P21, and every
@@ -1995,7 +2000,12 @@ wording conventions can be chosen by designer direction.
   by full-pool trials against the payoff-only arm. Remeasure offer coverage
   and synergy targets with the smaller pool; do not count a rewritten rule
   as empirically validated until those trials run.
-- **Evidence:** pending; no simulator exists yet. **Status:** hypothesis.
+- **Evidence (2026-10-07):** standalone trials each round. Most enablers beat a
+  blank by 10–38 pts when bought at shop 1 but lose to a same-price flat-points
+  control; narrow play-freedom and card-strength rules beat it. Lead choice,
+  late any-suit play, and swaps failed at every rarity
+  ([final report](sigils/final-report.md)).
+- **Status:** partly supported: hand-changing enablers have standalone value but rarely beat flat points.
 
 ### D27. Opening and random card changes
 
@@ -2045,7 +2055,15 @@ wording conventions can be chosen by designer direction.
   agreement with forced-pick trials on a sample of sigils.
 - **Test:** the pilot in Phase 0 of the plan, plus forced-pick trials on
   about ten sigils compared with their tournament estimates.
-- **Evidence:** pending. **Status:** hypothesis.
+- **Evidence:** the [pilot](../reports/phase-0-pilot.md) recovered planted
+  effects monotonically, covered 86% of a perturbed synthetic truth with 90%
+  intervals, and passed an A/A test. Two design changes were needed: duplicate
+  boards swap offer luck as well as seats, and grants hold their slot for the
+  run (otherwise the shop sold them and standard errors tripled). Forced-pick
+  trials were replaced by tier-2 spot checks (correlation 0.84 with the working
+  estimates).
+- **Status:** supported, with the changes recorded in
+  [plan deviations](sigils/plan-deviations.md).
 
 ### D29. Simulator language
 
@@ -2085,7 +2103,12 @@ wording conventions can be chosen by designer direction.
   Commitment works and Archetypes viable families check the result.
 - **Test:** the draft passes and optimization rounds of the
   [sigil design plan](sigil-design-plan.md).
-- **Evidence:** pending the draft passes. **Status:** hypothesis.
+- **Evidence:** the draft passes kept 140 sigils; three optimization rounds
+  trimmed and reshaped them to 117 (49 common, 43 uncommon, 21 rare, 4 legendary),
+  within P21's range but under the 145 target. Fun score by round: 55.8, 47.6,
+  51.5 ([final report](sigils/final-report.md)).
+- **Status:** supported as a target shape; the uncommon tier and the total remain
+  below target.
 
 ## Appendix B: Parameter register
 
@@ -2120,7 +2143,7 @@ the sweep that chose its value ([§16](#parameter-records)).
 | P23 | Bid-scaled share of the pool | A third of contract-point sigils, a quarter of multipliers | None to half | Skill and bidding | 3–5 |
 | P24 | AI tier budgets | Search budgets as in [§13](#ai-tiers); at least 100, 5, and 0.5 runs per second on 18 cores. Measured in Phase 0 with the shop and seed pool: about 1,000, 115, and 16 runs per second ([pilot](../reports/phase-0-pilot.md)) | Per tier | Agreement between tiers; run time | 0 |
 | P25 | Fun score weights | 25 / 15 / 15 / 15 / 15 / 15 (families 4–9) | Any | Designer judgment, checked against playtests | 7 |
-| P26 | Sigil-metric target bands and fun score bands | As in [§12](#12-metrics-what-fun-means) | Any | Calibrated once the harness runs, and again at stage 7 | 3, 7 |
+| P26 | Sigil-metric target bands and fun score bands | As in [§12](#12-metrics-what-fun-means). Checked after the first full-pool measurement and in the final round: the median pool lift sat within 0.3 pts of the control both times, so the bands were not re-centered ([round 3](sigils/rounds/round-3.md)) | Any | Calibrated once the harness runs, and again at stage 7 | 3, 7 |
 | P27 | Experiment precision | Median 90% interval half-width of 1.5 win-rate points per sigil. Pilot: residual sd of the smoothed board outcome 0.25 at tiers 0 and 1; about 167,000 tier-0 boards (6 minutes) reach the target for 170 sigils; tier-0 and tier-1 lifts correlate 0.82 ([pilot](../reports/phase-0-pilot.md)) | 1–3 points | Run time; decision quality | 0 |
 | P28 | Simplicity rubric | Number/rank/check 1; arithmetic rider 2; selector/state 1; new term including Opening 2, or 4 at common; S = 1 / (1 + C) | Positive costs; compare 1–3 per burden; twice the term cost at common; expand aliases and rank classes before scoring | Designer judgment, calibrated by comprehension playtests and paired simulation tradeoffs | 2–7 |
 | P29 | Starting contract multiplier and +mult scale | Start at 10; +2–5 repeated rewards, +10–20 one-time rewards | Starting values 1, 5, 10, 15; sweep rewards jointly | Power ceiling; Close and live; Skill and bidding; Simplicity | 3–6 |

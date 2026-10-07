@@ -43,12 +43,20 @@
     {
       "step": "round-2",
       "note": "round-2: kept (added): lift +10.8 [+9.8, +11.7] pts, C 4; a card-strength rule on a high rank for Streaks and Bid High, inside the band."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: named Ascendant Queen (chess-queen)."
+    },
+    {
+      "step": "round-3",
+      "note": "round-3: final reading lift +12.9 [+11.8, +14.0] pts, fire 0%, skill gradient +6.3; inside or overlapping its band in the final fit."
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Ascendant Queen",
+  "icon": "chess-queen",
+  "iconFamily": "chess-queen",
+  "iconWord": "Queen",
   "price": 75,
   "text": "Your team's [Q]s beat every other card of their suit",
   "category": "enabler",
@@ -83,28 +91,28 @@
   },
   "lint": [],
   "estimates": {
-    "step": "round-2",
-    "exposures": 18560,
+    "step": "round-3",
+    "exposures": 14783,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 10.76,
-        "lo": 9.81,
-        "hi": 11.71,
+        "value": 12.89,
+        "lo": 11.8,
+        "hi": 13.97,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 18560
+        "n": 14783
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 7.24,
-        "lo": 6.3,
-        "hi": 8.19,
+        "value": 6.6,
+        "lo": 5.52,
+        "hi": 7.69,
         "bandLo": null,
         "bandHi": null,
-        "n": 18560
+        "n": 14783
       },
       {
         "key": "slope",
@@ -119,10 +127,70 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 3.52,
-        "lo": 1.11,
-        "hi": 5.93,
+        "value": 6.29,
+        "lo": 3.79,
+        "hi": 8.78,
         "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standalone1",
+        "label": "Standalone: lift over a blank, bought at shop 1",
+        "value": 15.04,
+        "lo": 9.69,
+        "hi": 20.39,
+        "bandLo": 3.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standalone3",
+        "label": "Standalone: lift over a blank, bought at shop 3",
+        "value": 12.75,
+        "lo": 9.28,
+        "hi": 16.23,
+        "bandLo": 3.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standalone5",
+        "label": "Standalone: lift over a blank, bought at shop 5",
+        "value": 10.47,
+        "lo": 5.84,
+        "hi": 15.1,
+        "bandLo": 3.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standaloneVsControl1",
+        "label": "Standalone: lift over the flat control, bought at shop 1",
+        "value": -0.48,
+        "lo": -5.87,
+        "hi": 4.91,
+        "bandLo": -2.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standaloneVsControl3",
+        "label": "Standalone: lift over the flat control, bought at shop 3",
+        "value": 3.74,
+        "lo": 0.25,
+        "hi": 7.23,
+        "bandLo": -2.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standaloneVsControl5",
+        "label": "Standalone: lift over the flat control, bought at shop 5",
+        "value": 7.96,
+        "lo": 2.43,
+        "hi": 13.5,
+        "bandLo": -2.0,
         "bandHi": null,
         "n": null
       }
@@ -134,42 +202,44 @@
       "hi": 0.0
     },
     "skillGradient": {
-      "value": 3.52,
-      "lo": 1.11,
-      "hi": 5.93
+      "value": 6.29,
+      "lo": 3.79,
+      "hi": 8.78
     },
     "pairs": [
       {
-        "with": "r2-diamonds-beat",
-        "synergy": 0.34
-      },
-      {
         "with": "r2-twos-beat-rare",
-        "synergy": 0.25
+        "synergy": 3.03
       },
       {
-        "with": "uc-twos-beat",
-        "synergy": 0.07
+        "with": "r2-diamonds-beat",
+        "synergy": 1.77
       },
       {
-        "with": "r2-four-row-x",
-        "synergy": 0.05
+        "with": "ub-become-four-spades",
+        "synergy": 1.63
       },
       {
-        "with": "r2-last-trick-grow",
-        "synergy": 0.03
+        "with": "seed-two-win",
+        "synergy": 1.35
+      },
+      {
+        "with": "rc-low-win-x",
+        "synergy": 1.2
       }
     ],
     "raw": {
-      "liftU": 0.07838374132710507,
-      "seU": 0.006227124068984004,
+      "liftU": 0.07780258102160612,
+      "seU": 0.007770520717729667,
       "slopeU": 0.0,
       "slopeSeU": 0.0,
-      "k": 1.8478502507936985
+      "k": 1.696995597363072
     }
   },
   "reports": [
     "reports/round-2-focused.md",
-    "docs/sigils/rounds/round-2.md"
+    "docs/sigils/rounds/round-2.md",
+    "reports/round-3-dashboard.md",
+    "docs/sigils/rounds/round-3.md"
   ]
 }
