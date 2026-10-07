@@ -1,0 +1,89 @@
+{
+  "id": "rc-opp-aces-fall",
+  "rarity": "rare",
+  "role": "enabler",
+  "archetypes": [
+    "Generic",
+    "Ranks",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "become",
+    "from": {
+      "rank": "A"
+    },
+    "rank": "2",
+    "whose": "opponents"
+  },
+  "design": {
+    "decision": "Bid your [K]s as likely winners and lead them early; your own [A]s are the only ones left, so bid more aggressively.",
+    "opponent": "Very visible: their [A]s become [2]s before they bid, so they bid lower and must find tricks elsewhere. It is a deliberate defensive piece against a runaway leader.",
+    "rationale": "The brief favors defense and comebacks in a lopsided game, and this is the strongest visible defensive hand change; the uncommon uc-opp-twos is random and weaker. Departures: it reveals one fact about the opponents' hands (they hold no [A]s), and it can feel bad to the other team; both are accepted to test whether a strong suppression piece reduces runaway leads.",
+    "partners": [
+      "ca-king-hold",
+      "ua-king-two-x",
+      "cb-opp-set-mult",
+      "ub-opp-set-xmult"
+    ],
+    "cluster": "C",
+    "draftText": "Opening: Every [A] the opponents hold becomes a [2]",
+    "hooks": "Text template for an Opening 'become' that has both whose=opponents and a from filter ('Opening: Every [A] the opponents hold becomes a [2]'); the kernel already applies whose to BecomeFrom, so only text and simplicity need it.",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "It hard-counters an opponent's whole Ranks build (bought [A]s and become-[A] enablers) with no way to respond, and it reveals that no other [A]s are in play (an information departure the designer accepts).",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "Opening: Every [A] the opponents hold becomes a [2]",
+  "category": "enabler",
+  "signature": "opening|from:rank=A|rank=2,opponents|become",
+  "family": "opening|from:rank=*|rank=*,opponents|become",
+  "touchesOpponents": true,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by the opponents",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

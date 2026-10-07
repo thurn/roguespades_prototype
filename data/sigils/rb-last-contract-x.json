@@ -1,0 +1,84 @@
+{
+  "id": "rb-last-contract-x",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.1,
+    "per": "contractTrick",
+    "on": {
+      "event": "win",
+      "trick": "last"
+    }
+  },
+  "design": {
+    "decision": "Bid higher and keep a sure winner, usually the top [♠], for trick 13 instead of cashing it early.",
+    "opponent": "Revealed when it first fires; opponents can save their own top trump to take the last trick.",
+    "rationale": "The last trick is the strongest-measured Streaks trigger; scaling the ×mult with the contract adds bid tension (about ×2.1 at 8 and ×2.6 at 10), and the category differs from ub-last-trick-contract-mult.",
+    "partners": [
+      "seed-last-trick",
+      "ca-spade-last-trick",
+      "cb-bid8-trick-mult",
+      "cb-become-spade"
+    ],
+    "cluster": "B",
+    "draftText": "×1.1 contract multiplier for each trick in your team's contract when your team wins the last trick of a round",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Compounding exponent on the contract under a last-trick condition is hard to read, and it differs from ub-last-trick-contract-mult only in category.",
+      "elegance": 2
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "×1.1 contract multiplier for each trick in your team's contract when your team wins the last trick of a round",
+  "category": "xmult",
+  "signature": "win(trick=last)|-|contractTrick|xmult",
+  "family": "win(trick=last)|-|contractTrick|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.1",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "is the last trick",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

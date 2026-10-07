@@ -1,0 +1,88 @@
+{
+  "id": "rc-twos-always-win",
+  "rarity": "legendary",
+  "role": "enabler",
+  "archetypes": [
+    "LowCards",
+    "BidHigh",
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "beats",
+    "card": {
+      "rank": "2"
+    },
+    "over": "trump"
+  },
+  "design": {
+    "decision": "Each [2] is a guaranteed trick you can time freely: follow with it to steal an opponent's [A], or keep it for the last trick. A nil bidder must never play their [2]s, which turns the safest nil card into the most dangerous one.",
+    "opponent": "Revealed the first time a [2] beats a trump; opponents can't stop it, so they bid around it and try to strand the [2]s by never leading those suits.",
+    "rationale": "A memorable rule bender: the lowest card becomes the strongest. On its own it adds about two sure tricks per round, so it is worth buying before you know your build. With uc-low-to-twos it becomes a broken combo that needs luck, which the brief allows. It is kept to [2]s only so it stays one short sentence and stays distinct from rc-low-beats.",
+    "partners": [
+      "uc-low-to-twos",
+      "cc-two-hold-mult",
+      "seed-two-win",
+      "cb-make8-mult"
+    ],
+    "cluster": "C",
+    "draftText": "Your team's [2]s win every trick they are played to",
+    "hooks": "Extend the 'beats' rule with an option to beat trump too (over: trump): the matching cards beat every card in the trick, not only their own suit; ties between two such cards go to the first one played. General for any filter.",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Opponents can't answer a [2] except by stranding it, and a nil bidder forced to follow with a [2] busts automatically; memorable and fully rules-evaluable.",
+      "elegance": 5
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 150,
+  "text": "Your team's [2]s win every trick they are played to",
+  "category": "enabler",
+  "signature": "play|rank=2|trump|beats",
+  "family": "play|rank=*|trump|beats",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team played it",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "beats trumps too",
+        "cost": 1
+      },
+      {
+        "burden": "computed selector",
+        "detail": "ranks above the [A] of its suit",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

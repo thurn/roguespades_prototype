@@ -1,0 +1,78 @@
+{
+  "id": "rc-nil-contract-mult",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Nil",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "mult",
+    "amount": 3,
+    "per": "contractTrick",
+    "on": {
+      "event": "nilMade"
+    }
+  },
+  "design": {
+    "decision": "When one partner bids nil, the other bids as high as they dare, because a bigger contract makes the nil bonus bigger; if the contract is set while the nil is made, the bonus still multiplies a negative base.",
+    "opponent": "Visible at bidding: a nil next to a big bid is a signal; opponents push to bust the nil or to set the big contract, and either one hurts.",
+    "rationale": "Ties Nil to bid size, which the pool needs, and turns the nil partner's bid into a real decision instead of a safe minimum. Its trigger differs from uc-nil-contract-mult (made nil rather than bid nil), so the risk is paid off only by success.",
+    "partners": [
+      "cc-nil-made-mult",
+      "uc-nil-contract-mult",
+      "cb-contract-mult",
+      "rc-honor-free"
+    ],
+    "cluster": "C",
+    "draftText": "+3 contract multiplier for each trick in your team's contract if your team makes a nil",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Differs from uc-nil-contract-mult only in the trigger (made versus bid nil); fine.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "+3 contract multiplier for each trick in your team's contract if your team makes a nil",
+  "category": "mult",
+  "signature": "nilMade|-|contractTrick|mult",
+  "family": "nilMade|-|contractTrick|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes a nil",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

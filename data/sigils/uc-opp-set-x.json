@@ -1,0 +1,70 @@
+{
+  "id": "uc-opp-set-x",
+  "rarity": "uncommon",
+  "role": "hybrid",
+  "archetypes": [
+    "Generic",
+    "Exact"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.5,
+    "on": {
+      "event": "opponentsSet"
+    }
+  },
+  "design": {
+    "decision": "Spend winners defending against the opponents' contract instead of padding your own.",
+    "opponent": "Revealed when they are set; opponents bid more cautiously against this team.",
+    "rationale": "A ×multiplier that rewards a defensive decision and lets a trailing team swing a round, unlike payoffs that grow an existing lead.",
+    "partners": [
+      "cb-opp-set-mult",
+      "uc-opp-twos",
+      "cb-make-x"
+    ],
+    "cluster": "C",
+    "draftText": "×1.5 contract multiplier if the opponents miss their contract",
+    "hooks": "none"
+  },
+  "status": "cut",
+  "replacedBy": "ub-opp-set-xmult",
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: merged into ub-opp-set-xmult, the same design (signature) from another cluster; the amount sweep decides the number."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "×1.5 contract multiplier if the opponents miss their contract",
+  "category": "hybrid",
+  "signature": "opponentsSet|-|-|xmult",
+  "family": "opponentsSet|-|-|xmult",
+  "touchesOpponents": true,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "opponents miss their contract",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

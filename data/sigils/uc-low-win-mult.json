@@ -1,0 +1,226 @@
+{
+  "id": "uc-low-win-mult",
+  "rarity": "uncommon",
+  "role": "hybrid",
+  "archetypes": [
+    "LowCards",
+    "Spades"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "mult",
+    "amount": 10,
+    "on": {
+      "event": "win",
+      "card": {
+        "ranks": [
+          "2",
+          "9"
+        ]
+      }
+    }
+  },
+  "design": {
+    "decision": "Win with small trumps and long-suit cards instead of honors, and hold back honors so partner's low cards can take tricks.",
+    "opponent": "Visible on the first low win; opponents keep high trumps back to overruff.",
+    "rationale": "A broad per-trick multiplier for Low Cards, in line with the uncommon budget of +10 on a broad condition. The [2]-[9] range keeps it about trumping and long suits rather than honors.",
+    "partners": [
+      "cc-low-narrow-win",
+      "uc-low-to-spade",
+      "uc-trump-freely",
+      "cb-become-spade"
+    ],
+    "cluster": "C",
+    "draftText": "+4 contract multiplier when your team wins a trick with a [2] through [9]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 4
+    }
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: kept: lift -7.6 [-8.9, -6.3] pts (n 3420), fire 80%, C 5; below the control but with a real amount slope (+4.0 pts per doubling), so retuning can lift it; kept for LowCards, Spades."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: amount 4 -> 10 by retune; lift -7.6 pts against target +3, slope +4.0 pts per doubling."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "+10 contract multiplier when your team wins a trick with a [2] through [9]",
+  "category": "hybrid",
+  "signature": "win|ranks=2-9|-|mult",
+  "family": "win|ranks=2-9|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 9",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-9",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 3420,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -7.61,
+        "lo": -8.91,
+        "hi": -6.3,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 3420
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -5.2,
+        "lo": -6.51,
+        "hi": -3.9,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 3420
+      },
+      {
+        "key": "decisive",
+        "label": "Decisive share of holder's wins (%)",
+        "value": 11.11,
+        "lo": 10.26,
+        "hi": 12.03,
+        "bandLo": 5.0,
+        "bandHi": null,
+        "n": 3410
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 79.65,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 37676
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 80.98,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 21365
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 4.04,
+        "lo": 2.83,
+        "hi": 5.24,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -2.41,
+        "lo": -6.05,
+        "hi": 1.24,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-uncommon",
+        "amount": 4
+      }
+    ],
+    "amountSlope": {
+      "value": 4.04,
+      "lo": 2.83,
+      "hi": 5.24
+    },
+    "skillGradient": {
+      "value": -2.41,
+      "lo": -6.05,
+      "hi": 1.24
+    },
+    "pairs": [
+      {
+        "with": "seed-become-king",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-become-four-spades",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-side-win-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-low-spade-win",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.056157295796571846,
+      "seU": 0.00856963633615359,
+      "slopeU": 0.0628713785661312,
+      "slopeSeU": 0.011393882732984596,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

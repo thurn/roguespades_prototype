@@ -41,6 +41,11 @@ pub struct TeamProgram {
     pub first_lead: bool,
     pub any_suit_made: bool,
     pub any_suit_first: u8,
+    pub untrump: CardFilter,
+    pub beat_up: CardFilter,
+    pub beat_all: CardFilter,
+    /// Cards your team may play even when it can follow suit.
+    pub free_cards: CardFilter,
 }
 
 impl TeamProgram {
@@ -56,7 +61,9 @@ impl TeamProgram {
                 }
                 match po.trig {
                     t if t.is_trick() => p.trick.push((i, po)),
-                    Trig::Always | Trig::Hold { .. } | Trig::Bid { .. } => p.post_bid.push((i, po)),
+                    Trig::Always | Trig::Hold { .. } | Trig::Bid { .. } | Trig::Behind => {
+                        p.post_bid.push((i, po))
+                    }
                     _ => p.result.push((i, po)),
                 }
             }
@@ -67,6 +74,10 @@ impl TeamProgram {
                 Some(Rule::FirstLead) => p.first_lead = true,
                 Some(Rule::AnySuitMade) => p.any_suit_made = true,
                 Some(Rule::AnySuitFirst(n)) => p.any_suit_first = p.any_suit_first.max(n),
+                Some(Rule::Beats(f)) => p.beat_up = union(p.beat_up, f),
+                Some(Rule::BeatsAll(f)) => p.beat_all = union(p.beat_all, f),
+                Some(Rule::FreeCards(f)) => p.free_cards = union(p.free_cards, f),
+                Some(Rule::Untrumpable(f)) => p.untrump = union(p.untrump, f),
                 _ => {}
             }
         }
@@ -161,6 +172,10 @@ impl TeamAcc {
         match p.kind {
             Kind::Points => self.cp[slot] += amt * times as f64,
             Kind::Mult => self.add[slot] += amt * times as f64,
+            // A contract-scaled ×multiplier compounds once per trick in the contract.
+            Kind::XMult if p.per_contract => {
+                self.x[slot] *= p.amount.powi((contract as u32 * times) as i32)
+            }
             Kind::XMult => self.x[slot] *= amt.powi(times as i32),
             Kind::NilPoints => self.nilp[slot] += amt * times as f64,
         }
@@ -201,6 +216,12 @@ pub struct Play {
     pub lead_spades: [bool; 2],
     pub any_suit_made: [bool; 2],
     pub any_suit_first: [u8; 2],
+    pub untrump: [CardFilter; 2],
+    pub beat_up: [CardFilter; 2],
+    pub beat_all: [CardFilter; 2],
+    pub free_cards: [CardFilter; 2],
+    /// Each team's run score is below the other's at the start of the round.
+    pub behind: [bool; 2],
     /// The seat that leads the first trick (left of the dealer unless a team leads first).
     pub first_leader: u8,
     pub acc: [TeamAcc; 2],
@@ -244,7 +265,12 @@ impl Play {
             lead_spades: [rules.teams[0].lead_spades, rules.teams[1].lead_spades],
             any_suit_made: [rules.teams[0].any_suit_made, rules.teams[1].any_suit_made],
             any_suit_first: [rules.teams[0].any_suit_first, rules.teams[1].any_suit_first],
+            untrump: [rules.teams[0].untrump, rules.teams[1].untrump],
+            beat_up: [rules.teams[0].beat_up, rules.teams[1].beat_up],
+            beat_all: [rules.teams[0].beat_all, rules.teams[1].beat_all],
+            free_cards: [rules.teams[0].free_cards, rules.teams[1].free_cards],
             first_leader: first,
+            behind: [false; 2],
             acc: [TeamAcc::default(), TeamAcc::default()],
         }
     }
@@ -303,6 +329,16 @@ impl Play {
         let led = self.id.suit[self.trick[0] as usize];
         let follow = hand & self.id.suit_mask[led as usize];
         if follow != 0 {
+            let f = self.free_cards[(self.turn % 2) as usize];
+            if f.suits != 0 {
+                let mut extra = 0;
+                for c in Bits(hand & !follow) {
+                    if f.matches(self.id.suit[c as usize], self.id.rank[c as usize]) {
+                        extra |= bit(c);
+                    }
+                }
+                return follow | extra;
+            }
             follow
         } else {
             hand
@@ -325,11 +361,68 @@ impl Play {
     pub fn winning_index(&self) -> usize {
         let mut best = 0;
         for i in 1..self.tlen as usize {
-            if self.beats(self.trick[i], self.trick[best]) {
+            if self.beats_at(self.trick[i], self.tseat[i], best, true) {
                 best = i;
             }
         }
         best
+    }
+
+    /// A card's rank for trick strength: cards a team's `beats` hook names outrank the [A].
+    #[inline]
+    fn trick_rank(&self, c: u8, seat: u8) -> u8 {
+        let r = self.id.rank[c as usize];
+        let f = self.beat_up[(seat % 2) as usize];
+        if f.suits != 0 && f.matches(self.id.suit[c as usize], r) {
+            15
+        } else {
+            r
+        }
+    }
+
+    /// Whether the trick card at `idx` is shielded from trumps for its team.
+    #[inline]
+    fn shielded(&self, idx: usize) -> bool {
+        let c = self.trick[idx] as usize;
+        let led = self.id.suit[self.trick[0] as usize];
+        let f = self.untrump[(self.tseat[idx] % 2) as usize];
+        f.suits != 0 && led != SPADES && self.id.suit[c] == led && f.matches(led, self.id.rank[c])
+    }
+
+    /// Whether `c` beats the trick card at `best`, honoring untrumpable shields when asked.
+    #[inline]
+    fn beats_at(&self, c: u8, cseat: u8, best: usize, shields: bool) -> bool {
+        let b = self.trick[best];
+        // Cards a team's beats-all hook names win outright; between two, the first played wins.
+        let all = |x: u8, seat: u8| {
+            let f = self.beat_all[(seat % 2) as usize];
+            f.suits != 0 && f.matches(self.id.suit[x as usize], self.id.rank[x as usize])
+        };
+        if all(b, self.tseat[best]) {
+            return false;
+        }
+        if all(c, cseat) {
+            return true;
+        }
+        let (cs, bs) = (self.id.suit[c as usize], self.id.suit[b as usize]);
+        let wins = if cs == bs {
+            self.trick_rank(c, cseat) > self.trick_rank(b, self.tseat[best])
+        } else {
+            cs == SPADES
+        };
+        if !wins {
+            return false;
+        }
+        !(shields
+            && self.id.suit[c as usize] == SPADES
+            && self.id.suit[b as usize] != SPADES
+            && self.shielded(best))
+    }
+
+    /// Whether playing `c` now would put it in the lead of the current trick.
+    #[inline]
+    pub fn would_win(&self, c: u8) -> bool {
+        self.tlen == 0 || self.beats_at(c, self.turn, self.winning_index(), true)
     }
 
     /// Applies a move. Returns the completed trick when this move ended one.
@@ -355,6 +448,14 @@ impl Play {
         }
         self.hands[seat as usize] &= !bit(m);
         self.played |= bit(m);
+        if self.tlen > 0 && self.free_cards[(seat % 2) as usize].suits != 0 {
+            let led = self.id.suit[self.trick[0] as usize];
+            if self.id.suit[m as usize] != led
+                && self.hands[seat as usize] & self.id.suit_mask[led as usize] != 0
+            {
+                self.acc[(seat % 2) as usize].used |= 1 << 11;
+            }
+        }
         if self.tlen > 0 && self.any_suit_now(seat) {
             let led = self.id.suit[self.trick[0] as usize];
             if self.id.suit[m as usize] != led
@@ -378,6 +479,17 @@ impl Play {
 
     fn finish_trick(&mut self, rules: &Rules) -> TrickResult {
         let wi = self.winning_index();
+        if self.untrump[0].suits | self.untrump[1].suits != 0 {
+            let mut raw = 0;
+            for i in 1..4 {
+                if self.beats_at(self.trick[i], self.tseat[i], raw, false) {
+                    raw = i;
+                }
+            }
+            if raw != wi {
+                self.acc[(self.tseat[wi] % 2) as usize].used |= 1 << 12;
+            }
+        }
         let wseat = self.tseat[wi];
         let wcard = self.trick[wi];
         let wteam = (wseat % 2) as usize;
@@ -448,6 +560,7 @@ impl Play {
                     Trig::Win {
                         filt,
                         led: lf,
+                        opp,
                         by_trump: bt,
                         pos,
                         consecutive,
@@ -455,7 +568,8 @@ impl Play {
                         distinct_suit,
                         count,
                     } => {
-                        if !filt.matches(ws, wr)
+                        if opp
+                            || !filt.matches(ws, wr)
                             || (bt && !by_trump)
                             || !lf.matches(led, self.id.rank[led_card as usize])
                         {
@@ -503,6 +617,21 @@ impl Play {
                 }
             }
             acc.won_prev = true;
+            // The losing team's "when the opponents win a trick" payoffs.
+            let lose = 1 - wteam;
+            for &(slot, p) in &rules.teams[lose].trick {
+                if let Trig::Win {
+                    filt,
+                    opp: true,
+                    by_trump: bt,
+                    ..
+                } = p.trig
+                {
+                    if filt.matches(ws, wr) && (!bt || by_trump) {
+                        self.acc[lose].fire(slot, &p, 1, contract[lose]);
+                    }
+                }
+            }
             let other = &mut self.acc[1 - wteam];
             other.won_prev = false;
             other.run = 0;
@@ -532,6 +661,7 @@ impl Play {
     pub fn post_bid(&mut self, rules: &Rules) {
         for team in 0..2 {
             let contract = self.contract(team);
+            let opp_contract = self.contract(1 - team);
             let held = self.hands[team] | self.hands[team + 2];
             let nil_bidders = [team, team + 2]
                 .iter()
@@ -545,6 +675,7 @@ impl Play {
             for &(slot, p) in &prog.post_bid {
                 let times = match p.trig {
                     Trig::Always => 1,
+                    Trig::Behind => self.behind[team] as u32,
                     Trig::Hold {
                         filt,
                         count,
@@ -561,8 +692,15 @@ impl Play {
                             n.saturating_sub(beyond as u32)
                         }
                     }
-                    Trig::Bid { min, max, nil } => {
-                        if nil {
+                    Trig::Bid {
+                        min,
+                        max,
+                        nil,
+                        vs_opp,
+                    } => {
+                        if vs_opp {
+                            (contract > opp_contract) as u32
+                        } else if nil {
                             nil_bidders
                         } else {
                             (contract > 0
@@ -712,4 +850,15 @@ pub fn rescore_without(s: &TeamScore, prog: &TeamProgram, drop: &[usize]) -> f64
         -10.0 * s.contract as f64
     };
     ((base + nil_score) * (BASE_MULT + add) * x).round()
+}
+
+fn union(a: CardFilter, b: CardFilter) -> CardFilter {
+    if a.suits == 0 {
+        return b;
+    }
+    CardFilter {
+        suits: a.suits | b.suits,
+        lo: a.lo.min(b.lo),
+        hi: a.hi.max(b.hi),
+    }
 }

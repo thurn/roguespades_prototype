@@ -1,0 +1,192 @@
+{
+  "id": "uc-low-to-twos",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Nil",
+    "LowCards",
+    "Exact"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "become",
+    "from": {
+      "ranks": [
+        "3",
+        "6"
+      ]
+    },
+    "rank": "2"
+  },
+  "design": {
+    "decision": "Decide whether to bid nil on a hand whose small cards are now all [2]s that can never win a trick when following suit; the partner decides how much to carry.",
+    "opponent": "Revealed at Opening; opponents see a hand full of [2]s and must bust the nil by leading suits where the nil bidder is short or holds a stray honor.",
+    "rationale": "The commons pass showed that random changes to [2]s are disastrous (-20 to -24), because they hit honors. This version touches only [3]-[6], cards that almost never win a trick when following suit, so the contract loses little while nil safety improves sharply: a [2] can never be forced to win. That makes it worth buying before any build for a team that ever bids nil, which pays well in plain Spades (a made nil is worth as much as a 10-trick contract). The intended cost is that low cards tie among themselves after the change.",
+    "partners": [
+      "cc-two-hold-mult",
+      "uc-three-twos-x",
+      "cc-nil-made-mult",
+      "seed-nil-bid-mult",
+      "cc-two-win-mult",
+      "seed-two-win"
+    ],
+    "cluster": "C",
+    "draftText": "Opening: Every [3] through [6] your team holds becomes a [2]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "[3]-[6] rarely win anyway, so its main effect is feeding [2] payoffs, edging toward the excluded rename-for-payoffs family; the design note's 'revealed at Opening' is wrong.",
+      "elegance": 3
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -17.6 [-18.7, -16.5] pts (n 5336), fire 0%, C 7; far below the control, and one retune step can't close the gap."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Opening: Every [3] through [6] your team holds becomes a [2]",
+  "category": "enabler",
+  "signature": "opening|from:ranks=3-6|rank=2|become",
+  "family": "opening|from:ranks=3-6|rank=*|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 3",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 6",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 3-6",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 7,
+    "S": 0.125
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 5336,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -17.63,
+        "lo": -18.75,
+        "hi": -16.5,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 5336
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -11.05,
+        "lo": -12.18,
+        "hi": -9.93,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 5336
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -6.57,
+        "lo": -9.58,
+        "hi": -3.56,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": -6.57,
+      "lo": -9.58,
+      "hi": -3.56
+    },
+    "pairs": [
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-low-to-aces",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-rainbow-first-contract",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-bid5-xmult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-side-win-mult",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.11933194637568507,
+      "seU": 0.007379268748223195,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

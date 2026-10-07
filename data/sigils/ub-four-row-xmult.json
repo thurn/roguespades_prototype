@@ -1,0 +1,206 @@
+{
+  "id": "ub-four-row-xmult",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.5,
+    "on": {
+      "event": "win",
+      "inRow": 4
+    }
+  },
+  "design": {
+    "decision": "Sequence the hand: give up losers early, then run four winners without passing the lead.",
+    "opponent": "Revealed on the fourth win in a row; opponents break runs by holding back a winner or trumping in.",
+    "rationale": "Streaks has no uncommon besides seed-four-row; this is its ×mult at a milestone that fires in about 40% of rounds.",
+    "partners": [
+      "cb-consecutive-mult",
+      "ub-low-to-aces",
+      "seed-lead-choice",
+      "e-last-xmult"
+    ],
+    "cluster": "B",
+    "draftText": "×1.5 contract multiplier when your team wins four tricks in a row",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Third category on the same trigger as seed-four-row and ub-four-row-points.",
+      "elegance": 4
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -10.2 [-12.3, -8.2] pts (n 2030), fire 36%, C 5; far below the control, and one retune step can't close the gap."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "×1.5 contract multiplier when your team wins four tricks in a row",
+  "category": "xmult",
+  "signature": "win(inRow=4)|-|-|xmult",
+  "family": "win(inRow=4)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "4 in a row",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "run of wins reaches 4",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "consecutive-win count",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 2030,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -10.24,
+        "lo": -12.28,
+        "hi": -8.21,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 2030
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -7.32,
+        "lo": -9.35,
+        "hi": -5.28,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 2030
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 35.66,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 22014
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 36.27,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 10154
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 2.92,
+        "lo": 1.41,
+        "hi": 4.44,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -2.93,
+        "lo": -6.06,
+        "hi": 0.2,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-uncommon",
+        "amount": 1.5
+      }
+    ],
+    "amountSlope": {
+      "value": 2.92,
+      "lo": 1.41,
+      "hi": 4.44
+    },
+    "skillGradient": {
+      "value": -2.93,
+      "lo": -6.06,
+      "hi": 0.2
+    },
+    "pairs": [
+      {
+        "with": "uc-low-discard",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-trump-freely",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-first-trick-contract-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-honor-win-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-diamonds-untrumpable",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.07898144403809862,
+      "seU": 0.013376008428525895,
+      "slopeU": 0.045520561566714544,
+      "slopeSeU": 0.014344892405154496,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

@@ -22,7 +22,12 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Fine; a clear milestone that changes ruffing and drawing decisions.",
+      "elegance": 4
+    }
   },
   "status": "candidate",
   "replacedBy": null,

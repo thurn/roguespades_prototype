@@ -1,0 +1,85 @@
+{
+  "id": "rc-honor-free",
+  "rarity": "rare",
+  "role": "enabler",
+  "archetypes": [
+    "Nil",
+    "Spades",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "anySuit",
+    "card": {
+      "ranks": [
+        "J",
+        "A"
+      ]
+    }
+  },
+  "design": {
+    "decision": "A nil bidder dumps a dangerous off-suit honor instead of following with a card that might win; the covering partner trumps with a high [♠] whenever it wants, even while holding the led suit.",
+    "opponent": "Revealed the first time an honor is played off suit; opponents can no longer bust a nil by leading into a suit the nil bidder holds only high cards in.",
+    "rationale": "One rule helps two plans in opposite ways: shedding honors protects a nil, and free high trumps protect a big contract, so it is worth buying before you know your build. Free-play rules measured poorly at common (the AI may misuse them), so this tests the broadest version at the rarity where a strong rule change belongs.",
+    "partners": [
+      "cc-nil-made-mult",
+      "seed-nil-bid-mult",
+      "e-trump-mult",
+      "ua-trump-contract-mult"
+    ],
+    "cluster": "C",
+    "draftText": "Your team can play [J]s through [A]s even when it can follow suit",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Near-duplicate of rb-honors-free (range only); keep one. Free [J]-[A] of [♠] overlaps uc-trump-freely.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "Your team can play [J]s through [A]s even when it can follow suit",
+  "category": "enabler",
+  "signature": "play|cards:ranks=J-A|-|anySuit",
+  "family": "play|cards:ranks=J-A|-|anySuit",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team could follow suit",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint J",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint A",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in J-A",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

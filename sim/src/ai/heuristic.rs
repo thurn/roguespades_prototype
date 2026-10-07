@@ -54,10 +54,7 @@ pub fn is_boss(p: &Play, c: u8, seat: u8) -> bool {
 
 #[inline]
 fn beats_now(p: &Play, c: u8) -> bool {
-    if p.tlen == 0 {
-        return true;
-    }
-    p.beats(c, p.trick[p.winning_index()])
+    p.would_win(c)
 }
 
 fn need(p: &Play, team: usize) -> i32 {

@@ -1,0 +1,196 @@
+{
+  "id": "ua-heart-hold-mult",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Suits"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "mult",
+    "amount": 2,
+    "on": {
+      "event": "hold",
+      "card": {
+        "suit": "H"
+      }
+    }
+  },
+  "design": {
+    "decision": "Commit to [♥] in the shop and take seed-become-heart when it is offered.",
+    "opponent": "Revealed at scoring.",
+    "rationale": "The batch's only [♥] candidate. seed-become-heart is an uncommon with a single common payoff, and this payoff rewards every card it converts. The [♦] version gets first claim if only one survives.",
+    "partners": [
+      "seed-become-heart",
+      "ca-heart-hold-eight"
+    ],
+    "cluster": "A",
+    "draftText": "+2 contract multiplier for each [♥] your team holds",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Differs from ua-diamond-hold-mult only by the named suit; per D12 keep it only if [♥] measures as adding something.",
+      "elegance": 4
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -12.3 [-13.7, -11.0] pts (n 6924), fire 100%, C 3; near-duplicate of kept e-hold-suit-s-mult."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "+2 contract multiplier for each [♥] your team holds",
+  "category": "mult",
+  "signature": "hold|suit=H|-|mult",
+  "family": "hold|suit=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is H",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 6924,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -12.32,
+        "lo": -13.67,
+        "hi": -10.98,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 6924
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -3.52,
+        "lo": -4.87,
+        "hi": -2.17,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 6924
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 99.99,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 76692
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 100.0,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 15291
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 6.84,
+        "lo": 5.9,
+        "hi": 7.78,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -8.8,
+        "lo": -13.14,
+        "hi": -4.46,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-uncommon",
+        "amount": 2
+      }
+    ],
+    "amountSlope": {
+      "value": 6.84,
+      "lo": 5.9,
+      "hi": 7.78
+    },
+    "skillGradient": {
+      "value": -8.8,
+      "lo": -13.14,
+      "hi": -4.46
+    },
+    "pairs": [
+      {
+        "with": "uc-low-discard",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-aces-untrumpable",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-honor-win-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-ace-win-contract",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-first-trick-contract-points",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.038010079806433054,
+      "seU": 0.008837872604543818,
+      "slopeU": 0.10655389453510795,
+      "slopeSeU": 0.008890465939799499,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

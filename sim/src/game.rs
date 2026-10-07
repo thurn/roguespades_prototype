@@ -422,10 +422,24 @@ impl<'a> Runner<'a> {
         v
     }
 
+    /// The owned sigil the shop would sell first. Granted sigils hold their slot for the run, so
+    /// the shop never sells one to buy something else; only a new grant can displace a grant.
     fn weakest_sigil(&self, ti: usize, shop: u8, protect: Option<usize>) -> Option<(usize, f64)> {
+        self.weakest_sigil_of(ti, shop, protect, false)
+    }
+
+    fn weakest_sigil_of(
+        &self,
+        ti: usize,
+        shop: u8,
+        protect: Option<usize>,
+        grants: bool,
+    ) -> Option<(usize, f64)> {
         let team = &self.teams[ti];
+        let any_free = team.sigils.iter().any(|o| !o.grant);
         (0..team.sigils.len())
             .filter(|&k| Some(k) != protect)
+            .filter(|&k| !team.sigils[k].grant || (grants && !any_free))
             .map(|k| (k, self.sigil_value(ti, team.sigils[k].def, shop, Some(k))))
             .min_by(|a, b| a.1.partial_cmp(&b.1).unwrap())
     }
@@ -611,7 +625,7 @@ impl<'a> Runner<'a> {
 
     fn grant(&mut self, ti: usize, def: usize, shop: u8, rng: &mut Rng, jitter: bool) {
         if self.teams[ti].sigils.len() >= MAX_SIGILS {
-            if let Some((k, _)) = self.weakest_sigil(ti, shop, None) {
+            if let Some((k, _)) = self.weakest_sigil_of(ti, shop, None, true) {
                 self.sell_sigil(ti, k, shop);
             }
         }
@@ -971,7 +985,7 @@ impl<'a> Runner<'a> {
                         Rule::BecomeRank(..) => 2,
                         Rule::BecomeFrom { .. } => 2,
                         Rule::BecomeRange(..) => 3,
-                        Rule::Raise(_) => 4,
+                        Rule::Raise(_) | Rule::RaiseFrom(..) => 4,
                         _ => continue,
                     };
                     order.push((pri, k, r));
@@ -989,7 +1003,13 @@ impl<'a> Runner<'a> {
                         sid,
                     ],
                 );
-                let (a, b) = (kt, kt + 2);
+                // Opening changes act on the owning team's hands unless they name the opponents.
+                let opp = self.cfg.pool.defs[self.teams[ti].sigils[k].def]
+                    .effect
+                    .whose
+                    .as_deref()
+                    == Some("opponents");
+                let (a, b) = if opp { (1 - kt, 3 - kt) } else { (kt, kt + 2) };
                 match r {
                     Rule::Swap(n) => {
                         let tier = self.tier_override.unwrap_or(self.cfg.tiers[ti]);
@@ -1031,6 +1051,14 @@ impl<'a> Runner<'a> {
                         for c in Bits(play.hands[a] | play.hands[b]) {
                             let r = play.id.rank[c as usize];
                             play.id.set(c, play.id.suit[c as usize], (r + n).min(ACE));
+                        }
+                    }
+                    Rule::RaiseFrom(n, from) => {
+                        for c in Bits(play.hands[a] | play.hands[b]) {
+                            let (su, r) = (play.id.suit[c as usize], play.id.rank[c as usize]);
+                            if from.matches(su, r) {
+                                play.id.set(c, su, (r + n).min(ACE));
+                            }
                         }
                     }
                     Rule::BecomeFrom {
@@ -1076,6 +1104,10 @@ impl<'a> Runner<'a> {
             let u = self.utility(kt, round);
             let b = choose_bid(&play, &views[kt], &know, &u, &tier, &mut ai[s]);
             play.bids[s] = b;
+        }
+        for kt in 0..2 {
+            let ti = self.tidx(kt);
+            play.behind[kt] = self.teams[ti].score < self.teams[1 - ti].score;
         }
         play.post_bid(&rules);
 
@@ -1238,6 +1270,8 @@ impl<'a> Runner<'a> {
                             | Some(Rule::AnySuitFirst(_))
                     ) && used & (1 << 14) != 0)
                     || (matches!(s.rule, Some(Rule::LeadSpades)) && used & (1 << 13) != 0)
+                    || (matches!(s.rule, Some(Rule::Untrumpable(_))) && used & (1 << 12) != 0)
+                    || (matches!(s.rule, Some(Rule::FreeCards(_))) && used & (1 << 11) != 0)
                     || (matches!(s.rule, Some(Rule::FirstLead))
                         && play.first_leader != (play.dealer + 1) % 4)
                     || (matches!(s.rule, Some(Rule::LeadChoice)) && used & (1 << 15) != 0);
@@ -1253,7 +1287,7 @@ impl<'a> Runner<'a> {
         let ti = self.tidx(kt);
         let b = &mut self.recs[ti].bench;
         let legal = play.legal();
-        let would_win = |c: u8| play.tlen == 0 || play.beats(c, play.trick[play.winning_index()]);
+        let would_win = |c: u8| play.would_win(c);
         if play.bids[s as usize] == 0 && play.won[s as usize] == 0 {
             b.nil_plays += 1;
             if play.tlen > 0 && would_win(m) && Bits(legal).any(|c| !would_win(c)) {

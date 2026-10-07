@@ -1,0 +1,92 @@
+{
+  "id": "uc-low-to-spade",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Spades",
+    "LowCards",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "become",
+    "from": {
+      "ranks": [
+        "2",
+        "4"
+      ]
+    },
+    "suit": "S"
+  },
+  "design": {
+    "decision": "Bid higher on a hand whose side-suit junk just became trumps, and plan to ruff early with the new low [♠]s instead of throwing them away.",
+    "opponent": "Revealed at Opening; opponents face a team that is short in side suits and trumps their winners, so they cash aces early and lead [♠] to draw trumps.",
+    "rationale": "A directed version of the only big common winner (cb-become-spade). It turns about six of the team's worst cards ([2]-[4]) into trumps, never wastes a change on a card that was already a [♠] honor, and leaves the side suits short. Standalone, it gives a visibly stronger hand. It also feeds Low Cards, because trumping with a [4♠] is a low-card win. It is broader than the cut common cc-twos-to-spades on purpose, since the brief asks for more cards changed.",
+    "partners": [
+      "cb-become-spade",
+      "e-hold-suit-s-mult",
+      "e-trump-mult",
+      "uc-low-win-mult",
+      "uc-low-spade-win",
+      "cc-low-narrow-win"
+    ],
+    "cluster": "C",
+    "draftText": "Opening: Every [2] through [4] your team holds becomes a [♠]",
+    "hooks": "none"
+  },
+  "status": "cut",
+  "replacedBy": "ua-low-become-spades",
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: merged into ua-low-become-spades, the same design (signature) from another cluster; the amount sweep decides the number."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Opening: Every [2] through [4] your team holds becomes a [♠]",
+  "category": "enabler",
+  "signature": "opening|from:ranks=2-4|suit=S|become",
+  "family": "opening|from:ranks=2-4|suit=S|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

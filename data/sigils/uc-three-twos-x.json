@@ -1,0 +1,214 @@
+{
+  "id": "uc-three-twos-x",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "LowCards",
+    "Nil"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.5,
+    "on": {
+      "event": "hold",
+      "card": {
+        "rank": "2"
+      },
+      "count": 3
+    }
+  },
+  "design": {
+    "decision": "Buy [2]s in the shop; uc-low-to-twos makes the threshold easy to reach.",
+    "opponent": "Hidden until scoring.",
+    "rationale": "Here the threshold is the point: owning most of the [2]s. About a third of hands reach it.",
+    "partners": [
+      "uc-low-to-twos",
+      "cc-two-hold-mult",
+      "uc-twos-beat"
+    ],
+    "cluster": "C",
+    "draftText": "×1.5 contract multiplier if your team holds three [2]s",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 5
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -11.6 [-12.9, -10.3] pts (n 3186), fire 29%, C 6; near-duplicate of kept ua-three-aces-x."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "×1.5 contract multiplier if your team holds three [2]s",
+  "category": "xmult",
+  "signature": "hold(count=3)|rank=2|-|xmult",
+  "family": "hold(count=3)|rank=*|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count at least 3",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 3186,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -11.6,
+        "lo": -12.92,
+        "hi": -10.28,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 3186
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -8.79,
+        "lo": -10.11,
+        "hi": -7.47,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 3186
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 28.58,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 35020
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 30.07,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 15581
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 2.2,
+        "lo": 1.0,
+        "hi": 3.41,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -2.81,
+        "lo": -5.63,
+        "hi": 0.01,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-uncommon",
+        "amount": 1.5
+      }
+    ],
+    "amountSlope": {
+      "value": 2.2,
+      "lo": 1.0,
+      "hi": 3.41
+    },
+    "skillGradient": {
+      "value": -2.81,
+      "lo": -5.63,
+      "hi": 0.01
+    },
+    "pairs": [
+      {
+        "with": "uc-low-discard",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-honor-win-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-first-trick-contract-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-aces-untrumpable",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-ace-win-contract",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.0949107798275933,
+      "seU": 0.008662496888653549,
+      "slopeU": 0.034292999400391565,
+      "slopeSeU": 0.011409894251906782,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

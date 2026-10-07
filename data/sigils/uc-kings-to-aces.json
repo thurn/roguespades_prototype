@@ -1,0 +1,88 @@
+{
+  "id": "uc-kings-to-aces",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Ranks",
+    "BidHigh",
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "become",
+    "from": {
+      "rank": "K"
+    },
+    "rank": "A"
+  },
+  "design": {
+    "decision": "Bid the kings as sure tricks and lead them early, instead of waiting for the ace to fall.",
+    "opponent": "Revealed at Opening; an opponent holding the real [A] of that suit now faces a duplicate and can no longer count it as a guaranteed winner.",
+    "rationale": "A pure upgrade with no card made worse, unlike seed-become-king (+0.9), which can downgrade aces. A team holds about two kings, so this is roughly cb-become-ace at uncommon with directed selection. Its shape (every card of one rank) is distinct from uc-junk-to-aces (a counted range).",
+    "partners": [
+      "seed-ace-hold",
+      "seed-ace-win",
+      "ca-ace-win-two-mult",
+      "ca-three-aces-mult",
+      "seed-four-aces"
+    ],
+    "cluster": "C",
+    "draftText": "Opening: Every [K] your team holds becomes an [A]",
+    "hooks": "none"
+  },
+  "status": "cut",
+  "replacedBy": "ua-kings-become-aces",
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: merged into ua-kings-become-aces, the same design (signature) from another cluster; the amount sweep decides the number."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Opening: Every [K] your team holds becomes an [A]",
+  "category": "enabler",
+  "signature": "opening|from:rank=K|rank=A|become",
+  "family": "opening|from:rank=*|rank=*|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is K",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal K",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

@@ -1,0 +1,86 @@
+{
+  "id": "rb-honors-free",
+  "rarity": "rare",
+  "role": "enabler",
+  "archetypes": [
+    "Nil",
+    "Exact",
+    "Spades",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "anySuit",
+    "card": {
+      "ranks": [
+        "10",
+        "A"
+      ]
+    }
+  },
+  "design": {
+    "decision": "On each trick, choose between shedding a dangerous honor (to protect a nil or avoid an overtrick) and trumping early with a high [♠] while still holding the led suit.",
+    "opponent": "Revealed the first time your team plays off-suit; after that opponents can't count on your team's honors being trapped in a suit.",
+    "rationale": "A free-play rule with two opposite uses (losing tricks or taking them), so it helps before any payoff is owned; the risk is that free-play options have measured near a blank (cb-free-after-made, cc-any-suit-first-two), and this tests whether a version limited to certain cards does better.",
+    "partners": [
+      "cc-nil-made-mult",
+      "seed-exact-mult",
+      "ca-high-spade-hold",
+      "seed-trump-points"
+    ],
+    "cluster": "B",
+    "draftText": "Your team can play [10]s through [A]s even when it can follow suit",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Near-duplicate of rc-honor-free (range [10]-[A] vs [J]-[A]); keep only one, and free-play rules have measured near blank so far.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "Your team can play [10]s through [A]s even when it can follow suit",
+  "category": "enabler",
+  "signature": "play|cards:ranks=10-A|-|anySuit",
+  "family": "play|cards:ranks=10-A|-|anySuit",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team could follow suit",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 10",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint A",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 10-A",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

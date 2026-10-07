@@ -1,0 +1,181 @@
+{
+  "id": "uc-low-discard",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Nil",
+    "LowCards",
+    "Exact"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "anySuit",
+    "card": {
+      "ranks": [
+        "2",
+        "5"
+      ]
+    }
+  },
+  "design": {
+    "decision": "A nil bidder can always duck with a small card from another suit instead of being forced to win; a contract team can keep its honors in the led suit, or ruff with a low [♠].",
+    "opponent": "Revealed the first time a partner plays a small card from another suit while holding the led suit; opponents' usual leads to bust a nil stop working, so they must attack through [♠].",
+    "rationale": "A nil enabler worth buying before any payoff. It fixes the main way a nil fails, being forced to win with a high card in the led suit, and it still helps contracts. It uses the same hook as uc-trump-freely. The [2]-[5] filter keeps it from becoming a blanket any-suit rule, and the low [♠]s it includes give Low Cards a way to win by trumping.",
+    "partners": [
+      "seed-nil-bid-mult",
+      "cc-nil-made-mult",
+      "uc-nil-cover-points",
+      "uc-low-win-mult",
+      "cc-low-narrow-win",
+      "seed-exact-mult"
+    ],
+    "cluster": "C",
+    "draftText": "Your team can play [2]s through [5]s even when it can follow suit",
+    "hooks": "anySuit gains an optional card filter (`card`). With it, your team may play a matching card from another suit even when it can follow suit, on every trick, or only inside an existing first/last window when one is also given. Leading [♠] before [♠]s are broken stays illegal, and ordinary trump priority applies.",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "A strong nil enabler that removes most bust-the-nil play; [2] through [5] is yet another low range, and [2] through [6] would match the pool.",
+      "elegance": 4
+    }
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: kept: lift +13.1 [+12.2, +14.1] pts (n 17079), fire 0%, C 4; beats the same-rarity control."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Your team can play [2]s through [5]s even when it can follow suit",
+  "category": "enabler",
+  "signature": "play|cards:ranks=2-5|-|anySuit",
+  "family": "play|cards:ranks=2-5|-|anySuit",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team could follow suit",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-5",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 17079,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 13.14,
+        "lo": 12.21,
+        "hi": 14.07,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 17079
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 4.1,
+        "lo": 3.17,
+        "hi": 5.02,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 17079
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 9.05,
+        "lo": 5.59,
+        "hi": 12.51,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": 9.05,
+      "lo": 5.59,
+      "hi": 12.51
+    },
+    "pairs": [
+      {
+        "with": "ub-first-trick-contract-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-trump-freely",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-honor-win-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-ace-win-contract",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-diamonds-untrumpable",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.04421405043770836,
+      "seU": 0.006100697092474139,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

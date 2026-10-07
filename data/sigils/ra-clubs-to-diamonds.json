@@ -1,0 +1,78 @@
+{
+  "id": "ra-clubs-to-diamonds",
+  "rarity": "rare",
+  "role": "enabler",
+  "archetypes": [
+    "Suits",
+    "Spades",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "become",
+    "from": {
+      "suit": "C"
+    },
+    "suit": "D"
+  },
+  "design": {
+    "decision": "Your team bids knowing both partners are void in [♣] and long in [♦], so it plans to trump [♣] leads and run [♦] late, and it bids higher.",
+    "opponent": "Shown the first time your team ruffs or discards on a [♣] lead; opponents learn to stop leading [♣] and to shorten their own [♦]s to overruff.",
+    "rationale": "This is the rare whole-suit version of the measured source-filtered hand changes: one void plus one very long suit, which is a real Spades edge before any payoff is owned. It differs from uc-clubs-to-spades in count and destination and is the [♦]-first Suits enabler the pool lacks.",
+    "partners": [
+      "seed-diamond-hold",
+      "ca-diamond-hold-eight",
+      "ra-diamond-hold-x",
+      "e-win-suit-d-mult"
+    ],
+    "cluster": "A",
+    "draftText": "Opening: Every [♣] your team holds becomes a [♦]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Exactly the effect of cut common ca-diamond-become-from-clubs, which measured lift -14.5 [-15.6, -13.3]; price alone is unlikely to fix that, so confirm whether AI bidding misjudged it, and it is near-redundant with ra-all-diamonds.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "Opening: Every [♣] your team holds becomes a [♦]",
+  "category": "enabler",
+  "signature": "opening|from:suit=C|suit=D|become",
+  "family": "opening|from:suit=*|suit=D|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is C",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

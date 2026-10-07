@@ -1,0 +1,83 @@
+{
+  "id": "rb-make-grow-x",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Generic",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "grow",
+    "kind": "xmult",
+    "step": 0.15,
+    "on": {
+      "event": "make"
+    }
+  },
+  "design": {
+    "decision": "Each set costs one growth step for the rest of the run, so bid what you can make, while the growing ×mult makes every later bid worth more.",
+    "opponent": "Revealed the first time it grows; opponents can only stop it by setting your team.",
+    "rationale": "A Generic run-long ×mult on a broad condition (teams make about 64% of contracts), the shape that worked at common for +mult; it differs from the growth seeds that failed on rare conditions, and the snowball risk is noted because it rewards early grants most.",
+    "partners": [
+      "cb-grow-make-mult",
+      "cb-make-mult",
+      "cb-contract-mult-made",
+      "cb-make-x"
+    ],
+    "cluster": "B",
+    "draftText": "This sigil gains ×0.15 contract multiplier every time your team makes its contract (currently ×1)",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Differs from ub-make8-grow-x only in the threshold; snowballs from early purchases, and its growth state is a tracked counter.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "This sigil gains ×0.15 contract multiplier every time your team makes its contract (currently ×1)",
+  "category": "xmult",
+  "signature": "make|-|growth|xmult",
+  "family": "make|-|growth|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "growth step 0.15",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "currently display",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "growth counter carried between rounds",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

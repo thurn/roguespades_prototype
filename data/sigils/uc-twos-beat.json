@@ -1,0 +1,177 @@
+{
+  "id": "uc-twos-beat",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "LowCards",
+    "Rainbow",
+    "Nil"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "beats",
+    "card": {
+      "rank": "2"
+    }
+  },
+  "design": {
+    "decision": "Treat each [2] as a winner of its suit and bid it; if a partner bids nil, keep that partner's [2]s away from tricks they would now win.",
+    "opponent": "Revealed the first time a [2] wins; opponents stop leading suits where the team holds a [2] and avoid playing honors under it.",
+    "rationale": "It changes the actual winner of a trick without renaming the card, so it is not a rename-only effect. A [2] stays a [2] for every check, which gives standalone strength (about two extra winners per team), powers [2] payoffs, and creates a real tension with nil.",
+    "partners": [
+      "cc-two-win-mult",
+      "seed-two-win",
+      "uc-two-grow-points",
+      "cc-two-hold-mult",
+      "seed-rainbow-first"
+    ],
+    "cluster": "C",
+    "draftText": "Your team's [2]s beat every other card of their suit",
+    "hooks": "A trick-strength override: cards matching a filter, when played by your team, rank above the [A] of their own suit, and still lose to trumps unless they are [♠]s. As a general hook, `beats` takes a card filter and is resolved in the kernel's trick comparison.",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "With uc-low-to-twos every [3]-[6] beats its suit; 'beats the [A]' is a new rule players must learn.",
+      "elegance": 4
+    }
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: kept: lift +11.4 [+10.3, +12.5] pts (n 12873), fire 0%, C 4; beats the same-rarity control."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Your team's [2]s beat every other card of their suit",
+  "category": "enabler",
+  "signature": "play|rank=2||beats",
+  "family": "play|rank=*||beats",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team played it",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal 2",
+        "cost": 1
+      },
+      {
+        "burden": "computed selector",
+        "detail": "ranks above the [A] of its suit",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 12873,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 11.38,
+        "lo": 10.29,
+        "hi": 12.47,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 12873
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 5.5,
+        "lo": 4.41,
+        "hi": 6.59,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 12873
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 5.88,
+        "lo": 2.53,
+        "hi": 9.23,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": 5.88,
+      "lo": 2.53,
+      "hi": 9.23
+    },
+    "pairs": [
+      {
+        "with": "ub-low-to-aces",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-rainbow-first-contract",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-bid5-xmult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-side-win-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-become-king",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.05940640968838114,
+      "seU": 0.00715399127394665,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

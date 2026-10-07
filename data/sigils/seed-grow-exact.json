@@ -20,7 +20,12 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "The rare growth seeds measured -7 to -11 per the designer notes; ub-exact-grow-x and uc-exact-grow-points crowd the Exact growth slot.",
+      "elegance": 3
+    }
   },
   "status": "candidate",
   "replacedBy": null,

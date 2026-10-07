@@ -1,0 +1,216 @@
+{
+  "id": "ua-diamond-eight-contract",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Suits",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "mult",
+    "amount": 2,
+    "per": "contractTrick",
+    "on": {
+      "event": "hold",
+      "card": {
+        "suit": "D"
+      },
+      "count": 8
+    }
+  },
+  "design": {
+    "decision": "Bid higher when holding eight [♦]s, and buy [♦] cards to reach eight reliably.",
+    "opponent": "Revealed at scoring; opponents can defend by setting a stretched contract.",
+    "rationale": "A bid-tension multiplier for the [♦] length line. Its condition is a whole-hand count, which measures well, and its payout grows with the contract, so it pushes bids up rather than rewarding safe play.",
+    "partners": [
+      "ca-diamond-hold-eight",
+      "ua-diamonds-untrumpable",
+      "seed-diamond-hold",
+      "cb-contract-mult"
+    ],
+    "cluster": "A",
+    "draftText": "+2 contract multiplier for each trick in your team's contract if your team holds eight [♦]s",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Threshold plus contract scaling is two moving parts, and eight [♦] is rarely reached without enablers.",
+      "elegance": 3
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -18.3 [-19.5, -17.2] pts (n 2773), fire 23%, C 6; far below the control, and one retune step can't close the gap."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "+2 contract multiplier for each trick in your team's contract if your team holds eight [♦]s",
+  "category": "mult",
+  "signature": "hold(count=8)|suit=D|contractTrick|mult",
+  "family": "hold(count=8)|suit=*|contractTrick|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is D",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 8",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count at least 8",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 2773,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -18.34,
+        "lo": -19.48,
+        "hi": -17.21,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 2773
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -9.36,
+        "lo": -10.5,
+        "hi": -8.23,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 2773
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 23.46,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 30288
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 22.73,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 24339
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 1.78,
+        "lo": 0.6,
+        "hi": 2.97,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -8.98,
+        "lo": -11.87,
+        "hi": -6.1,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-uncommon",
+        "amount": 2
+      }
+    ],
+    "amountSlope": {
+      "value": 1.78,
+      "lo": 0.6,
+      "hi": 2.97
+    },
+    "skillGradient": {
+      "value": -8.98,
+      "lo": -11.87,
+      "hi": -6.1
+    },
+    "pairs": [
+      {
+        "with": "uc-low-discard",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-honor-win-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-first-trick-contract-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-trump-freely",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-ace-win-contract",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.10107529654662922,
+      "seU": 0.00743804703175605,
+      "slopeU": 0.027776147996926487,
+      "slopeSeU": 0.01119946155228809,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "id": "rc-nil-grow-x",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Nil"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "grow",
+    "kind": "xmult",
+    "step": 0.5,
+    "on": {
+      "event": "nilMade"
+    }
+  },
+  "design": {
+    "decision": "Every round becomes a question of whether to bid nil now to grow the sigil, even on a hand that is only marginal for nil, because an early made nil pays off in every later round.",
+    "opponent": "Its current value is public; opponents lead low and prioritize busting the team's nils as the multiplier grows.",
+    "rationale": "Run-long growth is one thing rarity buys. The rare growth seeds measured −7 to −11, probably because +mult and nil-point growth is too small, so this tests compounding ×mult growth on the most reliable Nil trigger (cc-nil-made-mult fires about 39% of rounds).",
+    "partners": [
+      "cc-nil-made-mult",
+      "seed-nil-bid-mult",
+      "uc-nil-low-hold",
+      "uc-low-to-twos"
+    ],
+    "cluster": "C",
+    "draftText": "This sigil gains ×0.5 contract multiplier every time your team makes a nil (currently ×1)",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Growth on a ~39% trigger snowballs from early purchases, and it is a third Nil growth sigil next to seed-grow-nil and uc-nil-grow-mult.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "This sigil gains ×0.5 contract multiplier every time your team makes a nil (currently ×1)",
+  "category": "xmult",
+  "signature": "nilMade|-|growth|xmult",
+  "family": "nilMade|-|growth|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "growth step 0.5",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "currently display",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "growth counter carried between rounds",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes a nil",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

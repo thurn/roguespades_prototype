@@ -19,14 +19,23 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 5
+    }
   },
-  "status": "candidate",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
       "step": "phase-0",
       "note": "Created from the GDD §9 seed."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -15.5 [-17.6, -13.3] pts (n 3042), fire 24%, C 2; far below the control, and one retune step can't close the gap."
     }
   ],
   "name": null,
@@ -58,55 +67,55 @@
   },
   "lint": [],
   "estimates": {
-    "step": "phase-0",
-    "exposures": 649,
+    "step": "draft-uncommon",
+    "exposures": 3042,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": -2.49,
-        "lo": -6.64,
-        "hi": 1.66,
+        "value": -15.46,
+        "lo": -17.57,
+        "hi": -13.35,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 649
+        "n": 3042
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -3.78,
-        "lo": -7.93,
-        "hi": 0.37,
+        "value": -11.71,
+        "lo": -13.82,
+        "hi": -9.59,
         "bandLo": null,
         "bandHi": null,
-        "n": 649
+        "n": 3042
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 26.46,
+        "value": 24.39,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 24542
+        "n": 33976
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 27.7,
+        "value": 25.0,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 1993
+        "n": 3032
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 1.69,
-        "lo": -0.78,
-        "hi": 4.17,
+        "value": 0.16,
+        "lo": -1.16,
+        "hi": 1.49,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -114,9 +123,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 1.29,
-        "lo": -3.31,
-        "hi": 5.9,
+        "value": -3.75,
+        "lo": -6.88,
+        "hi": -0.63,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -129,48 +138,50 @@
       }
     ],
     "amountSlope": {
-      "value": 1.69,
-      "lo": -0.78,
-      "hi": 4.17
+      "value": 0.16,
+      "lo": -1.16,
+      "hi": 1.49
     },
     "skillGradient": {
-      "value": 1.29,
-      "lo": -3.31,
-      "hi": 5.9
+      "value": -3.75,
+      "lo": -6.88,
+      "hi": -0.63
     },
     "pairs": [
       {
-        "with": "seed-ace-hold",
+        "with": "uc-low-discard",
         "synergy": 0.0
       },
       {
-        "with": "pilot-dose-80",
+        "with": "ub-become-four-spades",
         "synergy": 0.0
       },
       {
-        "with": "seed-contract-points",
+        "with": "uc-trump-freely",
         "synergy": 0.0
       },
       {
-        "with": "seed-low-four",
+        "with": "ub-first-trick-contract-points",
         "synergy": 0.0
       },
       {
-        "with": "control-rare",
+        "with": "seed-become-king",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": -0.03891901583677608,
-      "seU": 0.02594484626657236,
-      "slopeU": 0.0251473957609678,
-      "slopeSeU": 0.022310931478038747,
-      "k": 1.9447399061524484
+      "liftU": -0.12638680265543928,
+      "seU": 0.013867783446549336,
+      "slopeU": 0.0025216608138991657,
+      "slopeSeU": 0.012554958466772018,
+      "k": 1.8525028942895565
     }
   },
   "reports": [
     "reports/phase-0-pilot.md",
-    "reports/phase-0-pilot-dashboard.md"
+    "reports/phase-0-pilot-dashboard.md",
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
   ],
   "gddEffect": {
     "type": "xmult",

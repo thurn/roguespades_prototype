@@ -1,0 +1,197 @@
+{
+  "id": "ub-low-to-aces",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "BidHigh",
+    "Ranks",
+    "Streaks",
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "become",
+    "count": 3,
+    "from": {
+      "ranks": [
+        "2",
+        "9"
+      ]
+    },
+    "rank": "A"
+  },
+  "design": {
+    "decision": "Three losers become [A]s before bidding: bid three more tricks or chase [A] payoffs.",
+    "opponent": "Revealed when a changed [A] wins; opponents see more [A]s than the deck holds.",
+    "rationale": "A source filter fixes the weakness of cb-become-ace (random picks can hit [A]s already held): every change is an upgrade from a likely loser to a winner. Standalone value is a stronger hand in any build.",
+    "partners": [
+      "seed-ace-win",
+      "ca-three-aces-mult",
+      "ub-bid8-xmult",
+      "ub-honor-win-mult"
+    ],
+    "cluster": "B",
+    "draftText": "Opening: Three [2]s through [9]s your team holds become [A]s",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Near-duplicate of batch uc-junk-to-aces (count and source range differ); keep one.",
+      "elegance": 4
+    }
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: kept: lift +7.6 [+6.5, +8.7] pts (n 12101), fire 0%, C 8; beats the same-rarity control."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Opening: Three [2]s through [9]s your team holds become [A]s",
+  "category": "enabler",
+  "signature": "opening|from:ranks=2-9|rank=A|become",
+  "family": "opening|from:ranks=2-9|rank=*|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "numeric value",
+        "detail": "count 3",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 9",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-9",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 8,
+    "S": 0.1111111111111111
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 12101,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 7.61,
+        "lo": 6.5,
+        "hi": 8.73,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 12101
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 4.26,
+        "lo": 3.15,
+        "hi": 5.38,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 12101
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 3.35,
+        "lo": -0.43,
+        "hi": 7.13,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": 3.35,
+      "lo": -0.43,
+      "hi": 7.13
+    },
+    "pairs": [
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-aces-untrumpable",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-rainbow-first-contract",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-bid5-xmult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-consecutive-contract-points",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.0460284037387324,
+      "seU": 0.007297940268163537,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

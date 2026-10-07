@@ -16,14 +16,23 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "A choice at a fixed moment, so not an activated ability; it never changes a score, legal play, or trick winner directly, so it may stay hidden from opponents all run.",
+      "elegance": 4
+    }
   },
-  "status": "candidate",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
       "step": "phase-0",
       "note": "Created from the GDD §9 seed."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -13.7 [-14.9, -12.5] pts (n 3997), fire 0%, C 2; far below the control, and one retune step can't close the gap."
     }
   ],
   "name": null,
@@ -55,28 +64,28 @@
   },
   "lint": [],
   "estimates": {
-    "step": "phase-0",
-    "exposures": 1074,
+    "step": "draft-uncommon",
+    "exposures": 3997,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": -4.71,
-        "lo": -7.32,
-        "hi": -2.09,
+        "value": -13.7,
+        "lo": -14.92,
+        "hi": -12.47,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 1074
+        "n": 3997
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -3.59,
-        "lo": -6.21,
-        "hi": -0.98,
+        "value": -9.73,
+        "lo": -10.95,
+        "hi": -8.5,
         "bandLo": null,
         "bandHi": null,
-        "n": 1074
+        "n": 3997
       },
       {
         "key": "slope",
@@ -91,9 +100,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": -1.11,
-        "lo": -4.45,
-        "hi": 2.23,
+        "value": -3.97,
+        "lo": -8.47,
+        "hi": 0.53,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -106,43 +115,45 @@
       "hi": 0.0
     },
     "skillGradient": {
-      "value": -1.11,
-      "lo": -4.45,
-      "hi": 2.23
+      "value": -3.97,
+      "lo": -8.47,
+      "hi": 0.53
     },
     "pairs": [
       {
-        "with": "seed-any-suit",
+        "with": "uc-low-discard",
         "synergy": 0.0
       },
       {
-        "with": "seed-exact-mult",
+        "with": "ub-become-four-spades",
         "synergy": 0.0
       },
       {
-        "with": "seed-low-four",
+        "with": "seed-become-king",
         "synergy": 0.0
       },
       {
-        "with": "seed-rainbow-lead-x",
+        "with": "uc-trump-freely",
         "synergy": 0.0
       },
       {
-        "with": "control-rare",
+        "with": "ub-first-trick-contract-points",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": -0.036962641919675375,
-      "seU": 0.016370725248198437,
+      "liftU": -0.105036103690372,
+      "seU": 0.00803975663226841,
       "slopeU": 0.0,
       "slopeSeU": 0.0,
-      "k": 1.9447399061524484
+      "k": 1.8525028942895565
     }
   },
   "reports": [
     "reports/phase-0-pilot.md",
-    "reports/phase-0-pilot-dashboard.md"
+    "reports/phase-0-pilot-dashboard.md",
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
   ],
   "gddEffect": {
     "type": "leadChoice"

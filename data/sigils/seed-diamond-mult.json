@@ -3,13 +3,15 @@
   "rarity": "rare",
   "role": "payoff",
   "archetypes": [
-    "Suits"
+    "Suits",
+    "BidHigh"
   ],
   "source": "gdd-seed",
   "createdIn": "phase-0",
   "effect": {
     "type": "mult",
-    "amount": 2,
+    "amount": 1,
+    "per": "contractTrick",
     "on": {
       "event": "win",
       "card": {
@@ -21,7 +23,12 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "fix",
+      "concerns": "As written it has the same signature as kept common e-win-suit-d-mult at half its amount, so the rare adds nothing; the fix is the [♦]-first contract-scaling counterpart of ra-spade-win-contract and adds bid tension.",
+      "elegance": 2
+    }
   },
   "status": "candidate",
   "replacedBy": null,
@@ -29,6 +36,10 @@
     {
       "step": "phase-0",
       "note": "Created from the GDD §9 seed."
+    },
+    {
+      "step": "draft-rare",
+      "note": "draft-rare: critic fix applied: As written it has the same signature as kept common e-win-suit-d-mult at half its amount, so the rare adds nothing; the fix is the [♦]-first contract-scaling counterpart of ra-spade-win-contract and adds bid tension."
     }
   ],
   "name": null,
@@ -37,16 +48,21 @@
   "iconWord": null,
   "gddText": "+2 contract multiplier when your team wins a trick with [♦]",
   "price": 100,
-  "text": "+2 contract multiplier when your team wins a trick with [♦]",
+  "text": "+1 contract multiplier for each trick in your team's contract when your team wins a trick with [♦]",
   "category": "mult",
-  "signature": "win|suit=D|-|mult",
-  "family": "win|suit=*|-|mult",
+  "signature": "win|suit=D|contractTrick|mult",
+  "family": "win|suit=*|contractTrick|mult",
   "touchesOpponents": false,
   "simplicity": {
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 2",
+        "detail": "payout 1",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
         "cost": 1
       },
       {
@@ -60,8 +76,8 @@
         "cost": 1
       }
     ],
-    "C": 3,
-    "S": 0.25
+    "C": 4,
+    "S": 0.2
   },
   "lint": [],
   "estimates": {

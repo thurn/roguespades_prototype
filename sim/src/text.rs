@@ -158,6 +158,12 @@ fn clause(t: &Trigger) -> (&'static str, String) {
                     format!("your team wins {} tricks{how}", number_word(n)),
                 );
             }
+            if t.whose.as_deref() == Some("opponents") {
+                let how = card
+                    .map(|f| format!(" with {}", singular(f)))
+                    .unwrap_or_default();
+                return ("when", format!("the opponents win a trick{how}"));
+            }
             if let Some(l) = &t.led {
                 return (
                     "when",
@@ -199,7 +205,9 @@ fn clause(t: &Trigger) -> (&'static str, String) {
             }
         }
         "bid" => {
-            if t.nil == Some(true) {
+            if t.vs.as_deref() == Some("opponents") {
+                ("when", "your team bids more than the opponents".into())
+            } else if t.nil == Some(true) {
                 ("when", "your team bids nil".into())
             } else if let Some(m) = t.min {
                 ("when", format!("your team bids {m} or more"))
@@ -233,6 +241,7 @@ fn clause(t: &Trigger) -> (&'static str, String) {
             }
         }
         "opponentsSet" => ("if", "the opponents miss their contract".into()),
+        "behind" => ("if", "your team is behind when the round begins".into()),
         x => ("when", format!("<{x}>")),
     }
 }
@@ -265,6 +274,47 @@ pub fn generate(e: &Effect) -> String {
             let n = e.count.unwrap_or(0);
             let unit = if n == 1 { "card" } else { "cards" };
             format!("Opening: Swap {} {unit} with your partner", number_word(n))
+        }
+        "become"
+            if e.whose.as_deref() == Some("opponents") && e.from.is_some() && e.count.is_none() =>
+        {
+            let from = e.from.clone().unwrap_or_default();
+            let dest = if let Some(r) = &e.rank {
+                format!("{} {}", article(r), rank_token(r))
+            } else {
+                format!("a {}", suit_token(e.suit.as_deref().unwrap_or("S")))
+            };
+            format!(
+                "Opening: Every {} the opponents hold becomes {dest}",
+                hold_noun(&from)
+            )
+        }
+        "become" if e.whose.as_deref() == Some("opponents") => {
+            let n = e.count.unwrap_or(0);
+            let dest = if let Some(r) = &e.rank {
+                if n == 1 {
+                    format!("{} {}", article(r), rank_token(r))
+                } else {
+                    format!("{}s", rank_token(r))
+                }
+            } else if let Some(su) = &e.suit {
+                if n == 1 {
+                    format!("a {}", suit_token(su))
+                } else {
+                    format!("{}s", suit_token(su))
+                }
+            } else {
+                "cards".into()
+            };
+            let (cards, verb) = if n == 1 {
+                ("card", "becomes")
+            } else {
+                ("cards", "become")
+            };
+            format!(
+                "Opening: {} {cards} the opponents hold {verb} {dest}",
+                cap(&number_word(n))
+            )
         }
         "become" if e.from.is_some() => {
             let from = e.from.clone().unwrap_or_default();
@@ -314,6 +364,31 @@ pub fn generate(e: &Effect) -> String {
             };
             format!("Opening: {n} cards your team holds become {dest}")
         }
+        "raise" if e.from.is_some() => {
+            let n = e.amount.unwrap_or(0.0) as u8;
+            let unit = if n == 1 { "rank" } else { "ranks" };
+            format!(
+                "Opening: Raise every {} your team holds by {} {unit}",
+                hold_noun(&e.from.clone().unwrap_or_default()),
+                number_word(n)
+            )
+        }
+        "anySuit" if e.card.is_some() => format!(
+            "Your team can play {} even when it can follow suit",
+            plural(&e.card.clone().unwrap_or_default(), true)
+        ),
+        "beats" if e.over.as_deref() == Some("trump") => format!(
+            "Your team's {} win every trick they are played to",
+            plural(&e.card.clone().unwrap_or_default(), true)
+        ),
+        "beats" => format!(
+            "Your team's {} beat every other card of their suit",
+            plural(&e.card.clone().unwrap_or_default(), true)
+        ),
+        "untrumpable" => format!(
+            "Your team's {} can't be trumped",
+            plural(&e.from.clone().unwrap_or_default(), true)
+        ),
         "raise" => {
             let n = e.amount.unwrap_or(0.0) as u8;
             let unit = if n == 1 { "rank" } else { "ranks" };
@@ -444,6 +519,12 @@ fn trigger_sig(t: &Option<Trigger>) -> String {
     if t.nil == Some(true) {
         mods.push("nil".into());
     }
+    if let Some(w) = &t.whose {
+        mods.push(format!("whose={w}"));
+    }
+    if let Some(v) = &t.vs {
+        mods.push(format!("vs={v}"));
+    }
     if t.exact == Some(true) {
         mods.push("exact".into());
     }
@@ -480,7 +561,11 @@ pub fn signature(e: &Effect, generic: bool) -> String {
         ),
         "become" if e.from.is_some() => {
             let dest = if let Some(r) = &e.rank {
-                format!("rank={}", if generic { "*" } else { r })
+                format!(
+                    "rank={}{}",
+                    if generic { "*" } else { r },
+                    if e.whose.is_some() { ",opponents" } else { "" }
+                )
             } else {
                 format!("suit={}", e.suit.clone().unwrap_or_default())
             };
@@ -498,11 +583,27 @@ pub fn signature(e: &Effect, generic: bool) -> String {
             } else {
                 "range".into()
             };
-            format!("opening|{dest}|-|become")
+            let whose = if e.whose.as_deref() == Some("opponents") {
+                "opponents"
+            } else {
+                "opening"
+            };
+            format!("{whose}|{dest}|-|become")
         }
+        "raise" if e.from.is_some() => {
+            format!("opening|from:{}|-|raise", filter_sig(&e.from, generic))
+        }
+        "untrumpable" => format!("play|{}|-|untrumpable", filter_sig(&e.from, generic)),
+        "beats" => format!(
+            "play|{}|{}|beats",
+            filter_sig(&e.card, generic),
+            e.over.clone().unwrap_or_default()
+        ),
         "swap" | "raise" => format!("opening|-|-|{}", e.ty),
         "anySuit" => {
-            let w = if let Some(n) = e.last {
+            let w = if e.card.is_some() {
+                format!("cards:{}", filter_sig(&e.card, generic))
+            } else if let Some(n) = e.last {
                 format!("last={n}")
             } else if let Some(n) = e.first {
                 format!("first={n}")

@@ -1,0 +1,73 @@
+{
+  "id": "rb-outbid-x",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh",
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "xmult",
+    "amount": 2,
+    "on": {
+      "event": "bid",
+      "vs": "opponents"
+    }
+  },
+  "design": {
+    "decision": "Whether to bid one more trick to top the opponents' total, knowing a set doubles the loss as well; the last bidder weighs this hardest.",
+    "opponent": "Revealed at the first scoring; after that the opponents can bid up to deny it, at the risk of being set themselves.",
+    "rationale": "A broad, interactive Bid High ×mult: it fires about half the time, raises the stakes with the bid (it applies on sets), and turns bidding into a contest instead of a fixed threshold; it differs from ub-outbid-mult in category and power.",
+    "partners": [
+      "cb-contract-mult",
+      "seed-raise",
+      "cb-become-spade",
+      "uc-opp-twos"
+    ],
+    "cluster": "B",
+    "draftText": "×2 contract multiplier when your team bids more than the opponents",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Clean and interactive; the last bidder has an information edge, which is ordinary Spades and visible to everyone.",
+      "elegance": 5
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "×2 contract multiplier when your team bids more than the opponents",
+  "category": "xmult",
+  "signature": "bid(vs=opponents)|-|-|xmult",
+  "family": "bid(vs=opponents)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "contract larger than the opponents'",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

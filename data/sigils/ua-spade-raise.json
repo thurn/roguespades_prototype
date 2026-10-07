@@ -1,0 +1,183 @@
+{
+  "id": "ua-spade-raise",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Spades",
+    "BidHigh",
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "raise",
+    "amount": 2,
+    "from": {
+      "suit": "S"
+    }
+  },
+  "design": {
+    "decision": "Count low [♠]s as winners and bid them, then lead [♠] to strip opponents' trumps.",
+    "opponent": "Opponents' middle [♠]s lose to raised ones, and overtrumping fails.",
+    "rationale": "Improving the whole hand measures well (ca-raise-one +2.8, seed-raise +11 at rare). Concentrating the raise on trumps gives a large visible change at uncommon. It is new hook 3 of 4.",
+    "partners": [
+      "e-hold-suit-s-mult",
+      "seed-spade-mult",
+      "ua-spade-led-win-mult",
+      "ua-spade-last-x",
+      "cb-spade-seven"
+    ],
+    "cluster": "A",
+    "draftText": "Opening: Raise every [♠] your team holds by two ranks",
+    "hooks": "Opening raise accepts a from filter (raise only cards matching it), mirroring the existing become-from mechanism.",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 5
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: held as a candidate: lift -20.9 [-22.4, -19.5] pts (n 3568), fire 0%, C 5; its hook was fixed after this measurement, so it is re-measured next step."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Opening: Raise every [♠] your team holds by two ranks",
+  "category": "enabler",
+  "signature": "opening|from:suit=S|-|raise",
+  "family": "opening|from:suit=*|-|raise",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "numeric value",
+        "detail": "raise 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is S",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 3568,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -20.93,
+        "lo": -22.39,
+        "hi": -19.47,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 3568
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -12.44,
+        "lo": -13.9,
+        "hi": -10.98,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 3568
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -8.5,
+        "lo": -12.05,
+        "hi": -4.94,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-uncommon",
+        "amount": 2
+      }
+    ],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": -8.5,
+      "lo": -12.05,
+      "hi": -4.94
+    },
+    "pairs": [
+      {
+        "with": "seed-become-king",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-become-four-spades",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-trump-freely",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-clubs-to-spades",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-first-trick-contract-points",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.1342695683587759,
+      "seU": 0.009584086777390867,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

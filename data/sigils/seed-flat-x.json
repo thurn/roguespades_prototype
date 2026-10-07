@@ -15,7 +15,12 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Changes only the purchase and never a bid or a play, though doubling the stakes on a set adds mild bid pressure; differs from seed-flat-x2 only in amount.",
+      "elegance": 3
+    }
   },
   "status": "candidate",
   "replacedBy": null,

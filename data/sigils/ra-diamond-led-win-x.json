@@ -1,0 +1,80 @@
+{
+  "id": "ra-diamond-led-win-x",
+  "rarity": "rare",
+  "role": "hybrid",
+  "archetypes": [
+    "Suits",
+    "Spades"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.3,
+    "on": {
+      "event": "win",
+      "led": {
+        "suit": "D"
+      }
+    }
+  },
+  "design": {
+    "decision": "Lead [♦] honors to cash them, and once your team is void, trump [♦] leads instead of discarding, which pulls the Suits and Spades plans together.",
+    "opponent": "Shown on the first such win; opponents stop leading [♦] and duck [♦] tricks they would otherwise contest.",
+    "rationale": "Uncommon and common versions pay flat amounts; at rare this compounds per event. The led-suit filter rewards both cashing [♦] and ruffing it, so the [♦] line has two ways to score and is not killed by voids.",
+    "partners": [
+      "ua-diamonds-untrumpable",
+      "ca-diamond-led-win",
+      "ra-clubs-to-diamonds",
+      "e-trump-mult"
+    ],
+    "cluster": "A",
+    "draftText": "×1.3 contract multiplier when your team wins a trick led with [♦]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Per-event compounding ×mult is hard to track; otherwise a clean step up from ua-diamond-led-win-mult and ca-diamond-led-win.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "×1.3 contract multiplier when your team wins a trick led with [♦]",
+  "category": "hybrid",
+  "signature": "win(led=suit=D)|-|-|xmult",
+  "family": "win(led=suit=D)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is D",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

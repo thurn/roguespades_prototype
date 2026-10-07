@@ -6,6 +6,7 @@ import math
 import numpy as np
 
 from . import analyze as A
+from . import arms as R
 from . import experiments as E
 from . import steps as S
 from .common import RUNS, load_sigils
@@ -119,3 +120,74 @@ def side_by_side(m: A.Measurement, pairs: list) -> list:
 
 def runs_of(step: str, name: str) -> list:
     return load([RUNS / step / f"{name}.jsonl"], load_sigils()).runs
+
+
+def top_pairs(m: A.Measurement, pool: list, n: int = 20) -> list:
+    """The strongest predicted pairs among pool sigils, from the factorization machine."""
+    idx = {s: i for i, s in enumerate(m.des.ids)}
+    ids = [s for s in pool if s in idx]
+    out = []
+    for a in range(len(ids)):
+        for b in range(a + 1, len(ids)):
+            out.append((float(m.fit.V[idx[ids[a]]] @ m.fit.V[idx[ids[b]]]), ids[a], ids[b]))
+    out.sort(reverse=True)
+    return [[a, b] for _, a, b in out[:n]]
+
+
+def measure_round(
+    step: str,
+    pool: list,
+    extra: list | None = None,
+    prev_m: A.Measurement | None = None,
+    calib_share: float = 0.2,
+    builds: bool = False,
+    boards: int | None = None,
+) -> dict:
+    """The full measurement of an optimization round. Returns everything the round needs."""
+    import pickle
+
+    from .common import RUNS
+
+    sigils = load_sigils()
+    model = S.latest_model()
+    measured = pool + list(extra or [])
+    weights = adaptive_weights(measured, model)
+    pairs = top_pairs(prev_m, pool) if prev_m is not None else None
+    nb = boards or S.boards_for(len(measured) + 8, half_width=1.5)
+    offer = pool + S.controls()
+    m = S.measure_tournaments(
+        step,
+        measured,
+        offer,
+        model,
+        nb,
+        weights=weights,
+        name="tournament",
+        seed=61,
+        calib_share=calib_share,
+        pairs=pairs,
+    )
+    arms = S.pool_arms(step, pool, model)
+    enablers = [s for s in pool if sigils[s].get("role") == "enabler"]
+    stand = S.standalone_readings(step, enablers, model)
+    fun = S.fun(step, m, arms, pool)
+    out = {
+        "m": m,
+        "arms": {k: v for k, v in arms.items() if k != "arm_runs" and k != "field"},
+        "standalone": stand,
+        "fun": fun,
+        "pairs": pairs,
+        "boards": nb,
+    }
+    if builds:
+        bs = R.build_search(m, sigils, pool)
+        out["builds"] = chasers(step, bs, pool, model)
+    pickle.dump(m, open(RUNS / step / "measurement.pkl", "wb"))
+    json.dump(
+        {k: v for k, v in out.items() if k != "m"},
+        open(RUNS / step / "round.json", "w"),
+        indent=1,
+        default=lambda o: float(o) if hasattr(o, "__float__") else str(o),
+    )
+    out["field"] = arms["field"]
+    return out

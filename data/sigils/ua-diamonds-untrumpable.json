@@ -1,0 +1,171 @@
+{
+  "id": "ua-diamonds-untrumpable",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Suits",
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "untrumpable",
+    "from": {
+      "suit": "D"
+    }
+  },
+  "design": {
+    "decision": "Run long [♦]s and lead [♦] repeatedly: any [♦] that is the highest [♦] on the trick wins, so length turns into tricks.",
+    "opponent": "Voiding [♦] no longer works as a defense, so opponents must keep high [♦]s or concede the suit.",
+    "rationale": "The stated threat to the Suits length line is being trumped. This removes that threat and makes [♦] length worth bidding on its own, with [♦] first as the brief asks. It is new hook 2 of 4 and reuses hook 1.",
+    "partners": [
+      "ca-diamond-hold-eight",
+      "ua-diamond-hold-mult",
+      "ua-diamond-lead-three-x",
+      "ca-diamond-led-win",
+      "ua-diamond-two-x"
+    ],
+    "cluster": "A",
+    "draftText": "Your team's [♦]s can't be trumped",
+    "hooks": "Same as ua-aces-untrumpable: untrumpable with a from filter.",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "A strong rule exception that removes voiding as a defence; opponents can respond only after the first reveal.",
+      "elegance": 4
+    }
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: kept: lift -0.9 [-1.9, +0.2] pts (n 9367), fire 0%, C 3; kept for coverage of Suits, Rainbow; a target for the optimization rounds."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Your team's [♦]s can't be trumped",
+  "category": "enabler",
+  "signature": "play|suit=D|-|untrumpable",
+  "family": "play|suit=*|-|untrumpable",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team played it",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is D",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "a [♠] played to the trick",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 9367,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -0.88,
+        "lo": -1.94,
+        "hi": 0.17,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 9367
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -2.15,
+        "lo": -3.21,
+        "hi": -1.09,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 9367
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 1.27,
+        "lo": -2.34,
+        "hi": 4.87,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": 1.27,
+      "lo": -2.34,
+      "hi": 4.87
+    },
+    "pairs": [
+      {
+        "with": "uc-low-discard",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-trump-freely",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-first-trick-contract-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-honor-win-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-become-four-spades",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.02320718023998465,
+      "seU": 0.006930046133388392,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

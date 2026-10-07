@@ -1,0 +1,77 @@
+{
+  "id": "uc-first-trick-x",
+  "rarity": "uncommon",
+  "role": "hybrid",
+  "archetypes": [
+    "Streaks",
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.5,
+    "on": {
+      "event": "win",
+      "trick": "first"
+    }
+  },
+  "design": {
+    "decision": "Commit an honor to the first trick instead of feeling out the hand.",
+    "opponent": "Revealed on the first trick; opponents spend an honor to contest it.",
+    "rationale": "A broad ×1.5 (the first-trick condition fires about 57% of the time) that turns the first trick into a real decision. It is the ×multiplier version of cb-first-trick-mult (+8.4).",
+    "partners": [
+      "cb-first-trick-mult",
+      "seed-last-trick",
+      "e-last-xmult",
+      "uc-kings-to-aces"
+    ],
+    "cluster": "C",
+    "draftText": "×1.5 contract multiplier when your team wins the first trick of a round",
+    "hooks": "none"
+  },
+  "status": "cut",
+  "replacedBy": "ub-first-trick-xmult",
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: merged into ub-first-trick-xmult, the same design (signature) from another cluster; the amount sweep decides the number."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "×1.5 contract multiplier when your team wins the first trick of a round",
+  "category": "hybrid",
+  "signature": "win(trick=first)|-|-|xmult",
+  "family": "win(trick=first)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "is the first trick",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

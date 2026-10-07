@@ -1,0 +1,78 @@
+{
+  "id": "ra-trump-x",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Spades",
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.3,
+    "on": {
+      "event": "win",
+      "by": "trump"
+    }
+  },
+  "design": {
+    "decision": "Shorten side suits early and save low [♠]s for ruffing rather than leading [♠] to draw trumps.",
+    "opponent": "Shown on the first ruff; opponents lead [♠] to strip trumps and avoid leading suits where your team is void.",
+    "rationale": "This is the per-event ×mult top of the Spades trump line, firing about 81% of rounds per e-trump-mult, and it is distinct from ua-trump-two-x, which is a milestone. Trumping is a defensive and tempo decision, not a snowball.",
+    "partners": [
+      "cb-become-spade",
+      "ua-low-become-spades",
+      "uc-trump-freely",
+      "ra-clubs-to-diamonds"
+    ],
+    "cluster": "A",
+    "draftText": "×1.3 contract multiplier when your team wins a trick by trumping",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Per-event compounding ×mult (cut e-trump-xmult was cut at common for being hard to track); fine at rare.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "×1.3 contract multiplier when your team wins a trick by trumping",
+  "category": "xmult",
+  "signature": "win(by=trump)|-|-|xmult",
+  "family": "win(by=trump)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "won by trumping",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

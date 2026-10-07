@@ -1,0 +1,83 @@
+{
+  "id": "rb-side-untrumpable",
+  "rarity": "legendary",
+  "role": "enabler",
+  "archetypes": [
+    "Generic",
+    "BidHigh",
+    "Ranks",
+    "Suits",
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "untrumpable",
+    "from": {
+      "notSuit": "S"
+    }
+  },
+  "design": {
+    "decision": "Every side-suit winner becomes a sure trick, so bid off honors and long side suits, lead them late, and stop fearing voids.",
+    "opponent": "Revealed the first time a trump fails to beat your card; opponents must win in-suit or strip your cards by leading [♠]s.",
+    "rationale": "A memorable rule change that rewrites how the owner plays every hand and helps any build that wins tricks; it is the broad version of ua-aces-untrumpable and ua-diamonds-untrumpable, placed at legendary for its power.",
+    "partners": [
+      "seed-ace-win",
+      "e-win-suit-d-mult",
+      "seed-rainbow-mult",
+      "cb-contract-mult"
+    ],
+    "cluster": "B",
+    "draftText": "Your team's cards other than [♠] can't be trumped",
+    "hooks": "none",
+    "critic": {
+      "verdict": "drop",
+      "concerns": "Functionally identical to ra-team-untrumpable: the kernel only shields cards that follow a non-[♠] led suit, so the 'other than [♠]' filter changes nothing and only adds a condition.",
+      "elegance": 2
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-rare",
+      "note": "draft-rare: dropped by the critic: Functionally identical to ra-team-untrumpable: the kernel only shields cards that follow a non-[♠] led suit, so the 'other than [♠]' filter changes nothing and only adds a condition."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 150,
+  "text": "Your team's cards other than [♠] can't be trumped",
+  "category": "enabler",
+  "signature": "play|notSuit=S|-|untrumpable",
+  "family": "play|notSuit=S|-|untrumpable",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team played it",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is not S",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "a [♠] played to the trick",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

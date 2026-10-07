@@ -21,7 +21,12 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Fine; it overlaps ra-ace-win-x in trigger and differs from cut e-win-rank-a-mult only in amount.",
+      "elegance": 4
+    }
   },
   "status": "candidate",
   "replacedBy": null,

@@ -1,0 +1,217 @@
+{
+  "id": "ua-lead-three-suits-x",
+  "rarity": "uncommon",
+  "role": "hybrid",
+  "archetypes": [
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.5,
+    "on": {
+      "event": "suits",
+      "action": "lead",
+      "count": 3
+    }
+  },
+  "design": {
+    "decision": "Vary leads, switching suits rather than leading the same strong suit again.",
+    "opponent": "Opponents try to keep the lead away from the team.",
+    "rationale": "A broad ×1.5 on a choice the leader makes on every lead. It is an easier sibling of seed-rainbow-lead-x (all four suits) that differs in its count, not only its amount.",
+    "partners": [
+      "seed-e-lead-three-suits",
+      "ca-rainbow-lead-mult",
+      "seed-rainbow-lead-x",
+      "seed-lead-choice"
+    ],
+    "cluster": "A",
+    "draftText": "×1.5 contract multiplier if your team leads three suits",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Dominates seed-rainbow-lead-x at equal amounts; leading three suits happens in most rounds, so it may rarely change a lead.",
+      "elegance": 4
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -8.5 [-9.9, -7.1] pts (n 6091), fire 82%, C 5; the kept pool covers its archetypes with stronger or simpler pieces."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "×1.5 contract multiplier if your team leads three suits",
+  "category": "hybrid",
+  "signature": "suits(count=3,action=lead)|-|-|xmult",
+  "family": "suits(count=3,action=lead)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team leads",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "3 suits",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "distinct suits reach 3",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "suits seen",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 6091,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -8.51,
+        "lo": -9.92,
+        "hi": -7.11,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 6091
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -4.42,
+        "lo": -5.83,
+        "hi": -3.02,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 6091
+      },
+      {
+        "key": "decisive",
+        "label": "Decisive share of holder's wins (%)",
+        "value": 12.65,
+        "lo": 11.97,
+        "hi": 13.36,
+        "bandLo": 5.0,
+        "bandHi": null,
+        "n": 6205
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 81.93,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 66632
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 83.88,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 17299
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 5.47,
+        "lo": 4.45,
+        "hi": 6.49,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -4.09,
+        "lo": -7.27,
+        "hi": -0.91,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-uncommon",
+        "amount": 1.5
+      }
+    ],
+    "amountSlope": {
+      "value": 5.47,
+      "lo": 4.45,
+      "hi": 6.49
+    },
+    "skillGradient": {
+      "value": -4.09,
+      "lo": -7.27,
+      "hi": -0.91
+    },
+    "pairs": [
+      {
+        "with": "ub-low-to-aces",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-rainbow-first-contract",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-bid5-xmult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-aces-untrumpable",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.04776833472395871,
+      "seU": 0.009206477483058004,
+      "slopeU": 0.08520107678850641,
+      "slopeSeU": 0.009649278312446705,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

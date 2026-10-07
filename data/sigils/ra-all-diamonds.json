@@ -1,0 +1,77 @@
+{
+  "id": "ra-all-diamonds",
+  "rarity": "legendary",
+  "role": "enabler",
+  "archetypes": [
+    "Suits",
+    "Spades"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "become",
+    "from": {
+      "notSuit": "S"
+    },
+    "suit": "D"
+  },
+  "design": {
+    "decision": "Your team plays a two-suit hand every round, void in [♣] and [♥], so it bids on ruffing power and [♦] length, and every [♦] payoff becomes a build-around.",
+    "opponent": "Shown on the first [♣] or [♥] lead; opponents hold all of those suits with nobody to follow, so they lead [♠] to strip trumps and attack the long [♦]s.",
+    "rationale": "This is the legendary [♦] build-around, the broad version of ra-clubs-to-diamonds: two voids are a strong Spades edge on their own, and the combo with [♦] hold payoffs is deliberately explosive but needs a rare-plus-legendary assembly. Duplicate [♦] cards follow the kernel's existing tie rules for synthetic copies.",
+    "partners": [
+      "ra-diamond-hold-x",
+      "ra-diamond-led-win-x",
+      "ra-trump-x",
+      "seed-diamond-hold"
+    ],
+    "cluster": "A",
+    "draftText": "Opening: Every card other than [♠] your team holds becomes a [♦]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Superset of ra-clubs-to-diamonds, whose identical common version (ca-diamond-become-from-clubs) measured lift -14.5; check the AI bids duplicate-[♦] hands sensibly before trusting results.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 150,
+  "text": "Opening: Every card other than [♠] your team holds becomes a [♦]",
+  "category": "enabler",
+  "signature": "opening|from:notSuit=S|suit=D|become",
+  "family": "opening|from:notSuit=S|suit=D|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is not S",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

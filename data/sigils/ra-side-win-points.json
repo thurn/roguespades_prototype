@@ -1,0 +1,81 @@
+{
+  "id": "ra-side-win-points",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Suits",
+    "Rainbow",
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "points",
+    "amount": 30,
+    "on": {
+      "event": "win",
+      "card": {
+        "notSuit": "S"
+      }
+    }
+  },
+  "design": {
+    "decision": "Overtake with side-suit honors instead of ruffing, and save [♠]s for defense, so it pays for winning tricks in suits.",
+    "opponent": "Shown on the first side-suit win; opponents ruff your team's side honors whenever they can.",
+    "rationale": "This is the broad rare points piece the Suits, Ranks and Rainbow side-suit builds share, at about +135 on a typical round of 4.5 side wins, and it sits against Spades payoffs, so it creates tension between ruffing and cashing. Points are lost on a set, which keeps bids tense.",
+    "partners": [
+      "ua-side-raise",
+      "ua-aces-untrumpable",
+      "ua-diamonds-untrumpable",
+      "ra-rainbow-first-x"
+    ],
+    "cluster": "A",
+    "draftText": "+30 contract points when your team wins a trick with a card other than [♠]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Fires on most tricks, so it plays close to a flat bonus; tension against ruffing is real but mild.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "+30 contract points when your team wins a trick with a card other than [♠]",
+  "category": "points",
+  "signature": "win|notSuit=S|-|points",
+  "family": "win|notSuit=S|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 30",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is not S",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

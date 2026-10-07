@@ -1,0 +1,71 @@
+{
+  "id": "rb-opp-contract-set",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Generic",
+    "Exact"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "mult",
+    "amount": 3,
+    "on": {
+      "event": "opponentsSet"
+    }
+  },
+  "design": {
+    "decision": "Defend hardest against big contracts: when the opponents bid 9, spend your own tricks setting them rather than padding your bid.",
+    "opponent": "Revealed on the first set; opponents with big builds must weigh bidding high against feeding this.",
+    "rationale": "Rewards defense in proportion to the threat, so it hits the leading team's big bids hardest and works against snowballing; it differs from ub-opp-set-contract-mult, which scales with your own contract.",
+    "partners": [
+      "cb-opp-set-mult",
+      "ub-opp-set-xmult",
+      "uc-opp-twos",
+      "rb-opp-win-mult"
+    ],
+    "cluster": "B",
+    "draftText": "+3 contract multiplier for each trick in the opponents' contract if the opponents miss their contract",
+    "hooks": "New payoff scaling `per: opponentContractTrick` (the size of the opponents' contract), mirroring per contractTrick."
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-rare",
+      "note": "draft-rare: deferred: it needs a scaling hook by the opponents' contract size, which was not built in this pass."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "+3 contract multiplier if the opponents miss their contract",
+  "category": "mult",
+  "signature": "opponentsSet|-|-|mult",
+  "family": "opponentsSet|-|-|mult",
+  "touchesOpponents": true,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "opponents miss their contract",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

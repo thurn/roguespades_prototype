@@ -1,0 +1,95 @@
+{
+  "id": "rc-nil-honors-drop",
+  "rarity": "legendary",
+  "role": "enabler",
+  "archetypes": [
+    "Nil",
+    "LowCards",
+    "Exact"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "become",
+    "from": {
+      "ranks": [
+        "Q",
+        "A"
+      ]
+    },
+    "rank": "2"
+  },
+  "design": {
+    "decision": "Upends who should bid nil: the partner with honors and no low middle cards can now bid nil, while the other partner covers. Every bid becomes a question of which hand to empty.",
+    "opponent": "The nil bid is public; the change happens privately in the nil bidder's hand, so opponents only see [2]s appearing where they expected honors, and they bust the nil with middle cards ([8]-[J]) instead.",
+    "rationale": "A memorable Nil build-around that reverses a basic Spades intuition. Bidding is a fixed moment and the bid is an ordinary choice, so it is not an activated ability, and the change is deterministic. [J]s are left alone on purpose so a nil still carries risk.",
+    "partners": [
+      "cc-nil-made-mult",
+      "rc-nil-grow-x",
+      "rc-two-hold-x",
+      "uc-nil-low-hold"
+    ],
+    "cluster": "C",
+    "draftText": "When a partner on your team bids nil, every [Q] through [A] they hold becomes a [2]",
+    "hooks": "Bid-gated hand changes: a become/raise effect may carry an 'on' bid trigger; it then resolves deterministically right after bidding (before Hold payoffs are counted), on the hand of each partner the trigger names (each nil bidder for nil:true, both partners otherwise). No randomness: 'every' changes only."
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-rare",
+      "note": "draft-rare: deferred: it needs a bid-gated hand change that the AI can evaluate at bid time, which was not built in this pass."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 150,
+  "text": "Opening: Every [Q] through [A] your team holds becomes a [2]",
+  "category": "enabler",
+  "signature": "opening|from:ranks=Q-A|rank=2|become",
+  "family": "opening|from:ranks=Q-A|rank=*|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint Q",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint A",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in Q-A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 7,
+    "S": 0.125
+  },
+  "lint": []
+}

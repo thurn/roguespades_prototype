@@ -1,0 +1,86 @@
+{
+  "id": "ra-spade-win-contract",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Spades",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "mult",
+    "amount": 1,
+    "per": "contractTrick",
+    "on": {
+      "event": "win",
+      "card": {
+        "suit": "S"
+      }
+    }
+  },
+  "design": {
+    "decision": "Count [♠] winners into the bid and stretch the contract, since each [♠] win is worth more the higher your team bids.",
+    "opponent": "Shown on the first [♠] win; opponents try to set high contracts by leading [♠] to pull trumps together.",
+    "rationale": "It meets the bid-tension target at rare and replaces the weak flat seed-spade-mult shape with one that scales with the contract (cb-contract-mult is the strongest measured common shape). The ♠-win filter keeps it a Spades piece, not a generic one.",
+    "partners": [
+      "cb-spade-seven",
+      "ub-become-four-spades",
+      "ua-spade-raise",
+      "cb-become-spade"
+    ],
+    "cluster": "A",
+    "draftText": "+1 contract multiplier for each trick in your team's contract when your team wins a trick with [♠]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Functionally overlaps ua-trump-contract-mult, since most [♠] wins are ruffs, and differs from ua-ace-win-contract only in the filter; long sentence.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "+1 contract multiplier for each trick in your team's contract when your team wins a trick with [♠]",
+  "category": "mult",
+  "signature": "win|suit=S|contractTrick|mult",
+  "family": "win|suit=*|contractTrick|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is S",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

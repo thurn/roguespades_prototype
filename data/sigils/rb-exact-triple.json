@@ -1,0 +1,72 @@
+{
+  "id": "rb-exact-triple",
+  "rarity": "legendary",
+  "role": "payoff",
+  "archetypes": [
+    "Exact"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "xmult",
+    "amount": 3,
+    "on": {
+      "event": "make",
+      "exact": true
+    }
+  },
+  "design": {
+    "decision": "Every round becomes a precision puzzle: bid conservatively, then duck, shed winners, and give away overtricks to land exactly on the contract.",
+    "opponent": "Revealed on its first exact make; opponents can push an extra trick onto your team to spoil it.",
+    "rationale": "A build-around for the Exact minor archetype; its signature matches seed-exact-x except for the amount, and it is kept because at legendary scale (about 27% fire) it changes how the run is played rather than adding a small bonus.",
+    "partners": [
+      "seed-exact-mult",
+      "cc-small-contract-mult",
+      "rb-opp-win-mult",
+      "rb-honors-free"
+    ],
+    "cluster": "B",
+    "draftText": "×3 contract multiplier if your team makes its contract exactly",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Same signature and amount as cut common e-exact-xmult and differs from seed-exact-x only in amount; the exact-make puzzle is a good legendary moment.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 150,
+  "text": "×3 contract multiplier if your team makes its contract exactly",
+  "category": "xmult",
+  "signature": "make(exact)|-|-|xmult",
+  "family": "make(exact)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract exactly",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

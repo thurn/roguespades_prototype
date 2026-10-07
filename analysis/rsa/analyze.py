@@ -334,8 +334,10 @@ def write_estimates(
 
 def nice(x: float, cat: str, kind: str) -> float:
     if cat == "xmult" or kind == "xmult":
+        if x < 1.25:
+            return max(1.05, round(x * 20) / 20)
         if x < 1.5:
-            return max(1.25, round(x * 4) / 4)
+            return round(x * 4) / 4
         return round(x * 2) / 2
     if x < 5:
         return max(1, round(x))

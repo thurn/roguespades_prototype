@@ -15,7 +15,12 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Differs from seed-flat-x only in amount, and it changes no bid or play decision.",
+      "elegance": 3
+    }
   },
   "status": "candidate",
   "replacedBy": null,

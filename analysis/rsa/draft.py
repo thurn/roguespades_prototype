@@ -13,7 +13,17 @@ def parse_designer(text: str) -> list:
     m = re.search(r"\[\s*\{.*\}\s*\]", text, re.S)
     if not m:
         raise ValueError("no JSON array in designer output")
-    return json.loads(m.group(0))
+    raw = m.group(0)
+    # Designers occasionally close one brace too many before "draftText"; repair that case.
+    for _ in range(20):
+        try:
+            return json.loads(raw)
+        except json.JSONDecodeError as e:
+            cut = raw.rfind("}", 0, e.pos + 1)
+            if cut < 0:
+                raise
+            raw = raw[:cut] + raw[cut + 1 :]
+    return json.loads(raw)
 
 
 def intake(cands: list, step: str, source: str = "designed") -> list:

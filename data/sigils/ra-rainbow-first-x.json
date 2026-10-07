@@ -1,0 +1,84 @@
+{
+  "id": "ra-rainbow-first-x",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Rainbow",
+    "Ranks",
+    "Suits"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.2,
+    "on": {
+      "event": "win",
+      "distinct": "suit"
+    }
+  },
+  "design": {
+    "decision": "Spread winners across suits when buying, and in play cash a winner in a new suit before running a long one.",
+    "opponent": "Shown on the first win; opponents hold back their only stopper in your team's missing suit.",
+    "rationale": "seed-rainbow-first (+8.0) shows that per-suit partial credit works where all-four thresholds swing. Compounding per new suit gives Rainbow a rare that pays about ×1.7 typically and ×2.07 at four suits, without seed-rainbow-x's all-or-nothing shape.",
+    "partners": [
+      "seed-rainbow-first",
+      "seed-rainbow-mult",
+      "cb-become-ace",
+      "ua-side-raise"
+    ],
+    "cluster": "A",
+    "draftText": "×1.2 contract multiplier when your team wins its first trick with each suit",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Fires about three times every round (cut e-distinct-xmult at 100%), so it is close to a flat ×mult with little decision; the small factor compounds opaquely.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "×1.2 contract multiplier when your team wins its first trick with each suit",
+  "category": "xmult",
+  "signature": "win(distinct=suit)|-|-|xmult",
+  "family": "win(distinct=suit)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "first win with this suit",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "suits already won",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

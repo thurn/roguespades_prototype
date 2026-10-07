@@ -1,0 +1,84 @@
+{
+  "id": "rb-streak-contract-mult",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "mult",
+    "amount": 1,
+    "per": "contractTrick",
+    "on": {
+      "event": "win",
+      "consecutive": true
+    }
+  },
+  "design": {
+    "decision": "Bid high, then play for runs: each consecutive win is worth the size of the contract, so both the bid and the order of play matter.",
+    "opponent": "Revealed on the first consecutive win; opponents interrupt runs and defend hard against the big contract.",
+    "rationale": "Combines the two strongest common shapes (cb-consecutive-mult and cb-contract-mult) under one condition, scaled by the contract for bid tension; it keeps one trigger and one effect, and the scaling uses the existing per-contract-trick template.",
+    "partners": [
+      "cb-consecutive-mult",
+      "rb-low-raise",
+      "cb-bid7-mult",
+      "seed-raise"
+    ],
+    "cluster": "B",
+    "draftText": "+1 contract multiplier for each trick in your team's contract when your team wins consecutive tricks",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Differs from ub-consecutive-contract-points only in category, and the long sentence pairs a streak trigger with contract scaling, which is heavy for one line.",
+      "elegance": 2
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "+1 contract multiplier for each trick in your team's contract when your team wins consecutive tricks",
+  "category": "mult",
+  "signature": "win(consecutive)|-|contractTrick|mult",
+  "family": "win(consecutive)|-|contractTrick|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team won the previous trick",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

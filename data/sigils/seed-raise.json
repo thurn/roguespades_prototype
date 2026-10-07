@@ -17,7 +17,12 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Differs from kept ca-raise-one only in amount; it overlaps rb-low-raise and rc-junk-raise.",
+      "elegance": 4
+    }
   },
   "status": "candidate",
   "replacedBy": null,

@@ -1,0 +1,223 @@
+{
+  "id": "uc-two-grow-points",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "LowCards"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "grow",
+    "kind": "points",
+    "step": 20,
+    "on": {
+      "event": "win",
+      "card": {
+        "rank": "2"
+      }
+    }
+  },
+  "design": {
+    "decision": "Make winning with a [2] a goal for the whole run: trump with the [2♠] and keep the [2]s of long suits.",
+    "opponent": "Visible as it grows; opponents overruff and avoid letting [2]s win.",
+    "rationale": "Low Cards growth that lasts the whole run; it pairs strongly with uc-twos-beat.",
+    "partners": [
+      "cc-two-win-mult",
+      "uc-twos-beat",
+      "seed-two-win"
+    ],
+    "cluster": "C",
+    "draftText": "This sigil gains +20 contract points every time your team wins a trick with a [2] (currently +0)",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Rarely fires without uc-twos-beat; run-long growth on a rare event.",
+      "elegance": 4
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -5.8 [-7.1, -4.4] pts (n 7232), fire 25%, C 6; the kept pool covers its archetypes with stronger or simpler pieces."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "This sigil gains +20 contract points every time your team wins a trick with a [2] (currently +0)",
+  "category": "points",
+  "signature": "win|rank=2|growth|points",
+  "family": "win|rank=*|growth|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "growth step 20",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "currently display",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "growth counter carried between rounds",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal 2",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 7232,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -5.76,
+        "lo": -7.1,
+        "hi": -4.42,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 7232
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -5.63,
+        "lo": -6.97,
+        "hi": -4.29,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 7232
+      },
+      {
+        "key": "decisive",
+        "label": "Decisive share of holder's wins (%)",
+        "value": 6.52,
+        "lo": 6.04,
+        "hi": 7.03,
+        "bandLo": 5.0,
+        "bandHi": null,
+        "n": 6778
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 24.79,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 79632
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 34.29,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 14355
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 2.54,
+        "lo": 1.67,
+        "hi": 3.41,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -0.13,
+        "lo": -4.55,
+        "hi": 4.28,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-uncommon",
+        "amount": 20
+      }
+    ],
+    "amountSlope": {
+      "value": 2.54,
+      "lo": 1.67,
+      "hi": 3.41
+    },
+    "skillGradient": {
+      "value": -0.13,
+      "lo": -4.55,
+      "hi": 4.28
+    },
+    "pairs": [
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-low-to-aces",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-become-king",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-side-win-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-rainbow-first-contract",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.0607784236025901,
+      "seU": 0.008785258828009188,
+      "slopeU": 0.039599849507767945,
+      "slopeSeU": 0.008240642762491965,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

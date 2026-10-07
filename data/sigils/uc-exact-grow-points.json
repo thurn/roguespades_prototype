@@ -1,0 +1,211 @@
+{
+  "id": "uc-exact-grow-points",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Exact"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "grow",
+    "kind": "points",
+    "step": 30,
+    "on": {
+      "event": "make",
+      "exact": true
+    }
+  },
+  "design": {
+    "decision": "Aim for exact contracts every round early in the run.",
+    "opponent": "Visible as it grows; opponents force overtricks.",
+    "rationale": "Exact growth paid in points, gentler than the rare seed-grow-exact, which measured -15.",
+    "partners": [
+      "seed-exact-mult",
+      "seed-exact-x",
+      "uc-low-discard"
+    ],
+    "cluster": "C",
+    "draftText": "This sigil gains +30 contract points every time your team makes its contract exactly (currently +0)",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 4
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -15.6 [-17.6, -13.5] pts (n 3009), fire 26%, C 4; far below the control, and one retune step can't close the gap."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "This sigil gains +30 contract points every time your team makes its contract exactly (currently +0)",
+  "category": "points",
+  "signature": "make(exact)|-|growth|points",
+  "family": "make(exact)|-|growth|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "growth step 30",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "currently display",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "growth counter carried between rounds",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract exactly",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 3009,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -15.55,
+        "lo": -17.58,
+        "hi": -13.52,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 3009
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -9.39,
+        "lo": -11.42,
+        "hi": -7.36,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 3009
+      },
+      {
+        "key": "decisive",
+        "label": "Decisive share of holder's wins (%)",
+        "value": 9.74,
+        "lo": 8.85,
+        "hi": 10.71,
+        "bandLo": 5.0,
+        "bandHi": null,
+        "n": 2761
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 25.68,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 33466
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 24.76,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 2654
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.73,
+        "lo": -0.63,
+        "hi": 2.08,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -6.17,
+        "lo": -11.73,
+        "hi": -0.61,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-uncommon",
+        "amount": 30
+      }
+    ],
+    "amountSlope": {
+      "value": 0.73,
+      "lo": -0.63,
+      "hi": 2.08
+    },
+    "skillGradient": {
+      "value": -6.17,
+      "lo": -11.73,
+      "hi": -0.61
+    },
+    "pairs": [
+      {
+        "with": "uc-low-discard",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-trump-freely",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-first-trick-contract-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-honor-win-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-become-four-spades",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.10133592831641464,
+      "seU": 0.013328279976278673,
+      "slopeU": 0.011298445312195636,
+      "slopeSeU": 0.01284168678697795,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "id": "ub-contract-trick-xmult",
+  "rarity": "uncommon",
+  "role": "hybrid",
+  "archetypes": [
+    "BidHigh",
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.05,
+    "per": "contractTrick"
+  },
+  "design": {
+    "decision": "Every trick bid compounds the round: 7 gives ×1.41, 10 gives ×1.63, and a set is multiplied too.",
+    "opponent": "Revealed at the first scored round; opponents defend hard against big contracts.",
+    "rationale": "The ×mult form of the strongest common (cb-contract-mult). Scaling applies on sets too, so it is bid tension in its simplest form.",
+    "partners": [
+      "cb-contract-mult",
+      "ub-become-four-spades",
+      "ub-low-to-aces"
+    ],
+    "cluster": "B",
+    "draftText": "×1.05 contract multiplier for each trick in your team's contract",
+    "hooks": "per: contractTrick on an xmult should compound (amount to the power of the contract) instead of multiplying the amount by the contract; today the kernel computes amount × contract, which is unprintable for ×mults.",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "×1.05 compounded per contract trick can't be totalled at the table; kept cb-contract-mult does the same bid-tension job readably.",
+      "elegance": 2
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -11.9 [-13.3, -10.5] pts (n 2701), fire 100%, C 2; far below the control, and one retune step can't close the gap."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "×1.05 contract multiplier for each trick in your team's contract",
+  "category": "hybrid",
+  "signature": "always|-|contractTrick|xmult",
+  "family": "always|-|contractTrick|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.05",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 2701,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -11.87,
+        "lo": -13.28,
+        "hi": -10.47,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 2701
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -8.18,
+        "lo": -9.59,
+        "hi": -6.77,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 2701
+      },
+      {
+        "key": "decisive",
+        "label": "Decisive share of holder's wins (%)",
+        "value": 11.0,
+        "lo": 10.03,
+        "hi": 12.04,
+        "bandLo": 5.0,
+        "bandHi": null,
+        "n": 2619
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 100.0,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 29666
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 100.0,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 18910
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 2.53,
+        "lo": 1.1,
+        "hi": 3.96,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -3.69,
+        "lo": -7.17,
+        "hi": -0.22,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-uncommon",
+        "amount": 1.05
+      }
+    ],
+    "amountSlope": {
+      "value": 2.53,
+      "lo": 1.1,
+      "hi": 3.96
+    },
+    "skillGradient": {
+      "value": -3.69,
+      "lo": -7.17,
+      "hi": -0.22
+    },
+    "pairs": [
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-low-to-aces",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-rainbow-first-contract",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-bid5-xmult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-side-win-mult",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.08832892494248312,
+      "seU": 0.009236599821129758,
+      "slopeU": 0.039435202026666505,
+      "slopeSeU": 0.01351381491538009,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

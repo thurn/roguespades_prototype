@@ -1,0 +1,179 @@
+{
+  "id": "uc-clubs-to-spades",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Spades",
+    "Suits",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "become",
+    "count": 4,
+    "from": {
+      "suit": "C"
+    },
+    "suit": "S"
+  },
+  "design": {
+    "decision": "With [♣]s now short or void, plan to trump [♣] leads and bid the extra trump tricks; Suits teams keep their [♦]s intact.",
+    "opponent": "Revealed at Opening; opponents learn the team is short in [♣] and stop leading it.",
+    "rationale": "It changes cards from a named side suit, not random cards, so every change adds a trump and removes a side-suit loser, often creating a void. It names [♣] so it never cuts into the [♦] Suits line. It uses a count (Four) rather than every [♣], because the whole-suit version (ca-diamond-become-from-clubs) measured -14.5.",
+    "partners": [
+      "cb-become-spade",
+      "e-hold-suit-s-mult",
+      "cb-spade-seven",
+      "e-trump-mult",
+      "seed-trump-three"
+    ],
+    "cluster": "C",
+    "draftText": "Opening: Four [♣]s your team holds become [♠]s",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "The design note's 'revealed at Opening' is wrong: an Opening change to your own hand stays hidden until a changed card trumps; near-duplicate of ub-become-four-spades.",
+      "elegance": 4
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -7.9 [-8.9, -6.9] pts (n 11473), fire 0%, C 5; the kept pool covers its archetypes with stronger or simpler pieces."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Opening: Four [♣]s your team holds become [♠]s",
+  "category": "enabler",
+  "signature": "opening|from:suit=C|suit=S|become",
+  "family": "opening|from:suit=*|suit=S|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "numeric value",
+        "detail": "count 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is C",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 11473,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -7.92,
+        "lo": -8.92,
+        "hi": -6.91,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 11473
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -5.6,
+        "lo": -6.6,
+        "hi": -4.59,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 11473
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -2.32,
+        "lo": -5.92,
+        "hi": 1.28,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": -2.32,
+      "lo": -5.92,
+      "hi": 1.28
+    },
+    "pairs": [
+      {
+        "with": "uc-low-discard",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-become-king",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-become-four-spades",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-trump-freely",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-first-trick-contract-points",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.060405438041120654,
+      "seU": 0.006595267424158027,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

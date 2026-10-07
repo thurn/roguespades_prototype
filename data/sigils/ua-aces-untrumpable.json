@@ -1,0 +1,178 @@
+{
+  "id": "ua-aces-untrumpable",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Ranks",
+    "Suits",
+    "Rainbow",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "untrumpable",
+    "from": {
+      "rank": "A"
+    }
+  },
+  "design": {
+    "decision": "Keep side [A]s longer instead of cashing them before opponents void the suit, and bid every [A] as a sure trick.",
+    "opponent": "Revealed the first time a trump fails to beat an [A]. Opponents then stop wasting trumps on [A]s and must win elsewhere.",
+    "rationale": "Changing who wins tricks is the other large enabler lever the brief names. This answers the stated Ranks threat that [A]s get trumped once a suit runs out. It is new hook 1 of 4, and the one general mechanism serves several candidates.",
+    "partners": [
+      "seed-ace-win",
+      "ca-ace-win-two-mult",
+      "ua-ace-win-contract",
+      "ua-twos-become-aces",
+      "seed-rainbow-mult"
+    ],
+    "cluster": "A",
+    "draftText": "Your team's [A]s can't be trumped",
+    "hooks": "Trick resolution: a card your team plays that matches a filter and is of the led suit beats any [♠] played to that trick (it still loses to a higher card of the led suit). Effect type untrumpable with a from filter.",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Removes the main defence against [A]s with a new rule exception; clear once revealed, but the first reveal is a gotcha for opponents.",
+      "elegance": 4
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -10.4 [-11.5, -9.3] pts (n 13189), fire 0%, C 4; far below the control, and one retune step can't close the gap."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Your team's [A]s can't be trumped",
+  "category": "enabler",
+  "signature": "play|rank=A|-|untrumpable",
+  "family": "play|rank=*|-|untrumpable",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team played it",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "a [♠] played to the trick",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 13189,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -10.38,
+        "lo": -11.46,
+        "hi": -9.29,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 13189
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -6.74,
+        "lo": -7.83,
+        "hi": -5.65,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 13189
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -3.64,
+        "lo": -7.2,
+        "hi": -0.07,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": -3.64,
+      "lo": -7.2,
+      "hi": -0.07
+    },
+    "pairs": [
+      {
+        "with": "ub-low-to-aces",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-consecutive-contract-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-rainbow-first-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-low-hold-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-twos-become-aces",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.07276744067146022,
+      "seU": 0.007133282971649011,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

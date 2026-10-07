@@ -1,0 +1,183 @@
+{
+  "id": "ua-kings-become-aces",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Ranks",
+    "BidHigh",
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "become",
+    "from": {
+      "rank": "K"
+    },
+    "rank": "A"
+  },
+  "design": {
+    "decision": "Count [K]s as sure tricks when bidding. It changes the shop value of [K]s against [A]s and conflicts with [K] payoffs.",
+    "opponent": "Once revealed, opponents see more [A]s than the deck should allow, and the [K] and [Q] holdings they relied on lose to them.",
+    "rationale": "A lower-power sibling of the [2]s version: it makes near-winners certain rather than adding winners, so the pair measures whether certainty or trick count is what makes rank enablers work. It has the same destination but a different source filter, so it is not a signature duplicate.",
+    "partners": [
+      "ua-twos-become-aces",
+      "ua-three-aces-x",
+      "ua-ace-hold-mult",
+      "seed-ace-win",
+      "seed-four-aces"
+    ],
+    "cluster": "A",
+    "draftText": "Opening: Every [K] your team holds becomes an [A]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "One of five [A]-making uncommons in the batch; the from filter makes it deterministic and clean.",
+      "elegance": 4
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -9.6 [-10.9, -8.3] pts (n 3515), fire 0%, C 6; near-duplicate of kept ua-twos-become-aces."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Opening: Every [K] your team holds becomes an [A]",
+  "category": "enabler",
+  "signature": "opening|from:rank=K|rank=A|become",
+  "family": "opening|from:rank=*|rank=*|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is K",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal K",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 3515,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -9.61,
+        "lo": -10.93,
+        "hi": -8.29,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 3515
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -6.43,
+        "lo": -7.75,
+        "hi": -5.1,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 3515
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -3.18,
+        "lo": -8.14,
+        "hi": 1.77,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": -3.18,
+      "lo": -8.14,
+      "hi": 1.77
+    },
+    "pairs": [
+      {
+        "with": "seed-become-king",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-become-four-spades",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-trump-freely",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-low-discard",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-side-win-mult",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.06938479195604308,
+      "seU": 0.008675574235446104,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

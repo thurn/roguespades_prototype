@@ -1,0 +1,74 @@
+{
+  "id": "rb-opp-win-mult",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Exact",
+    "Nil",
+    "LowCards"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "mult",
+    "amount": 2,
+    "on": {
+      "event": "win",
+      "whose": "opponents"
+    }
+  },
+  "design": {
+    "decision": "Bid low and duck: every overtrick your team takes is a trick the opponents don't, so make exactly your contract and give away the rest; it also multiplies a made nil.",
+    "opponent": "Revealed on the first trick they win; opponents may decline cheap tricks or try to push extra tricks onto your team.",
+    "rationale": "Exact lacks a rare that isn't just a bigger amount on an existing uncommon; this pays the Exact idea (no overtricks) a little at a time instead of all at once, pairs with Nil, and applies on sets so low bids still carry risk.",
+    "partners": [
+      "cc-small-contract-mult",
+      "seed-exact-mult",
+      "cc-nil-made-mult",
+      "seed-nil-bid-mult"
+    ],
+    "cluster": "B",
+    "draftText": "+2 contract multiplier when the opponents win a trick",
+    "hooks": "New trigger scope `whose: opponents` on win triggers: counts tricks any player on the opposing team wins, as a general mirror of every win trigger.",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Opponents can't avoid winning the tricks they need, so their only response is ducking overtricks; in practice it is close to a flat +mult that rewards low bids.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "+2 contract multiplier when the opponents win a trick",
+  "category": "mult",
+  "signature": "win(whose=opponents)|-|-|mult",
+  "family": "win(whose=opponents)|-|-|mult",
+  "touchesOpponents": true,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "the opponents win the trick",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

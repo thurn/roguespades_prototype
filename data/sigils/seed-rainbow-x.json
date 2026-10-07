@@ -20,7 +20,12 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "All-or-nothing threshold swings; it is clean and visible.",
+      "elegance": 4
+    }
   },
   "status": "candidate",
   "replacedBy": null,

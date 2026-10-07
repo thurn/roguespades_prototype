@@ -1,0 +1,97 @@
+{
+  "id": "rc-junk-raise",
+  "rarity": "rare",
+  "role": "enabler",
+  "archetypes": [
+    "Generic",
+    "BidHigh",
+    "LowCards",
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "raise",
+    "amount": 3,
+    "from": {
+      "ranks": [
+        "2",
+        "9"
+      ]
+    }
+  },
+  "design": {
+    "decision": "Bid on a hand with no junk: [8]s and [9]s become [J]s and [Q]s, and [2]-[7]s become [5]-[10]s that win late tricks but still count as [2] through [10]; nil now needs a much weaker hand.",
+    "opponent": "Shows as unusually high bids and mid cards that keep winning; opponents can't lead low to make the team waste honors.",
+    "rationale": "Source-filtered upgrades measure well, and seed-raise is the strongest measured enabler (+11). This one targets the other end of the hand: seed-raise mostly turns honors into [A]s, while this turns junk into mid cards and leaves the honors alone, so the two stack instead of duplicating.",
+    "partners": [
+      "cb-contract-mult",
+      "ca-face-win",
+      "uc-low-win-mult",
+      "cb-make8-mult"
+    ],
+    "cluster": "C",
+    "draftText": "Opening: Raise every [2] through [9] your team holds by three ranks",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Near-duplicate of rb-low-raise (range only); raising [2]-[9] works against several Low Cards payoffs whose ranges it moves cards out of, so the LowCards tag is doubtful.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "Opening: Raise every [2] through [9] your team holds by three ranks",
+  "category": "enabler",
+  "signature": "opening|from:ranks=2-9|-|raise",
+  "family": "opening|from:ranks=2-9|-|raise",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "numeric value",
+        "detail": "raise 3",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 9",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-9",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 7,
+    "S": 0.125
+  },
+  "lint": []
+}

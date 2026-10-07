@@ -1,0 +1,186 @@
+{
+  "id": "ua-low-become-spades",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Spades",
+    "BidHigh",
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "become",
+    "from": {
+      "ranks": [
+        "2",
+        "4"
+      ]
+    },
+    "suit": "S"
+  },
+  "design": {
+    "decision": "Bid the tricks the team can win by trumping: its worst side cards become trumps and its side suits shorten toward voids.",
+    "opponent": "Opponents find the team void and trumping early, so leading side suits becomes dangerous.",
+    "rationale": "cb-become-spade (+10.3) is the strongest common enabler. This is a larger, targeted uncommon version (about three cards) that changes only losers, so it never weakens a side honor. The common cc-twos-to-spades was too small at -2.3, and the wider rank range fixes the size.",
+    "partners": [
+      "cb-spade-seven",
+      "e-hold-suit-s-mult",
+      "e-trump-mult",
+      "ua-trump-two-x",
+      "ua-spade-seven-x"
+    ],
+    "cluster": "A",
+    "draftText": "Opening: Every [2] through [4] your team holds becomes a [♠]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "One of three uncommon [♠] conversions with ub-become-four-spades and uc-clubs-to-spades; [2] through [4] adds yet another low range to the pool.",
+      "elegance": 4
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -18.8 [-20.2, -17.4] pts (n 3573), fire 0%, C 6; far below the control, and one retune step can't close the gap."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Opening: Every [2] through [4] your team holds becomes a [♠]",
+  "category": "enabler",
+  "signature": "opening|from:ranks=2-4|suit=S|become",
+  "family": "opening|from:ranks=2-4|suit=S|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 3573,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -18.82,
+        "lo": -20.22,
+        "hi": -17.43,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 3573
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -13.01,
+        "lo": -14.41,
+        "hi": -11.62,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 3573
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -5.81,
+        "lo": -10.17,
+        "hi": -1.44,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": -5.81,
+      "lo": -10.17,
+      "hi": -1.44
+    },
+    "pairs": [
+      {
+        "with": "ua-aces-untrumpable",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-low-discard",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-honor-win-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-ace-win-contract",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-consecutive-contract-points",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.14050739112697913,
+      "seU": 0.009151491133785706,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

@@ -25,14 +25,23 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Uses [2] through [10] while the batch's Low Cards pieces use [2] through [9] for the same idea; the pool should settle on fewer low ranges.",
+      "elegance": 3
+    }
   },
-  "status": "candidate",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
       "step": "phase-0",
       "note": "Created from the GDD §9 seed."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -21.1 [-23.0, -19.1] pts (n 2322), fire 18%, C 8; far below the control, and one retune step can't close the gap."
     }
   ],
   "name": null,
@@ -94,55 +103,55 @@
   },
   "lint": [],
   "estimates": {
-    "step": "phase-0",
-    "exposures": 704,
+    "step": "draft-uncommon",
+    "exposures": 2322,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": -1.13,
-        "lo": -6.29,
-        "hi": 4.03,
+        "value": -21.08,
+        "lo": -23.02,
+        "hi": -19.13,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 704
+        "n": 2322
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 0.68,
-        "lo": -4.48,
-        "hi": 5.84,
+        "value": -10.86,
+        "lo": -12.81,
+        "hi": -8.92,
         "bandLo": null,
         "bandHi": null,
-        "n": 704
+        "n": 2322
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 21.99,
+        "value": 17.93,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 24648
+        "n": 25496
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 23.71,
+        "value": 21.25,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 1257
+        "n": 4617
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 4.1,
-        "lo": 1.77,
-        "hi": 6.42,
+        "value": 1.44,
+        "lo": 0.1,
+        "hi": 2.78,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -150,9 +159,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": -1.81,
-        "lo": -5.33,
-        "hi": 1.71,
+        "value": -10.21,
+        "lo": -14.92,
+        "hi": -5.51,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -165,48 +174,50 @@
       }
     ],
     "amountSlope": {
-      "value": 4.1,
-      "lo": 1.77,
-      "hi": 6.42
+      "value": 1.44,
+      "lo": 0.1,
+      "hi": 2.78
     },
     "skillGradient": {
-      "value": -1.81,
-      "lo": -5.33,
-      "hi": 1.71
+      "value": -10.21,
+      "lo": -14.92,
+      "hi": -5.51
     },
     "pairs": [
       {
-        "with": "seed-spade-lead",
+        "with": "uc-low-discard",
         "synergy": 0.0
       },
       {
-        "with": "seed-exact-mult",
+        "with": "ub-honor-win-mult",
         "synergy": 0.0
       },
       {
-        "with": "seed-e-last-heart",
+        "with": "ub-first-trick-contract-points",
         "synergy": 0.0
       },
       {
-        "with": "seed-rainbow-mult",
+        "with": "uc-trump-freely",
         "synergy": 0.0
       },
       {
-        "with": "seed-rainbow-lead-x",
+        "with": "ua-ace-win-contract",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": 0.006950168111591,
-      "seU": 0.03225759280715073,
-      "slopeU": 0.06079601663836768,
-      "slopeSeU": 0.02095952638984524,
-      "k": 1.9447399061524484
+      "liftU": -0.11726423396808848,
+      "seU": 0.01276968197414845,
+      "slopeU": 0.022494940656061693,
+      "slopeSeU": 0.012686817422383652,
+      "k": 1.8525028942895565
     }
   },
   "reports": [
     "reports/phase-0-pilot.md",
-    "reports/phase-0-pilot-dashboard.md"
+    "reports/phase-0-pilot-dashboard.md",
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
   ],
   "gddEffect": {
     "type": "mult",

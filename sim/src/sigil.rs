@@ -48,6 +48,12 @@ pub struct Trigger {
     pub exact: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub action: Option<String>,
+    /// Win triggers: "opponents" counts tricks the opponents win.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub whose: Option<String>,
+    /// Bid triggers: "opponents" compares the contract with the opponents' contract.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vs: Option<String>,
     /// Control experiments only: the excluded "beyond N" rider.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub beyond: Option<u8>,
@@ -85,6 +91,15 @@ pub struct Effect {
     /// Opening changes: only cards matching this filter.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub from: Option<Filter>,
+    /// anySuit: cards your team may play even when it can follow suit; beats: cards that win.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub card: Option<Filter>,
+    /// beats: "trump" to beat every card, not only the card's own suit.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub over: Option<String>,
+    /// Opening changes: "team" (default) or "opponents".
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub whose: Option<String>,
     /// anySuit: the first N tricks.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub first: Option<u8>,
@@ -149,7 +164,18 @@ pub struct CardFilter {
     pub lo: u8,
     pub hi: u8,
 }
+impl Default for CardFilter {
+    fn default() -> Self {
+        CardFilter::NONE
+    }
+}
+
 impl CardFilter {
+    pub const NONE: CardFilter = CardFilter {
+        suits: 0,
+        lo: 2,
+        hi: 14,
+    };
     pub const ANY: CardFilter = CardFilter {
         suits: 0b1111,
         lo: 2,
@@ -174,6 +200,7 @@ pub enum Trig {
     Win {
         filt: CardFilter,
         led: CardFilter,
+        opp: bool,
         by_trump: bool,
         pos: TrickPos,
         consecutive: bool,
@@ -194,6 +221,7 @@ pub enum Trig {
         min: u8,
         max: u8,
         nil: bool,
+        vs_opp: bool,
     },
     Make {
         min: u8,
@@ -205,6 +233,8 @@ pub enum Trig {
         count: u8,
     },
     OpponentsSet,
+    /// Your team's run score is below the opponents' at the start of the round.
+    Behind,
 }
 
 impl Trig {
@@ -248,6 +278,16 @@ pub enum Rule {
     AnySuitMade,
     /// Any suit on the first N tricks.
     AnySuitFirst(u8),
+    /// Your team's cards matching the filter, when of the led suit, can't be beaten by [♠].
+    Untrumpable(CardFilter),
+    /// Opening: raise every card your team holds matching the filter.
+    RaiseFrom(u8, CardFilter),
+    /// Your team's cards matching the filter beat every other card of their suit.
+    Beats(CardFilter),
+    /// Your team's cards matching the filter win every trick they are played to.
+    BeatsAll(CardFilter),
+    /// Your team may play cards matching the filter even when it can follow suit.
+    FreeCards(CardFilter),
 }
 
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -314,6 +354,7 @@ pub fn compile_trigger(t: &Option<Trigger>) -> Result<Trig, String> {
             Trig::Win {
                 filt,
                 led: compile_filter(&t.led)?,
+                opp: t.whose.as_deref() == Some("opponents"),
                 by_trump,
                 pos,
                 consecutive: t.consecutive.unwrap_or(false),
@@ -337,6 +378,7 @@ pub fn compile_trigger(t: &Option<Trigger>) -> Result<Trig, String> {
             min: t.min.unwrap_or(0),
             max: t.max.unwrap_or(0),
             nil: t.nil.unwrap_or(false),
+            vs_opp: t.vs.as_deref() == Some("opponents"),
         },
         "make" => Trig::Make {
             min: t.min.unwrap_or(0),
@@ -352,6 +394,7 @@ pub fn compile_trigger(t: &Option<Trigger>) -> Result<Trig, String> {
             count: if count == 0 { 4 } else { count },
         },
         "opponentsSet" => Trig::OpponentsSet,
+        "behind" => Trig::Behind,
         x => return Err(format!("unknown event {x}")),
     })
 }
@@ -410,8 +453,18 @@ pub fn compile(e: &Effect, amount: Option<f64>) -> Result<Compiled, String> {
                 return Err("become needs rank, suit, or ranks".into());
             }
         }
+        "raise" if e.from.is_some() => Compiled::Rule(Rule::RaiseFrom(
+            e.amount.ok_or("raise needs amount")? as u8,
+            compile_filter(&e.from)?,
+        )),
         "raise" => Compiled::Rule(Rule::Raise(e.amount.ok_or("raise needs amount")? as u8)),
+        "untrumpable" => Compiled::Rule(Rule::Untrumpable(compile_filter(&e.from)?)),
         "leadChoice" => Compiled::Rule(Rule::LeadChoice),
+        "anySuit" if e.card.is_some() => Compiled::Rule(Rule::FreeCards(compile_filter(&e.card)?)),
+        "beats" if e.over.as_deref() == Some("trump") => {
+            Compiled::Rule(Rule::BeatsAll(compile_filter(&e.card)?))
+        }
+        "beats" => Compiled::Rule(Rule::Beats(compile_filter(&e.card)?)),
         "anySuit" if e.after.as_deref() == Some("contractMade") => {
             Compiled::Rule(Rule::AnySuitMade)
         }
@@ -425,7 +478,9 @@ pub fn compile(e: &Effect, amount: Option<f64>) -> Result<Compiled, String> {
 
 /// Whether an effect touches the opponents (for counter scans).
 pub fn touches_opponents(e: &Effect) -> bool {
-    e.on.as_ref().is_some_and(|t| t.event == "opponentsSet")
+    e.on.as_ref()
+        .is_some_and(|t| t.event == "opponentsSet" || t.whose.as_deref() == Some("opponents"))
+        || e.whose.as_deref() == Some("opponents")
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Hash, PartialOrd, Ord)]

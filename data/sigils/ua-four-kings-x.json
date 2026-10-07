@@ -1,0 +1,214 @@
+{
+  "id": "ua-four-kings-x",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Ranks",
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "xmult",
+    "amount": 2,
+    "on": {
+      "event": "hold",
+      "card": {
+        "rank": "K"
+      },
+      "count": 4
+    }
+  },
+  "design": {
+    "decision": "Buy [K]s, take seed-become-king, and avoid effects that turn [K]s into [A]s.",
+    "opponent": "Revealed at scoring.",
+    "rationale": "A narrow ×2 that gives seed-become-king a dedicated payoff. Holding all four of a rank is the classic Ranks goal, and owned cards make it reachable.",
+    "partners": [
+      "seed-become-king",
+      "ca-king-hold",
+      "ua-king-two-x"
+    ],
+    "cluster": "A",
+    "draftText": "×2 contract multiplier if your team holds four [K]s",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Narrow, but the tension with ua-kings-become-aces and the pull toward seed-become-king are good purchase decisions.",
+      "elegance": 4
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -12.6 [-14.1, -11.2] pts (n 2956), fire 11%, C 6; far below the control, and one retune step can't close the gap."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "×2 contract multiplier if your team holds four [K]s",
+  "category": "xmult",
+  "signature": "hold(count=4)|rank=K|-|xmult",
+  "family": "hold(count=4)|rank=*|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is K",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal K",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count at least 4",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 2956,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -12.64,
+        "lo": -14.12,
+        "hi": -11.16,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 2956
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -9.95,
+        "lo": -11.42,
+        "hi": -8.47,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 2956
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 11.0,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 32136
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 12.08,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 19011
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 1.47,
+        "lo": 0.13,
+        "hi": 2.82,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -2.69,
+        "lo": -5.66,
+        "hi": 0.28,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-uncommon",
+        "amount": 2
+      }
+    ],
+    "amountSlope": {
+      "value": 1.47,
+      "lo": 0.13,
+      "hi": 2.82
+    },
+    "skillGradient": {
+      "value": -2.69,
+      "lo": -5.66,
+      "hi": 0.28
+    },
+    "pairs": [
+      {
+        "with": "seed-become-king",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-become-four-spades",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-low-discard",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-trump-freely",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-first-trick-contract-points",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.10737409135728182,
+      "seU": 0.009700143895465078,
+      "slopeU": 0.022969058005135372,
+      "slopeSeU": 0.01276258808617492,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

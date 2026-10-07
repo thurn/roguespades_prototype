@@ -1,0 +1,81 @@
+{
+  "id": "ub-raise-spades",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Spades",
+    "BidHigh",
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "raise",
+    "amount": 3,
+    "from": {
+      "suit": "S"
+    }
+  },
+  "design": {
+    "decision": "Low [♠]s become trump winners before bidding, so bid more and plan to trump and cash [♠]s.",
+    "opponent": "Revealed when a raised [♠] wins a trick it would have lost; opponents must hold their own high [♠]s back.",
+    "rationale": "An uncommon enabler that changes who wins tricks: a bigger visible hand change than the commons, with every raised card still a [♠]. Would buy it before knowing the build, because more trump winners help every contract.",
+    "partners": [
+      "cb-spade-seven",
+      "e-trump-mult",
+      "ub-bid8-xmult"
+    ],
+    "cluster": "B",
+    "draftText": "Opening: Raise every [♠] your team holds by three ranks",
+    "hooks": "raise with a source filter (raise { amount, from: Filter }): raise only cards that match the filter; the same filter field already exists on become."
+  },
+  "status": "cut",
+  "replacedBy": "ua-spade-raise",
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: merged into ua-spade-raise, the same design (signature) from another cluster; the amount sweep decides the number."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Opening: Raise every [♠] your team holds by three ranks",
+  "category": "enabler",
+  "signature": "opening|from:suit=S|-|raise",
+  "family": "opening|from:suit=*|-|raise",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "numeric value",
+        "detail": "raise 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is S",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

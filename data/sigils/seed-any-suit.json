@@ -17,7 +17,12 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Differs from cc-any-suit-first-two only in its window; free-play rules have measured near blank.",
+      "elegance": 3
+    }
   },
   "status": "candidate",
   "replacedBy": null,

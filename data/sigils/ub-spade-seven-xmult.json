@@ -1,0 +1,89 @@
+{
+  "id": "ub-spade-seven-xmult",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh",
+    "Spades"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.5,
+    "on": {
+      "event": "hold",
+      "card": {
+        "suit": "S"
+      },
+      "count": 7
+    }
+  },
+  "design": {
+    "decision": "Buy [♠]s and Opening changes into [♠]; a seven-[♠] team should bid up to use the factor.",
+    "opponent": "Revealed after bidding; opponents can lead [♠]s to strip trumps.",
+    "rationale": "×mult partner for the strongest common (cb-spade-seven, +mult). Holdings fire before play, so it sets up the bid rather than the play.",
+    "partners": [
+      "ub-become-four-spades",
+      "cb-become-spade",
+      "ub-raise-spades"
+    ],
+    "cluster": "B",
+    "draftText": "×1.5 contract multiplier if your team holds seven [♠]s",
+    "hooks": "none"
+  },
+  "status": "cut",
+  "replacedBy": "ua-spade-seven-x",
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: merged into ua-spade-seven-x, the same design (signature) from another cluster; the amount sweep decides the number."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "×1.5 contract multiplier if your team holds seven [♠]s",
+  "category": "xmult",
+  "signature": "hold(count=7)|suit=S|-|xmult",
+  "family": "hold(count=7)|suit=*|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is S",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 7",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count at least 7",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

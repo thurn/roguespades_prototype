@@ -1,0 +1,201 @@
+{
+  "id": "ub-exact-nil-points",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Exact",
+    "Nil"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "nilPoints",
+    "amount": 200,
+    "on": {
+      "event": "make",
+      "exact": true
+    }
+  },
+  "design": {
+    "decision": "When one partner bids nil, the other must bid and land exactly; both partners steer away from extra tricks.",
+    "opponent": "Revealed on an exact make with a nil; opponents can force tricks on either partner.",
+    "rationale": "Links Exact to its named partner Nil: both plans avoid winning extra tricks, and this pays only when they succeed together.",
+    "partners": [
+      "seed-nil-bid-mult",
+      "cc-nil-made-mult",
+      "seed-exact-mult"
+    ],
+    "cluster": "B",
+    "draftText": "+200 nil points if your team makes its contract exactly",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Pays only on a made nil, a hidden second condition behind 'nil points', so a team without a nil bidder holds a dead sigil.",
+      "elegance": 3
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -12.3 [-13.8, -10.9] pts (n 4019), fire 25%, C 2; far below the control, and one retune step can't close the gap."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "+200 nil points if your team makes its contract exactly",
+  "category": "points",
+  "signature": "make(exact)|-|-|nilPoints",
+  "family": "make(exact)|-|-|nilPoints",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 200",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract exactly",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 4019,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -12.32,
+        "lo": -13.77,
+        "hi": -10.87,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 4019
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -8.94,
+        "lo": -10.39,
+        "hi": -7.49,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 4019
+      },
+      {
+        "key": "decisive",
+        "label": "Decisive share of holder's wins (%)",
+        "value": 7.43,
+        "lo": 6.75,
+        "hi": 8.17,
+        "bandLo": 5.0,
+        "bandHi": null,
+        "n": 3700
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 24.54,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 44352
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 24.74,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 18384
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 1.59,
+        "lo": 0.55,
+        "hi": 2.64,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -3.38,
+        "lo": -7.14,
+        "hi": 0.39,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-uncommon",
+        "amount": 200
+      }
+    ],
+    "amountSlope": {
+      "value": 1.59,
+      "lo": 0.55,
+      "hi": 2.64
+    },
+    "skillGradient": {
+      "value": -3.38,
+      "lo": -7.14,
+      "hi": 0.39
+    },
+    "pairs": [
+      {
+        "with": "ub-low-to-aces",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-aces-untrumpable",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-consecutive-contract-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-rainbow-first-contract",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.096536820238384,
+      "seU": 0.00950493595930031,
+      "slopeU": 0.024801302131859018,
+      "slopeSeU": 0.009903255659296195,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

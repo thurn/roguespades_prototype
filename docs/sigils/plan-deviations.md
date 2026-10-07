@@ -10,7 +10,17 @@ or changed these points. Each entry says what changed and why.
 - **New rule hooks from the designers** are general mechanisms: Opening changes with a source
   filter ("Every [♣] your team holds becomes a [♦]"), wins filtered by the led card, leading [♠]
   before they are broken, leading the first trick, and playing any suit on the first N tricks or
-  once the contract is won.
+  once the contract is won. The uncommon pass added: a filtered set of your team's cards that
+  can't be trumped, filtered Opening raises, filtered cards your team may play even when it can
+  follow suit, filtered cards that outrank the [A] of their suit, Opening changes to the
+  opponents' cards, contract-scaled ×multipliers that compound once per contract trick, and a
+  bid trigger for outbidding the opponents.
+- **Passes overlap.** The rare and legendary designers worked while the uncommons were being
+  measured, so they saw uncommon candidates rather than the final uncommon pool.
+- **Two rare designs were deferred:** a payoff scaled by the opponents' contract size and a
+  bid-gated hand change for nil bidders, because their hooks were not built in this pass.
+- **The critic and the measurement run in parallel** in the uncommon and later passes; critic
+  fixes that change an effect are re-measured in the next round instead of delaying the pass.
 - **Copy instead of undo.** Search copies the small, allocation-free `Play` struct per
   iteration rather than undoing moves; there is still no allocation in the hot loop.
 - **Tier 0 is flat Monte Carlo.** Six heuristic rollouts per legal move over common deals, a
@@ -34,6 +44,11 @@ or changed these points. Each entry says what changed and why.
   team. Grant schedules depend only on the board seed and the team's earlier grants (coherent
   grants weight toward earlier grants, not shop purchases), so both runs apply the same
   treatments.
+- **Grants hold their slot.** Once the shop offered the kept commons, teams filled their seven
+  slots and the shop policy sold low-valued granted sigils, so many grants were held only briefly
+  and their estimates lost most of their precision (controls' standard errors tripled). Granted
+  sigils are now never sold to buy something else; only a later grant can displace one. The
+  first uncommon measurement was discarded and re-run.
 - **The W curve.** A logistic from final margin to win is degenerate on final margins, so W's
   scale is chosen in the pilot by maximizing the t-statistics of planted effects. Effects are
   converted to win-rate points with a fitted slope k of (2·win − 1) on u.

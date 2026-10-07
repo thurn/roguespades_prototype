@@ -92,7 +92,11 @@ impl Acc {
         let Some(t) = t else { return };
         match t.event.as_str() {
             "win" => {
-                self.check("your team wins the trick");
+                self.check(if t.whose.is_some() {
+                    "the opponents win the trick"
+                } else {
+                    "your team wins the trick"
+                });
                 self.filter(&t.card);
                 if t.led.is_some() {
                     self.filter(&t.led);
@@ -150,6 +154,9 @@ impl Acc {
                 if t.nil == Some(true) {
                     self.check("bids nil");
                 }
+                if t.vs.is_some() {
+                    self.check("contract larger than the opponents'");
+                }
                 if let Some(n) = t.min {
                     self.num(format!("threshold {n}"));
                     self.check(format!("contract at least {n}"));
@@ -183,6 +190,7 @@ impl Acc {
                 self.state("suits seen");
             }
             "opponentsSet" => self.check("opponents miss their contract"),
+            "behind" => self.check("your team has fewer points"),
             _ => {}
         }
     }
@@ -224,7 +232,11 @@ pub fn score(e: &Effect, rarity: Rarity) -> Score {
             if let Some(r) = &e.rank {
                 a.num(format!("rank literal {r}"));
             }
-            a.check("held by your team");
+            a.check(if e.whose.is_some() {
+                "held by the opponents"
+            } else {
+                "held by your team"
+            });
         }
         "become" => {
             a.term("Opening:", common);
@@ -240,7 +252,34 @@ pub fn score(e: &Effect, rarity: Rarity) -> Score {
             if let Some(t) = &e.term {
                 a.term(format!("\"{t}\""), common);
             }
+            a.check(if e.whose.as_deref() == Some("opponents") {
+                "held by the opponents"
+            } else {
+                "held by your team"
+            });
+        }
+        "raise" if e.from.is_some() => {
+            a.term("Opening:", common);
+            a.num(format!("raise {}", e.amount.unwrap_or(0.0)));
+            a.filter(&e.from);
             a.check("held by your team");
+        }
+        "beats" => {
+            a.check("your team played it");
+            a.filter(&e.card);
+            if e.over.is_some() {
+                a.check("beats trumps too");
+            }
+            a.selector("ranks above the [A] of its suit");
+        }
+        "anySuit" if e.card.is_some() => {
+            a.check("your team could follow suit");
+            a.filter(&e.card);
+        }
+        "untrumpable" => {
+            a.check("your team played it");
+            a.filter(&e.from);
+            a.check("a [♠] played to the trick");
         }
         "raise" => {
             a.term("Opening:", common);

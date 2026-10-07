@@ -1,0 +1,88 @@
+{
+  "id": "rb-streak-grow",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "grow",
+    "kind": "mult",
+    "step": 1,
+    "on": {
+      "event": "win",
+      "consecutive": true
+    }
+  },
+  "design": {
+    "decision": "Play winners back to back every round (cash a suit before switching), because each pair also adds to the run-long total.",
+    "opponent": "Revealed the first time it grows; opponents break runs by taking the lead whenever they can and by switching suits.",
+    "rationale": "Run-long growth belongs at rare; the earlier growth seeds failed on rare conditions (17-28% fire), so this one grows on the most frequent Streaks trigger (about 90% of rounds, several times per round), like the kept cb-grow-make-mult.",
+    "partners": [
+      "cb-consecutive-mult",
+      "cb-three-row-mult",
+      "seed-raise",
+      "cb-become-spade"
+    ],
+    "cluster": "B",
+    "draftText": "This sigil gains +1 contract multiplier every time your team wins consecutive tricks (currently +0)",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Fires several times a round, so it can snowball to large totals; opponents can respond by breaking runs.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "This sigil gains +1 contract multiplier every time your team wins consecutive tricks (currently +0)",
+  "category": "mult",
+  "signature": "win(consecutive)|-|growth|mult",
+  "family": "win(consecutive)|-|growth|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "growth step 1",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "currently display",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "growth counter carried between rounds",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team won the previous trick",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

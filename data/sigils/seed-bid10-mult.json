@@ -19,14 +19,23 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Already set aside by the screen (0.3% fire); no design problem beyond a threshold that is almost never reached.",
+      "elegance": 4
+    }
   },
-  "status": "candidate",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
       "step": "phase-0",
       "note": "Created from the GDD §9 seed."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: set aside by the hand-level screen: fires in 0.3% of rounds."
     }
   ],
   "name": null,

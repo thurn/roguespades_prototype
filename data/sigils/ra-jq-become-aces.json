@@ -1,0 +1,96 @@
+{
+  "id": "ra-jq-become-aces",
+  "rarity": "rare",
+  "role": "enabler",
+  "archetypes": [
+    "Ranks",
+    "BidHigh",
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "become",
+    "from": {
+      "ranks": [
+        "J",
+        "Q"
+      ]
+    },
+    "rank": "A"
+  },
+  "design": {
+    "decision": "Bid with roughly four extra [A]s spread across suits, and buy [J]s and [Q]s cheaply because they turn into winners.",
+    "opponent": "Shown when a converted [A] wins; opponents face duplicate [A]s and have to trump early rather than wait to cash honors.",
+    "rationale": "Source-filtered upgrades are the enablers that measure well, and this is the rare step above ua-kings-become-aces, with a broader source and about twice the cards. It is buyable before any build because it adds winners. If it breaks the 12-pt ceiling, the fallback is \"Every [Q]\".",
+    "partners": [
+      "ra-ace-hold-x",
+      "seed-ace-mult",
+      "ca-ace-win-two-mult",
+      "ua-aces-untrumpable"
+    ],
+    "cluster": "A",
+    "draftText": "Opening: Every [J] through [Q] your team holds becomes an [A]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "The become-[A] family is crowded (cb-become-ace, ua-become-three-aces, ua-kings-become-aces, ub-low-to-aces, uc-junk-to-aces, ua-twos-become-aces), and \"[J] through [Q]\" reads awkwardly for a two-rank range.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "Opening: Every [J] through [Q] your team holds becomes an [A]",
+  "category": "enabler",
+  "signature": "opening|from:ranks=J-Q|rank=A|become",
+  "family": "opening|from:ranks=J-Q|rank=*|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint J",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint Q",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in J-Q",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 7,
+    "S": 0.125
+  },
+  "lint": []
+}

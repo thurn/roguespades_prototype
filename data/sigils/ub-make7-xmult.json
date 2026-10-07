@@ -1,0 +1,206 @@
+{
+  "id": "ub-make7-xmult",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh",
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "xmult",
+    "amount": 2.0,
+    "on": {
+      "event": "make",
+      "min": 7
+    }
+  },
+  "design": {
+    "decision": "Push a borderline 6 to 7 when the hand can carry it; the ×1.5 only pays on a made 7+, so the extra trick is the whole bet.",
+    "opponent": "Revealed at scoring on a made 7+; once known, opponents defend harder against every 7-bid.",
+    "rationale": "The broad ×mult for Bid High at uncommon (budget: ×1.5 broadly); 7 sits between the common make8 +mult and the rare make8 ×2, so the three rarities ask for different bids.",
+    "partners": [
+      "cb-contract-mult",
+      "cb-become-spade",
+      "ub-become-four-spades",
+      "cb-spade-seven"
+    ],
+    "cluster": "B",
+    "draftText": "×1.5 contract multiplier if your team makes a contract of 7 or more",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 5
+    }
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: kept: lift -6.9 [-7.9, -5.8] pts (n 7976), fire 25%, C 4; below the control but with a real amount slope (+4.6 pts per doubling), so retuning can lift it; kept for BidHigh, Generic."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: amount 1.5 -> 2 by retune; lift -6.9 pts against target +3, slope +4.6 pts per doubling."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "×2 contract multiplier if your team makes a contract of 7 or more",
+  "category": "xmult",
+  "signature": "make(min=7)|-|-|xmult",
+  "family": "make(min=7)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 7",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "contract at least 7",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 7976,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -6.87,
+        "lo": -7.89,
+        "hi": -5.85,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 7976
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -5.27,
+        "lo": -6.3,
+        "hi": -4.25,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 7976
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 25.11,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 87082
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 26.26,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 56101
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 4.58,
+        "lo": 3.68,
+        "hi": 5.47,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -1.6,
+        "lo": -4.73,
+        "hi": 1.54,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-uncommon",
+        "amount": 1.5
+      }
+    ],
+    "amountSlope": {
+      "value": 4.58,
+      "lo": 3.68,
+      "hi": 5.47
+    },
+    "skillGradient": {
+      "value": -1.6,
+      "lo": -4.73,
+      "hi": 1.54
+    },
+    "pairs": [
+      {
+        "with": "seed-become-king",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-become-four-spades",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-side-win-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-trump-freely",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.05694308518317176,
+      "seU": 0.0067022614062223745,
+      "slopeU": 0.07132310370160588,
+      "slopeSeU": 0.008466604659718619,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

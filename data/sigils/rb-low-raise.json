@@ -1,0 +1,97 @@
+{
+  "id": "rb-low-raise",
+  "rarity": "rare",
+  "role": "enabler",
+  "archetypes": [
+    "BidHigh",
+    "Streaks",
+    "Generic",
+    "Spades"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "raise",
+    "amount": 3,
+    "from": {
+      "ranks": [
+        "2",
+        "8"
+      ]
+    }
+  },
+  "design": {
+    "decision": "Bid off the upgraded hand: more middle cards can stop a suit and low [♠]s become real trumps, so bids of 8 or more become reachable, while nil gets much harder.",
+    "opponent": "Hidden until it changes who wins a trick; after that your team's middling cards keep beating theirs.",
+    "rationale": "Upgrades filtered to low cards have measured best among enablers; this one never wastes the raise on honors already near [A] (unlike seed-raise), and any build that bids would buy it.",
+    "partners": [
+      "cb-contract-mult",
+      "cb-bid8-trick-mult",
+      "cb-consecutive-mult",
+      "rb-outbid-x"
+    ],
+    "cluster": "B",
+    "draftText": "Opening: Raise every [2] through [8] your team holds by three ranks",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Near-duplicate of rc-junk-raise (range [2]-[8] vs [2]-[9], same +3); keep only one, and the raise family is already large (ca-raise-one, seed-raise, ua-side-raise, ua-spade-raise).",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "Opening: Raise every [2] through [8] your team holds by three ranks",
+  "category": "enabler",
+  "signature": "opening|from:ranks=2-8|-|raise",
+  "family": "opening|from:ranks=2-8|-|raise",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "numeric value",
+        "detail": "raise 3",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 8",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-8",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 7,
+    "S": 0.125
+  },
+  "lint": []
+}

@@ -1,0 +1,70 @@
+{
+  "id": "rb-contract-trick-x",
+  "rarity": "legendary",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh",
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.15,
+    "per": "contractTrick"
+  },
+  "design": {
+    "decision": "Every extra trick bid compounds (about ×3 at 8 and ×4 at 10), and it applies on sets, so every bid becomes a high-stakes call.",
+    "opponent": "Revealed at the first scoring; opponents defend hard to set big contracts, which now cost your team a fortune.",
+    "rationale": "The Bid High build-around, with maximum bid tension both ways; its signature matches ub-contract-trick-xmult except for the amount, which is justified because at legendary scale it defines the run.",
+    "partners": [
+      "rb-low-raise",
+      "seed-raise",
+      "cb-become-spade",
+      "rb-outbid-x"
+    ],
+    "cluster": "B",
+    "draftText": "×1.15 contract multiplier for each trick in your team's contract",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Differs from ub-contract-trick-xmult only in amount (acknowledged), and ×1.15 per contract trick is an exponent players can't price in their heads.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 150,
+  "text": "×1.15 contract multiplier for each trick in your team's contract",
+  "category": "xmult",
+  "signature": "always|-|contractTrick|xmult",
+  "family": "always|-|contractTrick|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

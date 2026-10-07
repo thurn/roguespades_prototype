@@ -1,0 +1,90 @@
+{
+  "id": "rc-low-beats",
+  "rarity": "rare",
+  "role": "enabler",
+  "archetypes": [
+    "LowCards",
+    "Rainbow",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "beats",
+    "card": {
+      "ranks": [
+        "2",
+        "4"
+      ]
+    }
+  },
+  "design": {
+    "decision": "Count each [2]-[4] as a sure winner of its suit when bidding, then pick when to spend it: lead it to cash, or hold it to beat an opponent's honor; a nil bidder must now keep their own [2]-[4]s out of tricks they would win.",
+    "opponent": "Revealed the first time a [4] wins over an honor; opponents stop leading suits where the team showed low cards and save their honors for suits the team is void in.",
+    "rationale": "Near-duplicate of uc-twos-beat (range only); the deliberate reason is that rarity buys a broader condition: about six sure winners per team instead of two, which makes it one of the most visible trick changes in the game. Strong on its own because it adds real winners that are still low cards for every payoff check, and it creates real tension with Nil.",
+    "partners": [
+      "uc-low-three-x",
+      "uc-low-win-mult",
+      "cc-two-win-mult",
+      "rc-low-win-x"
+    ],
+    "cluster": "C",
+    "draftText": "Your team's [2]s through [4]s beat every other card of their suit",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Differs from uc-twos-beat only in the range (acknowledged); a memorable rule with real tension with Nil.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "Your team's [2]s through [4]s beat every other card of their suit",
+  "category": "enabler",
+  "signature": "play|ranks=2-4||beats",
+  "family": "play|ranks=2-4||beats",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team played it",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-4",
+        "cost": 1
+      },
+      {
+        "burden": "computed selector",
+        "detail": "ranks above the [A] of its suit",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

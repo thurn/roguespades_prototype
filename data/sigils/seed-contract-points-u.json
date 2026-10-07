@@ -16,14 +16,23 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "drop",
+      "concerns": "Exact duplicate of kept common seed-contract-points (same signature, same +10).",
+      "elegance": 5
+    }
   },
-  "status": "candidate",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
       "step": "phase-0",
       "note": "Created from the GDD §9 seed."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: dropped by the critic: Exact duplicate of kept common seed-contract-points (same signature, same +10)."
     }
   ],
   "name": null,

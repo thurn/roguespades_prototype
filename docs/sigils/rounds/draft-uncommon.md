@@ -40,4 +40,47 @@ decision over pieces that snowball a lead.
 
 ## Outcome
 
-Pending.
+**Kept 44 uncommons** (soft target 60; range 45–75), plus two Opening raise enablers held for
+re-measurement. Dashboard: [draft-uncommon-tournament](../../../reports/draft-uncommon-tournament.md).
+
+### Process
+
+- **Designed:** three designers returned 94 candidates; 6 cross-cluster duplicates merged. The
+  critic kept 104 of 108 (designed plus seeds), fixed three low-card ranges to [2] through [6]
+  and one honor range to [J] through [A], and dropped `seed-contract-points-u` as a duplicate of
+  a kept common.
+- **New hooks** (general): filtered "can't be trumped", filtered Opening raises, filtered cards
+  playable even when following suit, filtered cards that outrank the [A], Opening changes to the
+  opponents' cards, compounding contract-scaled ×multipliers, and a bid trigger for outbidding
+  the opponents.
+- **Screen:** set aside `seed-bid10-mult` (0.3% fire) and `seed-diamond-five` (0%).
+- **Tournaments:** 106 candidates. A first measurement was discarded: with the kept commons now
+  for sale, teams filled their slots and the shop sold low-valued grants, tripling standard
+  errors. Grants now hold their slot for the run. Re-run: 39,854 + 76,880 tier-0 boards and
+  19,220 tier-1 calibration boards; median standard error 0.75 pts.
+
+### Results
+
+- Holding a grant for the whole run makes a weak sigil pay for a dead slot, so lifts sit lower
+  than in the commons pass. Against the uncommon control (+60 contract points, itself worth
+  +7.7 pts over nothing), the median candidate measured −9.6 pts; 11 kept uncommons beat it.
+- **Strong shapes:** play-freedom and trick-strength rules for low cards (`uc-low-discard`
+  +13.1, `uc-twos-beat` +11.4), source-filtered conversions to [A]s, contract-scaled points on
+  frequent events, and nil points per low card held.
+- **Weak shapes:** conditional ×1.5 multipliers that fire in a quarter of rounds, all-suit and
+  single-suit milestones, and random Opening suit changes (`seed-become-heart` −36.5, its
+  random picks wreck the hand).
+- **A hook bug:** the filtered Opening raise was compiled but never applied, so
+  `ua-spade-raise` and `ua-side-raise` measured as blanks. Fixed; both are held as candidates
+  and measured again with the rares.
+- **Kept:** 10 enablers, 9 hybrids, 9 points, 8 +mult, 8 ×mult; 38 designed and 6 seeds.
+  28 amounts retuned. `ua-diamond-two-x` has a flat amount slope (structural).
+- **Tier agreement** rose to 0.25 once grants held their slot.
+
+### Coverage holes
+
+- **Suits** (4 uncommons) and **Exact** (3) are thin; Exact's uncommon payoffs all measured far
+  below the control.
+- **×multipliers at uncommon** are kept mostly for coverage and depend on retuning upward.
+- **Enablers** are still mostly weaker than a flat +60 points: the AI turns stronger hands into
+  overtricks more than into higher bids, and overtricks score nothing.

@@ -1,0 +1,70 @@
+{
+  "id": "rb-trailing-x",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "xmult",
+    "amount": 2,
+    "on": {
+      "event": "behind"
+    }
+  },
+  "design": {
+    "decision": "When behind, bid more aggressively, because the doubled score makes a big made contract the fastest way back (and a set doubles the loss too).",
+    "opponent": "Revealed the first time it applies; the leading team knows a trailing opponent swings harder and can defend to set them.",
+    "rationale": "The game is lopsided (the median final margin is about half the winner's score) and the brief asks for comeback pieces; this is the most direct one, and because it also doubles sets it rewards a decision rather than handing out points.",
+    "partners": [
+      "cb-contract-mult",
+      "cb-make-mult",
+      "rb-outbid-x"
+    ],
+    "cluster": "B",
+    "draftText": "×2 contract multiplier if your team has fewer points than the opponents",
+    "hooks": "New trigger event `behind`: true when your team's run score is below the opponents' at the start of the round, fixed before bidding and never re-checked during the round; any payoff can use this general run-state condition.",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Generated text reads as a result checked at scoring, but the hook snapshots the run score at the start of the round; the text template must state that timing, e.g. 'if your team is behind when the round begins'. It is dead for a leading team and changes bidding only indirectly.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "×2 contract multiplier if your team is behind when the round begins",
+  "category": "xmult",
+  "signature": "behind|-|-|xmult",
+  "family": "behind|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team has fewer points",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

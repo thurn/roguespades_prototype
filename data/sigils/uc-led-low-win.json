@@ -1,0 +1,223 @@
+{
+  "id": "uc-led-low-win",
+  "rarity": "uncommon",
+  "role": "hybrid",
+  "archetypes": [
+    "LowCards",
+    "Nil",
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "mult",
+    "amount": 3,
+    "on": {
+      "event": "win",
+      "led": {
+        "ranks": [
+          "2",
+          "6"
+        ]
+      }
+    }
+  },
+  "design": {
+    "decision": "Win tricks that start with a small lead, including partner's low leads and opponents' leads meant to bust a nil.",
+    "opponent": "Visible on the first win; opponents stop leading low into the team.",
+    "rationale": "It uses the led-card filter, so the reward depends on how tricks are led. That supports protecting a nil and leading low without naming a future payoff.",
+    "partners": [
+      "uc-low-lead-mult",
+      "uc-nil-cover-points",
+      "seed-nil-bid-mult",
+      "cb-trick-mult"
+    ],
+    "cluster": "C",
+    "draftText": "+3 contract multiplier when your team wins a trick led with a [2] through [6]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Counting opponents' low leads is the interesting part, but it adds another low-rank variant to a crowded family.",
+      "elegance": 4
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -11.4 [-12.5, -10.3] pts (n 4137), fire 88%, C 5; far below the control, and one retune step can't close the gap."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "+3 contract multiplier when your team wins a trick led with a [2] through [6]",
+  "category": "hybrid",
+  "signature": "win(led=ranks=2-6)|-|-|mult",
+  "family": "win(led=ranks=2-6)|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 6",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-6",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 4137,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -11.39,
+        "lo": -12.51,
+        "hi": -10.27,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 4137
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -7.7,
+        "lo": -8.82,
+        "hi": -6.59,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 4137
+      },
+      {
+        "key": "decisive",
+        "label": "Decisive share of holder's wins (%)",
+        "value": 7.4,
+        "lo": 6.74,
+        "hi": 8.11,
+        "bandLo": 5.0,
+        "bandHi": null,
+        "n": 3948
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 87.97,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 45054
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 87.77,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 35949
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 2.04,
+        "lo": 0.94,
+        "hi": 3.15,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -3.69,
+        "lo": -7.98,
+        "hi": 0.61,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-uncommon",
+        "amount": 3
+      }
+    ],
+    "amountSlope": {
+      "value": 2.04,
+      "lo": 0.94,
+      "hi": 3.15
+    },
+    "skillGradient": {
+      "value": -3.69,
+      "lo": -7.98,
+      "hi": 0.61
+    },
+    "pairs": [
+      {
+        "with": "ua-aces-untrumpable",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-low-discard",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-consecutive-contract-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-honor-win-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-ace-win-contract",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.08317416490547358,
+      "seU": 0.007336451298521207,
+      "slopeU": 0.03182651064546787,
+      "slopeSeU": 0.010457892047485337,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

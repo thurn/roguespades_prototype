@@ -9,7 +9,7 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "mult",
-    "amount": 20,
+    "amount": 40,
     "on": {
       "event": "win",
       "inRow": 4
@@ -19,14 +19,27 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Same trigger as batch ub-four-row-points and ub-four-row-xmult; three categories on one trigger at one rarity is heavy.",
+      "elegance": 4
+    }
   },
-  "status": "candidate",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
       "step": "phase-0",
       "note": "Created from the GDD §9 seed."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: kept: lift -9.1 [-10.7, -7.6] pts (n 5955), fire 36%, C 5; below the control but with a real amount slope (+3.9 pts per doubling), so retuning can lift it; kept for Streaks."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: amount 20 -> 40 by retune; lift -9.1 pts against target +3, slope +3.9 pts per doubling."
     }
   ],
   "name": null,
@@ -35,7 +48,7 @@
   "iconWord": null,
   "gddText": "+20 contract multiplier when your team wins four tricks in a row",
   "price": 75,
-  "text": "+20 contract multiplier when your team wins four tricks in a row",
+  "text": "+40 contract multiplier when your team wins four tricks in a row",
   "category": "mult",
   "signature": "win(inRow=4)|-|-|mult",
   "family": "win(inRow=4)|-|-|mult",
@@ -44,7 +57,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 20",
+        "detail": "payout 40",
         "cost": 1
       },
       {
@@ -73,55 +86,55 @@
   },
   "lint": [],
   "estimates": {
-    "step": "phase-0",
-    "exposures": 591,
+    "step": "draft-uncommon",
+    "exposures": 5955,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": -0.78,
-        "lo": -5.11,
-        "hi": 3.54,
+        "value": -9.13,
+        "lo": -10.68,
+        "hi": -7.58,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 591
+        "n": 5955
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 1.02,
-        "lo": -3.3,
-        "hi": 5.35,
+        "value": -4.86,
+        "lo": -6.41,
+        "hi": -3.31,
         "bandLo": null,
         "bandHi": null,
-        "n": 591
+        "n": 5955
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 41.5,
+        "value": 36.34,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 22791
+        "n": 65212
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 43.32,
+        "value": 36.95,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 2514
+        "n": 31027
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 7.34,
-        "lo": 4.37,
-        "hi": 10.3,
+        "value": 3.93,
+        "lo": 2.95,
+        "hi": 4.91,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -129,9 +142,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": -1.81,
-        "lo": -5.45,
-        "hi": 1.84,
+        "value": -4.27,
+        "lo": -8.2,
+        "hi": -0.34,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -144,48 +157,50 @@
       }
     ],
     "amountSlope": {
-      "value": 7.34,
-      "lo": 4.37,
-      "hi": 10.3
+      "value": 3.93,
+      "lo": 2.95,
+      "hi": 4.91
     },
     "skillGradient": {
-      "value": -1.81,
-      "lo": -5.45,
-      "hi": 1.84
+      "value": -4.27,
+      "lo": -8.2,
+      "hi": -0.34
     },
     "pairs": [
       {
-        "with": "seed-e-last-heart",
+        "with": "ua-aces-untrumpable",
         "synergy": 0.0
       },
       {
-        "with": "seed-spade-lead",
+        "with": "ub-low-to-aces",
         "synergy": 0.0
       },
       {
-        "with": "seed-low-four",
+        "with": "ub-consecutive-contract-points",
         "synergy": 0.0
       },
       {
-        "with": "seed-last-trick",
+        "with": "uc-low-hold-mult",
         "synergy": 0.0
       },
       {
-        "with": "seed-consecutive",
+        "with": "ua-rainbow-first-mult",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": 0.01051733937764756,
-      "seU": 0.027023492980479236,
-      "slopeU": 0.10884639219900656,
-      "slopeSeU": 0.02676114664120963,
-      "k": 1.9447399061524484
+      "liftU": -0.05245516276165646,
+      "seU": 0.010175251363994251,
+      "slopeU": 0.06122001311801057,
+      "slopeSeU": 0.009259977157557508,
+      "k": 1.8525028942895565
     }
   },
   "reports": [
     "reports/phase-0-pilot.md",
-    "reports/phase-0-pilot-dashboard.md"
+    "reports/phase-0-pilot-dashboard.md",
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
   ],
   "gddEffect": {
     "type": "mult",

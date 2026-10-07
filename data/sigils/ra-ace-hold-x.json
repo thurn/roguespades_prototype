@@ -1,0 +1,85 @@
+{
+  "id": "ra-ace-hold-x",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Ranks",
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.25,
+    "on": {
+      "event": "hold",
+      "card": {
+        "rank": "A"
+      }
+    }
+  },
+  "design": {
+    "decision": "Buy [A]s and become-[A] enablers ahead of everything else, and bid up on hands with several [A]s because the payout and the trick count rise together.",
+    "opponent": "Shown after bidding; opponents void suits early so your team's [A]s get trumped and the bid is set.",
+    "rationale": "[A] holding is the strongest-measured Ranks condition (ca-three-aces-mult +12.0), and the measured opening upgrades all target [A]s. A per-card ×mult rewards each step of the build rather than a single threshold.",
+    "partners": [
+      "ra-jq-become-aces",
+      "ua-become-three-aces",
+      "cb-become-ace",
+      "ua-aces-untrumpable"
+    ],
+    "cluster": "A",
+    "draftText": "×1.25 contract multiplier for each [A] your team holds",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Same signature and amount as cut common e-hold-rank-a-xmult (a legitimate rarity move, not a pool duplicate), and differs from rc-two-hold-x only in named rank; a holdings payoff changes purchases and bids but no play.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "×1.25 contract multiplier for each [A] your team holds",
+  "category": "xmult",
+  "signature": "hold|rank=A|-|xmult",
+  "family": "hold|rank=*|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.25",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

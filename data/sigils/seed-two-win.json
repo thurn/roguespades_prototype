@@ -21,7 +21,12 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Same signature and amount as cut common e-win-rank-2-pts (lift -2.6 there); it pairs strongly with rc-twos-always-win and rc-low-beats.",
+      "elegance": 4
+    }
   },
   "status": "candidate",
   "replacedBy": null,

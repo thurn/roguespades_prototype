@@ -1,0 +1,80 @@
+{
+  "id": "ra-spade-lead-x",
+  "rarity": "rare",
+  "role": "hybrid",
+  "archetypes": [
+    "Spades",
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.25,
+    "on": {
+      "event": "lead",
+      "card": {
+        "suit": "S"
+      }
+    }
+  },
+  "design": {
+    "decision": "Break [♠]s early and lead them to draw opponents' trumps, which is the opposite of the ruffing plan and protects side-suit honors.",
+    "opponent": "Shown on the first [♠] lead; opponents hold up high [♠]s to punish leads from length.",
+    "rationale": "This gives Spades a second play pattern (draw trumps) next to ra-trump-x (ruff), so the archetype has a real fork. It fires on a choice of card, has no milestone, and defends side-suit builds.",
+    "partners": [
+      "ua-spade-raise",
+      "ca-spade-lead-three",
+      "ca-high-spade-hold",
+      "ua-aces-untrumpable"
+    ],
+    "cluster": "A",
+    "draftText": "×1.25 contract multiplier when your team leads [♠]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Same signature and amount as cut common e-lead-suit-s-xmult (pre-tournament lift +14.7), a reasonable rarity move; per-event compounding is hard to track.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "×1.25 contract multiplier when your team leads [♠]",
+  "category": "hybrid",
+  "signature": "lead|suit=S|-|xmult",
+  "family": "lead|suit=*|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.25",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team leads",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is S",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

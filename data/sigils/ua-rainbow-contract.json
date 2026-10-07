@@ -1,0 +1,214 @@
+{
+  "id": "ua-rainbow-contract",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Rainbow",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "mult",
+    "amount": 2,
+    "per": "contractTrick",
+    "on": {
+      "event": "suits",
+      "action": "win",
+      "count": 4
+    }
+  },
+  "design": {
+    "decision": "Bid high with a winner in every suit, and spend a trick to win with the missing suit.",
+    "opponent": "Opponents trump or hold up the team's weakest suit.",
+    "rationale": "A bid-tension multiplier for Rainbow. Winning with all four suits happens in about 31% of rounds, and scaling with the contract pushes bids up.",
+    "partners": [
+      "seed-rainbow-mult",
+      "ua-aces-untrumpable",
+      "ua-twos-become-aces",
+      "cb-contract-mult"
+    ],
+    "cluster": "A",
+    "draftText": "+2 contract multiplier for each trick in your team's contract if your team wins tricks with all four suits",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 4
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -17.2 [-18.4, -16.0] pts (n 2560), fire 29%, C 6; far below the control, and one retune step can't close the gap."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "+2 contract multiplier for each trick in your team's contract if your team wins tricks with all four suits",
+  "category": "mult",
+  "signature": "suits(count=4,action=win)|-|contractTrick|mult",
+  "family": "suits(count=4,action=win)|-|contractTrick|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "4 suits",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "distinct suits reach 4",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "suits seen",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 2560,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -17.16,
+        "lo": -18.35,
+        "hi": -15.97,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 2560
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -9.74,
+        "lo": -10.94,
+        "hi": -8.55,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 2560
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 29.0,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 27768
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 29.13,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 21223
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 1.07,
+        "lo": -0.34,
+        "hi": 2.48,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -7.42,
+        "lo": -11.13,
+        "hi": -3.7,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-uncommon",
+        "amount": 2
+      }
+    ],
+    "amountSlope": {
+      "value": 1.07,
+      "lo": -0.34,
+      "hi": 2.48
+    },
+    "skillGradient": {
+      "value": -7.42,
+      "lo": -11.13,
+      "hi": -3.7
+    },
+    "pairs": [
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-low-to-aces",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-rainbow-first-contract",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-bid5-xmult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-side-win-mult",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.10519556643852512,
+      "seU": 0.00781957344940506,
+      "slopeU": 0.01669941926068463,
+      "slopeSeU": 0.01333293330901446,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

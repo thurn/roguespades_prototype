@@ -18,14 +18,23 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Random picks can hit cards already [♥] or break up other suits; its only dedicated payoff is ua-heart-hold-mult.",
+      "elegance": 4
+    }
   },
-  "status": "candidate",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
       "step": "phase-0",
       "note": "Created from the GDD §9 seed."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -36.5 [-37.8, -35.1] pts (n 4201), fire 0%, C 4; near-duplicate of kept cb-become-spade."
     }
   ],
   "name": null,
@@ -62,28 +71,28 @@
   },
   "lint": [],
   "estimates": {
-    "step": "phase-0",
-    "exposures": 983,
+    "step": "draft-uncommon",
+    "exposures": 4201,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": -12.85,
-        "lo": -15.61,
-        "hi": -10.09,
+        "value": -36.45,
+        "lo": -37.85,
+        "hi": -35.06,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 983
+        "n": 4201
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -11.74,
-        "lo": -14.5,
-        "hi": -8.98,
+        "value": -19.62,
+        "lo": -21.02,
+        "hi": -18.22,
         "bandLo": null,
         "bandHi": null,
-        "n": 983
+        "n": 4201
       },
       {
         "key": "slope",
@@ -98,9 +107,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": -1.11,
-        "lo": -4.84,
-        "hi": 2.62,
+        "value": -16.83,
+        "lo": -20.85,
+        "hi": -12.81,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -113,43 +122,45 @@
       "hi": 0.0
     },
     "skillGradient": {
-      "value": -1.11,
-      "lo": -4.84,
-      "hi": 2.62
+      "value": -16.83,
+      "lo": -20.85,
+      "hi": -12.81
     },
     "pairs": [
       {
-        "with": "seed-raise",
+        "with": "seed-become-king",
         "synergy": 0.0
       },
       {
-        "with": "seed-flat-mult",
+        "with": "uc-twos-beat",
         "synergy": 0.0
       },
       {
-        "with": "control-common",
+        "with": "ub-become-four-spades",
         "synergy": 0.0
       },
       {
-        "with": "seed-swap",
+        "with": "ua-side-win-mult",
         "synergy": 0.0
       },
       {
-        "with": "seed-king-win",
+        "with": "ub-bid5-xmult",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": -0.1207184499127196,
-      "seU": 0.01725556733070443,
+      "liftU": -0.21181948189672337,
+      "seU": 0.009157726695931486,
       "slopeU": 0.0,
       "slopeSeU": 0.0,
-      "k": 1.9447399061524484
+      "k": 1.8525028942895565
     }
   },
   "reports": [
     "reports/phase-0-pilot.md",
-    "reports/phase-0-pilot-dashboard.md"
+    "reports/phase-0-pilot-dashboard.md",
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
   ],
   "gddEffect": {
     "type": "become",

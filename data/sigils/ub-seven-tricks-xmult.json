@@ -1,0 +1,206 @@
+{
+  "id": "ub-seven-tricks-xmult",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Generic",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.5,
+    "on": {
+      "event": "win",
+      "count": 7
+    }
+  },
+  "design": {
+    "decision": "Take tricks even past the contract; seven wins pays whether you bid 5 or 9, so overtricks finally matter.",
+    "opponent": "Revealed on the seventh win; opponents fight harder for every trick.",
+    "rationale": "A trick-count milestone that ignores the bid, so it counters Exact and gives a strong hand a reason to keep winning; it multiplies sets too, when a team bids above seven and misses.",
+    "partners": [
+      "ub-honor-win-mult",
+      "ub-low-to-aces",
+      "ub-become-four-spades"
+    ],
+    "cluster": "B",
+    "draftText": "×1.5 contract multiplier when your team wins seven tricks",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Rewards overtricks and can pay a team that bid low, which works against bid tension.",
+      "elegance": 4
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -9.6 [-10.7, -8.5] pts (n 8128), fire 42%, C 5; far below the control, and one retune step can't close the gap."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "×1.5 contract multiplier when your team wins seven tricks",
+  "category": "xmult",
+  "signature": "win(count=7)|-|-|xmult",
+  "family": "win(count=7)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "milestone 7",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count reaches 7",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "milestone count",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 8128,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -9.57,
+        "lo": -10.67,
+        "hi": -8.48,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 8128
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -5.14,
+        "lo": -6.24,
+        "hi": -4.05,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 8128
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 42.31,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 89092
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 43.96,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 57646
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 4.53,
+        "lo": 3.61,
+        "hi": 5.45,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -4.43,
+        "lo": -7.16,
+        "hi": -1.69,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-uncommon",
+        "amount": 1.5
+      }
+    ],
+    "amountSlope": {
+      "value": 4.53,
+      "lo": 3.61,
+      "hi": 5.45
+    },
+    "skillGradient": {
+      "value": -4.43,
+      "lo": -7.16,
+      "hi": -1.69
+    },
+    "pairs": [
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-become-king",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-side-win-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-low-to-aces",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-become-four-spades",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.055534872721399606,
+      "seU": 0.0071769748716849595,
+      "slopeU": 0.07054738577096145,
+      "slopeSeU": 0.00874128328822328,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

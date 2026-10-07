@@ -1,0 +1,94 @@
+{
+  "id": "rc-low-win-x",
+  "rarity": "legendary",
+  "role": "payoff",
+  "archetypes": [
+    "LowCards",
+    "Spades",
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.5,
+    "on": {
+      "event": "win",
+      "card": {
+        "ranks": [
+          "2",
+          "6"
+        ]
+      }
+    }
+  },
+  "design": {
+    "decision": "Every trick becomes a puzzle about winning cheaply: ruff with the [2♠] instead of the [K♠], hold low cards of long suits for the end, and prefer Opening effects that keep cards low over ones that raise them.",
+    "opponent": "Obvious after the first low win; opponents overruff low trumps, keep honors to beat late low cards, and avoid giving the team ruffing chances.",
+    "rationale": "The Low Cards build-around: a repeated ×1.5 that compounds on two or three cheap wins (the legendary budget is ×2-×3 broadly). It changes how a whole run is drafted, toward low [♠]s, low-card rule benders, and away from raise effects, which is what a legendary should do.",
+    "partners": [
+      "rc-low-beats",
+      "uc-twos-beat",
+      "ua-low-become-spades",
+      "rc-twos-always-win"
+    ],
+    "cluster": "C",
+    "draftText": "×1.5 contract multiplier when your team wins a trick with a [2] through [6]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Clean legendary build-around; per-event compounding is hard to track.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 150,
+  "text": "×1.5 contract multiplier when your team wins a trick with a [2] through [6]",
+  "category": "xmult",
+  "signature": "win|ranks=2-6|-|xmult",
+  "family": "win|ranks=2-6|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 6",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-6",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

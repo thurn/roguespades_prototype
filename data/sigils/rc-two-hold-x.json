@@ -1,0 +1,85 @@
+{
+  "id": "rc-two-hold-x",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "LowCards",
+    "Nil"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.25,
+    "on": {
+      "event": "hold",
+      "card": {
+        "rank": "2"
+      }
+    }
+  },
+  "design": {
+    "decision": "Buy [2] cards and Opening effects that make [2]s (normally bad buys), and treat a hand full of [2]s as a reason to bid nil rather than a weak hand.",
+    "opponent": "Only the sigil is visible; opponents cannot see how many [2]s the team holds and learn it as the [2]s are played.",
+    "rationale": "Raises the kept cc-two-hold-mult (+10.9) from +mult to ×mult, and makes the downgrade enablers that measured very badly on their own (become [2]s) worth considering. The decision it changes is mainly in the shop and at Opening, which is a mild departure from 'changes a play decision'; a wild combo with uc-low-to-twos is acceptable because it needs luck.",
+    "partners": [
+      "uc-low-to-twos",
+      "cc-two-hold-mult",
+      "uc-three-twos-x",
+      "uc-twos-beat"
+    ],
+    "cluster": "C",
+    "draftText": "×1.25 contract multiplier for each [2] your team holds",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Same signature and amount as cut common e-hold-rank-2-xmult, and differs from ra-ace-hold-x only in named rank; it changes purchases and Opening, never a play.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "×1.25 contract multiplier for each [2] your team holds",
+  "category": "xmult",
+  "signature": "hold|rank=2|-|xmult",
+  "family": "hold|rank=*|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.25",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal 2",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

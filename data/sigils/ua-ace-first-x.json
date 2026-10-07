@@ -1,0 +1,219 @@
+{
+  "id": "ua-ace-first-x",
+  "rarity": "uncommon",
+  "role": "hybrid",
+  "archetypes": [
+    "Ranks",
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.5,
+    "on": {
+      "event": "win",
+      "trick": "first",
+      "card": {
+        "rank": "A"
+      }
+    }
+  },
+  "design": {
+    "decision": "Lead an [A] to the first trick, or save one to win it, rather than making the usual opening lead.",
+    "opponent": "Opponents can trump the first trick only if they are void, which is rare that early.",
+    "rationale": "The enumerated +10 version measured +5.5 at common and fired in 44% of rounds. A ×1.5 suits uncommon, and the condition shapes the opening lead.",
+    "partners": [
+      "cb-first-trick-mult",
+      "ua-become-three-aces",
+      "ua-twos-become-aces"
+    ],
+    "cluster": "A",
+    "draftText": "×1.5 contract multiplier when your team wins the first trick of a round with an [A]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "At ×1.5 it is strictly dominated by batch ub-first-trick-xmult (any card, same ×1.5), so the [A] filter must earn a larger amount or one of the two should go.",
+      "elegance": 3
+    }
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: cut: lift -12.4 [-13.5, -11.2] pts (n 2882), fire 34%, C 5; far below the control, and one retune step can't close the gap."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "×1.5 contract multiplier when your team wins the first trick of a round with an [A]",
+  "category": "hybrid",
+  "signature": "win(trick=first)|rank=A|-|xmult",
+  "family": "win(trick=first)|rank=*|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "is the first trick",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 2882,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -12.37,
+        "lo": -13.54,
+        "hi": -11.2,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 2882
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -8.06,
+        "lo": -9.23,
+        "hi": -6.89,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 2882
+      },
+      {
+        "key": "decisive",
+        "label": "Decisive share of holder's wins (%)",
+        "value": 7.54,
+        "lo": 6.75,
+        "hi": 8.42,
+        "bandLo": 5.0,
+        "bandHi": null,
+        "n": 2706
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 34.04,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 31468
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 34.38,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 24925
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 2.59,
+        "lo": 1.29,
+        "hi": 3.89,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -4.31,
+        "lo": -7.45,
+        "hi": -1.16,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-uncommon",
+        "amount": 1.5
+      }
+    ],
+    "amountSlope": {
+      "value": 2.59,
+      "lo": 1.29,
+      "hi": 3.89
+    },
+    "skillGradient": {
+      "value": -4.31,
+      "lo": -7.45,
+      "hi": -1.16
+    },
+    "pairs": [
+      {
+        "with": "ub-low-to-aces",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-rainbow-first-contract",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-bid5-xmult",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-junk-to-aces",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.08705797226523843,
+      "seU": 0.00768414655957915,
+      "slopeU": 0.04030325049066185,
+      "slopeSeU": 0.012324014637022504,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

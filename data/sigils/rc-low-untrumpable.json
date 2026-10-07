@@ -1,0 +1,90 @@
+{
+  "id": "rc-low-untrumpable",
+  "rarity": "rare",
+  "role": "enabler",
+  "archetypes": [
+    "LowCards",
+    "Suits",
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "untrumpable",
+    "from": {
+      "ranks": [
+        "2",
+        "10"
+      ]
+    }
+  },
+  "design": {
+    "decision": "Keep length in a side suit and cash its low cards late after the honors fall, instead of drawing trumps first; your team's honors can still be trumped, so lead them early and save low cards for the end.",
+    "opponent": "Shows up when an opponent's ruff fails to beat a [7]; opponents switch from trumping to holding high cards of the team's long suits.",
+    "rationale": "Turns the Low Cards plan, winning through length after the honors are gone, into a reliable line of play. Its standalone value is protecting most of the hand from ruffs. It is distinct from the uncommon [A] and [♦] versions because it reverses the usual priority between honors and low cards.",
+    "partners": [
+      "seed-low-four",
+      "uc-low-three-x",
+      "cc-low-last-mult",
+      "ua-side-win-mult"
+    ],
+    "cluster": "C",
+    "draftText": "Your team's [2]s through [10]s can't be trumped",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "A fifth member of the untrumpable family (ua-aces-, ua-diamonds-, ra-team-, rb-side-); the shield only matters when a low card is winning its suit, which is late and rare.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "Your team's [2]s through [10]s can't be trumped",
+  "category": "enabler",
+  "signature": "play|ranks=2-10|-|untrumpable",
+  "family": "play|ranks=2-10|-|untrumpable",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team played it",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "a [♠] played to the trick",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

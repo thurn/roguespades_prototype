@@ -1,0 +1,169 @@
+{
+  "id": "uc-trump-freely",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Spades",
+    "LowCards",
+    "Streaks",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "anySuit",
+    "card": {
+      "suit": "S"
+    }
+  },
+  "design": {
+    "decision": "On every trick, choose between following suit and trumping, so trumps go where they win the most; low [♠]s become live winners.",
+    "opponent": "Revealed the first time the team trumps while holding the led suit; opponents can no longer count on a long suit running and should lead [♠] to strip trumps.",
+    "rationale": "It changes who wins tricks directly and visibly, which the brief asks for. The option-style commons failed because their freedoms rarely mattered, while trumping at will matters on most tricks. The hook is a general card filter on the existing anySuit rule, not per-sigil code.",
+    "partners": [
+      "e-trump-mult",
+      "seed-trump-three",
+      "seed-trump-points",
+      "cb-become-spade",
+      "uc-low-to-spade",
+      "uc-low-spade-win"
+    ],
+    "cluster": "C",
+    "draftText": "Your team can play [♠]s even when it can follow suit",
+    "hooks": "anySuit gains an optional card filter (`card`). With it, your team may play a matching card from another suit even when it can follow suit, on every trick, or only inside an existing first/last window when one is also given. Leading [♠] before [♠]s are broken stays illegal, and ordinary trump priority applies.",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Lifting follow-suit for [♠] is a big rule change, and opponents can no longer run long suits, but it is visible once used.",
+      "elegance": 4
+    }
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-uncommon",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: kept: lift -4.7 [-5.8, -3.7] pts (n 14185), fire 0%, C 2; kept for coverage of Spades, LowCards, Streaks, BidHigh; a target for the optimization rounds."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Your team can play [♠]s even when it can follow suit",
+  "category": "enabler",
+  "signature": "play|cards:suit=S|-|anySuit",
+  "family": "play|cards:suit=*|-|anySuit",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team could follow suit",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is S",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "estimates": {
+    "step": "draft-uncommon",
+    "exposures": 14185,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -4.72,
+        "lo": -5.78,
+        "hi": -3.66,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 14185
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -4.24,
+        "lo": -5.3,
+        "hi": -3.18,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 14185
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -0.48,
+        "lo": -4.68,
+        "hi": 3.72,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": -0.48,
+      "lo": -4.68,
+      "hi": 3.72
+    },
+    "pairs": [
+      {
+        "with": "uc-low-discard",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-become-four-spades",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-first-trick-contract-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-become-king",
+        "synergy": 0.0
+      },
+      {
+        "with": "ub-honor-win-mult",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.04579624077221271,
+      "seU": 0.006944960779691368,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.8525028942895565
+    }
+  },
+  "reports": [
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
+  ]
+}

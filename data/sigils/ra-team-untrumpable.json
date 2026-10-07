@@ -1,0 +1,70 @@
+{
+  "id": "ra-team-untrumpable",
+  "rarity": "legendary",
+  "role": "enabler",
+  "archetypes": [
+    "Suits",
+    "Ranks",
+    "Rainbow",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "untrumpable"
+  },
+  "design": {
+    "decision": "Build the run around side-suit length and honors instead of [♠]s, cash long suits to the end, and bid every side-suit winner as a sure trick.",
+    "opponent": "Shown the first time a ruff fails; opponents can only win by out-ranking in the led suit or leading [♠], so they hoard [♠]s to lead and draw.",
+    "rationale": "This is a run-defining rule change built on the existing untrumpable hook with no filter: Spades turns into a side-suit game for one team, which is memorable and useful before any payoff. It is likely near the power ceiling, and if it breaks it, the fallback filter is [10] through [A].",
+    "partners": [
+      "ra-side-win-points",
+      "ra-diamond-hold-x",
+      "ra-clubs-to-diamonds",
+      "ra-rainbow-first-x"
+    ],
+    "cluster": "A",
+    "draftText": "Your team's cards can't be trumped",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Players may read the text as protecting your team's own ruffs from overruffs, which the kernel does not do (only cards following a non-[♠] led suit are shielded); a strong rule change opponents can only answer by leading [♠].",
+      "elegance": 5
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 150,
+  "text": "Your team's cards can't be trumped",
+  "category": "enabler",
+  "signature": "play|-|-|untrumpable",
+  "family": "play|-|-|untrumpable",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team played it",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "a [♠] played to the trick",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

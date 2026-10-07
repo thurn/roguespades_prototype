@@ -19,7 +19,12 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Differs from ub-make7-xmult only in threshold and amount, and from cut e-make8-xmult only in amount.",
+      "elegance": 4
+    }
   },
   "status": "candidate",
   "replacedBy": null,

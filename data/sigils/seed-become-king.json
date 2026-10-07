@@ -18,14 +18,23 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Random picks can turn [A]s into [K]s, a downgrade; ua-four-kings-x is its main reason to exist.",
+      "elegance": 4
+    }
   },
-  "status": "candidate",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
       "step": "phase-0",
       "note": "Created from the GDD §9 seed."
+    },
+    {
+      "step": "draft-uncommon",
+      "note": "draft-uncommon: kept: lift -1.9 [-3.1, -0.8] pts (n 9760), fire 0%, C 5; kept for coverage of BidHigh, Ranks, Rainbow; a target for the optimization rounds."
     }
   ],
   "name": null,
@@ -67,28 +76,28 @@
   },
   "lint": [],
   "estimates": {
-    "step": "phase-0",
-    "exposures": 1170,
+    "step": "draft-uncommon",
+    "exposures": 9760,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 0.86,
-        "lo": -1.94,
-        "hi": 3.66,
+        "value": -1.94,
+        "lo": -3.06,
+        "hi": -0.83,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 1170
+        "n": 9760
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 1.97,
-        "lo": -0.83,
-        "hi": 4.77,
+        "value": -3.47,
+        "lo": -4.59,
+        "hi": -2.35,
         "bandLo": null,
         "bandHi": null,
-        "n": 1170
+        "n": 9760
       },
       {
         "key": "slope",
@@ -103,9 +112,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": -1.11,
-        "lo": -4.37,
-        "hi": 2.14,
+        "value": 1.53,
+        "lo": -1.97,
+        "hi": 5.02,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -118,43 +127,45 @@
       "hi": 0.0
     },
     "skillGradient": {
-      "value": -1.11,
-      "lo": -4.37,
-      "hi": 2.14
+      "value": 1.53,
+      "lo": -1.97,
+      "hi": 5.02
     },
     "pairs": [
       {
-        "with": "seed-low-four",
+        "with": "ub-become-four-spades",
         "synergy": 0.0
       },
       {
-        "with": "seed-exact-mult",
+        "with": "uc-twos-beat",
         "synergy": 0.0
       },
       {
-        "with": "seed-spade-lead",
+        "with": "ua-side-win-mult",
         "synergy": 0.0
       },
       {
-        "with": "seed-king-win",
+        "with": "uc-trump-freely",
         "synergy": 0.0
       },
       {
-        "with": "seed-consecutive",
+        "with": "uc-clubs-to-spades",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": 0.020265243135704224,
-      "seU": 0.01751544611122322,
+      "liftU": -0.03747663032103267,
+      "seU": 0.007328974715077207,
       "slopeU": 0.0,
       "slopeSeU": 0.0,
-      "k": 1.9447399061524484
+      "k": 1.8525028942895565
     }
   },
   "reports": [
     "reports/phase-0-pilot.md",
-    "reports/phase-0-pilot-dashboard.md"
+    "reports/phase-0-pilot-dashboard.md",
+    "reports/draft-uncommon-tournament.md",
+    "docs/sigils/rounds/draft-uncommon.md"
   ],
   "gddEffect": {
     "type": "become",

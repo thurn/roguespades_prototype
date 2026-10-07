@@ -1,0 +1,86 @@
+{
+  "id": "ra-ace-win-x",
+  "rarity": "legendary",
+  "role": "payoff",
+  "archetypes": [
+    "Ranks",
+    "Rainbow",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-rare",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.4,
+    "on": {
+      "event": "win",
+      "card": {
+        "rank": "A"
+      }
+    }
+  },
+  "design": {
+    "decision": "Turn the run toward [A]s by buying [A]s, become-[A] enablers and untrumpable effects, and in play time [A]s to land before voids appear.",
+    "opponent": "Shown on the first [A] win; opponents void suits fast and trump [A]s, and play second-hand low to draw them out.",
+    "rationale": "Legendary budget is ×2–×3 broadly: about 2.3 [A] wins a round gives about ×2.2, and it compounds with every [A] the run adds. seed-ace-mult (+9.9 in the pilot) shows [A]-win shapes carry runs, and play-based firing rewards timing over just holding.",
+    "partners": [
+      "ra-jq-become-aces",
+      "ua-aces-untrumpable",
+      "seed-ace-mult",
+      "ra-ace-hold-x"
+    ],
+    "cluster": "A",
+    "draftText": "×1.4 contract multiplier when your team wins a trick with an [A]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Per-event compounding ×mult is hard to track mentally (the reason e-trump-xmult was cut at common), though acceptable at legendary; near-overlaps seed-ace-mult in trigger.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-rare",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 150,
+  "text": "×1.4 contract multiplier when your team wins a trick with an [A]",
+  "category": "xmult",
+  "signature": "win|rank=A|-|xmult",
+  "family": "win|rank=*|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}
