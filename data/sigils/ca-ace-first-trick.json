@@ -36,12 +36,16 @@
       "elegance": 2
     }
   },
-  "status": "candidate",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
       "step": "draft-common",
       "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: cut: lift +5.5 [+4.3, +6.8] pts (n 5701), fire 44%, C 5; critic: Filter-on-timing departure (C=5) whose [A] filter adds little, since trick one is usually won by an [A] anyway; cb-first-trick-mult does the same job more simply.."
     }
   ],
   "name": null,
@@ -85,5 +89,120 @@
     "C": 5,
     "S": 0.16666666666666666
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "draft-common",
+    "exposures": 5701,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 5.55,
+        "lo": 4.27,
+        "hi": 6.82,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 5701
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 2.04,
+        "lo": 0.77,
+        "hi": 3.32,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 5701
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 43.87,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 62166
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 43.31,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 5403
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 5.39,
+        "lo": 4.48,
+        "hi": 6.31,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 3.5,
+        "lo": -0.2,
+        "hi": 7.2,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-common",
+        "amount": 10
+      }
+    ],
+    "amountSlope": {
+      "value": 5.39,
+      "lo": 4.48,
+      "hi": 6.31
+    },
+    "skillGradient": {
+      "value": 3.5,
+      "lo": -0.2,
+      "hi": 7.2
+    },
+    "pairs": [
+      {
+        "with": "cc-nil-contract-trick",
+        "synergy": 0.0
+      },
+      {
+        "with": "cb-grow-four-row",
+        "synergy": 0.0
+      },
+      {
+        "with": "e-exact-xmult",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-exact-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "cb-contract-mult",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.02098632754277551,
+      "seU": 0.007935891713661504,
+      "slopeU": 0.07987854181073471,
+      "slopeSeU": 0.008262985548249115,
+      "k": 1.9480063892139123
+    }
+  },
+  "reports": [
+    "reports/draft-common-tournament.md",
+    "docs/sigils/rounds/draft-common.md"
+  ]
 }

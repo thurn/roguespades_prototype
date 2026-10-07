@@ -207,5 +207,19 @@
   "reports": [
     "reports/phase-0-pilot.md",
     "reports/phase-0-pilot-dashboard.md"
-  ]
+  ],
+  "gddEffect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "win",
+      "card": {
+        "ranks": [
+          "2",
+          "10"
+        ]
+      },
+      "count": 4
+    }
+  }
 }

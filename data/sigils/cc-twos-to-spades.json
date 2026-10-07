@@ -35,12 +35,16 @@
       "elegance": 4
     }
   },
-  "status": "candidate",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
       "step": "draft-common",
       "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: cut: lift -2.3 [-3.3, -1.4] pts (n 5490), fire 0%, C 7; the kept pool covers its archetypes with stronger, simpler, or more decision-rich pieces."
     }
   ],
   "name": null,
@@ -79,5 +83,95 @@
     "C": 7,
     "S": 0.125
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "draft-common",
+    "exposures": 5490,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -2.34,
+        "lo": -3.31,
+        "hi": -1.36,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 5490
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -1.38,
+        "lo": -2.35,
+        "hi": -0.41,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 5490
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -0.96,
+        "lo": -4.59,
+        "hi": 2.68,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": -0.96,
+      "lo": -4.59,
+      "hi": 2.68
+    },
+    "pairs": [
+      {
+        "with": "cc-low-lead-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "e-lead-rank-2-xmult",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-rainbow-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ca-spade-hold-eight",
+        "synergy": 0.0
+      },
+      {
+        "with": "cb-make-mult",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.014167907846162044,
+      "seU": 0.006058884040891261,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.9480063892139123
+    }
+  },
+  "reports": [
+    "reports/draft-common-tournament.md",
+    "docs/sigils/rounds/draft-common.md"
+  ]
 }

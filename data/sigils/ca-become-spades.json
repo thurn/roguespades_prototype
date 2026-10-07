@@ -32,7 +32,7 @@
       "elegance": 4
     }
   },
-  "status": "candidate",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -42,6 +42,10 @@
     {
       "step": "draft-common",
       "note": "draft-common: also proposed as cc-two-spades."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: cut: lift -1.5 [-2.3, -0.8] pts (n 15750), fire 0%, C 6; near-duplicate of kept cb-become-spade (same shape up to a named suit, rank, or amount)."
     }
   ],
   "name": null,
@@ -75,5 +79,95 @@
     "C": 6,
     "S": 0.14285714285714285
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "draft-common",
+    "exposures": 15750,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -1.52,
+        "lo": -2.29,
+        "hi": -0.76,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 15750
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 2.64,
+        "lo": 1.88,
+        "hi": 3.41,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 15750
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -4.17,
+        "lo": -7.93,
+        "hi": -0.41,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": -4.17,
+      "lo": -7.93,
+      "hi": -0.41
+    },
+    "pairs": [
+      {
+        "with": "cc-low-lead-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-become-two",
+        "synergy": 0.0
+      },
+      {
+        "with": "e-lead-rank-2-xmult",
+        "synergy": 0.0
+      },
+      {
+        "with": "cb-first-trick-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-rainbow-mult",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.02715247979029834,
+      "seU": 0.004777590518316635,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.9480063892139123
+    }
+  },
+  "reports": [
+    "reports/draft-common-tournament.md",
+    "docs/sigils/rounds/draft-common.md"
+  ]
 }

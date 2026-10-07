@@ -186,5 +186,13 @@
   "reports": [
     "reports/phase-0-pilot.md",
     "reports/phase-0-pilot-dashboard.md"
-  ]
+  ],
+  "gddEffect": {
+    "type": "mult",
+    "amount": 20,
+    "on": {
+      "event": "win",
+      "inRow": 4
+    }
+  }
 }

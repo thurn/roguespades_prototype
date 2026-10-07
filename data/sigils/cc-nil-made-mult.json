@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 20,
+    "amount": 10,
     "on": {
       "event": "nilMade"
     }
@@ -33,7 +33,7 @@
       "elegance": 5
     }
   },
-  "status": "candidate",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -43,6 +43,14 @@
     {
       "step": "draft-common",
       "note": "draft-common: the enumerator also produced this signature (e-nilmade-mult); credited to both sources."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: kept: lift +20.6 [+19.5, +21.8] pts (n 9476), fire 39%, C 2; covers Nil; the amount is retuned toward +2 pts over the control."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: amount 20 -> 10 by retune; lift +20.6 pts against target +2, slope +11.2 pts per doubling."
     }
   ],
   "name": null,
@@ -50,7 +58,7 @@
   "iconFamily": null,
   "iconWord": null,
   "price": 50,
-  "text": "+20 contract multiplier if your team makes a nil",
+  "text": "+10 contract multiplier if your team makes a nil",
   "category": "mult",
   "signature": "nilMade|-|-|mult",
   "family": "nilMade|-|-|mult",
@@ -59,7 +67,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 20",
+        "detail": "payout 10",
         "cost": 1
       },
       {
@@ -75,5 +83,120 @@
   "sources": [
     "designed",
     "enumerated"
+  ],
+  "estimates": {
+    "step": "draft-common",
+    "exposures": 9476,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 20.61,
+        "lo": 19.47,
+        "hi": 21.75,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 9476
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 14.26,
+        "lo": 13.12,
+        "hi": 15.4,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 9476
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 38.87,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 104255
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 41.32,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 6553
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 11.16,
+        "lo": 10.43,
+        "hi": 11.89,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 6.35,
+        "lo": 3.08,
+        "hi": 9.62,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-common",
+        "amount": 20
+      }
+    ],
+    "amountSlope": {
+      "value": 11.16,
+      "lo": 10.43,
+      "hi": 11.89
+    },
+    "skillGradient": {
+      "value": 6.35,
+      "lo": 3.08,
+      "hi": 9.62
+    },
+    "pairs": [
+      {
+        "with": "cb-consecutive-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "e-win-side-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "e-win-suit-s-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-nil-bid-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ca-spade-hold-eight",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.14644639204065177,
+      "seU": 0.007118596470163364,
+      "slopeU": 0.16533531968218437,
+      "slopeSeU": 0.006568517479284337,
+      "k": 1.9480063892139123
+    }
+  },
+  "reports": [
+    "reports/draft-common-tournament.md",
+    "docs/sigils/rounds/draft-common.md"
   ]
 }

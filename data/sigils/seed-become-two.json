@@ -25,12 +25,16 @@
       "elegance": 3
     }
   },
-  "status": "candidate",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
       "step": "phase-0",
       "note": "Created from the GDD §9 seed."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: cut: lift -23.9 [-24.7, -23.1] pts (n 7975), fire 0%, C 7; near-duplicate of kept cb-become-ace (same shape up to a named suit, rank, or amount)."
     }
   ],
   "name": null,
@@ -72,28 +76,28 @@
   },
   "lint": [],
   "estimates": {
-    "step": "phase-0",
-    "exposures": 1365,
+    "step": "draft-common",
+    "exposures": 7975,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": -11.45,
-        "lo": -14.18,
-        "hi": -8.72,
+        "value": -23.93,
+        "lo": -24.75,
+        "hi": -23.12,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 1365
+        "n": 7975
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -10.34,
-        "lo": -13.07,
-        "hi": -7.61,
+        "value": -11.63,
+        "lo": -12.45,
+        "hi": -10.82,
         "bandLo": null,
         "bandHi": null,
-        "n": 1365
+        "n": 7975
       },
       {
         "key": "slope",
@@ -108,9 +112,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": -1.11,
-        "lo": -3.83,
-        "hi": 1.61,
+        "value": -12.3,
+        "lo": -15.64,
+        "hi": -8.95,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -123,42 +127,49 @@
       "hi": 0.0
     },
     "skillGradient": {
-      "value": -1.11,
-      "lo": -3.83,
-      "hi": 1.61
+      "value": -12.3,
+      "lo": -15.64,
+      "hi": -8.95
     },
     "pairs": [
       {
-        "with": "seed-trump-points",
+        "with": "cc-low-lead-mult",
         "synergy": 0.0
       },
       {
-        "with": "seed-ace-hold",
+        "with": "e-lead-rank-2-xmult",
         "synergy": 0.0
       },
       {
-        "with": "pilot-dose-80",
+        "with": "seed-rainbow-mult",
         "synergy": 0.0
       },
       {
-        "with": "seed-contract-points",
+        "with": "cb-make-mult",
         "synergy": 0.0
       },
       {
-        "with": "seed-e-diamond-three",
+        "with": "cc-two-hold-mult",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": -0.10631680713049271,
-      "seU": 0.017073631846887788,
+      "liftU": -0.11945296754328308,
+      "seU": 0.005092450653542758,
       "slopeU": 0.0,
       "slopeSeU": 0.0,
-      "k": 1.9447399061524484
+      "k": 1.9480063892139123
     }
   },
   "reports": [
     "reports/phase-0-pilot.md",
-    "reports/phase-0-pilot-dashboard.md"
-  ]
+    "reports/phase-0-pilot-dashboard.md",
+    "reports/draft-common-tournament.md",
+    "docs/sigils/rounds/draft-common.md"
+  ],
+  "gddEffect": {
+    "type": "become",
+    "count": 4,
+    "rank": "2"
+  }
 }

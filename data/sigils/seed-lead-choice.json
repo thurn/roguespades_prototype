@@ -143,5 +143,8 @@
   "reports": [
     "reports/phase-0-pilot.md",
     "reports/phase-0-pilot-dashboard.md"
-  ]
+  ],
+  "gddEffect": {
+    "type": "leadChoice"
+  }
 }

@@ -213,7 +213,7 @@ def _ingest(r: dict, out: Loaded, tagmap: dict, rows_grants, rows_rounds) -> Run
             )
         )
     return Run(
-        board=r["board"],
+        board=r["seed"],
         orient=r["orient"],
         clean=r["clean"],
         margin=r["margin"],

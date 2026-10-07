@@ -1900,7 +1900,12 @@ wording conventions can be chosen by designer direction.
   - enumeration at every rarity.
 - **Decided by:** how many candidates from each source end up in the pool,
   and how they score on the sigil metrics.
-- **Evidence:** pending. **Status:** hypothesis.
+- **Evidence:** the commons draft pass
+  ([outcome](sigils/rounds/draft-common.md#outcome)): of 66 kept commons, 17 are GDD
+  seeds, 43 designed, and 6 enumerated-only; the enumerator independently produced 32 of the 66
+  kept signatures. Designers supplied most decision-rich shapes and every new rule hook.
+- **Status:** supported for commons: both sources are worth running; the enumerator is most
+  useful as a coverage check on the designed pool.
 
 ### D22. Rules text
 

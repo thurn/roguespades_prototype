@@ -187,5 +187,14 @@
   "reports": [
     "reports/phase-0-pilot.md",
     "reports/phase-0-pilot-dashboard.md"
-  ]
+  ],
+  "gddEffect": {
+    "type": "xmult",
+    "amount": 2,
+    "on": {
+      "event": "suits",
+      "action": "win",
+      "count": 4
+    }
+  }
 }

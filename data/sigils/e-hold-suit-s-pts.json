@@ -23,7 +23,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "candidate",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -33,6 +33,10 @@
     {
       "step": "draft-common",
       "note": "draft-common: screen fires in 100% of rounds (6.46 per round); amount set to 5."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: cut: lift -1.9 [-3.3, -0.5] pts (n 2354), fire 100%, C 3; near-duplicate of kept seed-diamond-hold (same shape up to a named suit, rank, or amount)."
     }
   ],
   "name": null,
@@ -66,5 +70,130 @@
     "C": 3,
     "S": 0.25
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "draft-common",
+    "exposures": 2354,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -1.88,
+        "lo": -3.31,
+        "hi": -0.45,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 2354
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -2.05,
+        "lo": -3.48,
+        "hi": -0.62,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 2354
+      },
+      {
+        "key": "decisive",
+        "label": "Decisive share of holder's wins (%)",
+        "value": 6.31,
+        "lo": 5.54,
+        "hi": 7.19,
+        "bandLo": 5.0,
+        "bandHi": null,
+        "n": 2344
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 100.0,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 25881
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 100.0,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 2034
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 2.68,
+        "lo": 1.58,
+        "hi": 3.79,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 0.17,
+        "lo": -3.01,
+        "hi": 3.35,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-common",
+        "amount": 5
+      }
+    ],
+    "amountSlope": {
+      "value": 2.68,
+      "lo": 1.58,
+      "hi": 3.79
+    },
+    "skillGradient": {
+      "value": 0.17,
+      "lo": -3.01,
+      "hi": 3.35
+    },
+    "pairs": [
+      {
+        "with": "cb-grow-four-row",
+        "synergy": 0.0
+      },
+      {
+        "with": "cb-consecutive-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "e-win-suit-s-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "cc-nil-contract-trick",
+        "synergy": 0.0
+      },
+      {
+        "with": "e-win-side-mult",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.02104422212449764,
+      "seU": 0.008925845197551548,
+      "slopeU": 0.039743970077334385,
+      "slopeSeU": 0.00992297675466412,
+      "k": 1.9480063892139123
+    }
+  },
+  "reports": [
+    "reports/draft-common-tournament.md",
+    "docs/sigils/rounds/draft-common.md"
+  ]
 }

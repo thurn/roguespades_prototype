@@ -29,7 +29,7 @@
       "elegance": 3
     }
   },
-  "status": "candidate",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -39,6 +39,10 @@
     {
       "step": "draft-common",
       "note": "draft-common: the enumerator also produced this signature (e-win3-suit-d-pts); credited to both sources."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: cut: lift -7.5 [-9.2, -5.8] pts (n 1990), fire 5%, C 6; well below the control with no clear reshaping path at common."
     }
   ],
   "name": null,
@@ -89,65 +93,65 @@
   },
   "lint": [],
   "estimates": {
-    "step": "phase-0",
-    "exposures": 417,
+    "step": "draft-common",
+    "exposures": 1990,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": -3.57,
-        "lo": -7.82,
-        "hi": 0.68,
+        "value": -7.5,
+        "lo": -9.22,
+        "hi": -5.78,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 417
+        "n": 1990
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -3.5,
-        "lo": -7.75,
-        "hi": 0.75,
+        "value": -7.02,
+        "lo": -8.74,
+        "hi": -5.3,
         "bandLo": null,
         "bandHi": null,
-        "n": 417
+        "n": 1990
       },
       {
         "key": "decisive",
         "label": "Decisive share of holder's wins (%)",
-        "value": 1.53,
-        "lo": 1.14,
-        "hi": 2.04,
+        "value": 0.5,
+        "lo": 0.29,
+        "hi": 0.86,
         "bandLo": 5.0,
         "bandHi": null,
-        "n": 2031
+        "n": 1791
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 7.32,
+        "value": 4.67,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 24891
+        "n": 21797
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 7.23,
+        "value": 4.15,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 8980
+        "n": 2142
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": -0.03,
-        "lo": -3.26,
-        "hi": 3.21,
+        "value": 1.19,
+        "lo": 0.04,
+        "hi": 2.33,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -155,9 +159,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": -0.07,
-        "lo": -2.87,
-        "hi": 2.72,
+        "value": -0.47,
+        "lo": -3.7,
+        "hi": 2.75,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -170,48 +174,50 @@
       }
     ],
     "amountSlope": {
-      "value": -0.03,
-      "lo": -3.26,
-      "hi": 3.21
+      "value": 1.19,
+      "lo": 0.04,
+      "hi": 2.33
     },
     "skillGradient": {
-      "value": -0.07,
-      "lo": -2.87,
-      "hi": 2.72
+      "value": -0.47,
+      "lo": -3.7,
+      "hi": 2.75
     },
     "pairs": [
       {
-        "with": "seed-ace-hold",
+        "with": "cc-nil-contract-trick",
         "synergy": 0.0
       },
       {
-        "with": "pilot-dose-80",
+        "with": "e-oppset-xmult",
         "synergy": 0.0
       },
       {
-        "with": "seed-trump-points",
+        "with": "cc-swap-five",
         "synergy": 0.0
       },
       {
-        "with": "seed-exact-points",
+        "with": "cb-contract-mult",
         "synergy": 0.0
       },
       {
-        "with": "seed-five-row-x",
+        "with": "cb-grow-four-row",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": -0.03600259461277824,
-      "seU": 0.026561811651602724,
-      "slopeU": -0.00039007211647145015,
-      "slopeSeU": 0.02920139405756329,
-      "k": 1.9447399061524484
+      "liftU": -0.07209194211246628,
+      "seU": 0.010732263330461954,
+      "slopeU": 0.017575092532953408,
+      "slopeSeU": 0.010286816932287272,
+      "k": 1.9480063892139123
     }
   },
   "reports": [
     "reports/phase-0-pilot.md",
-    "reports/phase-0-pilot-dashboard.md"
+    "reports/phase-0-pilot-dashboard.md",
+    "reports/draft-common-tournament.md",
+    "docs/sigils/rounds/draft-common.md"
   ],
   "sources": [
     "enumerated",

@@ -26,7 +26,7 @@
       "elegance": 5
     }
   },
-  "status": "candidate",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -36,6 +36,10 @@
     {
       "step": "draft-common",
       "note": "draft-common: the enumerator also produced this signature (e-exact-mult); credited to both sources."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: kept: lift +2.2 [+0.3, +4.2] pts (n 4977), fire 27%, C 2; covers Exact; the amount is retuned toward +2 pts over the control."
     }
   ],
   "name": null,
@@ -67,55 +71,55 @@
   },
   "lint": [],
   "estimates": {
-    "step": "phase-0",
-    "exposures": 623,
+    "step": "draft-common",
+    "exposures": 4977,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": -2.69,
-        "lo": -7.37,
-        "hi": 2.0,
+        "value": 2.22,
+        "lo": 0.27,
+        "hi": 4.16,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 623
+        "n": 4977
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -0.88,
-        "lo": -5.56,
-        "hi": 3.8,
+        "value": -0.65,
+        "lo": -2.6,
+        "hi": 1.29,
         "bandLo": null,
         "bandHi": null,
-        "n": 623
+        "n": 4977
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 27.9,
+        "value": 27.09,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 26185
+        "n": 54751
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 29.58,
+        "value": 22.9,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 2086
+        "n": 2279
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 3.46,
-        "lo": 0.82,
-        "hi": 6.11,
+        "value": 3.44,
+        "lo": 2.39,
+        "hi": 4.48,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -123,9 +127,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": -1.81,
-        "lo": -5.0,
-        "hi": 1.38,
+        "value": 2.87,
+        "lo": -1.39,
+        "hi": 7.13,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -138,51 +142,61 @@
       }
     ],
     "amountSlope": {
-      "value": 3.46,
-      "lo": 0.82,
-      "hi": 6.11
+      "value": 3.44,
+      "lo": 2.39,
+      "hi": 4.48
     },
     "skillGradient": {
-      "value": -1.81,
-      "lo": -5.0,
-      "hi": 1.38
+      "value": 2.87,
+      "lo": -1.39,
+      "hi": 7.13
     },
     "pairs": [
       {
-        "with": "seed-low-four",
+        "with": "cc-nil-contract-trick",
         "synergy": 0.0
       },
       {
-        "with": "seed-spade-lead",
+        "with": "cb-grow-four-row",
         "synergy": 0.0
       },
       {
-        "with": "seed-rainbow-lead-x",
+        "with": "e-exact-xmult",
         "synergy": 0.0
       },
       {
-        "with": "seed-any-suit",
+        "with": "cb-exact-trick-mult",
         "synergy": 0.0
       },
       {
-        "with": "seed-nil-made-x",
+        "with": "e-last-xmult",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": -0.00905222342648742,
-      "seU": 0.029274829830701947,
-      "slopeU": 0.05137430052513743,
-      "slopeSeU": 0.023863595007380556,
-      "k": 1.9447399061524484
+      "liftU": -0.00670545778248097,
+      "seU": 0.012125561145244492,
+      "slopeU": 0.050892472742038376,
+      "slopeSeU": 0.009446340030820458,
+      "k": 1.9480063892139123
     }
   },
   "reports": [
     "reports/phase-0-pilot.md",
-    "reports/phase-0-pilot-dashboard.md"
+    "reports/phase-0-pilot-dashboard.md",
+    "reports/draft-common-tournament.md",
+    "docs/sigils/rounds/draft-common.md"
   ],
   "sources": [
     "enumerated",
     "gdd-seed"
-  ]
+  ],
+  "gddEffect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "make",
+      "exact": true
+    }
+  }
 }

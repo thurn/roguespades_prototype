@@ -23,7 +23,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "candidate",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -33,6 +33,10 @@
     {
       "step": "draft-common",
       "note": "draft-common: screen fires in 100% of rounds (6.46 per round); amount set to 1."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: kept: lift +10.7 [+9.4, +11.9] pts (n 7261), fire 100%, C 3; covers Spades; the amount is retuned toward +2 pts over the control."
     }
   ],
   "name": null,
@@ -66,5 +70,120 @@
     "C": 3,
     "S": 0.25
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "draft-common",
+    "exposures": 7261,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 10.67,
+        "lo": 9.43,
+        "hi": 11.92,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 7261
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 4.38,
+        "lo": 3.14,
+        "hi": 5.63,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 7261
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 100.0,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 79095
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 100.0,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 5879
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 7.47,
+        "lo": 6.66,
+        "hi": 8.27,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 6.29,
+        "lo": 2.19,
+        "hi": 10.38,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-common",
+        "amount": 1
+      }
+    ],
+    "amountSlope": {
+      "value": 7.47,
+      "lo": 6.66,
+      "hi": 8.27
+    },
+    "skillGradient": {
+      "value": 6.29,
+      "lo": 2.19,
+      "hi": 10.38
+    },
+    "pairs": [
+      {
+        "with": "e-lead-rank-2-xmult",
+        "synergy": 0.0
+      },
+      {
+        "with": "cc-low-lead-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "cb-become-spade",
+        "synergy": 0.0
+      },
+      {
+        "with": "ca-spade-hold-eight",
+        "synergy": 0.0
+      },
+      {
+        "with": "e-trump-xmult",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.04501413757286479,
+      "seU": 0.007774660647665931,
+      "slopeU": 0.11060415127655494,
+      "slopeSeU": 0.007248932117917934,
+      "k": 1.9480063892139123
+    }
+  },
+  "reports": [
+    "reports/draft-common-tournament.md",
+    "docs/sigils/rounds/draft-common.md"
+  ]
 }

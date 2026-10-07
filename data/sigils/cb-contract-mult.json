@@ -10,7 +10,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 2,
+    "amount": 1,
     "per": "contractTrick"
   },
   "design": {
@@ -32,7 +32,7 @@
       "elegance": 5
     }
   },
-  "status": "candidate",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -46,6 +46,14 @@
     {
       "step": "draft-common",
       "note": "draft-common: the enumerator also produced this signature (e-contract-mult); credited to both sources."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: kept: lift +15.3 [+14.2, +16.3] pts (n 11456), fire 100%, C 2; covers BidHigh, Generic; the amount is retuned toward +2 pts over the control."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: amount 2 -> 1 by retune; lift +15.3 pts against target +2, slope +9.8 pts per doubling."
     }
   ],
   "name": null,
@@ -53,7 +61,7 @@
   "iconFamily": null,
   "iconWord": null,
   "price": 50,
-  "text": "+2 contract multiplier for each trick in your team's contract",
+  "text": "+1 contract multiplier for each trick in your team's contract",
   "category": "mult",
   "signature": "always|-|contractTrick|mult",
   "family": "always|-|contractTrick|mult",
@@ -62,7 +70,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 2",
+        "detail": "payout 1",
         "cost": 1
       },
       {
@@ -78,5 +86,120 @@
   "sources": [
     "designed",
     "enumerated"
+  ],
+  "estimates": {
+    "step": "draft-common",
+    "exposures": 11456,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 15.26,
+        "lo": 14.2,
+        "hi": 16.31,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 11456
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 9.24,
+        "lo": 8.18,
+        "hi": 10.29,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 11456
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 100.0,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 125555
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 100.0,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 10918
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 9.79,
+        "lo": 9.11,
+        "hi": 10.48,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 6.02,
+        "lo": 2.45,
+        "hi": 9.59,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-common",
+        "amount": 2
+      }
+    ],
+    "amountSlope": {
+      "value": 9.79,
+      "lo": 9.11,
+      "hi": 10.48
+    },
+    "skillGradient": {
+      "value": 6.02,
+      "lo": 2.45,
+      "hi": 9.59
+    },
+    "pairs": [
+      {
+        "with": "cc-nil-contract-trick",
+        "synergy": 0.0
+      },
+      {
+        "with": "e-oppset-xmult",
+        "synergy": 0.0
+      },
+      {
+        "with": "cb-grow-four-row",
+        "synergy": 0.0
+      },
+      {
+        "with": "cc-swap-five",
+        "synergy": 0.0
+      },
+      {
+        "with": "cb-first-trick-mult",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.09483178610477996,
+      "seU": 0.006588285363682351,
+      "slopeU": 0.14506291403098012,
+      "slopeSeU": 0.006186695792919638,
+      "k": 1.9480063892139123
+    }
+  },
+  "reports": [
+    "reports/draft-common-tournament.md",
+    "docs/sigils/rounds/draft-common.md"
   ]
 }

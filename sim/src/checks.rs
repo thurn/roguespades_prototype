@@ -23,7 +23,11 @@ pub fn check(dir: &str) {
         let Some(gdd) = v["gddText"].as_str() else {
             continue;
         };
-        let gen = v["text"].as_str().unwrap_or("");
+        // Compare the seed as the GDD wrote it; retuning may since have moved its amount.
+        let effect: Effect =
+            serde_json::from_value(v.get("gddEffect").unwrap_or(&v["effect"]).clone()).unwrap();
+        let gen_s = text::generate(&effect);
+        let gen = gen_s.as_str();
         if gen == gdd {
             exact += 1;
         } else if let Some(t) = v["gddTypo"].as_str() {

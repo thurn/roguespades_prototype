@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "points",
-    "amount": 50,
+    "amount": 55,
     "on": {
       "event": "make"
     }
@@ -20,7 +20,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "candidate",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -30,6 +30,14 @@
     {
       "step": "draft-common",
       "note": "draft-common: screen fires in 89% of rounds (0.89 per round); amount set to 50."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: kept: lift +0.4 [-0.6, +1.4] pts (n 2661), fire 64%, C 2; covers Generic; the amount is retuned toward +2 pts over the control."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: amount 50 -> 55 by retune; lift +0.4 pts against target +2, slope +4.1 pts per doubling."
     }
   ],
   "name": null,
@@ -37,7 +45,7 @@
   "iconFamily": null,
   "iconWord": null,
   "price": 50,
-  "text": "+50 contract points if your team makes its contract",
+  "text": "+55 contract points if your team makes its contract",
   "category": "points",
   "signature": "make|-|-|points",
   "family": "make|-|-|points",
@@ -46,7 +54,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 50",
+        "detail": "payout 55",
         "cost": 1
       },
       {
@@ -58,5 +66,130 @@
     "C": 2,
     "S": 0.3333333333333333
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "draft-common",
+    "exposures": 2661,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 0.4,
+        "lo": -0.56,
+        "hi": 1.35,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 2661
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 0.85,
+        "lo": -0.11,
+        "hi": 1.8,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 2661
+      },
+      {
+        "key": "decisive",
+        "label": "Decisive share of holder's wins (%)",
+        "value": 9.78,
+        "lo": 8.89,
+        "hi": 10.75,
+        "bandLo": 5.0,
+        "bandHi": null,
+        "n": 2781
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 63.85,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 29090
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": null,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 0
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 4.14,
+        "lo": 2.98,
+        "hi": 5.29,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -0.45,
+        "lo": -3.11,
+        "hi": 2.22,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-common",
+        "amount": 50
+      }
+    ],
+    "amountSlope": {
+      "value": 4.14,
+      "lo": 2.98,
+      "hi": 5.29
+    },
+    "skillGradient": {
+      "value": -0.45,
+      "lo": -3.11,
+      "hi": 2.22
+    },
+    "pairs": [
+      {
+        "with": "cc-low-lead-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "e-lead-rank-2-xmult",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-rainbow-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "ca-spade-hold-eight",
+        "synergy": 0.0
+      },
+      {
+        "with": "cb-make-mult",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.00869147882929519,
+      "seU": 0.005957698170592213,
+      "slopeU": 0.06126460826494899,
+      "slopeSeU": 0.010390045707025689,
+      "k": 1.9480063892139123
+    }
+  },
+  "reports": [
+    "reports/draft-common-tournament.md",
+    "docs/sigils/rounds/draft-common.md"
+  ]
 }

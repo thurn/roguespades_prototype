@@ -10,7 +10,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 10,
+    "amount": 5,
     "on": {
       "event": "win",
       "trick": "first"
@@ -34,7 +34,7 @@
       "elegance": 5
     }
   },
-  "status": "candidate",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -48,6 +48,14 @@
     {
       "step": "draft-common",
       "note": "draft-common: the enumerator also produced this signature (e-first-mult); credited to both sources."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: kept: lift +8.4 [+7.3, +9.6] pts (n 12284), fire 57%, C 3; covers Streaks, Generic; the amount is retuned toward +2 pts over the control."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: amount 10 -> 5 by retune; lift +8.4 pts against target +2, slope +6.7 pts per doubling."
     }
   ],
   "name": null,
@@ -55,7 +63,7 @@
   "iconFamily": null,
   "iconWord": null,
   "price": 50,
-  "text": "+10 contract multiplier when your team wins the first trick of a round",
+  "text": "+5 contract multiplier when your team wins the first trick of a round",
   "category": "mult",
   "signature": "win(trick=first)|-|-|mult",
   "family": "win(trick=first)|-|-|mult",
@@ -64,7 +72,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 10",
+        "detail": "payout 5",
         "cost": 1
       },
       {
@@ -85,5 +93,120 @@
   "sources": [
     "designed",
     "enumerated"
+  ],
+  "estimates": {
+    "step": "draft-common",
+    "exposures": 12284,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 8.43,
+        "lo": 7.31,
+        "hi": 9.55,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 12284
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 3.81,
+        "lo": 2.69,
+        "hi": 4.93,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 12284
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 56.97,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 136174
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 55.89,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 6631
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 6.66,
+        "lo": 6.02,
+        "hi": 7.29,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 4.63,
+        "lo": 1.2,
+        "hi": 8.05,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-common",
+        "amount": 10
+      }
+    ],
+    "amountSlope": {
+      "value": 6.66,
+      "lo": 6.02,
+      "hi": 7.29
+    },
+    "skillGradient": {
+      "value": 4.63,
+      "lo": 1.2,
+      "hi": 8.05
+    },
+    "pairs": [
+      {
+        "with": "cb-contract-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "e-oppset-xmult",
+        "synergy": 0.0
+      },
+      {
+        "with": "cc-swap-five",
+        "synergy": 0.0
+      },
+      {
+        "with": "cc-nil-contract-trick",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-become-two",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.03907678042980363,
+      "seU": 0.0069922266195601174,
+      "slopeU": 0.09857884237961904,
+      "slopeSeU": 0.005736091715784731,
+      "k": 1.9480063892139123
+    }
+  },
+  "reports": [
+    "reports/draft-common-tournament.md",
+    "docs/sigils/rounds/draft-common.md"
   ]
 }
