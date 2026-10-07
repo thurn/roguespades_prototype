@@ -56,7 +56,7 @@ sections for detail.
   - Overtricks score nothing.
   - **Par** grows from 600 in round 1 to 6,000 in round 8.
 - **Sigils** are team-owned, up to 7 per team. Each has a rarity, a price, and
-  one effect ([§5](game-design.md#5-sigils)).
+  usually one effect ([§5](game-design.md#5-sigils)).
   - **Payoffs** score in three categories: +contract points, +contract
     multiplier, and ×contract multiplier.
   - **Enablers** change the hand or how tricks can be played, and must be worth
@@ -88,18 +88,8 @@ sections for detail.
 These are never traded away. A candidate that breaks one is dropped, not
 revised.
 
-- **One trigger or condition, and one effect,** at every rarity, with no
-  riders. Higher rarity buys power, not clauses
-  ([§5 simplicity rules](game-design.md#simplicity-rules)).
 - **No activated abilities.** A sigil may offer a choice only at a fixed
   moment, such as `Opening:`, or through the ordinary choice of a legal card.
-- **Excluded effects**
-  ([§5 categories](game-design.md#categories-and-families)):
-  - shop and economy modifiers;
-  - information effects, such as revealing cards;
-  - randomness after bidding begins;
-  - effects that only rename cards for payoff checks;
-  - exceptions to the number of tricks needed to make a bid.
 - **Rules text is generated from the sigil's data,** following the templates
   in [§5 rules text](game-design.md#rules-text): benefit first, then the
   condition; "your team"; bracketed ranks and suits; `Opening:` first on
@@ -107,6 +97,26 @@ revised.
 - **Simulation decides.** A sigil ships only if it passes the simulated gates
   below. Designers choose among passing candidates; they never overrule a
   failed gate.
+
+### Guidelines
+
+These are strong defaults from the GDD, not rules. A designer may depart from
+one when the design is better for it, and says why in the candidate's
+rationale. The critic flags departures but doesn't drop them; simulation and
+the simplicity rubric decide whether they earn their place.
+
+- **One trigger or condition, and one effect,** with no riders. Higher rarity
+  usually buys power rather than clauses
+  ([§5 simplicity rules](game-design.md#simplicity-rules)). Every extra
+  clause still pays its full simplicity cost, so the comparison rule favors
+  the simpler version unless the extra clause shows a net gain.
+- **Effects the GDD's current pool avoids**
+  ([§5 categories](game-design.md#categories-and-families)):
+  - shop and economy modifiers;
+  - information effects, such as revealing cards;
+  - randomness after bidding begins;
+  - effects that only rename cards for payoff checks;
+  - exceptions to the number of tricks needed to make a bid.
 
 ### Soft pool targets
 
@@ -440,7 +450,8 @@ Wave 4 checks the whole pool.
    - archetype coverage;
    - bid tension;
    - rules-text lint;
-   - hard-rule compliance;
+   - hard-rule compliance, and every guideline departure with its
+     justification;
    - a final duplicate sweep;
    - name and icon uniqueness.
 
@@ -509,8 +520,10 @@ Rationale:  The milestone payoff for a [♦] build; pays only once a plan works.
 The critic receives the candidates, the registry, and this plan's
 [Design rules](#design-rules). For each candidate, it checks:
 
-- **The hard rules,** especially one effect, no activated abilities, and the
-  excluded effects.
+- **The hard rules,** especially no activated abilities.
+- **Guideline departures:** whether the candidate's rationale justifies each
+  one, and whether a simpler version would do the same job. A departure is
+  flagged, never dropped on its own.
 - **Duplicates** against the registry and the whole batch, across clusters.
 - **Fun to play:** does it change a bid, a play, or a purchase, and does it
   create a memorable moment?
