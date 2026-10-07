@@ -1,0 +1,253 @@
+.wrench {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  z-index: 26;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--hairline-strong);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition:
+    transform var(--duration) var(--ease-out),
+    color var(--duration) var(--ease-out),
+    border-color var(--duration) var(--ease-out);
+}
+
+.wrench svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.wrench:hover {
+  color: var(--text);
+  border-color: var(--gold);
+}
+
+.wrench[data-open] {
+  color: var(--gold-strong);
+  border-color: var(--gold);
+}
+
+.drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 25;
+  width: min(400px, 100vw);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-3) var(--space-3);
+  background: var(--felt-900);
+  border-left: 1px solid var(--hairline-strong);
+  box-shadow: var(--shadow-panel);
+  overflow-y: auto;
+  user-select: text;
+}
+
+.top {
+  flex: none;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  padding-left: var(--space-2);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+.section {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--hairline);
+  background: var(--felt-800);
+}
+
+.heading {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.meta {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.meta a {
+  color: var(--gold);
+}
+
+.label {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.small {
+  min-height: 36px;
+  padding: 0 var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.small[data-on] {
+  border-color: var(--gold);
+  color: var(--gold-strong);
+}
+
+.input,
+.select {
+  min-height: 36px;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--hairline-strong);
+  background: var(--felt-900);
+  color: var(--text);
+  font: inherit;
+  font-size: var(--text-sm);
+}
+
+.input {
+  flex: 1;
+  min-width: 120px;
+}
+
+.check {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+}
+
+.pick {
+  appearance: none;
+  display: block;
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--hairline);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: var(--text-sm);
+  text-align: left;
+  cursor: pointer;
+}
+
+.pick:hover {
+  border-color: var(--gold);
+}
+
+.pick span,
+.pick div {
+  color: var(--text-muted);
+}
+
+.owned {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.ownedRow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 2px 4px 2px var(--space-2);
+  border-radius: var(--radius-pill);
+  background: rgb(244 236 216 / 0.08);
+  font-size: var(--text-sm);
+}
+
+.x {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.x:hover:not(:disabled) {
+  color: var(--danger);
+}
+
+.log {
+  max-height: 320px;
+  overflow-y: auto;
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  background: var(--felt-900);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.line {
+  padding: 1px 0;
+  color: var(--text-muted);
+}
+
+.line[data-type='trick'],
+.line[data-type='score'],
+.line[data-type='gameOver'] {
+  color: var(--text);
+}
+
+.line[data-type='fire'],
+.line[data-type='engraving'] {
+  color: var(--gold);
+}
+
+.line[data-type='rejected'],
+.line[data-type='jsError'] {
+  color: var(--danger);
+}
+
+.step {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.file {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--hairline-strong);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.file input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}

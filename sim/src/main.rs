@@ -61,6 +61,26 @@ enum Cmd {
         #[arg(long, default_value = "draft-common")]
         step: String,
     },
+    /// Play a client session natively: autoplay a game, or replay a game client log.
+    Play {
+        #[arg(long, default_value_t = 1)]
+        seed: u64,
+        #[arg(long, default_value_t = 1)]
+        tier: u8,
+        #[arg(long, default_value = "../data/sigils")]
+        dir: String,
+        #[arg(long, default_value = "../data/models/round-3.json")]
+        model: String,
+        /// A game client log (logs/*.jsonl) to replay instead of autoplaying.
+        #[arg(long)]
+        replay: Option<String>,
+        /// Print the table view (all hands) after this step.
+        #[arg(long)]
+        view_at: Option<u64>,
+        /// Also write the session log (JSONL) here.
+        #[arg(long)]
+        out: Option<String>,
+    },
 }
 
 fn main() {
@@ -77,6 +97,15 @@ fn main() {
         Cmd::Screen(a) => tourney::screen(a),
         Cmd::Throughput(a) => tourney::throughput(a),
         Cmd::Enumerate { dir, step } => tourney::enumerate(&dir, &step),
+        Cmd::Play {
+            seed,
+            tier,
+            dir,
+            model,
+            replay,
+            view_at,
+            out,
+        } => play(seed, tier, &dir, &model, replay, view_at, out),
     }
 }
 
@@ -89,6 +118,85 @@ Trigger events: win {card, by=trump, trick=first|last, consecutive, inRow, disti
 Card filters: suit C|D|H|S, rank 2..10|J|Q|K|A, ranks [lo, hi], notSuit.
 See docs/sigils/data-format.md for text templates.
 ";
+
+fn play(
+    seed: u64,
+    tier: u8,
+    dir: &str,
+    model: &str,
+    replay: Option<String>,
+    view_at: Option<u64>,
+    out: Option<String>,
+) {
+    use rsim::session::{Config, Session};
+    let pool: &'static game::Pool = Box::leak(Box::new(game::Pool::load_dir(dir)));
+    let model: &'static model::Model = Box::leak(Box::new(model::Model::load(model)));
+    let offerable: Vec<String> = pool
+        .defs
+        .iter()
+        .filter(|d| d.status == "kept")
+        .map(|d| d.id.clone())
+        .collect();
+    let log: Vec<Value> = replay
+        .as_deref()
+        .map(|p| {
+            std::fs::read_to_string(p)
+                .unwrap()
+                .lines()
+                .filter(|l| !l.trim().is_empty())
+                .map(|l| serde_json::from_str(l).unwrap())
+                .collect()
+        })
+        .unwrap_or_default();
+    let start = log.iter().find(|e| e["type"] == "start");
+    let cfg = Config {
+        seed: start.and_then(|e| e["seed"].as_u64()).unwrap_or(seed),
+        tier: start
+            .and_then(|e| e["tier"].as_u64())
+            .map_or(tier, |t| t as u8),
+        auto: replay.is_none() || start.and_then(|e| e["auto"].as_bool()).unwrap_or(false),
+        offerable,
+    };
+    let mut s = Session::new(pool, model, cfg);
+    let mut lines = String::new();
+    let mut print = |s: &mut Session| {
+        for e in s.take_events() {
+            println!("[{}] {}", e["step"], e["msg"].as_str().unwrap_or(""));
+            lines.push_str(&e.to_string());
+            lines.push('\n');
+        }
+        if view_at == Some(s.step) {
+            println!("{}", serde_json::to_string_pretty(&s.view(true)).unwrap());
+        }
+    };
+    print(&mut s);
+    if replay.is_some() {
+        for e in log
+            .iter()
+            .filter(|e| e.get("action").is_some() && e["type"] != "rejected")
+        {
+            if let Err(err) = s.act(&e["action"], true) {
+                println!(
+                    "REPLAY DIVERGED at step {}: {err} (action {})",
+                    e["step"], e["action"]
+                );
+                break;
+            }
+            print(&mut s);
+        }
+    } else {
+        while s.pending().is_some() {
+            if let Err(err) = s.advance() {
+                println!("ERROR: {err}");
+                break;
+            }
+            print(&mut s);
+        }
+    }
+    if let Some(o) = out {
+        std::fs::write(o, lines).unwrap();
+    }
+}
 
 pub fn read_json(p: &Path) -> Value {
     serde_json::from_str(&std::fs::read_to_string(p).unwrap())

@@ -1,0 +1,45 @@
+.tray {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--tray-gap);
+}
+
+.item,
+.button {
+  display: inline-grid;
+}
+
+.item[data-unrevealed] {
+  opacity: 0.55;
+}
+
+.pulse {
+  display: inline-grid;
+}
+
+.button {
+  appearance: none;
+  padding: 6px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: transform var(--duration) var(--ease-out);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button[data-selected] {
+  transform: translateY(-6px);
+}
+
+.button[data-selected] .pulse > span {
+  outline: 2px solid var(--gold-strong);
+  outline-offset: 2px;
+}
+
+.button:active {
+  transform: translateY(1px) scale(0.96);
+}

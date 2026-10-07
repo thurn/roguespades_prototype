@@ -1,0 +1,24 @@
+.fan {
+  display: flex;
+  justify-content: center;
+  height: calc(var(--mini-card-w) * 1.55);
+}
+
+.slot {
+  flex: none;
+  transform-origin: 50% 140%;
+}
+
+.slot + .slot {
+  margin-left: calc(var(--mini-card-w) * -0.72);
+}
+
+@media (max-width: 700px), (orientation: portrait) and (max-width: 1000px) {
+  .fan {
+    --mini-card-w: 24px;
+  }
+
+  .slot + .slot {
+    margin-left: calc(var(--mini-card-w) * -0.8);
+  }
+}

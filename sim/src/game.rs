@@ -7,15 +7,16 @@ use crate::model::*;
 use crate::rng::*;
 use crate::sigil::*;
 use serde::Serialize;
+use serde_json::json;
 use std::collections::HashMap;
 
 pub const ENG_SYNTH: u8 = 4;
-const MAX_SIGILS: usize = 7;
-const MAX_CARDS: usize = 8;
+pub(crate) const MAX_SIGILS: usize = 7;
+pub(crate) const MAX_CARDS: usize = 8;
 
 // Stream labels.
 const S_DEAL: u64 = 1;
-const S_OFFER: u64 = 2;
+pub(crate) const S_OFFER: u64 = 2;
 const S_TEAM: u64 = 3;
 const S_OPENING: u64 = 4;
 const S_AI: u64 = 5;
@@ -110,54 +111,54 @@ pub struct RunCfg<'a> {
 }
 
 #[derive(Clone, Debug)]
-struct OwnedSigil {
-    def: usize,
-    amount: Option<f64>,
-    ratio: f64,
-    shop: u8,
-    grant: bool,
-    price: i32,
-    grow: f64,
-    revealed: bool,
-    sold: Option<u8>,
-    fires: u32,
+pub(crate) struct OwnedSigil {
+    pub(crate) def: usize,
+    pub(crate) amount: Option<f64>,
+    pub(crate) ratio: f64,
+    pub(crate) shop: u8,
+    pub(crate) grant: bool,
+    pub(crate) price: i32,
+    pub(crate) grow: f64,
+    pub(crate) revealed: bool,
+    pub(crate) sold: Option<u8>,
+    pub(crate) fires: u32,
 }
 
 #[derive(Clone, Copy, Debug)]
-struct OwnedCard {
-    ident: u8,
-    slot: u8,
-    eng: u8,
-    price: i32,
-    grant: bool,
-    shop: u8,
+pub(crate) struct OwnedCard {
+    pub(crate) ident: u8,
+    pub(crate) slot: u8,
+    pub(crate) eng: u8,
+    pub(crate) price: i32,
+    pub(crate) grant: bool,
+    pub(crate) shop: u8,
 }
 
 #[derive(Clone, Copy, Debug)]
-struct CardOffer {
-    ident: u8,
-    slot: u8,
-    eng: u8,
-    price: i32,
+pub(crate) struct CardOffer {
+    pub(crate) ident: u8,
+    pub(crate) slot: u8,
+    pub(crate) eng: u8,
+    pub(crate) price: i32,
 }
 
 #[derive(Clone)]
-struct Team {
-    sigils: Vec<OwnedSigil>,
+pub(crate) struct Team {
+    pub(crate) sigils: Vec<OwnedSigil>,
     /// Sigils granted so far while planning, in order.
-    granted: Vec<usize>,
+    pub(crate) granted: Vec<usize>,
     /// The planned grants (shop, sigil), fixed by the board seed so both runs of a board match.
-    schedule: Vec<(u8, usize)>,
-    history: Vec<OwnedSigil>,
-    cards: Vec<OwnedCard>,
-    sold_cards: Vec<OwnedCard>,
-    owner: u8,
-    gold: i32,
-    score: f64,
+    pub(crate) schedule: Vec<(u8, usize)>,
+    pub(crate) history: Vec<OwnedSigil>,
+    pub(crate) cards: Vec<OwnedCard>,
+    pub(crate) sold_cards: Vec<OwnedCard>,
+    pub(crate) owner: u8,
+    pub(crate) gold: i32,
+    pub(crate) score: f64,
 }
 
 impl Team {
-    fn active(&self) -> impl Iterator<Item = &OwnedSigil> {
+    pub(crate) fn active(&self) -> impl Iterator<Item = &OwnedSigil> {
         self.sigils.iter()
     }
 }
@@ -283,21 +284,23 @@ fn eng_key(e: u8) -> &'static str {
     }
 }
 
-fn sell_value(price: i32) -> i32 {
+pub(crate) fn sell_value(price: i32) -> i32 {
     (price / 2) / 5 * 5
 }
 
 #[derive(Clone)]
 pub struct Runner<'a> {
-    cfg: &'a RunCfg<'a>,
-    seed: u64,
-    orient: u8,
-    teams: [Team; 2],
-    taken: Mask,
-    recs: [TeamRec; 2],
-    rule_cache: Vec<Compiled>,
-    tier_override: Option<Tier>,
-    checks: Vec<ShopCheck>,
+    pub(crate) cfg: &'a RunCfg<'a>,
+    pub(crate) seed: u64,
+    pub(crate) orient: u8,
+    pub(crate) teams: [Team; 2],
+    pub(crate) taken: Mask,
+    pub(crate) recs: [TeamRec; 2],
+    pub(crate) rule_cache: Vec<Compiled>,
+    pub(crate) tier_override: Option<Tier>,
+    pub(crate) checks: Vec<ShopCheck>,
+    /// When set, AI shop decisions are appended here (for the game client's session log).
+    pub(crate) shop_log: Option<Vec<serde_json::Value>>,
 }
 
 /// One rollout-rescoring check of the shop model at a shop visit.
@@ -344,19 +347,26 @@ impl<'a> Runner<'a> {
             rule_cache,
             tier_override: None,
             checks: vec![],
+            shop_log: None,
         }
     }
 
-    fn kteam(&self, ti: usize) -> usize {
+    pub(crate) fn kteam(&self, ti: usize) -> usize {
         ti ^ self.orient as usize
     }
-    fn tidx(&self, kteam: usize) -> usize {
+    pub(crate) fn tidx(&self, kteam: usize) -> usize {
         kteam ^ self.orient as usize
     }
 
     // ----- Values -----
 
-    fn sigil_value(&self, ti: usize, def: usize, shop: u8, exclude: Option<usize>) -> f64 {
+    pub(crate) fn sigil_value(
+        &self,
+        ti: usize,
+        def: usize,
+        shop: u8,
+        exclude: Option<usize>,
+    ) -> f64 {
         let d = &self.cfg.pool.defs[def];
         let sv = self.cfg.model.sigil(d);
         let team = &self.teams[ti];
@@ -392,7 +402,7 @@ impl<'a> Runner<'a> {
         v
     }
 
-    fn card_value(&self, ti: usize, ident: u8, eng: u8, shop: u8) -> f64 {
+    pub(crate) fn card_value(&self, ti: usize, ident: u8, eng: u8, shop: u8) -> f64 {
         let m = self.cfg.model;
         let (s, r) = (nominal_suit(ident), nominal_rank(ident));
         let mut v = m.card(&card_class(s, r)) + m.card_shop * (shop as f64 - 3.5);
@@ -424,11 +434,16 @@ impl<'a> Runner<'a> {
 
     /// The owned sigil the shop would sell first. Granted sigils hold their slot for the run, so
     /// the shop never sells one to buy something else; only a new grant can displace a grant.
-    fn weakest_sigil(&self, ti: usize, shop: u8, protect: Option<usize>) -> Option<(usize, f64)> {
+    pub(crate) fn weakest_sigil(
+        &self,
+        ti: usize,
+        shop: u8,
+        protect: Option<usize>,
+    ) -> Option<(usize, f64)> {
         self.weakest_sigil_of(ti, shop, protect, false)
     }
 
-    fn weakest_sigil_of(
+    pub(crate) fn weakest_sigil_of(
         &self,
         ti: usize,
         shop: u8,
@@ -444,7 +459,7 @@ impl<'a> Runner<'a> {
             .min_by(|a, b| a.1.partial_cmp(&b.1).unwrap())
     }
 
-    fn weakest_card(&self, ti: usize, shop: u8) -> Option<(usize, f64)> {
+    pub(crate) fn weakest_card(&self, ti: usize, shop: u8) -> Option<(usize, f64)> {
         let team = &self.teams[ti];
         (0..team.cards.len())
             .map(|k| {
@@ -456,14 +471,14 @@ impl<'a> Runner<'a> {
             .min_by(|a, b| a.1.partial_cmp(&b.1).unwrap())
     }
 
-    fn sell_sigil(&mut self, ti: usize, k: usize, shop: u8) {
+    pub(crate) fn sell_sigil(&mut self, ti: usize, k: usize, shop: u8) {
         let mut o = self.teams[ti].sigils.remove(k);
         self.teams[ti].gold += sell_value(o.price);
         o.sold = Some(shop);
         self.teams[ti].history.push(o);
     }
 
-    fn sell_card(&mut self, ti: usize, k: usize) {
+    pub(crate) fn sell_card(&mut self, ti: usize, k: usize) {
         let c = self.teams[ti].cards.remove(k);
         self.teams[ti].gold += sell_value(c.price);
         self.taken &= !bit(c.slot);
@@ -472,7 +487,7 @@ impl<'a> Runner<'a> {
 
     // ----- Offers -----
 
-    fn sigil_offers(&self, ti: usize, rng: &mut Rng) -> Vec<usize> {
+    pub(crate) fn sigil_offers(&self, ti: usize, rng: &mut Rng) -> Vec<usize> {
         if !self.cfg.sigil_shop {
             return vec![];
         }
@@ -514,7 +529,7 @@ impl<'a> Runner<'a> {
         out
     }
 
-    fn card_offer(&self, shop: u8, rng: &mut Rng, exclude: Mask) -> Option<CardOffer> {
+    pub(crate) fn card_offer(&self, shop: u8, rng: &mut Rng, exclude: Mask) -> Option<CardOffer> {
         let engraved_share = if shop >= 3 {
             (0.25 + 0.1 * (shop as f64 - 3.0)).min(0.75)
         } else {
@@ -556,7 +571,7 @@ impl<'a> Runner<'a> {
         })
     }
 
-    fn card_offers(&self, shop: u8, rng: &mut Rng, exclude: Mask) -> Vec<CardOffer> {
+    pub(crate) fn card_offers(&self, shop: u8, rng: &mut Rng, exclude: Mask) -> Vec<CardOffer> {
         let mut out: Vec<CardOffer> = vec![];
         if !self.cfg.cards {
             return out;
@@ -573,7 +588,7 @@ impl<'a> Runner<'a> {
 
     // ----- Grants -----
 
-    fn draw_grant(&self, ti: usize, g: &GrantCfg, rng: &mut Rng) -> Option<usize> {
+    pub(crate) fn draw_grant(&self, ti: usize, g: &GrantCfg, rng: &mut Rng) -> Option<usize> {
         let owned: Vec<usize> = self.teams[ti].granted.clone();
         let pool: Vec<(usize, f64)> = g
             .measured
@@ -623,7 +638,7 @@ impl<'a> Runner<'a> {
         Some(pool[rng.weighted(&ws)].0)
     }
 
-    fn grant(&mut self, ti: usize, def: usize, shop: u8, rng: &mut Rng, jitter: bool) {
+    pub(crate) fn grant(&mut self, ti: usize, def: usize, shop: u8, rng: &mut Rng, jitter: bool) {
         if self.teams[ti].sigils.len() >= MAX_SIGILS {
             if let Some((k, _)) = self.weakest_sigil_of(ti, shop, None, true) {
                 self.sell_sigil(ti, k, shop);
@@ -662,7 +677,7 @@ impl<'a> Runner<'a> {
 
     // ----- Shop -----
 
-    fn shop(&mut self, ti: usize, shop: u8, other_offers: Mask) -> Mask {
+    pub(crate) fn shop(&mut self, ti: usize, shop: u8, other_offers: Mask) -> Mask {
         let luck = (ti ^ self.orient as usize) as u64;
         let mut rng = Rng::stream(self.seed, &[S_TEAM, luck, shop as u64]);
         // Grant schedules depend only on the board seed and the team's earlier grants, so both runs
@@ -727,6 +742,7 @@ impl<'a> Runner<'a> {
         let mut orng = Rng::stream(self.seed, &[S_OFFER, luck, shop as u64, reroll]);
         let mut sig = self.sigil_offers(ti, &mut orng);
         let mut cards = self.card_offers(shop, &mut orng, other_offers);
+        self.log_offers(ti, shop, &sig, &cards);
         if self.cfg.validate > 0.0
             && sig.len() >= 2
             && Rng::stream(self.seed, &[S_TEAM, 99, ti as u64, shop as u64])
@@ -787,10 +803,12 @@ impl<'a> Runner<'a> {
                     } else {
                         b
                     };
+                    self.log_choice(ti, &opts, choice, &sig, &cards);
                     if choice.1 {
                         let d = sig.remove(choice.2);
                         if self.teams[ti].sigils.len() >= MAX_SIGILS {
                             if let Some((k, _)) = self.weakest_sigil(ti, shop, None) {
+                                self.log_shop(json!({"ev": "sell", "team": ti, "sigil": self.cfg.pool.defs[self.teams[ti].sigils[k].def].id}));
                                 self.sell_sigil(ti, k, shop);
                             }
                         }
@@ -812,6 +830,8 @@ impl<'a> Runner<'a> {
                         let o = cards.remove(choice.2);
                         if self.teams[ti].cards.len() >= MAX_CARDS {
                             if let Some((k, _)) = self.weakest_card(ti, shop) {
+                                let c = self.teams[ti].cards[k];
+                                self.log_shop(json!({"ev": "sellCard", "team": ti, "card": offer_str(c.ident, c.slot, c.eng)}));
                                 self.sell_card(ti, k);
                             }
                         }
@@ -827,6 +847,8 @@ impl<'a> Runner<'a> {
                         orng = Rng::stream(self.seed, &[S_OFFER, luck, shop as u64, reroll]);
                         sig = self.sigil_offers(ti, &mut orng);
                         cards = self.card_offers(shop, &mut orng, other_offers);
+                        self.log_shop(json!({"ev": "reroll", "team": ti, "cost": cost}));
+                        self.log_offers(ti, shop, &sig, &cards);
                     } else {
                         break;
                     }
@@ -840,7 +862,58 @@ impl<'a> Runner<'a> {
         offered
     }
 
-    fn buy_card(&mut self, ti: usize, o: CardOffer, shop: u8, grant: bool) {
+    fn log_shop(&mut self, v: serde_json::Value) {
+        if let Some(l) = self.shop_log.as_mut() {
+            l.push(v);
+        }
+    }
+
+    fn log_offers(&mut self, ti: usize, shop: u8, sig: &[usize], cards: &[CardOffer]) {
+        if self.shop_log.is_none() {
+            return;
+        }
+        let v = json!({
+            "ev": "offers", "team": ti, "shop": shop, "gold": self.teams[ti].gold,
+            "sigils": sig.iter().map(|&d| self.cfg.pool.defs[d].id.clone()).collect::<Vec<_>>(),
+            "cards": cards.iter().map(|o| format!("{} ({}g)", offer_str(o.ident, o.slot, o.eng), o.price)).collect::<Vec<_>>(),
+        });
+        self.log_shop(v);
+    }
+
+    /// Logs a purchase with every option the shop policy weighed (net value per option).
+    fn log_choice(
+        &mut self,
+        ti: usize,
+        opts: &[(f64, bool, usize)],
+        choice: (f64, bool, usize),
+        sig: &[usize],
+        cards: &[CardOffer],
+    ) {
+        if self.shop_log.is_none() {
+            return;
+        }
+        let name = |o: &(f64, bool, usize)| {
+            if o.1 {
+                self.cfg.pool.defs[sig[o.2]].id.clone()
+            } else {
+                let c = cards[o.2];
+                offer_str(c.ident, c.slot, c.eng)
+            }
+        };
+        let options: Vec<serde_json::Value> = opts
+            .iter()
+            .map(|o| json!({"offer": name(o), "net": (o.0 * 1e4).round() / 1e4}))
+            .collect();
+        let (price, kind) = if choice.1 {
+            (self.cfg.pool.defs[sig[choice.2]].price(), "sigil")
+        } else {
+            (cards[choice.2].price, "card")
+        };
+        let v = json!({"ev": "buy", "team": ti, "kind": kind, "offer": name(&choice), "price": price, "options": options});
+        self.log_shop(v);
+    }
+
+    pub(crate) fn buy_card(&mut self, ti: usize, o: CardOffer, shop: u8, grant: bool) {
         self.teams[ti].gold -= o.price;
         self.taken |= bit(o.slot);
         self.teams[ti].cards.push(OwnedCard {
@@ -855,7 +928,7 @@ impl<'a> Runner<'a> {
 
     // ----- Rounds -----
 
-    fn rules_for(&self) -> Rules {
+    pub(crate) fn rules_for(&self) -> Rules {
         let mk = |kt: usize| {
             let ti = self.tidx(kt);
             let slots = self.teams[ti]
@@ -884,7 +957,7 @@ impl<'a> Runner<'a> {
         }
     }
 
-    fn view_rules(&self, rules: &Rules, kt: usize) -> Rules {
+    pub(crate) fn view_rules(&self, rules: &Rules, kt: usize) -> Rules {
         let opp = 1 - kt;
         let revealed: Vec<bool> = self.teams[self.tidx(opp)]
             .sigils
@@ -896,7 +969,7 @@ impl<'a> Runner<'a> {
         Rules { teams }
     }
 
-    fn utility(&self, kt: usize, round: u8) -> Utility {
+    pub(crate) fn utility(&self, kt: usize, round: u8) -> Utility {
         let m = self.cfg.model;
         let ti = self.tidx(kt);
         let margin = self.teams[ti].score - self.teams[1 - ti].score;
@@ -918,7 +991,36 @@ impl<'a> Runner<'a> {
         }
     }
 
-    fn play_round(&mut self, round: u8) {
+    pub(crate) fn play_round(&mut self, round: u8) {
+        let mut rs = self.deal(round);
+        for (kt, k, r) in rs.opening.clone() {
+            if let Rule::Swap(n) = r {
+                let (a, b) = self.opening_seats(kt, k);
+                let ga = self.swap_ai(&rs, a as u8, n);
+                let gb = self.swap_ai(&rs, b as u8, n);
+                self.apply_swap(&mut rs, a, b, ga, gb);
+                self.teams[self.tidx(kt)].sigils[k].revealed = true;
+            } else {
+                self.apply_opening(&mut rs, kt, k, r);
+            }
+        }
+        for k in 0..4 {
+            let s = ((rs.play.dealer + 1 + k) % 4) as usize;
+            let (b, _) = self.bid_ai(&mut rs, s as u8);
+            rs.play.bids[s] = b;
+        }
+        self.finish_bidding(&mut rs);
+        while !rs.play.done() {
+            let s = rs.mover();
+            let (m, _) = self.move_ai(&mut rs, s);
+            self.apply_move(&mut rs, s, m);
+        }
+        self.finish_round(&rs);
+    }
+
+    /// Deals a round: owned cards to their owners, the rest by stable dealing, and the Opening
+    /// queue in the kernel's fixed priority.
+    pub(crate) fn deal(&self, round: u8) -> RoundState {
         let dealer = ((Rng::stream(self.seed, &[S_SETUP, 9]).below(4) as u8) + round - 1) % 4;
         let mut deal_rng = Rng::stream(self.seed, &[S_DEAL, round as u64]);
         let mut perm: Vec<u8> = (0..52).collect();
@@ -970,11 +1072,10 @@ impl<'a> Runner<'a> {
         }
 
         let rules = self.rules_for();
-        let mut play = Play::new(id, hands, eng, dealer, &rules);
+        let play = Play::new(id, hands, eng, dealer, &rules);
 
-        // Opening, in the kernel's fixed priority.
+        let mut opening = vec![];
         for kt in 0..2 {
-            let ti = self.tidx(kt);
             let mut order: Vec<(u8, usize, Rule)> = vec![];
             for (k, s) in rules.teams[kt].slots.iter().enumerate() {
                 if let Some(r) = s.rule {
@@ -992,155 +1093,189 @@ impl<'a> Runner<'a> {
                 }
             }
             order.sort_by_key(|x| (x.0, x.1));
-            for (_, k, r) in order {
-                let sid = hash_str(&self.cfg.pool.defs[self.teams[ti].sigils[k].def].id);
-                let mut orng = Rng::stream(
-                    self.seed,
-                    &[
-                        S_OPENING,
-                        round as u64,
-                        (ti ^ self.orient as usize) as u64,
-                        sid,
-                    ],
-                );
-                // Opening changes act on the owning team's hands unless they name the opponents.
-                let opp = self.cfg.pool.defs[self.teams[ti].sigils[k].def]
-                    .effect
-                    .whose
-                    .as_deref()
-                    == Some("opponents");
-                let (a, b) = if opp { (1 - kt, 3 - kt) } else { (kt, kt + 2) };
-                match r {
-                    Rule::Swap(n) => {
-                        let tier = self.tier_override.unwrap_or(self.cfg.tiers[ti]);
-                        let view = self.view_rules(&rules, kt);
-                        let u = self.utility(kt, round);
-                        let mut ga = 0;
-                        let mut gb = 0;
-                        for (seat, g) in [(a, &mut ga), (b, &mut gb)] {
-                            let know = self.knowledge(&play, seat as u8, &known, &[[false; 4]; 4]);
-                            let mut r =
-                                Rng::stream(self.seed, &[S_AI, round as u64, seat as u64, 77]);
-                            *g = choose_swap(&play, &view, &know, &u, &tier, &mut r, n);
-                        }
-                        let n = ga.count_ones().min(gb.count_ones());
-                        let (ga, gb) = (trim(ga, n), trim(gb, n));
-                        play.hands[a] = (play.hands[a] & !ga) | gb;
-                        play.hands[b] = (play.hands[b] & !gb) | ga;
-                        let (ka, kb) = (known[a], known[b]);
-                        known[a] = (ka & !ga) | (kb & gb);
-                        known[b] = (kb & !gb) | (ka & ga);
-                    }
-                    Rule::BecomeRank(n, rank) | Rule::BecomeRange(n, rank, _) => {
-                        let hi = if let Rule::BecomeRange(_, _, h) = r {
-                            h
-                        } else {
-                            rank
-                        };
-                        for c in sample(play.hands[a] | play.hands[b], n, &mut orng) {
-                            let nr = rank + orng.below((hi - rank + 1) as usize) as u8;
-                            play.id.set(c, play.id.suit[c as usize], nr);
-                        }
-                    }
-                    Rule::BecomeSuit(n, suit) => {
-                        for c in sample(play.hands[a] | play.hands[b], n, &mut orng) {
-                            play.id.set(c, suit, play.id.rank[c as usize]);
-                        }
-                    }
-                    Rule::Raise(n) => {
-                        for c in Bits(play.hands[a] | play.hands[b]) {
-                            let r = play.id.rank[c as usize];
-                            play.id.set(c, play.id.suit[c as usize], (r + n).min(ACE));
-                        }
-                    }
-                    Rule::RaiseFrom(n, from) => {
-                        for c in Bits(play.hands[a] | play.hands[b]) {
-                            let (su, r) = (play.id.suit[c as usize], play.id.rank[c as usize]);
-                            if from.matches(su, r) {
-                                play.id.set(c, su, (r + n).min(ACE));
-                            }
-                        }
-                    }
-                    Rule::BecomeFrom {
-                        count,
-                        from,
-                        suit,
-                        rank,
-                    } => {
-                        let mut elig = 0;
-                        for c in Bits(play.hands[a] | play.hands[b]) {
-                            if from.matches(play.id.suit[c as usize], play.id.rank[c as usize]) {
-                                elig |= bit(c);
-                            }
-                        }
-                        let picked: Vec<u8> = if count == 0 {
-                            Bits(elig).collect()
-                        } else {
-                            sample(elig, count, &mut orng)
-                        };
-                        for c in picked {
-                            let ns = suit.unwrap_or(play.id.suit[c as usize]);
-                            let nr = rank.unwrap_or(play.id.rank[c as usize]);
-                            play.id.set(c, ns, nr);
-                        }
-                    }
-                    _ => {}
-                }
-                self.teams[ti].sigils[k].revealed = true;
-            }
+            opening.extend(order.into_iter().map(|(_, k, r)| (kt, k, r)));
         }
-
-        // Bidding.
-        let mut voids = [[false; 4]; 4];
-        let views = [self.view_rules(&rules, 0), self.view_rules(&rules, 1)];
-        let mut ai: Vec<Rng> = (0..4)
+        let ai = (0..4)
             .map(|s| Rng::stream(self.seed, &[S_AI, round as u64, s as u64]))
             .collect();
-        for k in 0..4 {
-            let s = ((dealer + 1 + k) % 4) as usize;
-            let kt = s % 2;
-            let tier = self.tier_override.unwrap_or(self.cfg.tiers[self.tidx(kt)]);
-            let know = self.knowledge(&play, s as u8, &known, &voids);
-            let u = self.utility(kt, round);
-            let b = choose_bid(&play, &views[kt], &know, &u, &tier, &mut ai[s]);
-            play.bids[s] = b;
+        RoundState {
+            round,
+            base_id: id,
+            play,
+            rules,
+            known,
+            voids: [[false; 4]; 4],
+            ai,
+            opening,
         }
-        for kt in 0..2 {
-            let ti = self.tidx(kt);
-            play.behind[kt] = self.teams[ti].score < self.teams[1 - ti].score;
-        }
-        play.post_bid(&rules);
+    }
 
-        // Play.
-        while !play.done() {
-            let s = if play.choosing >= 0 {
-                play.choosing as u8
-            } else {
-                play.turn
-            };
-            let kt = (s % 2) as usize;
-            let tier = self.tier_override.unwrap_or(self.cfg.tiers[self.tidx(kt)]);
-            let views = [self.view_rules(&rules, 0), self.view_rules(&rules, 1)];
-            let know = self.knowledge(&play, s, &known, &voids);
-            let u = self.utility(kt, round);
-            let m = choose_move(&play, &views[kt], &know, &u, &tier, &mut ai[s as usize]);
-            if m < 52 {
-                self.bench(&play, s, m);
-                if play.tlen > 0 {
-                    let led = play.id.suit[play.trick[0] as usize];
-                    let any = play.any_suit_now(s);
-                    if play.id.suit[m as usize] != led && !any {
-                        voids[s as usize][led as usize] = true;
+    /// The two seats an Opening effect acts on: the owning team's, unless it names the opponents.
+    pub(crate) fn opening_seats(&self, kt: usize, k: usize) -> (usize, usize) {
+        let ti = self.tidx(kt);
+        let opp = self.cfg.pool.defs[self.teams[ti].sigils[k].def]
+            .effect
+            .whose
+            .as_deref()
+            == Some("opponents");
+        if opp {
+            (1 - kt, 3 - kt)
+        } else {
+            (kt, kt + 2)
+        }
+    }
+
+    /// The cards an AI seat gives in an Opening swap.
+    pub(crate) fn swap_ai(&self, rs: &RoundState, seat: u8, n: u8) -> Mask {
+        let kt = (seat % 2) as usize;
+        let tier = self.tier_override.unwrap_or(self.cfg.tiers[self.tidx(kt)]);
+        let view = self.view_rules(&rs.rules, kt);
+        let u = self.utility(kt, rs.round);
+        let know = self.knowledge(&rs.play, seat, &rs.known, &[[false; 4]; 4]);
+        let mut r = Rng::stream(self.seed, &[S_AI, rs.round as u64, seat as u64, 77]);
+        choose_swap(&rs.play, &view, &know, &u, &tier, &mut r, n)
+    }
+
+    /// Exchanges equal counts between two partners, keeping what each knows of owned cards.
+    pub(crate) fn apply_swap(&self, rs: &mut RoundState, a: usize, b: usize, ga: Mask, gb: Mask) {
+        let n = ga.count_ones().min(gb.count_ones());
+        let (ga, gb) = (trim(ga, n), trim(gb, n));
+        rs.play.hands[a] = (rs.play.hands[a] & !ga) | gb;
+        rs.play.hands[b] = (rs.play.hands[b] & !gb) | ga;
+        let (ka, kb) = (rs.known[a], rs.known[b]);
+        rs.known[a] = (ka & !ga) | (kb & gb);
+        rs.known[b] = (kb & !gb) | (ka & ga);
+    }
+
+    /// Resolves one random or fixed Opening change (every Opening rule except the swap).
+    pub(crate) fn apply_opening(&mut self, rs: &mut RoundState, kt: usize, k: usize, r: Rule) {
+        let ti = self.tidx(kt);
+        let sid = hash_str(&self.cfg.pool.defs[self.teams[ti].sigils[k].def].id);
+        let mut orng = Rng::stream(
+            self.seed,
+            &[
+                S_OPENING,
+                rs.round as u64,
+                (ti ^ self.orient as usize) as u64,
+                sid,
+            ],
+        );
+        let (a, b) = self.opening_seats(kt, k);
+        let play = &mut rs.play;
+        match r {
+            Rule::BecomeRank(n, rank) | Rule::BecomeRange(n, rank, _) => {
+                let hi = if let Rule::BecomeRange(_, _, h) = r {
+                    h
+                } else {
+                    rank
+                };
+                for c in sample(play.hands[a] | play.hands[b], n, &mut orng) {
+                    let nr = rank + orng.below((hi - rank + 1) as usize) as u8;
+                    play.id.set(c, play.id.suit[c as usize], nr);
+                }
+            }
+            Rule::BecomeSuit(n, suit) => {
+                for c in sample(play.hands[a] | play.hands[b], n, &mut orng) {
+                    play.id.set(c, suit, play.id.rank[c as usize]);
+                }
+            }
+            Rule::Raise(n) => {
+                for c in Bits(play.hands[a] | play.hands[b]) {
+                    let r = play.id.rank[c as usize];
+                    play.id.set(c, play.id.suit[c as usize], (r + n).min(ACE));
+                }
+            }
+            Rule::RaiseFrom(n, from) => {
+                for c in Bits(play.hands[a] | play.hands[b]) {
+                    let (su, r) = (play.id.suit[c as usize], play.id.rank[c as usize]);
+                    if from.matches(su, r) {
+                        play.id.set(c, su, (r + n).min(ACE));
                     }
                 }
             }
-            if play.apply(m, &rules).is_some() {
-                self.reveal(&play, &rules);
+            Rule::BecomeFrom {
+                count,
+                from,
+                suit,
+                rank,
+            } => {
+                let mut elig = 0;
+                for c in Bits(play.hands[a] | play.hands[b]) {
+                    if from.matches(play.id.suit[c as usize], play.id.rank[c as usize]) {
+                        elig |= bit(c);
+                    }
+                }
+                let picked: Vec<u8> = if count == 0 {
+                    Bits(elig).collect()
+                } else {
+                    sample(elig, count, &mut orng)
+                };
+                for c in picked {
+                    let ns = suit.unwrap_or(play.id.suit[c as usize]);
+                    let nr = rank.unwrap_or(play.id.rank[c as usize]);
+                    play.id.set(c, ns, nr);
+                }
+            }
+            _ => {}
+        }
+        self.teams[ti].sigils[k].revealed = true;
+    }
+
+    /// An AI seat's bid, with the value of each candidate bid.
+    pub(crate) fn bid_ai(&self, rs: &mut RoundState, s: u8) -> (i8, Vec<(i8, f64)>) {
+        let kt = (s % 2) as usize;
+        let tier = self.tier_override.unwrap_or(self.cfg.tiers[self.tidx(kt)]);
+        let view = self.view_rules(&rs.rules, kt);
+        let know = self.knowledge(&rs.play, s, &rs.known, &rs.voids);
+        let u = self.utility(kt, rs.round);
+        choose_bid_explain(&rs.play, &view, &know, &u, &tier, &mut rs.ai[s as usize])
+    }
+
+    /// After the last bid: who is behind, then always-on, holding, bid, and growth triggers.
+    pub(crate) fn finish_bidding(&self, rs: &mut RoundState) {
+        for kt in 0..2 {
+            let ti = self.tidx(kt);
+            rs.play.behind[kt] = self.teams[ti].score < self.teams[1 - ti].score;
+        }
+        rs.play.post_bid(&rs.rules);
+    }
+
+    /// An AI seat's move (a card or a lead choice), with the search value of each legal move.
+    pub(crate) fn move_ai(&self, rs: &mut RoundState, s: u8) -> (u8, Vec<(u8, f64)>) {
+        let kt = (s % 2) as usize;
+        let tier = self.tier_override.unwrap_or(self.cfg.tiers[self.tidx(kt)]);
+        let view = self.view_rules(&rs.rules, kt);
+        let know = self.knowledge(&rs.play, s, &rs.known, &rs.voids);
+        let u = self.utility(kt, rs.round);
+        choose_move_explain(&rs.play, &view, &know, &u, &tier, &mut rs.ai[s as usize])
+    }
+
+    /// Applies a move, recording voids and reveals. Returns the trick if this move ended one.
+    pub(crate) fn apply_move(&mut self, rs: &mut RoundState, s: u8, m: u8) -> Option<TrickResult> {
+        let play = &mut rs.play;
+        if m < 52 {
+            self.bench(play, s, m);
+            if play.tlen > 0 {
+                let led = play.id.suit[play.trick[0] as usize];
+                let any = play.any_suit_now(s);
+                if play.id.suit[m as usize] != led && !any {
+                    rs.voids[s as usize][led as usize] = true;
+                }
             }
         }
+        let res = play.apply(m, &rs.rules);
+        if res.is_some() {
+            self.reveal(&rs.play, &rs.rules);
+        }
+        res
+    }
 
-        // Score, ledger, growth, income.
-        let sc = play.score(&rules);
+    /// Scores the round, writes the ledger, banks growth, and pays income.
+    pub(crate) fn finish_round(&mut self, rs: &RoundState) -> ([TeamScore; 2], [Income; 2]) {
+        let play = &rs.play;
+        let rules = &rs.rules;
+        let sc = play.score(rules);
+        let mut income = [Income::default(); 2];
         for kt in 0..2 {
             let ti = self.tidx(kt);
             let s = &sc[kt];
@@ -1187,20 +1322,24 @@ impl<'a> Runner<'a> {
             self.recs[ti].rounds.push(rr);
             let team = &mut self.teams[ti];
             team.score += s.score;
-            let interest = if team.gold > 0 {
-                (10 * (team.gold / 50)).min(50)
-            } else {
-                0
+            let inc = Income {
+                interest: if team.gold > 0 {
+                    (10 * (team.gold / 50)).min(50)
+                } else {
+                    0
+                },
+                base: 100,
+                contract: if s.made { 10 * s.contract as i32 } else { 0 },
+                nil: 50 * s.nil_made as i32,
             };
-            team.gold += interest
-                + 100
-                + if s.made { 10 * s.contract as i32 } else { 0 }
-                + 50 * s.nil_made as i32;
+            team.gold += inc.interest + inc.base + inc.contract + inc.nil;
+            income[kt] = inc;
         }
+        (sc, income)
     }
 
     /// Index of an owned sigil in the team's record list (assigned on first sight).
-    fn record_index(&self, ti: usize, o: &OwnedSigil) -> usize {
+    pub(crate) fn record_index(&self, ti: usize, o: &OwnedSigil) -> usize {
         let id = &self.cfg.pool.defs[o.def].id;
         self.recs[ti]
             .sigils
@@ -1209,7 +1348,7 @@ impl<'a> Runner<'a> {
             .unwrap_or(usize::MAX)
     }
 
-    fn sync_records(&mut self) {
+    pub(crate) fn sync_records(&mut self) {
         for ti in 0..2 {
             for o in self.teams[ti]
                 .sigils
@@ -1239,7 +1378,7 @@ impl<'a> Runner<'a> {
         }
     }
 
-    fn knowledge(
+    pub(crate) fn knowledge(
         &self,
         play: &Play,
         seat: u8,
@@ -1257,7 +1396,7 @@ impl<'a> Runner<'a> {
         }
     }
 
-    fn reveal(&mut self, play: &Play, rules: &Rules) {
+    pub(crate) fn reveal(&mut self, play: &Play, rules: &Rules) {
         for kt in 0..2 {
             let ti = self.tidx(kt);
             let used = play.acc[kt].used;
@@ -1282,7 +1421,7 @@ impl<'a> Runner<'a> {
         }
     }
 
-    fn bench(&mut self, play: &Play, s: u8, m: u8) {
+    pub(crate) fn bench(&mut self, play: &Play, s: u8, m: u8) {
         let kt = (s % 2) as usize;
         let ti = self.tidx(kt);
         let b = &mut self.recs[ti].bench;
@@ -1314,7 +1453,7 @@ impl<'a> Runner<'a> {
     }
 
     /// Tier-0 rollout rescoring: plays this round on sampled deals with and without each offer.
-    fn check_offers(&mut self, ti: usize, shop: u8, offers: &[usize]) {
+    pub(crate) fn check_offers(&mut self, ti: usize, shop: u8, offers: &[usize]) {
         const K: u64 = 12;
         let model: Vec<f64> = offers
             .iter()
@@ -1399,7 +1538,7 @@ impl<'a> Runner<'a> {
     }
 
     /// Plans every sigil grant of the run from the grant streams and earlier grants only.
-    fn plan_grants(&mut self) {
+    pub(crate) fn plan_grants(&mut self) {
         for ti in 0..2 {
             let Some(g) = self.cfg.teams[ti].grants.clone() else {
                 continue;
@@ -1476,6 +1615,41 @@ impl<'a> Runner<'a> {
     }
 }
 
+/// One round in progress, from the deal to the last trick.
+pub struct RoundState {
+    pub round: u8,
+    /// Identities after the deal (synthetic copies applied), before any Opening change.
+    pub base_id: Identity,
+    pub play: Play,
+    pub rules: Rules,
+    /// Owned cards each seat's partner knows about.
+    pub known: [Mask; 4],
+    pub voids: [[bool; 4]; 4],
+    pub ai: Vec<Rng>,
+    /// Opening effects in resolution order: (kernel team, sigil slot, rule).
+    pub opening: Vec<(usize, usize, Rule)>,
+}
+
+impl RoundState {
+    /// The seat to act: a pending lead choice, else the seat whose turn it is.
+    pub fn mover(&self) -> u8 {
+        if self.play.choosing >= 0 {
+            self.play.choosing as u8
+        } else {
+            self.play.turn
+        }
+    }
+}
+
+/// Gold paid to a team after a round.
+#[derive(Clone, Copy, Default, Debug, Serialize)]
+pub struct Income {
+    pub interest: i32,
+    pub base: i32,
+    pub contract: i32,
+    pub nil: i32,
+}
+
 fn trim(m: Mask, n: u32) -> Mask {
     let mut out = 0;
     for c in Bits(m).take(n as usize) {
@@ -1489,6 +1663,21 @@ fn sample(m: Mask, n: u8, rng: &mut Rng) -> Vec<u8> {
     rng.shuffle(&mut v);
     v.truncate(n as usize);
     v
+}
+
+/// A card offer as text: "A♠", "A♣ (synthetic, replaces 4♣)", or "K♥ +bonus".
+pub fn offer_str(ident: u8, slot: u8, eng: u8) -> String {
+    let c = card_str(nominal_suit(ident), nominal_rank(ident));
+    match eng {
+        ENG_SYNTH => format!(
+            "{c} (synthetic, replaces {})",
+            card_str(nominal_suit(slot), nominal_rank(slot))
+        ),
+        ENG_BONUS => format!("{c} +bonus engraving"),
+        ENG_HERALD => format!("{c} +herald engraving"),
+        ENG_MULT => format!("{c} +multiplier engraving"),
+        _ => c,
+    }
 }
 
 /// Cards a committed team wants for its archetype.

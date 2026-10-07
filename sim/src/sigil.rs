@@ -546,6 +546,10 @@ pub struct SigilDef {
     #[serde(default)]
     pub status: String,
     pub effect: Effect,
+    #[serde(default)]
+    pub name: Option<String>,
+    #[serde(default)]
+    pub text: Option<String>,
 }
 
 impl SigilDef {

@@ -1,0 +1,284 @@
+.app {
+  position: relative;
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    '. north .'
+    'west table east'
+    'south south south';
+  transition: padding var(--duration) var(--ease-out);
+  background:
+    radial-gradient(
+      ellipse 70% 60% at 50% 46%,
+      var(--felt-600) 0%,
+      var(--felt-700) 38%,
+      transparent 75%
+    ),
+    radial-gradient(ellipse at 50% 120%, var(--felt-800), var(--felt-900) 70%);
+  overflow: hidden;
+}
+
+.score {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  /* Stays above the scrim so the score gives context to blind nil and summaries. */
+  z-index: 25;
+}
+
+.north,
+.west,
+.east,
+.south {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  z-index: 2;
+}
+
+.north {
+  grid-area: north;
+  padding-top: var(--space-4);
+}
+
+.west {
+  grid-area: west;
+  justify-content: center;
+  padding-inline: var(--space-4);
+}
+
+.east {
+  grid-area: east;
+  justify-content: center;
+  padding-inline: var(--space-4);
+}
+
+.south {
+  grid-area: south;
+  padding: 0 var(--space-4);
+  gap: 0;
+}
+
+.table {
+  grid-area: table;
+  position: relative;
+  min-height: calc(var(--card-h) * 2.3);
+}
+
+.felt {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(96%, calc(var(--card-w) * 5.6));
+  aspect-ratio: 1.55;
+  max-height: 96%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid var(--hairline);
+  background: radial-gradient(ellipse at center, rgb(255 255 255 / 0.035), transparent 70%);
+  box-shadow: inset 0 0 60px rgb(0 0 0 / 0.25);
+  transition:
+    border-color var(--duration) var(--ease-out),
+    background var(--duration) var(--ease-out);
+}
+
+.table[data-drop] .felt {
+  border-color: var(--gold);
+  border-style: dashed;
+  background: radial-gradient(ellipse at center, rgb(230 194 122 / 0.12), transparent 70%);
+}
+
+.spadeMark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--card-w) * 0.55);
+  height: calc(var(--card-w) * 0.55);
+  transform: translate(-50%, -50%);
+  color: rgb(244 236 216 / 0.07);
+  transition: color 600ms var(--ease-out);
+}
+
+.spadeMark[data-broken] {
+  color: rgb(230 194 122 / 0.28);
+}
+
+.bidDock {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  z-index: 10;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  background: rgb(3 16 14 / 0.5);
+  backdrop-filter: blur(3px);
+}
+
+/* Portrait phones: scoreboard on top, all three opponents in one row above the table. */
+@media (max-width: 700px), (orientation: portrait) and (max-width: 1000px) {
+  .app {
+    --card-w: min(76px, 20vw);
+    padding-inline: var(--space-3);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      'score score score'
+      'west north east'
+      'table table table'
+      'south south south';
+  }
+
+  .score {
+    position: relative;
+    inset: auto;
+    grid-area: score;
+    padding-top: var(--space-3);
+  }
+
+  .north,
+  .west,
+  .east {
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    padding-top: var(--space-4);
+    padding-inline: 0;
+    gap: var(--space-2);
+  }
+
+  .north {
+    flex-direction: column;
+  }
+}
+
+.loading {
+  height: 100dvh;
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+}
+
+.promptDock {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  z-index: 12;
+}
+
+@media (min-width: 1000px) {
+  .app[data-sandbox] {
+    padding-right: 380px;
+  }
+
+  .app[data-sandbox] .score {
+    left: var(--space-4);
+  }
+}
+
+@media (orientation: portrait) and (min-width: 701px) and (max-width: 1000px) {
+  .app {
+    --card-w: min(108px, 12.5vw);
+    --mini-card-w: 34px;
+    padding-inline: var(--space-5);
+  }
+}
+
+.restart {
+  position: absolute;
+  top: var(--space-4);
+  right: calc(var(--space-4) + 44px + var(--space-2));
+  z-index: 26;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--hairline-strong);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition:
+    transform var(--duration) var(--ease-out),
+    color var(--duration) var(--ease-out),
+    border-color var(--duration) var(--ease-out);
+}
+
+.restart svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.restart:hover {
+  color: var(--text);
+  border-color: var(--gold);
+  transform: translateY(-1px);
+}
+
+.restart:active {
+  transform: translateY(1px);
+}
+
+/* Phones keep the wrench in the scoreboard row, clear of the hand, with restart below it. */
+@media (max-width: 700px), (orientation: portrait) and (max-width: 1000px) {
+  .score {
+    margin-right: 56px;
+  }
+
+  .restart {
+    top: calc(var(--space-4) + 44px + var(--space-2));
+    right: var(--space-4);
+  }
+}
+
+.revealed {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3px;
+  max-width: 240px;
+  font-size: var(--text-sm);
+}
+
+.spectating {
+  position: absolute;
+  bottom: var(--space-2);
+  left: 50%;
+  translate: -50% 0;
+  z-index: 3;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.app[data-sandbox] .scrim {
+  right: 0;
+}
+
+@media (min-width: 1000px) {
+  .app[data-sandbox] {
+    padding-right: 400px;
+  }
+
+  .app[data-sandbox] .scrim {
+    right: 400px;
+  }
+}
+
+@media (max-width: 700px), (orientation: portrait) and (max-width: 1000px) {
+  /* Overlays sit below the scoreboard, which stays visible for context. */
+  .scrim {
+    place-items: start center;
+    padding-top: 128px;
+    overflow-y: auto;
+  }
+}

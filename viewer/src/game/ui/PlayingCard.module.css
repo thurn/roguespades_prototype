@@ -1,0 +1,204 @@
+.card {
+  position: relative;
+  container-type: size;
+  width: var(--w);
+  height: calc(var(--w) * 1.4);
+  border-radius: calc(var(--w) * 0.07);
+  flex: none;
+}
+
+.full {
+  --w: var(--card-w);
+}
+
+.mini {
+  --w: var(--mini-card-w);
+}
+
+.face {
+  background: linear-gradient(160deg, #fffdf6 0%, var(--card-face) 55%, var(--card-face-edge) 100%);
+  color: var(--card-black);
+  box-shadow:
+    inset 0 0 0 1px rgb(0 0 0 / 0.08),
+    var(--shadow-card);
+  transition:
+    filter var(--duration) var(--ease-out),
+    translate var(--duration) var(--ease-out);
+}
+
+.face[data-red] {
+  color: var(--card-red);
+}
+
+/* Unplayable cards sink slightly so legal ones stand proud without muddying the ivory. */
+.dimmed {
+  filter: brightness(0.8) saturate(0.85);
+  translate: 0 12px;
+}
+
+.corner {
+  position: absolute;
+  top: 6cqw;
+  left: 7cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 22cqw;
+  line-height: 1;
+}
+
+.rank {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 23cqw;
+  letter-spacing: -0.02em;
+}
+
+.rank[data-wide] {
+  letter-spacing: -0.08em;
+  font-size: 20cqw;
+}
+
+.cornerSuit {
+  width: 14cqw;
+  height: 14cqw;
+  margin-top: 2cqw;
+}
+
+/* The engraving glyph sits under the suit, inside the strip a fanned hand leaves visible. */
+.mark {
+  display: block;
+  width: 20cqw;
+  height: 20cqw;
+  margin-top: 3cqw;
+}
+
+.markIcon {
+  width: 100%;
+  height: 100%;
+}
+
+/* Owned cards (dealt to you every round) carry a gold rim. */
+.face[data-owned] {
+  box-shadow:
+    inset 0 0 0 2px var(--gold),
+    var(--shadow-card);
+}
+
+/* Changed by an Opening effect this round: a dashed inner rim. */
+.face[data-changed]::after {
+  content: '';
+  position: absolute;
+  inset: 4cqw;
+  border: 1.5px dashed var(--cat-enabler);
+  border-radius: calc(var(--w) * 0.05);
+  pointer-events: none;
+}
+
+.face[data-selectable] {
+  box-shadow:
+    0 0 0 2px rgb(230 194 122 / 0.5),
+    var(--shadow-card);
+}
+
+.face[data-selected] {
+  box-shadow:
+    0 0 0 3px var(--gold-strong),
+    0 0 18px rgb(230 194 122 / 0.6),
+    var(--shadow-card);
+}
+
+/* A trigger flash on the engraved card. */
+.face[data-pulse] .mark {
+  animation: pulse var(--duration-pulse) var(--ease-out);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.center {
+  position: absolute;
+  inset: 0 0 0 16cqw;
+  display: grid;
+  place-items: center;
+}
+
+.pip {
+  width: 40cqw;
+  height: 40cqw;
+}
+
+.acePip {
+  width: 44cqw;
+  height: 44cqw;
+}
+
+.faceLetter {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 50cqw;
+  line-height: 1;
+  transform: translateY(-2cqw);
+}
+
+.back {
+  background: radial-gradient(circle at 50% 40%, var(--card-back), var(--card-back-deep));
+  box-shadow:
+    inset 0 0 0 1px rgb(0 0 0 / 0.25),
+    var(--shadow-card);
+  padding: calc(var(--w) * 0.06);
+}
+
+.backInner {
+  width: 100%;
+  height: 100%;
+  border-radius: calc(var(--w) * 0.04);
+  border: 1px solid rgb(230 194 122 / 0.55);
+  background:
+    repeating-linear-gradient(45deg, rgb(230 194 122 / 0.14) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(-45deg, rgb(230 194 122 / 0.14) 0 1px, transparent 1px 7px);
+  display: grid;
+  place-items: center;
+}
+
+.emblem {
+  width: 34cqw;
+  height: 34cqw;
+  color: var(--gold);
+  filter: drop-shadow(0 0 6px rgb(0 0 0 / 0.6));
+}
+
+/* Phones show only a sliver of each card in hand, so the corner index grows. */
+@media (max-width: 700px), (orientation: portrait) and (max-width: 1000px) {
+  .corner {
+    width: 26cqw;
+  }
+
+  .rank {
+    font-size: 27cqw;
+  }
+
+  .rank[data-wide] {
+    font-size: 23cqw;
+  }
+
+  .cornerSuit {
+    width: 19cqw;
+    height: 19cqw;
+  }
+
+  .mark {
+    width: 21cqw;
+    height: 21cqw;
+  }
+}

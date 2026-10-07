@@ -1,0 +1,15 @@
+.token {
+  display: inline-block;
+  padding: 0 3px;
+  margin: 0 1px;
+  border-radius: 4px;
+  background: var(--card-face);
+  color: var(--card-black);
+  font-weight: 700;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.token [data-red] {
+  color: var(--card-red);
+}

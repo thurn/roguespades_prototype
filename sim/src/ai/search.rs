@@ -240,9 +240,21 @@ pub fn choose_move(
     tier: &Tier,
     rng: &mut Rng,
 ) -> u8 {
+    choose_move_explain(truth, rules, k, u, tier, rng).0
+}
+
+/// `choose_move`, also returning each legal move's search value (empty when only one is legal).
+pub fn choose_move_explain(
+    truth: &Play,
+    rules: &Rules,
+    k: &Knowledge,
+    u: &Utility,
+    tier: &Tier,
+    rng: &mut Rng,
+) -> (u8, Vec<(u8, f64)>) {
     let legal = truth.legal();
     if legal.count_ones() == 1 {
-        return legal.trailing_zeros() as u8;
+        return (legal.trailing_zeros() as u8, vec![]);
     }
     let team = (k.seat % 2) as usize;
     let deals = deal_pool(truth, k, rng, tier.deals_sample, tier.deals_keep);
@@ -252,7 +264,8 @@ pub fn choose_move(
     } else {
         mcts(&deals, &moves, rules, u, team, tier.iters, rng)
     };
-    pick(truth, &deals[0], &moves, &means, spread)
+    let m = pick(truth, &deals[0], &moves, &means, spread);
+    (m, moves.into_iter().zip(means).collect())
 }
 
 /// Among moves within a hair of the best mean, prefer the heuristic's move, then the cheapest card.
@@ -468,6 +481,18 @@ pub fn choose_bid(
     tier: &Tier,
     rng: &mut Rng,
 ) -> i8 {
+    choose_bid_explain(truth, rules, k, u, tier, rng).0
+}
+
+/// `choose_bid`, also returning each candidate bid's expected value.
+pub fn choose_bid_explain(
+    truth: &Play,
+    rules: &Rules,
+    k: &Knowledge,
+    u: &Utility,
+    tier: &Tier,
+    rng: &mut Rng,
+) -> (i8, Vec<(i8, f64)>) {
     let me = k.seat as usize;
     let partner = (me + 2) % 4;
     let team = me % 2;
@@ -485,6 +510,7 @@ pub fn choose_bid(
     let deals = deal_pool(truth, k, rng, sample, n);
     let mut best = base;
     let mut bv = f64::MIN;
+    let mut values = vec![];
     let seed = rng.next_u64();
     for &b in &cands {
         let mut uu = *u;
@@ -509,12 +535,13 @@ pub fn choose_bid(
             sum += uu.reward(&p, rules, team);
         }
         let v = sum / deals.len() as f64;
+        values.push((b, v));
         if v > bv {
             bv = v;
             best = b;
         }
     }
-    best
+    (best, values)
 }
 
 /// Opening swap: the heuristic alone at tier 0; at higher tiers, about six candidate give-sets

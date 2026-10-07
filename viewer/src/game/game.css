@@ -1,0 +1,111 @@
+/* Design tokens for the game client (ported from Rogue Spades 1.0), scoped to the game root so
+   the sigil viewer's tokens stay untouched. */
+.game {
+  /* Surfaces */
+  --felt-900: #06201d;
+  --felt-800: #0a2c28;
+  --felt-700: #0f3a34;
+  --felt-600: #155048;
+  --surface: rgb(8 30 27 / 0.82);
+  --surface-raised: rgb(18 58 52 / 0.92);
+  --hairline: rgb(233 223 196 / 0.14);
+  --hairline-strong: rgb(233 223 196 / 0.28);
+
+  /* Ink */
+  --text: #f4ecd8;
+  --text-muted: #bfb59c;
+  --text-on-accent: #1d1608;
+
+  /* Accent and teams */
+  --gold: #e6c27a;
+  --gold-strong: #f3d493;
+  --team-us: #e6c27a;
+  --team-them: #9ec3ff;
+  --danger: #ff9b8a;
+  --success: #9fe0b0;
+
+  /* Cards */
+  --card-face: #fbf6ea;
+  --card-face-edge: #e8dfc8;
+  --card-red: #b5271d;
+  --card-black: #1a1d22;
+  --card-back: #5b1a2a;
+  --card-back-deep: #3b0f1b;
+
+  /* Sigil categories, 5:1 or better on --card-face, and rarities. */
+  --cat-points: #22559a;
+  --cat-mult: #a3262a;
+  --cat-xmult: #5d3790;
+  --cat-enabler: #0b6a68;
+  --cat-hybrid: #ad4e0e;
+  --rar-common: #8d8a80;
+  --rar-uncommon: #4f9a5e;
+  --rar-rare: #5b8fd8;
+  --rar-legendary: #e0962e;
+
+  /* Type */
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-ui: 'Manrope', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: 20px;
+  --text-xl: 28px;
+  --text-2xl: 40px;
+
+  /* Space (4px grid) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  /* Shape */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  /* Elevation */
+  --shadow-card: 0 1px 1px rgb(0 0 0 / 0.25), 0 6px 14px rgb(0 0 0 / 0.28);
+  --shadow-lift: 0 2px 2px rgb(0 0 0 / 0.2), 0 18px 32px rgb(0 0 0 / 0.38);
+  --shadow-panel: 0 24px 60px rgb(0 0 0 / 0.45);
+
+  /* Sigil chips: a glyph on a small card-face tile. */
+  --chip: 30px;
+  --tray-gap: 4px;
+
+  /* Layout */
+  --card-w: clamp(64px, min(8.4vw, 11.5vh), 112px);
+  --card-h: calc(var(--card-w) * 1.4);
+  --mini-card-w: clamp(28px, min(3.4vw, 5vh), 42px);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration: 220ms;
+  --duration-pulse: 450ms;
+
+  position: fixed;
+  inset: 0;
+  background: var(--felt-900);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  user-select: none;
+}
+
+:where(.game) :focus-visible {
+  outline: 2px solid var(--gold-strong);
+  outline-offset: 3px;
+}
+
+:where(.game) button {
+  font: inherit;
+  color: inherit;
+}

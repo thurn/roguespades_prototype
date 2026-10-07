@@ -1,0 +1,227 @@
+.shop {
+  display: grid;
+  gap: var(--space-4);
+  width: min(820px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+.gold {
+  font-size: var(--text-xl);
+}
+
+.sub {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.offers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.offer {
+  appearance: none;
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--hairline);
+  background: var(--felt-800);
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform var(--duration) var(--ease-out),
+    border-color var(--duration) var(--ease-out),
+    background var(--duration) var(--ease-out);
+}
+
+.offer:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+}
+
+.offer:active:not(:disabled) {
+  transform: translateY(1px);
+  background: var(--felt-700);
+}
+
+.offer:disabled {
+  cursor: default;
+}
+
+.offer[data-short] .price {
+  color: var(--danger);
+}
+
+.sold {
+  display: grid;
+  place-items: center;
+  min-height: 72px;
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--hairline);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.offerHead {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.name {
+  flex: 1;
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.price {
+  font-size: var(--text-md);
+}
+
+.text {
+  font-size: var(--text-sm);
+  line-height: 1.45;
+}
+
+.rarity {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rar-common);
+}
+
+.rarity[data-rarity='uncommon'] {
+  color: var(--rar-uncommon);
+}
+
+.rarity[data-rarity='rare'] {
+  color: var(--rar-rare);
+}
+
+.rarity[data-rarity='legendary'] {
+  color: var(--rar-legendary);
+}
+
+.cardOffer {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+}
+
+.cardFace,
+.ownedCard {
+  --card-w: 56px;
+}
+
+.cardInfo {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.collection {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 44px;
+}
+
+.count {
+  width: 72px;
+  flex: none;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.count span {
+  font-weight: 500;
+}
+
+.owned {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.ownedCard {
+  appearance: none;
+  padding: 2px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform var(--duration) var(--ease-out);
+}
+
+.ownedCard:hover {
+  transform: translateY(-2px);
+}
+
+.ownedCard[data-selected] {
+  transform: translateY(-6px);
+  outline: 2px solid var(--gold-strong);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+
+.rerollCost {
+  font-size: var(--text-md);
+}
+
+@media (max-width: 700px), (orientation: portrait) and (max-width: 1000px) {
+  .shop {
+    gap: var(--space-3);
+    padding: var(--space-4);
+    max-height: none;
+    margin-bottom: var(--space-4);
+  }
+
+  .offers {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .offers.cardRow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cardRow .offer {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: var(--space-2);
+  }
+
+  .cardRow .text {
+    font-size: var(--text-xs);
+  }
+}
