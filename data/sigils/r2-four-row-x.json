@@ -1,0 +1,205 @@
+{
+  "id": "r2-four-row-x",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "round-2",
+  "effect": {
+    "type": "xmult",
+    "amount": 3,
+    "on": {
+      "event": "win",
+      "inRow": 4
+    }
+  },
+  "design": {
+    "decision": "Sequence winners together: hold a side [A] until partner's [K] has won, give up losers early, and keep the lead once the run starts instead of cashing winners at random.",
+    "opponent": "Revealed on the fourth consecutive win. Opponents break runs by ducking to win a cheap trick, or by trumping in early.",
+    "rationale": "The brief asks for Streaks pieces built on four in a row. The kept pool has the four-in-a-row trigger as +mult and points but not as a ×multiplier, which is the category that scales late in a run. The earlier ub-four-row-xmult measured far below the control at ×1.5, but its amount slope was positive (+2.9 per doubling). +35 mult (the kept seed) is worth about ×3 or more early, so ×3 is the honest starting amount, not a near-duplicate retry. The fire rate is about 36–41%.",
+    "partners": [
+      "seed-four-row",
+      "ub-four-row-points",
+      "uc-trump-freely",
+      "r2-queens-beat",
+      "r2-kings-untrumpable"
+    ],
+    "cluster": "R2",
+    "draftText": "×3 contract multiplier when your team wins four tricks in a row",
+    "hooks": "none",
+    "target": "adds",
+    "replaces": []
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-2",
+      "note": "Designed (cluster R2)."
+    },
+    {
+      "step": "round-2",
+      "note": "round-2: kept (added): lift +17.5 [+16.5, +18.5] pts, C 5; gives Streaks its uncommon ×multiplier on four in a row; over the ceiling for now, retuning scales it."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "×3 contract multiplier when your team wins four tricks in a row",
+  "category": "xmult",
+  "signature": "win(inRow=4)|-|-|xmult",
+  "family": "win(inRow=4)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "4 in a row",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "run of wins reaches 4",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "consecutive-win count",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-2",
+    "exposures": 12309,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 17.53,
+        "lo": 16.54,
+        "hi": 18.51,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 12309
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 9.9,
+        "lo": 8.92,
+        "hi": 10.89,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 12309
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 37.71,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 133964
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 38.62,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 105197
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 8.62,
+        "lo": 7.8,
+        "hi": 9.44,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 7.62,
+        "lo": 4.68,
+        "hi": 10.56,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "round-2",
+        "amount": 3
+      }
+    ],
+    "amountSlope": {
+      "value": 8.62,
+      "lo": 7.8,
+      "hi": 9.44
+    },
+    "skillGradient": {
+      "value": 7.62,
+      "lo": 4.68,
+      "hi": 10.56
+    },
+    "pairs": [
+      {
+        "with": "r2-diamonds-beat",
+        "synergy": 0.06
+      },
+      {
+        "with": "r2-queens-beat",
+        "synergy": 0.05
+      },
+      {
+        "with": "r2-twos-beat-rare",
+        "synergy": 0.04
+      },
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.01
+      },
+      {
+        "with": "r2-last-trick-grow",
+        "synergy": 0.01
+      }
+    ],
+    "raw": {
+      "liftU": 0.10719513703032384,
+      "seU": 0.006482413060545096,
+      "slopeU": 0.13459100422136722,
+      "slopeSeU": 0.0077439537101119315,
+      "k": 1.8478502507936985
+    }
+  },
+  "reports": [
+    "reports/round-2-focused.md",
+    "docs/sigils/rounds/round-2.md"
+  ]
+}

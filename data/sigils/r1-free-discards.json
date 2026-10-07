@@ -72,28 +72,28 @@
   },
   "lint": [],
   "estimates": {
-    "step": "round-1",
-    "exposures": 8561,
+    "step": "round-2",
+    "exposures": 5323,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 1.79,
-        "lo": 0.77,
-        "hi": 2.8,
+        "value": 9.77,
+        "lo": 8.69,
+        "hi": 10.84,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 8561
+        "n": 5323
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -0.11,
-        "lo": -1.13,
-        "hi": 0.91,
+        "value": 2.15,
+        "lo": 1.07,
+        "hi": 3.22,
         "bandLo": null,
         "bandHi": null,
-        "n": 8561
+        "n": 5323
       },
       {
         "key": "slope",
@@ -108,10 +108,70 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 1.9,
-        "lo": -2.02,
-        "hi": 5.81,
+        "value": 7.62,
+        "lo": 5.64,
+        "hi": 9.6,
         "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standalone1",
+        "label": "Standalone: lift over a blank, bought at shop 1",
+        "value": 35.16,
+        "lo": 30.21,
+        "hi": 40.11,
+        "bandLo": 3.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standalone3",
+        "label": "Standalone: lift over a blank, bought at shop 3",
+        "value": 26.66,
+        "lo": 23.8,
+        "hi": 29.53,
+        "bandLo": 3.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standalone5",
+        "label": "Standalone: lift over a blank, bought at shop 5",
+        "value": 18.17,
+        "lo": 14.18,
+        "hi": 22.17,
+        "bandLo": 3.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standaloneVsControl1",
+        "label": "Standalone: lift over the flat control, bought at shop 1",
+        "value": -2.73,
+        "lo": -7.97,
+        "hi": 2.52,
+        "bandLo": -2.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standaloneVsControl3",
+        "label": "Standalone: lift over the flat control, bought at shop 3",
+        "value": -2.13,
+        "lo": -4.94,
+        "hi": 0.68,
+        "bandLo": -2.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standaloneVsControl5",
+        "label": "Standalone: lift over the flat control, bought at shop 5",
+        "value": -1.54,
+        "lo": -5.75,
+        "hi": 2.68,
+        "bandLo": -2.0,
         "bandHi": null,
         "n": null
       }
@@ -123,42 +183,44 @@
       "hi": 0.0
     },
     "skillGradient": {
-      "value": 1.9,
-      "lo": -2.02,
-      "hi": 5.81
+      "value": 7.62,
+      "lo": 5.64,
+      "hi": 9.6
     },
     "pairs": [
       {
-        "with": "r1-low-cards-beat",
-        "synergy": 0.0
-      },
-      {
-        "with": "r1-exact-points",
-        "synergy": 0.0
-      },
-      {
-        "with": "uc-twos-beat",
-        "synergy": 0.0
-      },
-      {
         "with": "seed-raise",
-        "synergy": 0.0
+        "synergy": 0.07
+      },
+      {
+        "with": "ra-ace-win-x",
+        "synergy": 0.04
+      },
+      {
+        "with": "r1-faces-untrumpable",
+        "synergy": 0.03
       },
       {
         "with": "ua-side-raise",
-        "synergy": 0.0
+        "synergy": 0.03
+      },
+      {
+        "with": "ra-ace-hold-x",
+        "synergy": 0.02
       }
     ],
     "raw": {
-      "liftU": -0.0016693097486333158,
-      "seU": 0.009325642746405518,
+      "liftU": 0.034794692543041184,
+      "seU": 0.010604590839994245,
       "slopeU": 0.0,
       "slopeSeU": 0.0,
-      "k": 1.326167952143665
+      "k": 1.23358094413778
     }
   },
   "reports": [
     "reports/round-1-focused.md",
-    "docs/sigils/rounds/round-1.md"
+    "docs/sigils/rounds/round-1.md",
+    "reports/round-2-dashboard.md",
+    "docs/sigils/rounds/round-2.md"
   ]
 }

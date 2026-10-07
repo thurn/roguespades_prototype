@@ -1,0 +1,225 @@
+{
+  "id": "r2-diamond-honor-hold",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Suits",
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "round-2",
+  "effect": {
+    "type": "points",
+    "amount": 40,
+    "on": {
+      "event": "hold",
+      "card": {
+        "suit": "D",
+        "ranks": [
+          "J",
+          "A"
+        ]
+      }
+    }
+  },
+  "design": {
+    "decision": "Buy [♦] honors and later synthetic [♦] honors over other cards, and keep them out of Opening swaps and conversions that would give them away. The points are lost on a set, so the team still has to bid the honors' tricks accurately.",
+    "opponent": "Revealed at the start of play. Opponents expect [♦] honors from this team and void [♦] to trump them.",
+    "rationale": "The brief asks for [♦] holding pieces. This one gives the honors line its Hold trigger, so the honors line now pays on Hold, Lead and Win alike, as the archetype tables intend. It mirrors the kept ca-high-spade-hold at uncommon strength for the side suit, using the standard honors range. A team holds about two [♦] honors, so it is roughly 80 points before any shop investment.",
+    "partners": [
+      "ua-diamond-honor-win",
+      "r2-diamond-honor-lead",
+      "ua-diamonds-untrumpable",
+      "ca-high-spade-hold"
+    ],
+    "cluster": "R2",
+    "draftText": "+40 contract points for each [J] through [A] of [♦] your team holds",
+    "hooks": "none",
+    "target": "adds",
+    "replaces": []
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-2",
+      "note": "Designed (cluster R2)."
+    },
+    {
+      "step": "round-2",
+      "note": "round-2: kept (added): lift +16.7 [+15.8, +17.5] pts, C 6; gives the [♦] honors line its Hold payoff; over the ceiling for now, retuning scales it."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "+40 contract points for each [J] through [A] of [♦] your team holds",
+  "category": "points",
+  "signature": "hold|suit=D,ranks=J-A|-|points",
+  "family": "hold|suit=*,ranks=J-A|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 40",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is D",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint J",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint A",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in J-A",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-2",
+    "exposures": 12342,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 16.65,
+        "lo": 15.78,
+        "hi": 17.52,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 12342
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 8.7,
+        "lo": 7.83,
+        "hi": 9.57,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 12342
+      },
+      {
+        "key": "decisive",
+        "label": "Decisive share of holder's wins (%)",
+        "value": 24.01,
+        "lo": 23.42,
+        "hi": 24.62,
+        "bandLo": 5.0,
+        "bandHi": null,
+        "n": 13883
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 94.66,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 135588
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 94.97,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 91674
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 9.07,
+        "lo": 8.38,
+        "hi": 9.76,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 7.95,
+        "lo": 4.89,
+        "hi": 11.02,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "round-2",
+        "amount": 40
+      }
+    ],
+    "amountSlope": {
+      "value": 9.07,
+      "lo": 8.38,
+      "hi": 9.76
+    },
+    "skillGradient": {
+      "value": 7.95,
+      "lo": 4.89,
+      "hi": 11.02
+    },
+    "pairs": [
+      {
+        "with": "r2-queens-become-aces",
+        "synergy": 0.01
+      },
+      {
+        "with": "r2-low-to-two-aces",
+        "synergy": 0.01
+      },
+      {
+        "with": "ra-jq-become-aces",
+        "synergy": 0.01
+      },
+      {
+        "with": "ub-low-to-aces",
+        "synergy": 0.01
+      },
+      {
+        "with": "r2-kings-untrumpable",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.09412941391136026,
+      "seU": 0.005729803347269599,
+      "slopeU": 0.14162966375539968,
+      "slopeSeU": 0.006593606134583373,
+      "k": 1.8478502507936985
+    }
+  },
+  "reports": [
+    "reports/round-2-focused.md",
+    "docs/sigils/rounds/round-2.md"
+  ]
+}

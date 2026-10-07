@@ -1,0 +1,206 @@
+{
+  "id": "r2-last-trick-grow",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks",
+    "Spades"
+  ],
+  "source": "designed",
+  "createdIn": "round-2",
+  "effect": {
+    "type": "grow",
+    "kind": "mult",
+    "step": 8,
+    "on": {
+      "event": "win",
+      "trick": "last"
+    }
+  },
+  "design": {
+    "decision": "Every round, hold a top [♠] or a guarded winner back for trick 13 instead of spending it to make the contract sooner. Buying early pays more, so it also changes when in the run to take it.",
+    "opponent": "Revealed the first time it grows. Opponents then fight for trick 13 by saving their own top trump, or by drawing trumps early.",
+    "rationale": "The brief asks for Streaks pieces built on the last trick, and there is no kept uncommon last-trick payoff. Every uncommon variant was cut for stacked contract scaling or a narrow card filter. Growth makes trick 13 a recurring stake across the run, which a flat per-round payout cannot. Growth pieces have measured weak, so the step starts high, with the last trick firing about 48% of rounds. This is the sigil's one condition and one effect.",
+    "partners": [
+      "seed-last-trick",
+      "e-last-xmult",
+      "ca-spade-last-trick",
+      "r2-kings-untrumpable",
+      "uc-trump-freely"
+    ],
+    "cluster": "R2",
+    "draftText": "This sigil gains +8 contract multiplier every time your team wins the last trick of a round (currently +0)",
+    "hooks": "none",
+    "target": "adds",
+    "replaces": []
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-2",
+      "note": "Designed (cluster R2)."
+    },
+    {
+      "step": "round-2",
+      "note": "round-2: not kept: lift -0.3 [-1.2, +0.6] pts, C 5; near zero: growth on the last trick does not help the AI enough."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "This sigil gains +8 contract multiplier every time your team wins the last trick of a round (currently +0)",
+  "category": "mult",
+  "signature": "win(trick=last)|-|growth|mult",
+  "family": "win(trick=last)|-|growth|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "growth step 8",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "currently display",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "growth counter carried between rounds",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "is the last trick",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-2",
+    "exposures": 13168,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -0.31,
+        "lo": -1.24,
+        "hi": 0.62,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 13168
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -1.26,
+        "lo": -2.19,
+        "hi": -0.33,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 13168
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 49.71,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 145560
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 50.11,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 119373
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 3.88,
+        "lo": 3.19,
+        "hi": 4.56,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 0.95,
+        "lo": -1.48,
+        "hi": 3.38,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "round-2",
+        "amount": 8
+      }
+    ],
+    "amountSlope": {
+      "value": 3.88,
+      "lo": 3.19,
+      "hi": 4.56
+    },
+    "skillGradient": {
+      "value": 0.95,
+      "lo": -1.48,
+      "hi": 3.38
+    },
+    "pairs": [
+      {
+        "with": "r2-diamonds-beat",
+        "synergy": 0.04
+      },
+      {
+        "with": "r2-queens-beat",
+        "synergy": 0.03
+      },
+      {
+        "with": "r2-twos-beat-rare",
+        "synergy": 0.03
+      },
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.01
+      },
+      {
+        "with": "r2-four-row-x",
+        "synergy": 0.01
+      }
+    ],
+    "raw": {
+      "liftU": -0.01362615044416679,
+      "seU": 0.006137758927306463,
+      "slopeU": 0.060525890353568985,
+      "slopeSeU": 0.006476595107629651,
+      "k": 1.8478502507936985
+    }
+  },
+  "reports": [
+    "reports/round-2-focused.md",
+    "docs/sigils/rounds/round-2.md"
+  ]
+}

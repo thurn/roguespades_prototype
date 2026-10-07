@@ -1,0 +1,180 @@
+{
+  "id": "r2-high-middle-free",
+  "rarity": "rare",
+  "role": "enabler",
+  "archetypes": [
+    "Nil",
+    "Exact",
+    "Spades",
+    "Suits"
+  ],
+  "source": "designed",
+  "createdIn": "round-2",
+  "effect": {
+    "type": "anySuit",
+    "card": {
+      "ranks": [
+        "7",
+        "9"
+      ]
+    }
+  },
+  "design": {
+    "decision": "On each trick, choose to dump a middle card instead of following, which builds voids for ruffing, protects a nil, or ruffs with a middle [♠] early.",
+    "opponent": "Shows on the first off-suit middle card; opponents can't force the owner's honors out as easily.",
+    "rationale": "Narrows the over-ceiling play freedom from [6]–[9] to [7]–[9].",
+    "partners": [
+      "uc-trump-freely",
+      "uc-low-discard",
+      "rb-honors-free",
+      "seed-trump-points",
+      "seed-nil-points"
+    ],
+    "cluster": "R2",
+    "draftText": "",
+    "hooks": "none",
+    "target": "reshape",
+    "replaces": [
+      "r1-middle-free"
+    ]
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-2",
+      "note": "round-2: orchestrator reshape of r1-middle-free: Narrows the over-ceiling play freedom from [6]–[9] to [7]–[9]."
+    },
+    {
+      "step": "round-2",
+      "note": "round-2: kept, replacing r1-middle-free: lift +12.3 [+11.4, +13.2] pts, C 4 against lift +14.0 [+13.0, +15.1] pts, C 4; the narrower [7]–[9] range lands at the ceiling instead of over it."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "Your team can play [7]s through [9]s even when it can follow suit",
+  "category": "enabler",
+  "signature": "play|cards:ranks=7-9|-|anySuit",
+  "family": "play|cards:ranks=7-9|-|anySuit",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team could follow suit",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 7",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 9",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 7-9",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-2",
+    "exposures": 22651,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 12.35,
+        "lo": 11.45,
+        "hi": 13.25,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 22651
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 4.72,
+        "lo": 3.82,
+        "hi": 5.62,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 22651
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 7.63,
+        "lo": 5.17,
+        "hi": 10.09,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": 7.63,
+      "lo": 5.17,
+      "hi": 10.09
+    },
+    "pairs": [
+      {
+        "with": "r2-queens-become-aces",
+        "synergy": 0.03
+      },
+      {
+        "with": "r2-low-to-two-aces",
+        "synergy": 0.03
+      },
+      {
+        "with": "ra-jq-become-aces",
+        "synergy": 0.02
+      },
+      {
+        "with": "ub-low-to-aces",
+        "synergy": 0.02
+      },
+      {
+        "with": "r2-kings-untrumpable",
+        "synergy": 0.02
+      }
+    ],
+    "raw": {
+      "liftU": 0.05107858664468532,
+      "seU": 0.005935823662665968,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.8478502507936985
+    }
+  },
+  "reports": [
+    "reports/round-2-focused.md",
+    "docs/sigils/rounds/round-2.md"
+  ]
+}

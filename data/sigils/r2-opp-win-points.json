@@ -1,0 +1,201 @@
+{
+  "id": "r2-opp-win-points",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Exact",
+    "Nil",
+    "LowCards"
+  ],
+  "source": "designed",
+  "createdIn": "round-2",
+  "effect": {
+    "type": "points",
+    "amount": 15,
+    "on": {
+      "event": "win",
+      "whose": "opponents"
+    }
+  },
+  "design": {
+    "decision": "Once the contract is safe, duck instead of overtaking: give opponents the overtricks, bid low, and let partner's nil cover come from the opponents. The points are lost on a set, so bidding too low to be safe still fails.",
+    "opponent": "Revealed on the first trick the opponents win. Opponents may refuse tricks too, which risks their own contract, or push the team toward a set by ducking and forcing it to win.",
+    "rationale": "The brief asks for one more decision-rich Exact or Nil–Exact piece. The kept pool's Exact pieces are all result triggers, and every growth and nil-points Exact variant failed badly (for example ub-exact-nil-points at −12.3). This piece turns every trick after the contract is safe into a choice to duck or overtake, the core Exact skill, without another 'makes exactly' clause. It is the points version of the kept rare rb-opp-win-mult, at uncommon strength. Because it is points, it pays only on a made contract, which keeps bids tense.",
+    "partners": [
+      "r1-exact-points",
+      "r1-exact-xmult",
+      "rb-opp-win-mult",
+      "uc-low-discard",
+      "cc-small-contract-mult"
+    ],
+    "cluster": "R2",
+    "draftText": "+15 contract points when the opponents win a trick",
+    "hooks": "none",
+    "target": "adds",
+    "replaces": []
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-2",
+      "note": "Designed (cluster R2)."
+    },
+    {
+      "step": "round-2",
+      "note": "round-2: kept (added): lift +10.3 [+9.4, +11.2] pts, C 2; a decision-rich Exact piece (duck once the contract is safe), inside the band."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "+15 contract points when the opponents win a trick",
+  "category": "points",
+  "signature": "win(whose=opponents)|-|-|points",
+  "family": "win(whose=opponents)|-|-|points",
+  "touchesOpponents": true,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "the opponents win the trick",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-2",
+    "exposures": 21316,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 10.34,
+        "lo": 9.45,
+        "hi": 11.23,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 21316
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 6.09,
+        "lo": 5.2,
+        "hi": 6.98,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 21316
+      },
+      {
+        "key": "decisive",
+        "label": "Decisive share of holder's wins (%)",
+        "value": 25.15,
+        "lo": 24.7,
+        "hi": 25.62,
+        "bandLo": 5.0,
+        "bandHi": null,
+        "n": 24051
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 98.71,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 239468
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 98.38,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 149796
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 8.44,
+        "lo": 7.94,
+        "hi": 8.94,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 4.25,
+        "lo": 0.9,
+        "hi": 7.6,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "round-2",
+        "amount": 15
+      }
+    ],
+    "amountSlope": {
+      "value": 8.44,
+      "lo": 7.94,
+      "hi": 8.94
+    },
+    "skillGradient": {
+      "value": 4.25,
+      "lo": 0.9,
+      "hi": 7.6
+    },
+    "pairs": [
+      {
+        "with": "r2-queens-become-aces",
+        "synergy": 0.02
+      },
+      {
+        "with": "r2-low-to-two-aces",
+        "synergy": 0.02
+      },
+      {
+        "with": "ra-jq-become-aces",
+        "synergy": 0.02
+      },
+      {
+        "with": "ub-low-to-aces",
+        "synergy": 0.01
+      },
+      {
+        "with": "r2-kings-untrumpable",
+        "synergy": 0.01
+      }
+    ],
+    "raw": {
+      "liftU": 0.06590974446173505,
+      "seU": 0.005868697013099725,
+      "slopeU": 0.1318306281144031,
+      "slopeSeU": 0.004723910051096466,
+      "k": 1.8478502507936985
+    }
+  },
+  "reports": [
+    "reports/round-2-focused.md",
+    "docs/sigils/rounds/round-2.md"
+  ]
+}

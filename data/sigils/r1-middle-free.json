@@ -36,8 +36,8 @@
     "target": "T11",
     "replaces": []
   },
-  "status": "kept",
-  "replacedBy": null,
+  "status": "replaced",
+  "replacedBy": "r2-high-middle-free",
   "history": [
     {
       "step": "round-1",
@@ -46,6 +46,10 @@
     {
       "step": "round-1",
       "note": "round-1: kept (added) at rare: lift +17.0 [+15.9, +18.2] pts, C 4 at uncommon is over the ceiling and a rule change has no amount to retune, so it moves to rare (the rare control is worth about 7 pts more); critic concern: a third rank band in the play-freedom family."
+    },
+    {
+      "step": "round-2",
+      "note": "round-2: replaced by r2-high-middle-free (lift +12.3 [+11.4, +13.2] pts, C 4 against lift +14.0 [+13.0, +15.1] pts, C 4): the narrower [7]–[9] range lands at the ceiling instead of over it."
     }
   ],
   "name": null,
@@ -86,28 +90,28 @@
   },
   "lint": [],
   "estimates": {
-    "step": "round-1",
-    "exposures": 19219,
+    "step": "round-2",
+    "exposures": 14225,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 17.04,
-        "lo": 15.86,
-        "hi": 18.22,
+        "value": 18.62,
+        "lo": 17.37,
+        "hi": 19.87,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 19219
+        "n": 14225
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 6.55,
-        "lo": 5.37,
-        "hi": 7.73,
+        "value": 8.87,
+        "lo": 7.62,
+        "hi": 10.11,
         "bandLo": null,
         "bandHi": null,
-        "n": 19219
+        "n": 14225
       },
       {
         "key": "slope",
@@ -122,10 +126,70 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 10.49,
-        "lo": 7.29,
-        "hi": 13.7,
+        "value": 9.75,
+        "lo": 7.08,
+        "hi": 12.43,
         "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standalone1",
+        "label": "Standalone: lift over a blank, bought at shop 1",
+        "value": 26.17,
+        "lo": 21.7,
+        "hi": 30.64,
+        "bandLo": 3.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standalone3",
+        "label": "Standalone: lift over a blank, bought at shop 3",
+        "value": 18.31,
+        "lo": 15.15,
+        "hi": 21.48,
+        "bandLo": 3.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standalone5",
+        "label": "Standalone: lift over a blank, bought at shop 5",
+        "value": 10.46,
+        "lo": 5.49,
+        "hi": 15.42,
+        "bandLo": 3.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standaloneVsControl1",
+        "label": "Standalone: lift over the flat control, bought at shop 1",
+        "value": -1.96,
+        "lo": -7.14,
+        "hi": 3.23,
+        "bandLo": -2.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standaloneVsControl3",
+        "label": "Standalone: lift over the flat control, bought at shop 3",
+        "value": 1.15,
+        "lo": -2.09,
+        "hi": 4.39,
+        "bandLo": -2.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standaloneVsControl5",
+        "label": "Standalone: lift over the flat control, bought at shop 5",
+        "value": 4.26,
+        "lo": -0.85,
+        "hi": 9.38,
+        "bandLo": -2.0,
         "bandHi": null,
         "n": null
       }
@@ -137,42 +201,44 @@
       "hi": 0.0
     },
     "skillGradient": {
-      "value": 10.49,
-      "lo": 7.29,
-      "hi": 13.7
+      "value": 9.75,
+      "lo": 7.08,
+      "hi": 12.43
     },
     "pairs": [
       {
-        "with": "r1-low-three-beat",
-        "synergy": 0.04
+        "with": "uc-twos-beat",
+        "synergy": 0.75
       },
       {
-        "with": "uc-low-hold-mult",
-        "synergy": 0.0
+        "with": "rc-low-win-x",
+        "synergy": 0.58
       },
       {
-        "with": "r1-honors-untrumpable",
-        "synergy": 0.0
+        "with": "rc-low-win-contract-points",
+        "synergy": 0.25
       },
       {
-        "with": "r1-any-suit-last-three",
-        "synergy": 0.0
+        "with": "ub-become-four-spades",
+        "synergy": 0.21
       },
       {
-        "with": "r1-lead-choice",
-        "synergy": 0.0
+        "with": "r1-low-hold-mult",
+        "synergy": 0.16
       }
     ],
     "raw": {
-      "liftU": 0.09874041491276386,
-      "seU": 0.010836765403143723,
+      "liftU": 0.1437689021864747,
+      "seU": 0.012284749225226828,
       "slopeU": 0.0,
       "slopeSeU": 0.0,
-      "k": 1.326167952143665
+      "k": 1.23358094413778
     }
   },
   "reports": [
     "reports/round-1-focused.md",
-    "docs/sigils/rounds/round-1.md"
+    "docs/sigils/rounds/round-1.md",
+    "reports/round-2-dashboard.md",
+    "docs/sigils/rounds/round-2.md"
   ]
 }

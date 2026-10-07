@@ -1,0 +1,175 @@
+{
+  "id": "r2-queens-beat",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Streaks",
+    "Ranks",
+    "BidHigh",
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "round-2",
+  "effect": {
+    "type": "beats",
+    "card": {
+      "rank": "Q"
+    }
+  },
+  "design": {
+    "decision": "Count a guarded [Q] as a winner when bidding, then sequence the [A] and the [Q] of a suit (or the [Q] after partner's [A]) to run tricks. A [Q] can now be led into the opponents' [K].",
+    "opponent": "Revealed the first time a [Q] takes an [A] or [K]. Opponents' only counter is to void the suit and trump.",
+    "rationale": "This is card strength on a narrow set, in the family that measures well, but on a high rank, so the low-[♠] problem from the lesson does not arise. Only the [Q♠] becomes a top trump. ra-jq-become-aces is strong at rare. A [Q] alone is about half of it, and since this rule doesn't rename the card for payoffs it should land at uncommon. It shares a signature shape with uc-twos-beat, but that piece makes losers into winners for Low Cards and Nil. This one adds a second top card per suit for Streaks and Bid High, which is a different plan.",
+    "partners": [
+      "r2-four-row-x",
+      "seed-four-row",
+      "ub-low-to-aces",
+      "ra-jq-become-aces",
+      "r2-kings-untrumpable"
+    ],
+    "cluster": "R2",
+    "draftText": "Your team's [Q]s beat every other card of their suit",
+    "hooks": "none",
+    "target": "adds",
+    "replaces": []
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-2",
+      "note": "Designed (cluster R2)."
+    },
+    {
+      "step": "round-2",
+      "note": "round-2: kept (added): lift +10.8 [+9.8, +11.7] pts, C 4; a card-strength rule on a high rank for Streaks and Bid High, inside the band."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Your team's [Q]s beat every other card of their suit",
+  "category": "enabler",
+  "signature": "play|rank=Q||beats",
+  "family": "play|rank=*||beats",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team played it",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is Q",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal Q",
+        "cost": 1
+      },
+      {
+        "burden": "computed selector",
+        "detail": "ranks above the [A] of its suit",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-2",
+    "exposures": 18560,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 10.76,
+        "lo": 9.81,
+        "hi": 11.71,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 18560
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 7.24,
+        "lo": 6.3,
+        "hi": 8.19,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 18560
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 3.52,
+        "lo": 1.11,
+        "hi": 5.93,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": 3.52,
+      "lo": 1.11,
+      "hi": 5.93
+    },
+    "pairs": [
+      {
+        "with": "r2-diamonds-beat",
+        "synergy": 0.34
+      },
+      {
+        "with": "r2-twos-beat-rare",
+        "synergy": 0.25
+      },
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.07
+      },
+      {
+        "with": "r2-four-row-x",
+        "synergy": 0.05
+      },
+      {
+        "with": "r2-last-trick-grow",
+        "synergy": 0.03
+      }
+    ],
+    "raw": {
+      "liftU": 0.07838374132710507,
+      "seU": 0.006227124068984004,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.8478502507936985
+    }
+  },
+  "reports": [
+    "reports/round-2-focused.md",
+    "docs/sigils/rounds/round-2.md"
+  ]
+}

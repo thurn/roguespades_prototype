@@ -77,28 +77,28 @@
   },
   "lint": [],
   "estimates": {
-    "step": "round-1",
-    "exposures": 17726,
+    "step": "round-2",
+    "exposures": 6266,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 7.97,
-        "lo": 6.77,
-        "hi": 9.17,
+        "value": 13.13,
+        "lo": 11.47,
+        "hi": 14.8,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 17726
+        "n": 6266
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 1.73,
-        "lo": 0.53,
-        "hi": 2.92,
+        "value": 5.28,
+        "lo": 3.61,
+        "hi": 6.94,
         "bandLo": null,
         "bandHi": null,
-        "n": 17726
+        "n": 6266
       },
       {
         "key": "slope",
@@ -113,9 +113,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 6.24,
-        "lo": 3.03,
-        "hi": 9.46,
+        "value": 7.86,
+        "lo": 5.02,
+        "hi": 10.69,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -123,9 +123,9 @@
       {
         "key": "standalone1",
         "label": "Standalone: lift over a blank, bought at shop 1",
-        "value": 11.94,
-        "lo": 5.38,
-        "hi": 18.49,
+        "value": 10.82,
+        "lo": 5.82,
+        "hi": 15.83,
         "bandLo": 3.0,
         "bandHi": null,
         "n": null
@@ -133,9 +133,9 @@
       {
         "key": "standalone3",
         "label": "Standalone: lift over a blank, bought at shop 3",
-        "value": 10.28,
-        "lo": 6.42,
-        "hi": 14.14,
+        "value": 6.31,
+        "lo": 3.27,
+        "hi": 9.34,
         "bandLo": 3.0,
         "bandHi": null,
         "n": null
@@ -143,9 +143,9 @@
       {
         "key": "standalone5",
         "label": "Standalone: lift over a blank, bought at shop 5",
-        "value": 8.62,
-        "lo": 3.2,
-        "hi": 14.04,
+        "value": 1.79,
+        "lo": -3.08,
+        "hi": 6.66,
         "bandLo": 3.0,
         "bandHi": null,
         "n": null
@@ -153,9 +153,9 @@
       {
         "key": "standaloneVsControl1",
         "label": "Standalone: lift over the flat control, bought at shop 1",
-        "value": -13.38,
-        "lo": -20.33,
-        "hi": -6.44,
+        "value": -11.19,
+        "lo": -16.68,
+        "hi": -5.7,
         "bandLo": -2.0,
         "bandHi": null,
         "n": null
@@ -163,9 +163,9 @@
       {
         "key": "standaloneVsControl3",
         "label": "Standalone: lift over the flat control, bought at shop 3",
-        "value": -7.13,
-        "lo": -10.87,
-        "hi": -3.39,
+        "value": -8.84,
+        "lo": -12.04,
+        "hi": -5.64,
         "bandLo": -2.0,
         "bandHi": null,
         "n": null
@@ -173,9 +173,9 @@
       {
         "key": "standaloneVsControl5",
         "label": "Standalone: lift over the flat control, bought at shop 5",
-        "value": -0.87,
-        "lo": -6.67,
-        "hi": 4.92,
+        "value": -6.5,
+        "lo": -11.74,
+        "hi": -1.25,
         "bandLo": -2.0,
         "bandHi": null,
         "n": null
@@ -188,44 +188,46 @@
       "hi": 0.0
     },
     "skillGradient": {
-      "value": 6.24,
-      "lo": 3.03,
-      "hi": 9.46
+      "value": 7.86,
+      "lo": 5.02,
+      "hi": 10.69
     },
     "pairs": [
       {
-        "with": "rc-twos-always-win",
-        "synergy": 1.47
-      },
-      {
-        "with": "rc-low-win-contract-points",
-        "synergy": 1.29
+        "with": "uc-twos-beat",
+        "synergy": 1.15
       },
       {
         "with": "rc-low-win-x",
         "synergy": 0.89
       },
       {
-        "with": "ra-team-untrumpable",
-        "synergy": 0.57
+        "with": "rc-low-win-contract-points",
+        "synergy": 0.4
       },
       {
-        "with": "uc-low-win-mult",
-        "synergy": 0.32
+        "with": "ub-become-four-spades",
+        "synergy": 0.33
+      },
+      {
+        "with": "r1-low-hold-mult",
+        "synergy": 0.24
       }
     ],
     "raw": {
-      "liftU": 0.02716362734192279,
-      "seU": 0.011413320854467484,
+      "liftU": 0.08553389300582072,
+      "seU": 0.016401313063710923,
       "slopeU": 0.0,
       "slopeSeU": 0.0,
-      "k": 1.2730595583306243
+      "k": 1.23358094413778
     }
   },
   "reports": [
     "reports/draft-uncommon-tournament.md",
     "docs/sigils/rounds/draft-uncommon.md",
     "reports/round-1-dashboard.md",
-    "docs/sigils/rounds/round-1.md"
+    "docs/sigils/rounds/round-1.md",
+    "reports/round-2-dashboard.md",
+    "docs/sigils/rounds/round-2.md"
   ]
 }

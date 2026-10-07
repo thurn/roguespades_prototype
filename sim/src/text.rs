@@ -86,6 +86,14 @@ fn plural(f: &Filter, suit_s: bool) -> String {
         }
         (Some(s), None, None, _) => format!("{}{ss}", suit_token(s)),
         (None, Some(r), _, _) => format!("{}s", rank_token(r)),
+        (None, None, Some([a, b]), Some(n)) => {
+            format!(
+                "{}s through {}s other than {}",
+                rank_token(a),
+                rank_token(b),
+                suit_token(n)
+            )
+        }
         (None, None, Some([a, b]), _) => format!("{}s through {}s", rank_token(a), rank_token(b)),
         (None, None, None, Some(n)) => format!("cards other than {}", suit_token(n)),
         _ => "cards".into(),

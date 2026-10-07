@@ -1,0 +1,196 @@
+{
+  "id": "r2-diamond-lead-mult",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Suits"
+  ],
+  "source": "designed",
+  "createdIn": "round-2",
+  "effect": {
+    "type": "mult",
+    "amount": 6,
+    "on": {
+      "event": "lead",
+      "card": {
+        "suit": "D"
+      }
+    }
+  },
+  "design": {
+    "decision": "Whoever has the lead leads [♦] even when another suit would be the safer or stronger lead, so the team plans who will hold the lead and when to spend [♦] length.",
+    "opponent": "Revealed on the first [♦] lead. Opponents void [♦] early so each [♦] lead runs into a trump, which makes leading [♦] cost tricks.",
+    "rationale": "This is the length line's per-lead multiplier, with no contract scaling as the brief asks. The kept pool has [♦] lead points (common) and a three-lead milestone (common) but no uncommon [♦] lead piece. The enumerated common version (+4, e-lead-suit-d-mult) measured +8.2 inside the band and was cut only because the common pool already covered it, so this shape is proven and the uncommon slot gives room for a larger amount. A lead trigger pays even when the trick is lost, so it rewards owning the suit instead of winning with it, which separates it from the win payoffs.",
+    "partners": [
+      "ca-diamond-led-win",
+      "ua-diamonds-untrumpable",
+      "r2-diamonds-beat",
+      "ua-diamond-hold-mult",
+      "ca-diamond-lead-three"
+    ],
+    "cluster": "R2",
+    "draftText": "+6 contract multiplier when your team leads [♦]",
+    "hooks": "none",
+    "target": "adds",
+    "replaces": []
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-2",
+      "note": "Designed (cluster R2)."
+    },
+    {
+      "step": "round-2",
+      "note": "round-2: kept (added): lift +6.1 [+4.8, +7.3] pts, C 3; the uncommon [♦] lead payoff, inside the band; chosen over the honors-only lead version as the simpler of two equal options."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "+6 contract multiplier when your team leads [♦]",
+  "category": "mult",
+  "signature": "lead|suit=D|-|mult",
+  "family": "lead|suit=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 6",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team leads",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is D",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-2",
+    "exposures": 9134,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 6.07,
+        "lo": 4.84,
+        "hi": 7.3,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 9134
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 3.92,
+        "lo": 2.7,
+        "hi": 5.15,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 9134
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 81.19,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 99706
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 82.74,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 30960
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 6.04,
+        "lo": 5.24,
+        "hi": 6.85,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 2.14,
+        "lo": -0.05,
+        "hi": 4.34,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "round-2",
+        "amount": 6
+      }
+    ],
+    "amountSlope": {
+      "value": 6.04,
+      "lo": 5.24,
+      "hi": 6.85
+    },
+    "skillGradient": {
+      "value": 2.14,
+      "lo": -0.05,
+      "hi": 4.34
+    },
+    "pairs": [
+      {
+        "with": "r2-diamonds-beat",
+        "synergy": 0.02
+      },
+      {
+        "with": "r2-queens-beat",
+        "synergy": 0.02
+      },
+      {
+        "with": "r2-twos-beat-rare",
+        "synergy": 0.02
+      },
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "r2-four-row-x",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.04247837942469736,
+      "seU": 0.008086287458008795,
+      "slopeU": 0.09433352627154386,
+      "slopeSeU": 0.007643716848372356,
+      "k": 1.8478502507936985
+    }
+  },
+  "reports": [
+    "reports/round-2-focused.md",
+    "docs/sigils/rounds/round-2.md"
+  ]
+}

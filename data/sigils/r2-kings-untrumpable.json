@@ -1,0 +1,175 @@
+{
+  "id": "r2-kings-untrumpable",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Streaks",
+    "Ranks",
+    "Suits",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "round-2",
+  "effect": {
+    "type": "untrumpable",
+    "from": {
+      "rank": "K"
+    }
+  },
+  "design": {
+    "decision": "Lead the [A] and then the [K] of a suit back to back as a two-trick run. Bid guarded [K]s as tricks, and keep a [K] to cash on the second or third round of a suit, when opponents would normally trump it.",
+    "opponent": "Revealed the first time a trump fails to beat a [K]. Opponents then have to take the [K] with the [A] or let it run, instead of ruffing.",
+    "rationale": "This is card strength on a narrow card set. ua-aces-untrumpable failed (−10.4) because [A]s are cashed on the first round of a suit, before anyone is void. [K]s are cashed on the second round, exactly when voids appear, so the same rule protects tricks a team actually loses today. The departure from the named-rank near-duplicate guideline is therefore deliberate. It serves Streaks (the A–K run), the honors line of Suits, and the [K] payoffs. Even with no payoffs, it adds tricks.",
+    "partners": [
+      "seed-four-row",
+      "r2-four-row-x",
+      "ca-king-hold",
+      "e-lead-rank-k-mult",
+      "r2-diamond-honor-lead"
+    ],
+    "cluster": "R2",
+    "draftText": "Your team's [K]s can't be trumped",
+    "hooks": "none",
+    "target": "adds",
+    "replaces": []
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-2",
+      "note": "Designed (cluster R2)."
+    },
+    {
+      "step": "round-2",
+      "note": "round-2: not kept: lift -2.7 [-3.7, -1.7] pts, C 4; below the control."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Your team's [K]s can't be trumped",
+  "category": "enabler",
+  "signature": "play|rank=K|-|untrumpable",
+  "family": "play|rank=*|-|untrumpable",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team played it",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is K",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal K",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "a [♠] played to the trick",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-2",
+    "exposures": 18320,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -2.67,
+        "lo": -3.69,
+        "hi": -1.66,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 18320
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -1.75,
+        "lo": -2.77,
+        "hi": -0.74,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 18320
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -0.92,
+        "lo": -3.49,
+        "hi": 1.64,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": -0.92,
+      "lo": -3.49,
+      "hi": 1.64
+    },
+    "pairs": [
+      {
+        "with": "r2-queens-become-aces",
+        "synergy": 0.03
+      },
+      {
+        "with": "r2-low-to-two-aces",
+        "synergy": 0.03
+      },
+      {
+        "with": "ra-jq-become-aces",
+        "synergy": 0.02
+      },
+      {
+        "with": "ub-low-to-aces",
+        "synergy": 0.02
+      },
+      {
+        "with": "r2-high-middle-free",
+        "synergy": 0.02
+      }
+    ],
+    "raw": {
+      "liftU": -0.01894981950857192,
+      "seU": 0.006676302088858836,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.8478502507936985
+    }
+  },
+  "reports": [
+    "reports/round-2-focused.md",
+    "docs/sigils/rounds/round-2.md"
+  ]
+}

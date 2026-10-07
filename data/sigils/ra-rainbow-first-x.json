@@ -54,6 +54,14 @@
     {
       "step": "round-1",
       "note": "round-1: amount 1.25 -> 1.2 by global scale x0.84 toward the par curve."
+    },
+    {
+      "step": "round-2",
+      "note": "round-2: amount 1.2 -> 1.15 by global scale x0.70 toward the par curve."
+    },
+    {
+      "step": "round-2",
+      "note": "round-2: amount 1.15 -> 1.2 by retune; lift +1.1 pts against target +5, slope +4.2 pts per doubling."
     }
   ],
   "name": null,
@@ -94,55 +102,55 @@
   },
   "lint": [],
   "estimates": {
-    "step": "round-1",
-    "exposures": 4061,
+    "step": "round-2",
+    "exposures": 4678,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 4.0,
-        "lo": 2.8,
-        "hi": 5.19,
+        "value": 1.1,
+        "lo": 0.03,
+        "hi": 2.18,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 4061
+        "n": 4678
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 1.65,
-        "lo": 0.45,
-        "hi": 2.84,
+        "value": 0.57,
+        "lo": -0.51,
+        "hi": 1.64,
         "bandLo": null,
         "bandHi": null,
-        "n": 4061
+        "n": 4678
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 98.84,
+        "value": 99.22,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 57124
+        "n": 106707
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 98.81,
+        "value": 99.25,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 43492
+        "n": 91098
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 6.78,
-        "lo": 5.52,
-        "hi": 8.03,
+        "value": 4.21,
+        "lo": 2.95,
+        "hi": 5.47,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -150,9 +158,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 2.35,
-        "lo": -0.65,
-        "hi": 5.35,
+        "value": 0.54,
+        "lo": -1.86,
+        "hi": 2.93,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -162,52 +170,58 @@
       {
         "step": "draft-rare",
         "amount": 1.2
+      },
+      {
+        "step": "round-2",
+        "amount": 1.15
       }
     ],
     "amountSlope": {
-      "value": 6.78,
-      "lo": 5.52,
-      "hi": 8.03
+      "value": 4.21,
+      "lo": 2.95,
+      "hi": 5.47
     },
     "skillGradient": {
-      "value": 2.35,
-      "lo": -0.65,
-      "hi": 5.35
+      "value": 0.54,
+      "lo": -1.86,
+      "hi": 2.93
     },
     "pairs": [
       {
-        "with": "rc-twos-always-win",
-        "synergy": 0.71
+        "with": "uc-twos-beat",
+        "synergy": 0.64
       },
       {
         "with": "rc-low-win-x",
-        "synergy": 0.37
+        "synergy": 0.48
       },
       {
         "with": "rc-low-win-contract-points",
-        "synergy": 0.36
+        "synergy": 0.22
       },
       {
-        "with": "ra-team-untrumpable",
-        "synergy": 0.2
+        "with": "ub-become-four-spades",
+        "synergy": 0.19
       },
       {
-        "with": "uc-low-win-mult",
+        "with": "r1-low-hold-mult",
         "synergy": 0.14
       }
     ],
     "raw": {
-      "liftU": 0.025879482561565956,
-      "seU": 0.01141742868030863,
-      "slopeU": 0.15363801898711185,
-      "slopeSeU": 0.01729802138369017,
-      "k": 1.2730595583306243
+      "liftU": 0.009173383665489329,
+      "seU": 0.01056314320377678,
+      "slopeU": 0.09850327871824094,
+      "slopeSeU": 0.01794028146293185,
+      "k": 1.23358094413778
     }
   },
   "reports": [
     "reports/draft-rare-tournament.md",
     "docs/sigils/rounds/draft-rare.md",
     "reports/round-1-dashboard.md",
-    "docs/sigils/rounds/round-1.md"
+    "docs/sigils/rounds/round-1.md",
+    "reports/round-2-dashboard.md",
+    "docs/sigils/rounds/round-2.md"
   ]
 }

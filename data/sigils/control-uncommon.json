@@ -9,7 +9,7 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "points",
-    "amount": 50
+    "amount": 35
   },
   "design": {
     "decision": "None: the same-rarity flat-points control.",
@@ -27,6 +27,10 @@
     {
       "step": "round-1",
       "note": "round-1: amount 60 -> 50 by global scale x0.84 toward the par curve."
+    },
+    {
+      "step": "round-2",
+      "note": "round-2: amount 50 -> 35 by global scale x0.70 toward the par curve."
     }
   ],
   "name": null,
@@ -34,7 +38,7 @@
   "iconFamily": null,
   "iconWord": null,
   "price": 75,
-  "text": "+50 contract points",
+  "text": "+35 contract points",
   "category": "points",
   "signature": "always|-|-|points",
   "family": "always|-|-|points",
@@ -43,7 +47,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 50",
+        "detail": "payout 35",
         "cost": 1
       }
     ],

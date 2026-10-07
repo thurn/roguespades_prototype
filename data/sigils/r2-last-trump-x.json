@@ -1,0 +1,201 @@
+{
+  "id": "r2-last-trump-x",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks",
+    "Spades"
+  ],
+  "source": "designed",
+  "createdIn": "round-2",
+  "effect": {
+    "type": "xmult",
+    "amount": 2.5,
+    "on": {
+      "event": "win",
+      "trick": "last",
+      "by": "trump"
+    }
+  },
+  "design": {
+    "decision": "Save a [♠] for the end and make sure the opponents lead trick 13: the team may deliberately lose trick 12 and void a side suit so the final lead comes into its trump.",
+    "opponent": "Revealed when it fires. Opponents who suspect it hold back a [♠] of their own, or lead [♠] on trick 13 to deny the trump.",
+    "rationale": "ua-spade-last-x was cut because winning the last trick with [♠] barely differs from winning it at all. 'By trumping' requires a non-[♠] lead on trick 13, which creates a real sequencing decision about losing trick 12. The trigger combines two existing fields of one trigger (last trick, by trumping), with no rider. A narrower condition earns the ×2.5 starting amount.",
+    "partners": [
+      "seed-trump-points",
+      "ra-trump-x",
+      "uc-trump-freely",
+      "r2-last-trick-grow",
+      "cb-become-spade"
+    ],
+    "cluster": "R2",
+    "draftText": "×2.5 contract multiplier when your team wins the last trick of a round by trumping",
+    "hooks": "none",
+    "target": "adds",
+    "replaces": []
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-2",
+      "note": "Designed (cluster R2)."
+    },
+    {
+      "step": "round-2",
+      "note": "round-2: not kept: lift -3.3 [-4.2, -2.5] pts, C 4; below the control; it rarely fires (12%)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "×2.5 contract multiplier when your team wins the last trick of a round by trumping",
+  "category": "xmult",
+  "signature": "win(by=trump,trick=last)|-|-|xmult",
+  "family": "win(by=trump,trick=last)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2.5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "won by trumping",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "is the last trick",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-2",
+    "exposures": 13389,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -3.33,
+        "lo": -4.21,
+        "hi": -2.46,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 13389
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -4.87,
+        "lo": -5.75,
+        "hi": -3.99,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 13389
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 12.23,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 147196
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 12.16,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 123729
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.87,
+        "lo": 0.28,
+        "hi": 1.46,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 1.54,
+        "lo": -1.72,
+        "hi": 4.79,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "round-2",
+        "amount": 2.5
+      }
+    ],
+    "amountSlope": {
+      "value": 0.87,
+      "lo": 0.28,
+      "hi": 1.46
+    },
+    "skillGradient": {
+      "value": 1.54,
+      "lo": -1.72,
+      "hi": 4.79
+    },
+    "pairs": [
+      {
+        "with": "r2-queens-become-aces",
+        "synergy": 0.01
+      },
+      {
+        "with": "r2-low-to-two-aces",
+        "synergy": 0.01
+      },
+      {
+        "with": "ra-jq-become-aces",
+        "synergy": 0.01
+      },
+      {
+        "with": "ub-low-to-aces",
+        "synergy": 0.01
+      },
+      {
+        "with": "r2-kings-untrumpable",
+        "synergy": 0.01
+      }
+    ],
+    "raw": {
+      "liftU": -0.05272863118405948,
+      "seU": 0.005773533668360785,
+      "slopeU": 0.01359884106459889,
+      "slopeSeU": 0.005575573691726428,
+      "k": 1.8478502507936985
+    }
+  },
+  "reports": [
+    "reports/round-2-focused.md",
+    "docs/sigils/rounds/round-2.md"
+  ]
+}

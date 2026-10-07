@@ -1,0 +1,181 @@
+{
+  "id": "r2-queens-become-aces",
+  "rarity": "rare",
+  "role": "enabler",
+  "archetypes": [
+    "Ranks",
+    "BidHigh",
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "round-2",
+  "effect": {
+    "type": "become",
+    "from": {
+      "rank": "Q"
+    },
+    "rank": "A"
+  },
+  "design": {
+    "decision": "Bid with roughly four extra [A]s spread across suits, and buy [J]s and [Q]s cheaply because they turn into winners.",
+    "opponent": "Shown when a converted [A] wins; opponents face duplicate [A]s and have to trump early rather than wait to cash honors.",
+    "rationale": "Narrows the over-ceiling [J]–[Q] conversion to [Q]s only (the designer's stated fallback); Ranks is in 41% of winning builds.",
+    "partners": [
+      "ra-ace-hold-x",
+      "seed-ace-mult",
+      "ca-ace-win-two-mult",
+      "ua-aces-untrumpable"
+    ],
+    "cluster": "R2",
+    "draftText": "",
+    "hooks": "none",
+    "target": "reshape",
+    "replaces": [
+      "ra-jq-become-aces"
+    ]
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-2",
+      "note": "round-2: orchestrator reshape of ra-jq-become-aces: Narrows the over-ceiling [J]–[Q] conversion to [Q]s only (the designer's stated fallback); Ranks is in 41% of winning builds."
+    },
+    {
+      "step": "round-2",
+      "note": "round-2: not kept: lift -3.3 [-4.3, -2.3] pts, C 6 against lift +11.6 [+10.5, +12.6] pts, C 7 for the version it would replace."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "Opening: Every [Q] your team holds becomes an [A]",
+  "category": "enabler",
+  "signature": "opening|from:rank=Q|rank=A|become",
+  "family": "opening|from:rank=*|rank=*|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is Q",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal Q",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-2",
+    "exposures": 15532,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -3.32,
+        "lo": -4.3,
+        "hi": -2.35,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 15532
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -3.18,
+        "lo": -4.15,
+        "hi": -2.21,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 15532
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -0.14,
+        "lo": -3.26,
+        "hi": 2.97,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": -0.14,
+      "lo": -3.26,
+      "hi": 2.97
+    },
+    "pairs": [
+      {
+        "with": "r2-low-to-two-aces",
+        "synergy": 0.05
+      },
+      {
+        "with": "ra-jq-become-aces",
+        "synergy": 0.04
+      },
+      {
+        "with": "ub-low-to-aces",
+        "synergy": 0.03
+      },
+      {
+        "with": "r2-kings-untrumpable",
+        "synergy": 0.03
+      },
+      {
+        "with": "r2-high-middle-free",
+        "synergy": 0.03
+      }
+    ],
+    "raw": {
+      "liftU": -0.034415581128899385,
+      "seU": 0.006408033040818008,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.8478502507936985
+    }
+  },
+  "reports": [
+    "reports/round-2-focused.md",
+    "docs/sigils/rounds/round-2.md"
+  ]
+}

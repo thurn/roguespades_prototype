@@ -11,7 +11,7 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "mult",
-    "amount": 3,
+    "amount": 1,
     "on": {
       "event": "hold",
       "card": {
@@ -58,6 +58,14 @@
     {
       "step": "round-1",
       "note": "round-1: amount 2 -> 3 by retune; lift +1.0 pts against target +3, slope +2.9 pts per doubling."
+    },
+    {
+      "step": "round-2",
+      "note": "round-2: amount 3 -> 2 by global scale x0.70 toward the par curve."
+    },
+    {
+      "step": "round-2",
+      "note": "round-2: amount 2 -> 1 by retune; lift +8.4 pts against target +3, slope +4.9 pts per doubling."
     }
   ],
   "name": null,
@@ -65,7 +73,7 @@
   "iconFamily": null,
   "iconWord": null,
   "price": 75,
-  "text": "+3 contract multiplier for each [J] through [A] your team holds",
+  "text": "+1 contract multiplier for each [J] through [A] your team holds",
   "category": "mult",
   "signature": "hold|ranks=J-A|-|mult",
   "family": "hold|ranks=J-A|-|mult",
@@ -74,7 +82,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 3",
+        "detail": "payout 1",
         "cost": 1
       },
       {
@@ -103,28 +111,28 @@
   },
   "lint": [],
   "estimates": {
-    "step": "round-1",
-    "exposures": 2181,
+    "step": "round-2",
+    "exposures": 5564,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 1.04,
-        "lo": -0.31,
-        "hi": 2.38,
+        "value": 8.39,
+        "lo": 7.25,
+        "hi": 9.54,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 2181
+        "n": 5564
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 0.33,
-        "lo": -1.01,
-        "hi": 1.68,
+        "value": 4.79,
+        "lo": 3.64,
+        "hi": 5.93,
         "bandLo": null,
         "bandHi": null,
-        "n": 2181
+        "n": 5564
       },
       {
         "key": "fire",
@@ -134,7 +142,7 @@
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 94088
+        "n": 170683
       },
       {
         "key": "fireCommitted",
@@ -144,14 +152,14 @@
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 77062
+        "n": 145208
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 2.89,
-        "lo": 1.46,
-        "hi": 4.32,
+        "value": 4.94,
+        "lo": 3.74,
+        "hi": 6.13,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -159,9 +167,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 0.7,
-        "lo": -1.85,
-        "hi": 3.26,
+        "value": 3.61,
+        "lo": 1.44,
+        "hi": 5.77,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -174,49 +182,51 @@
       }
     ],
     "amountSlope": {
-      "value": 2.89,
-      "lo": 1.46,
-      "hi": 4.32
+      "value": 4.94,
+      "lo": 3.74,
+      "hi": 6.13
     },
     "skillGradient": {
-      "value": 0.7,
-      "lo": -1.85,
-      "hi": 3.26
+      "value": 3.61,
+      "lo": 1.44,
+      "hi": 5.77
     },
     "pairs": [
       {
         "with": "seed-raise",
-        "synergy": 0.45
+        "synergy": 0.64
       },
       {
         "with": "ua-side-raise",
-        "synergy": 0.17
-      },
-      {
-        "with": "ca-raise-one",
-        "synergy": 0.16
+        "synergy": 0.27
       },
       {
         "with": "ra-ace-win-x",
-        "synergy": 0.16
+        "synergy": 0.25
       },
       {
-        "with": "ua-twos-become-aces",
-        "synergy": 0.14
+        "with": "r1-faces-untrumpable",
+        "synergy": 0.22
+      },
+      {
+        "with": "ra-ace-hold-x",
+        "synergy": 0.12
       }
     ],
     "raw": {
-      "liftU": 0.0052586724687351954,
-      "seU": 0.012863327511357584,
-      "slopeU": 0.06552170515623285,
-      "slopeSeU": 0.01966043773119599,
-      "k": 1.2730595583306243
+      "liftU": 0.07761051090080068,
+      "seU": 0.01127441854686984,
+      "slopeU": 0.1154591952228606,
+      "slopeSeU": 0.017004056140791295,
+      "k": 1.23358094413778
     }
   },
   "reports": [
     "reports/draft-uncommon-tournament.md",
     "docs/sigils/rounds/draft-uncommon.md",
     "reports/round-1-dashboard.md",
-    "docs/sigils/rounds/round-1.md"
+    "docs/sigils/rounds/round-1.md",
+    "reports/round-2-dashboard.md",
+    "docs/sigils/rounds/round-2.md"
   ]
 }

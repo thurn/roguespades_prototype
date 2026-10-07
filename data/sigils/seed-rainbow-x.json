@@ -9,7 +9,7 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "xmult",
-    "amount": 3.5,
+    "amount": 2.5,
     "on": {
       "event": "suits",
       "action": "win",
@@ -49,6 +49,10 @@
     {
       "step": "round-1",
       "note": "round-1: amount 2.5 -> 3.5 by retune; lift +0.8 pts against target +5, slope +2.6 pts per doubling."
+    },
+    {
+      "step": "round-2",
+      "note": "round-2: amount 3.5 -> 2.5 by global scale x0.70 toward the par curve."
     }
   ],
   "name": null,
@@ -57,7 +61,7 @@
   "iconWord": null,
   "gddText": "×2 contract multiplier if your team wins tricks with all four suits",
   "price": 100,
-  "text": "×3.5 contract multiplier if your team wins tricks with all four suits",
+  "text": "×2.5 contract multiplier if your team wins tricks with all four suits",
   "category": "xmult",
   "signature": "suits(count=4,action=win)|-|-|xmult",
   "family": "suits(count=4,action=win)|-|-|xmult",
@@ -66,7 +70,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 3.5",
+        "detail": "payout 2.5",
         "cost": 1
       },
       {
@@ -95,55 +99,55 @@
   },
   "lint": [],
   "estimates": {
-    "step": "round-1",
-    "exposures": 3788,
+    "step": "round-2",
+    "exposures": 4221,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 0.82,
-        "lo": -0.7,
-        "hi": 2.35,
+        "value": 3.45,
+        "lo": 2.01,
+        "hi": 4.89,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 3788
+        "n": 4221
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -0.6,
-        "lo": -2.13,
-        "hi": 0.93,
+        "value": 2.27,
+        "lo": 0.83,
+        "hi": 3.71,
         "bandLo": null,
         "bandHi": null,
-        "n": 3788
+        "n": 4221
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 31.23,
+        "value": 27.89,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 42536
+        "n": 52963
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 36.32,
+        "value": 31.83,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 17382
+        "n": 25458
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 2.62,
-        "lo": 1.24,
-        "hi": 3.99,
+        "value": 4.83,
+        "lo": 3.6,
+        "hi": 6.07,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -151,9 +155,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 1.43,
-        "lo": -1.03,
-        "hi": 3.88,
+        "value": 1.18,
+        "lo": -1.22,
+        "hi": 3.59,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -170,43 +174,43 @@
       }
     ],
     "amountSlope": {
-      "value": 2.62,
-      "lo": 1.24,
-      "hi": 3.99
+      "value": 4.83,
+      "lo": 3.6,
+      "hi": 6.07
     },
     "skillGradient": {
-      "value": 1.43,
-      "lo": -1.03,
-      "hi": 3.88
+      "value": 1.18,
+      "lo": -1.22,
+      "hi": 3.59
     },
     "pairs": [
       {
-        "with": "rc-twos-always-win",
-        "synergy": 2.44
+        "with": "uc-twos-beat",
+        "synergy": 0.06
       },
       {
         "with": "rc-low-win-x",
-        "synergy": 0.62
+        "synergy": 0.04
       },
       {
-        "with": "seed-two-win",
-        "synergy": 0.46
+        "with": "rc-low-win-contract-points",
+        "synergy": 0.02
       },
       {
-        "with": "rc-low-lead-x",
-        "synergy": 0.35
+        "with": "ub-become-four-spades",
+        "synergy": 0.02
       },
       {
-        "with": "uc-low-win-mult",
-        "synergy": 0.23
+        "with": "r1-low-hold-mult",
+        "synergy": 0.01
       }
     ],
     "raw": {
-      "liftU": -0.009462065255125005,
-      "seU": 0.014586848773844276,
-      "slopeU": 0.05927458032555321,
-      "slopeSeU": 0.018925658584879032,
-      "k": 1.2730595583306243
+      "liftU": 0.036775214491157074,
+      "seU": 0.01420821291883992,
+      "slopeU": 0.1130878546231246,
+      "slopeSeU": 0.01761526596925328,
+      "k": 1.23358094413778
     }
   },
   "reports": [
@@ -215,7 +219,9 @@
     "reports/draft-rare-tournament.md",
     "docs/sigils/rounds/draft-rare.md",
     "reports/round-1-dashboard.md",
-    "docs/sigils/rounds/round-1.md"
+    "docs/sigils/rounds/round-1.md",
+    "reports/round-2-dashboard.md",
+    "docs/sigils/rounds/round-2.md"
   ],
   "gddEffect": {
     "type": "xmult",
