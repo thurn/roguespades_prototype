@@ -6,10 +6,11 @@ seven team-wide scoring and rule-changing pieces) and **cards**. A bought card
 is dealt to its owner every round, and later cards carry **engravings**. The
 team with more points after round 8 wins.
 
-One rule outranks every other: **simulation decides**. Strong AI players play
-thousands of simulated runs. A rule, sigil, or number stays in the game only if
-those runs show it meets the weighted fun metrics in
-[§12](#12-metrics-what-fun-means).
+One rule outranks every other: **evidence leads**. Strong AI players play
+thousands of simulated runs, and the design improves over rounds of iteration
+toward the fun metrics in [§12](#12-metrics-what-fun-means), weighed with the
+designer's sense of elegance. The metrics are targets to optimize, not
+pass/fail bars.
 
 This document records the starting design from the design interview of
 2026-10-05. [Appendix A](#appendix-a-decision-records) holds a record for each
@@ -41,11 +42,12 @@ Everything in it is a hypothesis for the first round of testing:
   lists each one with a range to test.
 - **Sigils** are illustrative. None has evidence yet, and most will change or
   be cut.
-- **Metric thresholds and weights** are placeholders until the harness runs.
+- **Metric target bands and weights** are placeholders until the harness
+  runs.
 
 A decision is settled only when its record shows the alternatives and the
-numbers that chose between them. A sigil enters the game only when its record
-shows the evidence for its inclusion
+numbers that chose between them. Every sigil in the game has a record of the
+evidence and reasoning for its inclusion
 ([§16](#16-evidence-and-design-records)).
 
 ## Starting design at a glance
@@ -54,7 +56,7 @@ Every row is a starting hypothesis.
 
 | Topic | Starting hypothesis |
 | --- | --- |
-| Golden Rule | A rule, sigil, or number is kept only if simulation shows it meets the metrics ([§12](#12-metrics-what-fun-means)) |
+| Golden Rule | Rules, sigils, and numbers are iterated toward the metrics ([§12](#12-metrics-what-fun-means)); simulation evidence and designer judgment decide what stays |
 | Run | 8 rounds; each round is a shop, then a deal of Spades |
 | Spades | Partners' bids add up to a team contract; nil; [♠]s must be broken; no blind nil; no bags |
 | Scoring | (10 × contract + contract points + nil score) × (10 + Σ +multipliers) × Π ×multipliers; overtricks score nothing |
@@ -71,8 +73,10 @@ Every row is a starting hypothesis.
 
 ## Design pillars
 
-1. **Simulation decides, and the evidence is written down.** Design questions
-   are answered by experiments, not intuition. Every decision records the
+1. **Evidence leads, and it is written down.** Design questions are answered
+   by experiments first, and by designer judgment for what metrics can't see,
+   such as elegance. The design improves over rounds of iteration rather than
+   clearing fixed bars. Every decision records the
    alternatives considered and the numbers that chose between them, and every
    sigil records the evidence for its inclusion. This document defines fun as
    measurable metrics, and the game is built so the AI can play, bid, buy, and
@@ -355,8 +359,9 @@ The current pool excludes:
 - Rules text is generated from the sigil's data
   ([§13](#declarative-sigils)). The text lint checks these conventions, while
   the [simplicity rubric](#simplicity-rubric) penalizes mechanical complexity
-  in the fun score. Simulation sweeps amounts and cuts candidates that cannot
-  meet the gates without extra bookkeeping. No sigil has an activated ability.
+  in the fun score. Simulation sweeps amounts; a candidate that reaches its
+  targets only with extra bookkeeping is usually reshaped or replaced. No sigil
+  has an activated ability.
 
 ### Rules text
 
@@ -645,8 +650,8 @@ strength. Enabler sigils provide larger interventions in play, shared across
 archetypes. No archetype is entitled to bespoke enablers, and the pool is not
 padded with discounts or tiny offer adjustments to fill slots.
 
-An enabler must pass the [standalone-value gate](#standalone-enabler-value),
-then show additional support for at least two payoff families. It need not be
+An enabler should show [standalone value](#standalone-enabler-value), then
+additional support for at least two payoff families. It need not be
 good in every hand: making a nil practical, for example, is already useful in
 ordinary Spades. Every payoff must still work without an enabler.
 
@@ -884,7 +889,8 @@ or a new way to play the hand.
 The working pool has **97 candidates: 90 payoffs and 7 shared enablers**.
 The payoff allocation is retained; the former 55 utility slots are retired.
 There is no target utility percentage and no requirement to refill those
-slots. Cut candidates that fail the gates, even if the final pool is smaller.
+slots. Cut candidates that don't make the game better, even if the final pool
+is smaller.
 
 ### By rarity and category
 
@@ -988,65 +994,80 @@ needs only these additions:
 ## 12. Metrics: what fun means
 
 > **Status:** provisional. The structure is [D14](#d14-metric-structure), and
-> every threshold, band, and weight is a placeholder until the harness runs:
-> [parameters](#appendix-b-parameter-register) P25–P28 and P30.
+> every target band, tolerance, and weight is a placeholder until the harness
+> runs: [parameters](#appendix-b-parameter-register) P25–P28 and P30.
 
 The metrics answer one question: what does it mean for Rogue Spades to be fun?
-They come in two layers:
+They are **targets for continuous optimization**, not pass/fail bars. The
+design improves over rounds of iteration: each round measures the pool, changes
+the pieces that most hold it back, and keeps the changes that make the game
+better. The metrics come in two layers:
 
-- **Gates** are bars that every sigil must pass to ship, so "every sigil
-  matters" can't be averaged away.
-- The **fun score** is a weighted sum used to compare pool versions and
-  tuning levers.
+- **Sigil metrics** describe what each sigil contributes, so "every sigil
+  matters" can't be averaged away. A sigil outside its target bands is a prime
+  candidate for retuning, reshaping, or replacement, weighed against what it
+  adds elsewhere.
+- The **fun score** is a weighted sum that describes the whole pool, used to
+  compare pool versions and tuning levers.
 
-Every threshold is a placeholder. Real values are set once the harness runs,
-and recalibrated at stage 7.
+Neither replaces judgment. Designers weigh the metrics alongside subjective
+elegance: whether a piece is clean, surprising, and pleasing to play. Every
+kept change records its evidence and its reasoning.
 
-### Gates
+Every band is a placeholder. Real values are set once the harness runs, and
+recalibrated at stage 7.
 
-| Gate | Your goal | Measured as | Starting bar |
+### Sigil metrics
+
+| Metric | Your goal | Measured as | Starting target band |
 | --- | --- | --- | --- |
 | 1. Choices matter | Every sigil contributes measurably to victory | Forced-pick win-rate lift over a same-rarity control. For point sigils, the decisive share: the holder's wins that become losses or draws when rescored without the sigil | Lift above 0; decisive in at least 5% of wins |
-| 2. Payoffs are doable | Payoffs work naturally; enablers are worth buying before payoffs | Base and committed payoff trigger rates; standalone enabler value under the trials below; additional trigger lift for at least two payoff families | Payoff base at least 10% of rounds and committed at least 60%; enablers pass the standalone gate and add at least 15 percentage points to trigger rates in each of two families |
+| 2. Payoffs are doable | Payoffs work naturally; enablers are worth buying before payoffs | Base and committed payoff trigger rates; standalone enabler value under the trials below; additional trigger lift for at least two payoff families | Payoff base at least 10% of rounds and committed at least 60%; enablers show standalone value and add at least 15 percentage points to trigger rates in each of two families |
 | 3. No invalidation | Opponents can't turn a strategy into a non-game | For each archetype and each sigil that touches opponents, the drop in the archetype's win rate when the opponents hold it | At most 15 points |
 | Power ceiling | No dominant best build | Forced-pick lift; win rate of the strongest pairs | Lift at most 12 points; no pair above a 65% win rate |
 
+Distance from a band is a signal, not a verdict. A sigil far below its band on
+Choices matter probably needs a bigger number or a new shape. One slightly over
+the power ceiling may still be worth keeping if it creates a run's best moments
+and opponents can answer it. Large, confident misses get attention first.
+
 ### Standalone enabler value
 
-Gate 1's "lift above zero" is insufficient for enablers: a tiny shop
+Choices matter's "lift above zero" says little about enablers: a tiny shop
 improvement might technically help or become useful only beside a narrow
-payoff. Every enabler must also pass these tests before combo trials:
+payoff. Every enabler is also measured on these, before combo trials:
 
 - **Material benefit without payoffs.** On paired seeds, give the team the
   candidate while both teams otherwise play without sigils; prohibit further
   sigil purchases in both arms, but retain ordinary card purchases and the
   base economy.
   Compare against the same run with the candidate disabled, charging the
-  same gold and reserving the same slot in both arms. The lower bound of the
-  90% confidence interval for win-rate lift must be at least **3 percentage
-  points**. Test buys at shops 1, 3, and 5 separately; each must pass.
+  same gold and reserving the same slot in both arms. The target is a lower
+  bound of at least **3 percentage points** on the 90% confidence interval
+  for win-rate lift. Measure buys at shops 1, 3, and 5 separately.
 - **Worth its slot and price.** In that same no-other-sigils setting, compare
   buying it with buying the same-rarity flat-points control at the same price.
-  The lower bound of the paired 90% interval must be no worse than **−2
-  percentage points** at each purchase stage. Winning over a blank alone is
-  insufficient if an ordinary payoff makes it a poor purchase.
-- **Breadth after the standalone pass.** Run support trials for at least two
-  different payoff families, using the measured trigger-lift bar in gate 2.
-  A sigil cannot pass by having a spectacular combo in only one build.
+  The target is a lower bound of the paired 90% interval no worse than **−2
+  percentage points** at each purchase stage. Beating a blank says little if
+  an ordinary payoff makes it a poor purchase.
+- **Breadth.** Run support trials for at least two different payoff
+  families, against the trigger-lift band in Payoffs are doable. An enabler
+  whose value comes from one spectacular combo is a narrow enabler, though it
+  may still earn a place as a payoff-like piece.
 - **A reason to want it.** In playtests, offer the candidate beside that
   same-price generic payoff before any other sigils are owned. As a starting
-  bar, at least **40%** of choices should favor the enabler, with players able
+  target, at least **40%** of choices should favor the enabler, with players able
   to explain a useful change to their hand or play without invoking a future
   payoff. Report sample size and reasons; simulation lift alone does not prove
   an effect is interesting.
 
-These are provisional acceptance bars, not evidence that the seven candidates
-pass. Report results by purchase stage and compare a range of ordinary hands,
-not a hand chosen to flatter the effect. If the confidence intervals remain
-inconclusive, gather more runs or leave the candidate unapproved. Tune the
-amount or cut it; do not rescue a weak enabler with shop steering, payoff-only
+These are provisional targets, not evidence about the seven candidates.
+Report results by purchase stage and compare a range of ordinary hands, not a
+hand chosen to flatter the effect. If the confidence intervals stay wide,
+gather more runs before acting on them. Prefer tuning the amount or reshaping
+the effect over rescuing a weak enabler with shop steering, payoff-only
 identity changes, or extra restrictions. The power ceiling and opponent
-counter scans still apply, especially to freedom from following suit.
+counter scans still matter, especially for freedom from following suit.
 
 ### Fun score
 
@@ -1063,12 +1084,15 @@ counter scans still apply, especially to freedom from following suit.
   its band and falls linearly to 0 at a tolerance listed with it. A family
   scores the mean of its sub-metrics. Family 9 uses the rubric below. The fun
   score is the weighted sum, from 0 to 100.
-- **Using it.** A change to the pool or a lever is kept when every gate still
-  passes and the fun score does not fall. A more complex replacement must
-  demonstrate a net improvement after its simplicity penalty; if the paired
-  90% confidence interval for that improvement includes zero, prefer the
-  simpler candidate. Complexity never excuses a failed gate or a forbidden
-  design pattern in [§5](#simplicity-rules).
+- **Using it.** Each optimization round compares the pool before and after
+  its changes on paired seeds. A change is kept when the evidence and the
+  designer's judgment together say the game got better: usually a fun-score
+  gain, a sigil moved toward its bands, or a clearly more elegant piece at
+  little cost. Confidence intervals say how sure the evidence is; they are
+  not cutoffs. A more complex replacement should show a net improvement after
+  its simplicity penalty; if the paired 90% confidence interval for that
+  improvement includes zero, prefer the simpler candidate. Complexity never
+  excuses an activated ability ([§5](#slots-and-ownership)).
 - **Online** means holding two of the archetype's payoffs and one of its
   enablers. Three owned cards that its payoffs reward count as an enabler.
 - **Flexible and committed teams.** A flexible team buys by plain value. A
@@ -1157,9 +1181,9 @@ mask a rider's cost. The one-effect rule remains mandatory at every rarity.
 | Opening: Four cards your team holds become low cards (Common; rejected shorthand) | Opening 4, Four 1, hidden [2]/[10] endpoints 2, destination selector 1, "low cards" term 4, team-held filter 1; further checks cost extra | ≥13 | ≤1/14 |
 
 Thus "beyond five" strictly lowers the score with everything else held equal,
-even if both versions pass the balance gates. For a useful balance comparison,
-sweep each version's payout against the same gates and par targets on paired
-seeds; compare their best passing versions, not just identical amounts with
+even if both versions balance equally well. For a useful balance comparison,
+sweep each version's payout against the same metrics and par targets on paired
+seeds; compare their best-tuned versions, not just identical amounts with
 very different power. The old rider may be an experiment control, but remains
 excluded from the shipped pool by §5.
 
@@ -1186,10 +1210,11 @@ These are tracked but not weighted:
 
 ### Results
 
-- Gate and fun-score results go into the sigil records and decision records
+- Sigil-metric and fun-score results go into the sigil records and decision records
   described in [§16](#16-evidence-and-design-records).
-- A sigil that fails is retuned, usually by a number sweep, or cut.
-- An archetype whose sigils keep failing drops to one-offs.
+- A sigil far from its targets is retuned, usually by a number sweep,
+  reshaped, or replaced.
+- An archetype whose sigils keep falling short drops to one-offs.
 
 ## 13. Simulation
 
@@ -1273,15 +1298,15 @@ Keeping sigils as data makes three things possible:
   inside its budget and lift band.
 - **Enumeration.** Common payoffs are enumerated from the grammar, roughly
   6 triggers × 15 nouns × 3 effects ≈ 270 candidates.
-- **Targeting.** The grammar shows which sigils touch opponents, so the gate 3
-  scan runs only on those.
+- **Targeting.** The grammar shows which sigils touch opponents, so the No
+  invalidation scan runs only on those.
 
 ### AI tiers
 
 | Tier | Play | Bidding | Shop | Target per run | Used for |
 | --- | --- | --- | --- | --- | --- |
 | 0 | Heuristic: 1.0's rollout policy on the kernel, plus a one-trick lookahead scored with sigils | Trick estimate, then expected score over the scoring model | Rescoring with 16 sampled hands | About 0.3 s | Sweeps, enumeration, screening |
-| 1 | Information-set MCTS, about 200 iterations over 32 deals that fit the bids | Expected score over 40 rollouts | Rescoring with 32 hands | About 3 s | Gate decisions and the fun score |
+| 1 | Information-set MCTS, about 200 iterations over 32 deals that fit the bids | Expected score over 40 rollouts | Rescoring with 32 hands | About 3 s | Sigil metrics and the fun score |
 | 2 | Information-set MCTS, 1,500 iterations over the best 64 of 512 deals | Expected score over 160 rollouts | Rescoring with 64 hands | About 20 s | Final checks, tier calibration, and the shipped AI |
 
 - The algorithms are 1.0's: deals sampled to fit the bids, UCB search,
@@ -1373,27 +1398,29 @@ deck as standard.
 > **Status:** provisional ([D20](#d20-staging),
 > [D21](#d21-candidate-generation)).
 
-The simulation and the pool grow together, one rarity at a time. Each stage's
-exit gate unlocks the next. Cards come before sigils on purpose: they're the
-main enabler, so their prices must be stable before any payoff can be
-measured.
+The simulation and the first draft of the pool grow together, one rarity at a
+time; each stage moves on once its work is in place. Optimization doesn't stop
+at a stage boundary: later rounds revisit any sigil as the pool around it
+changes. Cards come before sigils on purpose: they're the main enabler, so
+their prices must be stable before any payoff can be measured.
 
-| Stage | Builds | Exit gate |
+| Stage | Builds | Moves on when |
 | --- | --- | --- |
 | 0. Kernel | The rules kernel, AI tiers 0–2, seeded streams, and the parallel experiment runner | Plain 8-round Spades: the AI meets 1.0's play targets (set rate, nil success, bid error); a 2,000-run experiment takes about 10 minutes |
 | 1. Cards | The card shop, the 8-card cap, income and interest, and rerolls, with no sigils; 1.0's UI ported onto the kernel | Card prices give roughly equal value per gold; no card dominates; hands keep their variety; the game is playable by hand |
-| 2. Commons, hand level | The grammar, text generation, and lint; about 270 enumerated common payoffs; hand-designed common enablers and utility | Gate 2 from hand-level trials; numbers swept to the common budget; at least 1.5 surviving candidates per common slot |
-| 3. Commons, run level | The rescoring shop AI and its policies | Up to 44 commons pass gates 1–3 and the standalone enabler gate; the fun score is recorded; density levers are decided here if Commitment works fails |
-| 4. Engravings | The four-type catalog on card offers, including synthetic cards | The same gates, by engraving type |
-| 5. Uncommons | Hand-designed waves of about 1.5 candidates per slot, seeded from 1.0, including shared enablers | The same gates, including standalone value and support for two payoff families |
-| 6. Rares and legendaries | Up to 20 candidates | The same gates, plus the power ceiling |
-| 7. Validation | The full pool at tier 2 | Thresholds recalibrated; tiers calibrated; the two-human configuration checked; human playtests |
+| 2. Commons, hand level | The grammar, text generation, and lint; about 270 enumerated common payoffs; hand-designed common enablers and utility | Hand-level trigger rates and swept numbers for every candidate; about 1.5 promising candidates for each common the pool needs |
+| 3. Commons, run level | The rescoring shop AI and its policies | A first common pool chosen on sigil metrics, standalone enabler value, and elegance; the fun score is recorded; density levers are decided here if Commitment works lags its band |
+| 4. Engravings | The four-type catalog on card offers, including synthetic cards | Sigil metrics measured by engraving type |
+| 5. Uncommons | Hand-designed waves of about 1.5 candidates per slot, seeded from 1.0, including shared enablers | A first uncommon pool, with enablers measured for standalone value and support for two payoff families |
+| 6. Rares and legendaries | Up to 20 candidates | A first rare and legendary pool, with the power ceiling watched closely |
+| 7. Validation | The full pool at tier 2 | Target bands recalibrated; tiers calibrated; the two-human configuration checked; human playtests |
 
-- **Choosing the pool.** Simulation decides pass or fail and the numbers.
-  Designers choose among passing candidates for variety, clarity, and
+- **Choosing the pool.** Simulation supplies the numbers and the evidence.
+  Designers choose what to keep for strength, variety, clarity, elegance, and
   archetype coverage, using the simplicity rubric and its comparison rule.
-  For example, the 42 common payoffs are picked from the enumerated survivors.
-- **Records at every exit.** A stage isn't done until the decision, parameter,
+  For example, the common payoffs are picked from the most promising
+  enumerated and designed candidates.
+- **Records at every stage.** A stage isn't done until the decision, parameter,
   and sigil records its experiments touched are written
   ([§16](#16-evidence-and-design-records)), so the documentation grows with
   the pool.
@@ -1448,8 +1475,8 @@ can reproduce it.
   alternative on its deciding metrics, or ties with them and is simpler. If an
   alternative wins, the decision is revised, and the record keeps the old
   choice with its numbers.
-- **Kinds of decision.** Design decisions are judged by the gates and the fun
-  score. Method decisions, such as the AI architecture, are judged by harness
+- **Kinds of decision.** Design decisions are judged by the sigil metrics, the
+  fun score, and designer judgment of elegance. Method decisions, such as the AI architecture, are judged by harness
   measurements like play quality, throughput, and agreement between tiers.
   Where simulation can't measure a question, such as rules-text style, the
   record says it rests on designer judgment and playtests.
@@ -1472,7 +1499,8 @@ data file and into a generated catalog, so nobody edits evidence by hand.
 | --- | --- |
 | Identity | Rules text, rarity, archetypes, and role |
 | Status | Candidate, included, revised, or cut, and the stage that decided it |
-| Gates | Base and committed trigger rates, win-rate lift over its control, decisive share, standalone enabler lifts against disabled and flat-points controls by purchase stage, support lift in two payoff families, and counter scans, each with confidence intervals and run counts |
+| Sigil metrics | Base and committed trigger rates, win-rate lift over its control, decisive share, standalone enabler lifts against disabled and flat-points controls by purchase stage, support lift in two payoff families, and counter scans, each with confidence intervals and run counts |
+| Reasoning | Why it was kept, changed, or cut, weighing the metrics and elegance |
 | Standalone appeal | No-payoff playtest choice rate, sample size, and the concrete reasons players give for taking or rejecting an enabler |
 | Sweep | Every amount tried, with its lift and points per round, and the amount chosen |
 | Synergy | Its strongest pairs, and how far they beat the sum of their parts |
@@ -1510,8 +1538,8 @@ Every record follows the format in [§16](#decision-records). No experiment has
 run yet, so balance records remain hypotheses with pending evidence;
 wording conventions can be chosen by designer direction.
 
-- **Design decisions** (D1–D13 and D23–D27) are judged by the gates and the fun
-  score.
+- **Design decisions** (D1–D13 and D23–D27) are judged by the sigil metrics,
+  the fun score, and designer judgment.
 - **Method decisions** (D14–D21) are judged by harness measurements or designer
   judgment.
 - **Presentation** (D22) rests on designer judgment and playtests.
@@ -1617,8 +1645,8 @@ wording conventions can be chosen by designer direction.
   appears about 4 times and a minor one about twice.
 - **Decided by:** Commitment works, and Archetypes viable (the spread of
   winning builds).
-- **Test:** each lever as an arm at stage 3, if Commitment works fails at
-  baseline.
+- **Test:** each lever as an arm at stage 3, if Commitment works lags its band
+  at baseline.
 - **Evidence:** pending. **Status:** hypothesis.
 
 ### D8. Bid tension
@@ -1659,7 +1687,7 @@ wording conventions can be chosen by designer direction.
 - **Alternatives:**
   - always public;
   - hidden all run.
-- **Decided by:** No invalidation (gate 3) and Skill and bidding, plus how
+- **Decided by:** No invalidation and Skill and bidding, plus how
   readable playtesters find the table.
 - **Test:** visibility arms at stage 3. In each arm the AI reasons only about
   what it can see.
@@ -1676,7 +1704,7 @@ wording conventions can be chosen by designer direction.
   - Nil as a minor.
 - **Decided by:** Archetypes viable and Commitment works.
 - **Test:** commitment trials for every archetype at stages 3 and 5. An
-  archetype whose sigils keep failing drops to one-offs.
+  archetype whose sigils keep falling short drops to one-offs.
 - **Evidence:** pending. **Status:** hypothesis.
 
 ### D12. Suit structure
@@ -1706,7 +1734,7 @@ wording conventions can be chosen by designer direction.
   onward, and activated abilities. Seeded random Opening changes are allowed.
 - **Alternatives:** the previous archetype-specific utility catalog, retained
   only as a historical experiment control; payoff-only pools.
-- **Decided by:** the standalone gate, all existing gates, Simplicity, and
+- **Decided by:** standalone enabler value, the sigil metrics, Simplicity, and
   player judgments of whether the effect is worth taking before a combo.
 - **Test:** stages 2–6 compare each new candidate alone, beside a generic
   payoff, and as support for two payoff families; no family gets a quota.
@@ -1714,14 +1742,21 @@ wording conventions can be chosen by designer direction.
 
 ### D14. Metric structure
 
-- **Starting choice:** per-sigil gates plus a weighted fun score: Close and
-  live 25, Commitment works 15, Archetypes viable 15, Synergy 15, Skill and
-  bidding 15, and Simplicity 15. Mechanical complexity is scored from sigil
-  data, with a positive cost for every numeric value and boolean condition;
-  more complex replacements need a demonstrated net improvement.
+- **Starting choice:** per-sigil metrics with target bands plus a weighted fun
+  score: Close and live 25, Commitment works 15, Archetypes viable 15,
+  Synergy 15, Skill and bidding 15, and Simplicity 15. Both are targets for
+  continuous optimization over rounds of iteration, weighed with designer
+  judgment of elegance; neither is a pass/fail bar. Mechanical complexity is
+  scored from sigil data, with a positive cost for every numeric value and
+  boolean condition; more complex replacements need a demonstrated net
+  improvement.
 - **Alternatives:**
-  - one weighted score with no gates;
-  - the same gates, with weights that favor synergy;
+  - per-sigil pass/fail gates plus the fun score (the previous starting
+    choice, revised by designer direction on 2026-10-06: design is a
+    continuous optimization, and black-and-white bars misjudge pieces that are
+    weak on one metric but valuable overall);
+  - one weighted score with no per-sigil metrics;
+  - the same metrics, with weights that favor synergy;
   - the previous five-family score with simplicity only as a diagnostic.
 - **Decided by:** designer judgment for the starting rubric and weights,
   calibrated against comprehension playtests and simulation comparisons of
@@ -1799,7 +1834,8 @@ wording conventions can be chosen by designer direction.
 - **Alternatives:**
   - hand-designed waves at every rarity;
   - enumeration at every rarity.
-- **Decided by:** how many candidates from each source pass their gates.
+- **Decided by:** how many candidates from each source end up in the pool,
+  and how they score on the sigil metrics.
 - **Evidence:** pending. **Status:** hypothesis.
 
 ### D22. Rules text
@@ -1837,7 +1873,7 @@ wording conventions can be chosen by designer direction.
   Keep whole-count payouts and simple milestones; tune numbers first.
 - **Alternatives:** the previous restricted candidates as experiment controls;
   smaller payouts or fewer candidates if the simple versions dominate.
-- **Decided by:** all sigil gates and the weighted fun score, especially the
+- **Decided by:** the sigil metrics and the weighted fun score, especially the
   power ceiling, Skill and bidding, Commitment works, and the explicit
   Simplicity cost in family 9.
 - **Test:** paired-seed comparisons in stages 2–6, sweeping payout, price, and
@@ -1861,13 +1897,13 @@ wording conventions can be chosen by designer direction.
   +15 on a starting 1 increases it by 1,500%. Larger numeric ranges allow
   smaller proportional balance adjustments without extra conditions; +12 and
   +15 incur the same numeric simplicity cost.
-- **Decided by:** all gates and the fun score, particularly the power ceiling,
+- **Decided by:** the sigil metrics and the fun score, particularly the power ceiling,
   Close and live, Skill and bidding, and Simplicity.
 - **Test:** paired-seed sweeps at stages 3–6 of the starting multiplier and
   payout amounts, including points and ×mult alternatives. Compare score
   growth relative to each arm's unmodified score scale, first-+mult purchase
   advantage, early-round contribution, and set losses; ensure simple rewards
-  can pass without restrictive riders.
+  can balance without restrictive riders.
 - **Evidence:** pending; no simulator exists yet. The arithmetic examples are
   checks of the formula, not empirical balance results. **Status:** hypothesis.
 
@@ -1904,7 +1940,7 @@ wording conventions can be chosen by designer direction.
 - **Prior reasoning:** the same short template exposes the size and result of
   an effect. Random selection is input randomness that resolves before any
   bid; it may hit existing winners or cards already at the destination.
-- **Decided by:** standalone enabler value, all gates and the fun score,
+- **Decided by:** standalone enabler value, the sigil metrics and the fun score,
   including input-randomness diagnostics and the full simplicity cost of
   Opening, counts, ranks, filters, and any hidden category definitions.
 - **Test:** paired-seed trials with the dedicated Opening streams, sweeping
@@ -1941,12 +1977,12 @@ the sweep that chose its value ([§16](#parameter-records)).
 | P18 | Engraving premiums | 25, or 50 for Multiplier | 0–100 | Economy diagnostics | 4 |
 | P19 | Synthetic replacement range and copied ranks | Unowned [2]–[9] of the same suit; copies [J]/[Q]/[K]/[A] | Replacement ranks below [J]; weights across [J]/[Q]/[K]/[A] | Input randomness; Commitment works; Archetypes viable; power ceiling | 4 |
 | P20 | Par growth over a run | ×10, from 600 to 6,000 | ×5–×20 | Close and live | 3–6 |
-| P21 | Pool sizes and category split | 44 / 33 / 17 / 3: 90 payoffs and 7 shared enablers | Cut failed candidates; expand only with demonstrated standalone value | Commitment works; Archetypes viable | 3–6 |
+| P21 | Pool sizes and category split | 44 / 33 / 17 / 3: 90 payoffs and 7 shared enablers | Cut candidates that don't improve the game; expand only with demonstrated standalone value | Commitment works; Archetypes viable | 3–6 |
 | P22 | Nil base value before multipliers | ±100 | 50–150 | Archetypes viable (Nil) | 0 |
 | P23 | Bid-scaled share of the pool | A third of contract-point sigils, a quarter of multipliers | None to half | Skill and bidding | 3–5 |
 | P24 | AI tier budgets | About 0.3 s, 3 s, and 20 s per run | Per tier | Agreement between tiers; run time | 0 |
 | P25 | Fun score weights | 25 / 15 / 15 / 15 / 15 / 15 (families 4–9) | Any | Designer judgment, checked against playtests | 7 |
-| P26 | Gate thresholds and fun score bands | As in [§12](#12-metrics-what-fun-means) | Any | Calibrated once the harness runs, and again at stage 7 | 3, 7 |
+| P26 | Sigil-metric target bands and fun score bands | As in [§12](#12-metrics-what-fun-means) | Any | Calibrated once the harness runs, and again at stage 7 | 3, 7 |
 | P27 | Experiment size | 2,000 paired runs | 1,000–10,000 | Width of confidence intervals | 0 |
 | P28 | Simplicity rubric | Number/rank/check 1; arithmetic rider 2; selector/state 1; new term including Opening 2, or 4 at common; S = 1 / (1 + C) | Positive costs; compare 1–3 per burden; twice the term cost at common; expand aliases and rank classes before scoring | Designer judgment, calibrated by comprehension playtests and paired simulation tradeoffs | 2–7 |
 | P29 | Starting contract multiplier and +mult scale | Start at 10; +2–5 repeated rewards, +10–20 one-time rewards | Starting values 1, 5, 10, 15; sweep rewards jointly | Power ceiling; Close and live; Skill and bidding; Simplicity | 3–6 |
@@ -2024,14 +2060,14 @@ sigils from the generic budget.
 | While held | At most one or two sigils; no engraving uses it |
 | Your partner winning tricks | Mostly moot, since team-scoped sigils treat both partners' tricks alike |
 | Bonus chaser | Generic contract-point sigils |
-| Contract attacker | A few payoffs ending "if the opponents miss their contract"; gate 3 applies |
+| Contract attacker | A few payoffs ending "if the opponents miss their contract"; the No invalidation metric applies |
 
 ## Appendix E: Seeds from Rogue Spades 1.0
 
 These 1.0 payoffs seed the hand-designed waves; the previous enabler and
 shop-utility seeds are removed. The historical 1.0 text below is quoted
 unchanged; every 2.0 candidate must use [§5](#rules-text), simplify
-its conditions under D24, and pass simulation; enablers follow D26. Colors and resonances are dropped.
+its conditions under D24, and earn its place in simulation; enablers follow D26. Colors and resonances are dropped.
 
 | 1.0 sigil | 1.0 text | 2.0 seed |
 | --- | --- | --- |
