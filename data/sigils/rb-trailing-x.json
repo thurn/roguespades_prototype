@@ -38,6 +38,14 @@
     {
       "step": "draft-rare",
       "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-rare",
+      "note": "draft-rare: set aside by the hand-level screen: fires in 0.0% of rounds."
+    },
+    {
+      "step": "draft-rare",
+      "note": "draft-rare: restored: the hand-level screen plays one round with no run score, so 'behind' could never hold there; measured in round 1 instead."
     }
   ],
   "name": null,

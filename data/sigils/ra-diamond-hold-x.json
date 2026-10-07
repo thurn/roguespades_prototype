@@ -36,12 +36,16 @@
       "elegance": 3
     }
   },
-  "status": "candidate",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
       "step": "draft-rare",
       "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-rare",
+      "note": "draft-rare: kept: lift +8.1 [+6.9, +9.3] pts (n 10178), fire 100%, C 3; beats the same-rarity control."
     }
   ],
   "name": null,
@@ -75,5 +79,120 @@
     "C": 3,
     "S": 0.25
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "draft-rare",
+    "exposures": 10178,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 8.1,
+        "lo": 6.92,
+        "hi": 9.27,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 10178
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 4.79,
+        "lo": 3.62,
+        "hi": 5.97,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 10178
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 100.0,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 112362
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 100.0,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 43954
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 10.79,
+        "lo": 9.94,
+        "hi": 11.64,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 3.3,
+        "lo": -0.06,
+        "hi": 6.66,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-rare",
+        "amount": 1.1
+      }
+    ],
+    "amountSlope": {
+      "value": 10.79,
+      "lo": 9.94,
+      "hi": 11.64
+    },
+    "skillGradient": {
+      "value": 3.3,
+      "lo": -0.06,
+      "hi": 6.66
+    },
+    "pairs": [
+      {
+        "with": "rc-twos-always-win",
+        "synergy": 0.01
+      },
+      {
+        "with": "seed-two-win",
+        "synergy": 0.01
+      },
+      {
+        "with": "ra-all-diamonds",
+        "synergy": 0.0
+      },
+      {
+        "with": "ra-clubs-to-diamonds",
+        "synergy": 0.0
+      },
+      {
+        "with": "ra-team-untrumpable",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.07417629544060461,
+      "seU": 0.01104719405125948,
+      "slopeU": 0.24083044275509913,
+      "slopeSeU": 0.011538303024821568,
+      "k": 1.2927154020388367
+    }
+  },
+  "reports": [
+    "reports/draft-rare-tournament.md",
+    "docs/sigils/rounds/draft-rare.md"
+  ]
 }

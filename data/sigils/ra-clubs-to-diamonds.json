@@ -35,12 +35,16 @@
       "elegance": 4
     }
   },
-  "status": "candidate",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
       "step": "draft-rare",
       "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-rare",
+      "note": "draft-rare: cut: lift -12.9 [-14.4, -11.3] pts (n 8567), fire 0%, C 4; far below the control, and one retune step can't close the gap."
     }
   ],
   "name": null,
@@ -74,5 +78,95 @@
     "C": 4,
     "S": 0.2
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "draft-rare",
+    "exposures": 8567,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -12.86,
+        "lo": -14.38,
+        "hi": -11.34,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 8567
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -8.66,
+        "lo": -10.18,
+        "hi": -7.14,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 8567
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -4.2,
+        "lo": -8.19,
+        "hi": -0.21,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": -4.2,
+      "lo": -8.19,
+      "hi": -0.21
+    },
+    "pairs": [
+      {
+        "with": "seed-raise",
+        "synergy": 0.45
+      },
+      {
+        "with": "rb-low-raise",
+        "synergy": 0.38
+      },
+      {
+        "with": "rc-junk-raise",
+        "synergy": 0.37
+      },
+      {
+        "with": "ua-side-raise",
+        "synergy": 0.24
+      },
+      {
+        "with": "ra-team-untrumpable",
+        "synergy": 0.14
+      }
+    ],
+    "raw": {
+      "liftU": -0.13395349477756563,
+      "seU": 0.0142803796685419,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.2927154020388367
+    }
+  },
+  "reports": [
+    "reports/draft-rare-tournament.md",
+    "docs/sigils/rounds/draft-rare.md"
+  ]
 }

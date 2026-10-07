@@ -36,7 +36,7 @@
       "elegance": 5
     }
   },
-  "status": "candidate",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -46,6 +46,10 @@
     {
       "step": "draft-uncommon",
       "note": "draft-uncommon: held as a candidate: lift -20.9 [-22.4, -19.5] pts (n 3568), fire 0%, C 5; its hook was fixed after this measurement, so it is re-measured next step."
+    },
+    {
+      "step": "draft-rare",
+      "note": "draft-rare: kept: lift -0.1 [-1.4, +1.2] pts (n 10310), fire 0%, C 5; kept for coverage of Spades, BidHigh, Streaks; a target for the optimization rounds."
     }
   ],
   "name": null,
@@ -86,28 +90,28 @@
   },
   "lint": [],
   "estimates": {
-    "step": "draft-uncommon",
-    "exposures": 3568,
+    "step": "draft-rare",
+    "exposures": 10310,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": -20.93,
-        "lo": -22.39,
-        "hi": -19.47,
+        "value": -0.06,
+        "lo": -1.36,
+        "hi": 1.23,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 3568
+        "n": 10310
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -12.44,
-        "lo": -13.9,
-        "hi": -10.98,
+        "value": -1.27,
+        "lo": -2.56,
+        "hi": 0.02,
         "bandLo": null,
         "bandHi": null,
-        "n": 3568
+        "n": 10310
       },
       {
         "key": "slope",
@@ -122,9 +126,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": -8.5,
-        "lo": -12.05,
-        "hi": -4.94,
+        "value": 1.21,
+        "lo": -2.2,
+        "hi": 4.62,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -142,42 +146,44 @@
       "hi": 0.0
     },
     "skillGradient": {
-      "value": -8.5,
-      "lo": -12.05,
-      "hi": -4.94
+      "value": 1.21,
+      "lo": -2.2,
+      "hi": 4.62
     },
     "pairs": [
       {
-        "with": "seed-become-king",
-        "synergy": 0.0
+        "with": "seed-raise",
+        "synergy": 1.32
       },
       {
-        "with": "ub-become-four-spades",
-        "synergy": 0.0
+        "with": "rb-low-raise",
+        "synergy": 1.12
       },
       {
-        "with": "uc-trump-freely",
-        "synergy": 0.0
+        "with": "rc-junk-raise",
+        "synergy": 1.09
       },
       {
-        "with": "uc-clubs-to-spades",
-        "synergy": 0.0
+        "with": "ua-side-raise",
+        "synergy": 0.72
       },
       {
-        "with": "ub-first-trick-contract-points",
-        "synergy": 0.0
+        "with": "ra-team-untrumpable",
+        "synergy": 0.42
       }
     ],
     "raw": {
-      "liftU": -0.1342695683587759,
-      "seU": 0.009584086777390867,
+      "liftU": -0.019643006364325376,
+      "seU": 0.012161804411926186,
       "slopeU": 0.0,
       "slopeSeU": 0.0,
-      "k": 1.8525028942895565
+      "k": 1.2927154020388367
     }
   },
   "reports": [
     "reports/draft-uncommon-tournament.md",
-    "docs/sigils/rounds/draft-uncommon.md"
+    "docs/sigils/rounds/draft-uncommon.md",
+    "reports/draft-rare-tournament.md",
+    "docs/sigils/rounds/draft-rare.md"
   ]
 }

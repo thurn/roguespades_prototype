@@ -10,7 +10,7 @@
   "createdIn": "draft-rare",
   "effect": {
     "type": "xmult",
-    "amount": 2,
+    "amount": 3.0,
     "on": {
       "event": "bid",
       "vs": "opponents"
@@ -35,12 +35,20 @@
       "elegance": 5
     }
   },
-  "status": "candidate",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
       "step": "draft-rare",
       "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-rare",
+      "note": "draft-rare: kept: lift -6.2 [-7.2, -5.1] pts (n 7276), fire 44%, C 2; below the control but with a real amount slope (+3.1 pts per doubling), so retuning can lift it; kept for BidHigh, Generic."
+    },
+    {
+      "step": "draft-rare",
+      "note": "draft-rare: amount 2 -> 3 by retune; lift -6.2 pts against target +5, slope +3.1 pts per doubling."
     }
   ],
   "name": null,
@@ -48,7 +56,7 @@
   "iconFamily": null,
   "iconWord": null,
   "price": 100,
-  "text": "×2 contract multiplier when your team bids more than the opponents",
+  "text": "×3 contract multiplier when your team bids more than the opponents",
   "category": "xmult",
   "signature": "bid(vs=opponents)|-|-|xmult",
   "family": "bid(vs=opponents)|-|-|xmult",
@@ -57,7 +65,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 2",
+        "detail": "payout 3",
         "cost": 1
       },
       {
@@ -69,5 +77,120 @@
     "C": 2,
     "S": 0.3333333333333333
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "draft-rare",
+    "exposures": 7276,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -6.16,
+        "lo": -7.23,
+        "hi": -5.09,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 7276
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -4.21,
+        "lo": -5.28,
+        "hi": -3.14,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 7276
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 44.04,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 79438
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 45.83,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 62197
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 3.09,
+        "lo": 2.25,
+        "hi": 3.93,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -1.95,
+        "lo": -4.86,
+        "hi": 0.96,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-rare",
+        "amount": 2
+      }
+    ],
+    "amountSlope": {
+      "value": 3.09,
+      "lo": 2.25,
+      "hi": 3.93
+    },
+    "skillGradient": {
+      "value": -1.95,
+      "lo": -4.86,
+      "hi": 0.96
+    },
+    "pairs": [
+      {
+        "with": "seed-raise",
+        "synergy": 0.18
+      },
+      {
+        "with": "rb-low-raise",
+        "synergy": 0.15
+      },
+      {
+        "with": "rc-junk-raise",
+        "synergy": 0.15
+      },
+      {
+        "with": "ua-side-raise",
+        "synergy": 0.1
+      },
+      {
+        "with": "ra-team-untrumpable",
+        "synergy": 0.06
+      }
+    ],
+    "raw": {
+      "liftU": -0.0651331092300348,
+      "seU": 0.010101051133623995,
+      "slopeU": 0.06891153623132244,
+      "slopeSeU": 0.011421854907439468,
+      "k": 1.2927154020388367
+    }
+  },
+  "reports": [
+    "reports/draft-rare-tournament.md",
+    "docs/sigils/rounds/draft-rare.md"
+  ]
 }

@@ -29,12 +29,16 @@
       "elegance": 4
     }
   },
-  "status": "candidate",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
       "step": "phase-0",
       "note": "Created from the GDD §9 seed."
+    },
+    {
+      "step": "draft-rare",
+      "note": "draft-rare: cut: lift -8.9 [-10.7, -7.1] pts (n 1766), fire 23%, C 6; the kept pool covers its archetypes with stronger or simpler pieces."
     }
   ],
   "name": null,
@@ -87,55 +91,55 @@
   },
   "lint": [],
   "estimates": {
-    "step": "phase-0",
-    "exposures": 501,
+    "step": "draft-rare",
+    "exposures": 1766,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 5.27,
-        "lo": 0.15,
-        "hi": 10.38,
+        "value": -8.9,
+        "lo": -10.66,
+        "hi": -7.14,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 501
+        "n": 1766
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 3.97,
-        "lo": -1.14,
-        "hi": 9.09,
+        "value": -6.78,
+        "lo": -8.54,
+        "hi": -5.01,
         "bandLo": null,
         "bandHi": null,
-        "n": 501
+        "n": 1766
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 29.25,
+        "value": 22.64,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 10642
+        "n": 19210
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 31.21,
+        "value": 24.42,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 1817
+        "n": 8092
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 3.06,
-        "lo": -0.12,
-        "hi": 6.24,
+        "value": 2.85,
+        "lo": 1.13,
+        "hi": 4.58,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -143,9 +147,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 1.29,
-        "lo": -3.81,
-        "hi": 6.4,
+        "value": -2.12,
+        "lo": -6.1,
+        "hi": 1.86,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -158,48 +162,50 @@
       }
     ],
     "amountSlope": {
-      "value": 3.06,
-      "lo": -0.12,
-      "hi": 6.24
+      "value": 2.85,
+      "lo": 1.13,
+      "hi": 4.58
     },
     "skillGradient": {
-      "value": 1.29,
-      "lo": -3.81,
-      "hi": 6.4
+      "value": -2.12,
+      "lo": -6.1,
+      "hi": 1.86
     },
     "pairs": [
       {
-        "with": "seed-ace-hold",
-        "synergy": 0.0
+        "with": "seed-raise",
+        "synergy": 0.23
       },
       {
-        "with": "pilot-dose-80",
-        "synergy": 0.0
+        "with": "rb-low-raise",
+        "synergy": 0.19
       },
       {
-        "with": "seed-e-diamond-three",
-        "synergy": 0.0
+        "with": "rc-junk-raise",
+        "synergy": 0.19
       },
       {
-        "with": "seed-exact-points",
-        "synergy": 0.0
+        "with": "ua-side-raise",
+        "synergy": 0.12
       },
       {
-        "with": "seed-five-row-x",
-        "synergy": 0.0
+        "with": "ra-team-untrumpable",
+        "synergy": 0.07
       }
     ],
     "raw": {
-      "liftU": 0.04086446811063742,
-      "seU": 0.03197032726809794,
-      "slopeU": 0.0453563541766691,
-      "slopeSeU": 0.028694483228352843,
-      "k": 1.9447399061524484
+      "liftU": -0.1048234382761106,
+      "seU": 0.016564674883003748,
+      "slopeU": 0.06369144658573674,
+      "slopeSeU": 0.02337570109567338,
+      "k": 1.2927154020388367
     }
   },
   "reports": [
     "reports/phase-0-pilot.md",
-    "reports/phase-0-pilot-dashboard.md"
+    "reports/phase-0-pilot-dashboard.md",
+    "reports/draft-rare-tournament.md",
+    "docs/sigils/rounds/draft-rare.md"
   ],
   "gddEffect": {
     "type": "xmult",

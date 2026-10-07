@@ -10,7 +10,7 @@
   "createdIn": "draft-rare",
   "effect": {
     "type": "xmult",
-    "amount": 1.3,
+    "amount": 1.5,
     "on": {
       "event": "win",
       "led": {
@@ -37,12 +37,20 @@
       "elegance": 4
     }
   },
-  "status": "candidate",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
       "step": "draft-rare",
       "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-rare",
+      "note": "draft-rare: kept: lift -1.8 [-2.9, -0.7] pts (n 11006), fire 83%, C 3; below the control but with a real amount slope (+7.3 pts per doubling), so retuning can lift it; kept for Suits, Spades."
+    },
+    {
+      "step": "draft-rare",
+      "note": "draft-rare: amount 1.3 -> 1.5 by retune; lift -1.8 pts against target +5, slope +7.3 pts per doubling."
     }
   ],
   "name": null,
@@ -50,7 +58,7 @@
   "iconFamily": null,
   "iconWord": null,
   "price": 100,
-  "text": "×1.3 contract multiplier when your team wins a trick led with [♦]",
+  "text": "×1.5 contract multiplier when your team wins a trick led with [♦]",
   "category": "hybrid",
   "signature": "win(led=suit=D)|-|-|xmult",
   "family": "win(led=suit=D)|-|-|xmult",
@@ -59,7 +67,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 1.3",
+        "detail": "payout 1.5",
         "cost": 1
       },
       {
@@ -76,5 +84,130 @@
     "C": 3,
     "S": 0.25
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "draft-rare",
+    "exposures": 11006,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -1.82,
+        "lo": -2.91,
+        "hi": -0.72,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 11006
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -0.32,
+        "lo": -1.42,
+        "hi": 0.78,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 11006
+      },
+      {
+        "key": "decisive",
+        "label": "Decisive share of holder's wins (%)",
+        "value": 18.74,
+        "lo": 18.14,
+        "hi": 19.35,
+        "bandLo": 5.0,
+        "bandHi": null,
+        "n": 11298
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 83.46,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 120972
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 83.9,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 87421
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 7.32,
+        "lo": 6.48,
+        "hi": 8.16,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -1.5,
+        "lo": -4.92,
+        "hi": 1.92,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "draft-rare",
+        "amount": 1.3
+      }
+    ],
+    "amountSlope": {
+      "value": 7.32,
+      "lo": 6.48,
+      "hi": 8.16
+    },
+    "skillGradient": {
+      "value": -1.5,
+      "lo": -4.92,
+      "hi": 1.92
+    },
+    "pairs": [
+      {
+        "with": "rc-low-beats",
+        "synergy": 0.18
+      },
+      {
+        "with": "rc-low-win-x",
+        "synergy": 0.16
+      },
+      {
+        "with": "rc-twos-always-win",
+        "synergy": 0.12
+      },
+      {
+        "with": "seed-two-win",
+        "synergy": 0.07
+      },
+      {
+        "with": "rc-low-win-contract-points",
+        "synergy": 0.06
+      }
+    ],
+    "raw": {
+      "liftU": -0.004938094984565537,
+      "seU": 0.010317916183245549,
+      "slopeU": 0.16340316853284917,
+      "slopeSeU": 0.011375470637133718,
+      "k": 1.2927154020388367
+    }
+  },
+  "reports": [
+    "reports/draft-rare-tournament.md",
+    "docs/sigils/rounds/draft-rare.md"
+  ]
 }

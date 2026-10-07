@@ -9,7 +9,7 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "xmult",
-    "amount": 1.5
+    "amount": 2.0
   },
   "design": {
     "decision": "",
@@ -22,12 +22,20 @@
       "elegance": 3
     }
   },
-  "status": "candidate",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
       "step": "phase-0",
       "note": "Created from the GDD §9 seed."
+    },
+    {
+      "step": "draft-rare",
+      "note": "draft-rare: kept: lift -7.1 [-8.5, -5.7] pts (n 1699), fire 100%, C 1; below the control but with a real amount slope (+4.3 pts per doubling), so retuning can lift it; kept for Generic."
+    },
+    {
+      "step": "draft-rare",
+      "note": "draft-rare: amount 1.5 -> 2 by retune; lift -7.1 pts against target +5, slope +4.3 pts per doubling."
     }
   ],
   "name": null,
@@ -36,7 +44,7 @@
   "iconWord": null,
   "gddText": "×1.5 contract multiplier",
   "price": 100,
-  "text": "×1.5 contract multiplier",
+  "text": "×2 contract multiplier",
   "category": "xmult",
   "signature": "always|-|-|xmult",
   "family": "always|-|-|xmult",
@@ -45,7 +53,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 1.5",
+        "detail": "payout 2",
         "cost": 1
       }
     ],
@@ -54,28 +62,28 @@
   },
   "lint": [],
   "estimates": {
-    "step": "phase-0",
-    "exposures": 421,
+    "step": "draft-rare",
+    "exposures": 1699,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 0.89,
-        "lo": -1.81,
-        "hi": 3.59,
+        "value": -7.09,
+        "lo": -8.53,
+        "hi": -5.65,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 421
+        "n": 1699
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -0.4,
-        "lo": -3.1,
-        "hi": 2.3,
+        "value": -4.9,
+        "lo": -6.34,
+        "hi": -3.46,
         "bandLo": null,
         "bandHi": null,
-        "n": 421
+        "n": 1699
       },
       {
         "key": "fire",
@@ -85,7 +93,7 @@
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 9522
+        "n": 18476
       },
       {
         "key": "fireCommitted",
@@ -100,9 +108,9 @@
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 8.04,
-        "lo": 4.96,
-        "hi": 11.13,
+        "value": 4.27,
+        "lo": 2.6,
+        "hi": 5.93,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -110,9 +118,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 1.29,
-        "lo": -1.22,
-        "hi": 3.81,
+        "value": -2.19,
+        "lo": -5.83,
+        "hi": 1.45,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -125,48 +133,50 @@
       }
     ],
     "amountSlope": {
-      "value": 8.04,
-      "lo": 4.96,
-      "hi": 11.13
+      "value": 4.27,
+      "lo": 2.6,
+      "hi": 5.93
     },
     "skillGradient": {
-      "value": 1.29,
-      "lo": -1.22,
-      "hi": 3.81
+      "value": -2.19,
+      "lo": -5.83,
+      "hi": 1.45
     },
     "pairs": [
       {
-        "with": "seed-ace-hold",
-        "synergy": 0.0
+        "with": "seed-raise",
+        "synergy": 0.03
       },
       {
-        "with": "pilot-dose-80",
-        "synergy": 0.0
+        "with": "rb-low-raise",
+        "synergy": 0.02
       },
       {
-        "with": "seed-trump-points",
-        "synergy": 0.0
+        "with": "rc-junk-raise",
+        "synergy": 0.02
       },
       {
-        "with": "seed-contract-points",
-        "synergy": 0.0
+        "with": "ua-side-raise",
+        "synergy": 0.01
       },
       {
-        "with": "seed-exact-points",
-        "synergy": 0.0
+        "with": "ra-team-untrumpable",
+        "synergy": 0.01
       }
     ],
     "raw": {
-      "liftU": -0.004153713086637645,
-      "seU": 0.01688151348962588,
-      "slopeU": 0.11933350173155054,
-      "slopeSeU": 0.027808390818621027,
-      "k": 1.9447399061524484
+      "liftU": -0.07582785460531895,
+      "seU": 0.013529256635453605,
+      "slopeU": 0.09523388201617856,
+      "slopeSeU": 0.02259513889570013,
+      "k": 1.2927154020388367
     }
   },
   "reports": [
     "reports/phase-0-pilot.md",
-    "reports/phase-0-pilot-dashboard.md"
+    "reports/phase-0-pilot-dashboard.md",
+    "reports/draft-rare-tournament.md",
+    "docs/sigils/rounds/draft-rare.md"
   ],
   "gddEffect": {
     "type": "xmult",
