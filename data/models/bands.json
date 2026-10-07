@@ -1,0 +1,40 @@
+{
+  "lift": [
+    0.0,
+    12.0
+  ],
+  "decisive": [
+    5.0,
+    null
+  ],
+  "fire": [
+    10.0,
+    null
+  ],
+  "fireCommitted": [
+    60.0,
+    null
+  ],
+  "standalone": [
+    3.0,
+    null
+  ],
+  "standaloneVsControl": [
+    -2.0,
+    null
+  ],
+  "invalidation": [
+    null,
+    15.0
+  ],
+  "pairWin": [
+    null,
+    65.0
+  ],
+  "delta": {
+    "common": 2.0,
+    "uncommon": 3.0,
+    "rare": 5.0,
+    "legendary": 8.0
+  }
+}

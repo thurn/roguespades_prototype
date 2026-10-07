@@ -89,65 +89,65 @@
   },
   "lint": [],
   "estimates": {
-    "step": "draft-uncommon",
-    "exposures": 7547,
+    "step": "round-1",
+    "exposures": 1775,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 16.73,
-        "lo": 15.74,
-        "hi": 17.73,
+        "value": 1.22,
+        "lo": -0.26,
+        "hi": 2.7,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 7547
+        "n": 1775
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 12.84,
-        "lo": 11.85,
-        "hi": 13.83,
+        "value": 0.75,
+        "lo": -0.73,
+        "hi": 2.23,
         "bandLo": null,
         "bandHi": null,
-        "n": 7547
+        "n": 1775
       },
       {
         "key": "decisive",
         "label": "Decisive share of holder's wins (%)",
-        "value": 25.23,
-        "lo": 24.5,
-        "hi": 25.98,
+        "value": 11.19,
+        "lo": 10.91,
+        "hi": 11.48,
         "bandLo": 5.0,
         "bandHi": null,
-        "n": 9317
+        "n": 33415
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 88.11,
+        "value": 85.56,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 82750
+        "n": 266128
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 88.39,
+        "value": 86.04,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 70369
+        "n": 231219
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 12.96,
-        "lo": 12.03,
-        "hi": 13.89,
+        "value": 4.25,
+        "lo": 2.62,
+        "hi": 5.88,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -155,9 +155,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 3.89,
-        "lo": 0.49,
-        "hi": 7.3,
+        "value": 0.47,
+        "lo": -0.89,
+        "hi": 1.83,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -167,50 +167,56 @@
       {
         "step": "draft-uncommon",
         "amount": 5
+      },
+      {
+        "step": "round-1",
+        "amount": 3
       }
     ],
     "amountSlope": {
-      "value": 12.96,
-      "lo": 12.03,
-      "hi": 13.89
+      "value": 4.25,
+      "lo": 2.62,
+      "hi": 5.88
     },
     "skillGradient": {
-      "value": 3.89,
-      "lo": 0.49,
-      "hi": 7.3
+      "value": 0.47,
+      "lo": -0.89,
+      "hi": 1.83
     },
     "pairs": [
       {
-        "with": "ua-aces-untrumpable",
-        "synergy": 0.0
+        "with": "seed-raise",
+        "synergy": 1.46
       },
       {
-        "with": "ub-low-to-aces",
-        "synergy": 0.0
+        "with": "ua-side-raise",
+        "synergy": 0.59
       },
       {
-        "with": "ua-rainbow-first-mult",
-        "synergy": 0.0
+        "with": "ra-ace-win-x",
+        "synergy": 0.55
       },
       {
-        "with": "seed-rainbow-lead-x",
-        "synergy": 0.0
+        "with": "ca-raise-one",
+        "synergy": 0.49
       },
       {
-        "with": "ua-rainbow-first-contract",
-        "synergy": 0.0
+        "with": "ua-twos-become-aces",
+        "synergy": 0.42
       }
     ],
     "raw": {
-      "liftU": 0.13863471423768994,
-      "seU": 0.006518873369778507,
-      "slopeU": 0.20185612924231988,
-      "slopeSeU": 0.008818759403678097,
-      "k": 1.8525028942895565
+      "liftU": 0.011813749429262397,
+      "seU": 0.014136057111253895,
+      "slopeU": 0.0963327633686079,
+      "slopeSeU": 0.022502556013447396,
+      "k": 1.2730595583306243
     }
   },
   "reports": [
     "reports/draft-uncommon-tournament.md",
-    "docs/sigils/rounds/draft-uncommon.md"
+    "docs/sigils/rounds/draft-uncommon.md",
+    "reports/round-1-dashboard.md",
+    "docs/sigils/rounds/round-1.md"
   ]
 }

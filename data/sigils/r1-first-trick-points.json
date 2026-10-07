@@ -1,0 +1,206 @@
+{
+  "id": "r1-first-trick-points",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks",
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "round-1",
+  "effect": {
+    "type": "points",
+    "amount": 120,
+    "on": {
+      "event": "win",
+      "trick": "first"
+    }
+  },
+  "design": {
+    "decision": "Spend a top card or an early trump on the first trick instead of saving it.",
+    "opponent": "Revealed on the first trick; opponents can contest the opening trick with their own top cards.",
+    "rationale": "Turns the two-count rider into a flat event payoff and fills the points slot of the first-trick ladder (common +mult, uncommon ×mult).",
+    "partners": [
+      "cb-first-trick-mult",
+      "ub-first-trick-xmult",
+      "seed-four-row",
+      "ub-low-to-aces"
+    ],
+    "cluster": null,
+    "draftText": "+120 contract points when your team wins the first trick of a round",
+    "hooks": "none",
+    "target": "T7",
+    "replaces": [
+      "ub-first-trick-contract-points"
+    ]
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-1",
+      "note": "Designed (cluster None)."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: not kept: lift +2.0 [+0.6, +3.3] pts, C 3; clearly worse than the version it would replace."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "+120 contract points when your team wins the first trick of a round",
+  "category": "points",
+  "signature": "win(trick=first)|-|-|points",
+  "family": "win(trick=first)|-|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 120",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "is the first trick",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-1",
+    "exposures": 12450,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 1.95,
+        "lo": 0.59,
+        "hi": 3.32,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 12450
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 0.66,
+        "lo": -0.71,
+        "hi": 2.02,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 12450
+      },
+      {
+        "key": "decisive",
+        "label": "Decisive share of holder's wins (%)",
+        "value": 14.32,
+        "lo": 13.8,
+        "hi": 14.86,
+        "bandLo": 5.0,
+        "bandHi": null,
+        "n": 11898
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 50.18,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 137862
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 50.83,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 49152
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 4.87,
+        "lo": 4.18,
+        "hi": 5.57,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 1.3,
+        "lo": -2.12,
+        "hi": 4.71,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "round-1",
+        "amount": 120
+      }
+    ],
+    "amountSlope": {
+      "value": 4.87,
+      "lo": 4.18,
+      "hi": 5.57
+    },
+    "skillGradient": {
+      "value": 1.3,
+      "lo": -2.12,
+      "hi": 4.71
+    },
+    "pairs": [
+      {
+        "with": "r1-low-three-beat",
+        "synergy": 0.01
+      },
+      {
+        "with": "r1-honors-untrumpable",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-middle-free",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-low-hold-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-lead-choice",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.009900505103728002,
+      "seU": 0.012528937200871284,
+      "slopeU": 0.1060425401803546,
+      "slopeSeU": 0.009233445695223412,
+      "k": 1.326167952143665
+    }
+  },
+  "reports": [
+    "reports/round-1-focused.md",
+    "docs/sigils/rounds/round-1.md"
+  ]
+}

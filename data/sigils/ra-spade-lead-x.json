@@ -86,65 +86,65 @@
   },
   "lint": [],
   "estimates": {
-    "step": "draft-rare",
-    "exposures": 9556,
+    "step": "round-1",
+    "exposures": 3921,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": -2.81,
-        "lo": -3.94,
-        "hi": -1.69,
+        "value": 5.54,
+        "lo": 4.36,
+        "hi": 6.73,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 9556
+        "n": 3921
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -2.66,
-        "lo": -3.79,
-        "hi": -1.54,
+        "value": 4.83,
+        "lo": 3.64,
+        "hi": 6.01,
         "bandLo": null,
         "bandHi": null,
-        "n": 9556
+        "n": 3921
       },
       {
         "key": "decisive",
         "label": "Decisive share of holder's wins (%)",
-        "value": 17.77,
-        "lo": 17.13,
-        "hi": 18.43,
+        "value": 23.67,
+        "lo": 22.71,
+        "hi": 24.65,
         "bandLo": 5.0,
         "bandHi": null,
-        "n": 9323
+        "n": 5189
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 75.71,
+        "value": 76.13,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 105046
+        "n": 47127
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 75.79,
+        "value": 76.32,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 75288
+        "n": 36431
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 6.47,
-        "lo": 5.55,
-        "hi": 7.38,
+        "value": 9.15,
+        "lo": 7.81,
+        "hi": 10.5,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -152,9 +152,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": -0.15,
-        "lo": -3.23,
-        "hi": 2.94,
+        "value": 0.72,
+        "lo": -0.65,
+        "hi": 2.08,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -164,50 +164,56 @@
       {
         "step": "draft-rare",
         "amount": 1.25
+      },
+      {
+        "step": "round-1",
+        "amount": 1.5
       }
     ],
     "amountSlope": {
-      "value": 6.47,
-      "lo": 5.55,
-      "hi": 7.38
+      "value": 9.15,
+      "lo": 7.81,
+      "hi": 10.5
     },
     "skillGradient": {
-      "value": -0.15,
-      "lo": -3.23,
-      "hi": 2.94
+      "value": 0.72,
+      "lo": -0.65,
+      "hi": 2.08
     },
     "pairs": [
       {
         "with": "seed-raise",
-        "synergy": 0.27
+        "synergy": 0.89
       },
       {
-        "with": "rb-low-raise",
-        "synergy": 0.23
-      },
-      {
-        "with": "rc-junk-raise",
-        "synergy": 0.22
+        "with": "ra-ace-win-x",
+        "synergy": 0.34
       },
       {
         "with": "ua-side-raise",
-        "synergy": 0.15
+        "synergy": 0.26
       },
       {
-        "with": "ra-team-untrumpable",
-        "synergy": 0.09
+        "with": "ca-raise-one",
+        "synergy": 0.22
+      },
+      {
+        "with": "ua-twos-become-aces",
+        "synergy": 0.2
       }
     ],
     "raw": {
-      "liftU": -0.04121863932037562,
-      "seU": 0.010595177925636887,
-      "slopeU": 0.14430923568069184,
-      "slopeSeU": 0.012424993506870787,
-      "k": 1.2927154020388367
+      "liftU": 0.0758249866519081,
+      "seU": 0.011332553281368318,
+      "slopeU": 0.20739304412298223,
+      "slopeSeU": 0.018534069322669825,
+      "k": 1.2730595583306243
     }
   },
   "reports": [
     "reports/draft-rare-tournament.md",
-    "docs/sigils/rounds/draft-rare.md"
+    "docs/sigils/rounds/draft-rare.md",
+    "reports/round-1-dashboard.md",
+    "docs/sigils/rounds/round-1.md"
   ]
 }

@@ -1,0 +1,212 @@
+{
+  "id": "r1-low-hold-mult",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "LowCards",
+    "Nil"
+  ],
+  "source": "designed",
+  "createdIn": "round-1",
+  "effect": {
+    "type": "mult",
+    "amount": 3,
+    "on": {
+      "event": "hold",
+      "card": {
+        "ranks": [
+          "2",
+          "6"
+        ]
+      }
+    }
+  },
+  "design": {
+    "decision": "Buy and keep low cards rather than honors, which pushes toward low bids or a nil.",
+    "opponent": "Revealed after bidding; it gives opponents no direct counter, but a low-card hand bids low and is easy to set.",
+    "rationale": "Moves to the standard range, completing the [2]-through-[6] Hold trio (common points, uncommon mult, uncommon nil points), with the per-card amount lowered for the wider filter.",
+    "partners": [
+      "cc-low-hold-points",
+      "uc-nil-low-hold",
+      "uc-low-lead-mult",
+      "uc-low-discard",
+      "ub-bid5-xmult"
+    ],
+    "cluster": null,
+    "draftText": "+3 contract multiplier for each [2] through [6] your team holds",
+    "hooks": "none",
+    "target": "T10",
+    "replaces": [
+      "uc-low-hold-mult"
+    ]
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-1",
+      "note": "Designed (cluster None)."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: kept, replacing uc-low-hold-mult: lift +17.4 [+16.3, +18.6] pts, C 5 against lift +12.6 [+11.5, +13.7] pts, C 5; matches the standard [2]–[6] range; over the ceiling for now, so retuning scales it down."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "+3 contract multiplier for each [2] through [6] your team holds",
+  "category": "mult",
+  "signature": "hold|ranks=2-6|-|mult",
+  "family": "hold|ranks=2-6|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 6",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-6",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-1",
+    "exposures": 12616,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 17.45,
+        "lo": 16.33,
+        "hi": 18.56,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 12616
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 7.82,
+        "lo": 6.71,
+        "hi": 8.94,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 12616
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 99.99,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 139904
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 99.99,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 75825
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 7.47,
+        "lo": 6.73,
+        "hi": 8.21,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 9.62,
+        "lo": 5.95,
+        "hi": 13.3,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "round-1",
+        "amount": 3
+      }
+    ],
+    "amountSlope": {
+      "value": 7.47,
+      "lo": 6.73,
+      "hi": 8.21
+    },
+    "skillGradient": {
+      "value": 9.62,
+      "lo": 5.95,
+      "hi": 13.3
+    },
+    "pairs": [
+      {
+        "with": "r1-low-cards-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-exact-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-raise",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-side-raise",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.11796650820242176,
+      "seU": 0.01020449356826078,
+      "slopeU": 0.16250879369539786,
+      "slopeSeU": 0.009773561970177792,
+      "k": 1.326167952143665
+    }
+  },
+  "reports": [
+    "reports/round-1-focused.md",
+    "docs/sigils/rounds/round-1.md"
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "id": "r1-spade-win-mult",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Spades"
+  ],
+  "source": "designed",
+  "createdIn": "round-1",
+  "effect": {
+    "type": "mult",
+    "amount": 8,
+    "on": {
+      "event": "win",
+      "card": {
+        "suit": "S"
+      }
+    }
+  },
+  "design": {
+    "decision": "Win tricks with [♠] whenever possible, by ruffing early or leading trumps.",
+    "opponent": "Revealed on the first [♠] win; opponents can draw trumps or overruff.",
+    "rationale": "The simplest additive alternative: the same per-trick trigger without the contract term, as the +mult rung beside seed-e-spade-win's points.",
+    "partners": [
+      "seed-spade-hold",
+      "ub-become-four-spades",
+      "uc-trump-freely",
+      "ra-trump-x"
+    ],
+    "cluster": null,
+    "draftText": "+8 contract multiplier when your team wins a trick with [♠]",
+    "hooks": "none",
+    "target": "T8",
+    "replaces": [
+      "ra-spade-win-contract"
+    ]
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-1",
+      "note": "Designed (cluster None)."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: not kept: lift +18.9 [+17.5, +20.2] pts, C 3; over the ceiling; r1-spade-four-x is the in-band option."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "+8 contract multiplier when your team wins a trick with [♠]",
+  "category": "mult",
+  "signature": "win|suit=S|-|mult",
+  "family": "win|suit=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 8",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is S",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-1",
+    "exposures": 8219,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 18.88,
+        "lo": 17.51,
+        "hi": 20.24,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 8219
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 5.5,
+        "lo": 4.14,
+        "hi": 6.87,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 8219
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 91.23,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 90184
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 91.84,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 49761
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 7.04,
+        "lo": 6.15,
+        "hi": 7.92,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 13.37,
+        "lo": 8.73,
+        "hi": 18.02,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "round-1",
+        "amount": 8
+      }
+    ],
+    "amountSlope": {
+      "value": 7.04,
+      "lo": 6.15,
+      "hi": 7.92
+    },
+    "skillGradient": {
+      "value": 13.37,
+      "lo": 8.73,
+      "hi": 18.02
+    },
+    "pairs": [
+      {
+        "with": "r1-low-three-beat",
+        "synergy": 0.01
+      },
+      {
+        "with": "r1-middle-free",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-honors-untrumpable",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-low-hold-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-lead-choice",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.08300475004633007,
+      "seU": 0.01248294667365008,
+      "slopeU": 0.1530982943543976,
+      "slopeSeU": 0.011667554296779058,
+      "k": 1.326167952143665
+    }
+  },
+  "reports": [
+    "reports/round-1-focused.md",
+    "docs/sigils/rounds/round-1.md"
+  ]
+}

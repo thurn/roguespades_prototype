@@ -1,0 +1,189 @@
+{
+  "id": "r1-exact-xmult",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Exact"
+  ],
+  "source": "designed",
+  "createdIn": "round-1",
+  "effect": {
+    "type": "xmult",
+    "amount": 2.5,
+    "on": {
+      "event": "make",
+      "exact": true
+    }
+  },
+  "design": {
+    "decision": "Bid to the hand's true trick count rather than shading low, then duck or overtake late to land exactly on the contract.",
+    "opponent": "Revealed at scoring; opponents who know it can push a trick onto the owner late in the round to break the exact count.",
+    "rationale": "The uncommon rung of an unscaled Exact ladder (common +mult, uncommon ×mult, rare growth), compounding with no contract term so it doesn't push toward big bids.",
+    "partners": [
+      "seed-exact-mult",
+      "ub-bid5-xmult",
+      "uc-low-discard",
+      "rb-honors-free",
+      "rb-opp-win-mult"
+    ],
+    "cluster": null,
+    "draftText": "×2.5 contract multiplier if your team makes its contract exactly",
+    "hooks": "none",
+    "target": "T4",
+    "replaces": []
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-1",
+      "note": "Designed (cluster None)."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: kept (added): lift +4.7 [+3.3, +6.1] pts, C 2; adds the unscaled Exact ×multiplier rung at uncommon."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "×2.5 contract multiplier if your team makes its contract exactly",
+  "category": "xmult",
+  "signature": "make(exact)|-|-|xmult",
+  "family": "make(exact)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2.5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract exactly",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-1",
+    "exposures": 8392,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 4.73,
+        "lo": 3.33,
+        "hi": 6.12,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 8392
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -0.18,
+        "lo": -1.57,
+        "hi": 1.22,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 8392
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 23.15,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 92168
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 23.59,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 11564
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 3.47,
+        "lo": 2.57,
+        "hi": 4.38,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 4.9,
+        "lo": 1.53,
+        "hi": 8.27,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "round-1",
+        "amount": 2.5
+      }
+    ],
+    "amountSlope": {
+      "value": 3.47,
+      "lo": 2.57,
+      "hi": 4.38
+    },
+    "skillGradient": {
+      "value": 4.9,
+      "lo": 1.53,
+      "hi": 8.27
+    },
+    "pairs": [
+      {
+        "with": "r1-low-cards-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-exact-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-raise",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-side-raise",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.0026440029029771127,
+      "seU": 0.012768432364809176,
+      "slopeU": 0.07553202872832981,
+      "slopeSeU": 0.011963329393103551,
+      "k": 1.326167952143665
+    }
+  },
+  "reports": [
+    "reports/round-1-focused.md",
+    "docs/sigils/rounds/round-1.md"
+  ]
+}

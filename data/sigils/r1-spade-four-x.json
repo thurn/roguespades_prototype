@@ -1,0 +1,215 @@
+{
+  "id": "r1-spade-four-x",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Spades",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "round-1",
+  "effect": {
+    "type": "xmult",
+    "amount": 2.5,
+    "on": {
+      "event": "win",
+      "card": {
+        "suit": "S"
+      },
+      "count": 4
+    }
+  },
+  "design": {
+    "decision": "Decide between drawing trumps and saving [♠]s to ruff, while pacing the hand to reach four [♠] wins.",
+    "opponent": "Shown on the fourth [♠] win; opponents can lead [♠] to exhaust the owner's trumps or overruff to cap the count.",
+    "rationale": "A clean Spades rare whose threshold is the idea (dominating trumps), replacing the event-times-contract rider with one trigger and one compounding payoff.",
+    "partners": [
+      "seed-spade-hold",
+      "ub-become-four-spades",
+      "ua-spade-raise",
+      "uc-trump-freely",
+      "ca-high-spade-hold"
+    ],
+    "cluster": null,
+    "draftText": "×2.5 contract multiplier when your team wins four tricks with [♠]",
+    "hooks": "none",
+    "target": "T8",
+    "replaces": [
+      "ra-spade-win-contract"
+    ]
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-1",
+      "note": "Designed (cluster None)."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: kept, replacing ra-spade-win-contract: lift +9.3 [+8.2, +10.5] pts, C 6 against lift +22.1 [+20.9, +23.3] pts, C 4; a clean Spades milestone in band, replacing an over-ceiling event-times-contract rider."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "×2.5 contract multiplier when your team wins four tricks with [♠]",
+  "category": "xmult",
+  "signature": "win(count=4)|suit=S|-|xmult",
+  "family": "win(count=4)|suit=*|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2.5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is S",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "milestone 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count reaches 4",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "milestone count",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-1",
+    "exposures": 10911,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 9.33,
+        "lo": 8.19,
+        "hi": 10.46,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 10911
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 3.81,
+        "lo": 2.67,
+        "hi": 4.94,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 10911
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 39.12,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 119418
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 39.71,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 103888
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 5.59,
+        "lo": 4.9,
+        "hi": 6.28,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 5.52,
+        "lo": 1.87,
+        "hi": 9.17,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "round-1",
+        "amount": 2.5
+      }
+    ],
+    "amountSlope": {
+      "value": 5.59,
+      "lo": 4.9,
+      "hi": 6.28
+    },
+    "skillGradient": {
+      "value": 5.52,
+      "lo": 1.87,
+      "hi": 9.17
+    },
+    "pairs": [
+      {
+        "with": "r1-low-cards-beat",
+        "synergy": 0.01
+      },
+      {
+        "with": "r1-exact-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-raise",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-side-raise",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.05742647826730652,
+      "seU": 0.010405886180301666,
+      "slopeU": 0.1216397900164986,
+      "slopeSeU": 0.00909458894017316,
+      "k": 1.326167952143665
+    }
+  },
+  "reports": [
+    "reports/round-1-focused.md",
+    "docs/sigils/rounds/round-1.md"
+  ]
+}

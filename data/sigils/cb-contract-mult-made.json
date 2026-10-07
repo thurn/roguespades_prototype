@@ -34,7 +34,7 @@
       "elegance": 4
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -44,6 +44,10 @@
     {
       "step": "draft-common",
       "note": "draft-common: kept: lift +6.9 [+6.0, +7.9] pts (n 11377), fire 62%, C 3; covers BidHigh, Generic; the amount is retuned toward +2 pts over the control."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: cut: lift +0.9 [-0.1, +2.0] pts; Same sentence as cb-contract-mult with a make condition few players will notice."
     }
   ],
   "name": null,
@@ -79,55 +83,55 @@
   },
   "lint": [],
   "estimates": {
-    "step": "draft-common",
-    "exposures": 11377,
+    "step": "round-1",
+    "exposures": 9535,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 6.91,
-        "lo": 5.96,
-        "hi": 7.86,
+        "value": 0.93,
+        "lo": -0.12,
+        "hi": 1.98,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 11377
+        "n": 9535
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 3.31,
-        "lo": 2.36,
-        "hi": 4.25,
+        "value": -0.36,
+        "lo": -1.41,
+        "hi": 0.68,
         "bandLo": null,
         "bandHi": null,
-        "n": 11377
+        "n": 9535
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 61.63,
+        "value": 59.01,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 124568
+        "n": 320183
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 59.13,
+        "value": 58.43,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 10667
+        "n": 211790
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 5.72,
-        "lo": 5.09,
-        "hi": 6.35,
+        "value": 2.99,
+        "lo": 2.27,
+        "hi": 3.71,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -135,9 +139,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 3.6,
-        "lo": -0.15,
-        "hi": 7.36,
+        "value": 1.29,
+        "lo": -1.66,
+        "hi": 4.24,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -150,47 +154,49 @@
       }
     ],
     "amountSlope": {
-      "value": 5.72,
-      "lo": 5.09,
-      "hi": 6.35
+      "value": 2.99,
+      "lo": 2.27,
+      "hi": 3.71
     },
     "skillGradient": {
-      "value": 3.6,
-      "lo": -0.15,
-      "hi": 7.36
+      "value": 1.29,
+      "lo": -1.66,
+      "hi": 4.24
     },
     "pairs": [
       {
-        "with": "e-lead-rank-2-xmult",
-        "synergy": 0.0
+        "with": "seed-raise",
+        "synergy": 0.75
       },
       {
-        "with": "cc-low-lead-mult",
-        "synergy": 0.0
+        "with": "ra-ace-win-x",
+        "synergy": 0.37
       },
       {
-        "with": "ca-spade-hold-eight",
-        "synergy": 0.0
+        "with": "ua-side-raise",
+        "synergy": 0.35
       },
       {
-        "with": "e-lead-suit-s-mult",
-        "synergy": 0.0
+        "with": "ra-team-untrumpable",
+        "synergy": 0.25
       },
       {
-        "with": "e-trump-xmult",
-        "synergy": 0.0
+        "with": "ua-spade-raise",
+        "synergy": 0.18
       }
     ],
     "raw": {
-      "liftU": 0.03394281327318671,
-      "seU": 0.005911960829689609,
-      "slopeU": 0.08475777488997248,
-      "slopeSeU": 0.00564983475734805,
-      "k": 1.9480063892139123
+      "liftU": -0.005717954366397623,
+      "seU": 0.010006624870755008,
+      "slopeU": 0.06784419675073765,
+      "slopeSeU": 0.009901964033596004,
+      "k": 1.2730595583306243
     }
   },
   "reports": [
     "reports/draft-common-tournament.md",
-    "docs/sigils/rounds/draft-common.md"
+    "docs/sigils/rounds/draft-common.md",
+    "reports/round-1-dashboard.md",
+    "docs/sigils/rounds/round-1.md"
   ]
 }

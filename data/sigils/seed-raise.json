@@ -70,28 +70,28 @@
   },
   "lint": [],
   "estimates": {
-    "step": "draft-rare",
-    "exposures": 11791,
+    "step": "round-1",
+    "exposures": 58929,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 5.47,
-        "lo": 4.19,
-        "hi": 6.75,
+        "value": 5.62,
+        "lo": 4.55,
+        "hi": 6.7,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 11791
+        "n": 58929
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 1.16,
-        "lo": -0.12,
-        "hi": 2.44,
+        "value": 1.22,
+        "lo": 0.15,
+        "hi": 2.3,
         "bandLo": null,
         "bandHi": null,
-        "n": 11791
+        "n": 58929
       },
       {
         "key": "slope",
@@ -106,10 +106,70 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 4.31,
-        "lo": 0.74,
-        "hi": 7.88,
+        "value": 4.4,
+        "lo": 1.69,
+        "hi": 7.11,
         "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standalone1",
+        "label": "Standalone: lift over a blank, bought at shop 1",
+        "value": 24.67,
+        "lo": 19.52,
+        "hi": 29.81,
+        "bandLo": 3.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standalone3",
+        "label": "Standalone: lift over a blank, bought at shop 3",
+        "value": 15.31,
+        "lo": 11.68,
+        "hi": 18.93,
+        "bandLo": 3.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standalone5",
+        "label": "Standalone: lift over a blank, bought at shop 5",
+        "value": 5.95,
+        "lo": 1.13,
+        "hi": 10.76,
+        "bandLo": 3.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standaloneVsControl1",
+        "label": "Standalone: lift over the flat control, bought at shop 1",
+        "value": -6.71,
+        "lo": -12.21,
+        "hi": -1.21,
+        "bandLo": -2.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standaloneVsControl3",
+        "label": "Standalone: lift over the flat control, bought at shop 3",
+        "value": -6.98,
+        "lo": -10.69,
+        "hi": -3.28,
+        "bandLo": -2.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standaloneVsControl5",
+        "label": "Standalone: lift over the flat control, bought at shop 5",
+        "value": -7.25,
+        "lo": -12.71,
+        "hi": -1.79,
+        "bandLo": -2.0,
         "bandHi": null,
         "n": null
       }
@@ -126,45 +186,47 @@
       "hi": 0.0
     },
     "skillGradient": {
-      "value": 4.31,
-      "lo": 0.74,
-      "hi": 7.88
+      "value": 4.4,
+      "lo": 1.69,
+      "hi": 7.11
     },
     "pairs": [
       {
-        "with": "rb-low-raise",
-        "synergy": 4.83
-      },
-      {
-        "with": "rc-junk-raise",
-        "synergy": 4.69
+        "with": "ra-ace-win-x",
+        "synergy": 7.79
       },
       {
         "with": "ua-side-raise",
-        "synergy": 3.1
+        "synergy": 7.27
       },
       {
-        "with": "ra-team-untrumpable",
-        "synergy": 1.82
+        "with": "ca-raise-one",
+        "synergy": 5.78
       },
       {
-        "with": "ra-ace-win-x",
-        "synergy": 1.59
+        "with": "ua-twos-become-aces",
+        "synergy": 5.11
+      },
+      {
+        "with": "ua-spade-raise",
+        "synergy": 4.62
       }
     ],
     "raw": {
-      "liftU": 0.017982215116077747,
-      "seU": 0.0120418190402991,
+      "liftU": 0.019209296986922725,
+      "seU": 0.010265903060122582,
       "slopeU": 0.0,
       "slopeSeU": 0.0,
-      "k": 1.2927154020388367
+      "k": 1.2730595583306243
     }
   },
   "reports": [
     "reports/phase-0-pilot.md",
     "reports/phase-0-pilot-dashboard.md",
     "reports/draft-rare-tournament.md",
-    "docs/sigils/rounds/draft-rare.md"
+    "docs/sigils/rounds/draft-rare.md",
+    "reports/round-1-dashboard.md",
+    "docs/sigils/rounds/round-1.md"
   ],
   "gddEffect": {
     "type": "raise",

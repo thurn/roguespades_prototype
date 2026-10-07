@@ -85,55 +85,55 @@
   },
   "lint": [],
   "estimates": {
-    "step": "draft-uncommon",
-    "exposures": 6877,
+    "step": "round-1",
+    "exposures": 2327,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": -4.19,
-        "lo": -5.66,
-        "hi": -2.73,
+        "value": 2.51,
+        "lo": 0.69,
+        "hi": 4.32,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 6877
+        "n": 2327
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -4.97,
-        "lo": -6.43,
-        "hi": -3.51,
+        "value": 1.51,
+        "lo": -0.31,
+        "hi": 3.32,
         "bandLo": null,
         "bandHi": null,
-        "n": 6877
+        "n": 2327
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 100.0,
+        "value": 99.99,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 76076
+        "n": 53806
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 100.0,
+        "value": 99.98,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 15359
+        "n": 10473
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 5.4,
-        "lo": 4.53,
-        "hi": 6.26,
+        "value": 4.96,
+        "lo": 3.37,
+        "hi": 6.55,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -141,9 +141,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 0.78,
-        "lo": -3.52,
-        "hi": 5.07,
+        "value": 1.0,
+        "lo": -2.13,
+        "hi": 4.13,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -153,50 +153,56 @@
       {
         "step": "draft-uncommon",
         "amount": 2
+      },
+      {
+        "step": "round-1",
+        "amount": 3
       }
     ],
     "amountSlope": {
-      "value": 5.4,
-      "lo": 4.53,
-      "hi": 6.26
+      "value": 4.96,
+      "lo": 3.37,
+      "hi": 6.55
     },
     "skillGradient": {
-      "value": 0.78,
-      "lo": -3.52,
-      "hi": 5.07
+      "value": 1.0,
+      "lo": -2.13,
+      "hi": 4.13
     },
     "pairs": [
       {
-        "with": "uc-low-discard",
-        "synergy": 0.0
+        "with": "rc-twos-always-win",
+        "synergy": 1.24
       },
       {
-        "with": "ua-aces-untrumpable",
-        "synergy": 0.0
+        "with": "rc-low-win-x",
+        "synergy": 0.84
       },
       {
-        "with": "ub-honor-win-mult",
-        "synergy": 0.0
+        "with": "uc-twos-beat",
+        "synergy": 0.57
       },
       {
-        "with": "ub-first-trick-contract-points",
-        "synergy": 0.0
+        "with": "rc-low-lead-x",
+        "synergy": 0.23
       },
       {
-        "with": "ua-ace-win-contract",
-        "synergy": 0.0
+        "with": "seed-two-win",
+        "synergy": 0.21
       }
     ],
     "raw": {
-      "liftU": -0.05365767970486268,
-      "seU": 0.009607119284087234,
-      "slopeU": 0.08403642519283698,
-      "slopeSeU": 0.00822807941995129,
-      "k": 1.8525028942895565
+      "liftU": 0.02365346874118801,
+      "seU": 0.01735554955767801,
+      "slopeU": 0.1124462746221934,
+      "slopeSeU": 0.02185545136624829,
+      "k": 1.2730595583306243
     }
   },
   "reports": [
     "reports/draft-uncommon-tournament.md",
-    "docs/sigils/rounds/draft-uncommon.md"
+    "docs/sigils/rounds/draft-uncommon.md",
+    "reports/round-1-dashboard.md",
+    "docs/sigils/rounds/round-1.md"
   ]
 }

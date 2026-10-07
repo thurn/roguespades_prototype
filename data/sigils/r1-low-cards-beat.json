@@ -1,0 +1,185 @@
+{
+  "id": "r1-low-cards-beat",
+  "rarity": "legendary",
+  "role": "enabler",
+  "archetypes": [
+    "LowCards",
+    "Rainbow",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "round-1",
+  "effect": {
+    "type": "beats",
+    "card": {
+      "ranks": [
+        "2",
+        "6"
+      ]
+    }
+  },
+  "design": {
+    "decision": "Low cards become the team's top cards in every suit, so the owner bids on [2]s through [6]s, keeps them as winners, and sheds honors instead.",
+    "opponent": "Answerable: once it is revealed, opponents void a suit and trump the low winners, lead [♠] to pull low trumps early, or let the owner's partner overtake their own low card.",
+    "rationale": "Keeps the legendary rule change and the Low Cards identity but drops the over-trump clause, so trumping and voiding are a real counter; it uses the standard [2]-through-[6] range, and the range itself is the power knob (it subsumes uc-twos-beat, so they should not stack in offers).",
+    "partners": [
+      "uc-low-win-mult",
+      "rc-low-win-x",
+      "cc-low-narrow-win",
+      "uc-low-lead-mult",
+      "uc-low-discard",
+      "uc-twos-beat"
+    ],
+    "cluster": null,
+    "draftText": "Your team's [2]s through [6]s beat every other card of their suit",
+    "hooks": "none",
+    "target": "T1",
+    "replaces": [
+      "rc-twos-always-win"
+    ]
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-1",
+      "note": "Designed (cluster None)."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: not kept: lift +68.2 [+67.0, +69.3] pts, C 5; far over the power ceiling."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 150,
+  "text": "Your team's [2]s through [6]s beat every other card of their suit",
+  "category": "enabler",
+  "signature": "play|ranks=2-6||beats",
+  "family": "play|ranks=2-6||beats",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team played it",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 6",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-6",
+        "cost": 1
+      },
+      {
+        "burden": "computed selector",
+        "detail": "ranks above the [A] of its suit",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-1",
+    "exposures": 15251,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 68.17,
+        "lo": 67.04,
+        "hi": 69.3,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 15251
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 37.78,
+        "lo": 36.65,
+        "hi": 38.91,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 15251
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 30.38,
+        "lo": 26.41,
+        "hi": 34.35,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": 30.38,
+      "lo": 26.41,
+      "hi": 34.35
+    },
+    "pairs": [
+      {
+        "with": "r1-exact-points",
+        "synergy": 0.02
+      },
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.02
+      },
+      {
+        "with": "seed-raise",
+        "synergy": 0.02
+      },
+      {
+        "with": "ua-side-raise",
+        "synergy": 0.01
+      },
+      {
+        "with": "r1-exact-grow-mult",
+        "synergy": 0.01
+      }
+    ],
+    "raw": {
+      "liftU": 0.5698165376845373,
+      "seU": 0.010367011266437572,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.326167952143665
+    }
+  },
+  "reports": [
+    "reports/round-1-focused.md",
+    "docs/sigils/rounds/round-1.md"
+  ]
+}

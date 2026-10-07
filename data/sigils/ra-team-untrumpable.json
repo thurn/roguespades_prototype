@@ -32,8 +32,8 @@
       "elegance": 5
     }
   },
-  "status": "kept",
-  "replacedBy": null,
+  "status": "replaced",
+  "replacedBy": "r1-faces-untrumpable",
   "history": [
     {
       "step": "draft-rare",
@@ -42,6 +42,10 @@
     {
       "step": "draft-rare",
       "note": "draft-rare: kept: lift +13.3 [+12.0, +14.5] pts (n 13150), fire 0%, C 2; beats the same-rarity control."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: replaced by r1-faces-untrumpable (lift +10.0 [+8.9, +11.2] pts, C 5 against lift +29.5 [+28.5, +30.6] pts, C 2): the [Q]–[A] shield is inside the legendary band while the whole-team version is far over the ceiling."
     }
   ],
   "name": null,
@@ -72,28 +76,28 @@
   },
   "lint": [],
   "estimates": {
-    "step": "draft-rare",
-    "exposures": 13150,
+    "step": "round-1",
+    "exposures": 29893,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 13.29,
-        "lo": 12.04,
-        "hi": 14.54,
+        "value": 17.62,
+        "lo": 16.63,
+        "hi": 18.62,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 13150
+        "n": 29893
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 7.63,
-        "lo": 6.39,
-        "hi": 8.88,
+        "value": 11.42,
+        "lo": 10.43,
+        "hi": 12.41,
         "bandLo": null,
         "bandHi": null,
-        "n": 13150
+        "n": 29893
       },
       {
         "key": "slope",
@@ -108,10 +112,70 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 5.66,
-        "lo": 2.65,
-        "hi": 8.66,
+        "value": 6.21,
+        "lo": 3.39,
+        "hi": 9.02,
         "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standalone1",
+        "label": "Standalone: lift over a blank, bought at shop 1",
+        "value": 38.12,
+        "lo": 32.9,
+        "hi": 43.34,
+        "bandLo": 3.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standalone3",
+        "label": "Standalone: lift over a blank, bought at shop 3",
+        "value": 26.59,
+        "lo": 22.86,
+        "hi": 30.33,
+        "bandLo": 3.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standalone5",
+        "label": "Standalone: lift over a blank, bought at shop 5",
+        "value": 15.07,
+        "lo": 9.53,
+        "hi": 20.6,
+        "bandLo": 3.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standaloneVsControl1",
+        "label": "Standalone: lift over the flat control, bought at shop 1",
+        "value": -9.8,
+        "lo": -15.28,
+        "hi": -4.32,
+        "bandLo": -2.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standaloneVsControl3",
+        "label": "Standalone: lift over the flat control, bought at shop 3",
+        "value": -7.29,
+        "lo": -10.91,
+        "hi": -3.67,
+        "bandLo": -2.0,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "standaloneVsControl5",
+        "label": "Standalone: lift over the flat control, bought at shop 5",
+        "value": -4.78,
+        "lo": -10.46,
+        "hi": 0.9,
+        "bandLo": -2.0,
         "bandHi": null,
         "n": null
       }
@@ -123,42 +187,44 @@
       "hi": 0.0
     },
     "skillGradient": {
-      "value": 5.66,
-      "lo": 2.65,
-      "hi": 8.66
+      "value": 6.21,
+      "lo": 3.39,
+      "hi": 9.02
     },
     "pairs": [
       {
-        "with": "seed-raise",
-        "synergy": 1.82
-      },
-      {
-        "with": "rb-low-raise",
-        "synergy": 1.55
-      },
-      {
-        "with": "rc-junk-raise",
-        "synergy": 1.51
+        "with": "rc-low-win-contract-points",
+        "synergy": 2.52
       },
       {
         "with": "ua-side-raise",
-        "synergy": 1.0
+        "synergy": 2.15
       },
       {
-        "with": "ra-ace-win-x",
-        "synergy": 0.51
+        "with": "uc-twos-beat",
+        "synergy": 2.0
+      },
+      {
+        "with": "ra-ace-hold-x",
+        "synergy": 1.58
+      },
+      {
+        "with": "seed-raise",
+        "synergy": 1.54
       }
     ],
     "raw": {
-      "liftU": 0.11811653791775202,
-      "seU": 0.011719001260850011,
+      "liftU": 0.17939776807588095,
+      "seU": 0.009468509042537232,
       "slopeU": 0.0,
       "slopeSeU": 0.0,
-      "k": 1.2927154020388367
+      "k": 1.2730595583306243
     }
   },
   "reports": [
     "reports/draft-rare-tournament.md",
-    "docs/sigils/rounds/draft-rare.md"
+    "docs/sigils/rounds/draft-rare.md",
+    "reports/round-1-dashboard.md",
+    "docs/sigils/rounds/round-1.md"
   ]
 }

@@ -1,0 +1,200 @@
+{
+  "id": "r1-exact-growth",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Exact"
+  ],
+  "source": "designed",
+  "createdIn": "round-1",
+  "effect": {
+    "type": "grow",
+    "kind": "xmult",
+    "step": 0.5,
+    "on": {
+      "event": "make",
+      "exact": true
+    }
+  },
+  "design": {
+    "decision": "Each exact contract compounds for the rest of the run, so the owner bids conservatively on uncertain hands and steers late tricks away to stop on the contract.",
+    "opponent": "Visible and growing; opponents can feed the owner unwanted tricks late in a round to deny the growth.",
+    "rationale": "Gives Exact a run-long plan at rare: the payoff for committing to exact bidding builds across rounds, with no contract scaling.",
+    "partners": [
+      "seed-exact-mult",
+      "r1-exact-xmult",
+      "ub-bid5-xmult",
+      "uc-low-discard",
+      "rb-opp-win-mult"
+    ],
+    "cluster": null,
+    "draftText": "This sigil gains ×0.5 contract multiplier every time your team makes its contract exactly (currently ×1)",
+    "hooks": "none",
+    "target": "T4",
+    "replaces": []
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-1",
+      "note": "Designed (cluster None)."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: not kept: lift -7.9 [-9.4, -6.5] pts, C 4; well below the control; Exact growth has failed at every rarity."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "This sigil gains ×0.5 contract multiplier every time your team makes its contract exactly (currently ×1)",
+  "category": "xmult",
+  "signature": "make(exact)|-|growth|xmult",
+  "family": "make(exact)|-|growth|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "growth step 0.5",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "currently display",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "growth counter carried between rounds",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract exactly",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-1",
+    "exposures": 8264,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -7.94,
+        "lo": -9.42,
+        "hi": -6.46,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 8264
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -8.46,
+        "lo": -9.94,
+        "hi": -6.98,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 8264
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 24.59,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 91002
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 23.52,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 11039
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": -1.56,
+        "lo": -2.39,
+        "hi": -0.73,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 0.52,
+        "lo": -2.33,
+        "hi": 3.37,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "round-1",
+        "amount": 0.5
+      }
+    ],
+    "amountSlope": {
+      "value": -1.56,
+      "lo": -2.39,
+      "hi": -0.73
+    },
+    "skillGradient": {
+      "value": 0.52,
+      "lo": -2.33,
+      "hi": 3.37
+    },
+    "pairs": [
+      {
+        "with": "r1-low-cards-beat",
+        "synergy": 0.01
+      },
+      {
+        "with": "r1-exact-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-raise",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-side-raise",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.12759485714163982,
+      "seU": 0.013598197262470942,
+      "slopeU": -0.03391411217957194,
+      "slopeSeU": 0.01094540515075165,
+      "k": 1.326167952143665
+    }
+  },
+  "reports": [
+    "reports/round-1-focused.md",
+    "docs/sigils/rounds/round-1.md"
+  ]
+}

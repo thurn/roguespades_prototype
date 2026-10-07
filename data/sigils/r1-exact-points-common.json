@@ -1,0 +1,199 @@
+{
+  "id": "r1-exact-points-common",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Exact"
+  ],
+  "source": "designed",
+  "createdIn": "round-1",
+  "effect": {
+    "type": "points",
+    "amount": 150,
+    "on": {
+      "event": "make",
+      "exact": true
+    }
+  },
+  "design": {
+    "decision": "Shade bids toward the hand's true trick count and avoid overtricks.",
+    "opponent": "Revealed at scoring; opponents can feed the owner late tricks to break the exact count.",
+    "rationale": "The plain-points alternative for the common Exact rung; take it only if T6 goes to a non-points shape, so the ladder does not repeat one sentence.",
+    "partners": [
+      "seed-exact-mult",
+      "cc-small-contract-mult",
+      "uc-low-discard"
+    ],
+    "cluster": null,
+    "draftText": "+150 contract points if your team makes its contract exactly",
+    "hooks": "none",
+    "target": "T5",
+    "replaces": [
+      "cb-exact-trick-mult"
+    ]
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-1",
+      "note": "Designed (cluster None)."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: not kept: lift -0.7 [-2.1, +0.7] pts, C 2; repeats the uncommon sentence one rarity down; seed-exact-mult holds the common Exact slot."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+150 contract points if your team makes its contract exactly",
+  "category": "points",
+  "signature": "make(exact)|-|-|points",
+  "family": "make(exact)|-|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 150",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract exactly",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-1",
+    "exposures": 8294,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -0.73,
+        "lo": -2.11,
+        "hi": 0.66,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 8294
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -1.68,
+        "lo": -3.06,
+        "hi": -0.3,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 8294
+      },
+      {
+        "key": "decisive",
+        "label": "Decisive share of holder's wins (%)",
+        "value": 15.23,
+        "lo": 14.55,
+        "hi": 15.94,
+        "bandLo": 5.0,
+        "bandHi": null,
+        "n": 7294
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 24.68,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 91564
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 24.54,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 10834
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 1.88,
+        "lo": 1.05,
+        "hi": 2.7,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 0.95,
+        "lo": -2.29,
+        "hi": 4.19,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "round-1",
+        "amount": 150
+      }
+    ],
+    "amountSlope": {
+      "value": 1.88,
+      "lo": 1.05,
+      "hi": 2.7
+    },
+    "skillGradient": {
+      "value": 0.95,
+      "lo": -2.29,
+      "hi": 4.19
+    },
+    "pairs": [
+      {
+        "with": "r1-low-cards-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-honors-untrumpable",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-exact-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-exact-xmult",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-raise",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.02533981438622349,
+      "seU": 0.01269326205994813,
+      "slopeU": 0.04080319356642496,
+      "slopeSeU": 0.010866630209305369,
+      "k": 1.326167952143665
+    }
+  },
+  "reports": [
+    "reports/round-1-focused.md",
+    "docs/sigils/rounds/round-1.md"
+  ]
+}

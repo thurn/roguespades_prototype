@@ -1,0 +1,164 @@
+{
+  "id": "r1-free-discards",
+  "rarity": "legendary",
+  "role": "enabler",
+  "archetypes": [
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "round-1",
+  "effect": {
+    "type": "anySuit",
+    "card": {
+      "notSuit": "S"
+    }
+  },
+  "design": {
+    "decision": "The team decides every trick whether to follow or discard, so it can duck to protect a nil or an exact contract, keep honors, or empty a suit early to trump it later.",
+    "opponent": "Opponents can't force the owner to overtake or to spend honors, but the owner still can't trump at will, so long [♠]s keep their value against it.",
+    "rationale": "A rule-changing legendary that loosens following suit for every build (Nil, Exact, Suits voids, Spades ruffs) without favoring any one, unlike a flat multiplier.",
+    "partners": [
+      "uc-trump-freely",
+      "uc-low-discard",
+      "rb-honors-free",
+      "seed-exact-mult",
+      "seed-nil-points"
+    ],
+    "cluster": null,
+    "draftText": "Your team can play cards other than [♠] even when it can follow suit",
+    "hooks": "none",
+    "target": "T3",
+    "replaces": [
+      "seed-flat-x2"
+    ]
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-1",
+      "note": "Designed (cluster None)."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: kept, replacing seed-flat-x2: lift +1.8 [+0.8, +2.8] pts, C 2 against lift +18.9 [+17.8, +20.1] pts, C 1; a rule-changing legendary instead of a flat ×multiplier that retuning had pushed over the ceiling."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 150,
+  "text": "Your team can play cards other than [♠] even when it can follow suit",
+  "category": "enabler",
+  "signature": "play|cards:notSuit=S|-|anySuit",
+  "family": "play|cards:notSuit=S|-|anySuit",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team could follow suit",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is not S",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-1",
+    "exposures": 8561,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 1.79,
+        "lo": 0.77,
+        "hi": 2.8,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 8561
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -0.11,
+        "lo": -1.13,
+        "hi": 0.91,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 8561
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 1.9,
+        "lo": -2.02,
+        "hi": 5.81,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": 1.9,
+      "lo": -2.02,
+      "hi": 5.81
+    },
+    "pairs": [
+      {
+        "with": "r1-low-cards-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-exact-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-twos-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-raise",
+        "synergy": 0.0
+      },
+      {
+        "with": "ua-side-raise",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.0016693097486333158,
+      "seU": 0.009325642746405518,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.326167952143665
+    }
+  },
+  "reports": [
+    "reports/round-1-focused.md",
+    "docs/sigils/rounds/round-1.md"
+  ]
+}

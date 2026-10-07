@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 1,
+    "amount": 2,
     "on": {
       "event": "win",
       "consecutive": true
@@ -51,6 +51,10 @@
     {
       "step": "draft-common",
       "note": "draft-common: amount 2 -> 1 by retune; lift +12.2 pts against target +2, slope +8.4 pts per doubling."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: amount 1 -> 2 by retune; lift -4.8 pts against target +2, slope +2.1 pts per doubling."
     }
   ],
   "name": null,
@@ -58,7 +62,7 @@
   "iconFamily": null,
   "iconWord": null,
   "price": 50,
-  "text": "+1 contract multiplier when your team wins consecutive tricks",
+  "text": "+2 contract multiplier when your team wins consecutive tricks",
   "category": "mult",
   "signature": "win(consecutive)|-|-|mult",
   "family": "win(consecutive)|-|-|mult",
@@ -67,7 +71,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 1",
+        "detail": "payout 2",
         "cost": 1
       },
       {
@@ -90,55 +94,55 @@
     "enumerated"
   ],
   "estimates": {
-    "step": "draft-common",
-    "exposures": 8143,
+    "step": "round-1",
+    "exposures": 3145,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 12.24,
-        "lo": 10.98,
-        "hi": 13.51,
+        "value": -4.79,
+        "lo": -6.09,
+        "hi": -3.49,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 8143
+        "n": 3145
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 7.65,
-        "lo": 6.38,
-        "hi": 8.91,
+        "value": -1.98,
+        "lo": -3.28,
+        "hi": -0.68,
         "bandLo": null,
         "bandHi": null,
-        "n": 8143
+        "n": 3145
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 89.53,
+        "value": 83.98,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 89356
+        "n": 313687
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 89.35,
+        "value": 84.53,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 5410
+        "n": 122691
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 8.35,
-        "lo": 7.53,
-        "hi": 9.18,
+        "value": 2.06,
+        "lo": 0.8,
+        "hi": 3.32,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -146,9 +150,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 4.6,
-        "lo": 0.5,
-        "hi": 8.7,
+        "value": -2.81,
+        "lo": -5.49,
+        "hi": -0.14,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -158,50 +162,56 @@
       {
         "step": "draft-common",
         "amount": 2
+      },
+      {
+        "step": "round-1",
+        "amount": 1
       }
     ],
     "amountSlope": {
-      "value": 8.35,
-      "lo": 7.53,
-      "hi": 9.18
+      "value": 2.06,
+      "lo": 0.8,
+      "hi": 3.32
     },
     "skillGradient": {
-      "value": 4.6,
-      "lo": 0.5,
-      "hi": 8.7
+      "value": -2.81,
+      "lo": -5.49,
+      "hi": -0.14
     },
     "pairs": [
       {
-        "with": "e-win-side-mult",
-        "synergy": 0.0
+        "with": "seed-raise",
+        "synergy": 0.87
       },
       {
-        "with": "cc-nil-made-mult",
-        "synergy": 0.0
+        "with": "ua-side-raise",
+        "synergy": 0.36
       },
       {
-        "with": "e-win-suit-s-mult",
-        "synergy": 0.0
+        "with": "ra-ace-win-x",
+        "synergy": 0.33
       },
       {
-        "with": "seed-nil-bid-mult",
-        "synergy": 0.0
+        "with": "ca-raise-one",
+        "synergy": 0.29
       },
       {
-        "with": "e-win-rank-k-mult",
-        "synergy": 0.0
+        "with": "ua-twos-become-aces",
+        "synergy": 0.25
       }
     ],
     "raw": {
-      "liftU": 0.0785172609789356,
-      "seU": 0.007892892092847598,
-      "slopeU": 0.123702561529921,
-      "slopeSeU": 0.007417182974487111,
-      "k": 1.9480063892139123
+      "liftU": -0.031048794653860484,
+      "seU": 0.01241314661088093,
+      "slopeU": 0.046650385765955614,
+      "slopeSeU": 0.01740365337574376,
+      "k": 1.2730595583306243
     }
   },
   "reports": [
     "reports/draft-common-tournament.md",
-    "docs/sigils/rounds/draft-common.md"
+    "docs/sigils/rounds/draft-common.md",
+    "reports/round-1-dashboard.md",
+    "docs/sigils/rounds/round-1.md"
   ]
 }

@@ -36,6 +36,14 @@
     {
       "step": "draft-uncommon",
       "note": "draft-uncommon: amount 10 -> 20 by retune; lift -7.1 pts against target +3, slope +4.6 pts per doubling."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: amount 20 -> 15 by global scale x0.84 toward the par curve."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: amount 15 -> 20 by retune; lift +1.2 pts against target +3, slope +3.3 pts per doubling."
     }
   ],
   "name": null,
@@ -62,28 +70,28 @@
   },
   "lint": [],
   "estimates": {
-    "step": "draft-uncommon",
-    "exposures": 6365,
+    "step": "round-1",
+    "exposures": 1196,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": -7.08,
-        "lo": -8.02,
-        "hi": -6.15,
+        "value": 1.25,
+        "lo": -0.31,
+        "hi": 2.81,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 6365
+        "n": 1196
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -4.76,
-        "lo": -5.69,
-        "hi": -3.83,
+        "value": 0.83,
+        "lo": -0.73,
+        "hi": 2.4,
         "bandLo": null,
         "bandHi": null,
-        "n": 6365
+        "n": 1196
       },
       {
         "key": "fire",
@@ -93,7 +101,7 @@
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 69976
+        "n": 40164
       },
       {
         "key": "fireCommitted",
@@ -108,9 +116,9 @@
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 4.58,
-        "lo": 3.61,
-        "hi": 5.55,
+        "value": 3.34,
+        "lo": 1.35,
+        "hi": 5.32,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -118,9 +126,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": -2.32,
-        "lo": -5.18,
-        "hi": 0.54,
+        "value": 0.41,
+        "lo": -2.39,
+        "hi": 3.22,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -130,53 +138,59 @@
       {
         "step": "phase-0",
         "amount": 10
+      },
+      {
+        "step": "round-1",
+        "amount": 15
       }
     ],
     "amountSlope": {
-      "value": 4.58,
-      "lo": 3.61,
-      "hi": 5.55
+      "value": 3.34,
+      "lo": 1.35,
+      "hi": 5.32
     },
     "skillGradient": {
-      "value": -2.32,
-      "lo": -5.18,
-      "hi": 0.54
+      "value": 0.41,
+      "lo": -2.39,
+      "hi": 3.22
     },
     "pairs": [
       {
-        "with": "uc-low-discard",
-        "synergy": 0.0
+        "with": "rc-twos-always-win",
+        "synergy": 0.62
       },
       {
-        "with": "ub-first-trick-contract-points",
-        "synergy": 0.0
+        "with": "rc-low-win-x",
+        "synergy": 0.13
       },
       {
-        "with": "uc-trump-freely",
-        "synergy": 0.0
+        "with": "rc-low-win-contract-points",
+        "synergy": 0.09
       },
       {
-        "with": "ub-honor-win-mult",
-        "synergy": 0.0
+        "with": "seed-two-win",
+        "synergy": 0.08
       },
       {
-        "with": "ua-ace-win-contract",
-        "synergy": 0.0
+        "with": "rc-low-lead-x",
+        "synergy": 0.06
       }
     ],
     "raw": {
-      "liftU": -0.05140537789705987,
-      "seU": 0.006115223717463483,
-      "slopeU": 0.07139126635895228,
-      "slopeSeU": 0.00918567463814634,
-      "k": 1.8525028942895565
+      "liftU": 0.013111225249318688,
+      "seU": 0.014909128569967822,
+      "slopeU": 0.07564928869489279,
+      "slopeSeU": 0.027371249186726475,
+      "k": 1.2730595583306243
     }
   },
   "reports": [
     "reports/phase-0-pilot.md",
     "reports/phase-0-pilot-dashboard.md",
     "reports/draft-uncommon-tournament.md",
-    "docs/sigils/rounds/draft-uncommon.md"
+    "docs/sigils/rounds/draft-uncommon.md",
+    "reports/round-1-dashboard.md",
+    "docs/sigils/rounds/round-1.md"
   ],
   "gddEffect": {
     "type": "mult",

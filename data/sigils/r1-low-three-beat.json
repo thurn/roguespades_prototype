@@ -1,0 +1,184 @@
+{
+  "id": "r1-low-three-beat",
+  "rarity": "legendary",
+  "role": "enabler",
+  "archetypes": [
+    "LowCards",
+    "Rainbow",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "round-1",
+  "effect": {
+    "type": "beats",
+    "card": {
+      "ranks": [
+        "2",
+        "4"
+      ]
+    }
+  },
+  "design": {
+    "decision": "Bid the team's [2]s through [4]s as sure suit winners and plan leads so they are not trumped.",
+    "opponent": "Opponents trump the promoted low cards once void, and lead [♠] to strip the low trumps.",
+    "rationale": "A lower-power fallback for T1 with the same counterable in-suit shape, in case [2] through [6] measures over the ceiling (uc-twos-beat with [2]s alone measures +14.6 at uncommon).",
+    "partners": [
+      "cc-two-win-mult",
+      "seed-two-win",
+      "uc-low-win-mult",
+      "rc-low-win-x",
+      "uc-low-discard"
+    ],
+    "cluster": null,
+    "draftText": "Your team's [2]s through [4]s beat every other card of their suit",
+    "hooks": "none",
+    "target": "T1",
+    "replaces": [
+      "rc-twos-always-win"
+    ]
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-1",
+      "note": "Designed (cluster None)."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: not kept: lift +49.7 [+48.5, +50.8] pts, C 5; far over the power ceiling (the same effect as the cut rc-low-beats)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 150,
+  "text": "Your team's [2]s through [4]s beat every other card of their suit",
+  "category": "enabler",
+  "signature": "play|ranks=2-4||beats",
+  "family": "play|ranks=2-4||beats",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team played it",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-4",
+        "cost": 1
+      },
+      {
+        "burden": "computed selector",
+        "detail": "ranks above the [A] of its suit",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-1",
+    "exposures": 15204,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 49.65,
+        "lo": 48.54,
+        "hi": 50.77,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 15204
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 26.3,
+        "lo": 25.19,
+        "hi": 27.42,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 15204
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 23.35,
+        "lo": 18.6,
+        "hi": 28.1,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": 23.35,
+      "lo": 18.6,
+      "hi": 28.1
+    },
+    "pairs": [
+      {
+        "with": "r1-middle-free",
+        "synergy": 0.04
+      },
+      {
+        "with": "r1-honors-untrumpable",
+        "synergy": 0.03
+      },
+      {
+        "with": "uc-low-hold-mult",
+        "synergy": 0.02
+      },
+      {
+        "with": "r1-lead-choice",
+        "synergy": 0.02
+      },
+      {
+        "with": "r1-any-suit-last-three",
+        "synergy": 0.02
+      }
+    ],
+    "raw": {
+      "liftU": 0.39665300657714825,
+      "seU": 0.010212733698852767,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.326167952143665
+    }
+  },
+  "reports": [
+    "reports/round-1-focused.md",
+    "docs/sigils/rounds/round-1.md"
+  ]
+}

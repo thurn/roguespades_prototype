@@ -1,0 +1,163 @@
+{
+  "id": "r1-any-suit-last-three",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Nil",
+    "Exact",
+    "Streaks",
+    "Spades"
+  ],
+  "source": "designed",
+  "createdIn": "round-1",
+  "effect": {
+    "type": "anySuit",
+    "last": 3
+  },
+  "design": {
+    "decision": "Plan the end of the hand: keep trumps to cash on the last tricks, or save a dangerous card to discard once following suit no longer binds.",
+    "opponent": "Shows on the first late off-suit play; opponents can draw trumps before the last three tricks.",
+    "rationale": "Gives play freedom on the last tricks at uncommon (the GDD placed it at rare, where it measured −14.3 against a stronger control), with uses for Nil, Exact, and last-trick payoffs.",
+    "partners": [
+      "seed-last-trick",
+      "e-last-xmult",
+      "ca-spade-last-trick",
+      "seed-exact-mult",
+      "seed-nil-points"
+    ],
+    "cluster": null,
+    "draftText": "Your team can play any suit on the last three tricks",
+    "hooks": "none",
+    "target": "T11",
+    "replaces": []
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-1",
+      "note": "Designed (cluster None)."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: not kept: lift -6.4 [-7.5, -5.4] pts, C 2; below the control, as at rare."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Your team can play any suit on the last three tricks",
+  "category": "enabler",
+  "signature": "play|last=3|-|anySuit",
+  "family": "play|last=3|-|anySuit",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "window 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "trick is among the last tricks",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-1",
+    "exposures": 19456,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -6.45,
+        "lo": -7.53,
+        "hi": -5.36,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 19456
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -6.0,
+        "lo": -7.08,
+        "hi": -4.91,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 19456
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -0.45,
+        "lo": -4.21,
+        "hi": 3.3,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": -0.45,
+      "lo": -4.21,
+      "hi": 3.3
+    },
+    "pairs": [
+      {
+        "with": "r1-low-three-beat",
+        "synergy": 0.02
+      },
+      {
+        "with": "r1-middle-free",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-honors-untrumpable",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-low-hold-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-lead-choice",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.09044964969914215,
+      "seU": 0.009945191435696166,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.326167952143665
+    }
+  },
+  "reports": [
+    "reports/round-1-focused.md",
+    "docs/sigils/rounds/round-1.md"
+  ]
+}

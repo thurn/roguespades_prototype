@@ -1,0 +1,178 @@
+{
+  "id": "r1-middle-free",
+  "rarity": "rare",
+  "role": "enabler",
+  "archetypes": [
+    "Nil",
+    "Exact",
+    "Spades",
+    "Suits"
+  ],
+  "source": "designed",
+  "createdIn": "round-1",
+  "effect": {
+    "type": "anySuit",
+    "card": {
+      "ranks": [
+        "6",
+        "9"
+      ]
+    }
+  },
+  "design": {
+    "decision": "On each trick, choose to dump a middle card instead of following, which builds voids for ruffing, protects a nil, or ruffs with a middle [♠] early.",
+    "opponent": "Shows on the first off-suit middle card; opponents can't force the owner's honors out as easily.",
+    "rationale": "A fallback for T11 from the freedom family that already measures well (uc-low-discard +9.0, uc-trump-freely +8.0), covering the middle ranks those two miss.",
+    "partners": [
+      "uc-trump-freely",
+      "uc-low-discard",
+      "rb-honors-free",
+      "seed-trump-points",
+      "seed-nil-points"
+    ],
+    "cluster": null,
+    "draftText": "Your team can play [6]s through [9]s even when it can follow suit",
+    "hooks": "none",
+    "target": "T11",
+    "replaces": []
+  },
+  "status": "kept",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-1",
+      "note": "Designed (cluster None)."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: kept (added) at rare: lift +17.0 [+15.9, +18.2] pts, C 4 at uncommon is over the ceiling and a rule change has no amount to retune, so it moves to rare (the rare control is worth about 7 pts more); critic concern: a third rank band in the play-freedom family."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 100,
+  "text": "Your team can play [6]s through [9]s even when it can follow suit",
+  "category": "enabler",
+  "signature": "play|cards:ranks=6-9|-|anySuit",
+  "family": "play|cards:ranks=6-9|-|anySuit",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team could follow suit",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 6",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 9",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 6-9",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-1",
+    "exposures": 19219,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 17.04,
+        "lo": 15.86,
+        "hi": 18.22,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 19219
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 6.55,
+        "lo": 5.37,
+        "hi": 7.73,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 19219
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 10.49,
+        "lo": 7.29,
+        "hi": 13.7,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": 10.49,
+      "lo": 7.29,
+      "hi": 13.7
+    },
+    "pairs": [
+      {
+        "with": "r1-low-three-beat",
+        "synergy": 0.04
+      },
+      {
+        "with": "uc-low-hold-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-honors-untrumpable",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-any-suit-last-three",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-lead-choice",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.09874041491276386,
+      "seU": 0.010836765403143723,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.326167952143665
+    }
+  },
+  "reports": [
+    "reports/round-1-focused.md",
+    "docs/sigils/rounds/round-1.md"
+  ]
+}

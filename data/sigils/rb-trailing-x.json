@@ -74,5 +74,120 @@
     "C": 2,
     "S": 0.3333333333333333
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "round-1",
+    "exposures": 3873,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -6.19,
+        "lo": -7.23,
+        "hi": -5.15,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 3873
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -4.88,
+        "lo": -5.93,
+        "hi": -3.84,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 3873
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 50.47,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 42574
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": null,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 0
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 1.74,
+        "lo": 0.65,
+        "hi": 2.83,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": -1.3,
+        "lo": -3.72,
+        "hi": 1.11,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "round-1",
+        "amount": 2
+      }
+    ],
+    "amountSlope": {
+      "value": 1.74,
+      "lo": 0.65,
+      "hi": 2.83
+    },
+    "skillGradient": {
+      "value": -1.3,
+      "lo": -3.72,
+      "hi": 1.11
+    },
+    "pairs": [
+      {
+        "with": "seed-two-win",
+        "synergy": 0.37
+      },
+      {
+        "with": "seed-raise",
+        "synergy": 0.31
+      },
+      {
+        "with": "rc-twos-always-win",
+        "synergy": 0.17
+      },
+      {
+        "with": "ra-ace-win-x",
+        "synergy": 0.15
+      },
+      {
+        "with": "ua-spade-raise",
+        "synergy": 0.13
+      }
+    ],
+    "raw": {
+      "liftU": -0.07673546535497192,
+      "seU": 0.00993852038389509,
+      "slopeU": 0.03949688304673837,
+      "slopeSeU": 0.01504118593507825,
+      "k": 1.2730595583306243
+    }
+  },
+  "reports": [
+    "reports/round-1-dashboard.md",
+    "docs/sigils/rounds/round-1.md"
+  ]
 }

@@ -1,0 +1,201 @@
+{
+  "id": "r1-trick-growth",
+  "rarity": "legendary",
+  "role": "payoff",
+  "archetypes": [
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "round-1",
+  "effect": {
+    "type": "grow",
+    "kind": "mult",
+    "step": 1,
+    "on": {
+      "event": "win"
+    }
+  },
+  "design": {
+    "decision": "Overtricks normally score nothing; with this every extra trick is permanent value, so the owner keeps fighting for tricks after making the contract and hunts opposing sets.",
+    "opponent": "Visible as it grows; opponents must contest every trick rather than concede overtricks, and the owner's early lead invites aggressive bids against it.",
+    "rationale": "A growth legendary that changes how a run is played (overtricks matter for the rest of the run) and fits every archetype except pure Nil, so it belongs to none.",
+    "partners": [
+      "rb-contract-trick-x",
+      "cb-grow-make-mult",
+      "seed-four-row",
+      "rb-streak-contract-mult",
+      "uc-trump-freely"
+    ],
+    "cluster": null,
+    "draftText": "This sigil gains +1 contract multiplier every time your team wins a trick (currently +0)",
+    "hooks": "none",
+    "target": "T3",
+    "replaces": [
+      "seed-flat-x2"
+    ]
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-1",
+      "note": "Designed (cluster None)."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: not kept: lift +0.5 [-0.6, +1.6] pts, C 4; near zero and it rewards overtricks against bid tension; the free-discard rule changes play more."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 150,
+  "text": "This sigil gains +1 contract multiplier every time your team wins a trick (currently +0)",
+  "category": "mult",
+  "signature": "win|-|growth|mult",
+  "family": "win|-|growth|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "growth step 1",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "currently display",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "growth counter carried between rounds",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-1",
+    "exposures": 8442,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 0.5,
+        "lo": -0.58,
+        "hi": 1.58,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 8442
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -1.4,
+        "lo": -2.48,
+        "hi": -0.32,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 8442
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 98.38,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 92912
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": null,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 0
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 5.58,
+        "lo": 4.77,
+        "hi": 6.38,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 1.9,
+        "lo": -1.04,
+        "hi": 4.83,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "round-1",
+        "amount": 1
+      }
+    ],
+    "amountSlope": {
+      "value": 5.58,
+      "lo": 4.77,
+      "hi": 6.38
+    },
+    "skillGradient": {
+      "value": 1.9,
+      "lo": -1.04,
+      "hi": 4.83
+    },
+    "pairs": [
+      {
+        "with": "r1-low-three-beat",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-middle-free",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-faces-untrumpable",
+        "synergy": 0.0
+      },
+      {
+        "with": "ra-team-untrumpable",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-low-hold-mult",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.02108637699237354,
+      "seU": 0.00989310455913388,
+      "slopeU": 0.12131869146520996,
+      "slopeSeU": 0.010686618090646869,
+      "k": 1.326167952143665
+    }
+  },
+  "reports": [
+    "reports/round-1-focused.md",
+    "docs/sigils/rounds/round-1.md"
+  ]
+}

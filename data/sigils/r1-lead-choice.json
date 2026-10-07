@@ -1,0 +1,162 @@
+{
+  "id": "r1-lead-choice",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Generic",
+    "Streaks",
+    "Nil",
+    "Suits"
+  ],
+  "source": "designed",
+  "createdIn": "round-1",
+  "effect": {
+    "type": "leadChoice"
+  },
+  "design": {
+    "decision": "After every team win, choose which hand leads next: run the long suit, reach the partner's winners, or keep the lead away from a nil bidder.",
+    "opponent": "Shows when the non-winning partner leads; opponents can't stop it but can read the team's shape from who takes the lead.",
+    "rationale": "The lead control the brief asks for, usable on any trick the team wins and valuable before any payoff; it repeats the cut seed-lead-choice (−13.7 at uncommon in the draft), so this re-measures it under the current AI and controls.",
+    "partners": [
+      "seed-four-row",
+      "ra-diamond-led-win-x",
+      "uc-spade-lead-mult",
+      "seed-nil-points",
+      "uc-low-lead-mult"
+    ],
+    "cluster": null,
+    "draftText": "Choose which partner leads after your team wins a trick",
+    "hooks": "none",
+    "target": "T11",
+    "replaces": []
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "round-1",
+      "note": "Designed (cluster None)."
+    },
+    {
+      "step": "round-1",
+      "note": "round-1: not kept: lift -5.3 [-6.4, -4.2] pts, C 2; below the control again: lead choice does not help the AI enough to beat flat points."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "Choose which partner leads after your team wins a trick",
+  "category": "enabler",
+  "signature": "play|-|-|leadChoice",
+  "family": "play|-|-|leadChoice",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "computed selector",
+        "detail": "choice of leader",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "estimates": {
+    "step": "round-1",
+    "exposures": 20199,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -5.26,
+        "lo": -6.37,
+        "hi": -4.16,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 20199
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -5.78,
+        "lo": -6.89,
+        "hi": -4.67,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 20199
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 0.52,
+        "lo": -3.5,
+        "hi": 4.53,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": 0.52,
+      "lo": -3.5,
+      "hi": 4.53
+    },
+    "pairs": [
+      {
+        "with": "r1-low-three-beat",
+        "synergy": 0.02
+      },
+      {
+        "with": "r1-middle-free",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-honors-untrumpable",
+        "synergy": 0.0
+      },
+      {
+        "with": "uc-low-hold-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "r1-any-suit-last-three",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.08716803095912852,
+      "seU": 0.010153627862079491,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.326167952143665
+    }
+  },
+  "reports": [
+    "reports/round-1-focused.md",
+    "docs/sigils/rounds/round-1.md"
+  ]
+}

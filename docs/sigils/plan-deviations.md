@@ -72,3 +72,16 @@ or changed these points. Each entry says what changed and why.
   boards, which overstates it.
 - **Nil success sits at the 0b bar.** Tier-1 nil success is 65–66% across seeds for nil margins
   of 550–650 points; it is recorded as met but borderline.
+
+## Optimization rounds
+
+- **Round 1 changed more than 15% of the pool.** Fourteen cuts (weak, samey, or frustrating
+  pieces flagged by both the dashboard and the critic) plus eleven redesign targets. Cuts don't
+  add new mechanics to measure, so the stability rule was relaxed for them.
+- **The critic reviewed the round's proposals while the focused tournament ran**, so its
+  verdicts were applied at the keep-or-revert step rather than before measurement.
+- **Data from earlier rounds is not reused at half weight.** Tournaments are cheap enough that
+  each round's fit uses only that round's fresh boards.
+- **Density levers were not tested.** Commitment works lags its band (online by round 4 in about
+  a quarter of committed runs), which [D7](../game-design.md#d7-offer-density) says should
+  trigger lever arms; they are rule changes outside sigil design and are left as an open risk.
