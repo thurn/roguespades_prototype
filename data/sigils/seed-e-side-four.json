@@ -1,0 +1,83 @@
+{
+  "id": "seed-e-side-four",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Suits",
+    "Rainbow"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "win",
+      "card": {
+        "notSuit": "S"
+      },
+      "count": 4
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (Appendix E).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD Appendix E 1.0 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "+15 contract multiplier when your team wins four tricks with cards other than [♠]",
+  "category": "mult",
+  "signature": "win(count=4)|notSuit=S|-|mult",
+  "family": "win(count=4)|notSuit=S|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is not S",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "milestone 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count reaches 4",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "milestone count",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

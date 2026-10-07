@@ -1,0 +1,83 @@
+{
+  "id": "seed-diamond-three",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Suits"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "win",
+      "card": {
+        "suit": "D"
+      },
+      "count": 3
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "+15 contract multiplier when your team wins three tricks with [♦]",
+  "price": 75,
+  "text": "+15 contract multiplier when your team wins three tricks with [♦]",
+  "category": "mult",
+  "signature": "win(count=3)|suit=D|-|mult",
+  "family": "win(count=3)|suit=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is D",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "milestone 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count reaches 3",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "milestone count",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

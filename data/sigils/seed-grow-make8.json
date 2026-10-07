@@ -1,0 +1,82 @@
+{
+  "id": "seed-grow-make8",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "grow",
+    "kind": "mult",
+    "step": 5,
+    "on": {
+      "event": "make",
+      "min": 8
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "This sigil gains ×5 contract multiplier every time your team makes a contract of 8 or more (currently ×0)",
+  "gddTypo": "The stored value adds to the base 10 (§5), so it is an additive multiplier and §5 says additive multipliers are written +N.",
+  "price": 100,
+  "text": "This sigil gains +5 contract multiplier every time your team makes a contract of 8 or more (currently +0)",
+  "category": "mult",
+  "signature": "make(min=8)|-|growth|mult",
+  "family": "make(min=8)|-|growth|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "growth step 5",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "currently display",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "growth counter carried between rounds",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 8",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "contract at least 8",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

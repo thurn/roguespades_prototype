@@ -1,0 +1,67 @@
+{
+  "id": "seed-e-spade-win",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Spades",
+    "Suits"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "points",
+    "amount": 10,
+    "on": {
+      "event": "win",
+      "card": {
+        "suit": "S"
+      }
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (Appendix E).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD Appendix E 1.0 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+10 contract points when your team wins a trick with [♠]",
+  "category": "points",
+  "signature": "win|suit=S|-|points",
+  "family": "win|suit=*|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is S",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

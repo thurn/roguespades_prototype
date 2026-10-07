@@ -1,0 +1,69 @@
+:root {
+  --paper: #f4efe6;
+  --card: #fffdf9;
+  --ink: #221e18;
+  --ink-soft: #564f43;
+  --ink-faint: #8a8172;
+  --line: rgb(60 45 20 / 0.12);
+  --line-strong: rgb(60 45 20 / 0.24);
+  --wash: rgb(60 45 20 / 0.05);
+
+  --rarity-common: #7a7f87;
+  --rarity-uncommon: #2d7a3e;
+  --rarity-rare: #2559a8;
+  --rarity-legendary: #c47414;
+
+  --suit-red: #b5271d;
+  --suit-black: #1a1d22;
+  --good: #2d7a3e;
+  --bad: #b5271d;
+  --band: rgb(45 122 62 / 0.16);
+
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-ui: 'Manrope', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --duration: 160ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --shadow: 0 1px 2px rgb(60 45 20 / 0.06), 0 4px 14px rgb(60 45 20 / 0.06);
+  --shadow-lift: 0 2px 4px rgb(60 45 20 / 0.08), 0 12px 28px rgb(60 45 20 / 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}

@@ -1,0 +1,67 @@
+{
+  "id": "seed-diamond-hold",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Suits"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "points",
+    "amount": 10,
+    "on": {
+      "event": "hold",
+      "card": {
+        "suit": "D"
+      }
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "+10 contract points for each [♦] your team holds",
+  "price": 50,
+  "text": "+10 contract points for each [♦] your team holds",
+  "category": "points",
+  "signature": "hold|suit=D|-|points",
+  "family": "hold|suit=*|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is D",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

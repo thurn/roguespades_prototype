@@ -32,3 +32,9 @@ dist-ssr
 # Tollgate
 .tollgate/
 .worktrees/
+
+# Simulator
+sim/target
+runs/
+analysis/.venv
+__pycache__

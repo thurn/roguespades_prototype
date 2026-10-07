@@ -1,0 +1,60 @@
+{
+  "id": "seed-nil-bid-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Nil"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "bid",
+      "nil": true
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "+15 contract multiplier when your team bids nil",
+  "price": 50,
+  "text": "+15 contract multiplier when your team bids nil",
+  "category": "mult",
+  "signature": "bid(nil)|-|-|mult",
+  "family": "bid(nil)|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "bids nil",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

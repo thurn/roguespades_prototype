@@ -1,0 +1,75 @@
+{
+  "id": "seed-e-lead-three-suits",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Rainbow"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "points",
+    "amount": 50,
+    "on": {
+      "event": "suits",
+      "action": "lead",
+      "count": 3
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (Appendix E).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD Appendix E 1.0 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+50 contract points if your team leads three suits",
+  "category": "points",
+  "signature": "suits(count=3,action=lead)|-|-|points",
+  "family": "suits(count=3,action=lead)|-|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 50",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team leads",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "3 suits",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "distinct suits reach 3",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "suits seen",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

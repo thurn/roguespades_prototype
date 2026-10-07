@@ -1,0 +1,76 @@
+{
+  "id": "seed-five-row-x",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "xmult",
+    "amount": 2,
+    "on": {
+      "event": "win",
+      "inRow": 5
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "×2 contract multiplier if your team wins five tricks in a row",
+  "gddTypo": "A run of wins is a milestone event (\"when\"), like \"wins four tricks in a row\".",
+  "price": 100,
+  "text": "×2 contract multiplier when your team wins five tricks in a row",
+  "category": "xmult",
+  "signature": "win(inRow=5)|-|-|xmult",
+  "family": "win(inRow=5)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "5 in a row",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "run of wins reaches 5",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "consecutive-win count",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

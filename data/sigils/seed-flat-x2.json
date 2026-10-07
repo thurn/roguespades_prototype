@@ -1,0 +1,51 @@
+{
+  "id": "seed-flat-x2",
+  "rarity": "legendary",
+  "role": "payoff",
+  "archetypes": [
+    "Generic"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "xmult",
+    "amount": 2
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "×2 contract multiplier",
+  "price": 150,
+  "text": "×2 contract multiplier",
+  "category": "xmult",
+  "signature": "always|-|-|xmult",
+  "family": "always|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      }
+    ],
+    "C": 1,
+    "S": 0.5
+  },
+  "lint": []
+}

@@ -1,0 +1,65 @@
+{
+  "id": "seed-consecutive",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "points",
+    "amount": 10,
+    "on": {
+      "event": "win",
+      "consecutive": true
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "+10 contract points when your team wins consecutive tricks",
+  "price": 50,
+  "text": "+10 contract points when your team wins consecutive tricks",
+  "category": "points",
+  "signature": "win(consecutive)|-|-|points",
+  "family": "win(consecutive)|-|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team won the previous trick",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

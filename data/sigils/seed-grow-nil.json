@@ -1,0 +1,70 @@
+{
+  "id": "seed-grow-nil",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Nil"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "grow",
+    "kind": "nilPoints",
+    "step": 40,
+    "on": {
+      "event": "nilMade"
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "This sigil gains +40 nil points every time your team makes a nil (currently +0)",
+  "price": 100,
+  "text": "This sigil gains +40 nil points every time your team makes a nil (currently +0)",
+  "category": "points",
+  "signature": "nilMade|-|growth|nilPoints",
+  "family": "nilMade|-|growth|nilPoints",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "growth step 40",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "currently display",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "growth counter carried between rounds",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes a nil",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

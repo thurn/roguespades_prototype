@@ -1,0 +1,32 @@
+{
+  "id": "u-become-diamond",
+  "rarity": "uncommon",
+  "price": 75,
+  "role": "enabler",
+  "archetypes": ["Suits", "Rainbow"],
+  "source": "designed",
+  "createdIn": "draft-uncommon",
+  "effect": { "type": "become", "count": 4, "suit": "D" },
+  "text": "Opening: Four cards your team holds become [♦]s",
+  "category": "enabler",
+  "signature": "opening|-|-|become",
+  "touchesOpponents": false,
+  "design": {
+    "decision": "Which four cards to convert: void a suit for trumping, or feed a diamond payoff.",
+    "opponent": "Diamond counts no longer add up, which makes card-counting opponents miscount.",
+    "rationale": "Enabler for diamond payoffs that also has standalone value via voids.",
+    "partners": ["c-diamond-win", "c-diamond-hold", "any suit payoff"]
+  },
+  "status": "candidate",
+  "history": [{ "step": "draft-uncommon", "note": "Drafted; awaiting round-2 measurement." }],
+  "name": null,
+  "icon": null,
+  "simplicity": {
+    "items": [
+      { "burden": "timing", "detail": "Opening", "cost": 1 },
+      { "burden": "choice", "detail": "choose four cards", "cost": 2 }
+    ],
+    "C": 3,
+    "S": 0.25
+  }
+}

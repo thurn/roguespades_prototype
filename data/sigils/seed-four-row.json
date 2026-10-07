@@ -1,0 +1,75 @@
+{
+  "id": "seed-four-row",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "mult",
+    "amount": 20,
+    "on": {
+      "event": "win",
+      "inRow": 4
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "+20 contract multiplier when your team wins four tricks in a row",
+  "price": 75,
+  "text": "+20 contract multiplier when your team wins four tricks in a row",
+  "category": "mult",
+  "signature": "win(inRow=4)|-|-|mult",
+  "family": "win(inRow=4)|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 20",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "4 in a row",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "run of wins reaches 4",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "consecutive-win count",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

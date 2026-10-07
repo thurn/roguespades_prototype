@@ -1,0 +1,19 @@
+{
+  "id": "c-spade-trump",
+  "rarity": "common",
+  "price": 50,
+  "role": "payoff",
+  "archetypes": ["Spades"],
+  "source": "control",
+  "createdIn": "draft-common",
+  "effect": { "type": "points", "amount": 10, "on": { "event": "win", "by": "trump" } },
+  "text": "+10 contract points when your team wins a trick by trumping with a [♠]",
+  "category": "points",
+  "signature": "win|-|trump|points",
+  "touchesOpponents": false,
+  "status": "replaced",
+  "replacedBy": "c-diamond-win",
+  "history": [{ "step": "round-1", "note": "Replaced by c-diamond-win; trumping already pays." }],
+  "name": "Cutlass",
+  "icon": "bolt"
+}

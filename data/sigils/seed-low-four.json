@@ -1,0 +1,96 @@
+{
+  "id": "seed-low-four",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "LowCards"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "win",
+      "card": {
+        "ranks": [
+          "2",
+          "10"
+        ]
+      },
+      "count": 4
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "+15 contract multiplier when your team wins four tricks with [2]s through [10]s",
+  "price": 75,
+  "text": "+15 contract multiplier when your team wins four tricks with [2]s through [10]s",
+  "category": "mult",
+  "signature": "win(count=4)|ranks=2-10|-|mult",
+  "family": "win(count=4)|ranks=2-10|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-10",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "milestone 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count reaches 4",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "milestone count",
+        "cost": 1
+      }
+    ],
+    "C": 8,
+    "S": 0.1111111111111111
+  },
+  "lint": []
+}

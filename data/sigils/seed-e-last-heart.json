@@ -1,0 +1,73 @@
+{
+  "id": "seed-e-last-heart",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks",
+    "Suits"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "win",
+      "trick": "last",
+      "card": {
+        "suit": "H"
+      }
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (Appendix E).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD Appendix E 1.0 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "+15 contract multiplier when your team wins the last trick of a round with [♥]",
+  "category": "mult",
+  "signature": "win(trick=last)|suit=H|-|mult",
+  "family": "win(trick=last)|suit=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is H",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "is the last trick",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

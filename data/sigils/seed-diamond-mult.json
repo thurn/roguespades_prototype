@@ -1,0 +1,67 @@
+{
+  "id": "seed-diamond-mult",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "Suits"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "mult",
+    "amount": 2,
+    "on": {
+      "event": "win",
+      "card": {
+        "suit": "D"
+      }
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "+2 contract multiplier when your team wins a trick with [♦]",
+  "price": 100,
+  "text": "+2 contract multiplier when your team wins a trick with [♦]",
+  "category": "mult",
+  "signature": "win|suit=D|-|mult",
+  "family": "win|suit=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is D",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

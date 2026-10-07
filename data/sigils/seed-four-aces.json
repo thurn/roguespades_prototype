@@ -1,0 +1,83 @@
+{
+  "id": "seed-four-aces",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Ranks"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "mult",
+    "amount": 20,
+    "on": {
+      "event": "hold",
+      "card": {
+        "rank": "A"
+      },
+      "count": 4
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "+20 contract multiplier if your team holds four [A]s",
+  "price": 75,
+  "text": "+20 contract multiplier if your team holds four [A]s",
+  "category": "mult",
+  "signature": "hold(count=4)|rank=A|-|mult",
+  "family": "hold(count=4)|rank=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 20",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count at least 4",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

@@ -2,13 +2,20 @@
 set -eu
 cd "$(dirname "$0")/.."
 
-# Until the prototype is scaffolded there is nothing to build.
-if [ ! -f package.json ]; then
-  echo "No package.json yet; nothing to check."
-  exit 0
+echo "== sim"
+(cd sim && cargo fmt --check && cargo clippy --release -q -- -D warnings && cargo build --release -q)
+sim/target/release/rsim check --dir data/sigils > /dev/null
+
+if [ -d analysis ]; then
+  echo "== analysis"
+  (cd analysis && uv run --quiet ruff check . && uv run --quiet ruff format --check .)
 fi
 
-npm ci --ignore-scripts --no-audit --no-fund --prefer-offline
-npm run format:check
-npm run lint
-npm run build
+if [ -d viewer ]; then
+  echo "== viewer"
+  npm --prefix viewer ci --ignore-scripts --no-audit --no-fund --prefer-offline > /dev/null
+  npm --prefix viewer run -s format:check
+  npm --prefix viewer run -s lint
+  npm --prefix viewer run -s build > /dev/null
+fi
+echo "ci ok"

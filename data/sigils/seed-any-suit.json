@@ -1,0 +1,58 @@
+{
+  "id": "seed-any-suit",
+  "rarity": "rare",
+  "role": "enabler",
+  "archetypes": [
+    "Nil",
+    "Exact",
+    "Streaks"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "anySuit",
+    "last": 3
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "Your team can play any suit on the last three tricks",
+  "price": 100,
+  "text": "Your team can play any suit on the last three tricks",
+  "category": "enabler",
+  "signature": "play|-|-|anySuit",
+  "family": "play|-|-|anySuit",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "last 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "trick is among the last tricks",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

@@ -1,0 +1,70 @@
+{
+  "id": "seed-make8-x",
+  "rarity": "rare",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "xmult",
+    "amount": 2,
+    "on": {
+      "event": "make",
+      "min": 8
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "×2 contract multiplier if your team makes a contract of 8 or more",
+  "price": 100,
+  "text": "×2 contract multiplier if your team makes a contract of 8 or more",
+  "category": "xmult",
+  "signature": "make(min=8)|-|-|xmult",
+  "family": "make(min=8)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 8",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "contract at least 8",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

@@ -1,0 +1,66 @@
+{
+  "id": "seed-bid10-mult",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "mult",
+    "amount": 20,
+    "on": {
+      "event": "bid",
+      "min": 10
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "+20 contract multiplier if your team's contract is 10 or more tricks",
+  "gddTypo": "The GDD's own convention is \"bids 10 or more\"; \"contract is N or more tricks\" restates the same condition.",
+  "price": 75,
+  "text": "+20 contract multiplier when your team bids 10 or more",
+  "category": "mult",
+  "signature": "bid(min=10)|-|-|mult",
+  "family": "bid(min=10)|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 20",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "contract at least 10",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

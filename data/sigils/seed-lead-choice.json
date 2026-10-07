@@ -1,0 +1,57 @@
+{
+  "id": "seed-lead-choice",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Streaks",
+    "Nil",
+    "Suits"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "leadChoice"
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "Choose which partner leads after your team wins a trick",
+  "price": 75,
+  "text": "Choose which partner leads after your team wins a trick",
+  "category": "enabler",
+  "signature": "play|-|-|leadChoice",
+  "family": "play|-|-|leadChoice",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "computed selector",
+        "detail": "choice of leader",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

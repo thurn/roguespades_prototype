@@ -1,0 +1,51 @@
+{
+  "id": "seed-flat-points",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Generic"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "points",
+    "amount": 40
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "+40 contract points",
+  "price": 50,
+  "text": "+40 contract points",
+  "category": "points",
+  "signature": "always|-|-|points",
+  "family": "always|-|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 40",
+        "cost": 1
+      }
+    ],
+    "C": 1,
+    "S": 0.5
+  },
+  "lint": []
+}

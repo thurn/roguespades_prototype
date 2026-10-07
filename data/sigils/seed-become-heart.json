@@ -1,0 +1,64 @@
+{
+  "id": "seed-become-heart",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Suits",
+    "Spades",
+    "Nil"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "become",
+    "count": 4,
+    "suit": "H"
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "Opening: Four cards your team holds become [♥]s",
+  "price": 75,
+  "text": "Opening: Four cards your team holds become [♥]s",
+  "category": "enabler",
+  "signature": "opening|suit=H|-|become",
+  "family": "opening|suit=*|-|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "numeric value",
+        "detail": "count 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

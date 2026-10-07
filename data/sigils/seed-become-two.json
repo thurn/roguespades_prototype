@@ -1,0 +1,69 @@
+{
+  "id": "seed-become-two",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Nil",
+    "Exact",
+    "LowCards"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "become",
+    "count": 4,
+    "rank": "2"
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "Opening: Four cards your team holds become [2]s",
+  "price": 50,
+  "text": "Opening: Four cards your team holds become [2]s",
+  "category": "enabler",
+  "signature": "opening|rank=2|-|become",
+  "family": "opening|rank=*|-|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 4
+      },
+      {
+        "burden": "numeric value",
+        "detail": "count 4",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 7,
+    "S": 0.125
+  },
+  "lint": []
+}

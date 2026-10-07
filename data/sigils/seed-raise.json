@@ -1,0 +1,63 @@
+{
+  "id": "seed-raise",
+  "rarity": "rare",
+  "role": "enabler",
+  "archetypes": [
+    "BidHigh",
+    "Ranks",
+    "Streaks"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "raise",
+    "amount": 2
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "Opening: Raise every card your team holds by two ranks",
+  "price": 100,
+  "text": "Opening: Raise every card your team holds by two ranks",
+  "category": "enabler",
+  "signature": "opening|-|-|raise",
+  "family": "opening|-|-|raise",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 2
+      },
+      {
+        "burden": "numeric value",
+        "detail": "raise 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

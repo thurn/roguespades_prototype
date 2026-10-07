@@ -1,0 +1,34 @@
+{
+  "id": "u-low-clubs",
+  "rarity": "uncommon",
+  "price": 75,
+  "role": "hybrid",
+  "archetypes": ["LowCards", "Suits"],
+  "source": "enumerated",
+  "createdIn": "draft-uncommon",
+  "effect": {
+    "type": "points",
+    "amount": 15,
+    "on": { "event": "lead", "card": { "suit": "C", "ranks": ["2", "5"] }, "count": 3 }
+  },
+  "text": "+15 contract points when your team leads three [2♣]–[5♣]",
+  "category": "hybrid",
+  "signature": "lead|suit=C,ranks=2-5|count=3|points",
+  "touchesOpponents": false,
+  "status": "cut",
+  "history": [
+    { "step": "draft-uncommon", "note": "Enumerated." },
+    { "step": "round-1", "note": "Cut: lift indistinguishable from zero." }
+  ],
+  "name": null,
+  "icon": null,
+  "simplicity": {
+    "items": [
+      { "burden": "milestone", "detail": "three leads", "cost": 2 },
+      { "burden": "card filter", "detail": "[2♣]–[5♣]", "cost": 2 },
+      { "burden": "numeric value", "detail": "+15", "cost": 1 }
+    ],
+    "C": 5,
+    "S": 0.17
+  }
+}

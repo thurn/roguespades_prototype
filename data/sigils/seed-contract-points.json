@@ -1,0 +1,57 @@
+{
+  "id": "seed-contract-points",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "points",
+    "amount": 5,
+    "per": "contractTrick"
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "+5 contract points for each trick in your team's contract",
+  "price": 50,
+  "text": "+5 contract points for each trick in your team's contract",
+  "category": "points",
+  "signature": "always|-|contractTrick|points",
+  "family": "always|-|contractTrick|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

@@ -1,0 +1,61 @@
+{
+  "id": "c-diamond-hold",
+  "rarity": "common",
+  "price": 50,
+  "role": "payoff",
+  "archetypes": ["Suits"],
+  "source": "enumerated",
+  "createdIn": "draft-common",
+  "effect": { "type": "mult", "amount": 2, "on": { "event": "hold", "card": { "suit": "D" } } },
+  "text": "+2 contract multiplier for each [♦] your team holds",
+  "category": "mult",
+  "signature": "hold|suit=D|-|mult",
+  "touchesOpponents": false,
+  "design": {
+    "decision": "Bid around a diamond-heavy hand instead of playing it out.",
+    "opponent": "Invisible until scoring; opponents only notice inflated contracts.",
+    "rationale": "Rewards the deal more than the play; kept as a low-skill floor for the archetype.",
+    "partners": ["c-diamond-win"]
+  },
+  "status": "kept",
+  "history": [{ "step": "round-1", "note": "Kept: lift +1.0 [0.2, 1.9]." }],
+  "name": "Hoard",
+  "icon": "acorn",
+  "simplicity": {
+    "items": [
+      { "burden": "counting", "detail": "for each card held", "cost": 2 },
+      { "burden": "card filter", "detail": "[♦]", "cost": 1 },
+      { "burden": "numeric value", "detail": "+2", "cost": 1 }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "estimates": {
+    "step": "round-1",
+    "exposures": 1850,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter (win-rate lift, pts)",
+        "value": 1.0,
+        "lo": 0.2,
+        "hi": 1.9,
+        "bandLo": 0,
+        "bandHi": 12,
+        "n": 1850
+      },
+      {
+        "key": "dominance",
+        "label": "Not dominant (share of wins, %)",
+        "value": 11.4,
+        "lo": 9.8,
+        "hi": 13.0,
+        "bandLo": null,
+        "bandHi": 10,
+        "n": 1850
+      }
+    ],
+    "skillGradient": { "value": -0.3, "lo": -1.5, "hi": 0.9 },
+    "pairs": [{ "with": "c-diamond-win", "synergy": 1.3 }]
+  }
+}

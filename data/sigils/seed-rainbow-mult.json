@@ -1,0 +1,76 @@
+{
+  "id": "seed-rainbow-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Rainbow"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "suits",
+      "action": "win",
+      "count": 4
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "+15 contract multiplier if your team wins tricks with all four suits",
+  "price": 50,
+  "text": "+15 contract multiplier if your team wins tricks with all four suits",
+  "category": "mult",
+  "signature": "suits(count=4,action=win)|-|-|mult",
+  "family": "suits(count=4,action=win)|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "4 suits",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "distinct suits reach 4",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "suits seen",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

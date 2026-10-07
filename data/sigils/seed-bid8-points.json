@@ -1,0 +1,65 @@
+{
+  "id": "seed-bid8-points",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh"
+  ],
+  "source": "gdd-seed",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "points",
+    "amount": 60,
+    "on": {
+      "event": "bid",
+      "min": 8
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "GDD illustrative seed (§9).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Created from the GDD §9 seed."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "gddText": "+60 contract points when your team bids 8 or more",
+  "price": 50,
+  "text": "+60 contract points when your team bids 8 or more",
+  "category": "points",
+  "signature": "bid(min=8)|-|-|points",
+  "family": "bid(min=8)|-|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 60",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 8",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "contract at least 8",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}
