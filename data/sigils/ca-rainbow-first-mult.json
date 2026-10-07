@@ -1,0 +1,89 @@
+{
+  "id": "ca-rainbow-first-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 2,
+    "on": {
+      "event": "win",
+      "distinct": "suit"
+    }
+  },
+  "design": {
+    "decision": "Prefer winning in a new suit over a repeat when you have the choice.",
+    "opponent": "Revealed on the first win.",
+    "rationale": "seed-rainbow-first was the best-measured common (+10.6); a small repeated +mult tests that broad trigger in the multiplier category, capped at +8.",
+    "partners": [
+      "seed-rainbow-first",
+      "ca-rainbow-lead-mult",
+      "ca-side-win"
+    ],
+    "cluster": "A",
+    "draftText": "+2 contract multiplier when your team wins its first trick with each suit",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Category-only near-duplicate of seed-rainbow-first; small and fires almost every round, so the decision is weak.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-distinct-mult); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+2 contract multiplier when your team wins its first trick with each suit",
+  "category": "mult",
+  "signature": "win(distinct=suit)|-|-|mult",
+  "family": "win(distinct=suit)|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "first win with this suit",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "suits already won",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

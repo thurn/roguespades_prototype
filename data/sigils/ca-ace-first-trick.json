@@ -1,0 +1,89 @@
+{
+  "id": "ca-ace-first-trick",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 10,
+    "on": {
+      "event": "win",
+      "trick": "first",
+      "card": {
+        "rank": "A"
+      }
+    }
+  },
+  "design": {
+    "decision": "The opening lead: cash an [A] at once, or keep it as a later entry.",
+    "opponent": "Revealed on trick one; when opponents lead first they choose suits where your team's [A]s are unlikely.",
+    "rationale": "One sharp, early decision for Ranks at the common +mult frequency (around 40%).",
+    "partners": [
+      "seed-ace-lead",
+      "ca-ace-become",
+      "seed-ace-hold"
+    ],
+    "cluster": "A",
+    "draftText": "+10 contract multiplier when your team wins the first trick of a round with an [A]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Filter-on-timing departure (C=5) whose [A] filter adds little, since trick one is usually won by an [A] anyway; cb-first-trick-mult does the same job more simply.",
+      "elegance": 2
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+10 contract multiplier when your team wins the first trick of a round with an [A]",
+  "category": "mult",
+  "signature": "win(trick=first)|rank=A|-|mult",
+  "family": "win(trick=first)|rank=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "is the first trick",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

@@ -1,0 +1,67 @@
+{
+  "id": "e-exact-pts",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Exact"
+  ],
+  "source": "enumerated",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 150,
+    "on": {
+      "event": "make",
+      "exact": true
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "Enumerated from the grammar (D21).",
+    "partners": []
+  },
+  "status": "cut",
+  "replacedBy": "seed-exact-points",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Enumerated; amount set from the hand-level screen."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: screen fires in 26% of rounds (0.26 per round); amount set to 150."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into seed-exact-points, which has the same signature (D21: credits both sources)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+150 contract points if your team makes its contract exactly",
+  "category": "points",
+  "signature": "make(exact)|-|-|points",
+  "family": "make(exact)|-|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 150",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract exactly",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

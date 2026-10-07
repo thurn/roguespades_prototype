@@ -25,7 +25,7 @@ Plain Spades, tier 1, 500 runs (8,000 team-rounds):
 | Criterion | Target | Measured |
 | --- | --- | --- |
 | Team set rate | ≤ 18% | 10.8% |
-| Nil success | ≥ 65% | 65.2% (887/1,360) |
+| Nil success | ≥ 65% | 65.2% (887/1,360); 65.1% and 64.6% on fresh seeds, so borderline |
 | Nil suicides | < 1% | 0.7% |
 | Tier 2 beats tier 0 (boards) | ≥ 65% | 92.0% (300 boards) |
 
@@ -56,22 +56,26 @@ Seed pool, 8,000 tier-0 boards and 1,600 shared tier-1 boards:
 
 | Validation | Result |
 | --- | --- |
-| Planted effects (+10 to +160 points) | Monotone: −5.1, −3.8, +0.9, +8.5, +20.0 pts (net of price) |
-| Synthetic data from a known model | 95% of 90% intervals cover the truth |
-| A/A test (seed-ace-win and a twin) | Difference −2.1 [−5.8, +1.7] pts |
-| Variance reduction | Effective sample size per run ×1.04 from duplicate play alone, ×1.58 with smoothing |
-| Tier agreement | Lifts correlate 0.82 between tiers 0 and 1 (74 sigils) |
-| Shop model vs rollout rescoring | Spearman 0.03 per visit with the hand-set starting model |
+| Planted effects (+10 to +160 points) | Monotone: −2.8, −0.4, +0.5, +10.2, +19.9 pts (net of price) |
+| Synthetic data from a perturbed known model | 86% of 90% intervals cover the truth |
+| A/A test (seed-ace-win and a twin, reported lifts) | Difference −4.1 [−11.2, +2.9] pts |
+| Variance reduction | Effective sample size per run ×1.14 from duplicate play alone, ×1.69 with smoothing |
+| Tier agreement | Lifts correlate 0.79 between tiers 0 and 1 (74 sigils; shared boards overstate it) |
+| Shop model vs rollout rescoring | Spearman −0.00 per visit with the hand-set starting model |
 
-- **σ_u** is 0.25 at both tiers on shared boards, so tier 0 stays the bulk tier.
-- **Budget:** about 167,000 tier-0 boards (about 6 minutes) reach a median half-width of
-  1.5 pts for 170 measured sigils.
+These are the numbers after the Phase 0 review's fixes (stable dealing, fixed grant schedules,
+lift-based A/A test, perturbed synthetic truth); the first pilot is superseded.
+
+- **σ_u** is 0.24 at tier 0 and 0.23 at tier 1 on shared boards, so tier 0 stays the bulk tier.
+- **Budget:** about 162,000 tier-0 boards (about 6 minutes without shop validation) reach a
+  median half-width of 1.5 pts for 170 measured sigils.
 
 ## Shortfalls carried forward
 
 - **Shop-model validation is weak.** One-round tier-0 rescoring over 12 deals is too noisy to
   rank offers, and the starting model was hand-set; the correlation is re-checked each round
   with fitted models.
+- **Nil success is borderline** at the 65% bar across seeds.
 - **The game as played is lopsided with the seed pool:** median final margin 58% of the
   winner's score (band ≤ 20%), and rounds 1–4 hold 37% of points (band ≥ 20%, but scores
   plateau after round 4 instead of growing toward par 6,000). These are design targets for the

@@ -1,0 +1,70 @@
+{
+  "id": "e-win-suit-c-pts",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Suits"
+  ],
+  "source": "enumerated",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 45,
+    "on": {
+      "event": "win",
+      "card": {
+        "suit": "C"
+      }
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "Enumerated from the grammar (D21).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Enumerated; amount set from the hand-level screen."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: screen fires in 69% of rounds (1.03 per round); amount set to 45."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+45 contract points when your team wins a trick with [♣]",
+  "category": "points",
+  "signature": "win|suit=C|-|points",
+  "family": "win|suit=*|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 45",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is C",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

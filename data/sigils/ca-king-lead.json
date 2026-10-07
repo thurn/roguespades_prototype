@@ -1,0 +1,91 @@
+{
+  "id": "ca-king-lead",
+  "rarity": "common",
+  "role": "hybrid",
+  "archetypes": [
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 20,
+    "on": {
+      "event": "lead",
+      "card": {
+        "rank": "K"
+      }
+    }
+  },
+  "design": {
+    "decision": "Whether to lead a [K] into an unseen [A] to bank points and set up the suit.",
+    "opponent": "Revealed on the first [K] lead; opponents happily take it with an [A].",
+    "rationale": "Unlike leading an [A], which is almost always safe, leading a [K] is a real risk, so this lead payoff creates a decision rather than paying for an automatic play.",
+    "partners": [
+      "ca-king-hold",
+      "seed-become-king",
+      "ca-face-win"
+    ],
+    "cluster": "A",
+    "draftText": "+20 contract points when your team leads a [K]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Rank-only near-duplicate of seed-ace-lead, but leading a [K] is a real risk, so it creates a real decision.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-lead-rank-k-pts); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+20 contract points when your team leads a [K]",
+  "category": "hybrid",
+  "signature": "lead|rank=K|-|points",
+  "family": "lead|rank=*|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 20",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team leads",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is K",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal K",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

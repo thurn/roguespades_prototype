@@ -1,0 +1,75 @@
+{
+  "id": "cc-two-spades",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Spades",
+    "BidHigh",
+    "LowCards"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "become",
+    "count": 2,
+    "suit": "S"
+  },
+  "design": {
+    "decision": "Count the extra trumps before bidding and plan to ruff the side suit that just got shorter.",
+    "opponent": "Revealed at Opening; opponents meet more trumping and fewer safe side-suit winners.",
+    "rationale": "Trump length is standalone trick-taking value in any build; seed-become-heart (-15.1) concentrated a side suit, so this tests the suit-change shape with the one suit that always helps.",
+    "partners": [
+      "seed-trump-points",
+      "seed-e-spade-win",
+      "cc-low-spade-win",
+      "cc-two-win-mult"
+    ],
+    "cluster": "C",
+    "draftText": "Opening: Two cards your team holds become [♠]s",
+    "hooks": "none"
+  },
+  "status": "cut",
+  "replacedBy": "ca-become-spades",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into ca-become-spades, an identical design from another cluster."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Opening: Two cards your team holds become [♠]s",
+  "category": "enabler",
+  "signature": "opening|suit=S|-|become",
+  "family": "opening|suit=*|-|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 4
+      },
+      {
+        "burden": "numeric value",
+        "detail": "count 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

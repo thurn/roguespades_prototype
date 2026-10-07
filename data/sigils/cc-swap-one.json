@@ -1,0 +1,70 @@
+{
+  "id": "cc-swap-one",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Nil",
+    "Suits",
+    "Spades"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "swap",
+    "count": 1
+  },
+  "design": {
+    "decision": "Pick the one card to pass: void a singleton for ruffing, or hand off the one honor that would break a nil.",
+    "opponent": "Revealed at Opening; opponents get little information from a single swap.",
+    "rationale": "Near-duplicate of seed-swap by count; together with cc-swap-five it brackets the flat three-card seed (-0.3) so the slope of swap size can be read, and one precise card is the simplest enabler in the pool.",
+    "partners": [
+      "cc-nil-made-mult",
+      "cc-low-spade-win",
+      "seed-trump-points",
+      "cc-nil-hold-twos"
+    ],
+    "cluster": "C",
+    "draftText": "Opening: Swap one card with your partner",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Generated text reads 'Swap one cards'; the text generator needs a singular form. Count-only near-duplicate of seed-swap.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Opening: Swap one card with your partner",
+  "category": "enabler",
+  "signature": "opening|-|-|swap",
+  "family": "opening|-|-|swap",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 4
+      },
+      {
+        "burden": "numeric value",
+        "detail": "count 1",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

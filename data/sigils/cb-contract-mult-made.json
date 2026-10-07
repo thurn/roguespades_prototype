@@ -1,0 +1,77 @@
+{
+  "id": "cb-contract-mult-made",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh",
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 1,
+    "per": "contractTrick",
+    "on": {
+      "event": "make"
+    }
+  },
+  "design": {
+    "decision": "Bid every trick you can make and stop there. A set loses the whole bonus.",
+    "opponent": "Shown on the first made contract. Opponents learn that setting this team removes its multiplier.",
+    "rationale": "This is the safe twin of cb-contract-mult: half the amount, paid only on a make. Simulation shows whether a safe or risky contract-scaled multiplier plays better at common. The added make condition is the 'require the contract' half of the bid-tension target.",
+    "partners": [
+      "cb-contract-mult",
+      "seed-contract-points",
+      "cb-become-ace"
+    ],
+    "cluster": "B",
+    "draftText": "+1 contract multiplier for each trick in your team's contract if your team makes its contract",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Scaling plus a make condition; overlaps cb-contract-mult and cb-make-mult.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+1 contract multiplier for each trick in your team's contract if your team makes its contract",
+  "category": "mult",
+  "signature": "make|-|contractTrick|mult",
+  "family": "make|-|contractTrick|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

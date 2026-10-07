@@ -1,0 +1,92 @@
+{
+  "id": "cb-grow-make8-points",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "grow",
+    "kind": "points",
+    "step": 25,
+    "on": {
+      "event": "make",
+      "min": 8
+    }
+  },
+  "design": {
+    "decision": "Go for 8 early in the run, because each made big contract pays in every later round.",
+    "opponent": "Shown on the first made 8. Opponents defend big contracts harder.",
+    "rationale": "seed-grow-make8 (rare, +mult) measured -11.0. This is a cheap, lower-variance points version at common, with a different signature.",
+    "partners": [
+      "seed-grow-make8",
+      "cb-raise-one",
+      "cb-become-ace"
+    ],
+    "cluster": "B",
+    "draftText": "This sigil gains +25 contract points every time your team makes a contract of 8 or more (currently +0)",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Category-only near-duplicate of seed-grow-make8.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "This sigil gains +25 contract points every time your team makes a contract of 8 or more (currently +0)",
+  "category": "points",
+  "signature": "make(min=8)|-|growth|points",
+  "family": "make(min=8)|-|growth|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "growth step 25",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "currently display",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "growth counter carried between rounds",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 8",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "contract at least 8",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

@@ -1,0 +1,82 @@
+{
+  "id": "cb-bid8-trick-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 2,
+    "per": "contractTrick",
+    "on": {
+      "event": "bid",
+      "min": 8
+    }
+  },
+  "design": {
+    "decision": "Bid 8 or more and keep climbing. The multiplier grows with the bid but also deepens any set.",
+    "opponent": "Shown after bidding. A set now costs the bidders heavily, so defence pays.",
+    "rationale": "This is the multiplier counterpart to cb-bid8-trick-points. It rewards high contracts in proportion and carries real set risk. Departure: threshold plus scaling, as above.",
+    "partners": [
+      "cb-bid8-trick-points",
+      "seed-contract-points",
+      "cb-become-spade"
+    ],
+    "cluster": "B",
+    "draftText": "+2 contract multiplier for each trick in your team's contract when your team bids 8 or more",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Threshold plus scaling departure; overlaps cb-contract-mult, which scales without the threshold.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+2 contract multiplier for each trick in your team's contract when your team bids 8 or more",
+  "category": "mult",
+  "signature": "bid(min=8)|-|contractTrick|mult",
+  "family": "bid(min=8)|-|contractTrick|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 8",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "contract at least 8",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

@@ -50,27 +50,27 @@
   "lint": [],
   "estimates": {
     "step": "phase-0",
-    "exposures": 417,
+    "exposures": 421,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": -0.01,
-        "lo": -3.28,
-        "hi": 3.26,
+        "value": 0.89,
+        "lo": -1.81,
+        "hi": 3.59,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 417
+        "n": 421
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -3.04,
-        "lo": -6.31,
-        "hi": 0.23,
+        "value": -0.4,
+        "lo": -3.1,
+        "hi": 2.3,
         "bandLo": null,
         "bandHi": null,
-        "n": 417
+        "n": 421
       },
       {
         "key": "fire",
@@ -80,7 +80,7 @@
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 9312
+        "n": 9522
       },
       {
         "key": "fireCommitted",
@@ -95,9 +95,9 @@
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 4.09,
-        "lo": 1.49,
-        "hi": 6.69,
+        "value": 8.04,
+        "lo": 4.96,
+        "hi": 11.13,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -105,9 +105,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 3.03,
-        "lo": 0.6,
-        "hi": 5.47,
+        "value": 1.29,
+        "lo": -1.22,
+        "hi": 3.81,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -120,43 +120,43 @@
       }
     ],
     "amountSlope": {
-      "value": 4.09,
-      "lo": 1.49,
-      "hi": 6.69
+      "value": 8.04,
+      "lo": 4.96,
+      "hi": 11.13
     },
     "skillGradient": {
-      "value": 3.03,
-      "lo": 0.6,
-      "hi": 5.47
+      "value": 1.29,
+      "lo": -1.22,
+      "hi": 3.81
     },
     "pairs": [
+      {
+        "with": "seed-ace-hold",
+        "synergy": 0.0
+      },
       {
         "with": "pilot-dose-80",
         "synergy": 0.0
       },
       {
-        "with": "control-rare",
+        "with": "seed-trump-points",
         "synergy": 0.0
       },
       {
-        "with": "seed-exact-mult",
+        "with": "seed-contract-points",
         "synergy": 0.0
       },
       {
-        "with": "seed-two-win",
-        "synergy": 0.0
-      },
-      {
-        "with": "seed-any-suit",
+        "with": "seed-exact-points",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": -0.03166880353962592,
-      "seU": 0.020680160469476502,
-      "slopeU": 0.061361989145651386,
-      "slopeSeU": 0.023698554678664708,
-      "k": 1.922343567269947
+      "liftU": -0.004153713086637645,
+      "seU": 0.01688151348962588,
+      "slopeU": 0.11933350173155054,
+      "slopeSeU": 0.027808390818621027,
+      "k": 1.9447399061524484
     }
   },
   "reports": [

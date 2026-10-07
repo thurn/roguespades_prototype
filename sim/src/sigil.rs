@@ -23,6 +23,9 @@ pub struct Trigger {
     pub event: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub card: Option<Filter>,
+    /// Win triggers: a filter on the card that led the trick.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub led: Option<Filter>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub by: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -79,6 +82,15 @@ pub struct Effect {
     pub term: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub last: Option<u8>,
+    /// Opening changes: only cards matching this filter.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub from: Option<Filter>,
+    /// anySuit: the first N tricks.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub first: Option<u8>,
+    /// anySuit: "contractMade".
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub after: Option<String>,
 }
 
 impl Effect {
@@ -161,6 +173,7 @@ pub enum Trig {
     Always,
     Win {
         filt: CardFilter,
+        led: CardFilter,
         by_trump: bool,
         pos: TrickPos,
         consecutive: bool,
@@ -222,6 +235,19 @@ pub enum Rule {
     Raise(u8),
     LeadChoice,
     AnySuit(u8),
+    /// Opening: `count` cards (0 = every card) your team holds matching `from` change suit or rank.
+    BecomeFrom {
+        count: u8,
+        from: CardFilter,
+        suit: Option<u8>,
+        rank: Option<u8>,
+    },
+    LeadSpades,
+    FirstLead,
+    /// Any suit once the team's non-nil bidders have won its contract.
+    AnySuitMade,
+    /// Any suit on the first N tricks.
+    AnySuitFirst(u8),
 }
 
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -287,6 +313,7 @@ pub fn compile_trigger(t: &Option<Trigger>) -> Result<Trig, String> {
             };
             Trig::Win {
                 filt,
+                led: compile_filter(&t.led)?,
                 by_trump,
                 pos,
                 consecutive: t.consecutive.unwrap_or(false),
@@ -365,6 +392,12 @@ pub fn compile(e: &Effect, amount: Option<f64>) -> Result<Compiled, String> {
             grow: true,
         }),
         "swap" => Compiled::Rule(Rule::Swap(need(e.count, "count")?)),
+        "become" if e.from.is_some() => Compiled::Rule(Rule::BecomeFrom {
+            count: e.count.unwrap_or(0),
+            from: compile_filter(&e.from)?,
+            suit: e.suit.as_deref().map(parse_suit).transpose()?,
+            rank: e.rank.as_deref().map(parse_rank).transpose()?,
+        }),
         "become" => {
             let n = need(e.count, "count")?;
             if let Some(r) = &e.rank {
@@ -379,7 +412,13 @@ pub fn compile(e: &Effect, amount: Option<f64>) -> Result<Compiled, String> {
         }
         "raise" => Compiled::Rule(Rule::Raise(e.amount.ok_or("raise needs amount")? as u8)),
         "leadChoice" => Compiled::Rule(Rule::LeadChoice),
+        "anySuit" if e.after.as_deref() == Some("contractMade") => {
+            Compiled::Rule(Rule::AnySuitMade)
+        }
+        "anySuit" if e.first.is_some() => Compiled::Rule(Rule::AnySuitFirst(e.first.unwrap_or(0))),
         "anySuit" => Compiled::Rule(Rule::AnySuit(need(e.last, "last")?)),
+        "leadSpades" => Compiled::Rule(Rule::LeadSpades),
+        "firstLead" => Compiled::Rule(Rule::FirstLead),
         x => return Err(format!("unknown effect type {x}")),
     })
 }

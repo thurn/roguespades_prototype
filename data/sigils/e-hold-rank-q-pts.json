@@ -1,0 +1,79 @@
+{
+  "id": "e-hold-rank-q-pts",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Ranks"
+  ],
+  "source": "enumerated",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 25,
+    "on": {
+      "event": "hold",
+      "card": {
+        "rank": "Q"
+      }
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "Enumerated from the grammar (D21).",
+    "partners": []
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Enumerated; amount set from the hand-level screen."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: screen fires in 96% of rounds (1.95 per round); amount set to 25."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: not in the enumerated source's most promising half (pre-tournament lift +6.3 [+3.4, +9.1], slope +3.6/2x, C 4)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+25 contract points for each [Q] your team holds",
+  "category": "points",
+  "signature": "hold|rank=Q|-|points",
+  "family": "hold|rank=*|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 25",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is Q",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal Q",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

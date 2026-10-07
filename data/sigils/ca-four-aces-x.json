@@ -1,0 +1,94 @@
+{
+  "id": "ca-four-aces-x",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.5,
+    "on": {
+      "event": "hold",
+      "card": {
+        "rank": "A"
+      },
+      "count": 4
+    }
+  },
+  "design": {
+    "decision": "Fill owned-card slots with [A]s to lock in the condition.",
+    "opponent": "Revealed after bidding when it applies.",
+    "rationale": "A common ×mult on a narrow condition (about 15% naturally), which owned [A]s can push toward certainty; it may compete with seed-four-aces for the same niche.",
+    "partners": [
+      "seed-ace-hold",
+      "ca-ace-become",
+      "seed-ace-win"
+    ],
+    "cluster": "A",
+    "draftText": "×1.5 contract multiplier if your team holds four [A]s",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Same condition as seed-four-aces with only the category changed, so two 'four [A]s' sigils will read as duplicates; no counterplay once dealt.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "×1.5 contract multiplier if your team holds four [A]s",
+  "category": "xmult",
+  "signature": "hold(count=4)|rank=A|-|xmult",
+  "family": "hold(count=4)|rank=*|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count at least 4",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

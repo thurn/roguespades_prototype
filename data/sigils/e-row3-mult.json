@@ -1,0 +1,82 @@
+{
+  "id": "e-row3-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks"
+  ],
+  "source": "enumerated",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 10,
+    "on": {
+      "event": "win",
+      "inRow": 3
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "Enumerated from the grammar (D21).",
+    "partners": []
+  },
+  "status": "cut",
+  "replacedBy": "cb-three-row-mult",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Enumerated; amount set from the hand-level screen."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: screen fires in 63% of rounds (0.63 per round); amount set to 10."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into cb-three-row-mult, which has the same signature (D21: credits both sources)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+10 contract multiplier when your team wins three tricks in a row",
+  "category": "mult",
+  "signature": "win(inRow=3)|-|-|mult",
+  "family": "win(inRow=3)|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "3 in a row",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "run of wins reaches 3",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "consecutive-win count",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

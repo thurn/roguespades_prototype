@@ -1,0 +1,72 @@
+{
+  "id": "e-bid8-xmult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh"
+  ],
+  "source": "enumerated",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "xmult",
+    "amount": 3.0,
+    "on": {
+      "event": "bid",
+      "min": 8
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "Enumerated from the grammar (D21).",
+    "partners": []
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Enumerated; amount set from the hand-level screen."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: screen fires in 11% of rounds (0.11 per round); amount set to 3."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: not in the enumerated source's most promising half (pre-tournament lift +10.4 [+6.7, +14.1], slope +4.5/2x, C 3)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "×3 contract multiplier when your team bids 8 or more",
+  "category": "xmult",
+  "signature": "bid(min=8)|-|-|xmult",
+  "family": "bid(min=8)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 3",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 8",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "contract at least 8",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

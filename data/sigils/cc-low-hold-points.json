@@ -1,0 +1,93 @@
+{
+  "id": "cc-low-hold-points",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "LowCards",
+    "Nil"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 5,
+    "on": {
+      "event": "hold",
+      "card": {
+        "ranks": [
+          "2",
+          "6"
+        ]
+      }
+    }
+  },
+  "design": {
+    "decision": "Buy cheap low cards and avoid raising the hand; weigh it against honor upgrades.",
+    "opponent": "Never visible until scoring; opponents see a team that buys cheap cards.",
+    "rationale": "A holdings payoff for Low Cards, modeled on seed-ace-hold's whole-hand count, with a built-in tension against upgrade enablers.",
+    "partners": [
+      "cc-nil-hold-twos",
+      "cc-low-narrow-win",
+      "cc-two-twos",
+      "seed-low-four"
+    ],
+    "cluster": "C",
+    "draftText": "+5 contract points for each [2] through [6] your team holds",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "No counterplay once dealt; the tension with raise and become enablers is a nice purchase decision.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+5 contract points for each [2] through [6] your team holds",
+  "category": "points",
+  "signature": "hold|ranks=2-6|-|points",
+  "family": "hold|ranks=2-6|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 6",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-6",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

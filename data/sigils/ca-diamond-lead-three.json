@@ -1,0 +1,94 @@
+{
+  "id": "ca-diamond-lead-three",
+  "rarity": "common",
+  "role": "hybrid",
+  "archetypes": [
+    "Suits"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "lead",
+      "card": {
+        "suit": "D"
+      },
+      "count": 3
+    }
+  },
+  "design": {
+    "decision": "Whenever your team has the lead, choose [♦] over a safer lead, even at the risk of setting up opponents' ruffs.",
+    "opponent": "Revealed on the third [♦] lead; opponents can trump [♦] leads or refuse the lead by ducking.",
+    "rationale": "Leads are more under the owner's control than wins, so this serves the length line, which loses [♦] wins to ruffs; spade-lead measured well, which suggests lead conditions work.",
+    "partners": [
+      "seed-diamond-hold",
+      "ca-diamond-hold-eight",
+      "seed-lead-choice"
+    ],
+    "cluster": "A",
+    "draftText": "+15 contract multiplier when your team leads three [♦]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Suit-only near-duplicate of ca-spade-lead-three; good owner-controlled decision.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract multiplier when your team leads [♦] three times",
+  "category": "hybrid",
+  "signature": "lead(count=3)|suit=D|-|mult",
+  "family": "lead(count=3)|suit=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team leads",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is D",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "milestone 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count reaches 3",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "milestone count",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

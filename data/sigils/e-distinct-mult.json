@@ -1,0 +1,77 @@
+{
+  "id": "e-distinct-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Rainbow"
+  ],
+  "source": "enumerated",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 2,
+    "on": {
+      "event": "win",
+      "distinct": "suit"
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "Enumerated from the grammar (D21).",
+    "partners": []
+  },
+  "status": "cut",
+  "replacedBy": "ca-rainbow-first-mult",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Enumerated; amount set from the hand-level screen."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: screen fires in 100% of rounds (3.06 per round); amount set to 2."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into ca-rainbow-first-mult, which has the same signature (D21: credits both sources)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+2 contract multiplier when your team wins its first trick with each suit",
+  "category": "mult",
+  "signature": "win(distinct=suit)|-|-|mult",
+  "family": "win(distinct=suit)|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "first win with this suit",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "suits already won",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

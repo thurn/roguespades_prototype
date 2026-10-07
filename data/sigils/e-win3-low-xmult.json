@@ -1,0 +1,103 @@
+{
+  "id": "e-win3-low-xmult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "LowCards"
+  ],
+  "source": "enumerated",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "xmult",
+    "amount": 2.5,
+    "on": {
+      "event": "win",
+      "card": {
+        "ranks": [
+          "2",
+          "10"
+        ]
+      },
+      "count": 3
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "Enumerated from the grammar (D21).",
+    "partners": []
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Enumerated; amount set from the hand-level screen."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: screen fires in 41% of rounds (0.41 per round); amount set to 2.5."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: not in the enumerated source's most promising half (pre-tournament lift +9.3 [+6.0, +12.6], slope +9.3/2x, C 8)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "×2.5 contract multiplier when your team wins three tricks with [2]s through [10]s",
+  "category": "xmult",
+  "signature": "win(count=3)|ranks=2-10|-|xmult",
+  "family": "win(count=3)|ranks=2-10|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2.5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-10",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "milestone 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count reaches 3",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "milestone count",
+        "cost": 1
+      }
+    ],
+    "C": 8,
+    "S": 0.1111111111111111
+  },
+  "lint": []
+}

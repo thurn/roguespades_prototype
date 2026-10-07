@@ -1,0 +1,89 @@
+{
+  "id": "ca-diamond-hold-eight",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Suits"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "hold",
+      "card": {
+        "suit": "D"
+      },
+      "count": 8
+    }
+  },
+  "design": {
+    "decision": "Buy cheap [♦] cards for length and use swaps to keep [♦]; it rewards committing to the suit in the shop.",
+    "opponent": "Revealed after bidding when it applies; a long [♦] team is easy to strip by voiding [♦].",
+    "rationale": "Whole-hand counts measured best in the pilot; eight of thirteen is a natural team share about a third of the time, so this fits the common +mult budget, and bought [♦] cards raise the rate.",
+    "partners": [
+      "seed-diamond-lead",
+      "ca-diamond-lead-three",
+      "ca-diamond-become-from-clubs"
+    ],
+    "cluster": "A",
+    "draftText": "+15 contract multiplier if your team holds eight [♦]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Fixed at the deal, so opponents have no counterplay; suit-only near-duplicate of ca-heart-hold-eight and ca-spade-hold-eight.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract multiplier if your team holds eight [♦]s",
+  "category": "mult",
+  "signature": "hold(count=8)|suit=D|-|mult",
+  "family": "hold(count=8)|suit=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is D",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 8",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count at least 8",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

@@ -1,0 +1,74 @@
+{
+  "id": "e-win-suit-s-pts",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Spades"
+  ],
+  "source": "enumerated",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 15,
+    "on": {
+      "event": "win",
+      "card": {
+        "suit": "S"
+      }
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "Enumerated from the grammar (D21).",
+    "partners": []
+  },
+  "status": "cut",
+  "replacedBy": "seed-e-spade-win",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Enumerated; amount set from the hand-level screen."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: screen fires in 98% of rounds (3.29 per round); amount set to 15."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into seed-e-spade-win, which has the same signature (D21: credits both sources)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract points when your team wins a trick with [♠]",
+  "category": "points",
+  "signature": "win|suit=S|-|points",
+  "family": "win|suit=*|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is S",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

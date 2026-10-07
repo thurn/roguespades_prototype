@@ -1,0 +1,85 @@
+{
+  "id": "cc-nil-hold-twos",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Nil",
+    "LowCards"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "nilPoints",
+    "amount": 30,
+    "on": {
+      "event": "hold",
+      "card": {
+        "rank": "2"
+      }
+    }
+  },
+  "design": {
+    "decision": "Keep [2]s, and buy cheap [2]s, as nil insurance; weigh a nil bid by how many [2]s the team holds.",
+    "opponent": "Revealed when a nil is made; opponents learn the nil team hoards low cards.",
+    "rationale": "A holdings payoff for Nil that also tells the player what to buy, the shape that measured best for Ranks (seed-ace-hold +8.0).",
+    "partners": [
+      "cc-two-twos",
+      "cc-swap-five",
+      "seed-nil-bid-mult",
+      "cc-nil-made-mult"
+    ],
+    "cluster": "C",
+    "draftText": "+30 nil points for each [2] your team holds",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Filter-only near-duplicate of cc-two-hold-mult in a different category.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+30 nil points for each [2] your team holds",
+  "category": "points",
+  "signature": "hold|rank=2|-|nilPoints",
+  "family": "hold|rank=*|-|nilPoints",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 30",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal 2",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

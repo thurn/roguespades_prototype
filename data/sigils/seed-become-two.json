@@ -18,7 +18,12 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Random downgrades can hit honors and trumps, so it only helps the Nil plan.",
+      "elegance": 3
+    }
   },
   "status": "candidate",
   "replacedBy": null,
@@ -68,27 +73,27 @@
   "lint": [],
   "estimates": {
     "step": "phase-0",
-    "exposures": 1267,
+    "exposures": 1365,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": -11.5,
-        "lo": -14.26,
-        "hi": -8.75,
+        "value": -11.45,
+        "lo": -14.18,
+        "hi": -8.72,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 1267
+        "n": 1365
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -13.03,
-        "lo": -15.78,
-        "hi": -10.27,
+        "value": -10.34,
+        "lo": -13.07,
+        "hi": -7.61,
         "bandLo": null,
         "bandHi": null,
-        "n": 1267
+        "n": 1365
       },
       {
         "key": "slope",
@@ -103,9 +108,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 1.52,
-        "lo": -1.39,
-        "hi": 4.44,
+        "value": -1.11,
+        "lo": -3.83,
+        "hi": 1.61,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -118,38 +123,38 @@
       "hi": 0.0
     },
     "skillGradient": {
-      "value": 1.52,
-      "lo": -1.39,
-      "hi": 4.44
+      "value": -1.11,
+      "lo": -3.83,
+      "hi": 1.61
     },
     "pairs": [
+      {
+        "with": "seed-trump-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-ace-hold",
+        "synergy": 0.0
+      },
       {
         "with": "pilot-dose-80",
         "synergy": 0.0
       },
       {
-        "with": "control-rare",
+        "with": "seed-contract-points",
         "synergy": 0.0
       },
       {
-        "with": "seed-exact-mult",
-        "synergy": 0.0
-      },
-      {
-        "with": "seed-any-suit",
-        "synergy": 0.0
-      },
-      {
-        "with": "seed-two-win",
+        "with": "seed-e-diamond-three",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": -0.13553198134331473,
-      "seU": 0.01743714867889973,
+      "liftU": -0.10631680713049271,
+      "seU": 0.017073631846887788,
       "slopeU": 0.0,
       "slopeSeU": 0.0,
-      "k": 1.922343567269947
+      "k": 1.9447399061524484
     }
   },
   "reports": [

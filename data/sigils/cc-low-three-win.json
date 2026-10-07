@@ -1,0 +1,116 @@
+{
+  "id": "cc-low-three-win",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "LowCards"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 50,
+    "on": {
+      "event": "win",
+      "card": {
+        "ranks": [
+          "2",
+          "10"
+        ]
+      },
+      "count": 3
+    }
+  },
+  "design": {
+    "decision": "Play to win tricks with long suits and low trumps rather than cashing honors.",
+    "opponent": "Revealed on the third low win; opponents can draw trumps.",
+    "rationale": "A common points milestone with an achievable count, unlike the [♦] milestones that fired 8%; low wins are frequent enough to fire often.",
+    "partners": [
+      "cc-two-spades",
+      "cc-low-spade-win",
+      "seed-low-four",
+      "cc-twos-to-spades"
+    ],
+    "cluster": "C",
+    "draftText": "+50 contract points when your team wins three tricks with [2]s through [10]s",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Milestone plus range is C=8 at common; threshold and category near-duplicate of seed-low-four.",
+      "elegance": 2
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-win3-low-pts); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+50 contract points when your team wins three tricks with [2]s through [10]s",
+  "category": "points",
+  "signature": "win(count=3)|ranks=2-10|-|points",
+  "family": "win(count=3)|ranks=2-10|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 50",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-10",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "milestone 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count reaches 3",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "milestone count",
+        "cost": 1
+      }
+    ],
+    "C": 8,
+    "S": 0.1111111111111111
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

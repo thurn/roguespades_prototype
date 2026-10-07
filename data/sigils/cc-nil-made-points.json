@@ -1,0 +1,83 @@
+{
+  "id": "cc-nil-made-points",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Nil"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 80,
+    "on": {
+      "event": "nilMade"
+    }
+  },
+  "design": {
+    "decision": "Bid nil only with a partner who can safely make a contract, since both must succeed.",
+    "opponent": "Revealed at scoring; opponents can deny it by breaking the nil or setting the partner.",
+    "rationale": "Unlike nil points (seed-nil-points, -3.0), these are contract points and need the contract too, so the payoff rewards the safe nil-plus-made plan and is lost on a set.",
+    "partners": [
+      "cc-nil-bid-points",
+      "cc-swap-five",
+      "seed-exact-mult",
+      "cc-nil-hold-twos"
+    ],
+    "cluster": "C",
+    "draftText": "+80 contract points if your team makes a nil",
+    "hooks": "none",
+    "critic": {
+      "verdict": "fix",
+      "concerns": "The Exact tag has no basis, because a made nil doesn't depend on exact tricks.",
+      "elegance": 5
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: critic fix applied: The Exact tag has no basis, because a made nil doesn't depend on exact tricks."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-nilmade-pts); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+80 contract points if your team makes a nil",
+  "category": "points",
+  "signature": "nilMade|-|-|points",
+  "family": "nilMade|-|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 80",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes a nil",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

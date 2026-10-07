@@ -1,0 +1,72 @@
+{
+  "id": "e-bid4less-xmult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Exact"
+  ],
+  "source": "enumerated",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "xmult",
+    "amount": 2.0,
+    "on": {
+      "event": "bid",
+      "max": 4
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "Enumerated from the grammar (D21).",
+    "partners": []
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Enumerated; amount set from the hand-level screen."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: screen fires in 46% of rounds (0.46 per round); amount set to 2."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: not in the enumerated source's most promising half (pre-tournament lift +10.1 [+6.5, +13.7], slope +5.2/2x, C 3)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "×2 contract multiplier when your team bids 4 or less",
+  "category": "xmult",
+  "signature": "bid(max=4)|-|-|xmult",
+  "family": "bid(max=4)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "contract at most 4",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

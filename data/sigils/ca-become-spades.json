@@ -1,0 +1,79 @@
+{
+  "id": "ca-become-spades",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Spades",
+    "BidHigh",
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "become",
+    "count": 2,
+    "suit": "S"
+  },
+  "design": {
+    "decision": "Bid with two extra trumps, and maybe a shorter side suit, in view.",
+    "opponent": "Hidden until a converted card trumps or follows [♠] unexpectedly.",
+    "rationale": "Extra trumps help almost any hand without a payoff, unlike [♥] becomes, which turn trumps into side cards; it is two cards to keep it common.",
+    "partners": [
+      "ca-spade-hold-eight",
+      "seed-trump-points",
+      "seed-spade-lead"
+    ],
+    "cluster": "A",
+    "draftText": "Opening: Two cards your team holds become [♠]s",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Count-only near-duplicate of cb-become-spade (three [♠]s); keep whichever count measures better.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: also proposed as cc-two-spades."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Opening: Two cards your team holds become [♠]s",
+  "category": "enabler",
+  "signature": "opening|suit=S|-|become",
+  "family": "opening|suit=*|-|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 4
+      },
+      {
+        "burden": "numeric value",
+        "detail": "count 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

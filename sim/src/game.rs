@@ -105,6 +105,8 @@ pub struct RunCfg<'a> {
     pub cards: bool,
     /// Share of shop visits checked by tier-0 rollout rescoring.
     pub validate: f64,
+    /// Code and pool versions, copied into every record.
+    pub version: String,
 }
 
 #[derive(Clone, Debug)]
@@ -142,8 +144,10 @@ struct CardOffer {
 #[derive(Clone)]
 struct Team {
     sigils: Vec<OwnedSigil>,
-    /// Sigils granted so far this run, in order.
+    /// Sigils granted so far while planning, in order.
     granted: Vec<usize>,
+    /// The planned grants (shop, sigil), fixed by the board seed so both runs of a board match.
+    schedule: Vec<(u8, usize)>,
     history: Vec<OwnedSigil>,
     cards: Vec<OwnedCard>,
     sold_cards: Vec<OwnedCard>,
@@ -232,6 +236,7 @@ pub struct RunRec {
     pub margin: f64,
     pub clean: bool,
     pub checks: Vec<ShopCheck>,
+    pub version: String,
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -314,6 +319,7 @@ impl<'a> Runner<'a> {
             Team {
                 sigils: vec![],
                 granted: vec![],
+                schedule: vec![],
                 history: vec![],
                 cards: vec![],
                 sold_cards: vec![],
@@ -456,7 +462,8 @@ impl<'a> Runner<'a> {
         if !self.cfg.sigil_shop {
             return vec![];
         }
-        let owned: Vec<usize> = self.teams[ti].sigils.iter().map(|o| o.def).collect();
+        let mut owned: Vec<usize> = self.teams[ti].sigils.iter().map(|o| o.def).collect();
+        owned.extend(self.teams[ti].schedule.iter().map(|x| x.1));
         let mut out = vec![];
         for _ in 0..3 {
             let roll = rng.f64();
@@ -661,25 +668,25 @@ impl<'a> Runner<'a> {
         }
         if let Some(g) = self.cfg.teams[ti].grants.clone() {
             if shop <= g.max_shop {
-                let mut grng = gs(2);
-                let mut todo: Vec<usize> = vec![];
-                if !g.pairs.is_empty() && grng.chance(g.pair_prob) {
-                    let (a, b) = g.pairs[grng.below(g.pairs.len())];
-                    todo.extend([a, b]);
-                } else if grng.chance(g.prob) {
-                    if let Some(d) = self.draw_grant(ti, &g, &mut grng) {
-                        todo.push(d);
-                    }
-                }
+                let todo: Vec<usize> = self.teams[ti]
+                    .schedule
+                    .iter()
+                    .filter(|x| x.0 == shop)
+                    .map(|x| x.1)
+                    .collect();
                 for d in todo {
-                    if self.teams[ti].granted.contains(&d) {
-                        continue;
-                    }
-                    self.teams[ti].granted.push(d);
-                    // A sigil the shop already bought this run is not granted again.
+                    // Scheduled grants are never offered to this team, so it can't already own them.
                     if !self.teams[ti].sigils.iter().any(|o| o.def == d) {
-                        let mut arng =
-                            Rng::stream(self.seed, &[S_GRANT, ti as u64, shop as u64, 4, d as u64]);
+                        let mut arng = Rng::stream(
+                            self.seed,
+                            &[
+                                S_GRANT,
+                                ti as u64,
+                                shop as u64,
+                                4,
+                                hash_str(&self.cfg.pool.defs[d].id),
+                            ],
+                        );
                         self.grant(ti, d, shop, &mut arng, g.jitter);
                     }
                 }
@@ -706,7 +713,11 @@ impl<'a> Runner<'a> {
         let mut orng = Rng::stream(self.seed, &[S_OFFER, luck, shop as u64, reroll]);
         let mut sig = self.sigil_offers(ti, &mut orng);
         let mut cards = self.card_offers(shop, &mut orng, other_offers);
-        if self.cfg.validate > 0.0 && sig.len() >= 2 && rng.chance(self.cfg.validate) {
+        if self.cfg.validate > 0.0
+            && sig.len() >= 2
+            && Rng::stream(self.seed, &[S_TEAM, 99, ti as u64, shop as u64])
+                .chance(self.cfg.validate)
+        {
             self.check_offers(ti, shop, &sig);
         }
         for _ in 0..30 {
@@ -918,17 +929,29 @@ impl<'a> Runner<'a> {
                 }
             }
         }
-        let mut seat = (dealer + 1) % 4;
-        for &c in &perm {
+        // Stable dealing: permutation position i belongs to seat (dealer + 1 + i) mod 4. Owned
+        // cards leave their positions; seats with too many cards pass the overflow, in
+        // permutation order, to seats that are short. Small ownership changes move few cards.
+        let mut overflow: Vec<u8> = vec![];
+        for (i, &c) in perm.iter().enumerate() {
             if owned_mask & bit(c) != 0 {
                 continue;
             }
+            let seat = ((dealer as usize) + 1 + i) % 4;
+            if hands[seat].count_ones() < 13 {
+                hands[seat] |= bit(c);
+            } else {
+                overflow.push(c);
+            }
+        }
+        let mut seat = (dealer as usize + 1) % 4;
+        for c in overflow {
             let mut guard = 0;
-            while hands[seat as usize].count_ones() >= 13 && guard < 4 {
+            while hands[seat].count_ones() >= 13 && guard < 4 {
                 seat = (seat + 1) % 4;
                 guard += 1;
             }
-            hands[seat as usize] |= bit(c);
+            hands[seat] |= bit(c);
             seat = (seat + 1) % 4;
         }
 
@@ -944,7 +967,9 @@ impl<'a> Runner<'a> {
                     let pri = match r {
                         Rule::Swap(_) => 0,
                         Rule::BecomeSuit(..) => 1,
+                        Rule::BecomeFrom { suit: Some(_), .. } => 1,
                         Rule::BecomeRank(..) => 2,
+                        Rule::BecomeFrom { .. } => 2,
                         Rule::BecomeRange(..) => 3,
                         Rule::Raise(_) => 4,
                         _ => continue,
@@ -982,8 +1007,9 @@ impl<'a> Runner<'a> {
                         let (ga, gb) = (trim(ga, n), trim(gb, n));
                         play.hands[a] = (play.hands[a] & !ga) | gb;
                         play.hands[b] = (play.hands[b] & !gb) | ga;
-                        known[a] = (known[a] & !ga) | (known[b] & gb);
-                        known[b] = (known[b] & !gb) | (known[a] & ga);
+                        let (ka, kb) = (known[a], known[b]);
+                        known[a] = (ka & !ga) | (kb & gb);
+                        known[b] = (kb & !gb) | (ka & ga);
                     }
                     Rule::BecomeRank(n, rank) | Rule::BecomeRange(n, rank, _) => {
                         let hi = if let Rule::BecomeRange(_, _, h) = r {
@@ -1005,6 +1031,29 @@ impl<'a> Runner<'a> {
                         for c in Bits(play.hands[a] | play.hands[b]) {
                             let r = play.id.rank[c as usize];
                             play.id.set(c, play.id.suit[c as usize], (r + n).min(ACE));
+                        }
+                    }
+                    Rule::BecomeFrom {
+                        count,
+                        from,
+                        suit,
+                        rank,
+                    } => {
+                        let mut elig = 0;
+                        for c in Bits(play.hands[a] | play.hands[b]) {
+                            if from.matches(play.id.suit[c as usize], play.id.rank[c as usize]) {
+                                elig |= bit(c);
+                            }
+                        }
+                        let picked: Vec<u8> = if count == 0 {
+                            Bits(elig).collect()
+                        } else {
+                            sample(elig, count, &mut orng)
+                        };
+                        for c in picked {
+                            let ns = suit.unwrap_or(play.id.suit[c as usize]);
+                            let nr = rank.unwrap_or(play.id.rank[c as usize]);
+                            play.id.set(c, ns, nr);
                         }
                     }
                     _ => {}
@@ -1047,8 +1096,7 @@ impl<'a> Runner<'a> {
                 self.bench(&play, s, m);
                 if play.tlen > 0 {
                     let led = play.id.suit[play.trick[0] as usize];
-                    let n = play.any_suit[kt];
-                    let any = n > 0 && play.ntricks + n >= 13;
+                    let any = play.any_suit_now(s);
                     if play.id.suit[m as usize] != led && !any {
                         voids[s as usize][led as usize] = true;
                     }
@@ -1183,7 +1231,15 @@ impl<'a> Runner<'a> {
             let used = play.acc[kt].used;
             for (k, s) in rules.teams[kt].slots.iter().enumerate() {
                 let hit = used & (1 << k) != 0
-                    || (matches!(s.rule, Some(Rule::AnySuit(_))) && used & (1 << 14) != 0)
+                    || (matches!(
+                        s.rule,
+                        Some(Rule::AnySuit(_))
+                            | Some(Rule::AnySuitMade)
+                            | Some(Rule::AnySuitFirst(_))
+                    ) && used & (1 << 14) != 0)
+                    || (matches!(s.rule, Some(Rule::LeadSpades)) && used & (1 << 13) != 0)
+                    || (matches!(s.rule, Some(Rule::FirstLead))
+                        && play.first_leader != (play.dealer + 1) % 4)
                     || (matches!(s.rule, Some(Rule::LeadChoice)) && used & (1 << 15) != 0);
                 if hit && s.payoff.is_none_or(|p| p.trig.is_trick()) {
                     self.teams[ti].sigils[k].revealed = true;
@@ -1226,12 +1282,9 @@ impl<'a> Runner<'a> {
     /// Tier-0 rollout rescoring: plays this round on sampled deals with and without each offer.
     fn check_offers(&mut self, ti: usize, shop: u8, offers: &[usize]) {
         const K: u64 = 12;
-        let lambda = self.cfg.model.lambda[shop as usize];
         let model: Vec<f64> = offers
             .iter()
-            .map(|&d| {
-                self.sigil_value(ti, d, shop, None) - lambda * self.cfg.pool.defs[d].price() as f64
-            })
+            .map(|&d| self.sigil_value(ti, d, shop, None))
             .collect();
         let margin = |extra: Option<usize>, k: u64| {
             let mut r = self.clone();
@@ -1311,11 +1364,41 @@ impl<'a> Runner<'a> {
         self.recs[0].rounds.pop().unwrap()
     }
 
+    /// Plans every sigil grant of the run from the grant streams and earlier grants only.
+    fn plan_grants(&mut self) {
+        for ti in 0..2 {
+            let Some(g) = self.cfg.teams[ti].grants.clone() else {
+                continue;
+            };
+            for shop in 1..=g.max_shop.min(self.cfg.rounds) {
+                let mut grng = Rng::stream(self.seed, &[S_GRANT, ti as u64, shop as u64, 2]);
+                let mut todo: Vec<usize> = vec![];
+                if !g.pairs.is_empty() && grng.chance(g.pair_prob) {
+                    let (a, b) = g.pairs[grng.below(g.pairs.len())];
+                    todo.extend([a, b]);
+                } else if grng.chance(g.prob) {
+                    if let Some(d) = self.draw_grant(ti, &g, &mut grng) {
+                        todo.push(d);
+                    }
+                }
+                for d in todo {
+                    if !self.teams[ti].granted.contains(&d) {
+                        self.teams[ti].granted.push(d);
+                        self.teams[ti].schedule.push((shop, d));
+                    }
+                }
+            }
+        }
+    }
+
     pub fn run(mut self, board: u64) -> RunRec {
+        self.plan_grants();
         for round in 1..=self.cfg.rounds {
-            // Teams shop at once; card offers never overlap.
-            let offered_a = self.shop(0, round, 0);
-            self.shop(1, round, offered_a);
+            // Teams shop at once; card offers never overlap. Which team's offers are drawn first
+            // swaps with the orientation, like the rest of the luck.
+            let first = self.orient as usize;
+            let offered = self.shop(first, round, 0);
+            self.shop(1 - first, round, offered);
             self.sync_records();
             self.play_round(round);
         }
@@ -1354,6 +1437,7 @@ impl<'a> Runner<'a> {
             margin,
             clean: false,
             checks: std::mem::take(&mut self.checks),
+            version: self.cfg.version.clone(),
         }
     }
 }

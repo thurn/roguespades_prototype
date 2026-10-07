@@ -1,0 +1,92 @@
+{
+  "id": "cb-honor-hold",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh",
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 5,
+    "on": {
+      "event": "hold",
+      "card": {
+        "ranks": [
+          "J",
+          "A"
+        ]
+      }
+    }
+  },
+  "design": {
+    "decision": "Buy honors rather than low cards, and bid up when the hand is honor-heavy, because the points need a make.",
+    "opponent": "Shown after bidding. Gives little away.",
+    "rationale": "Whole-hand holding counts measured well (seed-ace-hold +8.0). This broad version rewards strong hands, which are the hands that bid high, and feeds directly from the raise and become enablers.",
+    "partners": [
+      "cb-raise-one",
+      "cb-become-ace",
+      "seed-ace-hold"
+    ],
+    "cluster": "B",
+    "draftText": "+5 contract points for each [J] through [A] your team holds",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Overlaps seed-ace-hold and ca-king-hold as a third rank-holdings count; no counterplay once dealt.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+5 contract points for each [J] through [A] your team holds",
+  "category": "points",
+  "signature": "hold|ranks=J-A|-|points",
+  "family": "hold|ranks=J-A|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint J",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint A",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in J-A",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

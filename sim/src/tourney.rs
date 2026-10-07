@@ -83,6 +83,7 @@ fn plain_cfg<'a>(pool: &'a Pool, model: &'a Model, tiers: [Tier; 2]) -> RunCfg<'
         rounds: 8,
         cards: false,
         validate: 0.0,
+        version: String::new(),
     }
 }
 
@@ -294,6 +295,7 @@ pub struct ExpCfg {
     pub perturb_amount: i32,
     pub explore: f64,
     pub validate: f64,
+    pub version: String,
     pub arm: Arm,
     pub out: String,
 }
@@ -338,6 +340,7 @@ impl Default for ExpCfg {
             perturb_amount: 50,
             explore: 0.05,
             validate: 0.0,
+            version: String::new(),
             arm: Arm {
                 ty: "tournament".into(),
                 ..Default::default()
@@ -436,6 +439,7 @@ pub fn run(a: RunArgs) {
         rounds: 8,
         cards: c.cards,
         validate: c.validate,
+        version: c.version.clone(),
     };
     let mut clean = base.clone();
     clean.teams[0].grants = None;

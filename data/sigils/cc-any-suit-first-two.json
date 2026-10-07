@@ -1,0 +1,71 @@
+{
+  "id": "cc-any-suit-first-two",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Nil",
+    "Spades",
+    "LowCards",
+    "Suits"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "anySuit",
+    "first": 2
+  },
+  "design": {
+    "decision": "Use the opening tricks to trump early or to shed a dangerous honor from a nil hand while others still follow suit.",
+    "opponent": "Revealed on the first off-suit play; opponents lose their early [A]-[K] cashes.",
+    "rationale": "The start of the round is where nil hands are most at risk and side-suit honors are cashed, so freedom there is useful in plain Spades; the rare last-three window measured poorly, and an early window may matter more.",
+    "partners": [
+      "cc-nil-made-mult",
+      "seed-trump-points",
+      "cc-first-trick-mult",
+      "cc-low-spade-win"
+    ],
+    "cluster": "C",
+    "draftText": "Your team can play any suit on the first two tricks",
+    "hooks": "anySuit gains a 'first: N' window (the first N tricks of a round) alongside 'last: N'; same follow-suit override, same rule about leading unbroken [♠]s",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Early trumping while still holding the led suit gives opponents little counterplay on tricks one and two.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Your team can play any suit on the first two tricks",
+  "category": "enabler",
+  "signature": "play|first=2|-|anySuit",
+  "family": "play|first=2|-|anySuit",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "window 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "trick is among the last tricks",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

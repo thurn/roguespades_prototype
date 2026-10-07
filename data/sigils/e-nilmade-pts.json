@@ -1,0 +1,66 @@
+{
+  "id": "e-nilmade-pts",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Nil"
+  ],
+  "source": "enumerated",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 150,
+    "on": {
+      "event": "nilMade"
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "Enumerated from the grammar (D21).",
+    "partners": []
+  },
+  "status": "cut",
+  "replacedBy": "cc-nil-made-points",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Enumerated; amount set from the hand-level screen."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: screen fires in 12% of rounds (0.12 per round); amount set to 150."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into cc-nil-made-points, which has the same signature (D21: credits both sources)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+150 contract points if your team makes a nil",
+  "category": "points",
+  "signature": "nilMade|-|-|points",
+  "family": "nilMade|-|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 150",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes a nil",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

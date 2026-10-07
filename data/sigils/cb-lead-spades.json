@@ -1,0 +1,67 @@
+{
+  "id": "cb-lead-spades",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Spades",
+    "BidHigh",
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "leadSpades"
+  },
+  "design": {
+    "decision": "Draw trumps from the first lead to protect side-suit winners, or start a run in trump.",
+    "opponent": "Revealed on the first unbroken [♠] lead, which is a legal-play change. After that, opponents can't hide behind unbroken trumps.",
+    "rationale": "Lead control is the thinnest enabler family. This is the simplest possible play-freedom change, valuable for any strong hand before a build exists.",
+    "partners": [
+      "cb-become-spade",
+      "cb-five-row-mult",
+      "seed-spade-lead"
+    ],
+    "cluster": "B",
+    "draftText": "Your team can lead [♠] before [♠]s are broken",
+    "hooks": "Rule-bender flag per team: the kernel's lead-legality check treats [♠]s as broken for the owning team's leads. It changes nothing else and has no conflict with other rule benders."
+  },
+  "status": "cut",
+  "replacedBy": "ca-lead-spades",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into ca-lead-spades, an identical design from another cluster."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Your team can lead [♠] before [♠]s are broken",
+  "category": "enabler",
+  "signature": "play|-|-|leadSpades",
+  "family": "play|-|-|leadSpades",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "[♠] not yet broken",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "the lead is a [♠]",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

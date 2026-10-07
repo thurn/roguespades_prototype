@@ -1,0 +1,82 @@
+{
+  "id": "cb-grow-exact-points",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Exact"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "grow",
+    "kind": "points",
+    "step": 20,
+    "on": {
+      "event": "make",
+      "exact": true
+    }
+  },
+  "design": {
+    "decision": "Commit to exact play early in the run, because every exact make keeps paying.",
+    "opponent": "Shown on the first exact make. Its growing value invites opponents to force overtricks.",
+    "rationale": "seed-grow-exact (+mult, rare) measured -7.3. A cheap points growth at common is a lower-risk Exact spine with a different signature (points, not mult).",
+    "partners": [
+      "seed-exact-mult",
+      "cb-exact-trick-points",
+      "cb-free-after-made"
+    ],
+    "cluster": "B",
+    "draftText": "This sigil gains +20 contract points every time your team makes its contract exactly (currently +0)",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Category-only near-duplicate of seed-grow-exact.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "This sigil gains +20 contract points every time your team makes its contract exactly (currently +0)",
+  "category": "points",
+  "signature": "make(exact)|-|growth|points",
+  "family": "make(exact)|-|growth|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "growth step 20",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "currently display",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "growth counter carried between rounds",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract exactly",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

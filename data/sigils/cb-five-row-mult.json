@@ -1,0 +1,87 @@
+{
+  "id": "cb-five-row-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "win",
+      "inRow": 5
+    }
+  },
+  "design": {
+    "decision": "Draw trumps, then run a long suit. This reward pushes a team to bid big.",
+    "opponent": "Shown when reached. Opponents keep a late trump to break the run.",
+    "rationale": "This is a narrow streak condition (seed five-row fires 25%) at a common +mult amount. It ties Streaks to Bid High, since five-trick runs come from strong hands.",
+    "partners": [
+      "cb-lead-spades",
+      "seed-five-row-x",
+      "cb-become-spade"
+    ],
+    "cluster": "B",
+    "draftText": "+15 contract multiplier when your team wins five tricks in a row",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Inverted ladder: harder condition (five in a row) at common than seed-four-row (four in a row, uncommon); threshold near-duplicate of cb-three-row-mult.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract multiplier when your team wins five tricks in a row",
+  "category": "mult",
+  "signature": "win(inRow=5)|-|-|mult",
+  "family": "win(inRow=5)|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "5 in a row",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "run of wins reaches 5",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "consecutive-win count",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

@@ -1,0 +1,85 @@
+{
+  "id": "ca-diamond-lead-contract",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Suits",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 3,
+    "per": "contractTrick",
+    "on": {
+      "event": "lead",
+      "card": {
+        "suit": "D"
+      }
+    }
+  },
+  "design": {
+    "decision": "Bid up when long in [♦], then spend leads on [♦].",
+    "opponent": "Revealed on the first [♦] lead; a big contract with long [♦] invites aggressive defense.",
+    "rationale": "Gives Suits a bid-tension payoff; scaling and a trigger cost more simplicity than the plain template, which the brief's bid-tension target justifies.",
+    "partners": [
+      "ca-diamond-lead-three",
+      "seed-contract-points",
+      "seed-bid8-mult"
+    ],
+    "cluster": "A",
+    "draftText": "+3 contract points for each trick in your team's contract when your team leads [♦]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Lead count times contract is a two-quantity product; the plain seed-diamond-lead plus a separate bid-tension sigil may do the job more simply.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+3 contract points for each trick in your team's contract when your team leads [♦]",
+  "category": "points",
+  "signature": "lead|suit=D|contractTrick|points",
+  "family": "lead|suit=*|contractTrick|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team leads",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is D",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

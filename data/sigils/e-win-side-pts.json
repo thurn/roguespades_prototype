@@ -1,0 +1,75 @@
+{
+  "id": "e-win-side-pts",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Suits",
+    "Rainbow"
+  ],
+  "source": "enumerated",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 15,
+    "on": {
+      "event": "win",
+      "card": {
+        "notSuit": "S"
+      }
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "Enumerated from the grammar (D21).",
+    "partners": []
+  },
+  "status": "cut",
+  "replacedBy": "ca-side-win",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Enumerated; amount set from the hand-level screen."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: screen fires in 99% of rounds (3.09 per round); amount set to 15."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into ca-side-win, which has the same signature (D21: credits both sources)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract points when your team wins a trick with a card other than [♠]",
+  "category": "points",
+  "signature": "win|notSuit=S|-|points",
+  "family": "win|notSuit=S|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is not S",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

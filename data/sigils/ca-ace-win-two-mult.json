@@ -1,0 +1,99 @@
+{
+  "id": "ca-ace-win-two-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 10,
+    "on": {
+      "event": "win",
+      "card": {
+        "rank": "A"
+      },
+      "count": 2
+    }
+  },
+  "design": {
+    "decision": "Cash [A]s before their suits are trumped instead of holding them back.",
+    "opponent": "Revealed on the second [A] win; opponents void suits to trump [A]s.",
+    "rationale": "Ranks had no common +mult; two wins is the common-frequency step below seed-ace-three.",
+    "partners": [
+      "seed-ace-win",
+      "seed-ace-hold",
+      "ca-ace-become"
+    ],
+    "cluster": "A",
+    "draftText": "+10 contract multiplier when your team wins two tricks with [A]s",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "[A]s win tricks routinely, so the play decision is weak; near-duplicate of seed-ace-three by count and category.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+10 contract multiplier when your team wins two tricks with [A]s",
+  "category": "mult",
+  "signature": "win(count=2)|rank=A|-|mult",
+  "family": "win(count=2)|rank=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "milestone 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count reaches 2",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "milestone count",
+        "cost": 1
+      }
+    ],
+    "C": 7,
+    "S": 0.125
+  },
+  "lint": []
+}

@@ -1,0 +1,79 @@
+{
+  "id": "cb-make-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Generic",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 6,
+    "on": {
+      "event": "make"
+    }
+  },
+  "design": {
+    "decision": "Don't overbid, because a set loses the multiplier. It also stops multiplying your losses on a set.",
+    "opponent": "Shown on the first make. Opponents can deny it only by setting.",
+    "rationale": "This is the generic common +mult. Its make condition gives honest bid tension at the lowest complexity (C=2), unlike the stat-stick flat multiplier.",
+    "partners": [
+      "any +contract-points sigil",
+      "seed-ace-hold",
+      "cb-free-after-made"
+    ],
+    "cluster": "B",
+    "draftText": "+6 contract multiplier if your team makes its contract",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 5
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-make-mult); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+6 contract multiplier if your team makes its contract",
+  "category": "mult",
+  "signature": "make|-|-|mult",
+  "family": "make|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 6",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

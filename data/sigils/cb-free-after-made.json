@@ -1,0 +1,69 @@
+{
+  "id": "cb-free-after-made",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Exact",
+    "Generic",
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "anySuit",
+    "after": "contractMade"
+  },
+  "design": {
+    "decision": "After making the contract, choose freely: trump to set the opponents, or discard winners to avoid overtricks.",
+    "opponent": "Revealed the first time it allows a play that would otherwise be illegal. Opponents then expect trumps from an apparently long hand.",
+    "rationale": "This gives the dead tricks after a make a purpose, which helps the lopsided endgame the brief describes. It is a stronger Exact enabler than seed-any-suit's fixed last three tricks. One condition, one effect.",
+    "partners": [
+      "cb-opp-set-mult",
+      "cb-exact-trick-points",
+      "seed-exact-mult"
+    ],
+    "cluster": "B",
+    "draftText": "Your team can play any suit once your team has won the tricks in its contract",
+    "hooks": "Generalize anySuit with a condition field: the follow-suit exemption switches on once the owning team's non-nil bidders have won tricks equal to the contract. The same field could later support other trick-count conditions.",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Clean, visible switch-on condition with clear counterplay; 'won the tricks in its contract' should make clear that tricks a nil bidder wins don't count.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Your team can play any suit once it has won the tricks in its contract",
+  "category": "enabler",
+  "signature": "play|after=contractMade|-|anySuit",
+  "family": "play|after=contractMade|-|anySuit",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "your team has won its contract's tricks",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "tricks counted against the contract",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

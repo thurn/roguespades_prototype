@@ -1,0 +1,75 @@
+{
+  "id": "cb-become-spade",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "BidHigh",
+    "Spades",
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "become",
+    "count": 3,
+    "suit": "S"
+  },
+  "design": {
+    "decision": "Count new trumps and voids before bidding. This usually means a higher bid and more trumping.",
+    "opponent": "Hidden until a changed card trumps or wins.",
+    "rationale": "seed-become-heart (-15.1) moves cards into a side suit. Moving them into trump adds winners instead, so it should be the useful version of the suit-change enabler. It is a deliberate near-duplicate on suit, at a smaller count for common.",
+    "partners": [
+      "cb-spade-seven",
+      "seed-trump-points",
+      "seed-spade-lead"
+    ],
+    "cluster": "B",
+    "draftText": "Opening: Three cards your team holds become [♠]s",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Count-only near-duplicate of ca-become-spades.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Opening: Three cards your team holds become [♠]s",
+  "category": "enabler",
+  "signature": "opening|suit=S|-|become",
+  "family": "opening|suit=*|-|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 4
+      },
+      {
+        "burden": "numeric value",
+        "detail": "count 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

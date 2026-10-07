@@ -1,0 +1,72 @@
+{
+  "id": "e-bid4less-pts",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Exact"
+  ],
+  "source": "enumerated",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 150,
+    "on": {
+      "event": "bid",
+      "max": 4
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "Enumerated from the grammar (D21).",
+    "partners": []
+  },
+  "status": "cut",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Enumerated; amount set from the hand-level screen."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: screen fires in 27% of rounds (0.27 per round); amount set to 150."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: not in the enumerated source's most promising half (pre-tournament lift +8.9 [+5.3, +12.5], slope +5.8/2x, C 3)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+150 contract points when your team bids 4 or less",
+  "category": "points",
+  "signature": "bid(max=4)|-|-|points",
+  "family": "bid(max=4)|-|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 150",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "contract at most 4",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

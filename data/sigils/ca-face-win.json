@@ -1,0 +1,91 @@
+{
+  "id": "ca-face-win",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 15,
+    "on": {
+      "event": "win",
+      "card": {
+        "ranks": [
+          "J",
+          "K"
+        ]
+      }
+    }
+  },
+  "design": {
+    "decision": "Sequence plays so [K]s, [Q]s, and [J]s win after the [A]s fall, rather than cashing [A]s first.",
+    "opponent": "Revealed on the first face-card win; opponents hold [A]s back to capture faces.",
+    "rationale": "The broader alternative to seed-king-win (−6.5), which fired too unreliably; a range costs one extra literal but fires far more often.",
+    "partners": [
+      "ca-king-hold",
+      "ca-raise-one",
+      "seed-become-king"
+    ],
+    "cluster": "A",
+    "draftText": "+15 contract points when your team wins a trick with a [J] through [K]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Fine broader replacement for seed-king-win; keep only one of the two.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract points when your team wins a trick with a [J] through [K]",
+  "category": "points",
+  "signature": "win|ranks=J-K|-|points",
+  "family": "win|ranks=J-K|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint J",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint K",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in J-K",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

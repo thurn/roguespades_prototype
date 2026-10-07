@@ -1,0 +1,109 @@
+{
+  "id": "cc-low-lead-mult",
+  "rarity": "common",
+  "role": "hybrid",
+  "archetypes": [
+    "LowCards",
+    "Nil"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "lead",
+      "card": {
+        "ranks": [
+          "2",
+          "6"
+        ]
+      },
+      "count": 3
+    }
+  },
+  "design": {
+    "decision": "Give up the lead three times with small cards, choosing when the tempo loss is cheapest.",
+    "opponent": "Revealed on the third low lead; opponents win cheap tricks but can't stop the multiplier.",
+    "rationale": "A milestone that turns leading low, normally a tempo cost, into a scored plan; it pairs with nil protection, where leading low is already right.",
+    "partners": [
+      "cc-lead-a-two",
+      "cc-two-twos",
+      "cc-low-hold-points",
+      "cc-nil-made-mult"
+    ],
+    "cluster": "C",
+    "draftText": "+15 contract multiplier when your team leads three [2]s through [6]s",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Milestone plus range is C=8 at common; cc-lead-a-two is the simpler version of the same lead-low idea.",
+      "elegance": 2
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract multiplier when your team leads a [2] through [6] three times",
+  "category": "hybrid",
+  "signature": "lead(count=3)|ranks=2-6|-|mult",
+  "family": "lead(count=3)|ranks=2-6|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team leads",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 6",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 2-6",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "milestone 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count reaches 3",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "milestone count",
+        "cost": 1
+      }
+    ],
+    "C": 8,
+    "S": 0.1111111111111111
+  },
+  "lint": []
+}

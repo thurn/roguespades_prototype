@@ -1,0 +1,93 @@
+{
+  "id": "cb-three-row-points",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 40,
+    "on": {
+      "event": "win",
+      "inRow": 3
+    }
+  },
+  "design": {
+    "decision": "Hold winners until you can cash three in a row instead of spreading them out.",
+    "opponent": "Shown when reached. Opponents may duck to break runs.",
+    "rationale": "This is the points version of a run milestone, a cleaner one-time goal than seed-consecutive (-0.0), which pays a little on every pair.",
+    "partners": [
+      "cb-three-row-mult",
+      "seed-consecutive"
+    ],
+    "cluster": "B",
+    "draftText": "+40 contract points when your team wins three tricks in a row",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Category-only near-duplicate of cb-three-row-mult.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-row3-pts); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+40 contract points when your team wins three tricks in a row",
+  "category": "points",
+  "signature": "win(inRow=3)|-|-|points",
+  "family": "win(inRow=3)|-|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 40",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "3 in a row",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "run of wins reaches 3",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "consecutive-win count",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

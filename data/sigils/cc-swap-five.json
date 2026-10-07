@@ -1,0 +1,71 @@
+{
+  "id": "cc-swap-five",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Nil",
+    "Suits",
+    "Spades",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "swap",
+    "count": 5
+  },
+  "design": {
+    "decision": "Choose which five cards to pass: consolidate winners in one hand, strip a would-be nil bidder of honors, or create a void.",
+    "opponent": "Revealed at Opening; opponents should expect one partner to be lopsided, often a nil plus a big bid.",
+    "rationale": "Near-duplicate of seed-swap by count; the three-card seed measured flat (-0.3), so a larger swap tests whether enough movement turns the decision into real standalone value at the same price.",
+    "partners": [
+      "seed-nil-bid-mult",
+      "cc-nil-contract-trick",
+      "seed-trump-points",
+      "seed-four-row"
+    ],
+    "cluster": "C",
+    "draftText": "Opening: Swap five cards with your partner",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Count-only near-duplicate of seed-swap.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Opening: Swap five cards with your partner",
+  "category": "enabler",
+  "signature": "opening|-|-|swap",
+  "family": "opening|-|-|swap",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 4
+      },
+      {
+        "burden": "numeric value",
+        "detail": "count 5",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

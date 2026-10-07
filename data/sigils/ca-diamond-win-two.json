@@ -1,0 +1,94 @@
+{
+  "id": "ca-diamond-win-two",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Suits"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 10,
+    "on": {
+      "event": "win",
+      "card": {
+        "suit": "D"
+      },
+      "count": 2
+    }
+  },
+  "design": {
+    "decision": "Cash [♦] honors before opponents void the suit, and buy [♦] honors over length.",
+    "opponent": "Revealed on the second [♦] win; opponents void [♦] early and trump it.",
+    "rationale": "The pilot shows three [♦] wins fire in only 8% of rounds, so this is the reachable common +mult milestone for Suits (about a third of rounds); it differs from seed-diamond-three in count and amount for that reason.",
+    "partners": [
+      "seed-diamond-hold",
+      "ca-ace-diamond-win",
+      "ca-diamond-become-from-clubs"
+    ],
+    "cluster": "A",
+    "draftText": "+10 contract multiplier when your team wins two tricks with [♦]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Threshold and amount near-duplicate of seed-diamond-three (uncommon); a reasonable common rung.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+10 contract multiplier when your team wins two tricks with [♦]",
+  "category": "mult",
+  "signature": "win(count=2)|suit=D|-|mult",
+  "family": "win(count=2)|suit=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is D",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "milestone 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count reaches 2",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "milestone count",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

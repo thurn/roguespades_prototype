@@ -1,0 +1,80 @@
+{
+  "id": "cc-nil-bid-xmult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Nil"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.5,
+    "on": {
+      "event": "bid",
+      "nil": true
+    }
+  },
+  "design": {
+    "decision": "Bid nil when it is close, knowing a failed nil is also multiplied.",
+    "opponent": "Revealed at the nil bid; opponents know a set now costs the nil team more.",
+    "rationale": "A common ×multiplier on a moderate condition, weaker than +15 early and stronger late, testing whether a common ×mult stays under the power ceiling.",
+    "partners": [
+      "seed-nil-bid-mult",
+      "cc-nil-made-mult",
+      "cc-nil-contract-trick",
+      "seed-flat-mult"
+    ],
+    "cluster": "C",
+    "draftText": "×1.5 contract multiplier when your team bids nil",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Category-only near-duplicate of seed-nil-bid-mult.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-bidnil-xmult); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "×1.5 contract multiplier when your team bids nil",
+  "category": "xmult",
+  "signature": "bid(nil)|-|-|xmult",
+  "family": "bid(nil)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "bids nil",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

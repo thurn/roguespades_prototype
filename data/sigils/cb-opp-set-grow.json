@@ -1,0 +1,80 @@
+{
+  "id": "cb-opp-set-grow",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "grow",
+    "kind": "mult",
+    "step": 3,
+    "on": {
+      "event": "opponentsSet"
+    }
+  },
+  "design": {
+    "decision": "Defend aggressively early in the run, because each set pays for every later round.",
+    "opponent": "Shown on the first set. Its growing value makes opponents more cautious.",
+    "rationale": "Growth gives a common a run-long plan. It also tests whether defence can carry value across rounds.",
+    "partners": [
+      "cb-opp-set-mult",
+      "cb-free-after-made"
+    ],
+    "cluster": "B",
+    "draftText": "This sigil gains +3 contract multiplier every time the opponents miss their contract (currently +0)",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Category-only near-duplicate of cb-opp-set-mult; three set-the-opponents commons may crowd the slot.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "This sigil gains +3 contract multiplier every time the opponents miss their contract (currently +0)",
+  "category": "mult",
+  "signature": "opponentsSet|-|growth|mult",
+  "family": "opponentsSet|-|growth|mult",
+  "touchesOpponents": true,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "growth step 3",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "currently display",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "growth counter carried between rounds",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "opponents miss their contract",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

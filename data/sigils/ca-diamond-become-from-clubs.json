@@ -1,0 +1,77 @@
+{
+  "id": "ca-diamond-become-from-clubs",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Suits",
+    "Spades",
+    "Nil"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "become",
+    "from": {
+      "suit": "C"
+    },
+    "suit": "D"
+  },
+  "design": {
+    "decision": "Bid knowing your team is void in [♣] (ruffing every [♣] lead) and long in [♦]; it shapes how to bid and what to lead.",
+    "opponent": "Revealed when a partner trumps a [♣] trick or shows unexpected [♦] length.",
+    "rationale": "Seed-become-heart (random four cards) measured −15 because it hits trumps and honors; a deterministic, side-suit-only change keeps every [♠] and guarantees a team void, which has standalone ruffing value before any payoff. Duplicate identities are already handled for synthetic cards.",
+    "partners": [
+      "ca-diamond-hold-eight",
+      "ca-diamond-lead-three",
+      "seed-trump-points"
+    ],
+    "cluster": "A",
+    "draftText": "Opening: Every [♣] your team holds becomes a [♦]",
+    "hooks": "Become with an optional source filter (\"from\"), where an omitted count means every matching card your team holds; resolves in the existing Opening window.",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Guaranteed team [♣] void is a strong, memorable enabler; duplicate identities (two [K♦]) need a tie-break players can see, and the Nil tag is a stretch.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Opening: Every [♣] your team holds becomes a [♦]",
+  "category": "enabler",
+  "signature": "opening|from:suit=C|suit=D|become",
+  "family": "opening|from:suit=*|suit=D|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 4
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is C",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

@@ -1,0 +1,78 @@
+{
+  "id": "ca-raise-one",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Ranks",
+    "BidHigh",
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "raise",
+    "amount": 1
+  },
+  "design": {
+    "decision": "Re-read and rebid a slightly stronger hand.",
+    "opponent": "Hidden until raised cards show up in play.",
+    "rationale": "seed-raise (+12.4 at rare) is the strongest measured enabler and commons need honest enablers; a one-rank version is a near-duplicate kept on purpose to test whether the shape scales down to common.",
+    "partners": [
+      "seed-ace-hold",
+      "ca-face-win",
+      "seed-bid8-mult"
+    ],
+    "cluster": "A",
+    "draftText": "Opening: Raise every card your team holds by one rank",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Amount-only near-duplicate of seed-raise, labelled as such; raises with no choice, so the decision is only in rebidding.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: also proposed as cb-raise-one, cc-raise-one."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Opening: Raise every card your team holds by one rank",
+  "category": "enabler",
+  "signature": "opening|-|-|raise",
+  "family": "opening|-|-|raise",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 4
+      },
+      {
+        "burden": "numeric value",
+        "detail": "raise 1",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

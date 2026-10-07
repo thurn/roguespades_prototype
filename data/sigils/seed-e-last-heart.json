@@ -72,54 +72,54 @@
   "lint": [],
   "estimates": {
     "step": "phase-0",
-    "exposures": 722,
+    "exposures": 756,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": -6.44,
-        "lo": -9.75,
-        "hi": -3.13,
+        "value": -9.41,
+        "lo": -12.26,
+        "hi": -6.55,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 722
+        "n": 756
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -9.3,
-        "lo": -12.61,
-        "hi": -5.99,
+        "value": -7.6,
+        "lo": -10.46,
+        "hi": -4.75,
         "bandLo": null,
         "bandHi": null,
-        "n": 722
+        "n": 756
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 5.89,
+        "value": 5.58,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 24659
+        "n": 25121
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 5.98,
+        "value": 5.42,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 13437
+        "n": 13867
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 2.7,
-        "lo": 0.47,
-        "hi": 4.94,
+        "value": 0.88,
+        "lo": -1.44,
+        "hi": 3.2,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -127,9 +127,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 2.86,
-        "lo": 0.66,
-        "hi": 5.07,
+        "value": -1.81,
+        "lo": -4.24,
+        "hi": 0.63,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -142,43 +142,43 @@
       }
     ],
     "amountSlope": {
-      "value": 2.7,
-      "lo": 0.47,
-      "hi": 4.94
+      "value": 0.88,
+      "lo": -1.44,
+      "hi": 3.2
     },
     "skillGradient": {
-      "value": 2.86,
-      "lo": 0.66,
-      "hi": 5.07
+      "value": -1.81,
+      "lo": -4.24,
+      "hi": 0.63
     },
     "pairs": [
+      {
+        "with": "seed-low-four",
+        "synergy": 0.0
+      },
       {
         "with": "seed-spade-lead",
         "synergy": 0.0
       },
       {
-        "with": "seed-contract-points",
+        "with": "seed-last-trick",
         "synergy": 0.0
       },
       {
-        "with": "seed-spade-five",
+        "with": "seed-ace-hold",
         "synergy": 0.0
       },
       {
-        "with": "seed-spade-mult",
-        "synergy": 0.0
-      },
-      {
-        "with": "seed-bid8-mult",
+        "with": "seed-rainbow-mult",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": -0.0967742101304786,
-      "seU": 0.020924000675511593,
-      "slopeU": 0.04058871202082357,
-      "slopeSeU": 0.02035856300184168,
-      "k": 1.922343567269947
+      "liftU": -0.07819065411695962,
+      "seU": 0.017848737901790285,
+      "slopeU": 0.013088490504393266,
+      "slopeSeU": 0.020915340050639775,
+      "k": 1.9447399061524484
     }
   },
   "reports": [

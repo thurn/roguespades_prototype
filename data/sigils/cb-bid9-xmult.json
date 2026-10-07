@@ -1,0 +1,76 @@
+{
+  "id": "cb-bid9-xmult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.5,
+    "on": {
+      "event": "bid",
+      "min": 9
+    }
+  },
+  "design": {
+    "decision": "A 9 bid compounds the whole score, and a set compounds too. It is the clearest gamble in the pool.",
+    "opponent": "Shown after bidding. Opponents know a set swings the scores hard.",
+    "rationale": "This fits the common budget of '×1.5 on a narrow condition', and the narrow condition here is the bid itself. It is a common ×mult that stays under the ceiling through rarity of firing, not a rider.",
+    "partners": [
+      "cb-raise-one",
+      "cb-become-ace",
+      "seed-bid10-mult"
+    ],
+    "cluster": "B",
+    "draftText": "×1.5 contract multiplier when your team bids 9 or more",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Threshold and category near-duplicate of seed-bid8-mult and seed-bid10-mult; a clear, visible gamble.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "×1.5 contract multiplier when your team bids 9 or more",
+  "category": "xmult",
+  "signature": "bid(min=9)|-|-|xmult",
+  "family": "bid(min=9)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.5",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 9",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "contract at least 9",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

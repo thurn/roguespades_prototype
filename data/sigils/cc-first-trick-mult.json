@@ -1,0 +1,78 @@
+{
+  "id": "cc-first-trick-mult",
+  "rarity": "common",
+  "role": "hybrid",
+  "archetypes": [
+    "Streaks",
+    "Ranks",
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 10,
+    "on": {
+      "event": "win",
+      "trick": "first"
+    }
+  },
+  "design": {
+    "decision": "Lead or play an [A] on the first trick instead of holding it.",
+    "opponent": "Revealed on the first trick; opponents can contest it with their own honors.",
+    "rationale": "The mirror of seed-last-trick (+5.2) with the opposite timing, and the natural payoff for lead-control enablers.",
+    "partners": [
+      "cc-first-lead",
+      "seed-ace-lead",
+      "cc-any-suit-first-two",
+      "seed-last-trick"
+    ],
+    "cluster": "C",
+    "draftText": "+10 contract multiplier when your team wins the first trick of a round",
+    "hooks": "none"
+  },
+  "status": "cut",
+  "replacedBy": "cb-first-trick-mult",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into cb-first-trick-mult, an identical design from another cluster."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+10 contract multiplier when your team wins the first trick of a round",
+  "category": "hybrid",
+  "signature": "win(trick=first)|-|-|mult",
+  "family": "win(trick=first)|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "is the first trick",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

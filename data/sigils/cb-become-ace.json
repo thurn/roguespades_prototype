@@ -1,0 +1,84 @@
+{
+  "id": "cb-become-ace",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "BidHigh",
+    "Ranks",
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "become",
+    "count": 2,
+    "rank": "A"
+  },
+  "design": {
+    "decision": "Re-evaluate the hand before bidding: two new top winners usually mean bidding one or two more.",
+    "opponent": "Hidden until it changes a trick's winner. Duplicate [A]s can surprise defenders.",
+    "rationale": "seed-become-king (-1.2) suffers from downgrading [A]s. A destination of [A] never downgrades, so it is an honest common enabler worth buying before any build. It is a deliberate near-duplicate on rank, plus a rarity move.",
+    "partners": [
+      "seed-ace-hold",
+      "cb-honor-hold",
+      "cb-bid7-mult"
+    ],
+    "cluster": "B",
+    "draftText": "Opening: Two cards your team holds become [A]s",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Count-only near-duplicate of ca-ace-become.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: also proposed as cc-two-aces."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Opening: Two cards your team holds become [A]s",
+  "category": "enabler",
+  "signature": "opening|rank=A|-|become",
+  "family": "opening|rank=*|-|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 4
+      },
+      {
+        "burden": "numeric value",
+        "detail": "count 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 7,
+    "S": 0.125
+  },
+  "lint": []
+}

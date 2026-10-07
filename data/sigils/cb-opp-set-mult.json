@@ -1,0 +1,82 @@
+{
+  "id": "cb-opp-set-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "opponentsSet"
+    }
+  },
+  "design": {
+    "decision": "Once your contract is safe, or hopeless, play to set the opponents rather than to win spare tricks.",
+    "opponent": "Shown when the opponents are first set. After that the opponents bid more carefully against this team.",
+    "rationale": "This adds a new scoring axis, defence, that gives overtricks a purpose again without changing bid rules. The multiplier applies even if this team is set, so it is double-edged.",
+    "partners": [
+      "cb-free-after-made",
+      "cb-opp-set-grow",
+      "seed-trump-points"
+    ],
+    "cluster": "B",
+    "draftText": "+15 contract multiplier if the opponents miss their contract",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 5
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: also proposed as cc-set-them-mult."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-oppset-mult); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract multiplier if the opponents miss their contract",
+  "category": "mult",
+  "signature": "opponentsSet|-|-|mult",
+  "family": "opponentsSet|-|-|mult",
+  "touchesOpponents": true,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "opponents miss their contract",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

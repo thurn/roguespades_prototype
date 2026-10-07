@@ -1,0 +1,83 @@
+{
+  "id": "cc-twos-to-spades",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "LowCards",
+    "Spades",
+    "Nil"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "become",
+    "from": {
+      "rank": "2"
+    },
+    "suit": "S"
+  },
+  "design": {
+    "decision": "Bid for the extra low trumps and plan which shortened side suit to ruff.",
+    "opponent": "Revealed at Opening; opponents face extra low trumps and earlier ruffs.",
+    "rationale": "Turns the hand's worst cards into low trumps and shortens side suits, a deterministic upgrade with no downside that a player can predict before the deal; deterministic selection is simpler to read than random sampling.",
+    "partners": [
+      "cc-low-spade-win",
+      "cc-two-win-mult",
+      "seed-trump-points",
+      "seed-trump-three"
+    ],
+    "cluster": "C",
+    "draftText": "Opening: Every [2] your team holds becomes a [♠]",
+    "hooks": "become gains an optional 'from' card filter that changes every matching held card instead of a random count; resolved deterministically in the existing Opening priority, duplicate identities handled by the kernel's synthetic-card tie-break",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Deterministic and predictable, but it creates duplicate [2♠]s that need a visible tie-break.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Opening: Every [2] your team holds becomes a [♠]",
+  "category": "enabler",
+  "signature": "opening|from:rank=2|suit=S|become",
+  "family": "opening|from:rank=*|suit=S|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 4
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 7,
+    "S": 0.125
+  },
+  "lint": []
+}

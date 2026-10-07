@@ -1,0 +1,76 @@
+{
+  "id": "cb-bid7-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 10,
+    "on": {
+      "event": "bid",
+      "min": 7
+    }
+  },
+  "design": {
+    "decision": "Should we push a 6 to a 7? The multiplier also applies on a set, so an overbid hurts.",
+    "opponent": "Shown after bidding when the team reaches 7. Opponents see a contract worth setting.",
+    "rationale": "seed-bid8-mult fires only 24% of rounds. A 7 threshold sits on the margin of most hands, so the decision comes up far more often. It is a deliberate near-duplicate on threshold, a lower rung for common.",
+    "partners": [
+      "seed-bid8-mult",
+      "cb-raise-one",
+      "cb-become-spade"
+    ],
+    "cluster": "B",
+    "draftText": "+10 contract multiplier when your team bids 7 or more",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Threshold-only near-duplicate of seed-bid8-mult; two commons that differ only by 7 versus 8 will read as clutter.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+10 contract multiplier when your team bids 7 or more",
+  "category": "mult",
+  "signature": "bid(min=7)|-|-|mult",
+  "family": "bid(min=7)|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 10",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 7",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "contract at least 7",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

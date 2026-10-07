@@ -1,0 +1,67 @@
+{
+  "id": "e-bidnil-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Nil"
+  ],
+  "source": "enumerated",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 35,
+    "on": {
+      "event": "bid",
+      "nil": true
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "Enumerated from the grammar (D21).",
+    "partners": []
+  },
+  "status": "cut",
+  "replacedBy": "seed-nil-bid-mult",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Enumerated; amount set from the hand-level screen."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: screen fires in 19% of rounds (0.19 per round); amount set to 35."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into seed-nil-bid-mult, which has the same signature (D21: credits both sources)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+35 contract multiplier when your team bids nil",
+  "category": "mult",
+  "signature": "bid(nil)|-|-|mult",
+  "family": "bid(nil)|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 35",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "bids nil",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

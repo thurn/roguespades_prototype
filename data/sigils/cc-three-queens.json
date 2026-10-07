@@ -1,0 +1,81 @@
+{
+  "id": "cc-three-queens",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "BidHigh",
+    "Ranks",
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "become",
+    "count": 3,
+    "rank": "Q"
+  },
+  "design": {
+    "decision": "Re-read the hand after Opening and bid for the new [Q]s, which win once a suit's [A] and [K] fall.",
+    "opponent": "Revealed at Opening; opponents meet more middle honors and fewer cheap winners.",
+    "rationale": "Tests a middle destination: three cards are mostly upgraded with a small chance of downgrading an [A] or [K], a different risk and power point from cc-two-aces.",
+    "partners": [
+      "cc-raise-one",
+      "seed-rainbow-first",
+      "seed-contract-points",
+      "cc-mult-per-trick"
+    ],
+    "cluster": "C",
+    "draftText": "Opening: Three cards your team holds become [Q]s",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Rank-only near-duplicate of the [A]/[K]/[2] become family.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Opening: Three cards your team holds become [Q]s",
+  "category": "enabler",
+  "signature": "opening|rank=Q|-|become",
+  "family": "opening|rank=*|-|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 4
+      },
+      {
+        "burden": "numeric value",
+        "detail": "count 3",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal Q",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 7,
+    "S": 0.125
+  },
+  "lint": []
+}

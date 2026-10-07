@@ -1,0 +1,79 @@
+{
+  "id": "cb-trick-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Generic",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 1,
+    "on": {
+      "event": "win"
+    }
+  },
+  "design": {
+    "decision": "Fight for every trick, including overtricks. Bid up to match, because the multiplier also deepens a set.",
+    "opponent": "Shown on the first trick won. Its value is predictable.",
+    "rationale": "This is the multiplier counterpart to seed-win-points. Expected value tracks tricks won, which tracks contract size, so it supports Bid High without a threshold.",
+    "partners": [
+      "cb-become-ace",
+      "cb-raise-one",
+      "seed-win-points"
+    ],
+    "cluster": "B",
+    "draftText": "+1 contract multiplier when your team wins a trick",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 5
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-win-mult); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+1 contract multiplier when your team wins a trick",
+  "category": "mult",
+  "signature": "win|-|-|mult",
+  "family": "win|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

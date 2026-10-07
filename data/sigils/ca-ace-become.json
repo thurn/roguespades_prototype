@@ -1,0 +1,80 @@
+{
+  "id": "ca-ace-become",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Ranks",
+    "BidHigh",
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "become",
+    "count": 1,
+    "rank": "A"
+  },
+  "design": {
+    "decision": "Bid with one extra likely winner, and choose which suit to cash it in.",
+    "opponent": "Hidden until the converted [A] is played.",
+    "rationale": "Unlike seed-become-king it can never downgrade a card, so it is a pure, honest gain at common; one card keeps it small.",
+    "partners": [
+      "seed-ace-hold",
+      "seed-ace-win",
+      "ca-three-aces-mult"
+    ],
+    "cluster": "A",
+    "draftText": "Opening: One card your team holds becomes an [A]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Count-only near-duplicate of cb-become-ace (two [A]s); measure both but expect to keep one.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Opening: One card your team holds becomes an [A]",
+  "category": "enabler",
+  "signature": "opening|rank=A|-|become",
+  "family": "opening|rank=*|-|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 4
+      },
+      {
+        "burden": "numeric value",
+        "detail": "count 1",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 7,
+    "S": 0.125
+  },
+  "lint": []
+}

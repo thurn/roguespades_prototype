@@ -1,0 +1,72 @@
+{
+  "id": "e-consecutive-pts",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks"
+  ],
+  "source": "enumerated",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 15,
+    "on": {
+      "event": "win",
+      "consecutive": true
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "Enumerated from the grammar (D21).",
+    "partners": []
+  },
+  "status": "cut",
+  "replacedBy": "seed-consecutive",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Enumerated; amount set from the hand-level screen."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: screen fires in 91% of rounds (3.26 per round); amount set to 15."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into seed-consecutive, which has the same signature (D21: credits both sources)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract points when your team wins consecutive tricks",
+  "category": "points",
+  "signature": "win(consecutive)|-|-|points",
+  "family": "win(consecutive)|-|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team won the previous trick",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

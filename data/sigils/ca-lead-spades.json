@@ -1,0 +1,72 @@
+{
+  "id": "ca-lead-spades",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Spades",
+    "Rainbow",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "leadSpades"
+  },
+  "design": {
+    "decision": "Pull opponents' trumps from trick one with a strong [♠] holding, or lead [♠] to escape a bad side-suit lead.",
+    "opponent": "Revealed on the first unbroken [♠] lead.",
+    "rationale": "An honest freedom-to-play enabler whose value (drawing trumps early) exists in plain Spades; it is cheap enough in complexity to sit at common.",
+    "partners": [
+      "ca-spade-lead-three",
+      "ca-rainbow-lead-mult",
+      "seed-spade-lead"
+    ],
+    "cluster": "A",
+    "draftText": "Your team can lead [♠] before [♠] are broken",
+    "hooks": "A team-scoped override of the \"[♠] must be broken before they are led\" legality check, consulted by legal-move generation like anySuit.",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 5
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: also proposed as cb-lead-spades, cc-lead-spades."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Your team can lead [♠] before [♠]s are broken",
+  "category": "enabler",
+  "signature": "play|-|-|leadSpades",
+  "family": "play|-|-|leadSpades",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "[♠] not yet broken",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "the lead is a [♠]",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

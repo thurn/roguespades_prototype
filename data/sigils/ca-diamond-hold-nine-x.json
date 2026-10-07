@@ -1,0 +1,89 @@
+{
+  "id": "ca-diamond-hold-nine-x",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Suits"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.5,
+    "on": {
+      "event": "hold",
+      "card": {
+        "suit": "D"
+      },
+      "count": 9
+    }
+  },
+  "design": {
+    "decision": "Fill owned-card slots with [♦]s as a run-long commitment, since the threshold is rarely met naturally.",
+    "opponent": "Revealed after bidding when it applies; opponents void [♦] and trump.",
+    "rationale": "This is the common ×mult on a narrow condition for Suits; it competes with ca-diamond-hold-eight for the same slot, so the critic should keep whichever shape measures better.",
+    "partners": [
+      "ca-diamond-hold-eight",
+      "ca-diamond-become-from-clubs",
+      "seed-diamond-hold"
+    ],
+    "cluster": "A",
+    "draftText": "×1.5 contract multiplier if your team holds nine [♦]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Threshold and category near-duplicate of ca-diamond-hold-eight competing for the same slot; no counterplay once dealt.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "×1.5 contract multiplier if your team holds nine [♦]s",
+  "category": "xmult",
+  "signature": "hold(count=9)|suit=D|-|xmult",
+  "family": "hold(count=9)|suit=*|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is D",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 9",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count at least 9",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

@@ -178,9 +178,9 @@ export function Detail({ sigil, byId, onOpen, onClose, onStep }: Props) {
               <p className={styles.missing}>Not measured yet.</p>
             ) : (
               <div className={styles.estimates}>
-                {est.metrics?.map((m) => (
-                  <MetricBar key={m.key} metric={m} />
-                ))}
+                {est.metrics?.map((m) =>
+                  m.value == null ? null : <MetricBar key={m.key} metric={m} />,
+                )}
                 <dl className={styles.facts}>
                   <Fact label="Amount slope">{est.amountSlope && interval(est.amountSlope)}</Fact>
                   <Fact label="Skill gradient">
@@ -333,9 +333,11 @@ function MetricBar({ metric: m }: { metric: Metric }) {
         <span className={styles.metricLabel}>{m.label}</span>
         <span className={styles.metricValue}>
           {fmt(m.value)}{' '}
-          <span className={styles.dim}>
-            [{fmt(m.lo)}, {fmt(m.hi)}]
-          </span>
+          {m.lo != null && m.hi != null && (
+            <span className={styles.dim}>
+              [{fmt(m.lo)}, {fmt(m.hi)}]
+            </span>
+          )}
         </span>
       </div>
       <div className={styles.track}>
@@ -345,10 +347,12 @@ function MetricBar({ metric: m }: { metric: Metric }) {
           data-open-hi={m.bandHi == null}
           style={{ left: pos(bandL), width: `calc(${pos(bandR)} - ${pos(bandL)})` }}
         />
-        <div
-          className={styles.whisker}
-          style={{ left: pos(m.lo), width: `calc(${pos(m.hi)} - ${pos(m.lo)})` }}
-        />
+        {m.lo != null && m.hi != null && (
+          <div
+            className={styles.whisker}
+            style={{ left: pos(m.lo), width: `calc(${pos(m.hi)} - ${pos(m.lo)})` }}
+          />
+        )}
         <div className={styles.point} style={{ left: pos(m.value) }} />
       </div>
       <div className={styles.metricFoot}>

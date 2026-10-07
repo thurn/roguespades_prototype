@@ -495,7 +495,7 @@ pub fn choose_bid(
         for (j, d) in deals.iter().enumerate() {
             let mut p = *d;
             p.bids[me] = b;
-            let first = (p.dealer + 1) % 4;
+            let first = p.first_leader;
             for s in 0..4 {
                 if p.bids[s] < 0 {
                     p.bids[s] = heuristic_bid(p.hands[s], &p.id);

@@ -1,0 +1,67 @@
+{
+  "id": "cb-first-lead",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Streaks",
+    "BidHigh",
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "firstLead"
+  },
+  "design": {
+    "decision": "Cash top honors before anyone is void, or open a run, knowing the lead before you bid.",
+    "opponent": "Revealed on the first round in which it moves the lead.",
+    "rationale": "The opening lead is a real Spades edge. This gives a fixed, build-agnostic lead-control enabler at common, simpler than seed-lead-choice (-6.6), which the AI may struggle to use.",
+    "partners": [
+      "cb-first-trick-mult",
+      "cb-three-row-mult",
+      "seed-ace-lead"
+    ],
+    "cluster": "B",
+    "draftText": "Your team leads the first trick of a round",
+    "hooks": "Lead-control hook: the kernel sets the first leader to the owning team's seat that comes first after the dealer. If both teams own it, the normal rotation stands (fixed priority).",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Text doesn't say which partner leads, or what happens when both teams own it; that rule lives only in the kernel.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: also proposed as cc-first-lead."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Your team leads the first trick of a round",
+  "category": "enabler",
+  "signature": "play|-|-|firstLead",
+  "family": "play|-|-|firstLead",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "the first trick of a round",
+        "cost": 1
+      }
+    ],
+    "C": 1,
+    "S": 0.5
+  },
+  "lint": []
+}

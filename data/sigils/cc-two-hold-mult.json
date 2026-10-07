@@ -1,0 +1,93 @@
+{
+  "id": "cc-two-hold-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "LowCards",
+    "Nil"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 5,
+    "on": {
+      "event": "hold",
+      "card": {
+        "rank": "2"
+      }
+    }
+  },
+  "design": {
+    "decision": "Buy and keep [2]s rather than upgrades, and bid knowing they are a multiplier, not winners.",
+    "opponent": "Revealed at the snapshot after bidding; opponents see a team stocking cheap cards.",
+    "rationale": "A whole-hand count like seed-ace-hold aimed at the cheapest cards; it pays made or set, so it also suits nil teams.",
+    "partners": [
+      "cc-two-twos",
+      "cc-nil-hold-twos",
+      "cc-two-win-mult",
+      "cc-low-hold-points"
+    ],
+    "cluster": "C",
+    "draftText": "+5 contract multiplier for each [2] your team holds",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "No counterplay once dealt.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-hold-rank-2-mult); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+5 contract multiplier for each [2] your team holds",
+  "category": "mult",
+  "signature": "hold|rank=2|-|mult",
+  "family": "hold|rank=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 5",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal 2",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

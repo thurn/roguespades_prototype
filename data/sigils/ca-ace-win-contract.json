@@ -1,0 +1,90 @@
+{
+  "id": "ca-ace-win-contract",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Ranks",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 3,
+    "per": "contractTrick",
+    "on": {
+      "event": "win",
+      "card": {
+        "rank": "A"
+      }
+    }
+  },
+  "design": {
+    "decision": "Bid higher on [A]-rich hands instead of bidding safe.",
+    "opponent": "Revealed on the first [A] win; big contracts draw aggressive defense.",
+    "rationale": "A bid-tension Ranks payoff so [A] builds don't push toward safe bids; scaling plus a trigger is a deliberate departure for the bid-tension target.",
+    "partners": [
+      "seed-ace-hold",
+      "ca-ace-become",
+      "seed-bid8-mult"
+    ],
+    "cluster": "A",
+    "draftText": "+3 contract points for each trick in your team's contract when your team wins a trick with an [A]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Event count times contract size is hard to estimate at bid time; same bid-tension departure as ca-diamond-lead-contract and ca-trump-contract, so likely only one of the three earns its clause.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+3 contract points for each trick in your team's contract when your team wins a trick with an [A]",
+  "category": "points",
+  "signature": "win|rank=A|contractTrick|points",
+  "family": "win|rank=*|contractTrick|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

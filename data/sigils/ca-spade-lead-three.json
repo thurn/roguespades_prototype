@@ -1,0 +1,94 @@
+{
+  "id": "ca-spade-lead-three",
+  "rarity": "common",
+  "role": "hybrid",
+  "archetypes": [
+    "Spades"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "lead",
+      "card": {
+        "suit": "S"
+      },
+      "count": 3
+    }
+  },
+  "design": {
+    "decision": "Break [♠] early and pull trumps every time your team gets the lead.",
+    "opponent": "Revealed on the third [♠] lead; opponents keep long [♠]s to win the pulled rounds.",
+    "rationale": "seed-spade-lead measured +7.1, so leading [♠] is a strong lever; this is the common +mult milestone on it.",
+    "partners": [
+      "seed-spade-lead",
+      "ca-lead-spades",
+      "ca-spade-hold-eight"
+    ],
+    "cluster": "A",
+    "draftText": "+15 contract multiplier when your team leads three [♠]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Suit-only near-duplicate of ca-diamond-lead-three.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract multiplier when your team leads [♠] three times",
+  "category": "hybrid",
+  "signature": "lead(count=3)|suit=S|-|mult",
+  "family": "lead(count=3)|suit=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team leads",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is S",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "milestone 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count reaches 3",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "milestone count",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

@@ -1,0 +1,83 @@
+{
+  "id": "ca-diamond-first-trick",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Suits"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 40,
+    "on": {
+      "event": "win",
+      "trick": "first",
+      "card": {
+        "suit": "D"
+      }
+    }
+  },
+  "design": {
+    "decision": "The opening lead: lead a [♦] honor at once instead of the strongest lead.",
+    "opponent": "Revealed on trick one; when opponents lead first they can avoid leading [♦].",
+    "rationale": "A single, sharp opening-lead decision for Suits, at a narrow-event amount; it fires in roughly a quarter of rounds.",
+    "partners": [
+      "ca-ace-diamond-win",
+      "seed-diamond-win"
+    ],
+    "cluster": "A",
+    "draftText": "+40 contract points when your team wins the first trick of a round with [♦]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "The owner only controls trick one when their team leads it, so it often fires or misses by seat; third first-trick variant beside cb-first-trick-mult and ca-ace-first-trick.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+40 contract points when your team wins the first trick of a round with [♦]",
+  "category": "points",
+  "signature": "win(trick=first)|suit=D|-|points",
+  "family": "win(trick=first)|suit=*|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 40",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is D",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "is the first trick",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

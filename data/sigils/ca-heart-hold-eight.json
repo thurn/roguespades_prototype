@@ -1,0 +1,88 @@
+{
+  "id": "ca-heart-hold-eight",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Suits"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "hold",
+      "card": {
+        "suit": "H"
+      },
+      "count": 8
+    }
+  },
+  "design": {
+    "decision": "Commit to [♥] length in the shop and keep [♥]s when swapping.",
+    "opponent": "Revealed after bidding when it applies; opponents void [♥].",
+    "rationale": "The only [♥] variant here; it gives seed-become-heart (the pool's only suit-change enabler) a direct payoff, which a [♦] payoff can't.",
+    "partners": [
+      "seed-become-heart",
+      "seed-e-heart-three"
+    ],
+    "cluster": "A",
+    "draftText": "+15 contract multiplier if your team holds eight [♥]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Suit-only near-duplicate of ca-diamond-hold-eight, justified as the payoff for seed-become-heart.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract multiplier if your team holds eight [♥]s",
+  "category": "mult",
+  "signature": "hold(count=8)|suit=H|-|mult",
+  "family": "hold(count=8)|suit=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is H",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 8",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count at least 8",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

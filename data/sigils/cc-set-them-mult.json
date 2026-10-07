@@ -1,0 +1,72 @@
+{
+  "id": "cc-set-them-mult",
+  "rarity": "common",
+  "role": "hybrid",
+  "archetypes": [
+    "Generic",
+    "Nil",
+    "Exact"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "opponentsSet"
+    }
+  },
+  "design": {
+    "decision": "Once your contract is safe, keep winning tricks to set the opponents rather than ducking.",
+    "opponent": "Revealed at scoring; opponents learn that a marginal bid is riskier against this team.",
+    "rationale": "Gives low-contract Nil teams a defensive plan and makes overtricks worth chasing without bags.",
+    "partners": [
+      "cc-small-contract-mult",
+      "seed-exact-mult",
+      "cc-any-suit-last-four",
+      "seed-four-row"
+    ],
+    "cluster": "C",
+    "draftText": "+15 contract multiplier if the opponents miss their contract",
+    "hooks": "none"
+  },
+  "status": "cut",
+  "replacedBy": "cb-opp-set-mult",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into cb-opp-set-mult, an identical design from another cluster."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract multiplier if the opponents miss their contract",
+  "category": "hybrid",
+  "signature": "opponentsSet|-|-|mult",
+  "family": "opponentsSet|-|-|mult",
+  "touchesOpponents": true,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "opponents miss their contract",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

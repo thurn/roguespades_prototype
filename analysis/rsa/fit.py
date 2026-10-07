@@ -207,7 +207,7 @@ def fit_fm(
 def fit(
     des: Design,
     sigils: dict,
-    alphas=(20.0, 60.0, 200.0, 600.0),
+    alphas=(3.0, 8.0, 20.0, 60.0, 200.0),
     folds: int = 5,
     fm_rank: int = 4,
     fm_lam: float = 400.0,

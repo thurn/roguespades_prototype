@@ -35,14 +35,14 @@
   "price": 100,
   "text": "Your team can play any suit on the last three tricks",
   "category": "enabler",
-  "signature": "play|-|-|anySuit",
-  "family": "play|-|-|anySuit",
+  "signature": "play|last=3|-|anySuit",
+  "family": "play|last=3|-|anySuit",
   "touchesOpponents": false,
   "simplicity": {
     "items": [
       {
         "burden": "numeric value",
-        "detail": "last 3",
+        "detail": "window 3",
         "cost": 1
       },
       {
@@ -57,27 +57,27 @@
   "lint": [],
   "estimates": {
     "step": "phase-0",
-    "exposures": 1181,
+    "exposures": 1196,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": -8.13,
-        "lo": -10.72,
-        "hi": -5.55,
+        "value": -10.88,
+        "lo": -13.28,
+        "hi": -8.47,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 1181
+        "n": 1196
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -9.66,
-        "lo": -12.24,
-        "hi": -7.07,
+        "value": -9.76,
+        "lo": -12.17,
+        "hi": -7.36,
         "bandLo": null,
         "bandHi": null,
-        "n": 1181
+        "n": 1196
       },
       {
         "key": "slope",
@@ -92,9 +92,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 1.52,
-        "lo": -1.79,
-        "hi": 4.84,
+        "value": -1.11,
+        "lo": -3.91,
+        "hi": 1.69,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -107,21 +107,13 @@
       "hi": 0.0
     },
     "skillGradient": {
-      "value": 1.52,
-      "lo": -1.79,
-      "hi": 4.84
+      "value": -1.11,
+      "lo": -3.91,
+      "hi": 1.69
     },
     "pairs": [
       {
-        "with": "control-rare",
-        "synergy": 0.0
-      },
-      {
-        "with": "seed-ace-hold",
-        "synergy": 0.0
-      },
-      {
-        "with": "seed-consecutive",
+        "with": "control-common",
         "synergy": 0.0
       },
       {
@@ -129,16 +121,24 @@
         "synergy": 0.0
       },
       {
-        "with": "pilot-dose-80",
+        "with": "seed-rainbow-lead-x",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-low-four",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-swap",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": -0.10046832541881834,
-      "seU": 0.016343074747333746,
+      "liftU": -0.10040475828811732,
+      "seU": 0.01505307233370929,
       "slopeU": 0.0,
       "slopeSeU": 0.0,
-      "k": 1.922343567269947
+      "k": 1.9447399061524484
     }
   },
   "reports": [

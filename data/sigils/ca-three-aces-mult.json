@@ -1,0 +1,94 @@
+{
+  "id": "ca-three-aces-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "hold",
+      "card": {
+        "rank": "A"
+      },
+      "count": 3
+    }
+  },
+  "design": {
+    "decision": "Buy [A]s as a target to reach rather than one at a time.",
+    "opponent": "Revealed after bidding when it applies.",
+    "rationale": "Holding three of the four [A]s happens about 31% of the time naturally, which is the common +mult frequency; seed-four-aces (15%) stays the uncommon version.",
+    "partners": [
+      "seed-ace-hold",
+      "ca-ace-become",
+      "seed-ace-win"
+    ],
+    "cluster": "A",
+    "draftText": "+15 contract multiplier if your team holds three [A]s",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Threshold and amount near-duplicate of seed-four-aces; no counterplay once dealt.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract multiplier if your team holds three [A]s",
+  "category": "mult",
+  "signature": "hold(count=3)|rank=A|-|mult",
+  "family": "hold(count=3)|rank=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count at least 3",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

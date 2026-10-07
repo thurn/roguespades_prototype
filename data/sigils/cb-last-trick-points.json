@@ -1,0 +1,89 @@
+{
+  "id": "cb-last-trick-points",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks",
+    "Exact"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 40,
+    "on": {
+      "event": "win",
+      "trick": "last"
+    }
+  },
+  "design": {
+    "decision": "Save a trump or a top card for trick 13, even when cashing it earlier would be easier.",
+    "opponent": "Shown on the last trick. Opponents can hoard their own last winners.",
+    "rationale": "This is a points version of the strong seed-last-trick line, a different category. Saving a winner works against overtricks, so it suits Exact.",
+    "partners": [
+      "seed-last-trick",
+      "cb-free-after-made",
+      "seed-any-suit"
+    ],
+    "cluster": "B",
+    "draftText": "+40 contract points when your team wins the last trick of a round",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Same signature as cc-win-last-points, differing only in amount; merge them. The Exact tag is weak.",
+      "elegance": 5
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: also proposed as cc-win-last-points with a different amount."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-last-pts); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+40 contract points when your team wins the last trick of a round",
+  "category": "points",
+  "signature": "win(trick=last)|-|-|points",
+  "family": "win(trick=last)|-|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 40",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "is the last trick",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

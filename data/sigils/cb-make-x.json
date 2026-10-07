@@ -1,0 +1,78 @@
+{
+  "id": "cb-make-x",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "xmult",
+    "amount": 1.3,
+    "on": {
+      "event": "make"
+    }
+  },
+  "design": {
+    "decision": "Bid what you can make, with no reward for overbidding. It is worth more as the build stacks +multipliers.",
+    "opponent": "Shown on the first make. A set denies it.",
+    "rationale": "This is a common ×mult kept under the ceiling by a small factor. It scales with later +mult, so it stays relevant late in the run where flat points fade.",
+    "partners": [
+      "cb-make-mult",
+      "seed-last-trick",
+      "cb-contract-mult"
+    ],
+    "cluster": "B",
+    "draftText": "×1.3 contract multiplier if your team makes its contract",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 5
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-make-xmult); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "×1.3 contract multiplier if your team makes its contract",
+  "category": "xmult",
+  "signature": "make|-|-|xmult",
+  "family": "make|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 1.3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "id": "cc-lead-spades",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Spades",
+    "Nil",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "leadSpades"
+  },
+  "design": {
+    "decision": "Lead trumps early to pull the opponents' [♠] before they can ruff your side-suit winners, or to protect a partner's nil.",
+    "opponent": "Revealed on the first early [♠] lead; opponents lose their trumps sooner and cannot rely on ruffing.",
+    "rationale": "A familiar Spades rule bent in one direction, with standalone value for any long-trump or honor-heavy hand; seed-spade-lead (+7.1) suggests leading [♠] is valuable.",
+    "partners": [
+      "seed-spade-lead",
+      "seed-e-spade-win",
+      "cc-two-spades",
+      "seed-ace-win"
+    ],
+    "cluster": "C",
+    "draftText": "Your team can lead [♠] before [♠] are broken",
+    "hooks": "A team-scoped rule flag that exempts the team from the 'spades must be broken before leading' restriction; following suit and trump priority unchanged"
+  },
+  "status": "cut",
+  "replacedBy": "ca-lead-spades",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into ca-lead-spades, an identical design from another cluster."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Your team can lead [♠] before [♠]s are broken",
+  "category": "enabler",
+  "signature": "play|-|-|leadSpades",
+  "family": "play|-|-|leadSpades",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "[♠] not yet broken",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "the lead is a [♠]",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

@@ -37,6 +37,10 @@ pub struct TeamProgram {
     pub growth: Vec<(usize, Payoff)>,
     pub any_suit: u8,
     pub lead_choice: bool,
+    pub lead_spades: bool,
+    pub first_lead: bool,
+    pub any_suit_made: bool,
+    pub any_suit_first: u8,
 }
 
 impl TeamProgram {
@@ -59,6 +63,10 @@ impl TeamProgram {
             match s.rule {
                 Some(Rule::AnySuit(n)) => p.any_suit = p.any_suit.max(n),
                 Some(Rule::LeadChoice) => p.lead_choice = true,
+                Some(Rule::LeadSpades) => p.lead_spades = true,
+                Some(Rule::FirstLead) => p.first_lead = true,
+                Some(Rule::AnySuitMade) => p.any_suit_made = true,
+                Some(Rule::AnySuitFirst(n)) => p.any_suit_first = p.any_suit_first.max(n),
                 _ => {}
             }
         }
@@ -190,6 +198,11 @@ pub struct Play {
     pub choosing: i8,
     pub any_suit: [u8; 2],
     pub lead_choice: [bool; 2],
+    pub lead_spades: [bool; 2],
+    pub any_suit_made: [bool; 2],
+    pub any_suit_first: [u8; 2],
+    /// The seat that leads the first trick (left of the dealer unless a team leads first).
+    pub first_leader: u8,
     pub acc: [TeamAcc; 2],
 }
 
@@ -201,7 +214,15 @@ pub struct TrickResult {
 
 impl Play {
     pub fn new(id: Identity, hands: [Mask; 4], eng: [u8; 52], dealer: u8, rules: &Rules) -> Play {
-        let first = (dealer + 1) % 4;
+        let mut first = (dealer + 1) % 4;
+        let (f0, f1) = (rules.teams[0].first_lead, rules.teams[1].first_lead);
+        if f0 != f1 {
+            // The owning team's seat that comes first after the dealer leads.
+            let team = if f0 { 0 } else { 1 };
+            if first % 2 != team {
+                first = (first + 1) % 4;
+            }
+        }
         Play {
             id,
             eng,
@@ -220,6 +241,10 @@ impl Play {
             choosing: -1,
             any_suit: [rules.teams[0].any_suit, rules.teams[1].any_suit],
             lead_choice: [rules.teams[0].lead_choice, rules.teams[1].lead_choice],
+            lead_spades: [rules.teams[0].lead_spades, rules.teams[1].lead_spades],
+            any_suit_made: [rules.teams[0].any_suit_made, rules.teams[1].any_suit_made],
+            any_suit_first: [rules.teams[0].any_suit_first, rules.teams[1].any_suit_first],
+            first_leader: first,
             acc: [TeamAcc::default(), TeamAcc::default()],
         }
     }
@@ -249,9 +274,14 @@ impl Play {
     }
 
     #[inline]
-    fn any_suit_now(&self, seat: u8) -> bool {
-        let n = self.any_suit[(seat % 2) as usize];
-        n > 0 && self.ntricks + n >= 13
+    pub fn any_suit_now(&self, seat: u8) -> bool {
+        let t = (seat % 2) as usize;
+        let n = self.any_suit[t];
+        (n > 0 && self.ntricks + n >= 13)
+            || self.ntricks < self.any_suit_first[t]
+            || (self.any_suit_made[t]
+                && self.contract(t) > 0
+                && self.contract_tricks(t) >= self.contract(t))
     }
 
     /// Legal moves as a mask; bits 52 and 53 are the lead-choice moves.
@@ -261,7 +291,7 @@ impl Play {
         }
         let hand = self.hands[self.turn as usize];
         if self.tlen == 0 {
-            if self.broken {
+            if self.broken || self.lead_spades[(self.turn % 2) as usize] {
                 return hand;
             }
             let non = hand & !self.id.suit_mask[SPADES as usize];
@@ -316,6 +346,13 @@ impl Play {
             return None;
         }
         let seat = self.turn;
+        if self.tlen == 0
+            && !self.broken
+            && self.id.suit[m as usize] == SPADES
+            && self.hands[seat as usize] & !self.id.suit_mask[SPADES as usize] != 0
+        {
+            self.acc[(seat % 2) as usize].used |= 1 << 13;
+        }
         self.hands[seat as usize] &= !bit(m);
         self.played |= bit(m);
         if self.tlen > 0 && self.any_suit_now(seat) {
@@ -410,6 +447,7 @@ impl Play {
                 match p.trig {
                     Trig::Win {
                         filt,
+                        led: lf,
                         by_trump: bt,
                         pos,
                         consecutive,
@@ -417,7 +455,10 @@ impl Play {
                         distinct_suit,
                         count,
                     } => {
-                        if !filt.matches(ws, wr) || (bt && !by_trump) {
+                        if !filt.matches(ws, wr)
+                            || (bt && !by_trump)
+                            || !lf.matches(led, self.id.rank[led_card as usize])
+                        {
                             continue;
                         }
                         match pos {

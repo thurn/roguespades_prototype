@@ -22,7 +22,12 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (Appendix E).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Overlaps seed-trump-points, since most [♠] wins are ruffs.",
+      "elegance": 4
+    }
   },
   "status": "candidate",
   "replacedBy": null,
@@ -30,6 +35,10 @@
     {
       "step": "phase-0",
       "note": "Created from the GDD Appendix E 1.0 seed."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-win-suit-s-pts); credited to both sources."
     }
   ],
   "name": null,
@@ -66,64 +75,64 @@
   "lint": [],
   "estimates": {
     "step": "phase-0",
-    "exposures": 695,
+    "exposures": 741,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 3.2,
-        "lo": -0.24,
-        "hi": 6.63,
+        "value": 2.45,
+        "lo": -1.5,
+        "hi": 6.41,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 695
+        "n": 741
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 1.85,
-        "lo": -1.58,
-        "hi": 5.29,
+        "value": 2.52,
+        "lo": -1.43,
+        "hi": 6.48,
         "bandLo": null,
         "bandHi": null,
-        "n": 695
+        "n": 741
       },
       {
         "key": "decisive",
         "label": "Decisive share of holder's wins (%)",
-        "value": 11.9,
-        "lo": 10.92,
-        "hi": 12.95,
+        "value": 10.68,
+        "lo": 9.75,
+        "hi": 11.69,
         "bandLo": 5.0,
         "bandHi": null,
-        "n": 2765
+        "n": 2762
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 96.58,
+        "value": 96.55,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 27533
+        "n": 27479
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 96.34,
+        "value": 96.5,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 14959
+        "n": 14954
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 3.35,
-        "lo": 1.02,
-        "hi": 5.69,
+        "value": 4.0,
+        "lo": 1.32,
+        "hi": 6.68,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -131,9 +140,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 1.34,
-        "lo": -0.71,
-        "hi": 3.4,
+        "value": -0.07,
+        "lo": -1.83,
+        "hi": 1.69,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -146,47 +155,51 @@
       }
     ],
     "amountSlope": {
-      "value": 3.35,
-      "lo": 1.02,
-      "hi": 5.69
+      "value": 4.0,
+      "lo": 1.32,
+      "hi": 6.68
     },
     "skillGradient": {
-      "value": 1.34,
-      "lo": -0.71,
-      "hi": 3.4
+      "value": -0.07,
+      "lo": -1.83,
+      "hi": 1.69
     },
     "pairs": [
       {
-        "with": "seed-ace-hold",
+        "with": "seed-raise",
         "synergy": 0.0
       },
       {
-        "with": "seed-consecutive",
+        "with": "seed-flat-mult",
         "synergy": 0.0
       },
       {
-        "with": "control-rare",
+        "with": "control-common",
         "synergy": 0.0
       },
       {
-        "with": "seed-low-four",
+        "with": "seed-king-win",
         "synergy": 0.0
       },
       {
-        "with": "seed-contract-points",
+        "with": "seed-swap",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": 0.01929431582271472,
-      "seU": 0.021708466714650022,
-      "slopeU": 0.050347721158924955,
-      "slopeSeU": 0.02130836062471411,
-      "k": 1.922343567269947
+      "liftU": 0.02596389255849965,
+      "seU": 0.02472619270748715,
+      "slopeU": 0.05938152605457677,
+      "slopeSeU": 0.02416211569185956,
+      "k": 1.9447399061524484
     }
   },
   "reports": [
     "reports/phase-0-pilot.md",
     "reports/phase-0-pilot-dashboard.md"
+  ],
+  "sources": [
+    "enumerated",
+    "gdd-seed"
   ]
 }

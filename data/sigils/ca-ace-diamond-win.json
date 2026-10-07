@@ -1,0 +1,90 @@
+{
+  "id": "ca-ace-diamond-win",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Suits",
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 40,
+    "on": {
+      "event": "win",
+      "card": {
+        "suit": "D",
+        "rank": "A"
+      }
+    }
+  },
+  "design": {
+    "decision": "Buy the [A♦] (and later synthetic copies) and cash it before [♦] gets trumped.",
+    "opponent": "Revealed when the [A♦] wins; opponents void [♦] to trump it.",
+    "rationale": "Gives the Suits honors line one specific card to buy and protect; synthetic [A♦] copies turn it into a repeatable payoff, so it grows with the run.",
+    "partners": [
+      "ca-diamond-win-two",
+      "seed-ace-win",
+      "seed-ace-hold"
+    ],
+    "cluster": "A",
+    "draftText": "+40 contract points when your team wins a trick with [A♦]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Near-duplicate of seed-ace-win narrowed to one card; the buy-and-protect plan is memorable but depends on [A♦] offers appearing.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+40 contract points when your team wins a trick with the [A♦]",
+  "category": "points",
+  "signature": "win|suit=D,rank=A|-|points",
+  "family": "win|suit=*,rank=*|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 40",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is D",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

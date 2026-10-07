@@ -1,0 +1,90 @@
+{
+  "id": "cb-spade-seven",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh",
+    "Spades"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 12,
+    "on": {
+      "event": "hold",
+      "card": {
+        "suit": "S"
+      },
+      "count": 7
+    }
+  },
+  "design": {
+    "decision": "Buy [♠]s for length. When the team is long in trump, bid up, because the multiplier also applies on a set.",
+    "opponent": "Shown after bidding. Reveals that the team is trump-long.",
+    "rationale": "This holding threshold sits near the average team [♠] count, so it fires about half the time. It gives trump length a multiplier at common for Bid High and Spades.",
+    "partners": [
+      "cb-become-spade",
+      "cb-lead-spades",
+      "seed-trump-points"
+    ],
+    "cluster": "B",
+    "draftText": "+12 contract multiplier if your team holds seven [♠]s",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Threshold and amount near-duplicate of ca-spade-hold-eight, so keep one; no counterplay once dealt.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+12 contract multiplier if your team holds seven [♠]s",
+  "category": "mult",
+  "signature": "hold(count=7)|suit=S|-|mult",
+  "family": "hold(count=7)|suit=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 12",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is S",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 7",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count at least 7",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

@@ -1,0 +1,94 @@
+{
+  "id": "ca-rainbow-contract",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Rainbow",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 10,
+    "per": "contractTrick",
+    "on": {
+      "event": "suits",
+      "action": "win",
+      "count": 4
+    }
+  },
+  "design": {
+    "decision": "Bid up when holding a winner in every suit, then play to win once in each.",
+    "opponent": "Revealed on the fourth suit won; opponents can deny the last suit by voiding and trumping it.",
+    "rationale": "The bid-tension Rainbow payoff, on the condition that measured strongly in the pilot (seed-rainbow-mult +6.7).",
+    "partners": [
+      "seed-rainbow-mult",
+      "seed-rainbow-first",
+      "ca-ace-become"
+    ],
+    "cluster": "A",
+    "draftText": "+10 contract points for each trick in your team's contract if your team wins tricks with all four suits",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Scaling plus a four-suit condition (C=6) is a departure; seed-rainbow-mult already covers the condition more simply.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+10 contract points for each trick in your team's contract if your team wins tricks with all four suits",
+  "category": "points",
+  "signature": "suits(count=4,action=win)|-|contractTrick|points",
+  "family": "suits(count=4,action=win)|-|contractTrick|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "4 suits",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "distinct suits reach 4",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "suits seen",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

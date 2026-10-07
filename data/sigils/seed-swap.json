@@ -18,7 +18,12 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 5
+    }
   },
   "status": "candidate",
   "replacedBy": null,
@@ -58,27 +63,27 @@
   "lint": [],
   "estimates": {
     "step": "phase-0",
-    "exposures": 1137,
+    "exposures": 1224,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": -0.3,
-        "lo": -3.28,
-        "hi": 2.67,
+        "value": 0.27,
+        "lo": -2.95,
+        "hi": 3.49,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 1137
+        "n": 1224
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -1.83,
-        "lo": -4.8,
-        "hi": 1.15,
+        "value": 1.38,
+        "lo": -1.84,
+        "hi": 4.61,
         "bandLo": null,
         "bandHi": null,
-        "n": 1137
+        "n": 1224
       },
       {
         "key": "slope",
@@ -93,9 +98,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 1.52,
-        "lo": -1.69,
-        "hi": 4.74,
+        "value": -1.11,
+        "lo": -4.56,
+        "hi": 2.34,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -108,38 +113,38 @@
       "hi": 0.0
     },
     "skillGradient": {
-      "value": 1.52,
-      "lo": -1.69,
-      "hi": 4.74
+      "value": -1.11,
+      "lo": -4.56,
+      "hi": 2.34
     },
     "pairs": [
-      {
-        "with": "pilot-dose-80",
-        "synergy": 0.0
-      },
-      {
-        "with": "seed-contract-points-u",
-        "synergy": 0.0
-      },
-      {
-        "with": "seed-e-diamond-three",
-        "synergy": 0.0
-      },
       {
         "with": "control-common",
         "synergy": 0.0
       },
       {
-        "with": "seed-two-win",
+        "with": "seed-any-suit",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-trump-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-flat-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-raise",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": -0.019033405212191445,
-      "seU": 0.0188160722698206,
+      "liftU": 0.014220036952240216,
+      "seU": 0.020150913388637632,
       "slopeU": 0.0,
       "slopeSeU": 0.0,
-      "k": 1.922343567269947
+      "k": 1.9447399061524484
     }
   },
   "reports": [

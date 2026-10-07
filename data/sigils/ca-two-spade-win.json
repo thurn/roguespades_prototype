@@ -1,0 +1,90 @@
+{
+  "id": "ca-two-spade-win",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Spades",
+    "LowCards"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 60,
+    "on": {
+      "event": "win",
+      "card": {
+        "suit": "S",
+        "rank": "2"
+      }
+    }
+  },
+  "design": {
+    "decision": "Save the [2♠] to ruff a side suit rather than dumping it on a [♠] lead.",
+    "opponent": "Revealed when the [2♠] wins; opponents lead [♠] to flush it out.",
+    "rationale": "A narrow common with one fun card-management decision and a single card to buy; it links Spades with Low Cards.",
+    "partners": [
+      "seed-trump-points",
+      "ca-diamond-become-from-clubs",
+      "seed-low-win"
+    ],
+    "cluster": "A",
+    "draftText": "+60 contract points when your team wins a trick with [2♠]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+60 contract points when your team wins a trick with the [2♠]",
+  "category": "points",
+  "signature": "win|suit=S,rank=2|-|points",
+  "family": "win|suit=*,rank=*|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 60",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is S",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal 2",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

@@ -1,0 +1,75 @@
+{
+  "id": "cc-raise-one",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Generic",
+    "BidHigh",
+    "Ranks",
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "raise",
+    "amount": 1
+  },
+  "design": {
+    "decision": "Bid one or two tricks higher on a hand that is visibly stronger before bids, and lean on newly promoted honors.",
+    "opponent": "Revealed at Opening; opponents face slightly higher cards everywhere and should expect a larger contract.",
+    "rationale": "Same signature as seed-raise with a smaller amount; seed-raise is the strongest measured enabler (+12.4 at rare), and one rank is the natural common tier of a plainly good, build-agnostic hand improvement.",
+    "partners": [
+      "seed-ace-hold",
+      "seed-bid8-mult",
+      "seed-contract-points",
+      "cc-mult-per-trick"
+    ],
+    "cluster": "C",
+    "draftText": "Opening: Raise every card your team holds by one rank",
+    "hooks": "none"
+  },
+  "status": "cut",
+  "replacedBy": "ca-raise-one",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into ca-raise-one, an identical design from another cluster."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Opening: Raise every card your team holds by one rank",
+  "category": "enabler",
+  "signature": "opening|-|-|raise",
+  "family": "opening|-|-|raise",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 4
+      },
+      {
+        "burden": "numeric value",
+        "detail": "raise 1",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

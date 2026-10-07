@@ -102,7 +102,12 @@ def run(boards_t0: int = 8000, calib_share: float = 0.2):
 
     # 2. Synthetic recovery.
     rng = np.random.default_rng(5)
+    # The truth is the fitted model with every sigil's terms redrawn around it, so it is not the
+    # point the shrinkage prior was fitted to.
     truth = m.fit.coef.copy()
+    raw_sd = np.std(m.fit.boot_raw, axis=0)
+    n_sig = len(m.des.ids) * F.N_TERMS
+    truth[:n_sig] += rng.normal(0, 1, n_sig) * raw_sd[:n_sig]
     syn = F.Design(**{**m.des.__dict__})
     syn.u = m.des.X @ truth + m.fit.fm_pred + rng.normal(0, m.fit.resid_sd, len(m.des.u))
     sft = F.fit(syn, allsig, boot=100, alpha=m.fit.alpha)
@@ -119,12 +124,17 @@ def run(boards_t0: int = 8000, calib_share: float = 0.2):
     # 3. A/A test.
     a1, a2 = m.readings["seed-ace-win"], m.readings["aa-ace-win"]
     i1, i2 = m.des.ids.index("seed-ace-win"), m.des.ids.index("aa-ace-win")
-    diff_s = m.fit.boot[:, i1 * F.N_TERMS] - m.fit.boot[:, i2 * F.N_TERMS]
-    dpt = float(F.to_points(m.fit.coef[i1 * F.N_TERMS] - m.fit.coef[i2 * F.N_TERMS], k))
-    diff_r = m.fit.boot_raw[:, i1 * F.N_TERMS] - m.fit.boot_raw[:, i2 * F.N_TERMS]
+
+    # Compare the reported lifts (value plus committed coherence), not the raw betas.
+    def lift(c):
+        return (c[..., i1 * F.N_TERMS] + 2 * c[..., i1 * F.N_TERMS + 3]) - (
+            c[..., i2 * F.N_TERMS] + 2 * c[..., i2 * F.N_TERMS + 3]
+        )
+
+    dpt = float(F.to_points(lift(m.fit.coef), k))
     dlo, dhi = (
         float(F.to_points(x, k))
-        for x in F.interval(diff_s, m.fit.coef[i1 * F.N_TERMS] - m.fit.coef[i2 * F.N_TERMS], diff_r)
+        for x in F.interval(lift(m.fit.boot), float(lift(m.fit.coef)), lift(m.fit.boot_raw))
     )
     aa_ok = dlo <= 0 <= dhi
 
@@ -247,7 +257,7 @@ def report_md(o: dict, m, dose) -> str:
     )
     ta = o["tier_agreement"]
     L.append(
-        f"| Tier agreement (lifts, tier 0 vs tier 1, shared boards) | r = {ta.get('corr', float('nan')):.2f}, disattenuated {ta.get('corr_disattenuated', float('nan')):.2f} over {ta.get('n')} sigils | {'yes' if ta.get('corr_disattenuated', 0) >= 0.7 else 'low'} |"
+        f"| Tier agreement (lifts, tier 0 vs tier 1, shared boards) | r = {ta.get('corr', float('nan')):.2f} over {ta.get('n')} sigils (shared boards overstate it) | {'yes' if ta.get('corr', 0) >= 0.7 else 'low'} |"
     )
     L.append(
         f"| Shop model vs tier-0 rollout rescoring (mean Spearman per visit) | {o['shop_rank_corr']:.2f} over {o['shop_checks']} visits | — |"

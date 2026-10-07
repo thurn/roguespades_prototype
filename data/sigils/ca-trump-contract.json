@@ -1,0 +1,83 @@
+{
+  "id": "ca-trump-contract",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Spades",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 4,
+    "per": "contractTrick",
+    "on": {
+      "event": "win",
+      "by": "trump"
+    }
+  },
+  "design": {
+    "decision": "Count likely ruffs into the bid and bid up when short in a side suit.",
+    "opponent": "Revealed on the first trump win; opponents pull trumps against big contracts.",
+    "rationale": "A bid-tension version of the trump payoff; it departs from the plain template by combining scaling and a trigger, which the bid-tension target justifies.",
+    "partners": [
+      "seed-trump-points",
+      "ca-diamond-become-from-clubs",
+      "seed-bid8-mult"
+    ],
+    "cluster": "A",
+    "draftText": "+4 contract points for each trick in your team's contract when your team wins a trick by trumping",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Trump-win count times contract is a two-quantity product; overlaps seed-trump-points with a scaling departure.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+4 contract points for each trick in your team's contract when your team wins a trick by trumping",
+  "category": "points",
+  "signature": "win(by=trump)|-|contractTrick|points",
+  "family": "win(by=trump)|-|contractTrick|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "won by trumping",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

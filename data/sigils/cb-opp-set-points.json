@@ -1,0 +1,77 @@
+{
+  "id": "cb-opp-set-points",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 60,
+    "on": {
+      "event": "opponentsSet"
+    }
+  },
+  "design": {
+    "decision": "Make your own contract first, then spend the remaining tricks setting the opponents.",
+    "opponent": "Shown on the first set. Opponents shade their bids down.",
+    "rationale": "This is the points version of defence, which also needs a make because contract points are lost on a set. That gives it a different risk profile from the multiplier, so both are worth measuring.",
+    "partners": [
+      "cb-opp-set-mult",
+      "cb-free-after-made"
+    ],
+    "cluster": "B",
+    "draftText": "+60 contract points if the opponents miss their contract",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Category-only near-duplicate of cb-opp-set-mult.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-oppset-pts); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+60 contract points if the opponents miss their contract",
+  "category": "points",
+  "signature": "opponentsSet|-|-|points",
+  "family": "opponentsSet|-|-|points",
+  "touchesOpponents": true,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 60",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "opponents miss their contract",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

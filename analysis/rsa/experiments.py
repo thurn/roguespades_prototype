@@ -8,6 +8,25 @@ from .common import CONTROL, RUNS, rsim
 BLANK = {r: f"control-blank-{r}" for r in CONTROL}
 
 
+def version() -> str:
+    """Code version (git HEAD, with a mark when dirty) and pool version (hash of the effects)."""
+    import hashlib
+    import subprocess
+
+    from .common import ROOT, load_sigils
+
+    head = subprocess.run(
+        ["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, capture_output=True, text=True
+    ).stdout.strip()
+    dirty = subprocess.run(
+        ["git", "status", "--porcelain", "sim"], cwd=ROOT, capture_output=True, text=True
+    ).stdout.strip()
+    pool = hashlib.sha1(
+        json.dumps({k: v["effect"] for k, v in sorted(load_sigils().items())}, sort_keys=True).encode()
+    ).hexdigest()[:10]
+    return f"code {head}{'+' if dirty else ''} pool {pool}"
+
+
 def write_config(step: str, name: str, cfg: dict) -> Path:
     d = RUNS / step
     d.mkdir(parents=True, exist_ok=True)
@@ -15,6 +34,7 @@ def write_config(step: str, name: str, cfg: dict) -> Path:
     cfg["name"] = f"{step}/{name}"
     cfg.setdefault("out", str(d / f"{name}.jsonl"))
     cfg.setdefault("dir", "../data/sigils")
+    cfg.setdefault("version", version())
     p = d / f"{name}.config.json"
     text = json.dumps(cfg, indent=1)
     if not p.exists() or p.read_text() != text:

@@ -1,0 +1,84 @@
+{
+  "id": "cb-consecutive-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 2,
+    "on": {
+      "event": "win",
+      "consecutive": true
+    }
+  },
+  "design": {
+    "decision": "Keep the lead after a win: lead from strength rather than handing the lead away.",
+    "opponent": "Shown on the first back-to-back win.",
+    "rationale": "This is the multiplier category for seed-consecutive's trigger. Small repeated amounts follow the budget's rule for repeated events.",
+    "partners": [
+      "cb-three-row-mult",
+      "seed-consecutive",
+      "cb-first-lead"
+    ],
+    "cluster": "B",
+    "draftText": "+2 contract multiplier when your team wins consecutive tricks",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Category-only near-duplicate of seed-consecutive.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-consecutive-mult); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+2 contract multiplier when your team wins consecutive tricks",
+  "category": "mult",
+  "signature": "win(consecutive)|-|-|mult",
+  "family": "win(consecutive)|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team won the previous trick",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

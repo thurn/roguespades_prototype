@@ -1,0 +1,87 @@
+{
+  "id": "ca-side-win",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Suits",
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 8,
+    "on": {
+      "event": "win",
+      "card": {
+        "notSuit": "S"
+      }
+    }
+  },
+  "design": {
+    "decision": "Prefer cashing side-suit winners over trumping, and keep [♠]s back for control.",
+    "opponent": "Revealed on the first side-suit win; opponents trump side suits early.",
+    "rationale": "A broad payoff that supports every side suit build; broad conditions measured well in the pilot, and it pushes against the default of trumping everything.",
+    "partners": [
+      "seed-rainbow-first",
+      "ca-diamond-win-two",
+      "seed-e-side-four"
+    ],
+    "cluster": "A",
+    "draftText": "+8 contract points when your team wins a trick with a card other than [♠]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-win-side-pts); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+8 contract points when your team wins a trick with a card other than [♠]",
+  "category": "points",
+  "signature": "win|notSuit=S|-|points",
+  "family": "win|notSuit=S|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 8",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is not S",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

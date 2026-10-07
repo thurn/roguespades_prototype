@@ -1,0 +1,81 @@
+{
+  "id": "cc-nil-bid-points",
+  "rarity": "common",
+  "role": "hybrid",
+  "archetypes": [
+    "Nil",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 80,
+    "on": {
+      "event": "bid",
+      "nil": true
+    }
+  },
+  "design": {
+    "decision": "Bid nil on borderline hands when the partner can still carry a contract, since the points need the contract made.",
+    "opponent": "Revealed at the nil bid; opponents can attack either the nil or the partner's contract.",
+    "rationale": "Rewards the bid rather than the outcome, but as contract points it still needs the partner's contract, so it rewards the whole team plan rather than only the nil.",
+    "partners": [
+      "cc-swap-five",
+      "seed-nil-bid-mult",
+      "cc-nil-contract-trick",
+      "seed-contract-points"
+    ],
+    "cluster": "C",
+    "draftText": "+80 contract points when your team bids nil",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Pays even when the nil fails, as long as the partner makes the contract, so it may reward throwaway nils; the BidHigh tag is weak.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-bidnil-pts); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+80 contract points when your team bids nil",
+  "category": "hybrid",
+  "signature": "bid(nil)|-|-|points",
+  "family": "bid(nil)|-|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 80",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "bids nil",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

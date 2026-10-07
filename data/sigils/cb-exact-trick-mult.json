@@ -1,0 +1,78 @@
+{
+  "id": "cb-exact-trick-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Exact",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 2,
+    "per": "contractTrick",
+    "on": {
+      "event": "make",
+      "exact": true
+    }
+  },
+  "design": {
+    "decision": "Bid your full hand and take exactly that many tricks. Late in the round, duck winners on purpose.",
+    "opponent": "Shown on the first exact make. Opponents can feed this team overtricks.",
+    "rationale": "This is the multiplier version: Exact with bid tension. It covers the 'quarter of multipliers scale with contract' target in a minor archetype.",
+    "partners": [
+      "cb-exact-trick-points",
+      "cb-free-after-made",
+      "seed-exact-mult"
+    ],
+    "cluster": "B",
+    "draftText": "+2 contract multiplier for each trick in your team's contract if your team makes its contract exactly",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Category-only near-duplicate of cb-exact-trick-points; opponents can feed overtricks, which is good counterplay.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+2 contract multiplier for each trick in your team's contract if your team makes its contract exactly",
+  "category": "mult",
+  "signature": "make(exact)|-|contractTrick|mult",
+  "family": "make(exact)|-|contractTrick|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract exactly",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

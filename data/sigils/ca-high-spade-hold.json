@@ -1,0 +1,98 @@
+{
+  "id": "ca-high-spade-hold",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Spades",
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 15,
+    "on": {
+      "event": "hold",
+      "card": {
+        "suit": "S",
+        "ranks": [
+          "10",
+          "A"
+        ]
+      }
+    }
+  },
+  "design": {
+    "decision": "Buy high [♠]s over low ones; buying and swapping now favor top trumps.",
+    "opponent": "Revealed after bidding when it pays.",
+    "rationale": "The honors line of Spades, set apart from the length-based seed-spade-hold; a holdings count, the shape that measured strongest.",
+    "partners": [
+      "seed-spade-lead",
+      "ca-spade-last-trick",
+      "seed-ace-hold"
+    ],
+    "cluster": "A",
+    "draftText": "+15 contract points for each [♠] [10] through [A] your team holds",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "'[10] through [A] of [♠]' is a mouthful at common but the buy decision is clear.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract points for each [10] through [A] of [♠] your team holds",
+  "category": "points",
+  "signature": "hold|suit=S,ranks=10-A|-|points",
+  "family": "hold|suit=*,ranks=10-A|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is S",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint 10",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "range endpoint A",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank in 10-A",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

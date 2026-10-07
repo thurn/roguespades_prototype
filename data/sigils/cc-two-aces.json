@@ -1,0 +1,80 @@
+{
+  "id": "cc-two-aces",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Ranks",
+    "BidHigh",
+    "Rainbow"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "become",
+    "count": 2,
+    "rank": "A"
+  },
+  "design": {
+    "decision": "Re-read the hand after Opening and bid for the new [A]s, which may sit in a short suit worth leading early.",
+    "opponent": "Revealed at Opening; opponents see extra [A]s fall and should not count on their [K]s.",
+    "rationale": "Unlike becoming [K]s (seed-become-king, -1.2), an [A] destination never downgrades a card, so it is an honest upgrade worth buying with no payoff; two cards keeps it common-sized.",
+    "partners": [
+      "seed-ace-hold",
+      "seed-ace-win",
+      "seed-rainbow-first",
+      "seed-bid8-points"
+    ],
+    "cluster": "C",
+    "draftText": "Opening: Two cards your team holds become [A]s",
+    "hooks": "none"
+  },
+  "status": "cut",
+  "replacedBy": "cb-become-ace",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into cb-become-ace, an identical design from another cluster."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Opening: Two cards your team holds become [A]s",
+  "category": "enabler",
+  "signature": "opening|rank=A|-|become",
+  "family": "opening|rank=*|-|become",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 4
+      },
+      {
+        "burden": "numeric value",
+        "detail": "count 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 7,
+    "S": 0.125
+  },
+  "lint": []
+}

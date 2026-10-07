@@ -1,0 +1,86 @@
+{
+  "id": "cc-small-contract-mult",
+  "rarity": "common",
+  "role": "hybrid",
+  "archetypes": [
+    "Nil",
+    "Exact"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 10,
+    "on": {
+      "event": "bid",
+      "max": 4
+    }
+  },
+  "design": {
+    "decision": "Underbid weak hands, or pair a nil with a small bid, and then play to make it.",
+    "opponent": "Revealed at bidding; opponents get room to bid high and should try to set the small contract.",
+    "rationale": "Runs against bid tension on purpose: it is the Nil team's natural contract shape, and the skill-and-bidding metrics should show whether it drains tension.",
+    "partners": [
+      "cc-nil-bid-points",
+      "seed-exact-mult",
+      "cc-nil-made-mult",
+      "cc-set-them-mult"
+    ],
+    "cluster": "C",
+    "draftText": "+10 contract multiplier when your team bids 4 or less",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Works against bid tension on purpose and may reward sandbagging; watch the bidding metrics.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-bid4less-mult); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+10 contract multiplier when your team bids 4 or less",
+  "category": "hybrid",
+  "signature": "bid(max=4)|-|-|mult",
+  "family": "bid(max=4)|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 10",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "contract at most 4",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

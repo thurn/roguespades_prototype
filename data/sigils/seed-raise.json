@@ -62,27 +62,27 @@
   "lint": [],
   "estimates": {
     "step": "phase-0",
-    "exposures": 1089,
+    "exposures": 1100,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 12.41,
-        "lo": 9.46,
-        "hi": 15.36,
+        "value": 11.02,
+        "lo": 8.61,
+        "hi": 13.43,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 1089
+        "n": 1100
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 10.89,
-        "lo": 7.94,
-        "hi": 13.83,
+        "value": 12.13,
+        "lo": 9.72,
+        "hi": 14.54,
         "bandLo": null,
         "bandHi": null,
-        "n": 1089
+        "n": 1100
       },
       {
         "key": "slope",
@@ -97,9 +97,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 1.52,
-        "lo": -2.19,
-        "hi": 5.23,
+        "value": -1.11,
+        "lo": -4.58,
+        "hi": 2.35,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -117,38 +117,38 @@
       "hi": 0.0
     },
     "skillGradient": {
-      "value": 1.52,
-      "lo": -2.19,
-      "hi": 5.23
+      "value": -1.11,
+      "lo": -4.58,
+      "hi": 2.35
     },
     "pairs": [
       {
-        "with": "seed-ace-hold",
+        "with": "seed-flat-mult",
         "synergy": 0.0
       },
       {
-        "with": "seed-consecutive",
+        "with": "seed-king-win",
+        "synergy": 0.0
+      },
+      {
+        "with": "control-common",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-two-win",
         "synergy": 0.0
       },
       {
         "with": "seed-low-four",
         "synergy": 0.0
-      },
-      {
-        "with": "control-rare",
-        "synergy": 0.0
-      },
-      {
-        "with": "seed-e-diamond-three",
-        "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": 0.11325051255310987,
-      "seU": 0.01863107119893021,
+      "liftU": 0.1247402223814996,
+      "seU": 0.015080183950119506,
       "slopeU": 0.0,
       "slopeSeU": 0.0,
-      "k": 1.922343567269947
+      "k": 1.9447399061524484
     }
   },
   "reports": [

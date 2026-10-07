@@ -158,6 +158,12 @@ fn clause(t: &Trigger) -> (&'static str, String) {
                     format!("your team wins {} tricks{how}", number_word(n)),
                 );
             }
+            if let Some(l) = &t.led {
+                return (
+                    "when",
+                    format!("your team wins a trick led with {}", singular(l)),
+                );
+            }
             let which = match t.trick.as_deref() {
                 Some("last") => "the last trick of a round",
                 Some("first") => "the first trick of a round",
@@ -255,10 +261,48 @@ pub fn generate(e: &Effect) -> String {
             let current = if kind == "xmult" { "×1" } else { "+0" };
             format!("This sigil gains {step} every time {cl} (currently {current})")
         }
-        "swap" => format!(
-            "Opening: Swap {} cards with your partner",
-            number_word(e.count.unwrap_or(0))
-        ),
+        "swap" => {
+            let n = e.count.unwrap_or(0);
+            let unit = if n == 1 { "card" } else { "cards" };
+            format!("Opening: Swap {} {unit} with your partner", number_word(n))
+        }
+        "become" if e.from.is_some() => {
+            let from = e.from.clone().unwrap_or_default();
+            let (dest1, destn) = if let Some(r) = &e.rank {
+                (
+                    format!("{} {}", article(r), rank_token(r)),
+                    format!("{}s", rank_token(r)),
+                )
+            } else if let Some(su) = &e.suit {
+                (
+                    format!("a {}", suit_token(su)),
+                    format!("{}s", suit_token(su)),
+                )
+            } else {
+                ("a card".into(), "cards".into())
+            };
+            match e.count {
+                None | Some(0) => format!(
+                    "Opening: Every {} your team holds becomes {dest1}",
+                    hold_noun(&from)
+                ),
+                Some(n) => format!(
+                    "Opening: {} {} your team holds become {destn}",
+                    cap(&number_word(n)),
+                    plural(&from, true)
+                ),
+            }
+        }
+        "become" if e.count == Some(1) => {
+            let dest = if let Some(r) = &e.rank {
+                format!("{} {}", article(r), rank_token(r))
+            } else if let Some(su) = &e.suit {
+                format!("a {}", suit_token(su))
+            } else {
+                e.term.clone().unwrap_or_else(|| "a low card".into())
+            };
+            format!("Opening: One card your team holds becomes {dest}")
+        }
         "become" => {
             let n = cap(&number_word(e.count.unwrap_or(0)));
             let dest = if let Some(r) = &e.rank {
@@ -279,6 +323,15 @@ pub fn generate(e: &Effect) -> String {
             )
         }
         "leadChoice" => "Choose which partner leads after your team wins a trick".into(),
+        "anySuit" if e.after.as_deref() == Some("contractMade") => {
+            "Your team can play any suit once it has won the tricks in its contract".into()
+        }
+        "anySuit" if e.first.is_some() => format!(
+            "Your team can play any suit on the first {} tricks",
+            number_word(e.first.unwrap_or(0))
+        ),
+        "leadSpades" => "Your team can lead [♠] before [♠]s are broken".into(),
+        "firstLead" => "Your team leads the first trick of a round".into(),
         "anySuit" => format!(
             "Your team can play any suit on the last {} tricks",
             number_word(e.last.unwrap_or(0))
@@ -364,6 +417,9 @@ fn trigger_sig(t: &Option<Trigger>) -> String {
     if let Some(b) = &t.by {
         mods.push(format!("by={b}"));
     }
+    if t.led.is_some() {
+        mods.push(format!("led={}", filter_sig(&t.led, false)));
+    }
     if let Some(x) = &t.trick {
         mods.push(format!("trick={x}"));
     }
@@ -422,6 +478,18 @@ pub fn signature(e: &Effect, generic: bool) -> String {
             filter_sig(&card, generic),
             e.kind.clone().unwrap_or_default()
         ),
+        "become" if e.from.is_some() => {
+            let dest = if let Some(r) = &e.rank {
+                format!("rank={}", if generic { "*" } else { r })
+            } else {
+                format!("suit={}", e.suit.clone().unwrap_or_default())
+            };
+            format!(
+                "opening|from:{}|{}|become",
+                filter_sig(&e.from, generic),
+                dest
+            )
+        }
         "become" => {
             let dest = if let Some(r) = &e.rank {
                 format!("rank={}", if generic { "*" } else { r })
@@ -433,6 +501,16 @@ pub fn signature(e: &Effect, generic: bool) -> String {
             format!("opening|{dest}|-|become")
         }
         "swap" | "raise" => format!("opening|-|-|{}", e.ty),
+        "anySuit" => {
+            let w = if let Some(n) = e.last {
+                format!("last={n}")
+            } else if let Some(n) = e.first {
+                format!("first={n}")
+            } else {
+                format!("after={}", e.after.clone().unwrap_or_default())
+            };
+            format!("play|{w}|-|anySuit")
+        }
         x => format!("play|-|-|{x}"),
     }
 }

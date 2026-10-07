@@ -7,6 +7,10 @@ or changed these points. Each entry says what changed and why.
 
 - **One Rust crate, not a workspace.** `sim/` is a single `rsim` crate with modules for the
   kernel, grammar, text, simplicity, AI, game, and experiments.
+- **New rule hooks from the designers** are general mechanisms: Opening changes with a source
+  filter ("Every [♣] your team holds becomes a [♦]"), wins filtered by the led card, leading [♠]
+  before they are broken, leading the first trick, and playing any suit on the first N tricks or
+  once the contract is won.
 - **Copy instead of undo.** Search copies the small, allocation-free `Play` struct per
   iteration rather than undoing moves; there is still no allocation in the hot loop.
 - **Tier 0 is flat Monte Carlo.** Six heuristic rollouts per legal move over common deals, a
@@ -44,3 +48,12 @@ or changed these points. Each entry says what changed and why.
 - **Shop validation** rescoring plays one round on 12 deals at tier 0 per offer; it is too noisy
   to rank offers well and is reported as a known weakness.
 - **Phase 0 review.** One reviewer checked all four builds together, after they were delivered.
+  It found that owned cards broke stable dealing, that a grant could be skipped in one run of a
+  board when the shop had already bought that sigil, that the tier-agreement disattenuation was
+  invalid, that the A/A test compared raw betas instead of lifts, and that partner knowledge was
+  wrong after a swap. All were fixed and the pilot re-run: dealing now gives each permutation
+  position a fixed seat and passes only the overflow; each team's grants are planned at the start
+  of the run and never offered to it; tier agreement is reported as the raw correlation on shared
+  boards, which overstates it.
+- **Nil success sits at the 0b bar.** Tier-1 nil success is 65–66% across seeds for nil margins
+  of 550–650 points; it is recorded as met but borderline.

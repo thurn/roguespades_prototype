@@ -1,0 +1,83 @@
+{
+  "id": "cc-win-last-points",
+  "rarity": "common",
+  "role": "hybrid",
+  "archetypes": [
+    "Streaks",
+    "Generic",
+    "Spades"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 50,
+    "on": {
+      "event": "win",
+      "trick": "last"
+    }
+  },
+  "design": {
+    "decision": "Hold a high trump or the last card of a long suit for the final trick.",
+    "opponent": "Revealed on the last trick; opponents can save a trump to contest it.",
+    "rationale": "The contract-points counterpart of seed-last-trick, lost on a set, so it rewards the endgame plan only when the contract holds.",
+    "partners": [
+      "cc-any-suit-last-four",
+      "cc-low-last-mult",
+      "seed-last-trick",
+      "seed-spade-hold"
+    ],
+    "cluster": "C",
+    "draftText": "+50 contract points when your team wins the last trick of a round",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Same signature as cb-last-trick-points, differing only in amount; merge them.",
+      "elegance": 5
+    }
+  },
+  "status": "cut",
+  "replacedBy": "cb-last-trick-points",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into cb-last-trick-points (same signature; the amount sweep decides the number), per the critic."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+50 contract points when your team wins the last trick of a round",
+  "category": "hybrid",
+  "signature": "win(trick=last)|-|-|points",
+  "family": "win(trick=last)|-|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 50",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "is the last trick",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

@@ -1,0 +1,89 @@
+{
+  "id": "cb-make8-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "make",
+      "min": 8
+    }
+  },
+  "design": {
+    "decision": "Bid 8 only when you can make it. Unlike the bid-trigger version, a set gives nothing, though it isn't amplified either.",
+    "opponent": "Shown at scoring on a made 8. Opponents defending a big contract also deny this multiplier.",
+    "rationale": "This is the common +mult rung of the make-8 line, which today has only rare seeds. It differs from seed-bid8-mult by paying only on a make, which tests whether safe or risky high-bid multipliers play better.",
+    "partners": [
+      "seed-make8-x",
+      "seed-ace-hold",
+      "cb-raise-one"
+    ],
+    "cluster": "B",
+    "draftText": "+15 contract multiplier if your team makes a contract of 8 or more",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Trigger-only near-duplicate of seed-bid8-mult and category near-duplicate of seed-make8-x; a useful safe-versus-risky comparison.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-make8-mult); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract multiplier if your team makes a contract of 8 or more",
+  "category": "mult",
+  "signature": "make(min=8)|-|-|mult",
+  "family": "make(min=8)|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 8",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "contract at least 8",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "id": "cb-grow-four-row",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "grow",
+    "kind": "mult",
+    "step": 3,
+    "on": {
+      "event": "win",
+      "inRow": 4
+    }
+  },
+  "design": {
+    "decision": "Chase runs every round, even in hands where a run is not otherwise worth much.",
+    "opponent": "Shown on the first four-run. Opponents start breaking runs.",
+    "rationale": "Streaks has no growth sigil. A small step at common gives the minor archetype a run-long spine.",
+    "partners": [
+      "seed-four-row",
+      "cb-three-row-mult"
+    ],
+    "cluster": "B",
+    "draftText": "This sigil gains +3 contract multiplier every time your team wins four tricks in a row (currently +0)",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Growth on a milestone (C=7) stacks two pieces of tracked state at common; a growth on a simpler trigger would do the same job.",
+      "elegance": 2
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "This sigil gains +3 contract multiplier every time your team wins four tricks in a row (currently +0)",
+  "category": "mult",
+  "signature": "win(inRow=4)|-|growth|mult",
+  "family": "win(inRow=4)|-|growth|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "growth step 3",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "currently display",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "growth counter carried between rounds",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "4 in a row",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "run of wins reaches 4",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "consecutive-win count",
+        "cost": 1
+      }
+    ],
+    "C": 7,
+    "S": 0.125
+  },
+  "lint": []
+}

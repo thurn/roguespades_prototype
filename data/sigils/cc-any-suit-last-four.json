@@ -1,0 +1,71 @@
+{
+  "id": "cc-any-suit-last-four",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Nil",
+    "Exact",
+    "Spades",
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "anySuit",
+    "last": 4
+  },
+  "design": {
+    "decision": "Keep trumps and dangerous honors for the endgame, knowing you can cash or shed them freely in the last four tricks.",
+    "opponent": "Revealed the first time it allows an off-suit play; opponents can no longer count on end-of-round squeezes.",
+    "rationale": "Near-duplicate of seed-any-suit by amount; the three-trick rare measured -8.1 against its control, so its power fits common, and a wider window gives more endgame choices.",
+    "partners": [
+      "cc-win-last-points",
+      "seed-last-trick",
+      "seed-exact-mult",
+      "cc-nil-made-mult"
+    ],
+    "cluster": "C",
+    "draftText": "Your team can play any suit on the last four tricks",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Amount-only near-duplicate of seed-any-suit, with a rarity move.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Your team can play any suit on the last four tricks",
+  "category": "enabler",
+  "signature": "play|last=4|-|anySuit",
+  "family": "play|last=4|-|anySuit",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "window 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "trick is among the last tricks",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

@@ -50,27 +50,27 @@
   "lint": [],
   "estimates": {
     "step": "phase-0",
-    "exposures": 417,
+    "exposures": 425,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 6.96,
-        "lo": 3.88,
-        "hi": 10.05,
+        "value": 3.3,
+        "lo": 0.34,
+        "hi": 6.27,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 417
+        "n": 425
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 3.93,
-        "lo": 0.84,
-        "hi": 7.01,
+        "value": 2.01,
+        "lo": -0.96,
+        "hi": 4.97,
         "bandLo": null,
         "bandHi": null,
-        "n": 417
+        "n": 425
       },
       {
         "key": "fire",
@@ -80,7 +80,7 @@
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 11606
+        "n": 11685
       },
       {
         "key": "fireCommitted",
@@ -95,9 +95,9 @@
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 9.35,
-        "lo": 6.4,
-        "hi": 12.3,
+        "value": 7.86,
+        "lo": 4.25,
+        "hi": 11.48,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -105,9 +105,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 3.03,
-        "lo": 0.95,
-        "hi": 5.12,
+        "value": 1.29,
+        "lo": -1.42,
+        "hi": 4.01,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -120,43 +120,43 @@
       }
     ],
     "amountSlope": {
-      "value": 9.35,
-      "lo": 6.4,
-      "hi": 12.3
+      "value": 7.86,
+      "lo": 4.25,
+      "hi": 11.48
     },
     "skillGradient": {
-      "value": 3.03,
-      "lo": 0.95,
-      "hi": 5.12
+      "value": 1.29,
+      "lo": -1.42,
+      "hi": 4.01
     },
     "pairs": [
       {
-        "with": "seed-ace-hold",
+        "with": "seed-any-suit",
         "synergy": 0.0
       },
       {
-        "with": "seed-low-four",
+        "with": "control-common",
         "synergy": 0.0
       },
       {
-        "with": "seed-raise",
+        "with": "seed-swap",
         "synergy": 0.0
       },
       {
-        "with": "seed-spade-lead",
+        "with": "seed-rainbow-lead-x",
         "synergy": 0.0
       },
       {
-        "with": "seed-consecutive",
+        "with": "seed-flat-mult",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": 0.040875537962415165,
-      "seU": 0.01951747612221709,
-      "slopeU": 0.14034562976463957,
-      "slopeSeU": 0.02693099207011651,
-      "k": 1.922343567269947
+      "liftU": 0.020626917838131476,
+      "seU": 0.01853778053044952,
+      "slopeU": 0.11664865141458768,
+      "slopeSeU": 0.03259776029234221,
+      "k": 1.9447399061524484
     }
   },
   "reports": [

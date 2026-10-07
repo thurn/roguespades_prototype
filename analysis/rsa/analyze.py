@@ -189,11 +189,10 @@ def calibrate(m0: Measurement, m1_paths: list, sigils: dict, step: str) -> dict:
     out = {"n": len(sids)}
     if len(sids) < 5:
         return out
+    # Both tiers play the same boards, deals, and grants, so their errors correlate and this
+    # correlation overstates the agreement of the underlying values.
     corr = float(np.corrcoef(l0s, l1s)[0, 1])
-    rel0 = max(1e-6, 1 - np.mean(np.array([m0.readings[s].se_u for s in sids]) ** 2) / max(np.var(l0s), 1e-9))
-    rel1 = max(1e-6, 1 - np.mean(ses**2) / max(np.var(l1s), 1e-9))
     out["corr"] = corr
-    out["corr_disattenuated"] = float(min(1.0, corr / math.sqrt(rel0 * rel1)))
     groups: dict = {}
     for j, c in enumerate(cats):
         groups.setdefault(c, []).append(j)
@@ -617,8 +616,8 @@ def dashboard(
     )
     if m.calib:
         lines.append(
-            f"Tier agreement: {m.calib.get('n')} sigils, correlation {m.calib.get('corr', float('nan')):.2f} "
-            f"(disattenuated {m.calib.get('corr_disattenuated', float('nan')):.2f})."
+            f"Tier agreement: {m.calib.get('n')} sigils, lift correlation {m.calib.get('corr', float('nan')):.2f} "
+            "on shared boards (overstated by shared deals and grants)."
         )
     lines.append(
         f"Ledger rescoring check: {m.loaded.rescore_mismatch} mismatches in {m.loaded.rounds_checked} rounds."

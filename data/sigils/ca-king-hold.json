@@ -1,0 +1,91 @@
+{
+  "id": "ca-king-hold",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 20,
+    "on": {
+      "event": "hold",
+      "card": {
+        "rank": "K"
+      }
+    }
+  },
+  "design": {
+    "decision": "Buy cheaper [K]s instead of [A]s, and value seed-become-king.",
+    "opponent": "Revealed after bidding when it pays.",
+    "rationale": "seed-ace-hold is the best-measured common (+8.0); a [K] version opens the GDD's second Ranks line and gives seed-become-king a payoff, which is the reason for the near-duplicate.",
+    "partners": [
+      "seed-become-king",
+      "ca-king-lead",
+      "ca-face-win"
+    ],
+    "cluster": "A",
+    "draftText": "+20 contract points for each [K] your team holds",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Rank-only near-duplicate of seed-ace-hold, justified by the second Ranks line.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-hold-rank-k-pts); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+20 contract points for each [K] your team holds",
+  "category": "points",
+  "signature": "hold|rank=K|-|points",
+  "family": "hold|rank=*|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 20",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is K",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal K",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

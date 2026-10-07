@@ -34,7 +34,7 @@ export type Sigil = {
   reports?: string[]
 }
 
-export type Interval = { value: number; lo: number; hi: number }
+export type Interval = { value: number; lo: number | null; hi: number | null }
 
 export type Metric = Interval & {
   key: string
@@ -86,7 +86,8 @@ export function compareSigils(a: Sigil, b: Sigil): number {
 export const displayName = (s: Sigil) => s.name || s.id
 
 /** Formats a number compactly, keeping a sign when asked. */
-export function fmt(n: number, signed = false): string {
+export function fmt(n: number | null | undefined, signed = false): string {
+  if (n == null || Number.isNaN(n)) return '–'
   const s = Math.abs(n) >= 100 || Number.isInteger(n) ? String(Math.round(n)) : n.toFixed(1)
   return signed && n > 0 ? `+${s}` : s
 }

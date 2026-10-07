@@ -1,0 +1,82 @@
+{
+  "id": "cb-contract-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "BidHigh",
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 2,
+    "per": "contractTrick"
+  },
+  "design": {
+    "decision": "Each extra bid trick adds 2 to the multiplier. A set multiplies the loss too, so every bid becomes a real wager.",
+    "opponent": "Shown on the first scored round. Opponents defend harder against big contracts because a set now costs this team more.",
+    "rationale": "This is the purest contract-scaled multiplier. It applies on sets as well, so it builds bid tension both ways, and it is higher-risk, bigger-reward than cb-contract-mult-made.",
+    "partners": [
+      "cb-become-ace",
+      "cb-raise-one",
+      "seed-contract-points",
+      "seed-ace-hold"
+    ],
+    "cluster": "B",
+    "draftText": "+2 contract multiplier for each trick in your team's contract",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Same signature as cc-mult-per-trick, differing only in amount; merge them and let the amount sweep decide.",
+      "elegance": 5
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: also proposed as cc-mult-per-trick with a different amount."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-contract-mult); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+2 contract multiplier for each trick in your team's contract",
+  "category": "mult",
+  "signature": "always|-|contractTrick|mult",
+  "family": "always|-|contractTrick|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

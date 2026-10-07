@@ -1,0 +1,70 @@
+{
+  "id": "cc-nil-contract-trick",
+  "rarity": "common",
+  "role": "hybrid",
+  "archetypes": [
+    "Nil",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "nilPoints",
+    "amount": 20,
+    "per": "contractTrick"
+  },
+  "design": {
+    "decision": "When one partner bids nil, the other should bid as high as the hand allows, because every contract trick also grows the nil.",
+    "opponent": "Revealed when a nil is made; opponents learn that a big contract beside a nil is doubly worth setting.",
+    "rationale": "Joins Nil and Bid High and scales with contract size (bid tension), filling a nil-points shape the registry lacks.",
+    "partners": [
+      "cc-swap-five",
+      "seed-nil-points",
+      "seed-bid8-mult",
+      "cc-raise-one"
+    ],
+    "cluster": "C",
+    "draftText": "+20 nil points for each trick in your team's contract",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+20 nil points for each trick in your team's contract",
+  "category": "hybrid",
+  "signature": "always|-|contractTrick|nilPoints",
+  "family": "always|-|contractTrick|nilPoints",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 20",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

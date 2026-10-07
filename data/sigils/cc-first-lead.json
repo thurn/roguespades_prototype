@@ -1,0 +1,63 @@
+{
+  "id": "cc-first-lead",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Generic",
+    "Ranks",
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "firstLead"
+  },
+  "design": {
+    "decision": "Plan the opening lead: cash an [A] before opponents void the suit, or lead low toward a partner's honors.",
+    "opponent": "Revealed when it moves the first lead; opponents lose first-lead tempo.",
+    "rationale": "The simplest lead-control effect; the uncommon lead-choice seed measured -6.6, likely because its per-trick choice is hard to use, while one fixed tempo gain is easy to value.",
+    "partners": [
+      "cc-first-trick-mult",
+      "seed-ace-lead",
+      "seed-ace-win",
+      "seed-four-row"
+    ],
+    "cluster": "C",
+    "draftText": "Your team leads the first trick of a round",
+    "hooks": "A team-scoped rule that moves the first lead to the team's earliest seat clockwise from the dealer's left; if both teams have it, the normal rule applies"
+  },
+  "status": "cut",
+  "replacedBy": "cb-first-lead",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into cb-first-lead, an identical design from another cluster."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Your team leads the first trick of a round",
+  "category": "enabler",
+  "signature": "play|-|-|firstLead",
+  "family": "play|-|-|firstLead",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "boolean condition",
+        "detail": "the first trick of a round",
+        "cost": 1
+      }
+    ],
+    "C": 1,
+    "S": 0.5
+  },
+  "lint": []
+}

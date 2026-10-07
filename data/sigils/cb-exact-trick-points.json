@@ -1,0 +1,82 @@
+{
+  "id": "cb-exact-trick-points",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Exact",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 15,
+    "per": "contractTrick",
+    "on": {
+      "event": "make",
+      "exact": true
+    }
+  },
+  "design": {
+    "decision": "Bid high and make it exactly, dumping spare winners. Sandbagging a low bid pays little.",
+    "opponent": "Shown on the first exact make. Opponents can force overtricks on this team.",
+    "rationale": "seed-exact-points (-4.5) pays the same for a sandbagged 4 as for a 9. Scaling with the contract fixes that and puts Exact under the bid-tension target. Departure: scaling plus a result condition, both in familiar terms.",
+    "partners": [
+      "seed-exact-mult",
+      "cb-free-after-made",
+      "seed-any-suit"
+    ],
+    "cluster": "B",
+    "draftText": "+15 contract points for each trick in your team's contract if your team makes its contract exactly",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Same signature as cc-exact-per-trick, differing only in amount; merge them.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: also proposed as cc-exact-per-trick with a different amount."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract points for each trick in your team's contract if your team makes its contract exactly",
+  "category": "points",
+  "signature": "make(exact)|-|contractTrick|points",
+  "family": "make(exact)|-|contractTrick|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "each trick in your team's contract",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract exactly",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

@@ -1,0 +1,74 @@
+{
+  "id": "cb-raise-one",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "BidHigh",
+    "Ranks",
+    "Streaks",
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "raise",
+    "amount": 1
+  },
+  "design": {
+    "decision": "The whole hand is stronger before bidding, so bid it up.",
+    "opponent": "Hidden until a raised card wins a trick it otherwise wouldn't.",
+    "rationale": "seed-raise (rare, two ranks) is the best-measured enabler in the registry (+12.4). One rank at common gives commons a strong, simple, build-agnostic enabler, as the brief asks. Deliberate near-duplicate on amount.",
+    "partners": [
+      "cb-honor-hold",
+      "cb-contract-mult",
+      "seed-ace-hold"
+    ],
+    "cluster": "B",
+    "draftText": "Opening: Raise every card your team holds by one rank",
+    "hooks": "none"
+  },
+  "status": "cut",
+  "replacedBy": "ca-raise-one",
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: merged into ca-raise-one, an identical design from another cluster."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "Opening: Raise every card your team holds by one rank",
+  "category": "enabler",
+  "signature": "opening|-|-|raise",
+  "family": "opening|-|-|raise",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "new term",
+        "detail": "Opening:",
+        "cost": 4
+      },
+      {
+        "burden": "numeric value",
+        "detail": "raise 1",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 6,
+    "S": 0.14285714285714285
+  },
+  "lint": []
+}

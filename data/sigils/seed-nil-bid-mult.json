@@ -19,7 +19,12 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (§9).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 5
+    }
   },
   "status": "candidate",
   "replacedBy": null,
@@ -27,6 +32,10 @@
     {
       "step": "phase-0",
       "note": "Created from the GDD §9 seed."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-bidnil-mult); credited to both sources."
     }
   ],
   "name": null,
@@ -59,54 +68,54 @@
   "lint": [],
   "estimates": {
     "step": "phase-0",
-    "exposures": 519,
+    "exposures": 558,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 3.2,
-        "lo": -1.35,
-        "hi": 7.76,
+        "value": -3.29,
+        "lo": -7.61,
+        "hi": 1.03,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 519
+        "n": 558
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": 0.34,
-        "lo": -4.21,
-        "hi": 4.89,
+        "value": -1.48,
+        "lo": -5.8,
+        "hi": 2.83,
         "bandLo": null,
         "bandHi": null,
-        "n": 519
+        "n": 558
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 44.67,
+        "value": 45.1,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 25572
+        "n": 25188
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 50.9,
+        "value": 53.15,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 4674
+        "n": 4817
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 2.28,
-        "lo": -0.28,
-        "hi": 4.84,
+        "value": 4.72,
+        "lo": 1.56,
+        "hi": 7.87,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -114,9 +123,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 2.86,
-        "lo": 0.14,
-        "hi": 5.59,
+        "value": -1.81,
+        "lo": -4.57,
+        "hi": 0.96,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -129,47 +138,51 @@
       }
     ],
     "amountSlope": {
-      "value": 2.28,
-      "lo": -0.28,
-      "hi": 4.84
+      "value": 4.72,
+      "lo": 1.56,
+      "hi": 7.87
     },
     "skillGradient": {
-      "value": 2.86,
-      "lo": 0.14,
-      "hi": 5.59
+      "value": -1.81,
+      "lo": -4.57,
+      "hi": 0.96
     },
     "pairs": [
+      {
+        "with": "seed-ace-hold",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-trump-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-e-diamond-three",
+        "synergy": 0.0
+      },
       {
         "with": "pilot-dose-80",
         "synergy": 0.0
       },
       {
-        "with": "seed-exact-points",
-        "synergy": 0.0
-      },
-      {
-        "with": "seed-contract-points-u",
-        "synergy": 0.0
-      },
-      {
-        "with": "seed-two-win",
-        "synergy": 0.0
-      },
-      {
-        "with": "seed-diamond-hold",
+        "with": "seed-swap",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": 0.0035371416426224524,
-      "seU": 0.028785417705414613,
-      "slopeU": 0.03427954364244496,
-      "slopeSeU": 0.02336645739549675,
-      "k": 1.922343567269947
+      "liftU": -0.015259627461120875,
+      "seU": 0.02698571601045726,
+      "slopeU": 0.07002475592181726,
+      "slopeSeU": 0.028456048838284783,
+      "k": 1.9447399061524484
     }
   },
   "reports": [
     "reports/phase-0-pilot.md",
     "reports/phase-0-pilot-dashboard.md"
+  ],
+  "sources": [
+    "enumerated",
+    "gdd-seed"
   ]
 }

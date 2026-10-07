@@ -1,0 +1,99 @@
+{
+  "id": "ca-ace-lead-three",
+  "rarity": "common",
+  "role": "hybrid",
+  "archetypes": [
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "lead",
+      "card": {
+        "rank": "A"
+      },
+      "count": 3
+    }
+  },
+  "design": {
+    "decision": "Lead [A]s out rather than using them to capture, and route the lead to whichever partner holds them.",
+    "opponent": "Revealed on the third [A] lead.",
+    "rationale": "seed-ace-lead pays per event and measured flat; a milestone asks for a plan (holding and leading three [A]s) and pays in multiplier.",
+    "partners": [
+      "seed-ace-lead",
+      "seed-lead-choice",
+      "ca-ace-become"
+    ],
+    "cluster": "A",
+    "draftText": "+15 contract multiplier when your team leads three [A]s",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Leading [A]s is already near-default play, so the decision is thin and it needs three [A]s plus three leads; a C=7 milestone at common.",
+      "elegance": 3
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract multiplier when your team leads an [A] three times",
+  "category": "hybrid",
+  "signature": "lead(count=3)|rank=A|-|mult",
+  "family": "lead(count=3)|rank=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team leads",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal A",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "milestone 3",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count reaches 3",
+        "cost": 1
+      },
+      {
+        "burden": "tracked state",
+        "detail": "milestone count",
+        "cost": 1
+      }
+    ],
+    "C": 7,
+    "S": 0.125
+  },
+  "lint": []
+}

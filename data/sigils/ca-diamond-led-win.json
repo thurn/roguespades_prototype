@@ -1,0 +1,79 @@
+{
+  "id": "ca-diamond-led-win",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Suits",
+    "Spades"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "points",
+    "amount": 20,
+    "on": {
+      "event": "win",
+      "led": {
+        "suit": "D"
+      }
+    }
+  },
+  "design": {
+    "decision": "Win [♦] tricks either with top [♦]s or by staying void and trumping; it shapes when to keep or shed [♦]s.",
+    "opponent": "Revealed on the first such win; opponents avoid leading [♦] into a void.",
+    "rationale": "Both lines of a [♦] plan score here (honors win the suit, a void trumps it), which fixes the length line's main threat of [♦]s being trumped.",
+    "partners": [
+      "ca-diamond-become-from-clubs",
+      "seed-trump-points",
+      "seed-diamond-hold"
+    ],
+    "cluster": "A",
+    "draftText": "+20 contract points when your team wins a trick led with [♦]",
+    "hooks": "Win trigger with an optional filter on the led card (\"led\") instead of the winning card.",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "New led-card filter is clean and rewards both the honor line and the void line; opponents can see it and stop leading [♦].",
+      "elegance": 5
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+20 contract points when your team wins a trick led with [♦]",
+  "category": "points",
+  "signature": "win(led=suit=D)|-|-|points",
+  "family": "win(led=suit=D)|-|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 20",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is D",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

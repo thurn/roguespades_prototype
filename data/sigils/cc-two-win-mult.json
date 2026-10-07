@@ -1,0 +1,93 @@
+{
+  "id": "cc-two-win-mult",
+  "rarity": "common",
+  "role": "hybrid",
+  "archetypes": [
+    "LowCards",
+    "Spades"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 10,
+    "on": {
+      "event": "win",
+      "card": {
+        "rank": "2"
+      }
+    }
+  },
+  "design": {
+    "decision": "Save the [2♠] to ruff, or keep a long suit's [2] until it is the last card standing.",
+    "opponent": "Revealed on the first [2] win; opponents can draw trumps early.",
+    "rationale": "A +mult version of the rare seed-two-win shape; a rare event pays a meaningful mult, and planning for it is the decision.",
+    "partners": [
+      "cc-twos-to-spades",
+      "cc-two-twos",
+      "cc-two-spades",
+      "seed-two-win"
+    ],
+    "cluster": "C",
+    "draftText": "+10 contract multiplier when your team wins a trick with a [2]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Category-only near-duplicate of seed-two-win.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster C)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-win-rank-2-mult); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+10 contract multiplier when your team wins a trick with a [2]",
+  "category": "hybrid",
+  "signature": "win|rank=2|-|mult",
+  "family": "win|rank=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "rank is 2",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "rank literal 2",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

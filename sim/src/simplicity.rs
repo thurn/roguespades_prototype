@@ -94,6 +94,9 @@ impl Acc {
             "win" => {
                 self.check("your team wins the trick");
                 self.filter(&t.card);
+                if t.led.is_some() {
+                    self.filter(&t.led);
+                }
                 if t.by.is_some() {
                     self.check("won by trumping");
                 }
@@ -212,6 +215,17 @@ pub fn score(e: &Effect, rarity: Rarity) -> Score {
             a.term("Opening:", common);
             a.num(format!("count {}", e.count.unwrap_or(0)));
         }
+        "become" if e.from.is_some() => {
+            a.term("Opening:", common);
+            if let Some(n) = e.count.filter(|&n| n > 0) {
+                a.num(format!("count {n}"));
+            }
+            a.filter(&e.from);
+            if let Some(r) = &e.rank {
+                a.num(format!("rank literal {r}"));
+            }
+            a.check("held by your team");
+        }
         "become" => {
             a.term("Opening:", common);
             a.num(format!("count {}", e.count.unwrap_or(0)));
@@ -237,8 +251,17 @@ pub fn score(e: &Effect, rarity: Rarity) -> Score {
             a.check("your team wins the trick");
             a.selector("choice of leader");
         }
+        "anySuit" if e.after.is_some() => {
+            a.check("your team has won its contract's tricks");
+            a.check("tricks counted against the contract");
+        }
+        "leadSpades" => {
+            a.check("[♠] not yet broken");
+            a.check("the lead is a [♠]");
+        }
+        "firstLead" => a.check("the first trick of a round"),
         "anySuit" => {
-            a.num(format!("last {}", e.last.unwrap_or(0)));
+            a.num(format!("window {}", e.last.or(e.first).unwrap_or(0)));
             a.check("trick is among the last tricks");
         }
         _ => {}

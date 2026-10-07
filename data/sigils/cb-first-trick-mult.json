@@ -1,0 +1,89 @@
+{
+  "id": "cb-first-trick-mult",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Streaks",
+    "Generic"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 10,
+    "on": {
+      "event": "win",
+      "trick": "first"
+    }
+  },
+  "design": {
+    "decision": "Lead or cover the opening trick with a sure winner instead of feeling out the hand.",
+    "opponent": "Shown on the first trick. Opponents then contest opening tricks.",
+    "rationale": "This mirrors seed-last-trick (+5.2) at the other end of the round. It is a clear, cheap timing decision, and it opens a streak.",
+    "partners": [
+      "cb-first-lead",
+      "seed-last-trick",
+      "cb-three-row-mult"
+    ],
+    "cluster": "B",
+    "draftText": "+10 contract multiplier when your team wins the first trick of a round",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "",
+      "elegance": 5
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster B)."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: also proposed as cc-first-trick-mult."
+    },
+    {
+      "step": "draft-common",
+      "note": "draft-common: the enumerator also produced this signature (e-first-mult); credited to both sources."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+10 contract multiplier when your team wins the first trick of a round",
+  "category": "mult",
+  "signature": "win(trick=first)|-|-|mult",
+  "family": "win(trick=first)|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "is the first trick",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": [],
+  "sources": [
+    "designed",
+    "enumerated"
+  ]
+}

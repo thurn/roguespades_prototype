@@ -1,0 +1,90 @@
+{
+  "id": "ca-spade-hold-eight",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Spades",
+    "BidHigh"
+  ],
+  "source": "designed",
+  "createdIn": "draft-common",
+  "effect": {
+    "type": "mult",
+    "amount": 15,
+    "on": {
+      "event": "hold",
+      "card": {
+        "suit": "S"
+      },
+      "count": 8
+    }
+  },
+  "design": {
+    "decision": "Buy [♠]s, low ones included, and swap them to whichever partner needs them; long trumps also support a higher bid.",
+    "opponent": "Revealed after bidding when it applies; opponents lead [♠] to pull trumps.",
+    "rationale": "Spades lacks a common +mult; a whole-hand count was the best-measured shape in the pilot, and eight is a natural team share about a third of the time.",
+    "partners": [
+      "seed-spade-lead",
+      "seed-trump-points",
+      "ca-become-spades"
+    ],
+    "cluster": "A",
+    "draftText": "+15 contract multiplier if your team holds eight [♠]",
+    "hooks": "none",
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Threshold and amount near-duplicate of cb-spade-seven, so keep one; no counterplay once dealt.",
+      "elegance": 4
+    }
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "draft-common",
+      "note": "Designed (cluster A)."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 50,
+  "text": "+15 contract multiplier if your team holds eight [♠]s",
+  "category": "mult",
+  "signature": "hold(count=8)|suit=S|-|mult",
+  "family": "hold(count=8)|suit=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 15",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "suit is S",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "threshold 8",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "count at least 8",
+        "cost": 1
+      }
+    ],
+    "C": 5,
+    "S": 0.16666666666666666
+  },
+  "lint": []
+}

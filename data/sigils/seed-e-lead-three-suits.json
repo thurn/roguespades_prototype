@@ -20,7 +20,12 @@
     "decision": "",
     "opponent": "",
     "rationale": "GDD illustrative seed (Appendix E).",
-    "partners": []
+    "partners": [],
+    "critic": {
+      "verdict": "keep",
+      "concerns": "Leading three suits happens almost automatically (86%), so it rarely changes a play.",
+      "elegance": 3
+    }
   },
   "status": "candidate",
   "replacedBy": null,
@@ -74,64 +79,64 @@
   "lint": [],
   "estimates": {
     "step": "phase-0",
-    "exposures": 563,
+    "exposures": 596,
     "metrics": [
       {
         "key": "lift",
         "label": "Choices matter: win-rate lift over control (pts)",
-        "value": 0.2,
-        "lo": -5.45,
-        "hi": 5.85,
+        "value": 4.89,
+        "lo": -0.65,
+        "hi": 10.42,
         "bandLo": 0.0,
         "bandHi": 12.0,
-        "n": 563
+        "n": 596
       },
       {
         "key": "liftT0",
         "label": "Tier-0 lift before multi-fidelity correction (pts)",
-        "value": -1.14,
-        "lo": -6.79,
-        "hi": 4.51,
+        "value": 4.96,
+        "lo": -0.58,
+        "hi": 10.49,
         "bandLo": null,
         "bandHi": null,
-        "n": 563
+        "n": 596
       },
       {
         "key": "decisive",
         "label": "Decisive share of holder's wins (%)",
-        "value": 12.11,
-        "lo": 11.09,
-        "hi": 13.22,
+        "value": 11.94,
+        "lo": 10.92,
+        "hi": 13.04,
         "bandLo": 5.0,
         "bandHi": null,
-        "n": 2551
+        "n": 2546
       },
       {
         "key": "fire",
         "label": "Payoff fires (% of held rounds)",
-        "value": 86.29,
+        "value": 86.32,
         "lo": null,
         "hi": null,
         "bandLo": 10.0,
         "bandHi": null,
-        "n": 26421
+        "n": 26027
       },
       {
         "key": "fireCommitted",
         "label": "Fires when committed (% of held rounds)",
-        "value": 87.86,
+        "value": 86.53,
         "lo": null,
         "hi": null,
         "bandLo": 60.0,
         "bandHi": null,
-        "n": 2785
+        "n": 2635
       },
       {
         "key": "slope",
         "label": "Amount slope (pts per doubling)",
-        "value": 5.54,
-        "lo": 3.18,
-        "hi": 7.9,
+        "value": 6.12,
+        "lo": 3.37,
+        "hi": 8.87,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -139,9 +144,9 @@
       {
         "key": "skill",
         "label": "Skill gradient: tier 1 minus tier 0 (pts)",
-        "value": 1.34,
-        "lo": -0.69,
-        "hi": 3.38,
+        "value": -0.07,
+        "lo": -2.97,
+        "hi": 2.83,
         "bandLo": null,
         "bandHi": null,
         "n": null
@@ -154,43 +159,43 @@
       }
     ],
     "amountSlope": {
-      "value": 5.54,
-      "lo": 3.18,
-      "hi": 7.9
+      "value": 6.12,
+      "lo": 3.37,
+      "hi": 8.87
     },
     "skillGradient": {
-      "value": 1.34,
-      "lo": -0.69,
-      "hi": 3.38
+      "value": -0.07,
+      "lo": -2.97,
+      "hi": 2.83
     },
     "pairs": [
-      {
-        "with": "seed-e-diamond-three",
-        "synergy": 0.0
-      },
-      {
-        "with": "seed-contract-points-u",
-        "synergy": 0.0
-      },
       {
         "with": "seed-low-four",
         "synergy": 0.0
       },
       {
-        "with": "seed-raise",
+        "with": "seed-exact-mult",
         "synergy": 0.0
       },
       {
-        "with": "seed-ace-hold",
+        "with": "control-rare",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-any-suit",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-contract-points",
         "synergy": 0.0
       }
     ],
     "raw": {
-      "liftU": -0.011884396614557185,
-      "seU": 0.035742582046986174,
-      "slopeU": 0.0831634021548864,
-      "slopeSeU": 0.02152962019450492,
-      "k": 1.922343567269947
+      "liftU": 0.05096470409616523,
+      "seU": 0.034597165616313534,
+      "slopeU": 0.09080975972382832,
+      "slopeSeU": 0.0248142274934676,
+      "k": 1.9447399061524484
     }
   },
   "reports": [
