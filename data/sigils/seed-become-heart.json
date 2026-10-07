@@ -60,5 +60,95 @@
     "C": 4,
     "S": 0.2
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "phase-0",
+    "exposures": 941,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -15.1,
+        "lo": -18.0,
+        "hi": -12.2,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 941
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -16.63,
+        "lo": -19.52,
+        "hi": -13.73,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 941
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 1.52,
+        "lo": -1.62,
+        "hi": 4.67,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": 1.52,
+      "lo": -1.62,
+      "hi": 4.67
+    },
+    "pairs": [
+      {
+        "with": "seed-e-last-heart",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-spade-lead",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-low-four",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-contract-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-bid8-mult",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.17297248905580304,
+      "seU": 0.01833234290518114,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.922343567269947
+    }
+  },
+  "reports": [
+    "reports/phase-0-pilot.md",
+    "reports/phase-0-pilot-dashboard.md"
+  ]
 }

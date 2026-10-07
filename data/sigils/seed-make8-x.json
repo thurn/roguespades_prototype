@@ -66,5 +66,120 @@
     "C": 4,
     "S": 0.2
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "phase-0",
+    "exposures": 500,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -0.97,
+        "lo": -5.56,
+        "hi": 3.62,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 500
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -4.0,
+        "lo": -8.59,
+        "hi": 0.59,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 500
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 16.39,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 10859
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 22.57,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 2317
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 4.45,
+        "lo": 1.94,
+        "hi": 6.97,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 3.03,
+        "lo": -1.37,
+        "hi": 7.44,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "phase-0",
+        "amount": 2
+      }
+    ],
+    "amountSlope": {
+      "value": 4.45,
+      "lo": 1.94,
+      "hi": 6.97
+    },
+    "skillGradient": {
+      "value": 3.03,
+      "lo": -1.37,
+      "hi": 7.44
+    },
+    "pairs": [
+      {
+        "with": "seed-ace-hold",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-consecutive",
+        "synergy": 0.0
+      },
+      {
+        "with": "control-rare",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-low-four",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-raise",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.04163363343097166,
+      "seU": 0.029027204674547297,
+      "slopeU": 0.0668485686963471,
+      "slopeSeU": 0.02296516425810746,
+      "k": 1.922343567269947
+    }
+  },
+  "reports": [
+    "reports/phase-0-pilot.md",
+    "reports/phase-0-pilot-dashboard.md"
+  ]
 }

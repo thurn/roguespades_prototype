@@ -171,6 +171,9 @@ fn metric(v: &Value, key: &str) -> String {
     for m in ms {
         if m["key"] == key {
             let f = |x: &Value| x.as_f64().map(|x| format!("{x:.1}")).unwrap_or_default();
+            if m["lo"].is_null() {
+                return f(&m["value"]);
+            }
             return format!("{} [{}, {}]", f(&m["value"]), f(&m["lo"]), f(&m["hi"]));
         }
     }

@@ -1,0 +1,50 @@
+{
+  "id": "control-blank-uncommon",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Generic"
+  ],
+  "source": "control",
+  "createdIn": "phase-0",
+  "effect": {
+    "type": "points",
+    "amount": 0
+  },
+  "design": {
+    "decision": "None: a blank that only costs its price and a slot.",
+    "opponent": "",
+    "rationale": "Standalone enabler trials compare each enabler against this disabled effect at the same price (§12).",
+    "partners": []
+  },
+  "status": "candidate",
+  "replacedBy": null,
+  "history": [
+    {
+      "step": "phase-0",
+      "note": "Blank control created for standalone enabler trials."
+    }
+  ],
+  "name": null,
+  "icon": null,
+  "iconFamily": null,
+  "iconWord": null,
+  "price": 75,
+  "text": "+0 contract points",
+  "category": "points",
+  "signature": "always|-|-|points",
+  "family": "always|-|-|points",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 0",
+        "cost": 1
+      }
+    ],
+    "C": 1,
+    "S": 0.5
+  },
+  "lint": []
+}

@@ -59,5 +59,100 @@
     "C": 4,
     "S": 0.2
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "phase-0",
+    "exposures": 1089,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": 12.41,
+        "lo": 9.46,
+        "hi": 15.36,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 1089
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": 10.89,
+        "lo": 7.94,
+        "hi": 13.83,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 1089
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 1.52,
+        "lo": -2.19,
+        "hi": 5.23,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "phase-0",
+        "amount": 2
+      }
+    ],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": 1.52,
+      "lo": -2.19,
+      "hi": 5.23
+    },
+    "pairs": [
+      {
+        "with": "seed-ace-hold",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-consecutive",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-low-four",
+        "synergy": 0.0
+      },
+      {
+        "with": "control-rare",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-e-diamond-three",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": 0.11325051255310987,
+      "seU": 0.01863107119893021,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.922343567269947
+    }
+  },
+  "reports": [
+    "reports/phase-0-pilot.md",
+    "reports/phase-0-pilot-dashboard.md"
+  ]
 }

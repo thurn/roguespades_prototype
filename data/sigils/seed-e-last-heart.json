@@ -69,5 +69,120 @@
     "C": 4,
     "S": 0.2
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "phase-0",
+    "exposures": 722,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -6.44,
+        "lo": -9.75,
+        "hi": -3.13,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 722
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -9.3,
+        "lo": -12.61,
+        "hi": -5.99,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 722
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 5.89,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 24659
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 5.98,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 13437
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 2.7,
+        "lo": 0.47,
+        "hi": 4.94,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 2.86,
+        "lo": 0.66,
+        "hi": 5.07,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "phase-0",
+        "amount": 15
+      }
+    ],
+    "amountSlope": {
+      "value": 2.7,
+      "lo": 0.47,
+      "hi": 4.94
+    },
+    "skillGradient": {
+      "value": 2.86,
+      "lo": 0.66,
+      "hi": 5.07
+    },
+    "pairs": [
+      {
+        "with": "seed-spade-lead",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-contract-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-spade-five",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-spade-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-bid8-mult",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.0967742101304786,
+      "seU": 0.020924000675511593,
+      "slopeU": 0.04058871202082357,
+      "slopeSeU": 0.02035856300184168,
+      "k": 1.922343567269947
+    }
+  },
+  "reports": [
+    "reports/phase-0-pilot.md",
+    "reports/phase-0-pilot-dashboard.md"
+  ]
 }

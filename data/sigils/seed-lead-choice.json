@@ -53,5 +53,95 @@
     "C": 2,
     "S": 0.3333333333333333
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "phase-0",
+    "exposures": 1031,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -6.56,
+        "lo": -9.61,
+        "hi": -3.52,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 1031
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -8.09,
+        "lo": -11.13,
+        "hi": -5.04,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 1031
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 1.52,
+        "lo": -1.4,
+        "hi": 4.45,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": 1.52,
+      "lo": -1.4,
+      "hi": 4.45
+    },
+    "pairs": [
+      {
+        "with": "seed-contract-points-u",
+        "synergy": 0.0
+      },
+      {
+        "with": "pilot-dose-80",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-trump-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-exact-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-e-diamond-three",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.08412430894164094,
+      "seU": 0.019266059006680113,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.922343567269947
+    }
+  },
+  "reports": [
+    "reports/phase-0-pilot.md",
+    "reports/phase-0-pilot-dashboard.md"
+  ]
 }

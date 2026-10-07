@@ -65,5 +65,95 @@
     "C": 5,
     "S": 0.16666666666666666
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "phase-0",
+    "exposures": 1110,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -1.22,
+        "lo": -4.27,
+        "hi": 1.82,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 1110
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -2.75,
+        "lo": -5.79,
+        "hi": 0.29,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 1110
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 1.52,
+        "lo": -1.79,
+        "hi": 4.84,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": 1.52,
+      "lo": -1.79,
+      "hi": 4.84
+    },
+    "pairs": [
+      {
+        "with": "pilot-dose-80",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-contract-points-u",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-trump-points",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-two-win",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-exact-points",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.028602572918606812,
+      "seU": 0.01923581211416258,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.922343567269947
+    }
+  },
+  "reports": [
+    "reports/phase-0-pilot.md",
+    "reports/phase-0-pilot-dashboard.md"
+  ]
 }

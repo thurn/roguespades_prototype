@@ -1,0 +1,46 @@
+# Deviations from the sigil design plan
+
+The orchestrator ran [the plan](../sigil-design-plan.md) without pausing for review and relaxed
+or changed these points. Each entry says what changed and why.
+
+## Engine
+
+- **One Rust crate, not a workspace.** `sim/` is a single `rsim` crate with modules for the
+  kernel, grammar, text, simplicity, AI, game, and experiments.
+- **Copy instead of undo.** Search copies the small, allocation-free `Play` struct per
+  iteration rather than undoing moves; there is still no allocation in the hot loop.
+- **Tier 0 is flat Monte Carlo.** Six heuristic rollouts per legal move over common deals, a
+  superset of "1.0's rollout policy plus a one-trick lookahead scored with sigils".
+- **Opening swaps.** Tier 0 uses the heuristic; tiers 1 and 2 evaluate about six candidate
+  give-sets per seat by rollouts from that seat's information, modeling the partner's give with
+  the heuristic.
+- **Nil margin.** Bidding rollouts charge a nil bid 550 margin points, tuned to meet the 0b nil
+  targets.
+- **Kernel rulings the GDD leaves open:** growth gains apply from the next round; lead triggers
+  count leads by either partner, including a nil bidder; a payoff that fires during tricks
+  reveals itself at once, other payoffs at the end of the round in which they first fire.
+- **Global-scale knob.** The starting contract multiplier (P29) stays a kernel constant; the
+  global scale uses one amount multiplier for all payoff categories.
+
+## Measurement
+
+- **Duplicate play swaps all luck, not just seats.** The pilot showed no variance reduction when
+  each team kept its own offers. In the second run of a board each team now gets the other's
+  setup, offer, exploration, and Opening streams; grants and gold perturbations stay with their
+  team. Grant schedules depend only on the board seed and the team's earlier grants (coherent
+  grants weight toward earlier grants, not shop purchases), so both runs apply the same
+  treatments.
+- **The W curve.** A logistic from final margin to win is degenerate on final margins, so W's
+  scale is chosen in the pilot by maximizing the t-statistics of planted effects. Effects are
+  converted to win-rate points with a fitted slope k of (2·win − 1) on u.
+- **Intervals.** A cluster bootstrap of a ridge estimator under-covers (65% in a first pilot).
+  Intervals use the geometric mean of the shrunk and nearly unpenalized bootstrap spreads (the
+  empirical-Bayes posterior width); synthetic coverage is then 95%.
+- **The factorization machine is held fixed in the bootstrap.**
+- **Cards in the outcome model.** Card grants are measured by 12 rank-and-suit classes; the bonus
+  for cards that owned payoffs reward is a single hand-set coefficient.
+- **Run records** are JSONL in `runs/`; the pipeline writes Parquet tables of runs, held sigils,
+  and rounds next to them. The per-sigil ledger stays in the JSONL.
+- **Shop validation** rescoring plays one round on 12 deals at tier 0 per offer; it is too noisy
+  to rank offers well and is reported as a known weakness.
+- **Phase 0 review.** One reviewer checked all four builds together, after they were delivered.

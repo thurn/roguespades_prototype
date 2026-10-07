@@ -142,6 +142,8 @@ struct CardOffer {
 #[derive(Clone)]
 struct Team {
     sigils: Vec<OwnedSigil>,
+    /// Sigils granted so far this run, in order.
+    granted: Vec<usize>,
     history: Vec<OwnedSigil>,
     cards: Vec<OwnedCard>,
     sold_cards: Vec<OwnedCard>,
@@ -210,7 +212,8 @@ pub struct TeamRec {
     pub final_score: f64,
     pub sigils: Vec<SigilRec>,
     pub card_grants: Vec<(String, u8)>,
-    pub cards: Vec<(String, u8, bool)>,
+    /// (class, shop, grant, card index of its identity, still owned at the end)
+    pub cards: Vec<(String, u8, bool, u8, bool)>,
     pub perturb: Vec<(u8, i32)>,
     pub gold: Vec<i32>,
     pub rerolls: u32,
@@ -305,9 +308,12 @@ pub struct ShopCheck {
 impl<'a> Runner<'a> {
     pub fn new(cfg: &'a RunCfg<'a>, seed: u64, orient: u8) -> Self {
         let mk = |ti: u64| {
-            let mut r = Rng::stream(seed, &[S_SETUP, ti]);
+            // Duplicate play swaps offer luck too: in the second run each team gets the other's
+            // setup, offer, and exploration streams, while grants stay with the team.
+            let mut r = Rng::stream(seed, &[S_SETUP, ti ^ orient as u64]);
             Team {
                 sigils: vec![],
+                granted: vec![],
                 history: vec![],
                 cards: vec![],
                 sold_cards: vec![],
@@ -547,7 +553,7 @@ impl<'a> Runner<'a> {
     // ----- Grants -----
 
     fn draw_grant(&self, ti: usize, g: &GrantCfg, rng: &mut Rng) -> Option<usize> {
-        let owned: Vec<usize> = self.teams[ti].sigils.iter().map(|o| o.def).collect();
+        let owned: Vec<usize> = self.teams[ti].granted.clone();
         let pool: Vec<(usize, f64)> = g
             .measured
             .iter()
@@ -570,8 +576,8 @@ impl<'a> Runner<'a> {
                     *x = 0.5;
                 }
             }
-            for o in &self.teams[ti].sigils {
-                for t in &self.cfg.pool.defs[o.def].archetypes {
+            for &o in &self.teams[ti].granted {
+                for t in &self.cfg.pool.defs[o].archetypes {
                     if let Some(a) = archetype_index(t) {
                         if w[a] > 0.0 {
                             w[a] += 1.0;
@@ -636,12 +642,16 @@ impl<'a> Runner<'a> {
     // ----- Shop -----
 
     fn shop(&mut self, ti: usize, shop: u8, other_offers: Mask) -> Mask {
-        let mut rng = Rng::stream(self.seed, &[S_TEAM, ti as u64, shop as u64]);
-        let mut grng = Rng::stream(self.seed, &[S_GRANT, ti as u64, shop as u64]);
+        let luck = (ti ^ self.orient as usize) as u64;
+        let mut rng = Rng::stream(self.seed, &[S_TEAM, luck, shop as u64]);
+        // Grant schedules depend only on the board seed and the team's earlier grants, so both runs
+        // of a board apply the same treatments while the luck swaps.
+        let seed = self.seed;
+        let gs = |k: u64| Rng::stream(seed, &[S_GRANT, ti as u64, shop as u64, k]);
         self.recs[ti].gold.push(self.teams[ti].gold);
-        // Gold perturbations, sigil grants, and card grants come first.
-        if self.cfg.perturb > 0.0 && grng.chance(self.cfg.perturb) {
-            let amt = if grng.chance(0.5) {
+        let mut prng = gs(1);
+        if self.cfg.perturb > 0.0 && prng.chance(self.cfg.perturb) {
+            let amt = if prng.chance(0.5) {
                 self.cfg.perturb_amount
             } else {
                 -self.cfg.perturb_amount
@@ -651,20 +661,31 @@ impl<'a> Runner<'a> {
         }
         if let Some(g) = self.cfg.teams[ti].grants.clone() {
             if shop <= g.max_shop {
+                let mut grng = gs(2);
+                let mut todo: Vec<usize> = vec![];
                 if !g.pairs.is_empty() && grng.chance(g.pair_prob) {
                     let (a, b) = g.pairs[grng.below(g.pairs.len())];
-                    for d in [a, b] {
-                        if !self.teams[ti].sigils.iter().any(|o| o.def == d) {
-                            self.grant(ti, d, shop, &mut grng, g.jitter);
-                        }
-                    }
+                    todo.extend([a, b]);
                 } else if grng.chance(g.prob) {
                     if let Some(d) = self.draw_grant(ti, &g, &mut grng) {
-                        self.grant(ti, d, shop, &mut grng, g.jitter);
+                        todo.push(d);
                     }
                 }
-                if shop <= 7 && grng.chance(g.card_prob) {
-                    if let Some(o) = self.card_offer(shop, &mut grng, other_offers) {
+                for d in todo {
+                    if self.teams[ti].granted.contains(&d) {
+                        continue;
+                    }
+                    self.teams[ti].granted.push(d);
+                    // A sigil the shop already bought this run is not granted again.
+                    if !self.teams[ti].sigils.iter().any(|o| o.def == d) {
+                        let mut arng =
+                            Rng::stream(self.seed, &[S_GRANT, ti as u64, shop as u64, 4, d as u64]);
+                        self.grant(ti, d, shop, &mut arng, g.jitter);
+                    }
+                }
+                let mut crng = gs(3);
+                if shop <= 7 && crng.chance(g.card_prob) {
+                    if let Some(o) = self.card_offer(shop, &mut crng, other_offers) {
                         if self.teams[ti].cards.len() >= MAX_CARDS {
                             if let Some((k, _)) = self.weakest_card(ti, shop) {
                                 self.sell_card(ti, k);
@@ -682,7 +703,7 @@ impl<'a> Runner<'a> {
 
         let lambda = self.cfg.model.lambda[shop as usize];
         let mut reroll = 0u64;
-        let mut orng = Rng::stream(self.seed, &[S_OFFER, ti as u64, shop as u64, reroll]);
+        let mut orng = Rng::stream(self.seed, &[S_OFFER, luck, shop as u64, reroll]);
         let mut sig = self.sigil_offers(ti, &mut orng);
         let mut cards = self.card_offers(shop, &mut orng, other_offers);
         if self.cfg.validate > 0.0 && sig.len() >= 2 && rng.chance(self.cfg.validate) {
@@ -778,7 +799,7 @@ impl<'a> Runner<'a> {
                         self.teams[ti].gold -= cost;
                         reroll += 1;
                         self.recs[ti].rerolls += 1;
-                        orng = Rng::stream(self.seed, &[S_OFFER, ti as u64, shop as u64, reroll]);
+                        orng = Rng::stream(self.seed, &[S_OFFER, luck, shop as u64, reroll]);
                         sig = self.sigil_offers(ti, &mut orng);
                         cards = self.card_offers(shop, &mut orng, other_offers);
                     } else {
@@ -934,7 +955,15 @@ impl<'a> Runner<'a> {
             order.sort_by_key(|x| (x.0, x.1));
             for (_, k, r) in order {
                 let sid = hash_str(&self.cfg.pool.defs[self.teams[ti].sigils[k].def].id);
-                let mut orng = Rng::stream(self.seed, &[S_OPENING, round as u64, ti as u64, sid]);
+                let mut orng = Rng::stream(
+                    self.seed,
+                    &[
+                        S_OPENING,
+                        round as u64,
+                        (ti ^ self.orient as usize) as u64,
+                        sid,
+                    ],
+                );
                 let (a, b) = (kt, kt + 2);
                 match r {
                     Rule::Swap(n) => {
@@ -1293,17 +1322,19 @@ impl<'a> Runner<'a> {
         self.sync_records();
         for ti in 0..2 {
             self.recs[ti].final_score = self.teams[ti].score;
-            let mut cards: Vec<(String, u8, bool)> = vec![];
-            for c in self.teams[ti]
+            let mut cards: Vec<(String, u8, bool, u8, bool)> = vec![];
+            let owned = self.teams[ti].cards.len();
+            for (n, c) in self.teams[ti]
                 .cards
                 .iter()
                 .chain(self.teams[ti].sold_cards.iter())
+                .enumerate()
             {
                 let mut k = card_class(nominal_suit(c.ident), nominal_rank(c.ident));
                 if c.eng != ENG_NONE {
                     k = format!("{k}+{}", eng_key(c.eng));
                 }
-                cards.push((k, c.shop, c.grant));
+                cards.push((k, c.shop, c.grant, c.ident, n < owned));
             }
             self.recs[ti].cards = cards;
         }

@@ -72,5 +72,120 @@
     "C": 5,
     "S": 0.16666666666666666
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "phase-0",
+    "exposures": 540,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -0.25,
+        "lo": -5.31,
+        "hi": 4.81,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 540
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -3.29,
+        "lo": -8.35,
+        "hi": 1.78,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 540
+      },
+      {
+        "key": "fire",
+        "label": "Payoff fires (% of held rounds)",
+        "value": 47.71,
+        "lo": null,
+        "hi": null,
+        "bandLo": 10.0,
+        "bandHi": null,
+        "n": 23888
+      },
+      {
+        "key": "fireCommitted",
+        "label": "Fires when committed (% of held rounds)",
+        "value": 49.66,
+        "lo": null,
+        "hi": null,
+        "bandLo": 60.0,
+        "bandHi": null,
+        "n": 2960
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 4.24,
+        "lo": 1.94,
+        "hi": 6.54,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 3.03,
+        "lo": -1.09,
+        "hi": 7.15,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [
+      {
+        "step": "phase-0",
+        "amount": 1.5
+      }
+    ],
+    "amountSlope": {
+      "value": 4.24,
+      "lo": 1.94,
+      "hi": 6.54
+    },
+    "skillGradient": {
+      "value": 3.03,
+      "lo": -1.09,
+      "hi": 7.15
+    },
+    "pairs": [
+      {
+        "with": "control-rare",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-ace-hold",
+        "synergy": 0.0
+      },
+      {
+        "with": "pilot-dose-80",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-any-suit",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-consecutive",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.03418034068968232,
+      "seU": 0.032017117593566825,
+      "slopeU": 0.06361563627237192,
+      "slopeSeU": 0.020997055072676706,
+      "k": 1.922343567269947
+    }
+  },
+  "reports": [
+    "reports/phase-0-pilot.md",
+    "reports/phase-0-pilot-dashboard.md"
+  ]
 }

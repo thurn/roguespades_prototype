@@ -428,12 +428,12 @@ resolves before bidding. These templates replace 1.0's rules-text guide.
 
 ### Rarity and price
 
-| Rarity | Offer odds | Price | Pool size |
+| Rarity | Offer odds | Price | Pool size (soft target, [D30](#d30-pool-shape)) |
 | --- | --- | --- | --- |
-| Common | 69% | 50 | 44 |
-| Uncommon | 25% | 75 | 33 |
-| Rare | 5% | 100 | 17 |
-| Legendary | 1% | 150 | 3 |
+| Common | 69% | 50 | About 60 |
+| Uncommon | 25% | 75 | About 60 |
+| Rare | 5% | 100 | About 20 |
+| Legendary | 1% | 150 | About 5 |
 
 ### Timing
 
@@ -882,7 +882,11 @@ or a new way to play the hand.
 
 ## 10. Sigil pool skeleton
 
-> **Status:** provisional. The category split follows
+> **Status:** superseded by the soft pool targets of [D30](#d30-pool-shape);
+> kept for history until the final report points this section at the data
+> files and the viewer.
+>
+> **Earlier status:** provisional. The category split follows
 > [D3](#d3-scoring-categories), pool sizes are [parameters](#appendix-b-parameter-register) P21, and every
 > budget is a starting size for number sweeps.
 
@@ -1886,7 +1890,11 @@ wording conventions can be chosen by designer direction.
 ### D21. Candidate generation
 
 - **Starting choice:** enumerate common payoffs from the grammar, and design
-  higher rarities by hand in waves seeded from 1.0.
+  higher rarities by hand in waves seeded from 1.0. The
+  [sigil design plan](sigil-design-plan.md#commons-two-sources) runs both
+  sources side by side at common, with designers blind to the enumeration,
+  and records how each source's candidates measured and how many each
+  supplied to the draft pool.
 - **Alternatives:**
   - hand-designed waves at every rarity;
   - enumeration at every rarity.
@@ -2052,6 +2060,28 @@ wording conventions can be chosen by designer direction.
   Phase 0 of the plan.
 - **Evidence:** pending. **Status:** hypothesis.
 
+### D30. Pool shape
+
+- **Starting choice:** soft pool targets of about 145 sigils, about 60 common,
+  60 uncommon, 20 rare, and 5 legendary (each within about ±25%), following
+  Balatro's joker pool. They replace §10's slot tables and the pool sizes in
+  §5's rarity table. Mix, archetype coverage, bid tension, named suits, and
+  ×multiplier placement are soft targets in the
+  [sigil design plan](sigil-design-plan.md#soft-pool-targets); a shortfall is
+  a coverage hole that an optimization round may work on, not a quota.
+- **Alternatives:**
+  - the 97-candidate skeleton of §10 (90 payoffs and 7 enablers) with its slot
+    tables;
+  - hard per-archetype quotas.
+- **Prior reasoning:** fixed slot tables reward filler; a larger, softer pool
+  gives runs more variety while each piece still has to earn its place by the
+  sigil metrics and elegance.
+- **Decided by:** designer direction on 2026-10-06; the fun score's
+  Commitment works and Archetypes viable families check the result.
+- **Test:** the draft passes and optimization rounds of the
+  [sigil design plan](sigil-design-plan.md).
+- **Evidence:** pending the draft passes. **Status:** hypothesis.
+
 ## Appendix B: Parameter register
 
 Every number below is a starting value. Each row lists the range to test, the
@@ -2080,13 +2110,13 @@ the sweep that chose its value ([§16](#parameter-records)).
 | P18 | Engraving premiums | 25, or 50 for Multiplier | 0–100 | Economy diagnostics | 4 |
 | P19 | Synthetic replacement range and copied ranks | Unowned [2]–[9] of the same suit; copies [J]/[Q]/[K]/[A] | Replacement ranks below [J]; weights across [J]/[Q]/[K]/[A] | Input randomness; Commitment works; Archetypes viable; power ceiling | 4 |
 | P20 | Par growth over a run | ×10, from 600 to 6,000 | ×5–×20 | Close and live | 3–6 |
-| P21 | Pool sizes and category split | 44 / 33 / 17 / 3: 90 payoffs and 7 shared enablers | Cut candidates that don't improve the game; expand only with demonstrated standalone value | Commitment works; Archetypes viable | 3–6 |
+| P21 | Pool sizes and category split | About 145: 60 / 60 / 20 / 5, each within about ±25%; about two-thirds mainly scoring ([D30](#d30-pool-shape)) | 110–180 in total | Commitment works; Archetypes viable | 3–6 |
 | P22 | Nil base value before multipliers | ±100 | 50–150 | Archetypes viable (Nil) | 0 |
 | P23 | Bid-scaled share of the pool | A third of contract-point sigils, a quarter of multipliers | None to half | Skill and bidding | 3–5 |
-| P24 | AI tier budgets | Search budgets as in [§13](#ai-tiers); at least 100, 5, and 0.5 runs per second on 18 cores | Per tier | Agreement between tiers; run time | 0 |
+| P24 | AI tier budgets | Search budgets as in [§13](#ai-tiers); at least 100, 5, and 0.5 runs per second on 18 cores. Measured in Phase 0 with the shop and seed pool: about 1,000, 115, and 16 runs per second ([pilot](../reports/phase-0-pilot.md)) | Per tier | Agreement between tiers; run time | 0 |
 | P25 | Fun score weights | 25 / 15 / 15 / 15 / 15 / 15 (families 4–9) | Any | Designer judgment, checked against playtests | 7 |
 | P26 | Sigil-metric target bands and fun score bands | As in [§12](#12-metrics-what-fun-means) | Any | Calibrated once the harness runs, and again at stage 7 | 3, 7 |
-| P27 | Experiment precision | Median 90% interval half-width of 1.5 win-rate points per sigil | 1–3 points | Run time; decision quality | 0 |
+| P27 | Experiment precision | Median 90% interval half-width of 1.5 win-rate points per sigil. Pilot: residual sd of the smoothed board outcome 0.25 at tiers 0 and 1; about 167,000 tier-0 boards (6 minutes) reach the target for 170 sigils; tier-0 and tier-1 lifts correlate 0.82 ([pilot](../reports/phase-0-pilot.md)) | 1–3 points | Run time; decision quality | 0 |
 | P28 | Simplicity rubric | Number/rank/check 1; arithmetic rider 2; selector/state 1; new term including Opening 2, or 4 at common; S = 1 / (1 + C) | Positive costs; compare 1–3 per burden; twice the term cost at common; expand aliases and rank classes before scoring | Designer judgment, calibrated by comprehension playtests and paired simulation tradeoffs | 2–7 |
 | P29 | Starting contract multiplier and +mult scale | Start at 10; +2–5 repeated rewards, +10–20 one-time rewards | Starting values 1, 5, 10, 15; sweep rewards jointly | Power ceiling; Close and live; Skill and bidding; Simplicity | 3–6 |
 | P30 | Standalone enabler acceptance | 90% lower bounds: ≥3 percentage-point lift over disabled effect; ≥−2 versus same-price flat payoff; ≥40% no-payoff playtest preference; support two families | Lift 1–5 points; comparison tolerance 0–3 points; preference 30–60% | Material benefit; standalone appeal; breadth; power ceiling | 2–7 |

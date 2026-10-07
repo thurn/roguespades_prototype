@@ -65,5 +65,95 @@
     "C": 7,
     "S": 0.125
   },
-  "lint": []
+  "lint": [],
+  "estimates": {
+    "step": "phase-0",
+    "exposures": 1267,
+    "metrics": [
+      {
+        "key": "lift",
+        "label": "Choices matter: win-rate lift over control (pts)",
+        "value": -11.5,
+        "lo": -14.26,
+        "hi": -8.75,
+        "bandLo": 0.0,
+        "bandHi": 12.0,
+        "n": 1267
+      },
+      {
+        "key": "liftT0",
+        "label": "Tier-0 lift before multi-fidelity correction (pts)",
+        "value": -13.03,
+        "lo": -15.78,
+        "hi": -10.27,
+        "bandLo": null,
+        "bandHi": null,
+        "n": 1267
+      },
+      {
+        "key": "slope",
+        "label": "Amount slope (pts per doubling)",
+        "value": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      },
+      {
+        "key": "skill",
+        "label": "Skill gradient: tier 1 minus tier 0 (pts)",
+        "value": 1.52,
+        "lo": -1.39,
+        "hi": 4.44,
+        "bandLo": null,
+        "bandHi": null,
+        "n": null
+      }
+    ],
+    "amountHistory": [],
+    "amountSlope": {
+      "value": 0.0,
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "skillGradient": {
+      "value": 1.52,
+      "lo": -1.39,
+      "hi": 4.44
+    },
+    "pairs": [
+      {
+        "with": "pilot-dose-80",
+        "synergy": 0.0
+      },
+      {
+        "with": "control-rare",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-exact-mult",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-any-suit",
+        "synergy": 0.0
+      },
+      {
+        "with": "seed-two-win",
+        "synergy": 0.0
+      }
+    ],
+    "raw": {
+      "liftU": -0.13553198134331473,
+      "seU": 0.01743714867889973,
+      "slopeU": 0.0,
+      "slopeSeU": 0.0,
+      "k": 1.922343567269947
+    }
+  },
+  "reports": [
+    "reports/phase-0-pilot.md",
+    "reports/phase-0-pilot-dashboard.md"
+  ]
 }
