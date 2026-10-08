@@ -79,6 +79,21 @@
   "simplicity": {
     "items": [
       {
+        "burden": "rank literal",
+        "detail": "[J]",
+        "cost": 1
+      },
+      {
+        "burden": "rank literal",
+        "detail": "[A]",
+        "cost": 1
+      },
+      {
+        "burden": "suit literal",
+        "detail": "[♦]",
+        "cost": 1
+      },
+      {
         "burden": "numeric value",
         "detail": "payout 40",
         "cost": 1
@@ -90,22 +105,7 @@
       },
       {
         "burden": "boolean condition",
-        "detail": "suit is D",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "range endpoint J",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "range endpoint A",
-        "cost": 1
-      },
-      {
-        "burden": "boolean condition",
-        "detail": "rank in J-A",
+        "detail": "rank and suit both match",
         "cost": 1
       }
     ],

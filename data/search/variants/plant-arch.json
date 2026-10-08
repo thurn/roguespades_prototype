@@ -1,0 +1,99 @@
+{
+ "sigils": {
+  "ca-diamond-led-win": {
+   "effect": {
+    "amount": 30
+   }
+  },
+  "ca-high-spade-hold": {
+   "effect": {
+    "amount": 20
+   }
+  },
+  "ca-spade-lead-three": {
+   "effect": {
+    "amount": 20
+   }
+  },
+  "cb-spade-seven": {
+   "effect": {
+    "amount": 20
+   }
+  },
+  "cc-two-win-mult": {
+   "effect": {
+    "amount": 20
+   }
+  },
+  "e-hold-suit-s-mult": {
+   "effect": {
+    "amount": 2
+   }
+  },
+  "e-trump-mult": {
+   "effect": {
+    "amount": 4
+   }
+  },
+  "r1-low-win-points": {
+   "effect": {
+    "amount": 40
+   }
+  },
+  "r1-spade-four-x": {
+   "effect": {
+    "amount": 4.0
+   }
+  },
+  "ra-diamond-led-win-x": {
+   "effect": {
+    "amount": 1.5
+   }
+  },
+  "ra-spade-lead-x": {
+   "effect": {
+    "amount": 1.3
+   }
+  },
+  "ra-trump-x": {
+   "effect": {
+    "amount": 1.5
+   }
+  },
+  "seed-e-spade-win": {
+   "effect": {
+    "amount": 10
+   }
+  },
+  "seed-spade-hold": {
+   "effect": {
+    "amount": 20
+   }
+  },
+  "seed-trump-points": {
+   "effect": {
+    "amount": 20
+   }
+  },
+  "ua-high-spade-win": {
+   "effect": {
+    "amount": 60
+   }
+  },
+  "ua-spade-seven-x": {
+   "effect": {
+    "amount": 3.0
+   }
+  },
+  "uc-low-win-mult": {
+   "effect": {
+    "amount": 10
+   }
+  },
+  "uc-spade-lead-mult": {
+   "effect": {
+    "amount": 8
+   }
+  }
+ }
+}

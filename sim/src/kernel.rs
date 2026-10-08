@@ -2,6 +2,7 @@
 //! per-sigil ledger. `Play` is a small `Copy` struct, so search copies it instead of allocating.
 
 use crate::cards::*;
+use crate::rules::rules;
 use crate::sigil::*;
 
 pub const MAXP: usize = 8;
@@ -16,8 +17,6 @@ pub const ENG_MULT: u8 = 3;
 pub const ENG_BONUS_POINTS: f64 = 20.0;
 pub const ENG_HERALD_POINTS: f64 = 20.0;
 pub const ENG_MULT_AMOUNT: f64 = 5.0;
-pub const BASE_MULT: f64 = 10.0;
-pub const NIL_VALUE: f64 = 100.0;
 
 #[derive(Clone, Debug)]
 pub struct Slot {
@@ -222,6 +221,8 @@ pub struct Play {
     pub free_cards: [CardFilter; 2],
     /// Each team's run score is below the other's at the start of the round.
     pub behind: [bool; 2],
+    /// Each team's bags carried in from earlier rounds.
+    pub bags: [u8; 2],
     /// The seat that leads the first trick (left of the dealer unless a team leads first).
     pub first_leader: u8,
     pub acc: [TeamAcc; 2],
@@ -271,6 +272,7 @@ impl Play {
             free_cards: [rules.teams[0].free_cards, rules.teams[1].free_cards],
             first_leader: first,
             behind: [false; 2],
+            bags: [0; 2],
             acc: [TeamAcc::default(), TeamAcc::default()],
         }
     }
@@ -777,18 +779,22 @@ impl Play {
                 nilp += acc.nilp[slot];
             }
         }
-        let nil_score =
-            nil_made as f64 * (NIL_VALUE + nilp) - (nil_bids - nil_made as i32) as f64 * NIL_VALUE;
-        let base = if b == 0 {
-            0.0
-        } else if made {
-            10.0 * b as f64 + cp
-        } else {
-            -10.0 * b as f64
-        };
-        let mult = (BASE_MULT + add) * x;
+        let r = crate::rules::rules();
+        let nil_score = nil_made as f64 * (r.nil_value + nilp)
+            - (nil_bids - nil_made as i32) as f64 * r.nil_value;
+        let (base, _, _) = r.parts(b, t, cp, add, x);
+        let mut new_bags = if made { t - b } else { 0 };
+        for s in [team, team + 2] {
+            if self.bids[s] == 0 {
+                new_bags += self.won[s];
+            }
+        }
+        let (bags_after, bag_pen) = r.bags(self.bags[team], new_bags);
         TeamScore {
-            score: ((base + nil_score) * mult).round(),
+            score: r.round_score(b, t, cp, add, x, nil_score),
+            bags: new_bags,
+            bags_after,
+            bag_pen,
             contract: b,
             tricks: t,
             made,
@@ -808,7 +814,12 @@ impl Play {
 
 #[derive(Clone, Copy, Default)]
 pub struct TeamScore {
+    /// The round formula's score (bags excluded).
     pub score: f64,
+    /// Bags taken this round, the carried total after them, and the penalty (≤ 0) this round.
+    pub bags: u8,
+    pub bags_after: u8,
+    pub bag_pen: f64,
     pub contract: u8,
     pub tricks: u8,
     pub made: bool,
@@ -840,16 +851,10 @@ pub fn rescore_without(s: &TeamScore, prog: &TeamProgram, drop: &[usize]) -> f64
             nilp += acc.nilp[slot];
         }
     }
+    let r = rules();
     let nil_failed = s.nil_bids - s.nil_made;
-    let nil_score = s.nil_made as f64 * (NIL_VALUE + nilp) - nil_failed as f64 * NIL_VALUE;
-    let base = if s.contract == 0 {
-        0.0
-    } else if s.made {
-        10.0 * s.contract as f64 + cp
-    } else {
-        -10.0 * s.contract as f64
-    };
-    ((base + nil_score) * (BASE_MULT + add) * x).round()
+    let nil_score = s.nil_made as f64 * (r.nil_value + nilp) - nil_failed as f64 * r.nil_value;
+    r.round_score(s.contract, s.tricks, cp, add, x, nil_score)
 }
 
 fn union(a: CardFilter, b: CardFilter) -> CardFilter {

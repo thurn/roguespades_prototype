@@ -59,6 +59,16 @@
   "simplicity": {
     "items": [
       {
+        "burden": "suit literal",
+        "detail": "[♠]",
+        "cost": 1
+      },
+      {
+        "burden": "suit literal",
+        "detail": "[♠]",
+        "cost": 1
+      },
+      {
         "burden": "boolean condition",
         "detail": "[♠] not yet broken",
         "cost": 1
@@ -69,8 +79,8 @@
         "cost": 1
       }
     ],
-    "C": 2,
-    "S": 0.3333333333333333
+    "C": 4,
+    "S": 0.2
   },
   "lint": [],
   "estimates": {

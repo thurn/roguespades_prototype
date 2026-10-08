@@ -70,13 +70,13 @@
   "simplicity": {
     "items": [
       {
-        "burden": "boolean condition",
-        "detail": "your team could follow suit",
+        "burden": "suit literal",
+        "detail": "[♠]",
         "cost": 1
       },
       {
         "burden": "boolean condition",
-        "detail": "suit is S",
+        "detail": "your team could follow suit",
         "cost": 1
       }
     ],

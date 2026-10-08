@@ -70,33 +70,23 @@
   "simplicity": {
     "items": [
       {
-        "burden": "new term",
-        "detail": "Opening:",
-        "cost": 2
+        "burden": "rank literal",
+        "detail": "[2]",
+        "cost": 1
+      },
+      {
+        "burden": "rank literal",
+        "detail": "[6]",
+        "cost": 1
+      },
+      {
+        "burden": "rank literal",
+        "detail": "[A]",
+        "cost": 1
       },
       {
         "burden": "numeric value",
         "detail": "count 2",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "range endpoint 2",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "range endpoint 6",
-        "cost": 1
-      },
-      {
-        "burden": "boolean condition",
-        "detail": "rank in 2-6",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "rank literal A",
         "cost": 1
       },
       {
@@ -105,8 +95,8 @@
         "cost": 1
       }
     ],
-    "C": 8,
-    "S": 0.1111111111111111
+    "C": 5,
+    "S": 0.16666666666666666
   },
   "lint": [],
   "estimates": {

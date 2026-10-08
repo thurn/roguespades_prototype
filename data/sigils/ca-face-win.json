@@ -87,6 +87,16 @@
   "simplicity": {
     "items": [
       {
+        "burden": "rank literal",
+        "detail": "[J]",
+        "cost": 1
+      },
+      {
+        "burden": "rank literal",
+        "detail": "[K]",
+        "cost": 1
+      },
+      {
         "burden": "numeric value",
         "detail": "payout 20",
         "cost": 1
@@ -97,18 +107,8 @@
         "cost": 1
       },
       {
-        "burden": "numeric value",
-        "detail": "range endpoint J",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "range endpoint K",
-        "cost": 1
-      },
-      {
         "burden": "boolean condition",
-        "detail": "rank in J-K",
+        "detail": "the card matches",
         "cost": 1
       }
     ],

@@ -113,6 +113,12 @@ fn init(req: &Value) -> Value {
             Err(e) => return json!({"ok": false, "error": format!("sigil {}: {e}", d["id"])}),
         }
     }
+    if !req["rules"].is_null() {
+        match serde_json::from_value::<rsim::rules::GameRules>(req["rules"].clone()) {
+            Ok(r) => rsim::rules::install(r),
+            Err(e) => return json!({"ok": false, "error": format!("rules: {e}")}),
+        }
+    }
     let model: Model = match serde_json::from_value(req["model"].clone()) {
         Ok(m) => m,
         Err(e) => return json!({"ok": false, "error": format!("model: {e}")}),

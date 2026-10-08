@@ -16,6 +16,12 @@ pub struct Tier {
     pub deals_sample: u32,
     pub deals_keep: u32,
     pub bid_rollouts: u32,
+    /// Tricks moved from the bidding team to the opponents at the end of each bid rollout
+    /// (fractional values are stratified across rollouts): calibrates heuristic rollouts, which
+    /// overestimate the bidder's tricks, to realized play.
+    pub bid_discount: f64,
+    /// Growth of the discount per sigil held at the table (both teams).
+    pub bid_discount_slope: f64,
 }
 
 impl Tier {
@@ -28,6 +34,8 @@ impl Tier {
                 deals_sample: 6,
                 deals_keep: 6,
                 bid_rollouts: 10,
+                bid_discount: 0.0,
+                bid_discount_slope: 0.0,
             },
             1 => Tier {
                 level,
@@ -36,6 +44,8 @@ impl Tier {
                 deals_sample: 96,
                 deals_keep: 32,
                 bid_rollouts: 40,
+                bid_discount: 0.0,
+                bid_discount_slope: 0.05,
             },
             _ => Tier {
                 level,
@@ -44,6 +54,8 @@ impl Tier {
                 deals_sample: 512,
                 deals_keep: 64,
                 bid_rollouts: 160,
+                bid_discount: 0.0,
+                bid_discount_slope: 0.05,
             },
         }
     }
@@ -58,6 +70,8 @@ pub struct Knowledge {
     /// Engravings the seat can see (its team's cards and played cards).
     pub eng_known: Mask,
     pub voids: [[bool; 4]; 4],
+    /// Hidden cards keep their true identities (rank and suit changes) in determinization.
+    pub true_ids: bool,
 }
 
 /// The observer's utility: win probability over the run.
@@ -73,13 +87,20 @@ pub struct Utility {
     pub nil_handicap: f64,
     /// Win probability per gold of next round's income (0 in the last round).
     pub gold: f64,
+    /// Margin cost of each bag a team carries after the round (bags still to come may push it
+    /// over the limit before the run ends).
+    pub bag_cost: f64,
+    /// Risk-neutral control: the logistic's tangent at the current margin (expected margin)
+    /// instead of win probability.
+    pub linear: bool,
 }
 
 impl Utility {
     #[inline]
     pub fn reward(&self, p: &Play, rules: &Rules, team: usize) -> f64 {
         let sc = p.score(rules);
-        let mut d = sc[team].score - sc[1 - team].score;
+        let val = |s: &TeamScore| s.score + s.bag_pen - self.bag_cost * s.bags_after as f64;
+        let mut d = val(&sc[team]) - val(&sc[1 - team]);
         for (t, sign) in [(team, 1.0), (1 - team, -1.0)] {
             for &(slot, po) in &rules.teams[t].growth {
                 let g = sc[t].acc.grow[slot] as f64;
@@ -88,14 +109,18 @@ impl Utility {
                 }
             }
         }
+        let r = crate::rules::rules();
         let income = |s: &TeamScore| {
             (if s.made {
-                10.0 * s.contract as f64
+                (r.contract_gold * s.contract as i32) as f64
             } else {
                 0.0
-            }) + 50.0 * s.nil_made as f64
+            }) + (r.nil_gold * s.nil_made as i32) as f64
         };
         let g = self.gold * (income(&sc[team]) - income(&sc[1 - team]));
+        if self.linear {
+            return 0.5 + 0.25 * (self.margin + d) / self.scale + g;
+        }
         1.0 / (1.0 + (-(self.margin + d) / self.scale).exp()) + g
     }
 }
@@ -104,12 +129,14 @@ impl Utility {
 pub fn determinize(truth: &Play, k: &Knowledge, rng: &mut Rng) -> Play {
     let me = k.seat as usize;
     let mut p = *truth;
-    let mut id = Identity::standard();
     let visible = truth.hands[me] | truth.played | k.known;
-    for c in Bits(visible) {
-        id.set(c, truth.id.suit[c as usize], truth.id.rank[c as usize]);
+    if !k.true_ids {
+        let mut id = Identity::standard();
+        for c in Bits(visible) {
+            id.set(c, truth.id.suit[c as usize], truth.id.rank[c as usize]);
+        }
+        p.id = id;
     }
-    p.id = id;
     for c in 0..52 {
         if k.eng_known & bit(c) == 0 && truth.played & bit(c) == 0 {
             p.eng[c as usize] = ENG_NONE;
@@ -493,15 +520,57 @@ pub fn choose_bid_explain(
     tier: &Tier,
     rng: &mut Rng,
 ) -> (i8, Vec<(i8, f64)>) {
+    let (b, v, _) = choose_bid_full(truth, rules, k, u, tier, rng);
+    (b, v)
+}
+
+/// What a bidder predicted for its chosen bid (NaN for nil).
+#[derive(Clone, Copy, Debug)]
+pub struct BidInfo {
+    /// The share of rollouts in which the team made its contract.
+    pub pmake: f64,
+    /// The team's mean contract tricks over those rollouts.
+    pub tricks: f64,
+}
+
+/// Moves `n` tricks from `team`'s contract seats to an opponent.
+fn discount_tricks(p: &mut Play, team: usize, n: u32) {
+    for _ in 0..n {
+        let mine = [team, team + 2]
+            .into_iter()
+            .filter(|&s| p.bids[s] != 0 && p.won[s] > 0)
+            .max_by_key(|&s| p.won[s]);
+        let Some(s) = mine else { return };
+        let o = if p.bids[(team + 1) % 4] != 0 {
+            (team + 1) % 4
+        } else {
+            (team + 3) % 4
+        };
+        p.won[s] -= 1;
+        p.won[o] += 1;
+    }
+}
+
+/// `choose_bid_explain`, also returning the chosen bid's predicted make probability: the share of
+/// its rollouts in which the team made its contract (NaN for a nil bid).
+pub fn choose_bid_full(
+    truth: &Play,
+    rules: &Rules,
+    k: &Knowledge,
+    u: &Utility,
+    tier: &Tier,
+    rng: &mut Rng,
+) -> (i8, Vec<(i8, f64)>, BidInfo) {
     let me = k.seat as usize;
     let partner = (me + 2) % 4;
     let team = me % 2;
     let est = estimate_tricks(truth.hands[me], &truth.id);
-    let base = (est.round() as i8).clamp(1, 13);
-    let mut cands: Vec<i8> = vec![base - 1, base, base + 1]
-        .into_iter()
-        .filter(|b| (1..=13).contains(b))
-        .collect();
+    // Candidates center on the estimate net of the rollout discount, so a large discount never
+    // leaves only bids the search expects to fail.
+    let disc = tier.bid_discount.max(0.0);
+    let base = ((est - disc).round() as i8).clamp(1, 13);
+    let lo = if disc > 0.0 { base - 2 } else { base - 1 };
+    let mut cands: Vec<i8> = (lo..=base + 1).filter(|b| (1..=13).contains(b)).collect();
     if truth.bids[partner] != 0 {
         cands.push(0);
     }
@@ -511,8 +580,14 @@ pub fn choose_bid_explain(
     let mut best = base;
     let mut bv = f64::MIN;
     let mut values = vec![];
+    let mut info = BidInfo {
+        pmake: f64::NAN,
+        tricks: f64::NAN,
+    };
     let seed = rng.next_u64();
     for &b in &cands {
+        let mut made = 0u32;
+        let mut tricks = 0u32;
         let mut uu = *u;
         if b == 0 {
             uu.margin -= u.nil_handicap;
@@ -532,16 +607,36 @@ pub fn choose_bid_explain(
             p.turn = first;
             let mut r = Rng::new(seed ^ (j as u64).wrapping_mul(0x9E3779B97F4A7C15));
             rollout(&mut p, rules, &mut r);
+            if disc > 0.0 {
+                // Stratified: rollout j moves floor(disc) tricks, plus one more for a share
+                // frac(disc) of the rollouts.
+                let extra = ((j as f64 + 0.5) / deals.len() as f64) < disc.fract();
+                discount_tricks(&mut p, team, disc.floor() as u32 + extra as u32);
+            }
             sum += uu.reward(&p, rules, team);
+            let c = p.contract(team);
+            tricks += p.contract_tricks(team) as u32;
+            made += (c > 0 && p.contract_tricks(team) >= c) as u32;
         }
         let v = sum / deals.len() as f64;
         values.push((b, v));
         if v > bv {
             bv = v;
             best = b;
+            info = if b == 0 {
+                BidInfo {
+                    pmake: f64::NAN,
+                    tricks: f64::NAN,
+                }
+            } else {
+                BidInfo {
+                    pmake: made as f64 / deals.len() as f64,
+                    tricks: tricks as f64 / deals.len() as f64,
+                }
+            };
         }
     }
-    (best, values)
+    (best, values, info)
 }
 
 /// Opening swap: the heuristic alone at tier 0; at higher tiers, about six candidate give-sets

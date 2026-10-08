@@ -1,0 +1,5 @@
+{
+  "dev": {"base": 11000000, "block": 0},
+  "holdout": {"base": 12000000, "block": 0},
+  "final": {"base": 13000000, "block": 0}
+}

@@ -19,6 +19,13 @@ CARD_CLASSES = [f"{s}-{r}" for s in "XS" for r in ["A", "K", "Q", "J", "10", "lo
 PAR = [0, 600, 850, 1150, 1600, 2250, 3100, 4300, 6000]
 
 
+RULES_PATH = ROOT / "data" / "rules.json"
+
+
+def load_rules(path=None) -> dict:
+    return json.loads(Path(path or RULES_PATH).read_text())
+
+
 def load_sigils() -> dict[str, dict]:
     out = {}
     for p in sorted(SIGILS.glob("*.json")):

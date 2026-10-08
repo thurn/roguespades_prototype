@@ -1,0 +1,17 @@
+{
+  "add": [
+    {
+      "id": "plant-spade-ten",
+      "rarity": "common",
+      "role": "payoff",
+      "archetypes": ["Spades"],
+      "source": "planted",
+      "status": "kept",
+      "effect": {"type": "mult", "amount": 40, "on": {"event": "hold", "card": {"suit": "S"}, "count": 10}},
+      "design": {"decision": "", "opponent": "", "rationale": "Planted synergy (positive control).", "partners": []},
+      "history": [],
+      "name": null, "icon": null, "iconFamily": null, "iconWord": null
+    }
+  ],
+  "combos": [["plant-spade-ten", "ub-become-four-spades"], ["plant-spade-ten", "cb-become-spade"]]
+}

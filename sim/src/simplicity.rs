@@ -64,25 +64,16 @@ impl Acc {
             cost: if common { 4 } else { 2 },
         });
     }
-    fn filter(&mut self, f: &Option<Filter>) {
+    /// A card filter's conditions. Its rank and suit literals are counted from the generated
+    /// text. `clause`: the filter is its own clause ("with an [A]"), not the object of the
+    /// trigger's verb ("for each [♠] your team holds").
+    fn filter(&mut self, f: &Option<Filter>, clause: bool) {
         let Some(f) = f else { return };
-        if let (Some(s), Some(r)) = (&f.suit, &f.rank) {
-            self.check(format!("suit is {s}"));
-            self.check(format!("rank is {r}"));
-            self.num(format!("rank literal {r}"));
-            return;
+        if clause {
+            self.check("the card matches");
         }
-        if let Some(s) = &f.suit {
-            self.check(format!("suit is {s}"));
-        }
-        if let Some(r) = &f.rank {
-            self.check(format!("rank is {r}"));
-            self.num(format!("rank literal {r}"));
-        }
-        if let Some([a, b]) = &f.ranks {
-            self.num(format!("range endpoint {a}"));
-            self.num(format!("range endpoint {b}"));
-            self.check(format!("rank in {a}-{b}"));
+        if f.suit.is_some() && (f.rank.is_some() || f.ranks.is_some()) {
+            self.check("rank and suit both match");
         }
         if let Some(s) = &f.not_suit {
             self.check(format!("suit is not {s}"));
@@ -97,9 +88,9 @@ impl Acc {
                 } else {
                     "your team wins the trick"
                 });
-                self.filter(&t.card);
+                self.filter(&t.card, true);
                 if t.led.is_some() {
-                    self.filter(&t.led);
+                    self.filter(&t.led, true);
                 }
                 if t.by.is_some() {
                     self.check("won by trumping");
@@ -130,7 +121,7 @@ impl Acc {
             }
             "lead" => {
                 self.check("your team leads");
-                self.filter(&t.card);
+                self.filter(&t.card, false);
                 if let Some(n) = t.count {
                     self.num(format!("milestone {n}"));
                     self.check(format!("count reaches {n}"));
@@ -139,7 +130,7 @@ impl Acc {
             }
             "hold" => {
                 self.check("held by your team");
-                self.filter(&t.card);
+                self.filter(&t.card, false);
                 if let Some(n) = t.count {
                     self.num(format!("threshold {n}"));
                     self.check(format!("count at least {n}"));
@@ -196,9 +187,35 @@ impl Acc {
     }
 }
 
+/// Rank and suit literals in generated rules text: `[A]`, `[♠]`, and `[4♣]` (both).
+fn literals(a: &mut Acc, text: &str) {
+    for tok in text.split('[').skip(1) {
+        let Some(inner) = tok.split(']').next() else {
+            continue;
+        };
+        let suit = inner.chars().any(|c| "♠♥♦♣".contains(c));
+        let rank = inner.chars().any(|c| c.is_ascii_alphanumeric());
+        if rank {
+            a.0.push(Item {
+                burden: "rank literal",
+                detail: format!("[{inner}]"),
+                cost: 1,
+            });
+        }
+        if suit {
+            a.0.push(Item {
+                burden: "suit literal",
+                detail: format!("[{inner}]"),
+                cost: 1,
+            });
+        }
+    }
+}
+
 pub fn score(e: &Effect, rarity: Rarity) -> Score {
     let common = rarity == Rarity::Common;
     let mut a = Acc(vec![]);
+    literals(&mut a, &crate::text::generate(e));
     match e.ty.as_str() {
         "points" | "mult" | "xmult" | "nilPoints" => {
             a.num(format!(
@@ -220,18 +237,13 @@ pub fn score(e: &Effect, rarity: Rarity) -> Score {
             a.trigger(&e.on);
         }
         "swap" => {
-            a.term("Opening:", common);
             a.num(format!("count {}", e.count.unwrap_or(0)));
         }
         "become" if e.from.is_some() => {
-            a.term("Opening:", common);
             if let Some(n) = e.count.filter(|&n| n > 0) {
                 a.num(format!("count {n}"));
             }
-            a.filter(&e.from);
-            if let Some(r) = &e.rank {
-                a.num(format!("rank literal {r}"));
-            }
+            a.filter(&e.from, false);
             a.check(if e.whose.is_some() {
                 "held by the opponents"
             } else {
@@ -239,14 +251,19 @@ pub fn score(e: &Effect, rarity: Rarity) -> Score {
             });
         }
         "become" => {
-            a.term("Opening:", common);
             a.num(format!("count {}", e.count.unwrap_or(0)));
-            if let Some(r) = &e.rank {
-                a.num(format!("rank literal {r}"));
-            }
             if let Some([x, y]) = &e.ranks {
-                a.num(format!("hidden endpoint {x}"));
-                a.num(format!("hidden endpoint {y}"));
+                // Hidden structure: a named range pays for its endpoints.
+                a.0.push(Item {
+                    burden: "rank literal",
+                    detail: format!("hidden endpoint {x}"),
+                    cost: 1,
+                });
+                a.0.push(Item {
+                    burden: "rank literal",
+                    detail: format!("hidden endpoint {y}"),
+                    cost: 1,
+                });
                 a.selector("destination rank selection");
             }
             if let Some(t) = &e.term {
@@ -259,14 +276,13 @@ pub fn score(e: &Effect, rarity: Rarity) -> Score {
             });
         }
         "raise" if e.from.is_some() => {
-            a.term("Opening:", common);
             a.num(format!("raise {}", e.amount.unwrap_or(0.0)));
-            a.filter(&e.from);
+            a.filter(&e.from, false);
             a.check("held by your team");
         }
         "beats" => {
             a.check("your team played it");
-            a.filter(&e.card);
+            a.filter(&e.card, false);
             if e.over.is_some() {
                 a.check("beats trumps too");
             }
@@ -274,15 +290,14 @@ pub fn score(e: &Effect, rarity: Rarity) -> Score {
         }
         "anySuit" if e.card.is_some() => {
             a.check("your team could follow suit");
-            a.filter(&e.card);
+            a.filter(&e.card, false);
         }
         "untrumpable" => {
             a.check("your team played it");
-            a.filter(&e.from);
+            a.filter(&e.from, false);
             a.check("a [♠] played to the trick");
         }
         "raise" => {
-            a.term("Opening:", common);
             a.num(format!("raise {}", e.amount.unwrap_or(0.0)));
             a.check("held by your team");
         }

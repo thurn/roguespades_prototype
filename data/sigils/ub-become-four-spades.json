@@ -70,9 +70,14 @@
   "simplicity": {
     "items": [
       {
-        "burden": "new term",
-        "detail": "Opening:",
-        "cost": 2
+        "burden": "suit literal",
+        "detail": "[♠]",
+        "cost": 1
+      },
+      {
+        "burden": "suit literal",
+        "detail": "[♠]",
+        "cost": 1
       },
       {
         "burden": "numeric value",

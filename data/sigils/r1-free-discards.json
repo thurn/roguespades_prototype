@@ -65,6 +65,11 @@
   "simplicity": {
     "items": [
       {
+        "burden": "suit literal",
+        "detail": "[♠]",
+        "cost": 1
+      },
+      {
         "burden": "boolean condition",
         "detail": "your team could follow suit",
         "cost": 1
@@ -75,8 +80,8 @@
         "cost": 1
       }
     ],
-    "C": 2,
-    "S": 0.3333333333333333
+    "C": 3,
+    "S": 0.25
   },
   "lint": [],
   "estimates": {

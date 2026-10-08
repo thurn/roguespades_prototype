@@ -223,6 +223,23 @@ export function RoundSummary({
                     .join(' ') || '—',
               ),
             )}
+          <tr>
+            <th>Bags</th>
+            {result.map((r, t) => (
+              <td
+                key={t}
+                className={styles.small}
+                {...tipHandlers({
+                  lines: [
+                    'Overtricks and tricks won by nil bidders. Every 10 bags cost 1,000 points.',
+                  ],
+                })}
+              >
+                +{r.bags} → {r.bagsCarried}
+                {r.bagPenalty ? ` (${signed(r.bagPenalty)})` : ''}
+              </td>
+            ))}
+          </tr>
           <tr className={styles.delta}>
             <th>Round</th>
             {result.map((r, t) => (
@@ -246,7 +263,7 @@ export function RoundSummary({
                 key={t}
                 {...tipHandlers({
                   lines: [
-                    `Interest ${r.income.interest}, base ${r.income.base}, contract ${r.income.contract}, nil ${r.income.nil}; now ${r.gold}`,
+                    `Base ${r.income.base}, contract ${r.income.contract}, nil ${r.income.nil}; now ${r.gold}`,
                   ],
                 })}
               >

@@ -53,6 +53,11 @@
   "simplicity": {
     "items": [
       {
+        "burden": "suit literal",
+        "detail": "[♠]",
+        "cost": 1
+      },
+      {
         "burden": "numeric value",
         "detail": "payout 10",
         "cost": 1
@@ -64,7 +69,7 @@
       },
       {
         "burden": "boolean condition",
-        "detail": "suit is S",
+        "detail": "the card matches",
         "cost": 1
       },
       {
@@ -83,8 +88,8 @@
         "cost": 1
       }
     ],
-    "C": 6,
-    "S": 0.14285714285714285
+    "C": 7,
+    "S": 0.125
   },
   "lint": []
 }

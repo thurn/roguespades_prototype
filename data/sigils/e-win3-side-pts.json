@@ -54,6 +54,11 @@
   "simplicity": {
     "items": [
       {
+        "burden": "suit literal",
+        "detail": "[♠]",
+        "cost": 1
+      },
+      {
         "burden": "numeric value",
         "detail": "payout 70",
         "cost": 1
@@ -61,6 +66,11 @@
       {
         "burden": "boolean condition",
         "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "the card matches",
         "cost": 1
       },
       {
@@ -84,8 +94,8 @@
         "cost": 1
       }
     ],
-    "C": 6,
-    "S": 0.14285714285714285
+    "C": 8,
+    "S": 0.1111111111111111
   },
   "lint": []
 }

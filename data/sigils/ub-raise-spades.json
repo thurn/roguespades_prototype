@@ -54,9 +54,9 @@
   "simplicity": {
     "items": [
       {
-        "burden": "new term",
-        "detail": "Opening:",
-        "cost": 2
+        "burden": "suit literal",
+        "detail": "[♠]",
+        "cost": 1
       },
       {
         "burden": "numeric value",
@@ -65,17 +65,12 @@
       },
       {
         "burden": "boolean condition",
-        "detail": "suit is S",
-        "cost": 1
-      },
-      {
-        "burden": "boolean condition",
         "detail": "held by your team",
         "cost": 1
       }
     ],
-    "C": 5,
-    "S": 0.16666666666666666
+    "C": 3,
+    "S": 0.25
   },
   "lint": []
 }

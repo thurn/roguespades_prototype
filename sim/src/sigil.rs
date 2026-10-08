@@ -409,6 +409,18 @@ fn kind_of(s: &str) -> Result<Kind, String> {
     })
 }
 
+/// A payoff amount under the rules' global amount scale (×multipliers scale their excess over 1).
+fn scaled(kind: Kind, a: f64) -> f64 {
+    let s = crate::rules::rules().amount_scale;
+    if s == 1.0 {
+        return a;
+    }
+    match kind {
+        Kind::XMult => 1.0 + (a - 1.0) * s,
+        _ => a * s,
+    }
+}
+
 /// Compiles an effect, with `amount` overriding the data's tunable amount when given.
 pub fn compile(e: &Effect, amount: Option<f64>) -> Result<Compiled, String> {
     let need = |o: Option<u8>, what: &str| o.ok_or_else(|| format!("{} needs {what}", e.ty));
@@ -419,9 +431,10 @@ pub fn compile(e: &Effect, amount: Option<f64>) -> Result<Compiled, String> {
                 Some("contractTrick") => true,
                 Some(x) => return Err(format!("bad per {x}")),
             };
+            let kind = kind_of(&e.ty)?;
             Compiled::Payoff(Payoff {
-                kind: kind_of(&e.ty)?,
-                amount: amount.or(e.amount).ok_or("payoff needs amount")?,
+                kind,
+                amount: scaled(kind, amount.or(e.amount).ok_or("payoff needs amount")?),
                 trig: compile_trigger(&e.on)?,
                 per_contract,
                 grow: false,
@@ -429,7 +442,10 @@ pub fn compile(e: &Effect, amount: Option<f64>) -> Result<Compiled, String> {
         }
         "grow" => Compiled::Payoff(Payoff {
             kind: kind_of(e.kind.as_deref().ok_or("grow needs kind")?)?,
-            amount: amount.or(e.step).ok_or("grow needs step")?,
+            amount: scaled(
+                kind_of(e.kind.as_deref().ok_or("grow needs kind")?)?,
+                amount.or(e.step).ok_or("grow needs step")?,
+            ),
             trig: compile_trigger(&e.on)?,
             per_contract: false,
             grow: true,
@@ -493,20 +509,10 @@ pub enum Rarity {
 }
 impl Rarity {
     pub fn price(self) -> i32 {
-        match self {
-            Rarity::Common => 50,
-            Rarity::Uncommon => 75,
-            Rarity::Rare => 100,
-            Rarity::Legendary => 150,
-        }
+        crate::rules::rules().prices[self.index()]
     }
     pub fn odds(self) -> f64 {
-        match self {
-            Rarity::Common => 0.69,
-            Rarity::Uncommon => 0.25,
-            Rarity::Rare => 0.05,
-            Rarity::Legendary => 0.01,
-        }
+        crate::rules::rules().rarity_odds[self.index()]
     }
     pub fn all() -> [Rarity; 4] {
         [
@@ -553,8 +559,9 @@ pub struct SigilDef {
 }
 
 impl SigilDef {
+    /// Prices come from the rules file by rarity; a data file's `price` is generated text.
     pub fn price(&self) -> i32 {
-        self.price.unwrap_or(self.rarity.price())
+        self.rarity.price()
     }
 }
 

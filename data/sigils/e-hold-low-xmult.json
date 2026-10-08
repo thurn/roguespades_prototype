@@ -55,6 +55,16 @@
   "simplicity": {
     "items": [
       {
+        "burden": "rank literal",
+        "detail": "[2]",
+        "cost": 1
+      },
+      {
+        "burden": "rank literal",
+        "detail": "[10]",
+        "cost": 1
+      },
+      {
         "burden": "numeric value",
         "detail": "payout 1.25",
         "cost": 1
@@ -63,25 +73,10 @@
         "burden": "boolean condition",
         "detail": "held by your team",
         "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "range endpoint 2",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "range endpoint 10",
-        "cost": 1
-      },
-      {
-        "burden": "boolean condition",
-        "detail": "rank in 2-10",
-        "cost": 1
       }
     ],
-    "C": 5,
-    "S": 0.16666666666666666
+    "C": 4,
+    "S": 0.2
   },
   "lint": []
 }

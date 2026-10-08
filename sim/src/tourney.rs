@@ -80,10 +80,11 @@ fn plain_cfg<'a>(pool: &'a Pool, model: &'a Model, tiers: [Tier; 2]) -> RunCfg<'
         explore: 0.0,
         perturb: 0.0,
         perturb_amount: 0,
-        rounds: 8,
+        rounds: rsim::rules::rules().rounds,
         cards: false,
         validate: 0.0,
         version: String::new(),
+        ai: AiCfg::default(),
     }
 }
 
@@ -298,6 +299,20 @@ pub struct ExpCfg {
     pub version: String,
     pub arm: Arm,
     pub out: String,
+    /// Rules file (default: data/rules.json as compiled in).
+    pub rules: Option<String>,
+    pub risk_neutral: bool,
+    /// Per run team (A, B).
+    pub bid_offset: [i8; 2],
+    pub always_nil: [bool; 2],
+    pub commit_bonus: [f64; 2],
+    pub aware: [bool; 2],
+    pub ai_salt: u64,
+    pub true_ids: bool,
+    pub bid_discount: Option<f64>,
+    pub bid_discount_slope: Option<f64>,
+    /// Team B's policy override: "hoard" or a committed archetype ("commit:Spades").
+    pub policy_b: Option<String>,
 }
 
 #[derive(Deserialize, Clone, Default)]
@@ -311,6 +326,8 @@ pub struct Arm {
     /// Commitment arms: grants the opponents receive (sigils that touch opponents).
     pub counter: HashMap<String, f64>,
     pub counter_prob: f64,
+    /// Grant arms: the shop at which the build is granted.
+    pub shop: Option<u8>,
 }
 
 impl Default for ExpCfg {
@@ -346,6 +363,17 @@ impl Default for ExpCfg {
                 ..Default::default()
             },
             out: "../runs/exp.jsonl".into(),
+            rules: None,
+            risk_neutral: false,
+            bid_offset: [0, 0],
+            always_nil: [false, false],
+            commit_bonus: [1.0, 1.0],
+            aware: [true, true],
+            ai_salt: 0,
+            true_ids: false,
+            bid_discount: None,
+            bid_discount_slope: None,
+            policy_b: None,
         }
     }
 }
@@ -374,12 +402,17 @@ fn grant_cfg(
             .map(|(a, b)| (pool.idx(a), pool.idx(b)))
             .collect(),
         pair_prob: c.pair_prob,
+        fixed: vec![],
+        free: false,
     })
 }
 
 pub fn run(a: RunArgs) {
     let c: ExpCfg =
         serde_json::from_str(&std::fs::read_to_string(&a.config).unwrap()).expect("config");
+    if let Some(r) = &c.rules {
+        rsim::rules::install(rsim::rules::load(r));
+    }
     let pool = Pool::load_dir(&c.dir);
     let model = c
         .model
@@ -424,7 +457,48 @@ pub fn run(a: RunArgs) {
                 c.sigil_shop,
             )
         }
+        "grant" => {
+            let fixed: Vec<usize> = c.arm.build.iter().map(|id| pool.idx(id)).collect();
+            let g = GrantCfg {
+                prob: 0.0,
+                max_shop: c.arm.shop.unwrap_or(1),
+                coherent: 0.0,
+                measured: vec![],
+                jitter: false,
+                card_prob: 0.0,
+                pairs: vec![],
+                pair_prob: 0.0,
+                fixed,
+                free: true,
+            };
+            (flex(Some(g)), flex(None), c.sigil_shop)
+        }
+        "hunter" => {
+            let p = match c.arm.archetype.as_deref() {
+                Some("hoard") => Policy::Hoard,
+                Some(a) => Policy::Committed(a.to_string()),
+                None => Policy::Flexible,
+            };
+            (
+                TeamCfg {
+                    policy: p,
+                    grants: None,
+                },
+                flex(None),
+                c.sigil_shop,
+            )
+        }
         x => panic!("unknown arm {x}"),
+    };
+    let (team_a, team_b) = match c.policy_b.as_deref() {
+        Some("hoard") => (
+            team_a,
+            TeamCfg {
+                policy: Policy::Hoard,
+                grants: None,
+            },
+        ),
+        _ => (team_a, team_b),
     };
     let base = RunCfg {
         pool: &pool,
@@ -436,10 +510,21 @@ pub fn run(a: RunArgs) {
         explore: c.explore,
         perturb: c.perturb,
         perturb_amount: c.perturb_amount,
-        rounds: 8,
+        rounds: rsim::rules::rules().rounds,
         cards: c.cards,
         validate: c.validate,
         version: c.version.clone(),
+        ai: AiCfg {
+            risk_neutral: c.risk_neutral,
+            bid_offset: c.bid_offset,
+            always_nil: c.always_nil,
+            commit_bonus: c.commit_bonus,
+            aware: c.aware,
+            ai_salt: c.ai_salt,
+            true_ids: c.true_ids,
+            bid_discount: c.bid_discount,
+            bid_discount_slope: c.bid_discount_slope,
+        },
     };
     let mut clean = base.clone();
     clean.teams[0].grants = None;

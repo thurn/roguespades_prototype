@@ -61,6 +61,11 @@
   "simplicity": {
     "items": [
       {
+        "burden": "suit literal",
+        "detail": "[♠]",
+        "cost": 1
+      },
+      {
         "burden": "boolean condition",
         "detail": "your team played it",
         "cost": 1
@@ -76,8 +81,8 @@
         "cost": 1
       }
     ],
-    "C": 3,
-    "S": 0.25
+    "C": 4,
+    "S": 0.2
   },
   "lint": []
 }

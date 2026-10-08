@@ -15,7 +15,6 @@ use serde::Deserialize;
 use serde_json::{json, Map, Value};
 
 pub const HUMAN: u8 = 0;
-const ROUNDS: u8 = 8;
 pub const SEAT_NAMES: [&str; 4] = ["South (you)", "Nova (W)", "Sage (N)", "Rook (E)"];
 const TEAM_NAMES: [&str; 2] = ["Us", "Them"];
 
@@ -178,10 +177,11 @@ impl Session {
             explore: 0.0,
             perturb: 0.0,
             perturb_amount: 0,
-            rounds: ROUNDS,
+            rounds: crate::rules::rules().rounds,
             cards: true,
             validate: 0.0,
             version: "client".into(),
+            ai: AiCfg::default(),
         }));
         let mut r = Runner::new(rc, cfg.seed, 0);
         // In single-player your team's cards are always yours.
@@ -498,6 +498,7 @@ impl Session {
         let sh = self.shop.as_mut().unwrap();
         let mut orng = Rng::stream(self.r.seed, &[S_OFFER, 0, round as u64, sh.rerolls]);
         let sig = self.r.sigil_offers(0, &mut orng);
+        self.r.note_offers(0, &sig);
         let cards = self.r.card_offers(round, &mut orng, sh.exclude);
         sh.sig = sig.iter().map(|&d| Some(d)).collect();
         sh.cards = cards.iter().map(|&c| Some(c)).collect();
@@ -536,8 +537,11 @@ impl Session {
         if team.gold < price {
             return Err("not enough gold".into());
         }
-        if team.sigils.len() >= MAX_SIGILS {
-            return Err("all 7 sigil slots are full; sell one first".into());
+        if team.sigils.len() >= max_sigils() {
+            return Err(format!(
+                "all {} sigil slots are full; sell one first",
+                max_sigils()
+            ));
         }
         if team.sigils.iter().any(|o| o.def == d) {
             return Err("your team already owns that sigil".into());
@@ -570,8 +574,11 @@ impl Session {
         if team.gold < o.price {
             return Err("not enough gold".into());
         }
-        if team.cards.len() >= MAX_CARDS {
-            return Err("you already own 8 cards; sell one first".into());
+        if team.cards.len() >= max_cards() {
+            return Err(format!(
+                "you already own {} cards; sell one first",
+                max_cards()
+            ));
         }
         if self.r.taken & bit(o.slot) != 0 {
             return Err("that card is already owned".into());
@@ -627,7 +634,7 @@ impl Session {
     }
 
     fn reroll_cost(&self) -> i32 {
-        50 + 10 * self.shop.as_ref().map_or(0, |s| s.rerolls) as i32
+        crate::rules::rules().reroll(self.shop.as_ref().map_or(0, |s| s.rerolls))
     }
 
     fn reroll(&mut self) -> Result<(), String> {
@@ -665,7 +672,7 @@ impl Session {
                 let id = a["sigil"].as_str().ok_or("needs sigil")?;
                 let d = *self.r.cfg.pool.by_id.get(id).ok_or("unknown sigil")?;
                 let tm = &self.r.teams[team];
-                if tm.sigils.len() >= MAX_SIGILS {
+                if tm.sigils.len() >= max_sigils() {
                     return Err("all 7 sigil slots are full".into());
                 }
                 if tm.sigils.iter().any(|o| o.def == d) {
@@ -699,8 +706,8 @@ impl Session {
                 if suit > 3 || !(2..=14).contains(&rank) || eng > ENG_SYNTH {
                     return Err("bad card".into());
                 }
-                if self.r.teams[team].cards.len() >= MAX_CARDS {
-                    return Err("that team already owns 8 cards".into());
+                if self.r.teams[team].cards.len() >= max_cards() {
+                    return Err(format!("that team already owns {} cards", max_cards()));
                 }
                 let ident = card(suit, rank);
                 let slot = if eng == ENG_SYNTH {
@@ -1010,9 +1017,6 @@ impl Session {
         }
         let id = rs.play.id;
         let before = rs.play.acc;
-        let revealed: Vec<Vec<bool>> = (0..2)
-            .map(|t| self.r.teams[t].sigils.iter().map(|o| o.revealed).collect())
-            .collect();
         let hand = rs.play.hands[seat as usize];
         let trick_no = rs.play.ntricks + 1;
         let led = rs.play.tlen == 0;
@@ -1121,22 +1125,6 @@ impl Session {
             self.log("trick", msg, json!({"winner": w}));
         }
         self.log_fires(&before, &after, &format!("trick {trick_no}"));
-        for t in 0..2 {
-            for (k, o) in self.r.teams[t].sigils.clone().iter().enumerate() {
-                if o.revealed && !revealed[t].get(k).copied().unwrap_or(true) {
-                    let msg = format!(
-                        "{}'s sigil {} is revealed",
-                        team_name(t),
-                        self.sigil_label(o.def)
-                    );
-                    self.log(
-                        "reveal",
-                        msg,
-                        json!({"team": t, "sigil": self.def(o.def).id}),
-                    );
-                }
-            }
-        }
         self.settle();
         Ok(())
     }
@@ -1210,7 +1198,6 @@ impl Session {
     fn end_round(&mut self) {
         let rs = self.rs.take().unwrap();
         let before = rs.play.acc;
-        let rev0: Vec<bool> = self.r.teams[1].sigils.iter().map(|o| o.revealed).collect();
         let (sc, inc) = self.r.finish_round(&rs);
         let after = [sc[0].acc, sc[1].acc];
         self.log_fires(&before, &after, "at scoring");
@@ -1237,30 +1224,32 @@ impl Session {
                 .map(|k| s.acc.cp[k])
                 .sum::<f64>()
                 + s.acc.eng_cp;
-            let mult = (BASE_MULT + s.add) * s.x;
+            let rl = crate::rules::rules();
+            let (_, add_eff, x_eff) = rl.parts(s.contract, s.tricks, s.cp, s.add, s.x);
+            let mult = (rl.base_mult + add_eff) * x_eff;
             let formula = if s.contract == 0 && s.nil_bids == 0 {
                 "no contract".to_string()
             } else {
                 format!(
                     "({} base{} + {} nil) × ({} + {}) × {} = {}",
-                    num(if s.made { 10.0 } else { -10.0 } * s.contract as f64),
+                    num(s.base - if s.made { s.cp } else { -cp_raw }),
                     if s.made {
                         format!(" + {} contract points", num(s.cp))
                     } else if cp_raw != 0.0 {
-                        format!(" (set: {} contract points lost)", num(cp_raw))
+                        format!(" − {} contract points (set)", num(cp_raw))
                     } else {
                         String::new()
                     },
                     num(s.nil_score),
-                    num(BASE_MULT),
-                    num(s.add),
-                    num(s.x),
+                    num(rl.base_mult),
+                    num(add_eff),
+                    num(x_eff),
                     num(s.score)
                 )
             };
             let bids = [rs.play.bids[t], rs.play.bids[t + 2]];
             let msg = format!(
-                "{} score: bids {}+{} = contract {}, won {} ({}); {}; run total {}; income {}g (interest {}, base {}, contract {}, nil {}) → gold {}",
+                "{} score: bids {}+{} = contract {}, won {} ({}); {}; bags +{}{} (carried {}); run total {}; income {}g (base {}, contract {}, nil {}) → gold {}",
                 team_name(t),
                 bid_s(bids[0]),
                 bid_s(bids[1]),
@@ -1268,9 +1257,11 @@ impl Session {
                 s.tricks,
                 if s.contract == 0 { "no contract" } else if s.made { if s.exact { "made exactly" } else { "made" } } else { "set" },
                 formula,
+                s.bags,
+                if s.bag_pen != 0.0 { format!(", penalty {}", num(s.bag_pen)) } else { String::new() },
+                self.r.teams[t].bags,
                 num(self.r.teams[t].score),
-                i.interest + i.base + i.contract + i.nil,
-                i.interest,
+                i.base + i.contract + i.nil,
                 i.base,
                 i.contract,
                 i.nil,
@@ -1279,34 +1270,25 @@ impl Session {
             let entry = json!({
                 "bids": bids, "contract": s.contract, "tricks": s.tricks, "made": s.made,
                 "exact": s.exact, "set": s.set, "nilBids": s.nil_bids, "nilMade": s.nil_made,
-                "base": 10.0 * s.contract as f64 * if s.made { 1.0 } else { -1.0 },
+                "base": s.base - if s.made { s.cp } else { -cp_raw },
                 "cp": s.cp, "cpLost": if s.made { 0.0 } else { cp_raw },
-                "add": s.add, "mult": BASE_MULT + s.add, "x": s.x, "multTotal": mult,
+                "add": add_eff, "mult": rl.base_mult + add_eff, "x": x_eff, "multTotal": mult,
                 "nilScore": s.nil_score, "score": s.score, "total": self.r.teams[t].score,
+                "bags": s.bags, "bagPenalty": s.bag_pen, "bagsCarried": self.r.teams[t].bags,
                 "engCp": s.acc.eng_cp, "engAdd": s.acc.eng_add, "ledger": ledger,
-                "income": {"interest": i.interest, "base": i.base, "contract": i.contract, "nil": i.nil,
-                           "total": i.interest + i.base + i.contract + i.nil},
+                "income": {"base": i.base, "contract": i.contract, "nil": i.nil,
+                           "total": i.base + i.contract + i.nil},
                 "gold": self.r.teams[t].gold, "formula": formula,
             });
             self.log("score", msg, json!({"team": t, "result": entry.clone()}));
             teams.push(entry);
-        }
-        for (k, o) in self.r.teams[1].sigils.clone().iter().enumerate() {
-            if o.revealed && !rev0.get(k).copied().unwrap_or(true) {
-                let msg = format!("Them's sigil {} is revealed", self.sigil_label(o.def));
-                self.log(
-                    "reveal",
-                    msg,
-                    json!({"team": 1, "sigil": self.def(o.def).id}),
-                );
-            }
         }
         self.result = Some(json!({"round": self.round, "teams": teams}));
         self.phase = Phase::RoundOver;
     }
 
     fn next_round(&mut self, by: &str) {
-        if self.round >= ROUNDS {
+        if self.round >= self.r.cfg.rounds {
             self.phase = Phase::GameOver;
             let (a, b) = (self.r.teams[0].score, self.r.teams[1].score);
             let res = if a > b {
@@ -1396,7 +1378,8 @@ impl Session {
         let teams: Vec<Value> = (0..2)
             .map(|t| {
                 let tm = &self.r.teams[t];
-                let show = |o: &OwnedSigil| t == 0 || all || o.revealed;
+                // Every sigil is public.
+                let show = |_: &OwnedSigil| true;
                 let sigils: Vec<Value> = tm
                     .sigils
                     .iter()
@@ -1417,13 +1400,13 @@ impl Session {
                     vec![]
                 };
                 json!({
-                    "score": tm.score, "gold": tm.gold, "sigils": sigils, "hidden": hidden,
+                    "score": tm.score, "gold": tm.gold, "bags": tm.bags, "sigils": sigils, "hidden": hidden,
                     "cards": cards, "cardCount": tm.cards.len(), "cardSeat": t as u8 + 2 * tm.owner,
                 })
             })
             .collect();
         let mut v = json!({
-            "step": self.step, "phase": self.phase.name(), "round": self.round, "rounds": ROUNDS,
+            "step": self.step, "phase": self.phase.name(), "round": self.round, "rounds": self.r.cfg.rounds,
             "auto": self.auto, "tier": self.tier, "teams": teams, "pending": pending,
             "notes": self.notes, "result": self.result, "lastTrick": self.last_trick,
             "fresh": self.fresh,
@@ -1475,8 +1458,33 @@ impl Session {
             v["legal"] = json!(legal);
             v["contracts"] = json!([play.contract(0), play.contract(1)]);
             v["contractTricks"] = json!([play.contract_tricks(0), play.contract_tricks(1)]);
-            v["live"] =
-                json!({"cp": cp, "add": add, "mult": BASE_MULT + add, "x": x, "nilp": nilp});
+            let rl = crate::rules::rules();
+            v["live"] = json!({
+                "base": rl.trick_value * play.contract(0) as f64, "cp": cp, "add": add,
+                "mult": rl.base_mult + add * rl.mult_reward_scale, "x": x, "nilp": nilp,
+            });
+            if rl.public_deck && !matches!(self.phase, Phase::Opening) {
+                // The round's deck composition: identities beyond the standard deck and the
+                // standard identities they replaced (synthetic cards and Opening changes).
+                let mut count = [[0i32; 15]; 4];
+                for c in 0..52u8 {
+                    count[id.suit[c as usize] as usize][id.rank[c as usize] as usize] += 1;
+                    count[nominal_suit(c) as usize][nominal_rank(c) as usize] -= 1;
+                }
+                let (mut extra, mut missing) = (vec![], vec![]);
+                for s in 0..4u8 {
+                    for r in 2..=14u8 {
+                        let n = count[s as usize][r as usize];
+                        for _ in 0..n.max(0) {
+                            extra.push(card_str(s, r));
+                        }
+                        for _ in 0..(-n).max(0) {
+                            missing.push(card_str(s, r));
+                        }
+                    }
+                }
+                v["deck"] = json!({"extra": extra, "missing": missing});
+            }
         }
         if let Some(sh) = &self.shop {
             let sig: Vec<Value> = sh

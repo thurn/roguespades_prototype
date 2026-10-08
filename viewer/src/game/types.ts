@@ -37,6 +37,7 @@ export interface SigilV {
 export interface TeamV {
   score: number
   gold: number
+  bags: number
   sigils: SigilV[]
   hidden: number
   cards: CardV[]
@@ -99,7 +100,10 @@ export interface TeamResult {
   engCp: number
   engAdd: number
   ledger: LedgerV[]
-  income: { interest: number; base: number; contract: number; nil: number; total: number }
+  bags: number
+  bagPenalty: number
+  bagsCarried: number
+  income: { base: number; contract: number; nil: number; total: number }
   gold: number
   formula: string
 }
@@ -135,7 +139,9 @@ export interface View {
   legal?: number[]
   contracts?: [number, number]
   contractTricks?: [number, number]
-  live?: { cp: number; add: number; mult: number; x: number; nilp: number }
+  live?: { base: number; cp: number; add: number; mult: number; x: number; nilp: number }
+  /** This round's deck composition beyond the standard deck (public), after Opening. */
+  deck?: { extra: string[]; missing: string[] }
   shop?: ShopV
   winner?: 0 | 1 | 'draw'
 }

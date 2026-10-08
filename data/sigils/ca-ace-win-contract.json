@@ -62,6 +62,11 @@
   "simplicity": {
     "items": [
       {
+        "burden": "rank literal",
+        "detail": "[A]",
+        "cost": 1
+      },
+      {
         "burden": "numeric value",
         "detail": "payout 3",
         "cost": 1
@@ -78,12 +83,7 @@
       },
       {
         "burden": "boolean condition",
-        "detail": "rank is A",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "rank literal A",
+        "detail": "the card matches",
         "cost": 1
       }
     ],

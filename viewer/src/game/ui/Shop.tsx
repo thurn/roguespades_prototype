@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import rules from '../../../../data/rules.json'
 import { ENGRAVINGS, cardLabel } from '../cards'
 import { getSigil, sigilText } from '../sigils'
 import type { Action, CardV, View } from '../types'
@@ -11,7 +12,7 @@ import styles from './Shop.module.css'
 import { SigilChip } from './SigilChip'
 import { Tray } from './Tray'
 
-const MAX_SIGILS = 7
+const MAX_SIGILS = rules.slots
 const MAX_CARDS = 8
 
 function cardBlurb(c: CardV): string {

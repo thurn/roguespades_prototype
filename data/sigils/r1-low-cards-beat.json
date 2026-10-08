@@ -63,23 +63,18 @@
   "simplicity": {
     "items": [
       {
+        "burden": "rank literal",
+        "detail": "[2]",
+        "cost": 1
+      },
+      {
+        "burden": "rank literal",
+        "detail": "[6]",
+        "cost": 1
+      },
+      {
         "burden": "boolean condition",
         "detail": "your team played it",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "range endpoint 2",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "range endpoint 6",
-        "cost": 1
-      },
-      {
-        "burden": "boolean condition",
-        "detail": "rank in 2-6",
         "cost": 1
       },
       {
@@ -88,8 +83,8 @@
         "cost": 1
       }
     ],
-    "C": 5,
-    "S": 0.16666666666666666
+    "C": 4,
+    "S": 0.2
   },
   "lint": [],
   "estimates": {

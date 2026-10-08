@@ -5,14 +5,13 @@ use crate::cards::*;
 use crate::kernel::*;
 use crate::model::*;
 use crate::rng::*;
+use crate::rules::rules;
 use crate::sigil::*;
 use serde::Serialize;
 use serde_json::json;
 use std::collections::HashMap;
 
 pub const ENG_SYNTH: u8 = 4;
-pub(crate) const MAX_SIGILS: usize = 7;
-pub(crate) const MAX_CARDS: usize = 8;
 
 // Stream labels.
 const S_DEAL: u64 = 1;
@@ -68,6 +67,46 @@ pub enum Policy {
     Flexible,
     Committed(String),
     Chaser(Vec<usize>),
+    /// A degenerate-strategy hunter that never buys anything.
+    Hoard,
+}
+
+/// AI and measurement options per team (index = run team, not kernel team).
+#[derive(Clone, Debug)]
+pub struct AiCfg {
+    /// Risk-neutral utility (expected margin) instead of win probability.
+    pub risk_neutral: bool,
+    /// Added to the team's second (non-nil) bid, clamped to 1–13: shifts the team contract.
+    pub bid_offset: [i8; 2],
+    /// Bid nil whenever the partner has not.
+    pub always_nil: [bool; 2],
+    /// Scale on the committed shopper's archetype bonus.
+    pub commit_bonus: [f64; 2],
+    /// The AI searches with its own team's sigils (false: base rules for its own team).
+    pub aware: [bool; 2],
+    /// Mixed into the AI's random streams (A/A tests: same deals and offers, other AI luck).
+    pub ai_salt: u64,
+    /// Determinization keeps hidden cards' true identities.
+    pub true_ids: bool,
+    /// Overrides the tier's bid discount and its growth per round.
+    pub bid_discount: Option<f64>,
+    pub bid_discount_slope: Option<f64>,
+}
+
+impl Default for AiCfg {
+    fn default() -> Self {
+        AiCfg {
+            risk_neutral: false,
+            bid_offset: [0, 0],
+            always_nil: [false, false],
+            commit_bonus: [1.0, 1.0],
+            aware: [true, true],
+            ai_salt: 0,
+            true_ids: false,
+            bid_discount: None,
+            bid_discount_slope: None,
+        }
+    }
 }
 
 #[derive(Clone, Debug)]
@@ -82,6 +121,10 @@ pub struct GrantCfg {
     /// Joint grants: (a, b) granted together with this probability per shop.
     pub pairs: Vec<(usize, usize)>,
     pub pair_prob: f64,
+    /// Sigils granted at shop 1 in every run (pair arms).
+    pub fixed: Vec<usize>,
+    /// Grants cost no gold.
+    pub free: bool,
 }
 
 #[derive(Clone, Debug)]
@@ -108,6 +151,7 @@ pub struct RunCfg<'a> {
     pub validate: f64,
     /// Code and pool versions, copied into every record.
     pub version: String,
+    pub ai: AiCfg,
 }
 
 #[derive(Clone, Debug)]
@@ -155,6 +199,10 @@ pub(crate) struct Team {
     pub(crate) owner: u8,
     pub(crate) gold: i32,
     pub(crate) score: f64,
+    /// Bags carried toward the next penalty.
+    pub(crate) bags: u8,
+    /// Sigils offered to the team so far this run (for draws without replacement).
+    pub(crate) offered: Vec<usize>,
 }
 
 impl Team {
@@ -197,10 +245,18 @@ pub struct RoundRec {
     pub made: bool,
     pub nil_bids: u8,
     pub nil_made: u8,
+    /// The round score, bag penalty included.
     pub score: f64,
+    /// Bags taken this round and the penalty they caused (≤ 0).
+    pub bags: u8,
+    pub bag_pen: f64,
     pub eng_cp: f64,
     pub eng_add: f64,
     pub sig: Vec<SigilRound>,
+    /// The predicted make probability of the team's last non-nil bid (bid calibration).
+    pub pm: Option<f64>,
+    /// The predicted contract tricks behind that bid.
+    pub pt: Option<f64>,
 }
 
 #[derive(Serialize, Default, Clone)]
@@ -259,19 +315,7 @@ pub fn card_price(suit: u8, rank: u8) -> i32 {
         10 => 40,
         _ => 25,
     };
-    if suit == SPADES {
-        sp
-    } else {
-        side
-    }
-}
-
-fn eng_premium(e: u8) -> i32 {
-    match e {
-        ENG_BONUS | ENG_HERALD | ENG_SYNTH => 25,
-        ENG_MULT => 50,
-        _ => 0,
-    }
+    rules().card_price(if suit == SPADES { sp } else { side })
 }
 
 fn eng_key(e: u8) -> &'static str {
@@ -285,7 +329,15 @@ fn eng_key(e: u8) -> &'static str {
 }
 
 pub(crate) fn sell_value(price: i32) -> i32 {
-    (price / 2) / 5 * 5
+    rules().sell_value(price)
+}
+
+pub(crate) fn max_sigils() -> usize {
+    rules().slots
+}
+
+pub(crate) fn max_cards() -> usize {
+    rules().max_cards
 }
 
 #[derive(Clone)]
@@ -327,8 +379,10 @@ impl<'a> Runner<'a> {
                 cards: vec![],
                 sold_cards: vec![],
                 owner: r.below(2) as u8,
-                gold: 150,
+                gold: rules().start_gold,
                 score: 0.0,
+                bags: 0,
+                offered: vec![],
             }
         };
         let rule_cache = cfg
@@ -395,7 +449,9 @@ impl<'a> Runner<'a> {
         }
         let mut v = sv.beta + sv.shop * (shop as f64 - 3.5) + sv.coh * coh.min(2) as f64 + pair;
         match &self.cfg.teams[ti].policy {
-            Policy::Committed(a) if d.archetypes.contains(a) => v += 0.05,
+            Policy::Committed(a) if d.archetypes.contains(a) => {
+                v += 0.05 * self.cfg.ai.commit_bonus[ti]
+            }
             Policy::Chaser(target) if target.contains(&def) => v += 1.0,
             _ => {}
         }
@@ -426,7 +482,7 @@ impl<'a> Runner<'a> {
         v += m.card("match") * matches as f64;
         if let Policy::Committed(a) = &self.cfg.teams[ti].policy {
             if committed_card(a, s, r) {
-                v += 0.02;
+                v += 0.02 * self.cfg.ai.commit_bonus[ti];
             }
         }
         v
@@ -491,10 +547,16 @@ impl<'a> Runner<'a> {
         if !self.cfg.sigil_shop {
             return vec![];
         }
+        let rl = rules();
         let mut owned: Vec<usize> = self.teams[ti].sigils.iter().map(|o| o.def).collect();
         owned.extend(self.teams[ti].schedule.iter().map(|x| x.1));
+        match rl.offer_draws.as_str() {
+            "team" => owned.extend(self.teams[ti].offered.iter().cloned()),
+            "shared" => owned.extend(self.teams[1 - ti].sigils.iter().map(|o| o.def)),
+            _ => {}
+        }
         let mut out = vec![];
-        for _ in 0..3 {
+        for _ in 0..rl.sigil_offers {
             let roll = rng.f64();
             let mut acc = 0.0;
             let mut rar = Rarity::Common;
@@ -529,36 +591,17 @@ impl<'a> Runner<'a> {
         out
     }
 
-    pub(crate) fn card_offer(&self, shop: u8, rng: &mut Rng, exclude: Mask) -> Option<CardOffer> {
-        let engraved_share = if shop >= 3 {
-            (0.25 + 0.1 * (shop as f64 - 3.0)).min(0.75)
-        } else {
-            0.0
-        };
-        let mut eng = ENG_NONE;
-        if rng.chance(engraved_share) {
-            eng = [ENG_BONUS, ENG_HERALD, ENG_MULT, ENG_SYNTH][rng.weighted(&[2.0, 2.0, 1.0, 2.0])];
+    /// Records offers as seen (for draws without replacement).
+    pub(crate) fn note_offers(&mut self, ti: usize, sig: &[usize]) {
+        for &d in sig {
+            if !self.teams[ti].offered.contains(&d) {
+                self.teams[ti].offered.push(d);
+            }
         }
+    }
+
+    pub(crate) fn card_offer(&self, _shop: u8, rng: &mut Rng, exclude: Mask) -> Option<CardOffer> {
         let free = FULL_DECK & !self.taken & !exclude;
-        if eng == ENG_SYNTH {
-            let suit = rng.below(4) as u8;
-            let rank = 11 + rng.below(4) as u8;
-            let mut low = 0;
-            for r in 2..=9 {
-                low |= bit(card(suit, r));
-            }
-            let slots = low & free;
-            if slots == 0 {
-                return None;
-            }
-            let slot = rng.pick_bit(slots);
-            return Some(CardOffer {
-                ident: card(suit, rank),
-                slot,
-                eng,
-                price: card_price(suit, rank) + 25,
-            });
-        }
         if free == 0 {
             return None;
         }
@@ -566,8 +609,8 @@ impl<'a> Runner<'a> {
         Some(CardOffer {
             ident: c,
             slot: c,
-            eng,
-            price: card_price(nominal_suit(c), nominal_rank(c)) + eng_premium(eng),
+            eng: ENG_NONE,
+            price: card_price(nominal_suit(c), nominal_rank(c)),
         })
     }
 
@@ -577,7 +620,7 @@ impl<'a> Runner<'a> {
             return out;
         }
         let mut ex = exclude;
-        for _ in 0..3 {
+        for _ in 0..rules().card_offers {
             if let Some(o) = self.card_offer(shop, rng, ex) {
                 ex |= bit(o.slot);
                 out.push(o);
@@ -639,7 +682,7 @@ impl<'a> Runner<'a> {
     }
 
     pub(crate) fn grant(&mut self, ti: usize, def: usize, shop: u8, rng: &mut Rng, jitter: bool) {
-        if self.teams[ti].sigils.len() >= MAX_SIGILS {
+        if self.teams[ti].sigils.len() >= max_sigils() {
             if let Some((k, _)) = self.weakest_sigil_of(ti, shop, None, true) {
                 self.sell_sigil(ti, k, shop);
             }
@@ -660,7 +703,10 @@ impl<'a> Runner<'a> {
             _ => (None, 0.0),
         };
         let price = d.price();
-        self.teams[ti].gold -= price;
+        let free = self.cfg.teams[ti].grants.as_ref().is_some_and(|g| g.free);
+        if !free {
+            self.teams[ti].gold -= price;
+        }
         self.teams[ti].sigils.push(OwnedSigil {
             def,
             amount,
@@ -722,7 +768,7 @@ impl<'a> Runner<'a> {
                 let mut crng = gs(3);
                 if shop <= 7 && crng.chance(g.card_prob) {
                     if let Some(o) = self.card_offer(shop, &mut crng, other_offers) {
-                        if self.teams[ti].cards.len() >= MAX_CARDS {
+                        if self.teams[ti].cards.len() >= max_cards() {
                             if let Some((k, _)) = self.weakest_card(ti, shop) {
                                 self.sell_card(ti, k);
                             }
@@ -737,10 +783,11 @@ impl<'a> Runner<'a> {
             }
         }
 
-        let lambda = self.cfg.model.lambda[shop as usize];
+        let lambda = at(&self.cfg.model.lambda, shop as usize);
         let mut reroll = 0u64;
         let mut orng = Rng::stream(self.seed, &[S_OFFER, luck, shop as u64, reroll]);
         let mut sig = self.sigil_offers(ti, &mut orng);
+        self.note_offers(ti, &sig);
         let mut cards = self.card_offers(shop, &mut orng, other_offers);
         self.log_offers(ti, shop, &sig, &cards);
         if self.cfg.validate > 0.0
@@ -750,7 +797,15 @@ impl<'a> Runner<'a> {
         {
             self.check_offers(ti, shop, &sig);
         }
+        let limit = match rules().purchases {
+            0 => 30,
+            n => n as usize,
+        };
+        let mut bought = 0;
         for _ in 0..30 {
+            if bought >= limit || matches!(self.cfg.teams[ti].policy, Policy::Hoard) {
+                break;
+            }
             // (net gain, is_sigil, offer index)
             let mut opts: Vec<(f64, bool, usize)> = vec![];
             for (i, &d) in sig.iter().enumerate() {
@@ -759,7 +814,7 @@ impl<'a> Runner<'a> {
                     continue;
                 }
                 let v = self.sigil_value(ti, d, shop, None);
-                let net = if self.teams[ti].sigils.len() < MAX_SIGILS {
+                let net = if self.teams[ti].sigils.len() < max_sigils() {
                     v - lambda * price as f64
                 } else {
                     match self.weakest_sigil(ti, shop, None) {
@@ -778,7 +833,7 @@ impl<'a> Runner<'a> {
                     continue;
                 }
                 let v = self.card_value(ti, o.ident, o.eng, shop);
-                let net = if self.teams[ti].cards.len() < MAX_CARDS {
+                let net = if self.teams[ti].cards.len() < max_cards() {
                     v - lambda * o.price as f64
                 } else {
                     match self.weakest_card(ti, shop) {
@@ -804,9 +859,10 @@ impl<'a> Runner<'a> {
                         b
                     };
                     self.log_choice(ti, &opts, choice, &sig, &cards);
+                    bought += 1;
                     if choice.1 {
                         let d = sig.remove(choice.2);
-                        if self.teams[ti].sigils.len() >= MAX_SIGILS {
+                        if self.teams[ti].sigils.len() >= max_sigils() {
                             if let Some((k, _)) = self.weakest_sigil(ti, shop, None) {
                                 self.log_shop(json!({"ev": "sell", "team": ti, "sigil": self.cfg.pool.defs[self.teams[ti].sigils[k].def].id}));
                                 self.sell_sigil(ti, k, shop);
@@ -828,7 +884,7 @@ impl<'a> Runner<'a> {
                         });
                     } else {
                         let o = cards.remove(choice.2);
-                        if self.teams[ti].cards.len() >= MAX_CARDS {
+                        if self.teams[ti].cards.len() >= max_cards() {
                             if let Some((k, _)) = self.weakest_card(ti, shop) {
                                 let c = self.teams[ti].cards[k];
                                 self.log_shop(json!({"ev": "sellCard", "team": ti, "card": offer_str(c.ident, c.slot, c.eng)}));
@@ -839,13 +895,14 @@ impl<'a> Runner<'a> {
                     }
                 }
                 _ => {
-                    let cost = 50 + 10 * reroll as i32;
+                    let cost = rules().reroll(reroll);
                     if reroll == 0 && self.teams[ti].gold - cost >= 100 {
                         self.teams[ti].gold -= cost;
                         reroll += 1;
                         self.recs[ti].rerolls += 1;
                         orng = Rng::stream(self.seed, &[S_OFFER, luck, shop as u64, reroll]);
                         sig = self.sigil_offers(ti, &mut orng);
+                        self.note_offers(ti, &sig);
                         cards = self.card_offers(shop, &mut orng, other_offers);
                         self.log_shop(json!({"ev": "reroll", "team": ti, "cost": cost}));
                         self.log_offers(ti, shop, &sig, &cards);
@@ -957,15 +1014,14 @@ impl<'a> Runner<'a> {
         }
     }
 
+    /// What team `kt` searches with: every sigil is public, so both programs, unless the AI is
+    /// told to ignore its own team's sigils.
     pub(crate) fn view_rules(&self, rules: &Rules, kt: usize) -> Rules {
-        let opp = 1 - kt;
-        let revealed: Vec<bool> = self.teams[self.tidx(opp)]
-            .sigils
-            .iter()
-            .map(|o| o.revealed)
-            .collect();
         let mut teams = [rules.teams[0].clone(), rules.teams[1].clone()];
-        teams[opp] = rules.teams[opp].visible(&revealed);
+        if !self.cfg.ai.aware[self.tidx(kt)] {
+            let n = rules.teams[kt].slots.len();
+            teams[kt] = rules.teams[kt].visible(&vec![false; n]);
+        }
         Rules { teams }
     }
 
@@ -975,19 +1031,24 @@ impl<'a> Runner<'a> {
         let margin = self.teams[ti].score - self.teams[1 - ti].score;
         let left = (self.cfg.rounds - round) as usize;
         let future: f64 = ((round + 1)..=self.cfg.rounds)
-            .map(|k| m.round_scale[k as usize])
+            .map(|k| at(&m.round_scale, k as usize))
             .sum();
         let nfut = left as f64;
         Utility {
+            linear: self.cfg.ai.risk_neutral,
             margin,
             scale: m.w_scale[left.min(8)],
             growth: [8.0 * nfut, future / 15.0, future, 2.0 * nfut],
             nil_handicap: m.nil_handicap,
             gold: if round < self.cfg.rounds {
-                m.lambda[(round + 1) as usize] / 2.0
+                at(&m.lambda, (round + 1) as usize) / 2.0
             } else {
                 0.0
             },
+            // About 1.5 bags per round are still to come, so a carried bag is a full 100-point
+            // share of the next penalty when enough rounds remain, and nothing after the last.
+            bag_cost: crate::rules::BAG_PENALTY / crate::rules::BAG_LIMIT as f64
+                * (1.5 * nfut / crate::rules::BAG_LIMIT as f64).min(1.0),
         }
     }
 
@@ -1072,7 +1133,10 @@ impl<'a> Runner<'a> {
         }
 
         let rules = self.rules_for();
-        let play = Play::new(id, hands, eng, dealer, &rules);
+        let mut play = Play::new(id, hands, eng, dealer, &rules);
+        for kt in 0..2 {
+            play.bags[kt] = self.teams[self.tidx(kt)].bags;
+        }
 
         let mut opening = vec![];
         for kt in 0..2 {
@@ -1096,7 +1160,10 @@ impl<'a> Runner<'a> {
             opening.extend(order.into_iter().map(|(_, k, r)| (kt, k, r)));
         }
         let ai = (0..4)
-            .map(|s| Rng::stream(self.seed, &[S_AI, round as u64, s as u64]))
+            .map(|s| match self.cfg.ai.ai_salt {
+                0 => Rng::stream(self.seed, &[S_AI, round as u64, s as u64]),
+                salt => Rng::stream(self.seed, &[S_AI, round as u64, s as u64, salt]),
+            })
             .collect();
         RoundState {
             round,
@@ -1107,6 +1174,9 @@ impl<'a> Runner<'a> {
             voids: [[false; 4]; 4],
             ai,
             opening,
+            pmake: [f64::NAN; 4],
+            ptricks: [f64::NAN; 4],
+            bid_order: vec![],
         }
     }
 
@@ -1132,7 +1202,10 @@ impl<'a> Runner<'a> {
         let view = self.view_rules(&rs.rules, kt);
         let u = self.utility(kt, rs.round);
         let know = self.knowledge(&rs.play, seat, &rs.known, &[[false; 4]; 4]);
-        let mut r = Rng::stream(self.seed, &[S_AI, rs.round as u64, seat as u64, 77]);
+        let mut r = match self.cfg.ai.ai_salt {
+            0 => Rng::stream(self.seed, &[S_AI, rs.round as u64, seat as u64, 77]),
+            salt => Rng::stream(self.seed, &[S_AI, rs.round as u64, seat as u64, 77, salt]),
+        };
         choose_swap(&rs.play, &view, &know, &u, &tier, &mut r, n)
     }
 
@@ -1224,11 +1297,35 @@ impl<'a> Runner<'a> {
     /// An AI seat's bid, with the value of each candidate bid.
     pub(crate) fn bid_ai(&self, rs: &mut RoundState, s: u8) -> (i8, Vec<(i8, f64)>) {
         let kt = (s % 2) as usize;
-        let tier = self.tier_override.unwrap_or(self.cfg.tiers[self.tidx(kt)]);
+        let mut tier = self.tier_override.unwrap_or(self.cfg.tiers[self.tidx(kt)]);
+        if let Some(d) = self.cfg.ai.bid_discount {
+            tier.bid_discount = d;
+        }
+        if let Some(sl) = self.cfg.ai.bid_discount_slope {
+            tier.bid_discount_slope = sl;
+        }
+        // Heuristic rollouts overestimate the bidder's tricks more as sigils accumulate (both
+        // teams' sigil counts are public).
+        let held = self.teams[0].sigils.len() + self.teams[1].sigils.len();
+        tier.bid_discount += tier.bid_discount_slope * held as f64;
         let view = self.view_rules(&rs.rules, kt);
         let know = self.knowledge(&rs.play, s, &rs.known, &rs.voids);
         let u = self.utility(kt, rs.round);
-        choose_bid_explain(&rs.play, &view, &know, &u, &tier, &mut rs.ai[s as usize])
+        let (mut b, v, pm) =
+            choose_bid_full(&rs.play, &view, &know, &u, &tier, &mut rs.ai[s as usize]);
+        let ti = self.tidx(kt);
+        let ai = &self.cfg.ai;
+        let partner = rs.play.bids[(s as usize + 2) % 4];
+        if ai.always_nil[ti] && partner != 0 {
+            b = 0;
+        } else if b != 0 && ai.bid_offset[ti] != 0 && partner >= 0 {
+            // The team's second bidder shifts the team contract by the offset.
+            b = (b + ai.bid_offset[ti]).clamp(1, 13);
+        }
+        rs.pmake[s as usize] = if b == 0 { f64::NAN } else { pm.pmake };
+        rs.ptricks[s as usize] = if b == 0 { f64::NAN } else { pm.tricks };
+        rs.bid_order.push(s);
+        (b, v)
     }
 
     /// After the last bid: who is behind, then always-on, holding, bid, and growth triggers.
@@ -1286,10 +1383,14 @@ impl<'a> Runner<'a> {
                 made: s.made,
                 nil_bids: s.nil_bids,
                 nil_made: s.nil_made,
-                score: s.score,
+                score: s.score + s.bag_pen,
+                bags: s.bags,
+                bag_pen: s.bag_pen,
                 eng_cp: s.acc.eng_cp,
                 eng_add: s.acc.eng_add,
                 sig: vec![],
+                pm: last_bidder(rs, kt).map(|x| rs.pmake[x]),
+                pt: last_bidder(rs, kt).map(|x| rs.ptricks[x]),
             };
             let rec_ids: Vec<usize> = self.teams[ti]
                 .sigils
@@ -1321,18 +1422,19 @@ impl<'a> Runner<'a> {
             }
             self.recs[ti].rounds.push(rr);
             let team = &mut self.teams[ti];
-            team.score += s.score;
+            team.score += s.score + s.bag_pen;
+            team.bags = s.bags_after;
+            let r = crate::rules::rules();
             let inc = Income {
-                interest: if team.gold > 0 {
-                    (10 * (team.gold / 50)).min(50)
+                base: r.base_income,
+                contract: if s.made {
+                    r.contract_gold * s.contract as i32
                 } else {
                     0
                 },
-                base: 100,
-                contract: if s.made { 10 * s.contract as i32 } else { 0 },
-                nil: 50 * s.nil_made as i32,
+                nil: r.nil_gold * s.nil_made as i32,
             };
-            team.gold += inc.interest + inc.base + inc.contract + inc.nil;
+            team.gold += inc.base + inc.contract + inc.nil;
             income[kt] = inc;
         }
         (sc, income)
@@ -1393,6 +1495,7 @@ impl<'a> Runner<'a> {
             known: known[partner] & play.hands[partner],
             eng_known,
             voids: *voids,
+            true_ids: self.cfg.ai.true_ids || crate::rules::rules().public_deck,
         }
     }
 
@@ -1465,7 +1568,7 @@ impl<'a> Runner<'a> {
             r.tier_override = Some(Tier::get(0));
             r.checks.clear();
             if let Some(d) = extra {
-                if r.teams[ti].sigils.len() >= MAX_SIGILS {
+                if r.teams[ti].sigils.len() >= max_sigils() {
                     if let Some((w, _)) = r.weakest_sigil(ti, shop, None) {
                         r.teams[ti].sigils.remove(w);
                     }
@@ -1543,6 +1646,10 @@ impl<'a> Runner<'a> {
             let Some(g) = self.cfg.teams[ti].grants.clone() else {
                 continue;
             };
+            for &d in &g.fixed {
+                self.teams[ti].granted.push(d);
+                self.teams[ti].schedule.push((g.max_shop, d));
+            }
             for shop in 1..=g.max_shop.min(self.cfg.rounds) {
                 let mut grng = Rng::stream(self.seed, &[S_GRANT, ti as u64, shop as u64, 2]);
                 let mut todo: Vec<usize> = vec![];
@@ -1628,6 +1735,10 @@ pub struct RoundState {
     pub ai: Vec<Rng>,
     /// Opening effects in resolution order: (kernel team, sigil slot, rule).
     pub opening: Vec<(usize, usize, Rule)>,
+    /// Each seat's predicted make probability for its bid (AI seats), and the bidding order.
+    pub pmake: [f64; 4],
+    pub ptricks: [f64; 4],
+    pub bid_order: Vec<u8>,
 }
 
 impl RoundState {
@@ -1644,7 +1755,6 @@ impl RoundState {
 /// Gold paid to a team after a round.
 #[derive(Clone, Copy, Default, Debug, Serialize)]
 pub struct Income {
-    pub interest: i32,
     pub base: i32,
     pub contract: i32,
     pub nil: i32,
@@ -1678,6 +1788,20 @@ pub fn offer_str(ident: u8, slot: u8, eng: u8) -> String {
         ENG_MULT => format!("{c} +multiplier engraving"),
         _ => c,
     }
+}
+
+/// The team's last AI bidder with a non-nil bid.
+fn last_bidder(rs: &RoundState, kt: usize) -> Option<usize> {
+    rs.bid_order
+        .iter()
+        .rev()
+        .find(|&&x| (x as usize) % 2 == kt && !rs.pmake[x as usize].is_nan())
+        .map(|&x| x as usize)
+}
+
+/// A per-round model value, extended past the model's last round for longer runs.
+fn at(v: &[f64], k: usize) -> f64 {
+    v.get(k).or(v.last()).copied().unwrap_or(0.0)
 }
 
 /// Cards a committed team wants for its archetype.

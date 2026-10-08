@@ -64,6 +64,11 @@
   "simplicity": {
     "items": [
       {
+        "burden": "rank literal",
+        "detail": "[K]",
+        "cost": 1
+      },
+      {
         "burden": "numeric value",
         "detail": "payout 20",
         "cost": 1
@@ -72,20 +77,10 @@
         "burden": "boolean condition",
         "detail": "your team leads",
         "cost": 1
-      },
-      {
-        "burden": "boolean condition",
-        "detail": "rank is K",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "rank literal K",
-        "cost": 1
       }
     ],
-    "C": 4,
-    "S": 0.2
+    "C": 3,
+    "S": 0.25
   },
   "lint": [],
   "sources": [

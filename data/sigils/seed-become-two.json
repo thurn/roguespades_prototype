@@ -51,18 +51,13 @@
   "simplicity": {
     "items": [
       {
-        "burden": "new term",
-        "detail": "Opening:",
-        "cost": 4
-      },
-      {
-        "burden": "numeric value",
-        "detail": "count 4",
+        "burden": "rank literal",
+        "detail": "[2]",
         "cost": 1
       },
       {
         "burden": "numeric value",
-        "detail": "rank literal 2",
+        "detail": "count 4",
         "cost": 1
       },
       {
@@ -71,8 +66,8 @@
         "cost": 1
       }
     ],
-    "C": 7,
-    "S": 0.125
+    "C": 3,
+    "S": 0.25
   },
   "lint": [],
   "estimates": {

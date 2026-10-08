@@ -1,5 +1,6 @@
 import { SIGILS } from '../model'
 import model from '../../../data/models/round-3.json'
+import rules from '../../../data/rules.json'
 import type { Action, GameConfig, Response } from './types'
 
 /** The model the shop and AI read: the last fitted value model of the sigil design run. */
@@ -35,7 +36,7 @@ export class Engine {
       this.waiting.delete(e.data.id)
       done?.(JSON.parse(e.data.res) as Response)
     }
-    this.ready = this.request({ op: 'init', defs: DEFS, model })
+    this.ready = this.request({ op: 'init', defs: DEFS, model, rules })
   }
 
   private request(req: object): Promise<Response> {

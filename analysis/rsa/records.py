@@ -10,16 +10,32 @@ import pyarrow.parquet as pq
 
 from .common import tags
 
+RULES: dict = {}
 
-def round_score(cp, add, x, nilp, contract, made, nil_bids, nil_made) -> float:
-    nil = nil_made * (100 + nilp) - (nil_bids - nil_made) * 100
+
+def set_rules(path=None) -> None:
+    """The rules file the records were played under (default: data/rules.json)."""
+    from .common import load_rules
+
+    RULES.clear()
+    RULES.update(load_rules(path))
+
+
+def round_score(cp, add, x, nilp, contract, made, nil_bids, nil_made, tricks=None) -> float:
+    if not RULES:
+        set_rules()
+    R = RULES
+    nil = nil_made * (R["nilValue"] + nilp) - (nil_bids - nil_made) * R["nilValue"]
+    add = add * R["multRewardScale"]
     if contract == 0:
         base = 0.0
     elif made:
-        base = 10 * contract + cp
+        base = R["trickValue"] * contract + cp
     else:
-        base = -10 * contract
-    return round((base + nil) * (10 + add) * x)
+        base = -(R["trickValue"] * contract + cp)
+        if R.get("flatSet"):
+            return round(-R["trickValue"] * 10 * contract + nil * ((R["baseMult"] + add) * x))
+    return round((base + nil) * ((R["baseMult"] + add) * x))
 
 
 def rescore(rd: dict, drop: int | None) -> float:
@@ -31,7 +47,9 @@ def rescore(rd: dict, drop: int | None) -> float:
         add += s["add"]
         x *= s["x"]
         nilp += s["nilp"]
-    return round_score(cp, add, x, nilp, rd["contract"], rd["made"], rd["nil_bids"], rd["nil_made"])
+    return rd.get("bag_pen", 0.0) + round_score(
+        cp, add, x, nilp, rd["contract"], rd["made"], rd["nil_bids"], rd["nil_made"], rd["tricks"]
+    )
 
 
 @dataclass

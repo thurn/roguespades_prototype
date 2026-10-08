@@ -85,6 +85,11 @@
   "simplicity": {
     "items": [
       {
+        "burden": "rank literal",
+        "detail": "[A]",
+        "cost": 1
+      },
+      {
         "burden": "numeric value",
         "detail": "payout 5",
         "cost": 1
@@ -92,16 +97,6 @@
       {
         "burden": "boolean condition",
         "detail": "held by your team",
-        "cost": 1
-      },
-      {
-        "burden": "boolean condition",
-        "detail": "rank is A",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "rank literal A",
         "cost": 1
       },
       {
@@ -115,8 +110,8 @@
         "cost": 1
       }
     ],
-    "C": 6,
-    "S": 0.14285714285714285
+    "C": 5,
+    "S": 0.16666666666666666
   },
   "lint": [],
   "estimates": {

@@ -89,6 +89,11 @@
   "simplicity": {
     "items": [
       {
+        "burden": "suit literal",
+        "detail": "[♠]",
+        "cost": 1
+      },
+      {
         "burden": "numeric value",
         "detail": "payout 10",
         "cost": 1
@@ -96,11 +101,6 @@
       {
         "burden": "boolean condition",
         "detail": "your team leads",
-        "cost": 1
-      },
-      {
-        "burden": "boolean condition",
-        "detail": "suit is S",
         "cost": 1
       },
       {

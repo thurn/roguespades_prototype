@@ -58,28 +58,18 @@
   "simplicity": {
     "items": [
       {
-        "burden": "new term",
-        "detail": "Opening:",
-        "cost": 2
-      },
-      {
-        "burden": "numeric value",
-        "detail": "range endpoint Q",
+        "burden": "rank literal",
+        "detail": "[Q]",
         "cost": 1
       },
       {
-        "burden": "numeric value",
-        "detail": "range endpoint A",
+        "burden": "rank literal",
+        "detail": "[A]",
         "cost": 1
       },
       {
-        "burden": "boolean condition",
-        "detail": "rank in Q-A",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "rank literal 2",
+        "burden": "rank literal",
+        "detail": "[2]",
         "cost": 1
       },
       {
@@ -88,8 +78,8 @@
         "cost": 1
       }
     ],
-    "C": 7,
-    "S": 0.125
+    "C": 4,
+    "S": 0.2
   },
   "lint": []
 }

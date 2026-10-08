@@ -89,6 +89,16 @@
   "simplicity": {
     "items": [
       {
+        "burden": "rank literal",
+        "detail": "[2]",
+        "cost": 1
+      },
+      {
+        "burden": "rank literal",
+        "detail": "[6]",
+        "cost": 1
+      },
+      {
         "burden": "numeric value",
         "detail": "payout 20",
         "cost": 1
@@ -99,18 +109,8 @@
         "cost": 1
       },
       {
-        "burden": "numeric value",
-        "detail": "range endpoint 2",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "range endpoint 6",
-        "cost": 1
-      },
-      {
         "burden": "boolean condition",
-        "detail": "rank in 2-6",
+        "detail": "the card matches",
         "cost": 1
       }
     ],

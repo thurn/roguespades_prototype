@@ -66,18 +66,13 @@
   "simplicity": {
     "items": [
       {
+        "burden": "rank literal",
+        "detail": "[Q]",
+        "cost": 1
+      },
+      {
         "burden": "boolean condition",
         "detail": "your team played it",
-        "cost": 1
-      },
-      {
-        "burden": "boolean condition",
-        "detail": "rank is Q",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "rank literal Q",
         "cost": 1
       },
       {
@@ -86,8 +81,8 @@
         "cost": 1
       }
     ],
-    "C": 4,
-    "S": 0.2
+    "C": 3,
+    "S": 0.25
   },
   "lint": [],
   "estimates": {

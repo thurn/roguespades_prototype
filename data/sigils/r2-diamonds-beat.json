@@ -64,13 +64,13 @@
   "simplicity": {
     "items": [
       {
-        "burden": "boolean condition",
-        "detail": "your team played it",
+        "burden": "suit literal",
+        "detail": "[♦]",
         "cost": 1
       },
       {
         "burden": "boolean condition",
-        "detail": "suit is D",
+        "detail": "your team played it",
         "cost": 1
       },
       {

@@ -72,12 +72,12 @@ pub fn check(dir: &str) {
         (
             json!({"type": "become", "count": 4, "rank": "2"}),
             Rarity::Common,
-            7,
+            3,
         ),
         (
             json!({"type": "become", "count": 4, "ranks": ["2", "10"], "term": "low cards"}),
             Rarity::Common,
-            13,
+            9,
         ),
     ];
     for (e, r, want) in rows {
@@ -207,7 +207,7 @@ fn worked_examples() -> Vec<(&'static str, f64, f64)> {
                 vec![(aces, 0.0), (plus15.clone(), 0.0)],
                 &[(0, 2)],
             ),
-            -1750.0,
+            -2750.0,
         ),
         (
             "Partner bids 5, wins 6; nil made; +50 nil points; one +15",
@@ -251,7 +251,7 @@ fn worked_examples() -> Vec<(&'static str, f64, f64)> {
                 vec![(cp210, 0.0), (plus35, 0.0), (x15, 0.0)],
                 &[],
             ),
-            -6075.0,
+            -20250.0,
         ),
     ]
 }

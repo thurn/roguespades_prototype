@@ -1,0 +1,88 @@
+{
+ "env": "dev0-t0-wp",
+ "commit": "38a6155",
+ "sizes": {
+  "field": 200,
+  "commit": 50,
+  "ladder": 50,
+  "ladder_on": true
+ },
+ "syn": 0,
+ "variant": "plain",
+ "result": {
+  "score": 49.30991627420199,
+  "families": [
+   0.5408163265306123,
+   0.0,
+   0.5,
+   NaN,
+   1.0,
+   0.8397435897435898
+  ],
+  "game": {
+   "medianMarginShare": 0.7,
+   "trailerAfter5Wins": 0.1683673469387755,
+   "earlyShare": 0.5538248737070003,
+   "setRate": 0.1509375,
+   "lateOvertricks": 1.3897795591182365,
+   "bagsPerRun": 11.2525,
+   "bagPenaltiesPerRun": 0.6875,
+   "winningShare": {
+    "Suits": 0.0,
+    "Spades": 0.0,
+    "Ranks": 0.0,
+    "BidHigh": 0.0,
+    "Nil": 0.0,
+    "LowCards": 0.0,
+    "Rainbow": 0.0,
+    "Streaks": 0.0,
+    "Exact": 0.0
+   }
+  },
+  "commit": {
+   "per_archetype": {
+    "Suits": 0.15,
+    "Spades": 0.15,
+    "Ranks": 0.13,
+    "BidHigh": 0.18,
+    "Nil": 0.15,
+    "LowCards": 0.09,
+    "Rainbow": 0.13,
+    "Streaks": 0.11,
+    "Exact": 0.11
+   },
+   "committed_win": 0.13333333333333333,
+   "online": 0.0
+  },
+  "ladder": 0.94,
+  "synergy": null,
+  "meanC": 3.641025641025641,
+  "lo": 46.74445518189237,
+  "hi": 52.20587562089446,
+  "sd": 1.730865745467245,
+  "fam_lo": [
+   0.41254327191513124,
+   0.0,
+   0.5,
+   NaN,
+   1.0,
+   0.8397435897435898
+  ],
+  "fam_hi": [
+   0.6856142938652358,
+   0.0,
+   0.5037037037037038,
+   NaN,
+   1.0,
+   0.8397435897435898
+  ],
+  "fam_sd": [
+   0.08647052780395312,
+   0.0,
+   0.0021160868371867007,
+   NaN,
+   0.0,
+   1.2212453270876722e-15
+  ]
+ }
+}

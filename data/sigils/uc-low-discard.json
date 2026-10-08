@@ -72,28 +72,23 @@
   "simplicity": {
     "items": [
       {
+        "burden": "rank literal",
+        "detail": "[2]",
+        "cost": 1
+      },
+      {
+        "burden": "rank literal",
+        "detail": "[5]",
+        "cost": 1
+      },
+      {
         "burden": "boolean condition",
         "detail": "your team could follow suit",
         "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "range endpoint 2",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "range endpoint 5",
-        "cost": 1
-      },
-      {
-        "burden": "boolean condition",
-        "detail": "rank in 2-5",
-        "cost": 1
       }
     ],
-    "C": 4,
-    "S": 0.2
+    "C": 3,
+    "S": 0.25
   },
   "lint": [],
   "estimates": {

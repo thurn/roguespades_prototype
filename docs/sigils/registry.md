@@ -27,20 +27,20 @@ Lift is win-rate points over the same-rarity control with a 90% interval; fire i
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | ca-ace-win-two-mult | kept | common | Twin Stars | star | Ranks | +3 contract multiplier when your team wins two tricks with [A]s | 7 | -7.3 [-8.4, -6.2] | 59.3 | `win(count=2)|rank=A|-|mult` |
 | ca-diamond-hold-eight | kept | common | Overflowing Treasure | treasure-chest | Suits | +20 contract multiplier if your team holds eight [♦]s | 5 | -4.0 [-5.3, -2.8] | 22.1 | `hold(count=8)|suit=D|-|mult` |
-| ca-diamond-led-win | kept | common | Hooked Fish | fish | Suits, Spades | +15 contract points when your team wins a trick led with [♦] | 3 | -0.9 [-1.8, -0.0] | 80.5 | `win(led=suit=D)|-|-|points` |
-| ca-diamond-win-two | kept | common | Twin Sparkles | sparkles | Suits | +5 contract multiplier when your team wins two tricks with [♦] | 6 | -7.7 [-9.0, -6.4] | 25.2 | `win(count=2)|suit=D|-|mult` |
+| ca-diamond-led-win | kept | common | Hooked Fish | fish | Suits, Spades | +15 contract points when your team wins a trick led with [♦] | 4 | -0.9 [-1.8, -0.0] | 80.5 | `win(led=suit=D)|-|-|points` |
+| ca-diamond-win-two | kept | common | Twin Sparkles | sparkles | Suits | +5 contract multiplier when your team wins two tricks with [♦] | 7 | -7.7 [-9.0, -6.4] | 25.2 | `win(count=2)|suit=D|-|mult` |
 | ca-face-win | kept | common | Courtly Masks | mask | Ranks | +20 contract points when your team wins a trick with a [J] through [K] | 5 | 0.5 [-0.5, 1.5] | 88.8 | `win|ranks=J-K|-|points` |
 | ca-high-spade-hold | kept | common | Drawn Swords | sword | Spades, Ranks | +10 contract points for each [10] through [A] of [♠] your team holds | 6 | 1.1 [0.3, 1.9] | 99.2 | `hold|suit=S,ranks=10-A|-|points` |
-| ca-king-hold | kept | common | Gathered Crowns | crown | Ranks | +25 contract points for each [K] your team holds | 4 | 3.5 [2.4, 4.7] | 93.5 | `hold|rank=K|-|points` |
+| ca-king-hold | kept | common | Gathered Crowns | crown | Ranks | +25 contract points for each [K] your team holds | 3 | 3.5 [2.4, 4.7] | 93.5 | `hold|rank=K|-|points` |
 | ca-rainbow-lead-mult | kept | common | Four Winds | wind | Rainbow | +5 contract multiplier if your team leads all four suits | 5 | -5.6 [-7.3, -4.0] | 42.5 | `suits(count=4,action=lead)|-|-|mult` |
 | ca-spade-lead-three | kept | common | Measured Footsteps | footsteps | Spades | +10 contract multiplier when your team leads [♠] three times | 6 | -1.0 [-2.1, -0.0] | 33.9 | `lead(count=3)|suit=S|-|mult` |
-| ca-three-aces-mult | kept | common | Trinity Candles | candlestick | Ranks | +5 contract multiplier if your team holds three [A]s | 6 | -5.6 [-6.8, -4.3] | 63.2 | `hold(count=3)|rank=A|-|mult` |
-| cb-become-ace | kept | common | Alchemist's Flask | flask-round | BidHigh, Ranks, Rainbow | Opening: Two cards your team holds become [A]s | 7 | 2.6 [1.4, 3.8] |  | `opening|rank=A|-|become` |
-| cb-become-spade | kept | common | Darkening Brush | brush | BidHigh, Spades, Streaks | Opening: Three cards your team holds become [♠]s | 6 | 7.1 [6.0, 8.2] |  | `opening|suit=S|-|become` |
+| ca-three-aces-mult | kept | common | Trinity Candles | candlestick | Ranks | +5 contract multiplier if your team holds three [A]s | 5 | -5.6 [-6.8, -4.3] | 63.2 | `hold(count=3)|rank=A|-|mult` |
+| cb-become-ace | kept | common | Alchemist's Flask | flask-round | BidHigh, Ranks, Rainbow | Opening: Two cards your team holds become [A]s | 3 | 2.6 [1.4, 3.8] |  | `opening|rank=A|-|become` |
+| cb-become-spade | kept | common | Darkening Brush | brush | BidHigh, Spades, Streaks | Opening: Three cards your team holds become [♠]s | 3 | 7.1 [6.0, 8.2] |  | `opening|suit=S|-|become` |
 | cb-bid8-trick-mult | kept | common | Towering Pyramid | pyramid | BidHigh | +1 contract multiplier for each trick in your team's contract when your team bids 8 or more | 4 | -8.1 [-9.4, -6.9] | 35.5 | `bid(min=8)|-|contractTrick|mult` |
 | cb-consecutive-mult | kept | common | Linked Chain | link | Streaks | +1 contract multiplier when your team wins consecutive tricks | 3 | -1.5 [-2.7, -0.3] | 83.8 | `win(consecutive)|-|-|mult` |
 | cb-contract-mult | kept | common | Promised Bricks | brick | BidHigh, Generic | +1 contract multiplier for each trick in your team's contract | 2 | -3.4 [-4.6, -2.2] | 100.0 | `always|-|contractTrick|mult` |
-| cb-honor-hold | kept | common | Loyal Knights | chess-knight | BidHigh, Generic | +3 contract points for each [J] through [A] your team holds | 5 | 0.5 [-0.7, 1.7] | 100.0 | `hold|ranks=J-A|-|points` |
+| cb-honor-hold | kept | common | Loyal Knights | chess-knight | BidHigh, Generic | +3 contract points for each [J] through [A] your team holds | 4 | 0.5 [-0.7, 1.7] | 100.0 | `hold|ranks=J-A|-|points` |
 | cb-make-mult | kept | common | Honest Handshake | handshake | Generic, BidHigh | +3 contract multiplier if your team makes its contract | 2 | -6.0 [-7.0, -4.9] | 54.9 | `make|-|-|mult` |
 | cb-make8-mult | kept | common | Conquered Mountain | mountain | BidHigh | +10 contract multiplier if your team makes a contract of 8 or more | 4 | -2.9 [-4.0, -1.7] | 16.9 | `make(min=8)|-|-|mult` |
 | cb-opp-set-mult | kept | common | Toppled Rook | chess-rook | Generic | +15 contract multiplier if the opponents miss their contract | 2 | -0.1 [-1.1, 0.8] | 41.1 | `opponentsSet|-|-|mult` |
@@ -48,24 +48,24 @@ Lift is win-rate points over the same-rarity control with a 90% interval; fire i
 | cb-three-row-mult | kept | common | Climbing Steps | steps-up | Streaks | +3 contract multiplier when your team wins three tricks in a row | 5 | -5.5 [-6.6, -4.4] | 58.5 | `win(inRow=3)|-|-|mult` |
 | cb-trick-mult | kept | common | Gathering Basket | basket | Generic, BidHigh | +1 contract multiplier when your team wins a trick | 2 | -1.5 [-2.8, -0.3] | 99.2 | `win|-|-|mult` |
 | cc-any-suit-first-two | kept | common | Untethered Balloon | balloon | Nil, Spades, LowCards, Suits | Your team can play any suit on the first two tricks | 2 | 1.7 [0.4, 2.9] |  | `play|first=2|-|anySuit` |
-| cc-low-hold-points | kept | common | Humble Acorns | acorn | LowCards, Nil | +2 contract points for each [2] through [6] your team holds | 5 | -4.0 [-5.0, -3.0] | 100.0 | `hold|ranks=2-6|-|points` |
+| cc-low-hold-points | kept | common | Humble Acorns | acorn | LowCards, Nil | +2 contract points for each [2] through [6] your team holds | 4 | -4.0 [-5.0, -3.0] | 100.0 | `hold|ranks=2-6|-|points` |
 | cc-low-last-mult | kept | common | Scrappy Hound | dog | LowCards, Streaks | +10 contract multiplier when your team wins the last trick of a round with a [2] through [10] | 6 | -3.0 [-3.9, -2.0] | 28.0 | `win(trick=last)|ranks=2-10|-|mult` |
 | cc-nil-made-mult | kept | common | Pristine Snow | snowflake | Nil | +10 contract multiplier if your team makes a nil | 2 | -2.7 [-4.3, -1.1] | 26.2 | `nilMade|-|-|mult` |
 | cc-nil-made-points | kept | common | Goose Egg | egg | Nil | +90 contract points if your team makes a nil | 2 | -2.4 [-3.7, -1.1] | 25.2 | `nilMade|-|-|points` |
 | cc-small-contract-mult | kept | common | Modest Cottage | tiny-home | Nil, Exact | +10 contract multiplier when your team bids 4 or less | 3 | -2.0 [-3.0, -1.1] | 32.8 | `bid(max=4)|-|-|mult` |
-| cc-two-hold-mult | kept | common | Little Ducks | duck | LowCards, Nil | +3 contract multiplier for each [2] your team holds | 4 | -3.8 [-4.8, -2.9] | 82.2 | `hold|rank=2|-|mult` |
+| cc-two-hold-mult | kept | common | Little Ducks | duck | LowCards, Nil | +3 contract multiplier for each [2] your team holds | 3 | -3.8 [-4.8, -2.9] | 82.2 | `hold|rank=2|-|mult` |
 | cc-two-win-mult | kept | common | Stinging Bug | bug | LowCards, Spades | +10 contract multiplier when your team wins a trick with a [2] | 4 | -4.1 [-5.0, -3.3] | 22.0 | `win|rank=2|-|mult` |
 | e-hold-suit-s-mult | kept | common | Night Owl | owl | Spades | +1 contract multiplier for each [♠] your team holds | 3 | -0.9 [-2.0, 0.3] | 100.0 | `hold|suit=S|-|mult` |
-| e-lead-rank-k-mult | kept | common | Advancing Monarch | chess-king | Ranks | +3 contract multiplier when your team leads a [K] | 4 | -6.0 [-7.1, -4.8] | 51.0 | `lead|rank=K|-|mult` |
+| e-lead-rank-k-mult | kept | common | Advancing Monarch | chess-king | Ranks | +3 contract multiplier when your team leads a [K] | 3 | -6.0 [-7.1, -4.8] | 51.0 | `lead|rank=K|-|mult` |
 | e-trump-mult | kept | common | Sudden Bolt | bolt | Spades | +2 contract multiplier when your team wins a trick by trumping | 3 | -3.4 [-4.6, -2.2] | 82.2 | `win(by=trump)|-|-|mult` |
-| e-win-suit-d-mult | kept | common | Glowing Ember | fire | Suits | +2 contract multiplier when your team wins a trick with [♦] | 3 | -3.9 [-5.0, -2.7] | 60.2 | `win|suit=D|-|mult` |
+| e-win-suit-d-mult | kept | common | Glowing Ember | fire | Suits | +2 contract multiplier when your team wins a trick with [♦] | 4 | -3.9 [-5.0, -2.7] | 60.2 | `win|suit=D|-|mult` |
 | r1-low-win-points | kept | common | Lucky Clover | clover | LowCards, Spades | +20 contract points when your team wins a trick with a [2] through [6] | 5 | -0.0 [-0.8, 0.8] | 61.3 | `win|ranks=2-6|-|points` |
 | seed-ace-win | kept | common | Winner's Certificate | certification | Ranks | +10 contract points when your team wins a trick with an [A] | 4 | -0.5 [-1.7, 0.7] | 88.3 | `win|rank=A|-|points` |
 | seed-contract-points | kept | common | Measured Ruler | ruler | BidHigh | +3 contract points for each trick in your team's contract | 2 | -4.7 [-5.9, -3.4] | 100.0 | `always|-|contractTrick|points` |
 | seed-diamond-hold | kept | common | Jewel Box | box | Suits | +4 contract points for each [♦] your team holds | 3 | -4.6 [-5.7, -3.4] | 100.0 | `hold|suit=D|-|points` |
 | seed-diamond-lead | kept | common | Ruby Compass | compass | Suits | +15 contract points when your team leads [♦] | 3 | 1.2 [-0.2, 2.5] | 82.3 | `lead|suit=D|-|points` |
-| seed-diamond-win | kept | common | Crimson Bloom | flower | Suits | +30 contract points when your team wins a trick with [♦] | 3 | 1.1 [-0.2, 2.5] | 59.7 | `win|suit=D|-|points` |
-| seed-e-spade-win | kept | common | Black Cat | cat | Spades, Suits | +5 contract points when your team wins a trick with [♠] | 3 | -2.2 [-3.2, -1.1] | 95.3 | `win|suit=S|-|points` |
+| seed-diamond-win | kept | common | Crimson Bloom | flower | Suits | +30 contract points when your team wins a trick with [♦] | 4 | 1.1 [-0.2, 2.5] | 59.7 | `win|suit=D|-|points` |
+| seed-e-spade-win | kept | common | Black Cat | cat | Spades, Suits | +5 contract points when your team wins a trick with [♠] | 4 | -2.2 [-3.2, -1.1] | 95.3 | `win|suit=S|-|points` |
 | seed-exact-mult | kept | common | Fitted Puzzle | puzzle | Exact | +10 contract multiplier if your team makes its contract exactly | 2 | -4.1 [-5.3, -3.0] | 23.3 | `make(exact)|-|-|mult` |
 | seed-last-trick | kept | common | Emptying Hourglass | hourglass | Streaks | +15 contract multiplier when your team wins the last trick of a round | 3 | 0.8 [-0.4, 2.0] | 48.6 | `win(trick=last)|-|-|mult` |
 | seed-nil-bid-mult | kept | common | Vanishing Ghost | ghost | Nil | +5 contract multiplier when your team bids nil | 2 | -3.7 [-5.0, -2.4] | 41.2 | `bid(nil)|-|-|mult` |
@@ -76,28 +76,28 @@ Lift is win-rate points over the same-rarity control with a 90% interval; fire i
 | seed-win-points | kept | common | Plump Piggy | piggy-bank | Generic | +3 contract points when your team wins a trick | 2 | -1.7 [-2.9, -0.5] | 99.3 | `win|-|-|points` |
 | r1-exact-points | kept | uncommon | Perfect Bullseye | bullseye | Exact | +325 contract points if your team makes its contract exactly | 2 | 6.0 [4.6, 7.3] | 23.5 | `make(exact)|-|-|points` |
 | r1-exact-xmult | kept | uncommon | Balanced Scales | scale | Exact | ×3 contract multiplier if your team makes its contract exactly | 2 | 2.4 [0.8, 3.9] | 22.2 | `make(exact)|-|-|xmult` |
-| r1-low-hold-mult | kept | uncommon | Scampering Paws | paw-print | LowCards, Nil | +1 contract multiplier for each [2] through [6] your team holds | 5 | -1.9 [-2.8, -0.9] | 100.0 | `hold|ranks=2-6|-|mult` |
+| r1-low-hold-mult | kept | uncommon | Scampering Paws | paw-print | LowCards, Nil | +1 contract multiplier for each [2] through [6] your team holds | 4 | -1.9 [-2.8, -0.9] | 100.0 | `hold|ranks=2-6|-|mult` |
 | r2-diamond-honor-hold | kept | uncommon | Royal Vault | safe | Suits, Ranks | +40 contract points for each [J] through [A] of [♦] your team holds | 6 | 10.1 [9.1, 11.1] | 95.2 | `hold|suit=D,ranks=J-A|-|points` |
 | r2-diamond-lead-mult | kept | uncommon | Raised Torch | torch | Suits | +6 contract multiplier when your team leads [♦] | 3 | 6.2 [4.8, 7.7] | 81.4 | `lead|suit=D|-|mult` |
 | r2-diamond-seven-x | kept | uncommon | Crystal Cube | cube | Suits | ×2.5 contract multiplier if your team holds seven [♦]s | 5 | 1.7 [0.2, 3.2] | 44.4 | `hold(count=7)|suit=D|-|xmult` |
 | r2-four-row-x | kept | uncommon | Unstoppable Train | train | Streaks, BidHigh | ×3 contract multiplier when your team wins four tricks in a row | 5 | 15.0 [14.0, 16.0] | 39.1 | `win(inRow=4)|-|-|xmult` |
 | r2-opp-win-points | kept | uncommon | Silver-Lined Cloud | cloud | Exact, Nil, LowCards | +15 contract points when the opponents win a trick | 2 | 7.2 [6.2, 8.1] | 99.4 | `win(whose=opponents)|-|-|points` |
-| r2-queens-beat | kept | uncommon | Ascendant Queen | chess-queen | Streaks, Ranks, BidHigh, Rainbow | Your team's [Q]s beat every other card of their suit | 4 | 12.9 [11.8, 14.0] |  | `play|rank=Q||beats` |
+| r2-queens-beat | kept | uncommon | Ascendant Queen | chess-queen | Streaks, Ranks, BidHigh, Rainbow | Your team's [Q]s beat every other card of their suit | 3 | 12.9 [11.8, 14.0] |  | `play|rank=Q||beats` |
 | seed-flat-mult | kept | uncommon | Steady Pulse | pulse | Generic | +10 contract multiplier | 1 | -2.0 [-3.1, -1.0] | 100.0 | `always|-|-|mult` |
 | seed-nil-made-x | kept | uncommon | Blind Eye | eye | Nil | ×1.5 contract multiplier if your team makes a nil | 2 | -0.3 [-1.8, 1.3] | 27.6 | `nilMade|-|-|xmult` |
 | seed-rainbow-lead-x | kept | uncommon | Circling Globe | globe | Rainbow | ×2 contract multiplier if your team leads all four suits | 5 | 0.7 [-0.9, 2.3] | 44.0 | `suits(count=4,action=lead)|-|-|xmult` |
 | seed-spade-hold | kept | uncommon | Dark Forest | trees | Spades | +10 contract points for each [♠] your team holds | 3 | 6.2 [5.2, 7.1] | 100.0 | `hold|suit=S|-|points` |
-| ua-ace-hold-mult | kept | uncommon | Master Keys | key | Ranks, Rainbow | +2 contract multiplier for each [A] your team holds | 4 | -4.0 [-5.2, -2.8] | 97.2 | `hold|rank=A|-|mult` |
+| ua-ace-hold-mult | kept | uncommon | Master Keys | key | Ranks, Rainbow | +2 contract multiplier for each [A] your team holds | 3 | -4.0 [-5.2, -2.8] | 97.2 | `hold|rank=A|-|mult` |
 | ua-diamond-hold-mult | kept | uncommon | Kindled Menorah | menorah | Suits | +2 contract multiplier for each [♦] your team holds | 3 | 3.1 [1.5, 4.7] | 100.0 | `hold|suit=D|-|mult` |
-| ua-diamond-honor-win | kept | uncommon | Golden Chalice | cup | Suits, Ranks | +50 contract points when your team wins a trick with a [J] through [A] of [♦] | 6 | 2.0 [0.8, 3.1] | 57.6 | `win|suit=D,ranks=J-A|-|points` |
+| ua-diamond-honor-win | kept | uncommon | Golden Chalice | cup | Suits, Ranks | +50 contract points when your team wins a trick with a [J] through [A] of [♦] | 7 | 2.0 [0.8, 3.1] | 57.6 | `win|suit=D,ranks=J-A|-|points` |
 | ua-diamonds-untrumpable | kept | uncommon | Unpickable Lock | lock | Suits, Rainbow | Your team's [♦]s can't be trumped | 3 | 2.3 [1.2, 3.5] |  | `play|suit=D|-|untrumpable` |
-| ua-high-spade-win | kept | uncommon | Ink-Dark Octopus | octopus | Spades, Ranks | +30 contract points when your team wins a trick with a [J] through [A] of [♠] | 6 | 5.3 [4.4, 6.3] | 90.0 | `win|suit=S,ranks=J-A|-|points` |
+| ua-high-spade-win | kept | uncommon | Ink-Dark Octopus | octopus | Spades, Ranks | +30 contract points when your team wins a trick with a [J] through [A] of [♠] | 7 | 5.3 [4.4, 6.3] | 90.0 | `win|suit=S,ranks=J-A|-|points` |
 | ua-rainbow-first-contract | kept | uncommon | Charted Map | map | Rainbow, BidHigh | +4 contract points for each trick in your team's contract when your team wins its first trick with each suit | 5 | 6.5 [5.2, 7.7] | 99.2 | `win(distinct=suit)|-|contractTrick|points` |
 | ua-rainbow-first-mult | kept | uncommon | Painted Butterfly | butterfly | Rainbow | +2 contract multiplier when your team wins its first trick with each suit | 4 | -2.9 [-4.4, -1.4] | 99.2 | `win(distinct=suit)|-|-|mult` |
-| ua-side-raise | kept | uncommon | Rising Tide | water | Suits, Ranks, Rainbow, BidHigh | Opening: Raise every card other than [♠] your team holds by two ranks | 5 | -0.4 [-1.5, 0.7] |  | `opening|from:notSuit=S|-|raise` |
-| ua-spade-raise | kept | uncommon | Midnight Gondola | cable-car | Spades, BidHigh, Streaks | Opening: Raise every [♠] your team holds by two ranks | 5 | 4.6 [3.1, 6.0] |  | `opening|from:suit=S|-|raise` |
+| ua-side-raise | kept | uncommon | Rising Tide | water | Suits, Ranks, Rainbow, BidHigh | Opening: Raise every card other than [♠] your team holds by two ranks | 4 | -0.4 [-1.5, 0.7] |  | `opening|from:notSuit=S|-|raise` |
+| ua-spade-raise | kept | uncommon | Midnight Gondola | cable-car | Spades, BidHigh, Streaks | Opening: Raise every [♠] your team holds by two ranks | 3 | 4.6 [3.1, 6.0] |  | `opening|from:suit=S|-|raise` |
 | ua-spade-seven-x | kept | uncommon | Black Bear | bear | Spades, BidHigh | ×2 contract multiplier if your team holds seven [♠]s | 5 | 6.8 [5.6, 8.0] | 60.7 | `hold(count=7)|suit=S|-|xmult` |
-| ua-three-aces-x | kept | uncommon | Three Laurels | laurel-wreath | Ranks | ×2 contract multiplier if your team holds three [A]s | 6 | -0.2 [-1.5, 1.1] | 58.8 | `hold(count=3)|rank=A|-|xmult` |
+| ua-three-aces-x | kept | uncommon | Three Laurels | laurel-wreath | Ranks | ×2 contract multiplier if your team holds three [A]s | 5 | -0.2 [-1.5, 1.1] | 58.8 | `hold(count=3)|rank=A|-|xmult` |
 | ub-become-four-spades | kept | uncommon | Eclipsed Planet | planet | BidHigh, Spades, Streaks, Generic | Opening: Four cards other than [♠] your team holds become [♠]s | 5 | 8.2 [7.0, 9.3] |  | `opening|from:notSuit=S|suit=S|become` |
 | ub-bid5-xmult | kept | uncommon | Modest Tent | tent | Exact, Nil | ×2 contract multiplier when your team bids 5 or less | 3 | 4.0 [2.9, 5.1] | 52.6 | `bid(max=5)|-|-|xmult` |
 | ub-bid7-points | kept | uncommon | Flexed Biceps | biceps | BidHigh | +145 contract points when your team bids 7 or more | 3 | 6.9 [5.6, 8.2] | 62.2 | `bid(min=7)|-|-|points` |
@@ -106,40 +106,40 @@ Lift is win-rate points over the same-rarity control with a 90% interval; fire i
 | ub-first-trick-contract-points | kept | uncommon | Dawn Alarm | alarm | Streaks, BidHigh | +15 contract points for each trick in your team's contract when your team wins the first trick of a round | 4 | 2.0 [0.9, 3.1] | 52.5 | `win(trick=first)|-|contractTrick|points` |
 | ub-first-trick-xmult | kept | uncommon | Swift Stopwatch | stopwatch | Streaks, Generic | ×1.5 contract multiplier when your team wins the first trick of a round | 3 | -2.3 [-3.4, -1.1] | 49.6 | `win(trick=first)|-|-|xmult` |
 | ub-four-row-points | kept | uncommon | Sweeping Broom | broom | Streaks | +75 contract points when your team wins four tricks in a row | 5 | 1.5 [0.1, 2.9] | 41.7 | `win(inRow=4)|-|-|points` |
-| ub-high-honor-hold-mult | kept | uncommon | Hall of Nobles | institution | BidHigh, Ranks, Generic | +1 contract multiplier for each [J] through [A] your team holds | 5 | -1.4 [-2.5, -0.2] | 100.0 | `hold|ranks=J-A|-|mult` |
-| ub-low-to-aces | kept | uncommon | Winning Ticket | ticket | BidHigh, Ranks, Streaks, Rainbow | Opening: Three [2]s through [9]s your team holds become [A]s | 8 | 7.0 [5.7, 8.3] |  | `opening|from:ranks=2-9|rank=A|become` |
+| ub-high-honor-hold-mult | kept | uncommon | Hall of Nobles | institution | BidHigh, Ranks, Generic | +1 contract multiplier for each [J] through [A] your team holds | 4 | -1.4 [-2.5, -0.2] | 100.0 | `hold|ranks=J-A|-|mult` |
+| ub-low-to-aces | kept | uncommon | Winning Ticket | ticket | BidHigh, Ranks, Streaks, Rainbow | Opening: Three [2]s through [9]s your team holds become [A]s | 5 | 7.0 [5.7, 8.3] |  | `opening|from:ranks=2-9|rank=A|become` |
 | ub-make7-xmult | kept | uncommon | Popped Champagne | champagne | BidHigh, Generic | ×1.5 contract multiplier if your team makes a contract of 7 or more | 4 | -3.1 [-4.1, -2.0] | 26.0 | `make(min=7)|-|-|xmult` |
 | ub-make8-trick-mult | kept | uncommon | Heavy Dumbbell | dumbbell | BidHigh | +3 contract multiplier for each trick in your team's contract if your team makes a contract of 8 or more | 5 | 0.5 [-0.9, 2.0] | 20.1 | `make(min=8)|-|contractTrick|mult` |
-| uc-low-discard | kept | uncommon | Shed Feathers | feather | Nil, LowCards, Exact | Your team can play [2]s through [5]s even when it can follow suit | 4 | 12.6 [11.5, 13.6] |  | `play|cards:ranks=2-5|-|anySuit` |
-| uc-low-lead-mult | kept | uncommon | Scout's Binoculars | binocular | LowCards, Nil | +3 contract multiplier when your team leads a [2] through [6] | 5 | -3.0 [-3.9, -1.9] | 88.1 | `lead|ranks=2-6|-|mult` |
+| uc-low-discard | kept | uncommon | Shed Feathers | feather | Nil, LowCards, Exact | Your team can play [2]s through [5]s even when it can follow suit | 3 | 12.6 [11.5, 13.6] |  | `play|cards:ranks=2-5|-|anySuit` |
+| uc-low-lead-mult | kept | uncommon | Scout's Binoculars | binocular | LowCards, Nil | +3 contract multiplier when your team leads a [2] through [6] | 4 | -3.0 [-3.9, -1.9] | 88.1 | `lead|ranks=2-6|-|mult` |
 | uc-low-win-mult | kept | uncommon | Lucky Dice | dice-6 | LowCards, Spades | +5 contract multiplier when your team wins a trick with a [2] through [9] | 5 | 1.3 [0.2, 2.4] | 78.4 | `win|ranks=2-9|-|mult` |
 | uc-nil-cover-points | kept | uncommon | Guardian Shield | shield | Nil, Generic | +25 nil points when your team wins a trick | 2 | 1.7 [0.5, 3.0] | 98.8 | `win|-|-|nilPoints` |
-| uc-nil-low-hold | kept | uncommon | Light Luggage | luggage | Nil, LowCards | +15 nil points for each [2] through [6] your team holds | 5 | 4.3 [3.2, 5.4] | 100.0 | `hold|ranks=2-6|-|nilPoints` |
+| uc-nil-low-hold | kept | uncommon | Light Luggage | luggage | Nil, LowCards | +15 nil points for each [2] through [6] your team holds | 4 | 4.3 [3.2, 5.4] | 100.0 | `hold|ranks=2-6|-|nilPoints` |
 | uc-spade-lead-mult | kept | uncommon | Black-Sailed Ship | ship | Spades, Streaks | +4 contract multiplier when your team leads [♠] | 3 | -0.3 [-1.3, 0.8] | 78.9 | `lead|suit=S|-|mult` |
 | uc-trump-freely | kept | uncommon | Unbound Hurricane | hurricane | Spades, LowCards, Streaks, BidHigh | Your team can play [♠]s even when it can follow suit | 2 | 8.9 [7.8, 9.9] |  | `play|cards:suit=S|-|anySuit` |
-| r1-spade-four-x | kept | rare | Fourfold Axe | axe | Spades, BidHigh | ×2.5 contract multiplier when your team wins four tricks with [♠] | 6 | 8.7 [7.4, 10.0] | 44.0 | `win(count=4)|suit=S|-|xmult` |
+| r1-spade-four-x | kept | rare | Fourfold Axe | axe | Spades, BidHigh | ×2.5 contract multiplier when your team wins four tricks with [♠] | 7 | 8.7 [7.4, 10.0] | 44.0 | `win(count=4)|suit=S|-|xmult` |
 | r2-diamonds-beat | kept | rare | Flawless Gem | gem | Suits, Rainbow | Your team's [♦]s beat every other card of their suit | 3 | 12.4 [11.4, 13.5] |  | `play|suit=D||beats` |
-| r2-high-middle-free | kept | rare | Middle Path | path | Nil, Exact, Spades, Suits | Your team can play [7]s through [9]s even when it can follow suit | 4 | 11.6 [10.5, 12.8] |  | `play|cards:ranks=7-9|-|anySuit` |
-| r2-twos-beat-rare | kept | rare | Crowned Pawn | chess-pawn | LowCards, Rainbow, Nil | Your team's [2]s beat every other card of their suit | 4 | 11.5 [10.3, 12.8] |  | `play|rank=2||beats` |
-| ra-ace-hold-x | kept | rare | Hoarded Suns | sun | Ranks, Rainbow | ×1.1 contract multiplier for each [A] your team holds | 4 | 1.5 [0.5, 2.5] | 98.6 | `hold|rank=A|-|xmult` |
+| r2-high-middle-free | kept | rare | Middle Path | path | Nil, Exact, Spades, Suits | Your team can play [7]s through [9]s even when it can follow suit | 3 | 11.6 [10.5, 12.8] |  | `play|cards:ranks=7-9|-|anySuit` |
+| r2-twos-beat-rare | kept | rare | Crowned Pawn | chess-pawn | LowCards, Rainbow, Nil | Your team's [2]s beat every other card of their suit | 3 | 11.5 [10.3, 12.8] |  | `play|rank=2||beats` |
+| ra-ace-hold-x | kept | rare | Hoarded Suns | sun | Ranks, Rainbow | ×1.1 contract multiplier for each [A] your team holds | 3 | 1.5 [0.5, 2.5] | 98.6 | `hold|rank=A|-|xmult` |
 | ra-diamond-hold-x | kept | rare | Polished Hexagon | hexagon | Suits | ×1.1 contract multiplier for each [♦] your team holds | 3 | 9.3 [7.9, 10.7] | 100.0 | `hold|suit=D|-|xmult` |
-| ra-diamond-led-win-x | kept | rare | Swift Lasso | lasso | Suits, Spades | ×1.25 contract multiplier when your team wins a trick led with [♦] | 3 | 0.8 [-0.3, 1.9] | 78.4 | `win(led=suit=D)|-|-|xmult` |
-| ra-jq-become-aces | kept | rare | Wand of Ascension | magic-wand | Ranks, BidHigh, Rainbow | Opening: Every [J] through [Q] your team holds becomes an [A] | 7 | 11.3 [10.2, 12.5] |  | `opening|from:ranks=J-Q|rank=A|become` |
+| ra-diamond-led-win-x | kept | rare | Swift Lasso | lasso | Suits, Spades | ×1.25 contract multiplier when your team wins a trick led with [♦] | 4 | 0.8 [-0.3, 1.9] | 78.4 | `win(led=suit=D)|-|-|xmult` |
+| ra-jq-become-aces | kept | rare | Wand of Ascension | magic-wand | Ranks, BidHigh, Rainbow | Opening: Every [J] through [Q] your team holds becomes an [A] | 4 | 11.3 [10.2, 12.5] |  | `opening|from:ranks=J-Q|rank=A|become` |
 | ra-rainbow-first-x | kept | rare | Spinning Color Wheel | color-wheel | Rainbow, Ranks, Suits | ×1.2 contract multiplier when your team wins its first trick with each suit | 4 | 4.4 [3.3, 5.5] | 98.9 | `win(distinct=suit)|-|-|xmult` |
 | ra-spade-lead-x | kept | rare | Vanguard Helmet | helmet | Spades, Streaks | ×1.15 contract multiplier when your team leads [♠] | 3 | 0.1 [-1.0, 1.1] | 77.5 | `lead|suit=S|-|xmult` |
 | ra-trump-x | kept | rare | Crashing Meteor | meteor | Spades, Streaks | ×1.25 contract multiplier when your team wins a trick by trumping | 3 | 3.8 [2.8, 4.7] | 78.5 | `win(by=trump)|-|-|xmult` |
-| rb-honors-free | kept | rare | Wandering Bishop | chess-bishop | Nil, Exact, Spades, BidHigh | Your team can play [10]s through [A]s even when it can follow suit | 4 | 9.0 [7.9, 10.1] |  | `play|cards:ranks=10-A|-|anySuit` |
+| rb-honors-free | kept | rare | Wandering Bishop | chess-bishop | Nil, Exact, Spades, BidHigh | Your team can play [10]s through [A]s even when it can follow suit | 3 | 9.0 [7.9, 10.1] |  | `play|cards:ranks=10-A|-|anySuit` |
 | rb-opp-win-mult | kept | rare | Fallen Leaves | leaf | Exact, Nil, LowCards | +2 contract multiplier when the opponents win a trick | 2 | -0.8 [-1.7, 0.2] | 99.5 | `win(whose=opponents)|-|-|mult` |
 | rb-outbid-x | kept | rare | Auctioneer's Gavel | gavel | BidHigh, Generic | ×4 contract multiplier when your team bids more than the opponents | 2 | 10.2 [9.0, 11.5] | 42.1 | `bid(vs=opponents)|-|-|xmult` |
 | rb-streak-contract-mult | kept | rare | Gathering Tornado | tornado | Streaks, BidHigh | +1 contract multiplier for each trick in your team's contract when your team wins consecutive tricks | 4 | 12.9 [11.6, 14.2] | 82.5 | `win(consecutive)|-|contractTrick|mult` |
-| rc-low-lead-x | kept | rare | Quiet Sneakers | sneaker | LowCards, Nil, Rainbow | ×1.15 contract multiplier when your team leads a [2] through [6] | 5 | 2.5 [1.5, 3.6] | 85.7 | `lead|ranks=2-6|-|xmult` |
+| rc-low-lead-x | kept | rare | Quiet Sneakers | sneaker | LowCards, Nil, Rainbow | ×1.15 contract multiplier when your team leads a [2] through [6] | 4 | 2.5 [1.5, 3.6] | 85.7 | `lead|ranks=2-6|-|xmult` |
 | seed-ace-mult | kept | rare | Hero's Badge | badge | Ranks | +4 contract multiplier when your team wins a trick with an [A] | 4 | -0.0 [-1.4, 1.4] | 84.5 | `win|rank=A|-|mult` |
 | seed-flat-x | kept | rare | Double Helix | dna | Generic | ×2 contract multiplier | 1 | 11.4 [10.3, 12.6] | 100.0 | `always|-|-|xmult` |
 | seed-rainbow-x | kept | rare | Full Rainbow | rainbow | Rainbow | ×2.5 contract multiplier if your team wins tricks with all four suits | 5 | 1.9 [0.5, 3.2] | 27.6 | `suits(count=4,action=win)|-|-|xmult` |
-| seed-raise | kept | rare | Uplifting Hand | hand | BidHigh, Ranks, Streaks | Opening: Raise every card your team holds by two ranks | 4 | 8.6 [7.5, 9.6] |  | `opening|-|-|raise` |
+| seed-raise | kept | rare | Uplifting Hand | hand | BidHigh, Ranks, Streaks | Opening: Raise every card your team holds by two ranks | 2 | 8.6 [7.5, 9.6] |  | `opening|-|-|raise` |
 | seed-two-win | kept | rare | Lucky Penny | coin | LowCards | +180 contract points when your team wins a trick with a [2] | 4 | 3.7 [2.6, 4.7] | 25.1 | `win|rank=2|-|points` |
-| r1-faces-untrumpable | kept | legendary | Unbreachable Castle | castle | Suits, Ranks, Rainbow, BidHigh | Your team's [Q]s through [A]s can't be trumped | 5 | 1.8 [0.6, 3.0] |  | `play|ranks=Q-A|-|untrumpable` |
-| r1-free-discards | kept | legendary | Unlatched Door | door-open | Generic | Your team can play cards other than [♠] even when it can follow suit | 2 | 6.7 [5.5, 8.0] |  | `play|cards:notSuit=S|-|anySuit` |
+| r1-faces-untrumpable | kept | legendary | Unbreachable Castle | castle | Suits, Ranks, Rainbow, BidHigh | Your team's [Q]s through [A]s can't be trumped | 4 | 1.8 [0.6, 3.0] |  | `play|ranks=Q-A|-|untrumpable` |
+| r1-free-discards | kept | legendary | Unlatched Door | door-open | Generic | Your team can play cards other than [♠] even when it can follow suit | 3 | 6.7 [5.5, 8.0] |  | `play|cards:notSuit=S|-|anySuit` |
 | ra-ace-win-x | kept | legendary | Victor's Trophy | trophy | Ranks, Rainbow, BidHigh | ×1.2 contract multiplier when your team wins a trick with an [A] | 4 | 1.6 [0.6, 2.6] | 90.9 | `win|rank=A|-|xmult` |
 | rb-contract-trick-x | kept | legendary | Great Temple | temple | BidHigh, Generic | ×1.15 contract multiplier for each trick in your team's contract | 2 | 1.7 [0.3, 3.0] | 100.0 | `always|-|contractTrick|xmult` |
 | control-blank-common | candidate | common |  |  | Generic | +0 contract points | 1 |  |  | `always|-|-|points` |
@@ -152,35 +152,35 @@ Lift is win-rate points over the same-rarity control with a 90% interval; fire i
 | control-legendary | candidate | legendary |  |  | Generic | +70 contract points | 1 | 8.6 [7.7, 9.5] | 100.0 | `always|-|-|points` |
 | cc-low-narrow-win | replaced | common |  |  | LowCards, Spades | +30 contract points when your team wins a trick with a [2] through [7] | 5 | 1.8 [0.5, 3.1] | 72.1 | `win|ranks=2-7|-|points` |
 | uc-exact-contract-points | replaced | uncommon |  |  | Exact, BidHigh | +65 contract points for each trick in your team's contract if your team makes its contract exactly | 3 | -2.4 [-3.6, -1.2] | 22.8 | `make(exact)|-|contractTrick|points` |
-| uc-low-hold-mult | replaced | uncommon |  |  | LowCards, Nil | +4 contract multiplier for each [2] through [4] your team holds | 5 | -0.8 [-2.3, 0.7] | 97.0 | `hold|ranks=2-4|-|mult` |
-| uc-twos-beat | replaced | uncommon |  |  | LowCards, Rainbow, Nil | Your team's [2]s beat every other card of their suit | 4 | 18.7 [17.5, 19.8] |  | `play|rank=2||beats` |
-| r1-middle-free | replaced | rare |  |  | Nil, Exact, Spades, Suits | Your team can play [6]s through [9]s even when it can follow suit | 4 | 18.6 [17.4, 19.9] |  | `play|cards:ranks=6-9|-|anySuit` |
-| ra-spade-win-contract | replaced | rare |  |  | Spades, BidHigh | +2 contract multiplier for each trick in your team's contract when your team wins a trick with [♠] | 4 | -2.6 [-3.6, -1.7] | 91.7 | `win|suit=S|contractTrick|mult` |
+| uc-low-hold-mult | replaced | uncommon |  |  | LowCards, Nil | +4 contract multiplier for each [2] through [4] your team holds | 4 | -0.8 [-2.3, 0.7] | 97.0 | `hold|ranks=2-4|-|mult` |
+| uc-twos-beat | replaced | uncommon |  |  | LowCards, Rainbow, Nil | Your team's [2]s beat every other card of their suit | 3 | 18.7 [17.5, 19.8] |  | `play|rank=2||beats` |
+| r1-middle-free | replaced | rare |  |  | Nil, Exact, Spades, Suits | Your team can play [6]s through [9]s even when it can follow suit | 3 | 18.6 [17.4, 19.9] |  | `play|cards:ranks=6-9|-|anySuit` |
+| ra-spade-win-contract | replaced | rare |  |  | Spades, BidHigh | +2 contract multiplier for each trick in your team's contract when your team wins a trick with [♠] | 5 | -2.6 [-3.6, -1.7] | 91.7 | `win|suit=S|contractTrick|mult` |
 | ra-team-untrumpable | replaced | legendary |  |  | Suits, Ranks, Rainbow, BidHigh | Your team's cards can't be trumped | 2 | 17.6 [16.6, 18.6] |  | `play|-|-|untrumpable` |
 | seed-flat-x2 | replaced | legendary |  |  | Generic | ×3 contract multiplier | 1 | 3.5 [2.2, 4.8] | 100.0 | `always|-|-|xmult` |
-| ca-ace-become | cut | common |  |  | Ranks, BidHigh, Rainbow | Opening: One card your team holds becomes an [A] | 7 | -3.1 [-4.1, -2.0] |  | `opening|rank=A|-|become` |
-| ca-ace-diamond-win | cut | common |  |  | Suits, Ranks | +40 contract points when your team wins a trick with the [A♦] | 5 | -3.0 [-4.1, -1.9] | 41.7 | `win|suit=D,rank=A|-|points` |
+| ca-ace-become | cut | common |  |  | Ranks, BidHigh, Rainbow | Opening: One card your team holds becomes an [A] | 3 | -3.1 [-4.1, -2.0] |  | `opening|rank=A|-|become` |
+| ca-ace-diamond-win | cut | common |  |  | Suits, Ranks | +40 contract points when your team wins a trick with the [A♦] | 6 | -3.0 [-4.1, -1.9] | 41.7 | `win|suit=D,rank=A|-|points` |
 | ca-ace-first-trick | cut | common |  |  | Ranks | +10 contract multiplier when your team wins the first trick of a round with an [A] | 5 | 5.5 [4.3, 6.8] | 43.9 | `win(trick=first)|rank=A|-|mult` |
-| ca-ace-lead-three | cut | common |  |  | Ranks | +15 contract multiplier when your team leads an [A] three times | 7 | 0.1 [-1.6, 1.7] | 16.5 | `lead(count=3)|rank=A|-|mult` |
+| ca-ace-lead-three | cut | common |  |  | Ranks | +15 contract multiplier when your team leads an [A] three times | 6 | 0.1 [-1.6, 1.7] | 16.5 | `lead(count=3)|rank=A|-|mult` |
 | ca-ace-win-contract | cut | common |  |  | Ranks, BidHigh | +3 contract points for each trick in your team's contract when your team wins a trick with an [A] | 5 | -1.2 [-2.4, -0.1] | 89.9 | `win|rank=A|contractTrick|points` |
-| ca-become-spades | cut | common |  |  | Spades, BidHigh, Rainbow | Opening: Two cards your team holds become [♠]s | 6 | -1.5 [-2.3, -0.8] |  | `opening|suit=S|-|become` |
-| ca-diamond-become-from-clubs | cut | common |  |  | Suits, Spades, Nil | Opening: Every [♣] your team holds becomes a [♦] | 6 | -14.5 [-15.6, -13.3] |  | `opening|from:suit=C|suit=D|become` |
-| ca-diamond-first-trick | cut | common |  |  | Suits | +40 contract points when your team wins the first trick of a round with [♦] | 4 | -6.1 [-7.8, -4.4] | 19.9 | `win(trick=first)|suit=D|-|points` |
+| ca-become-spades | cut | common |  |  | Spades, BidHigh, Rainbow | Opening: Two cards your team holds become [♠]s | 3 | -1.5 [-2.3, -0.8] |  | `opening|suit=S|-|become` |
+| ca-diamond-become-from-clubs | cut | common |  |  | Suits, Spades, Nil | Opening: Every [♣] your team holds becomes a [♦] | 3 | -14.5 [-15.6, -13.3] |  | `opening|from:suit=C|suit=D|become` |
+| ca-diamond-first-trick | cut | common |  |  | Suits | +40 contract points when your team wins the first trick of a round with [♦] | 5 | -6.1 [-7.8, -4.4] | 19.9 | `win(trick=first)|suit=D|-|points` |
 | ca-diamond-hold-nine-x | cut | common |  |  | Suits | ×1.5 contract multiplier if your team holds nine [♦]s | 5 | -2.9 [-4.8, -1.0] | 10.8 | `hold(count=9)|suit=D|-|xmult` |
 | ca-diamond-lead-contract | cut | common |  |  | Suits, BidHigh | +3 contract points for each trick in your team's contract when your team leads [♦] | 4 | -1.7 [-2.7, -0.7] | 82.7 | `lead|suit=D|contractTrick|points` |
 | ca-diamond-lead-three | cut | common | Thrice-Struck Bell | bell | Suits | +5 contract multiplier when your team leads [♦] three times | 6 | -4.2 [-5.6, -2.9] | 24.0 | `lead(count=3)|suit=D|-|mult` |
-| ca-four-aces-x | cut | common |  |  | Ranks | ×1.5 contract multiplier if your team holds four [A]s | 6 | -1.8 [-3.6, -0.1] | 16.5 | `hold(count=4)|rank=A|-|xmult` |
+| ca-four-aces-x | cut | common |  |  | Ranks | ×1.5 contract multiplier if your team holds four [A]s | 5 | -1.8 [-3.6, -0.1] | 16.5 | `hold(count=4)|rank=A|-|xmult` |
 | ca-heart-hold-eight | cut | common |  |  | Suits | +15 contract multiplier if your team holds eight [♥]s | 5 | -3.0 [-4.9, -1.1] | 23.7 | `hold(count=8)|suit=H|-|mult` |
-| ca-king-lead | cut | common |  |  | Ranks | +20 contract points when your team leads a [K] | 4 | -2.5 [-4.4, -0.7] | 66.8 | `lead|rank=K|-|points` |
-| ca-lead-spades | cut | common |  |  | Spades, Rainbow, BidHigh | Your team can lead [♠] before [♠]s are broken | 2 | -13.7 [-14.7, -12.8] |  | `play|-|-|leadSpades` |
+| ca-king-lead | cut | common |  |  | Ranks | +20 contract points when your team leads a [K] | 3 | -2.5 [-4.4, -0.7] | 66.8 | `lead|rank=K|-|points` |
+| ca-lead-spades | cut | common |  |  | Spades, Rainbow, BidHigh | Your team can lead [♠] before [♠]s are broken | 4 | -13.7 [-14.7, -12.8] |  | `play|-|-|leadSpades` |
 | ca-rainbow-contract | cut | common |  |  | Rainbow, BidHigh | +10 contract points for each trick in your team's contract if your team wins tricks with all four suits | 6 | -4.3 [-5.4, -3.1] | 29.7 | `suits(count=4,action=win)|-|contractTrick|points` |
 | ca-rainbow-first-mult | cut | common |  |  | Rainbow | +2 contract multiplier when your team wins its first trick with each suit | 4 | 9.0 [7.8, 10.2] | 99.8 | `win(distinct=suit)|-|-|mult` |
-| ca-raise-one | cut | common |  |  | Ranks, BidHigh, Streaks | Opening: Raise every card your team holds by one rank | 6 | -6.1 [-7.9, -4.3] |  | `opening|-|-|raise` |
-| ca-side-win | cut | common |  |  | Suits, Rainbow | +8 contract points when your team wins a trick with a card other than [♠] | 3 | -5.8 [-6.9, -4.6] | 96.2 | `win|notSuit=S|-|points` |
+| ca-raise-one | cut | common |  |  | Ranks, BidHigh, Streaks | Opening: Raise every card your team holds by one rank | 2 | -6.1 [-7.9, -4.3] |  | `opening|-|-|raise` |
+| ca-side-win | cut | common |  |  | Suits, Rainbow | +8 contract points when your team wins a trick with a card other than [♠] | 5 | -5.8 [-6.9, -4.6] | 96.2 | `win|notSuit=S|-|points` |
 | ca-spade-hold-eight | cut | common |  |  | Spades, BidHigh | +15 contract multiplier if your team holds eight [♠]s | 5 | 2.2 [1.3, 3.1] | 27.9 | `hold(count=8)|suit=S|-|mult` |
-| ca-spade-last-trick | cut | common | Dropped Anchor | anchor | Spades, Streaks | +10 contract multiplier when your team wins the last trick of a round with [♠] | 4 | -2.6 [-3.6, -1.5] | 41.9 | `win(trick=last)|suit=S|-|mult` |
+| ca-spade-last-trick | cut | common | Dropped Anchor | anchor | Spades, Streaks | +10 contract multiplier when your team wins the last trick of a round with [♠] | 5 | -2.6 [-3.6, -1.5] | 41.9 | `win(trick=last)|suit=S|-|mult` |
 | ca-trump-contract | cut | common |  |  | Spades, BidHigh | +4 contract points for each trick in your team's contract when your team wins a trick by trumping | 4 | -1.9 [-3.1, -0.8] | 82.0 | `win(by=trump)|-|contractTrick|points` |
-| ca-two-spade-win | cut | common |  |  | Spades, LowCards | +60 contract points when your team wins a trick with the [2♠] | 5 | -6.4 [-7.4, -5.4] | 25.3 | `win|suit=S,rank=2|-|points` |
+| ca-two-spade-win | cut | common |  |  | Spades, LowCards | +60 contract points when your team wins a trick with the [2♠] | 6 | -6.4 [-7.4, -5.4] | 25.3 | `win|suit=S,rank=2|-|points` |
 | cb-bid7-mult | cut | common | Brash Megaphone | megaphone | BidHigh | +5 contract multiplier when your team bids 7 or more | 3 | -7.2 [-8.5, -6.0] | 51.2 | `bid(min=7)|-|-|mult` |
 | cb-bid8-trick-points | cut | common |  |  | BidHigh | +10 contract points for each trick in your team's contract when your team bids 8 or more | 4 | -5.5 [-7.1, -3.9] | 36.2 | `bid(min=8)|-|contractTrick|points` |
 | cb-bid9-xmult | cut | common |  |  | BidHigh | ×1.5 contract multiplier when your team bids 9 or more | 3 | -4.9 [-6.3, -3.5] | 18.8 | `bid(min=9)|-|-|xmult` |
@@ -197,36 +197,36 @@ Lift is win-rate points over the same-rarity control with a 90% interval; fire i
 | cb-grow-make-points | cut | common |  |  | Generic | This sigil gains +15 contract points every time your team makes its contract (currently +0) | 4 | -4.9 [-5.8, -4.1] | 63.9 | `make|-|growth|points` |
 | cb-grow-make8-points | cut | common |  |  | BidHigh | This sigil gains +25 contract points every time your team makes a contract of 8 or more (currently +0) | 6 | -6.5 [-8.0, -5.0] | 15.7 | `make(min=8)|-|growth|points` |
 | cb-last-trick-points | cut | common |  |  | Streaks, Exact | +40 contract points when your team wins the last trick of a round | 3 | -5.5 [-6.7, -4.3] | 51.0 | `win(trick=last)|-|-|points` |
-| cb-lead-spades | cut | common |  |  | Spades, BidHigh, Streaks | Your team can lead [♠] before [♠]s are broken | 2 |  |  | `play|-|-|leadSpades` |
+| cb-lead-spades | cut | common |  |  | Spades, BidHigh, Streaks | Your team can lead [♠] before [♠]s are broken | 4 |  |  | `play|-|-|leadSpades` |
 | cb-make-x | cut | common | Stamp of Approval | stamp | Generic | ×1.15 contract multiplier if your team makes its contract | 2 | -7.3 [-8.3, -6.2] | 54.2 | `make|-|-|xmult` |
 | cb-opp-set-grow | cut | common |  |  | Generic | This sigil gains +3 contract multiplier every time the opponents miss their contract (currently +0) | 4 | -6.1 [-7.0, -5.2] | 35.5 | `opponentsSet|-|growth|mult` |
 | cb-opp-set-points | cut | common |  |  | Generic | +60 contract points if the opponents miss their contract | 2 | -2.7 [-3.5, -1.8] | 35.5 | `opponentsSet|-|-|points` |
-| cb-raise-one | cut | common |  |  | BidHigh, Ranks, Streaks, Generic | Opening: Raise every card your team holds by one rank | 6 |  |  | `opening|-|-|raise` |
+| cb-raise-one | cut | common |  |  | BidHigh, Ranks, Streaks, Generic | Opening: Raise every card your team holds by one rank | 2 |  |  | `opening|-|-|raise` |
 | cb-three-row-points | cut | common |  |  | Streaks | +40 contract points when your team wins three tricks in a row | 5 | -3.8 [-5.4, -2.3] | 61.9 | `win(inRow=3)|-|-|points` |
 | cc-any-suit-last-four | cut | common |  |  | Nil, Exact, Spades, Streaks | Your team can play any suit on the last four tricks | 2 | -8.2 [-9.1, -7.4] |  | `play|last=4|-|anySuit` |
 | cc-exact-per-trick | cut | common |  |  | Exact, BidHigh | +10 contract points for each trick in your team's contract if your team makes its contract exactly | 3 |  |  | `make(exact)|-|contractTrick|points` |
 | cc-first-lead | cut | common |  |  | Generic, Ranks, Streaks | Your team leads the first trick of a round | 1 |  |  | `play|-|-|firstLead` |
 | cc-first-trick-mult | cut | common |  |  | Streaks, Ranks, Generic | +10 contract multiplier when your team wins the first trick of a round | 3 |  |  | `win(trick=first)|-|-|mult` |
-| cc-lead-a-two | cut | common |  |  | LowCards, Nil | +20 contract points when your team leads a [2] | 4 | -2.8 [-3.8, -1.8] | 52.2 | `lead|rank=2|-|points` |
-| cc-lead-spades | cut | common |  |  | Spades, Nil, BidHigh | Your team can lead [♠] before [♠]s are broken | 2 |  |  | `play|-|-|leadSpades` |
-| cc-low-diamond-win | cut | common |  |  | LowCards, Suits | +20 contract points when your team wins a trick with a [2] through [10] of [♦] | 6 | -7.4 [-8.4, -6.3] | 14.8 | `win|suit=D,ranks=2-10|-|points` |
-| cc-low-lead-mult | cut | common |  |  | LowCards, Nil | +15 contract multiplier when your team leads a [2] through [6] three times | 8 | 4.4 [3.6, 5.2] | 54.7 | `lead(count=3)|ranks=2-6|-|mult` |
-| cc-low-spade-win | cut | common |  |  | LowCards, Spades | +20 contract points when your team wins a trick with a [2] through [10] of [♠] | 6 | -1.2 [-2.2, -0.1] | 80.8 | `win|suit=S,ranks=2-10|-|points` |
+| cc-lead-a-two | cut | common |  |  | LowCards, Nil | +20 contract points when your team leads a [2] | 3 | -2.8 [-3.8, -1.8] | 52.2 | `lead|rank=2|-|points` |
+| cc-lead-spades | cut | common |  |  | Spades, Nil, BidHigh | Your team can lead [♠] before [♠]s are broken | 4 |  |  | `play|-|-|leadSpades` |
+| cc-low-diamond-win | cut | common |  |  | LowCards, Suits | +20 contract points when your team wins a trick with a [2] through [10] of [♦] | 7 | -7.4 [-8.4, -6.3] | 14.8 | `win|suit=D,ranks=2-10|-|points` |
+| cc-low-lead-mult | cut | common |  |  | LowCards, Nil | +15 contract multiplier when your team leads a [2] through [6] three times | 7 | 4.4 [3.6, 5.2] | 54.7 | `lead(count=3)|ranks=2-6|-|mult` |
+| cc-low-spade-win | cut | common |  |  | LowCards, Spades | +20 contract points when your team wins a trick with a [2] through [10] of [♠] | 7 | -1.2 [-2.2, -0.1] | 80.8 | `win|suit=S,ranks=2-10|-|points` |
 | cc-low-three-win | cut | common |  |  | LowCards | +50 contract points when your team wins three tricks with [2]s through [10]s | 8 | -4.0 [-5.8, -2.2] | 37.7 | `win(count=3)|ranks=2-10|-|points` |
 | cc-mult-per-trick | cut | common |  |  | BidHigh, Generic | +1 contract multiplier for each trick in your team's contract | 2 |  |  | `always|-|contractTrick|mult` |
 | cc-nil-bid-points | cut | common |  |  | Nil, BidHigh | +80 contract points when your team bids nil | 2 | 1.1 [0.1, 2.0] | 49.9 | `bid(nil)|-|-|points` |
 | cc-nil-bid-xmult | cut | common | Hollow Ring | torus | Nil | ×1.25 contract multiplier when your team bids nil | 2 | -6.0 [-7.6, -4.5] | 40.3 | `bid(nil)|-|-|xmult` |
 | cc-nil-contract-trick | cut | common | Sheltering Umbrella | umbrella | Nil, BidHigh | +5 nil points for each trick in your team's contract | 2 | -5.5 [-6.6, -4.4] | 100.0 | `always|-|contractTrick|nilPoints` |
-| cc-nil-hold-twos | cut | common |  |  | Nil, LowCards | +30 nil points for each [2] your team holds | 4 | -1.1 [-2.3, -0.0] | 92.7 | `hold|rank=2|-|nilPoints` |
-| cc-raise-one | cut | common |  |  | Generic, BidHigh, Ranks, Streaks | Opening: Raise every card your team holds by one rank | 6 |  |  | `opening|-|-|raise` |
+| cc-nil-hold-twos | cut | common |  |  | Nil, LowCards | +30 nil points for each [2] your team holds | 3 | -1.1 [-2.3, -0.0] | 92.7 | `hold|rank=2|-|nilPoints` |
+| cc-raise-one | cut | common |  |  | Generic, BidHigh, Ranks, Streaks | Opening: Raise every card your team holds by one rank | 2 |  |  | `opening|-|-|raise` |
 | cc-set-them-mult | cut | common |  |  | Generic, Nil, Exact | +15 contract multiplier if the opponents miss their contract | 2 |  |  | `opponentsSet|-|-|mult` |
-| cc-swap-five | cut | common |  |  | Nil, Suits, Spades, BidHigh | Opening: Swap five cards with your partner | 5 | -6.5 [-7.6, -5.4] |  | `opening|-|-|swap` |
-| cc-swap-one | cut | common |  |  | Nil, Suits, Spades | Opening: Swap one card with your partner | 5 | -12.8 [-13.8, -11.8] |  | `opening|-|-|swap` |
-| cc-three-queens | cut | common |  |  | BidHigh, Ranks, Rainbow | Opening: Three cards your team holds become [Q]s | 7 | -3.1 [-4.1, -2.0] |  | `opening|rank=Q|-|become` |
-| cc-two-aces | cut | common |  |  | Ranks, BidHigh, Rainbow | Opening: Two cards your team holds become [A]s | 7 |  |  | `opening|rank=A|-|become` |
-| cc-two-spades | cut | common |  |  | Spades, BidHigh, LowCards | Opening: Two cards your team holds become [♠]s | 6 |  |  | `opening|suit=S|-|become` |
-| cc-two-twos | cut | common |  |  | Nil, LowCards, Exact | Opening: Two cards your team holds become [2]s | 7 | -20.2 [-21.0, -19.3] |  | `opening|rank=2|-|become` |
-| cc-twos-to-spades | cut | common |  |  | LowCards, Spades, Nil | Opening: Every [2] your team holds becomes a [♠] | 7 | -2.3 [-3.3, -1.4] |  | `opening|from:rank=2|suit=S|become` |
+| cc-swap-five | cut | common |  |  | Nil, Suits, Spades, BidHigh | Opening: Swap five cards with your partner | 1 | -6.5 [-7.6, -5.4] |  | `opening|-|-|swap` |
+| cc-swap-one | cut | common |  |  | Nil, Suits, Spades | Opening: Swap one card with your partner | 1 | -12.8 [-13.8, -11.8] |  | `opening|-|-|swap` |
+| cc-three-queens | cut | common |  |  | BidHigh, Ranks, Rainbow | Opening: Three cards your team holds become [Q]s | 3 | -3.1 [-4.1, -2.0] |  | `opening|rank=Q|-|become` |
+| cc-two-aces | cut | common |  |  | Ranks, BidHigh, Rainbow | Opening: Two cards your team holds become [A]s | 3 |  |  | `opening|rank=A|-|become` |
+| cc-two-spades | cut | common |  |  | Spades, BidHigh, LowCards | Opening: Two cards your team holds become [♠]s | 3 |  |  | `opening|suit=S|-|become` |
+| cc-two-twos | cut | common |  |  | Nil, LowCards, Exact | Opening: Two cards your team holds become [2]s | 3 | -20.2 [-21.0, -19.3] |  | `opening|rank=2|-|become` |
+| cc-twos-to-spades | cut | common |  |  | LowCards, Spades, Nil | Opening: Every [2] your team holds becomes a [♠] | 3 | -2.3 [-3.3, -1.4] |  | `opening|from:rank=2|suit=S|become` |
 | cc-win-last-points | cut | common |  |  | Streaks, Generic, Spades | +50 contract points when your team wins the last trick of a round | 3 |  |  | `win(trick=last)|-|-|points` |
 | e-bid4less-mult | cut | common |  |  | Exact | +20 contract multiplier when your team bids 4 or less | 3 |  |  | `bid(max=4)|-|-|mult` |
 | e-bid4less-pts | cut | common |  |  | Exact | +150 contract points when your team bids 4 or less | 3 |  |  | `bid(max=4)|-|-|points` |
@@ -251,30 +251,30 @@ Lift is win-rate points over the same-rarity control with a 90% interval; fire i
 | e-first-mult | cut | common |  |  | Streaks | +15 contract multiplier when your team wins the first trick of a round | 3 |  |  | `win(trick=first)|-|-|mult` |
 | e-first-pts | cut | common |  |  | Streaks | +90 contract points when your team wins the first trick of a round | 3 | 3.4 [2.2, 4.5] | 55.5 | `win(trick=first)|-|-|points` |
 | e-first-xmult | cut | common |  |  | Streaks | ×2 contract multiplier when your team wins the first trick of a round | 3 |  |  | `win(trick=first)|-|-|xmult` |
-| e-hold-low-mult | cut | common |  |  | LowCards | +1 contract multiplier for each [2] through [10] your team holds | 5 |  |  | `hold|ranks=2-10|-|mult` |
-| e-hold-low-pts | cut | common |  |  | LowCards | +3 contract points for each [2] through [10] your team holds | 5 | 0.3 [-1.6, 2.1] | 100.0 | `hold|ranks=2-10|-|points` |
-| e-hold-low-xmult | cut | common |  |  | LowCards | ×1.25 contract multiplier for each [2] through [10] your team holds | 5 |  |  | `hold|ranks=2-10|-|xmult` |
-| e-hold-rank-10-mult | cut | common |  |  | Ranks | +4 contract multiplier for each [10] your team holds | 4 | 14.4 [13.0, 15.8] | 94.3 | `hold|rank=10|-|mult` |
-| e-hold-rank-10-pts | cut | common |  |  | Ranks | +25 contract points for each [10] your team holds | 4 |  |  | `hold|rank=10|-|points` |
-| e-hold-rank-10-xmult | cut | common |  |  | Ranks | ×1.25 contract multiplier for each [10] your team holds | 4 | 17.9 [16.6, 19.3] | 94.3 | `hold|rank=10|-|xmult` |
-| e-hold-rank-2-mult | cut | common |  |  | LowCards | +3 contract multiplier for each [2] your team holds | 4 |  |  | `hold|rank=2|-|mult` |
-| e-hold-rank-2-pts | cut | common |  |  | LowCards | +20 contract points for each [2] your team holds | 4 | -0.7 [-2.2, 0.8] | 92.6 | `hold|rank=2|-|points` |
-| e-hold-rank-2-xmult | cut | common |  |  | LowCards | ×1.25 contract multiplier for each [2] your team holds | 4 |  |  | `hold|rank=2|-|xmult` |
-| e-hold-rank-a-mult | cut | common |  |  | Ranks | +3 contract multiplier for each [A] your team holds | 4 | 10.1 [8.8, 11.4] | 96.5 | `hold|rank=A|-|mult` |
-| e-hold-rank-a-pts | cut | common |  |  | Ranks | +20 contract points for each [A] your team holds | 4 |  |  | `hold|rank=A|-|points` |
-| e-hold-rank-a-xmult | cut | common |  |  | Ranks | ×1.25 contract multiplier for each [A] your team holds | 4 |  |  | `hold|rank=A|-|xmult` |
-| e-hold-rank-j-mult | cut | common |  |  | Ranks | +4 contract multiplier for each [J] your team holds | 4 | 11.4 [10.0, 12.9] | 95.2 | `hold|rank=J|-|mult` |
-| e-hold-rank-j-pts | cut | common |  |  | Ranks | +20 contract points for each [J] your team holds | 4 | 0.5 [-1.4, 2.4] | 94.9 | `hold|rank=J|-|points` |
-| e-hold-rank-j-xmult | cut | common |  |  | Ranks | ×1.25 contract multiplier for each [J] your team holds | 4 |  |  | `hold|rank=J|-|xmult` |
-| e-hold-rank-k-mult | cut | common |  |  | Ranks | +3 contract multiplier for each [K] your team holds | 4 | 5.9 [4.5, 7.2] | 95.3 | `hold|rank=K|-|mult` |
-| e-hold-rank-k-pts | cut | common |  |  | Ranks | +20 contract points for each [K] your team holds | 4 |  |  | `hold|rank=K|-|points` |
-| e-hold-rank-k-xmult | cut | common |  |  | Ranks | ×1.25 contract multiplier for each [K] your team holds | 4 |  |  | `hold|rank=K|-|xmult` |
-| e-hold-rank-q-mult | cut | common |  |  | Ranks | +4 contract multiplier for each [Q] your team holds | 4 |  |  | `hold|rank=Q|-|mult` |
-| e-hold-rank-q-pts | cut | common |  |  | Ranks | +25 contract points for each [Q] your team holds | 4 |  |  | `hold|rank=Q|-|points` |
-| e-hold-rank-q-xmult | cut | common |  |  | Ranks | ×1.25 contract multiplier for each [Q] your team holds | 4 |  |  | `hold|rank=Q|-|xmult` |
-| e-hold-side-mult | cut | common |  |  | Suits, Rainbow | +1 contract multiplier for each card other than [♠] your team holds | 3 |  |  | `hold|notSuit=S|-|mult` |
-| e-hold-side-pts | cut | common |  |  | Suits, Rainbow | +2 contract points for each card other than [♠] your team holds | 3 | -1.4 [-2.6, -0.3] | 100.0 | `hold|notSuit=S|-|points` |
-| e-hold-side-xmult | cut | common |  |  | Suits, Rainbow | ×1.25 contract multiplier for each card other than [♠] your team holds | 3 |  |  | `hold|notSuit=S|-|xmult` |
+| e-hold-low-mult | cut | common |  |  | LowCards | +1 contract multiplier for each [2] through [10] your team holds | 4 |  |  | `hold|ranks=2-10|-|mult` |
+| e-hold-low-pts | cut | common |  |  | LowCards | +3 contract points for each [2] through [10] your team holds | 4 | 0.3 [-1.6, 2.1] | 100.0 | `hold|ranks=2-10|-|points` |
+| e-hold-low-xmult | cut | common |  |  | LowCards | ×1.25 contract multiplier for each [2] through [10] your team holds | 4 |  |  | `hold|ranks=2-10|-|xmult` |
+| e-hold-rank-10-mult | cut | common |  |  | Ranks | +4 contract multiplier for each [10] your team holds | 3 | 14.4 [13.0, 15.8] | 94.3 | `hold|rank=10|-|mult` |
+| e-hold-rank-10-pts | cut | common |  |  | Ranks | +25 contract points for each [10] your team holds | 3 |  |  | `hold|rank=10|-|points` |
+| e-hold-rank-10-xmult | cut | common |  |  | Ranks | ×1.25 contract multiplier for each [10] your team holds | 3 | 17.9 [16.6, 19.3] | 94.3 | `hold|rank=10|-|xmult` |
+| e-hold-rank-2-mult | cut | common |  |  | LowCards | +3 contract multiplier for each [2] your team holds | 3 |  |  | `hold|rank=2|-|mult` |
+| e-hold-rank-2-pts | cut | common |  |  | LowCards | +20 contract points for each [2] your team holds | 3 | -0.7 [-2.2, 0.8] | 92.6 | `hold|rank=2|-|points` |
+| e-hold-rank-2-xmult | cut | common |  |  | LowCards | ×1.25 contract multiplier for each [2] your team holds | 3 |  |  | `hold|rank=2|-|xmult` |
+| e-hold-rank-a-mult | cut | common |  |  | Ranks | +3 contract multiplier for each [A] your team holds | 3 | 10.1 [8.8, 11.4] | 96.5 | `hold|rank=A|-|mult` |
+| e-hold-rank-a-pts | cut | common |  |  | Ranks | +20 contract points for each [A] your team holds | 3 |  |  | `hold|rank=A|-|points` |
+| e-hold-rank-a-xmult | cut | common |  |  | Ranks | ×1.25 contract multiplier for each [A] your team holds | 3 |  |  | `hold|rank=A|-|xmult` |
+| e-hold-rank-j-mult | cut | common |  |  | Ranks | +4 contract multiplier for each [J] your team holds | 3 | 11.4 [10.0, 12.9] | 95.2 | `hold|rank=J|-|mult` |
+| e-hold-rank-j-pts | cut | common |  |  | Ranks | +20 contract points for each [J] your team holds | 3 | 0.5 [-1.4, 2.4] | 94.9 | `hold|rank=J|-|points` |
+| e-hold-rank-j-xmult | cut | common |  |  | Ranks | ×1.25 contract multiplier for each [J] your team holds | 3 |  |  | `hold|rank=J|-|xmult` |
+| e-hold-rank-k-mult | cut | common |  |  | Ranks | +3 contract multiplier for each [K] your team holds | 3 | 5.9 [4.5, 7.2] | 95.3 | `hold|rank=K|-|mult` |
+| e-hold-rank-k-pts | cut | common |  |  | Ranks | +20 contract points for each [K] your team holds | 3 |  |  | `hold|rank=K|-|points` |
+| e-hold-rank-k-xmult | cut | common |  |  | Ranks | ×1.25 contract multiplier for each [K] your team holds | 3 |  |  | `hold|rank=K|-|xmult` |
+| e-hold-rank-q-mult | cut | common |  |  | Ranks | +4 contract multiplier for each [Q] your team holds | 3 |  |  | `hold|rank=Q|-|mult` |
+| e-hold-rank-q-pts | cut | common |  |  | Ranks | +25 contract points for each [Q] your team holds | 3 |  |  | `hold|rank=Q|-|points` |
+| e-hold-rank-q-xmult | cut | common |  |  | Ranks | ×1.25 contract multiplier for each [Q] your team holds | 3 |  |  | `hold|rank=Q|-|xmult` |
+| e-hold-side-mult | cut | common |  |  | Suits, Rainbow | +1 contract multiplier for each card other than [♠] your team holds | 4 |  |  | `hold|notSuit=S|-|mult` |
+| e-hold-side-pts | cut | common |  |  | Suits, Rainbow | +2 contract points for each card other than [♠] your team holds | 4 | -1.4 [-2.6, -0.3] | 100.0 | `hold|notSuit=S|-|points` |
+| e-hold-side-xmult | cut | common |  |  | Suits, Rainbow | ×1.25 contract multiplier for each card other than [♠] your team holds | 4 |  |  | `hold|notSuit=S|-|xmult` |
 | e-hold-suit-c-mult | cut | common |  |  | Suits | +1 contract multiplier for each [♣] your team holds | 3 | 8.5 [7.2, 9.8] | 99.2 | `hold|suit=C|-|mult` |
 | e-hold-suit-c-pts | cut | common |  |  | Suits | +5 contract points for each [♣] your team holds | 3 |  |  | `hold|suit=C|-|points` |
 | e-hold-suit-c-xmult | cut | common |  |  | Suits | ×1.25 contract multiplier for each [♣] your team holds | 3 |  |  | `hold|suit=C|-|xmult` |
@@ -289,29 +289,29 @@ Lift is win-rate points over the same-rarity control with a 90% interval; fire i
 | e-last-mult | cut | common |  |  | Streaks | +15 contract multiplier when your team wins the last trick of a round | 3 |  |  | `win(trick=last)|-|-|mult` |
 | e-last-pts | cut | common |  |  | Streaks | +80 contract points when your team wins the last trick of a round | 3 |  |  | `win(trick=last)|-|-|points` |
 | e-last-xmult | cut | common | Chequered Flag | flag | Streaks | ×1.2 contract multiplier when your team wins the last trick of a round | 3 | -8.7 [-9.9, -7.5] | 48.2 | `win(trick=last)|-|-|xmult` |
-| e-lead-low-mult | cut | common |  |  | LowCards | +2 contract multiplier when your team leads a [2] through [10] | 5 | 11.7 [10.4, 12.9] | 98.4 | `lead|ranks=2-10|-|mult` |
-| e-lead-low-pts | cut | common |  |  | LowCards | +10 contract points when your team leads a [2] through [10] | 5 |  |  | `lead|ranks=2-10|-|points` |
-| e-lead-low-xmult | cut | common |  |  | LowCards | ×1.25 contract multiplier when your team leads a [2] through [10] | 5 |  |  | `lead|ranks=2-10|-|xmult` |
-| e-lead-rank-10-mult | cut | common |  |  | Ranks | +10 contract multiplier when your team leads a [10] | 4 |  |  | `lead|rank=10|-|mult` |
-| e-lead-rank-10-pts | cut | common |  |  | Ranks | +70 contract points when your team leads a [10] | 4 | 2.8 [1.6, 4.1] | 63.8 | `lead|rank=10|-|points` |
-| e-lead-rank-10-xmult | cut | common |  |  | Ranks | ×1.5 contract multiplier when your team leads a [10] | 4 |  |  | `lead|rank=10|-|xmult` |
-| e-lead-rank-2-mult | cut | common |  |  | LowCards | +10 contract multiplier when your team leads a [2] | 4 |  |  | `lead|rank=2|-|mult` |
-| e-lead-rank-2-pts | cut | common |  |  | LowCards | +65 contract points when your team leads a [2] | 4 |  |  | `lead|rank=2|-|points` |
-| e-lead-rank-2-xmult | cut | common |  |  | LowCards | ×1.5 contract multiplier when your team leads a [2] | 4 | 19.9 [18.5, 21.3] | 61.8 | `lead|rank=2|-|xmult` |
-| e-lead-rank-a-mult | cut | common |  |  | Ranks | +5 contract multiplier when your team leads an [A] | 4 | 13.8 [12.3, 15.3] | 80.3 | `lead|rank=A|-|mult` |
-| e-lead-rank-a-pts | cut | common |  |  | Ranks | +45 contract points when your team leads an [A] | 4 |  |  | `lead|rank=A|-|points` |
-| e-lead-rank-a-xmult | cut | common |  |  | Ranks | ×1.5 contract multiplier when your team leads an [A] | 4 |  |  | `lead|rank=A|-|xmult` |
-| e-lead-rank-j-mult | cut | common |  |  | Ranks | +10 contract multiplier when your team leads a [J] | 4 | 13.0 [11.6, 14.3] | 66.5 | `lead|rank=J|-|mult` |
-| e-lead-rank-j-pts | cut | common |  |  | Ranks | +70 contract points when your team leads a [J] | 4 | 8.6 [7.1, 10.0] | 67.3 | `lead|rank=J|-|points` |
-| e-lead-rank-j-xmult | cut | common |  |  | Ranks | ×1.5 contract multiplier when your team leads a [J] | 4 | 21.1 [19.7, 22.6] | 66.1 | `lead|rank=J|-|xmult` |
-| e-lead-rank-k-pts | cut | common |  |  | Ranks | +50 contract points when your team leads a [K] | 4 |  |  | `lead|rank=K|-|points` |
-| e-lead-rank-k-xmult | cut | common |  |  | Ranks | ×1.5 contract multiplier when your team leads a [K] | 4 | 23.4 [21.9, 24.9] | 73.0 | `lead|rank=K|-|xmult` |
-| e-lead-rank-q-mult | cut | common |  |  | Ranks | +10 contract multiplier when your team leads a [Q] | 4 |  |  | `lead|rank=Q|-|mult` |
-| e-lead-rank-q-pts | cut | common |  |  | Ranks | +65 contract points when your team leads a [Q] | 4 |  |  | `lead|rank=Q|-|points` |
-| e-lead-rank-q-xmult | cut | common |  |  | Ranks | ×1.5 contract multiplier when your team leads a [Q] | 4 | 17.2 [15.8, 18.6] | 67.7 | `lead|rank=Q|-|xmult` |
-| e-lead-side-mult | cut | common |  |  | Suits, Rainbow | +1 contract multiplier when your team leads a card other than [♠] | 3 | 2.0 [1.1, 2.9] | 99.7 | `lead|notSuit=S|-|mult` |
-| e-lead-side-pts | cut | common |  |  | Suits, Rainbow | +10 contract points when your team leads a card other than [♠] | 3 | 1.8 [0.7, 2.9] | 99.7 | `lead|notSuit=S|-|points` |
-| e-lead-side-xmult | cut | common |  |  | Suits, Rainbow | ×1.25 contract multiplier when your team leads a card other than [♠] | 3 |  |  | `lead|notSuit=S|-|xmult` |
+| e-lead-low-mult | cut | common |  |  | LowCards | +2 contract multiplier when your team leads a [2] through [10] | 4 | 11.7 [10.4, 12.9] | 98.4 | `lead|ranks=2-10|-|mult` |
+| e-lead-low-pts | cut | common |  |  | LowCards | +10 contract points when your team leads a [2] through [10] | 4 |  |  | `lead|ranks=2-10|-|points` |
+| e-lead-low-xmult | cut | common |  |  | LowCards | ×1.25 contract multiplier when your team leads a [2] through [10] | 4 |  |  | `lead|ranks=2-10|-|xmult` |
+| e-lead-rank-10-mult | cut | common |  |  | Ranks | +10 contract multiplier when your team leads a [10] | 3 |  |  | `lead|rank=10|-|mult` |
+| e-lead-rank-10-pts | cut | common |  |  | Ranks | +70 contract points when your team leads a [10] | 3 | 2.8 [1.6, 4.1] | 63.8 | `lead|rank=10|-|points` |
+| e-lead-rank-10-xmult | cut | common |  |  | Ranks | ×1.5 contract multiplier when your team leads a [10] | 3 |  |  | `lead|rank=10|-|xmult` |
+| e-lead-rank-2-mult | cut | common |  |  | LowCards | +10 contract multiplier when your team leads a [2] | 3 |  |  | `lead|rank=2|-|mult` |
+| e-lead-rank-2-pts | cut | common |  |  | LowCards | +65 contract points when your team leads a [2] | 3 |  |  | `lead|rank=2|-|points` |
+| e-lead-rank-2-xmult | cut | common |  |  | LowCards | ×1.5 contract multiplier when your team leads a [2] | 3 | 19.9 [18.5, 21.3] | 61.8 | `lead|rank=2|-|xmult` |
+| e-lead-rank-a-mult | cut | common |  |  | Ranks | +5 contract multiplier when your team leads an [A] | 3 | 13.8 [12.3, 15.3] | 80.3 | `lead|rank=A|-|mult` |
+| e-lead-rank-a-pts | cut | common |  |  | Ranks | +45 contract points when your team leads an [A] | 3 |  |  | `lead|rank=A|-|points` |
+| e-lead-rank-a-xmult | cut | common |  |  | Ranks | ×1.5 contract multiplier when your team leads an [A] | 3 |  |  | `lead|rank=A|-|xmult` |
+| e-lead-rank-j-mult | cut | common |  |  | Ranks | +10 contract multiplier when your team leads a [J] | 3 | 13.0 [11.6, 14.3] | 66.5 | `lead|rank=J|-|mult` |
+| e-lead-rank-j-pts | cut | common |  |  | Ranks | +70 contract points when your team leads a [J] | 3 | 8.6 [7.1, 10.0] | 67.3 | `lead|rank=J|-|points` |
+| e-lead-rank-j-xmult | cut | common |  |  | Ranks | ×1.5 contract multiplier when your team leads a [J] | 3 | 21.1 [19.7, 22.6] | 66.1 | `lead|rank=J|-|xmult` |
+| e-lead-rank-k-pts | cut | common |  |  | Ranks | +50 contract points when your team leads a [K] | 3 |  |  | `lead|rank=K|-|points` |
+| e-lead-rank-k-xmult | cut | common |  |  | Ranks | ×1.5 contract multiplier when your team leads a [K] | 3 | 23.4 [21.9, 24.9] | 73.0 | `lead|rank=K|-|xmult` |
+| e-lead-rank-q-mult | cut | common |  |  | Ranks | +10 contract multiplier when your team leads a [Q] | 3 |  |  | `lead|rank=Q|-|mult` |
+| e-lead-rank-q-pts | cut | common |  |  | Ranks | +65 contract points when your team leads a [Q] | 3 |  |  | `lead|rank=Q|-|points` |
+| e-lead-rank-q-xmult | cut | common |  |  | Ranks | ×1.5 contract multiplier when your team leads a [Q] | 3 | 17.2 [15.8, 18.6] | 67.7 | `lead|rank=Q|-|xmult` |
+| e-lead-side-mult | cut | common |  |  | Suits, Rainbow | +1 contract multiplier when your team leads a card other than [♠] | 4 | 2.0 [1.1, 2.9] | 99.7 | `lead|notSuit=S|-|mult` |
+| e-lead-side-pts | cut | common |  |  | Suits, Rainbow | +10 contract points when your team leads a card other than [♠] | 4 | 1.8 [0.7, 2.9] | 99.7 | `lead|notSuit=S|-|points` |
+| e-lead-side-xmult | cut | common |  |  | Suits, Rainbow | ×1.25 contract multiplier when your team leads a card other than [♠] | 4 |  |  | `lead|notSuit=S|-|xmult` |
 | e-lead-suit-c-mult | cut | common |  |  | Suits | +4 contract multiplier when your team leads [♣] | 3 | 9.7 [8.4, 11.0] | 84.6 | `lead|suit=C|-|mult` |
 | e-lead-suit-c-pts | cut | common |  |  | Suits | +25 contract points when your team leads [♣] | 3 | 2.0 [0.4, 3.7] | 83.3 | `lead|suit=C|-|points` |
 | e-lead-suit-c-xmult | cut | common |  |  | Suits | ×1.25 contract multiplier when your team leads [♣] | 3 | 20.9 [19.5, 22.2] | 84.9 | `lead|suit=C|-|xmult` |
@@ -374,20 +374,20 @@ Lift is win-rate points over the same-rarity control with a 90% interval; fire i
 | e-win-rank-q-mult | cut | common |  |  | Ranks | +10 contract multiplier when your team wins a trick with a [Q] | 4 |  |  | `win|rank=Q|-|mult` |
 | e-win-rank-q-pts | cut | common |  |  | Ranks | +50 contract points when your team wins a trick with a [Q] | 4 | -0.1 [-2.0, 1.7] | 65.0 | `win|rank=Q|-|points` |
 | e-win-rank-q-xmult | cut | common |  |  | Ranks | ×1.5 contract multiplier when your team wins a trick with a [Q] | 4 |  |  | `win|rank=Q|-|xmult` |
-| e-win-side-mult | cut | common |  |  | Suits, Rainbow | +2 contract multiplier when your team wins a trick with a card other than [♠] | 3 | 8.9 [8.0, 9.8] | 96.4 | `win|notSuit=S|-|mult` |
-| e-win-side-pts | cut | common |  |  | Suits, Rainbow | +15 contract points when your team wins a trick with a card other than [♠] | 3 |  |  | `win|notSuit=S|-|points` |
-| e-win-side-xmult | cut | common |  |  | Suits, Rainbow | ×1.25 contract multiplier when your team wins a trick with a card other than [♠] | 3 |  |  | `win|notSuit=S|-|xmult` |
-| e-win-suit-c-mult | cut | common |  |  | Suits | +5 contract multiplier when your team wins a trick with [♣] | 3 | 4.2 [3.0, 5.5] | 67.4 | `win|suit=C|-|mult` |
-| e-win-suit-c-pts | cut | common |  |  | Suits | +45 contract points when your team wins a trick with [♣] | 3 | 1.8 [0.1, 3.6] | 65.4 | `win|suit=C|-|points` |
-| e-win-suit-c-xmult | cut | common |  |  | Suits | ×1.5 contract multiplier when your team wins a trick with [♣] | 3 |  |  | `win|suit=C|-|xmult` |
-| e-win-suit-d-pts | cut | common |  |  | Suits | +45 contract points when your team wins a trick with [♦] | 3 |  |  | `win|suit=D|-|points` |
-| e-win-suit-d-xmult | cut | common |  |  | Suits | ×1.5 contract multiplier when your team wins a trick with [♦] | 3 | 25.1 [23.7, 26.6] | 68.8 | `win|suit=D|-|xmult` |
-| e-win-suit-h-mult | cut | common |  |  | Suits | +5 contract multiplier when your team wins a trick with [♥] | 3 | 4.7 [3.4, 6.0] | 68.3 | `win|suit=H|-|mult` |
-| e-win-suit-h-pts | cut | common |  |  | Suits | +40 contract points when your team wins a trick with [♥] | 3 |  |  | `win|suit=H|-|points` |
-| e-win-suit-h-xmult | cut | common |  |  | Suits | ×1.5 contract multiplier when your team wins a trick with [♥] | 3 | 26.7 [25.2, 28.1] | 68.7 | `win|suit=H|-|xmult` |
-| e-win-suit-s-mult | cut | common |  |  | Spades | +2 contract multiplier when your team wins a trick with [♠] | 3 | 6.2 [5.0, 7.4] | 96.1 | `win|suit=S|-|mult` |
-| e-win-suit-s-pts | cut | common |  |  | Spades | +15 contract points when your team wins a trick with [♠] | 3 |  |  | `win|suit=S|-|points` |
-| e-win-suit-s-xmult | cut | common |  |  | Spades | ×1.25 contract multiplier when your team wins a trick with [♠] | 3 |  |  | `win|suit=S|-|xmult` |
+| e-win-side-mult | cut | common |  |  | Suits, Rainbow | +2 contract multiplier when your team wins a trick with a card other than [♠] | 5 | 8.9 [8.0, 9.8] | 96.4 | `win|notSuit=S|-|mult` |
+| e-win-side-pts | cut | common |  |  | Suits, Rainbow | +15 contract points when your team wins a trick with a card other than [♠] | 5 |  |  | `win|notSuit=S|-|points` |
+| e-win-side-xmult | cut | common |  |  | Suits, Rainbow | ×1.25 contract multiplier when your team wins a trick with a card other than [♠] | 5 |  |  | `win|notSuit=S|-|xmult` |
+| e-win-suit-c-mult | cut | common |  |  | Suits | +5 contract multiplier when your team wins a trick with [♣] | 4 | 4.2 [3.0, 5.5] | 67.4 | `win|suit=C|-|mult` |
+| e-win-suit-c-pts | cut | common |  |  | Suits | +45 contract points when your team wins a trick with [♣] | 4 | 1.8 [0.1, 3.6] | 65.4 | `win|suit=C|-|points` |
+| e-win-suit-c-xmult | cut | common |  |  | Suits | ×1.5 contract multiplier when your team wins a trick with [♣] | 4 |  |  | `win|suit=C|-|xmult` |
+| e-win-suit-d-pts | cut | common |  |  | Suits | +45 contract points when your team wins a trick with [♦] | 4 |  |  | `win|suit=D|-|points` |
+| e-win-suit-d-xmult | cut | common |  |  | Suits | ×1.5 contract multiplier when your team wins a trick with [♦] | 4 | 25.1 [23.7, 26.6] | 68.8 | `win|suit=D|-|xmult` |
+| e-win-suit-h-mult | cut | common |  |  | Suits | +5 contract multiplier when your team wins a trick with [♥] | 4 | 4.7 [3.4, 6.0] | 68.3 | `win|suit=H|-|mult` |
+| e-win-suit-h-pts | cut | common |  |  | Suits | +40 contract points when your team wins a trick with [♥] | 4 |  |  | `win|suit=H|-|points` |
+| e-win-suit-h-xmult | cut | common |  |  | Suits | ×1.5 contract multiplier when your team wins a trick with [♥] | 4 | 26.7 [25.2, 28.1] | 68.7 | `win|suit=H|-|xmult` |
+| e-win-suit-s-mult | cut | common |  |  | Spades | +2 contract multiplier when your team wins a trick with [♠] | 4 | 6.2 [5.0, 7.4] | 96.1 | `win|suit=S|-|mult` |
+| e-win-suit-s-pts | cut | common |  |  | Spades | +15 contract points when your team wins a trick with [♠] | 4 |  |  | `win|suit=S|-|points` |
+| e-win-suit-s-xmult | cut | common |  |  | Spades | ×1.25 contract multiplier when your team wins a trick with [♠] | 4 |  |  | `win|suit=S|-|xmult` |
 | e-win-xmult | cut | common |  |  | Generic | ×1.25 contract multiplier when your team wins a trick | 2 |  |  | `win|-|-|xmult` |
 | e-win3-low-mult | cut | common |  |  | LowCards | +20 contract multiplier when your team wins three tricks with [2]s through [10]s | 8 |  |  | `win(count=3)|ranks=2-10|-|mult` |
 | e-win3-low-pts | cut | common |  |  | LowCards | +115 contract points when your team wins three tricks with [2]s through [10]s | 8 |  |  | `win(count=3)|ranks=2-10|-|points` |
@@ -410,84 +410,84 @@ Lift is win-rate points over the same-rarity control with a 90% interval; fire i
 | e-win3-rank-q-mult | cut | common |  |  | Ranks | +40 contract multiplier when your team wins three tricks with [Q]s | 7 |  |  | `win(count=3)|rank=Q|-|mult` |
 | e-win3-rank-q-pts | cut | common |  |  | Ranks | +150 contract points when your team wins three tricks with [Q]s | 7 |  |  | `win(count=3)|rank=Q|-|points` |
 | e-win3-rank-q-xmult | cut | common |  |  | Ranks | ×3 contract multiplier when your team wins three tricks with [Q]s | 7 |  |  | `win(count=3)|rank=Q|-|xmult` |
-| e-win3-side-mult | cut | common |  |  | Suits, Rainbow | +10 contract multiplier when your team wins three tricks with cards other than [♠] | 6 |  |  | `win(count=3)|notSuit=S|-|mult` |
-| e-win3-side-pts | cut | common |  |  | Suits, Rainbow | +70 contract points when your team wins three tricks with cards other than [♠] | 6 |  |  | `win(count=3)|notSuit=S|-|points` |
-| e-win3-side-xmult | cut | common |  |  | Suits, Rainbow | ×2 contract multiplier when your team wins three tricks with cards other than [♠] | 6 |  |  | `win(count=3)|notSuit=S|-|xmult` |
-| e-win3-suit-c-mult | cut | common |  |  | Suits | +40 contract multiplier when your team wins three tricks with [♣] | 6 |  |  | `win(count=3)|suit=C|-|mult` |
-| e-win3-suit-c-pts | cut | common |  |  | Suits | +150 contract points when your team wins three tricks with [♣] | 6 |  |  | `win(count=3)|suit=C|-|points` |
-| e-win3-suit-c-xmult | cut | common |  |  | Suits | ×3 contract multiplier when your team wins three tricks with [♣] | 6 |  |  | `win(count=3)|suit=C|-|xmult` |
-| e-win3-suit-d-mult | cut | common |  |  | Suits | +40 contract multiplier when your team wins three tricks with [♦] | 6 |  |  | `win(count=3)|suit=D|-|mult` |
-| e-win3-suit-d-pts | cut | common |  |  | Suits | +150 contract points when your team wins three tricks with [♦] | 6 |  |  | `win(count=3)|suit=D|-|points` |
-| e-win3-suit-d-xmult | cut | common |  |  | Suits | ×3 contract multiplier when your team wins three tricks with [♦] | 6 |  |  | `win(count=3)|suit=D|-|xmult` |
-| e-win3-suit-h-mult | cut | common |  |  | Suits | +40 contract multiplier when your team wins three tricks with [♥] | 6 |  |  | `win(count=3)|suit=H|-|mult` |
-| e-win3-suit-h-pts | cut | common |  |  | Suits | +150 contract points when your team wins three tricks with [♥] | 6 |  |  | `win(count=3)|suit=H|-|points` |
-| e-win3-suit-h-xmult | cut | common |  |  | Suits | ×3 contract multiplier when your team wins three tricks with [♥] | 6 |  |  | `win(count=3)|suit=H|-|xmult` |
-| e-win3-suit-s-mult | cut | common |  |  | Spades | +10 contract multiplier when your team wins three tricks with [♠] | 6 |  |  | `win(count=3)|suit=S|-|mult` |
-| e-win3-suit-s-pts | cut | common |  |  | Spades | +65 contract points when your team wins three tricks with [♠] | 6 |  |  | `win(count=3)|suit=S|-|points` |
-| e-win3-suit-s-xmult | cut | common |  |  | Spades | ×1.5 contract multiplier when your team wins three tricks with [♠] | 6 |  |  | `win(count=3)|suit=S|-|xmult` |
+| e-win3-side-mult | cut | common |  |  | Suits, Rainbow | +10 contract multiplier when your team wins three tricks with cards other than [♠] | 8 |  |  | `win(count=3)|notSuit=S|-|mult` |
+| e-win3-side-pts | cut | common |  |  | Suits, Rainbow | +70 contract points when your team wins three tricks with cards other than [♠] | 8 |  |  | `win(count=3)|notSuit=S|-|points` |
+| e-win3-side-xmult | cut | common |  |  | Suits, Rainbow | ×2 contract multiplier when your team wins three tricks with cards other than [♠] | 8 |  |  | `win(count=3)|notSuit=S|-|xmult` |
+| e-win3-suit-c-mult | cut | common |  |  | Suits | +40 contract multiplier when your team wins three tricks with [♣] | 7 |  |  | `win(count=3)|suit=C|-|mult` |
+| e-win3-suit-c-pts | cut | common |  |  | Suits | +150 contract points when your team wins three tricks with [♣] | 7 |  |  | `win(count=3)|suit=C|-|points` |
+| e-win3-suit-c-xmult | cut | common |  |  | Suits | ×3 contract multiplier when your team wins three tricks with [♣] | 7 |  |  | `win(count=3)|suit=C|-|xmult` |
+| e-win3-suit-d-mult | cut | common |  |  | Suits | +40 contract multiplier when your team wins three tricks with [♦] | 7 |  |  | `win(count=3)|suit=D|-|mult` |
+| e-win3-suit-d-pts | cut | common |  |  | Suits | +150 contract points when your team wins three tricks with [♦] | 7 |  |  | `win(count=3)|suit=D|-|points` |
+| e-win3-suit-d-xmult | cut | common |  |  | Suits | ×3 contract multiplier when your team wins three tricks with [♦] | 7 |  |  | `win(count=3)|suit=D|-|xmult` |
+| e-win3-suit-h-mult | cut | common |  |  | Suits | +40 contract multiplier when your team wins three tricks with [♥] | 7 |  |  | `win(count=3)|suit=H|-|mult` |
+| e-win3-suit-h-pts | cut | common |  |  | Suits | +150 contract points when your team wins three tricks with [♥] | 7 |  |  | `win(count=3)|suit=H|-|points` |
+| e-win3-suit-h-xmult | cut | common |  |  | Suits | ×3 contract multiplier when your team wins three tricks with [♥] | 7 |  |  | `win(count=3)|suit=H|-|xmult` |
+| e-win3-suit-s-mult | cut | common |  |  | Spades | +10 contract multiplier when your team wins three tricks with [♠] | 7 |  |  | `win(count=3)|suit=S|-|mult` |
+| e-win3-suit-s-pts | cut | common |  |  | Spades | +65 contract points when your team wins three tricks with [♠] | 7 |  |  | `win(count=3)|suit=S|-|points` |
+| e-win3-suit-s-xmult | cut | common |  |  | Spades | ×1.5 contract multiplier when your team wins three tricks with [♠] | 7 |  |  | `win(count=3)|suit=S|-|xmult` |
 | r1-exact-grow-mult | cut | common |  |  | Exact | This sigil gains +6 contract multiplier every time your team makes its contract exactly (currently +0) | 4 | -7.3 [-8.8, -5.9] | 25.2 | `make(exact)|-|growth|mult` |
 | r1-exact-points-common | cut | common |  |  | Exact | +150 contract points if your team makes its contract exactly | 2 | -0.7 [-2.1, 0.7] | 24.7 | `make(exact)|-|-|points` |
-| seed-ace-hold | cut | common | Pinned Medals | medal | Ranks | +4 contract points for each [A] your team holds | 4 | -4.9 [-6.1, -3.8] | 97.2 | `hold|rank=A|-|points` |
-| seed-ace-lead | cut | common |  |  | Ranks | +15 contract points when your team leads an [A] | 4 | -3.4 [-5.3, -1.4] | 77.2 | `lead|rank=A|-|points` |
-| seed-become-two | cut | common |  |  | Nil, Exact, LowCards | Opening: Four cards your team holds become [2]s | 7 | -23.9 [-24.8, -23.1] |  | `opening|rank=2|-|become` |
+| seed-ace-hold | cut | common | Pinned Medals | medal | Ranks | +4 contract points for each [A] your team holds | 3 | -4.9 [-6.1, -3.8] | 97.2 | `hold|rank=A|-|points` |
+| seed-ace-lead | cut | common |  |  | Ranks | +15 contract points when your team leads an [A] | 3 | -3.4 [-5.3, -1.4] | 77.2 | `lead|rank=A|-|points` |
+| seed-become-two | cut | common |  |  | Nil, Exact, LowCards | Opening: Four cards your team holds become [2]s | 3 | -23.9 [-24.8, -23.1] |  | `opening|rank=2|-|become` |
 | seed-bid8-mult | cut | common |  |  | BidHigh | +15 contract multiplier when your team bids 8 or more | 3 | -2.1 [-3.8, -0.4] | 39.4 | `bid(min=8)|-|-|mult` |
 | seed-bid8-points | cut | common |  |  | BidHigh | +60 contract points when your team bids 8 or more | 3 | -6.7 [-8.3, -5.0] | 35.2 | `bid(min=8)|-|-|points` |
 | seed-consecutive | cut | common |  |  | Streaks | +10 contract points when your team wins consecutive tricks | 3 | -1.2 [-2.9, 0.4] | 89.2 | `win(consecutive)|-|-|points` |
-| seed-e-diamond-three | cut | common |  |  | Suits | +40 contract points when your team wins three tricks with [♦] | 6 | -7.5 [-9.2, -5.8] | 4.7 | `win(count=3)|suit=D|-|points` |
+| seed-e-diamond-three | cut | common |  |  | Suits | +40 contract points when your team wins three tricks with [♦] | 7 | -7.5 [-9.2, -5.8] | 4.7 | `win(count=3)|suit=D|-|points` |
 | seed-e-lead-three-suits | cut | common |  |  | Rainbow | +40 contract points if your team leads three suits | 5 | 2.9 [1.4, 4.4] | 84.2 | `suits(count=3,action=lead)|-|-|points` |
 | seed-exact-points | cut | common |  |  | Exact | +50 contract points if your team makes its contract exactly | 2 | -7.6 [-9.2, -6.0] | 27.8 | `make(exact)|-|-|points` |
 | seed-flat-points | cut | common |  |  | Generic | +40 contract points | 1 | 2.6 [-0.6, 5.8] | 100.0 | `always|-|-|points` |
 | seed-king-win | cut | common |  |  | Ranks | +15 contract points when your team wins a trick with a [K] | 4 | -4.1 [-6.1, -2.1] | 73.3 | `win|rank=K|-|points` |
-| seed-low-lead | cut | common |  |  | LowCards | +10 contract points when your team leads a [2] through [10] | 5 | -1.1 [-3.1, 0.8] | 98.2 | `lead|ranks=2-10|-|points` |
+| seed-low-lead | cut | common |  |  | LowCards | +10 contract points when your team leads a [2] through [10] | 4 | -1.1 [-3.1, 0.8] | 98.2 | `lead|ranks=2-10|-|points` |
 | seed-low-win | cut | common |  |  | LowCards | +15 contract points when your team wins a trick with a [2] through [10] | 5 | -1.6 [-3.5, 0.2] | 88.0 | `win|ranks=2-10|-|points` |
 | seed-spade-lead | cut | common |  |  | Spades | +10 contract points when your team leads [♠] | 3 | -4.1 [-5.5, -2.6] | 82.5 | `lead|suit=S|-|points` |
-| seed-swap | cut | common |  |  | Nil, Suits, Spades, BidHigh | Opening: Swap three cards with your partner | 5 | -2.7 [-4.4, -0.9] |  | `opening|-|-|swap` |
+| seed-swap | cut | common |  |  | Nil, Suits, Spades, BidHigh | Opening: Swap three cards with your partner | 1 | -2.7 [-4.4, -0.9] |  | `opening|-|-|swap` |
 | r1-any-suit-last-three | cut | uncommon |  |  | Nil, Exact, Streaks, Spades | Your team can play any suit on the last three tricks | 2 | -6.5 [-7.5, -5.4] |  | `play|last=3|-|anySuit` |
 | r1-first-trick-points | cut | uncommon |  |  | Streaks, Generic | +120 contract points when your team wins the first trick of a round | 3 | 1.9 [0.6, 3.3] | 50.2 | `win(trick=first)|-|-|points` |
 | r1-lead-choice | cut | uncommon |  |  | Generic, Streaks, Nil, Suits | Choose which partner leads after your team wins a trick | 2 | -5.3 [-6.4, -4.2] |  | `play|-|-|leadChoice` |
 | r2-diamond-honor-lead | cut | uncommon |  |  | Suits, Ranks | +12 contract multiplier when your team leads a [J] through [A] of [♦] | 6 | 6.2 [5.3, 7.1] | 58.1 | `lead|suit=D,ranks=J-A|-|mult` |
-| r2-kings-untrumpable | cut | uncommon |  |  | Streaks, Ranks, Suits, BidHigh | Your team's [K]s can't be trumped | 4 | -2.7 [-3.7, -1.7] |  | `play|rank=K|-|untrumpable` |
+| r2-kings-untrumpable | cut | uncommon |  |  | Streaks, Ranks, Suits, BidHigh | Your team's [K]s can't be trumped | 3 | -2.7 [-3.7, -1.7] |  | `play|rank=K|-|untrumpable` |
 | r2-last-trick-grow | cut | uncommon |  |  | Streaks, Spades | This sigil gains +8 contract multiplier every time your team wins the last trick of a round (currently +0) | 5 | -0.3 [-1.2, 0.6] | 49.7 | `win(trick=last)|-|growth|mult` |
 | r2-last-trump-x | cut | uncommon |  |  | Streaks, Spades | ×2.5 contract multiplier when your team wins the last trick of a round by trumping | 4 | -3.3 [-4.2, -2.5] | 12.2 | `win(by=trump,trick=last)|-|-|xmult` |
-| r2-low-to-two-aces | cut | uncommon |  |  | BidHigh, Ranks, Streaks, Rainbow | Opening: Two [2]s through [9]s your team holds become [A]s | 8 | -0.3 [-1.2, 0.6] |  | `opening|from:ranks=2-9|rank=A|become` |
+| r2-low-to-two-aces | cut | uncommon |  |  | BidHigh, Ranks, Streaks, Rainbow | Opening: Two [2]s through [9]s your team holds become [A]s | 5 | -0.3 [-1.2, 0.6] |  | `opening|from:ranks=2-9|rank=A|become` |
 | seed-ace-three | cut | uncommon |  |  | Ranks | ×1.5 contract multiplier when your team wins three tricks with [A]s | 7 | -9.1 [-10.8, -7.3] | 29.0 | `win(count=3)|rank=A|-|xmult` |
-| seed-become-heart | cut | uncommon |  |  | Suits, Spades, Nil | Opening: Four cards your team holds become [♥]s | 4 | -36.5 [-37.9, -35.1] |  | `opening|suit=H|-|become` |
-| seed-become-king | cut | uncommon |  |  | BidHigh, Ranks, Rainbow | Opening: Four cards your team holds become [K]s | 5 | -7.5 [-9.4, -5.5] |  | `opening|rank=K|-|become` |
+| seed-become-heart | cut | uncommon |  |  | Suits, Spades, Nil | Opening: Four cards your team holds become [♥]s | 3 | -36.5 [-37.9, -35.1] |  | `opening|suit=H|-|become` |
+| seed-become-king | cut | uncommon |  |  | BidHigh, Ranks, Rainbow | Opening: Four cards your team holds become [K]s | 3 | -7.5 [-9.4, -5.5] |  | `opening|rank=K|-|become` |
 | seed-bid10-mult | cut | uncommon |  |  | BidHigh | +20 contract multiplier when your team bids 10 or more | 3 | -7.4 [-11.7, -3.2] | 4.2 | `bid(min=10)|-|-|mult` |
 | seed-contract-points-u | cut | uncommon |  |  | BidHigh | +10 contract points for each trick in your team's contract | 2 | -4.9 [-9.4, -0.4] | 100.0 | `always|-|contractTrick|points` |
-| seed-diamond-five | cut | uncommon |  |  | Suits | ×1.5 contract multiplier when your team wins five tricks with [♦] | 6 | -9.5 [-13.3, -5.7] | 0.3 | `win(count=5)|suit=D|-|xmult` |
-| seed-diamond-three | cut | uncommon |  |  | Suits | +15 contract multiplier when your team wins three tricks with [♦] | 6 | -16.9 [-18.7, -15.1] | 5.5 | `win(count=3)|suit=D|-|mult` |
-| seed-e-heart-three | cut | uncommon |  |  | Suits | +15 contract multiplier when your team wins three tricks with [♥] | 6 | -19.7 [-21.6, -17.8] | 5.2 | `win(count=3)|suit=H|-|mult` |
-| seed-e-last-heart | cut | uncommon |  |  | Streaks, Suits | +15 contract multiplier when your team wins the last trick of a round with [♥] | 4 | -17.7 [-18.9, -16.5] | 3.4 | `win(trick=last)|suit=H|-|mult` |
-| seed-e-side-four | cut | uncommon |  |  | Suits, Rainbow | +15 contract multiplier when your team wins four tricks with cards other than [♠] | 6 | -9.3 [-10.8, -7.9] | 32.1 | `win(count=4)|notSuit=S|-|mult` |
+| seed-diamond-five | cut | uncommon |  |  | Suits | ×1.5 contract multiplier when your team wins five tricks with [♦] | 7 | -9.5 [-13.3, -5.7] | 0.3 | `win(count=5)|suit=D|-|xmult` |
+| seed-diamond-three | cut | uncommon |  |  | Suits | +15 contract multiplier when your team wins three tricks with [♦] | 7 | -16.9 [-18.7, -15.1] | 5.5 | `win(count=3)|suit=D|-|mult` |
+| seed-e-heart-three | cut | uncommon |  |  | Suits | +15 contract multiplier when your team wins three tricks with [♥] | 7 | -19.7 [-21.6, -17.8] | 5.2 | `win(count=3)|suit=H|-|mult` |
+| seed-e-last-heart | cut | uncommon |  |  | Streaks, Suits | +15 contract multiplier when your team wins the last trick of a round with [♥] | 5 | -17.7 [-18.9, -16.5] | 3.4 | `win(trick=last)|suit=H|-|mult` |
+| seed-e-side-four | cut | uncommon |  |  | Suits, Rainbow | +15 contract multiplier when your team wins four tricks with cards other than [♠] | 8 | -9.3 [-10.8, -7.9] | 32.1 | `win(count=4)|notSuit=S|-|mult` |
 | seed-exact-x | cut | uncommon |  |  | Exact | ×1.5 contract multiplier if your team makes its contract exactly | 2 | -15.5 [-17.6, -13.3] | 24.4 | `make(exact)|-|-|xmult` |
-| seed-four-aces | cut | uncommon |  |  | Ranks | +20 contract multiplier if your team holds four [A]s | 6 | -12.0 [-14.1, -10.0] | 24.7 | `hold(count=4)|rank=A|-|mult` |
+| seed-four-aces | cut | uncommon |  |  | Ranks | +20 contract multiplier if your team holds four [A]s | 5 | -12.0 [-14.1, -10.0] | 24.7 | `hold(count=4)|rank=A|-|mult` |
 | seed-four-row | cut | uncommon | Tireless Runner | running | Streaks | +15 contract multiplier when your team wins four tricks in a row | 5 | 0.7 [-0.5, 2.0] | 39.0 | `win(inRow=4)|-|-|mult` |
 | seed-lead-choice | cut | uncommon |  |  | Streaks, Nil, Suits | Choose which partner leads after your team wins a trick | 2 | -13.7 [-14.9, -12.5] |  | `play|-|-|leadChoice` |
 | seed-low-four | cut | uncommon |  |  | LowCards | +15 contract multiplier when your team wins four tricks with [2]s through [10]s | 8 | -21.1 [-23.0, -19.1] | 17.9 | `win(count=4)|ranks=2-10|-|mult` |
 | seed-trump-three | cut | uncommon |  |  | Spades | +15 contract multiplier when your team wins three tricks by trumping | 6 | -15.1 [-17.3, -12.9] | 26.1 | `win(by=trump,count=3)|-|-|mult` |
 | ua-ace-first-x | cut | uncommon |  |  | Ranks, Streaks | ×1.5 contract multiplier when your team wins the first trick of a round with an [A] | 5 | -12.4 [-13.5, -11.2] | 34.0 | `win(trick=first)|rank=A|-|xmult` |
 | ua-ace-win-contract | cut | uncommon |  |  | Ranks, BidHigh | +1 contract multiplier for each trick in your team's contract when your team wins a trick with an [A] | 5 | -8.2 [-9.2, -7.2] | 87.0 | `win|rank=A|contractTrick|mult` |
-| ua-aces-untrumpable | cut | uncommon |  |  | Ranks, Suits, Rainbow, BidHigh | Your team's [A]s can't be trumped | 4 | -10.4 [-11.5, -9.3] |  | `play|rank=A|-|untrumpable` |
-| ua-become-three-aces | cut | uncommon |  |  | Ranks, BidHigh, Rainbow | Opening: Three cards your team holds become [A]s | 5 | 8.6 [7.3, 9.9] |  | `opening|rank=A|-|become` |
+| ua-aces-untrumpable | cut | uncommon |  |  | Ranks, Suits, Rainbow, BidHigh | Your team's [A]s can't be trumped | 3 | -10.4 [-11.5, -9.3] |  | `play|rank=A|-|untrumpable` |
+| ua-become-three-aces | cut | uncommon |  |  | Ranks, BidHigh, Rainbow | Opening: Three cards your team holds become [A]s | 3 | 8.6 [7.3, 9.9] |  | `opening|rank=A|-|become` |
 | ua-diamond-eight-contract | cut | uncommon |  |  | Suits, BidHigh | +2 contract multiplier for each trick in your team's contract if your team holds eight [♦]s | 6 | -18.3 [-19.5, -17.2] | 23.5 | `hold(count=8)|suit=D|contractTrick|mult` |
 | ua-diamond-lead-three-x | cut | uncommon |  |  | Suits, Streaks | ×1.5 contract multiplier when your team leads [♦] three times | 6 | -12.9 [-14.2, -11.6] | 25.0 | `lead(count=3)|suit=D|-|xmult` |
-| ua-diamond-led-win-mult | cut | uncommon |  |  | Suits, Spades | +4 contract multiplier when your team wins a trick led with [♦] | 3 | -10.3 [-11.7, -8.9] | 81.7 | `win(led=suit=D)|-|-|mult` |
-| ua-diamond-two-x | cut | uncommon |  |  | Suits | ×2 contract multiplier when your team wins two tricks with [♦] | 6 | -3.3 [-5.2, -1.5] | 25.5 | `win(count=2)|suit=D|-|xmult` |
-| ua-four-kings-x | cut | uncommon |  |  | Ranks, Rainbow | ×2 contract multiplier if your team holds four [K]s | 6 | -12.6 [-14.1, -11.2] | 11.0 | `hold(count=4)|rank=K|-|xmult` |
+| ua-diamond-led-win-mult | cut | uncommon |  |  | Suits, Spades | +4 contract multiplier when your team wins a trick led with [♦] | 4 | -10.3 [-11.7, -8.9] | 81.7 | `win(led=suit=D)|-|-|mult` |
+| ua-diamond-two-x | cut | uncommon |  |  | Suits | ×2 contract multiplier when your team wins two tricks with [♦] | 7 | -3.3 [-5.2, -1.5] | 25.5 | `win(count=2)|suit=D|-|xmult` |
+| ua-four-kings-x | cut | uncommon |  |  | Ranks, Rainbow | ×2 contract multiplier if your team holds four [K]s | 5 | -12.6 [-14.1, -11.2] | 11.0 | `hold(count=4)|rank=K|-|xmult` |
 | ua-heart-hold-mult | cut | uncommon |  |  | Suits | +2 contract multiplier for each [♥] your team holds | 3 | -12.3 [-13.7, -11.0] | 100.0 | `hold|suit=H|-|mult` |
 | ua-king-two-x | cut | uncommon |  |  | Ranks | ×1.5 contract multiplier when your team wins two tricks with [K]s | 7 | -10.3 [-11.6, -9.1] | 28.7 | `win(count=2)|rank=K|-|xmult` |
-| ua-kings-become-aces | cut | uncommon |  |  | Ranks, BidHigh, Rainbow | Opening: Every [K] your team holds becomes an [A] | 6 | -9.6 [-10.9, -8.3] |  | `opening|from:rank=K|rank=A|become` |
+| ua-kings-become-aces | cut | uncommon |  |  | Ranks, BidHigh, Rainbow | Opening: Every [K] your team holds becomes an [A] | 3 | -9.6 [-10.9, -8.3] |  | `opening|from:rank=K|rank=A|become` |
 | ua-lead-three-suits-x | cut | uncommon |  |  | Rainbow | ×1.5 contract multiplier if your team leads three suits | 5 | -8.5 [-9.9, -7.1] | 81.9 | `suits(count=3,action=lead)|-|-|xmult` |
-| ua-low-become-spades | cut | uncommon |  |  | Spades, BidHigh, Streaks | Opening: Every [2] through [4] your team holds becomes a [♠] | 6 | -18.8 [-20.2, -17.4] |  | `opening|from:ranks=2-4|suit=S|become` |
+| ua-low-become-spades | cut | uncommon |  |  | Spades, BidHigh, Streaks | Opening: Every [2] through [4] your team holds becomes a [♠] | 4 | -18.8 [-20.2, -17.4] |  | `opening|from:ranks=2-4|suit=S|become` |
 | ua-queen-two-x | cut | uncommon |  |  | Ranks | ×1.5 contract multiplier when your team wins two tricks with [Q]s | 7 | -12.6 [-14.4, -10.7] | 18.0 | `win(count=2)|rank=Q|-|xmult` |
 | ua-rainbow-contract | cut | uncommon |  |  | Rainbow, BidHigh | +2 contract multiplier for each trick in your team's contract if your team wins tricks with all four suits | 6 | -17.2 [-18.4, -16.0] | 29.0 | `suits(count=4,action=win)|-|contractTrick|mult` |
-| ua-side-win-mult | cut | uncommon |  |  | Rainbow, Suits, Ranks | +3 contract multiplier when your team wins a trick with a card other than [♠] | 3 | -9.0 [-9.9, -8.1] | 93.3 | `win|notSuit=S|-|mult` |
-| ua-spade-last-x | cut | uncommon |  |  | Spades, Streaks | ×3 contract multiplier when your team wins the last trick of a round with [♠] | 4 | 1.1 [-0.3, 2.6] | 41.0 | `win(trick=last)|suit=S|-|xmult` |
-| ua-spade-led-win-mult | cut | uncommon |  |  | Spades, BidHigh | +4 contract multiplier when your team wins a trick led with [♠] | 3 | -5.1 [-6.1, -4.1] | 80.4 | `win(led=suit=S)|-|-|mult` |
+| ua-side-win-mult | cut | uncommon |  |  | Rainbow, Suits, Ranks | +3 contract multiplier when your team wins a trick with a card other than [♠] | 5 | -9.0 [-9.9, -8.1] | 93.3 | `win|notSuit=S|-|mult` |
+| ua-spade-last-x | cut | uncommon |  |  | Spades, Streaks | ×3 contract multiplier when your team wins the last trick of a round with [♠] | 5 | 1.1 [-0.3, 2.6] | 41.0 | `win(trick=last)|suit=S|-|xmult` |
+| ua-spade-led-win-mult | cut | uncommon |  |  | Spades, BidHigh | +4 contract multiplier when your team wins a trick led with [♠] | 4 | -5.1 [-6.1, -4.1] | 80.4 | `win(led=suit=S)|-|-|mult` |
 | ua-trump-contract-mult | cut | uncommon |  |  | Spades, BidHigh | +1 contract multiplier for each trick in your team's contract when your team wins a trick by trumping | 4 | -13.9 [-15.2, -12.7] | 79.9 | `win(by=trump)|-|contractTrick|mult` |
 | ua-trump-two-x | cut | uncommon |  |  | Spades | ×1.5 contract multiplier when your team wins two tricks by trumping | 6 | -10.3 [-12.4, -8.2] | 52.7 | `win(by=trump,count=2)|-|-|xmult` |
-| ua-twos-become-aces | cut | uncommon |  |  | Ranks, BidHigh, Rainbow | Opening: Every [2] your team holds becomes an [A] | 6 | -4.4 [-6.6, -2.3] |  | `opening|from:rank=2|rank=A|become` |
+| ua-twos-become-aces | cut | uncommon |  |  | Ranks, BidHigh, Rainbow | Opening: Every [2] your team holds becomes an [A] | 3 | -4.4 [-6.6, -2.3] |  | `opening|from:rank=2|rank=A|become` |
 | ub-bid8-xmult | cut | uncommon |  |  | BidHigh | ×2 contract multiplier when your team bids 8 or more | 3 | -17.2 [-19.0, -15.5] | 31.7 | `bid(min=8)|-|-|xmult` |
 | ub-consecutive-xmult | cut | uncommon |  |  | Streaks | ×1.1 contract multiplier when your team wins consecutive tricks | 3 | 1.7 [0.1, 3.4] | 83.2 | `win(consecutive)|-|-|xmult` |
 | ub-contract-trick-xmult | cut | uncommon |  |  | BidHigh, Generic | ×1.05 contract multiplier for each trick in your team's contract | 2 | -11.9 [-13.3, -10.5] | 100.0 | `always|-|contractTrick|xmult` |
@@ -501,68 +501,68 @@ Lift is win-rate points over the same-rarity control with a 90% interval; fire i
 | ub-opp-set-contract-mult | cut | uncommon |  |  | Generic, BidHigh | +2 contract multiplier for each trick in your team's contract if the opponents miss their contract | 3 | -12.8 [-14.3, -11.3] | 36.6 | `opponentsSet|-|contractTrick|mult` |
 | ub-opp-set-xmult | cut | uncommon |  |  | Generic, Exact | ×1.5 contract multiplier if the opponents miss their contract | 2 | -12.1 [-13.9, -10.2] | 36.0 | `opponentsSet|-|-|xmult` |
 | ub-outbid-mult | cut | uncommon |  |  | BidHigh | +20 contract multiplier when your team bids more than the opponents | 2 | -11.8 [-13.6, -10.1] | 44.3 | `bid(vs=opponents)|-|-|mult` |
-| ub-raise-spades | cut | uncommon |  |  | Spades, BidHigh, Streaks | Opening: Raise every [♠] your team holds by three ranks | 5 |  |  | `opening|from:suit=S|-|raise` |
+| ub-raise-spades | cut | uncommon |  |  | Spades, BidHigh, Streaks | Opening: Raise every [♠] your team holds by three ranks | 3 |  |  | `opening|from:suit=S|-|raise` |
 | ub-seven-tricks-xmult | cut | uncommon |  |  | Generic, BidHigh | ×1.5 contract multiplier when your team wins seven tricks | 5 | -9.6 [-10.7, -8.5] | 42.3 | `win(count=7)|-|-|xmult` |
 | ub-spade-seven-xmult | cut | uncommon |  |  | BidHigh, Spades | ×1.5 contract multiplier if your team holds seven [♠]s | 5 |  |  | `hold(count=7)|suit=S|-|xmult` |
 | ub-three-row-contract-mult | cut | uncommon |  |  | Streaks, BidHigh | +2 contract multiplier for each trick in your team's contract when your team wins three tricks in a row | 6 | -10.8 [-11.8, -9.8] | 58.7 | `win(inRow=3)|-|contractTrick|mult` |
 | ub-trick-xmult | cut | uncommon |  |  | Generic | ×1.1 contract multiplier when your team wins a trick | 2 | 8.5 [6.8, 10.2] | 98.8 | `win|-|-|xmult` |
-| uc-clubs-to-spades | cut | uncommon |  |  | Spades, Suits, BidHigh | Opening: Four [♣]s your team holds become [♠]s | 5 | -7.9 [-8.9, -6.9] |  | `opening|from:suit=C|suit=S|become` |
+| uc-clubs-to-spades | cut | uncommon |  |  | Spades, Suits, BidHigh | Opening: Four [♣]s your team holds become [♠]s | 4 | -7.9 [-8.9, -6.9] |  | `opening|from:suit=C|suit=S|become` |
 | uc-exact-grow-points | cut | uncommon |  |  | Exact | This sigil gains +30 contract points every time your team makes its contract exactly (currently +0) | 4 | -15.6 [-17.6, -13.5] | 25.7 | `make(exact)|-|growth|points` |
 | uc-first-trick-x | cut | uncommon |  |  | Streaks, Generic | ×1.5 contract multiplier when your team wins the first trick of a round | 3 |  |  | `win(trick=first)|-|-|xmult` |
-| uc-junk-to-aces | cut | uncommon |  |  | Ranks, BidHigh, Rainbow, Generic | Opening: Two [2]s through [6]s your team holds become [A]s | 8 | 1.2 [-0.6, 3.1] |  | `opening|from:ranks=2-6|rank=A|become` |
-| uc-kings-to-aces | cut | uncommon |  |  | Ranks, BidHigh, Rainbow | Opening: Every [K] your team holds becomes an [A] | 6 |  |  | `opening|from:rank=K|rank=A|become` |
+| uc-junk-to-aces | cut | uncommon |  |  | Ranks, BidHigh, Rainbow, Generic | Opening: Two [2]s through [6]s your team holds become [A]s | 5 | 1.2 [-0.6, 3.1] |  | `opening|from:ranks=2-6|rank=A|become` |
+| uc-kings-to-aces | cut | uncommon |  |  | Ranks, BidHigh, Rainbow | Opening: Every [K] your team holds becomes an [A] | 3 |  |  | `opening|from:rank=K|rank=A|become` |
 | uc-led-low-win | cut | uncommon |  |  | LowCards, Nil, Streaks | +3 contract multiplier when your team wins a trick led with a [2] through [6] | 5 | -11.4 [-12.5, -10.3] | 88.0 | `win(led=ranks=2-6)|-|-|mult` |
 | uc-low-last-x | cut | uncommon |  |  | LowCards, Streaks | ×1.5 contract multiplier when your team wins the last trick of a round with a [2] through [10] | 6 | -11.4 [-12.8, -10.1] | 27.0 | `win(trick=last)|ranks=2-10|-|xmult` |
-| uc-low-lead-nil | cut | uncommon |  |  | Nil, LowCards | +50 nil points when your team leads a [2] through [6] | 5 | -10.1 [-11.4, -8.8] | 90.7 | `lead|ranks=2-6|-|nilPoints` |
-| uc-low-lead-three-x | cut | uncommon |  |  | LowCards, Nil, Exact | ×1.5 contract multiplier when your team leads a [2] through [6] three times | 8 | -12.0 [-13.0, -10.9] | 43.1 | `lead(count=3)|ranks=2-6|-|xmult` |
-| uc-low-spade-win | cut | uncommon |  |  | LowCards, Spades | +6 contract multiplier when your team wins a trick with a [2] through [9] of [♠] | 6 | -9.6 [-11.0, -8.2] | 73.0 | `win|suit=S,ranks=2-9|-|mult` |
+| uc-low-lead-nil | cut | uncommon |  |  | Nil, LowCards | +50 nil points when your team leads a [2] through [6] | 4 | -10.1 [-11.4, -8.8] | 90.7 | `lead|ranks=2-6|-|nilPoints` |
+| uc-low-lead-three-x | cut | uncommon |  |  | LowCards, Nil, Exact | ×1.5 contract multiplier when your team leads a [2] through [6] three times | 7 | -12.0 [-13.0, -10.9] | 43.1 | `lead(count=3)|ranks=2-6|-|xmult` |
+| uc-low-spade-win | cut | uncommon |  |  | LowCards, Spades | +6 contract multiplier when your team wins a trick with a [2] through [9] of [♠] | 7 | -9.6 [-11.0, -8.2] | 73.0 | `win|suit=S,ranks=2-9|-|mult` |
 | uc-low-three-x | cut | uncommon |  |  | LowCards, Spades, Suits | ×1.5 contract multiplier when your team wins three tricks with [2]s through [9]s | 8 | -13.1 [-14.2, -12.0] | 26.0 | `win(count=3)|ranks=2-9|-|xmult` |
-| uc-low-to-spade | cut | uncommon |  |  | Spades, LowCards, BidHigh | Opening: Every [2] through [4] your team holds becomes a [♠] | 6 |  |  | `opening|from:ranks=2-4|suit=S|become` |
-| uc-low-to-twos | cut | uncommon |  |  | Nil, LowCards, Exact | Opening: Every [3] through [6] your team holds becomes a [2] | 7 | -17.6 [-18.8, -16.5] |  | `opening|from:ranks=3-6|rank=2|become` |
+| uc-low-to-spade | cut | uncommon |  |  | Spades, LowCards, BidHigh | Opening: Every [2] through [4] your team holds becomes a [♠] | 4 |  |  | `opening|from:ranks=2-4|suit=S|become` |
+| uc-low-to-twos | cut | uncommon |  |  | Nil, LowCards, Exact | Opening: Every [3] through [6] your team holds becomes a [2] | 4 | -17.6 [-18.8, -16.5] |  | `opening|from:ranks=3-6|rank=2|become` |
 | uc-nil-contract-mult | cut | uncommon |  |  | Nil, BidHigh | +2 contract multiplier for each trick in your team's contract when your team bids nil | 3 | -15.4 [-16.6, -14.2] | 40.0 | `bid(nil)|-|contractTrick|mult` |
 | uc-nil-grow-mult | cut | uncommon |  |  | Nil | This sigil gains +4 contract multiplier every time your team makes a nil (currently +0) | 4 | -18.9 [-20.7, -17.0] | 24.2 | `nilMade|-|growth|mult` |
 | uc-nil-last-cover | cut | uncommon |  |  | Nil, Streaks | +120 nil points when your team wins the last trick of a round | 3 | -14.7 [-15.9, -13.6] | 46.0 | `win(trick=last)|-|-|nilPoints` |
 | uc-opp-set-x | cut | uncommon |  |  | Generic, Exact | ×1.5 contract multiplier if the opponents miss their contract | 2 |  |  | `opponentsSet|-|-|xmult` |
-| uc-opp-twos | cut | uncommon |  |  | Generic, BidHigh | Opening: Three cards the opponents hold become [2]s | 5 | -17.9 [-19.2, -16.6] |  | `opponents|rank=2|-|become` |
+| uc-opp-twos | cut | uncommon |  |  | Generic, BidHigh | Opening: Three cards the opponents hold become [2]s | 3 | -17.9 [-19.2, -16.6] |  | `opponents|rank=2|-|become` |
 | uc-small-bid-x | cut | uncommon |  |  | Nil, Exact | ×1.5 contract multiplier when your team bids 4 or less | 3 | -12.4 [-13.8, -11.0] | 32.2 | `bid(max=4)|-|-|xmult` |
-| uc-three-twos-x | cut | uncommon |  |  | LowCards, Nil | ×1.5 contract multiplier if your team holds three [2]s | 6 | -11.6 [-12.9, -10.3] | 28.6 | `hold(count=3)|rank=2|-|xmult` |
+| uc-three-twos-x | cut | uncommon |  |  | LowCards, Nil | ×1.5 contract multiplier if your team holds three [2]s | 5 | -11.6 [-12.9, -10.3] | 28.6 | `hold(count=3)|rank=2|-|xmult` |
 | uc-two-grow-points | cut | uncommon |  |  | LowCards | This sigil gains +20 contract points every time your team wins a trick with a [2] (currently +0) | 6 | -5.8 [-7.1, -4.4] | 24.8 | `win|rank=2|growth|points` |
 | r1-exact-growth | cut | rare |  |  | Exact | This sigil gains ×0.5 contract multiplier every time your team makes its contract exactly (currently ×1) | 4 | -7.9 [-9.4, -6.5] | 24.6 | `make(exact)|-|growth|xmult` |
-| r1-spade-win-mult | cut | rare |  |  | Spades | +8 contract multiplier when your team wins a trick with [♠] | 3 | 18.9 [17.5, 20.2] | 91.2 | `win|suit=S|-|mult` |
-| r2-queens-become-aces | cut | rare |  |  | Ranks, BidHigh, Rainbow | Opening: Every [Q] your team holds becomes an [A] | 6 | -3.3 [-4.3, -2.4] |  | `opening|from:rank=Q|rank=A|become` |
-| ra-clubs-to-diamonds | cut | rare |  |  | Suits, Spades, BidHigh | Opening: Every [♣] your team holds becomes a [♦] | 4 | -12.9 [-14.4, -11.3] |  | `opening|from:suit=C|suit=D|become` |
-| ra-side-win-points | cut | rare |  |  | Suits, Rainbow, Ranks | +25 contract points when your team wins a trick with a card other than [♠] | 3 | -3.3 [-4.4, -2.2] | 90.3 | `win|notSuit=S|-|points` |
+| r1-spade-win-mult | cut | rare |  |  | Spades | +8 contract multiplier when your team wins a trick with [♠] | 4 | 18.9 [17.5, 20.2] | 91.2 | `win|suit=S|-|mult` |
+| r2-queens-become-aces | cut | rare |  |  | Ranks, BidHigh, Rainbow | Opening: Every [Q] your team holds becomes an [A] | 3 | -3.3 [-4.3, -2.4] |  | `opening|from:rank=Q|rank=A|become` |
+| ra-clubs-to-diamonds | cut | rare |  |  | Suits, Spades, BidHigh | Opening: Every [♣] your team holds becomes a [♦] | 3 | -12.9 [-14.4, -11.3] |  | `opening|from:suit=C|suit=D|become` |
+| ra-side-win-points | cut | rare |  |  | Suits, Rainbow, Ranks | +25 contract points when your team wins a trick with a card other than [♠] | 5 | -3.3 [-4.4, -2.2] | 90.3 | `win|notSuit=S|-|points` |
 | rb-last-contract-x | cut | rare |  |  | Streaks, BidHigh | ×1.1 contract multiplier for each trick in your team's contract when your team wins the last trick of a round | 4 | -5.6 [-6.7, -4.4] | 46.5 | `win(trick=last)|-|contractTrick|xmult` |
-| rb-low-raise | cut | rare |  |  | BidHigh, Streaks, Generic, Spades | Opening: Raise every [2] through [8] your team holds by three ranks | 7 | -20.2 [-21.7, -18.8] |  | `opening|from:ranks=2-8|-|raise` |
+| rb-low-raise | cut | rare |  |  | BidHigh, Streaks, Generic, Spades | Opening: Raise every [2] through [8] your team holds by three ranks | 4 | -20.2 [-21.7, -18.8] |  | `opening|from:ranks=2-8|-|raise` |
 | rb-make-grow-x | cut | rare |  |  | Generic, BidHigh | This sigil gains ×0.15 contract multiplier every time your team makes its contract (currently ×1) | 4 | -13.4 [-14.7, -12.1] | 60.7 | `make|-|growth|xmult` |
 | rb-opp-contract-set | cut | rare |  |  | Generic, Exact | +3 contract multiplier if the opponents miss their contract | 2 |  |  | `opponentsSet|-|-|mult` |
 | rb-streak-grow | cut | rare |  |  | Streaks | This sigil gains +1 contract multiplier every time your team wins consecutive tricks (currently +0) | 5 | -8.2 [-9.4, -6.9] | 84.3 | `win(consecutive)|-|growth|mult` |
 | rb-trailing-x | cut | rare |  |  | Generic | ×2 contract multiplier if your team is behind when the round begins | 2 | -6.2 [-7.2, -5.2] | 50.5 | `behind|-|-|xmult` |
-| rc-honor-free | cut | rare |  |  | Nil, Spades, BidHigh | Your team can play [J]s through [A]s even when it can follow suit | 4 | 0.3 [-1.1, 1.8] |  | `play|cards:ranks=J-A|-|anySuit` |
-| rc-junk-raise | cut | rare |  |  | Generic, BidHigh, LowCards, Ranks | Opening: Raise every [2] through [9] your team holds by three ranks | 7 | -17.2 [-18.6, -15.8] |  | `opening|from:ranks=2-9|-|raise` |
-| rc-low-beats | cut | rare |  |  | LowCards, Rainbow, BidHigh | Your team's [2]s through [4]s beat every other card of their suit | 5 | 52.9 [51.6, 54.1] |  | `play|ranks=2-4||beats` |
-| rc-low-untrumpable | cut | rare |  |  | LowCards, Suits, Rainbow | Your team's [2]s through [10]s can't be trumped | 5 | -5.6 [-6.6, -4.6] |  | `play|ranks=2-10|-|untrumpable` |
+| rc-honor-free | cut | rare |  |  | Nil, Spades, BidHigh | Your team can play [J]s through [A]s even when it can follow suit | 3 | 0.3 [-1.1, 1.8] |  | `play|cards:ranks=J-A|-|anySuit` |
+| rc-junk-raise | cut | rare |  |  | Generic, BidHigh, LowCards, Ranks | Opening: Raise every [2] through [9] your team holds by three ranks | 4 | -17.2 [-18.6, -15.8] |  | `opening|from:ranks=2-9|-|raise` |
+| rc-low-beats | cut | rare |  |  | LowCards, Rainbow, BidHigh | Your team's [2]s through [4]s beat every other card of their suit | 4 | 52.9 [51.6, 54.1] |  | `play|ranks=2-4||beats` |
+| rc-low-untrumpable | cut | rare |  |  | LowCards, Suits, Rainbow | Your team's [2]s through [10]s can't be trumped | 4 | -5.6 [-6.6, -4.6] |  | `play|ranks=2-10|-|untrumpable` |
 | rc-low-win-contract-points | cut | rare |  |  | LowCards, BidHigh, Spades | +10 contract points for each trick in your team's contract when your team wins a trick with a [2] through [9] | 6 | -2.7 [-3.8, -1.6] | 74.5 | `win|ranks=2-9|contractTrick|points` |
 | rc-nil-contract-mult | cut | rare |  |  | Nil, BidHigh | +3 contract multiplier for each trick in your team's contract if your team makes a nil | 3 | -11.6 [-12.8, -10.4] | 24.5 | `nilMade|-|contractTrick|mult` |
 | rc-nil-grow-x | cut | rare |  |  | Nil | This sigil gains ×0.5 contract multiplier every time your team makes a nil (currently ×1) | 4 | -13.6 [-14.9, -12.3] | 25.9 | `nilMade|-|growth|xmult` |
-| rc-opp-aces-fall | cut | rare |  |  | Generic, Ranks, BidHigh | Opening: Every [A] the opponents hold becomes a [2] | 6 | -13.1 [-14.2, -11.8] |  | `opening|from:rank=A|rank=2,opponents|become` |
-| rc-two-hold-x | cut | rare |  |  | LowCards, Nil | ×1.25 contract multiplier for each [2] your team holds | 4 | -8.7 [-9.9, -7.4] | 75.9 | `hold|rank=2|-|xmult` |
+| rc-opp-aces-fall | cut | rare |  |  | Generic, Ranks, BidHigh | Opening: Every [A] the opponents hold becomes a [2] | 3 | -13.1 [-14.2, -11.8] |  | `opening|from:rank=A|rank=2,opponents|become` |
+| rc-two-hold-x | cut | rare |  |  | LowCards, Nil | ×1.25 contract multiplier for each [2] your team holds | 3 | -8.7 [-9.9, -7.4] | 75.9 | `hold|rank=2|-|xmult` |
 | seed-any-suit | cut | rare |  |  | Nil, Exact, Streaks | Your team can play any suit on the last three tricks | 2 | -14.3 [-15.6, -13.0] |  | `play|last=3|-|anySuit` |
-| seed-diamond-mult | cut | rare |  |  | Suits, BidHigh | +1 contract multiplier for each trick in your team's contract when your team wins a trick with [♦] | 4 | -9.8 [-11.0, -8.6] | 69.7 | `win|suit=D|contractTrick|mult` |
+| seed-diamond-mult | cut | rare |  |  | Suits, BidHigh | +1 contract multiplier for each trick in your team's contract when your team wins a trick with [♦] | 5 | -9.8 [-11.0, -8.6] | 69.7 | `win|suit=D|contractTrick|mult` |
 | seed-five-row-x | cut | rare |  |  | Streaks | ×2 contract multiplier when your team wins five tricks in a row | 5 | -8.5 [-10.2, -6.8] | 23.9 | `win(inRow=5)|-|-|xmult` |
 | seed-grow-exact | cut | rare |  |  | Exact | This sigil gains +5 contract multiplier every time your team makes its contract exactly (currently +0) | 4 | -13.8 [-15.4, -12.1] | 24.8 | `make(exact)|-|growth|mult` |
 | seed-grow-make8 | cut | rare |  |  | BidHigh | This sigil gains +5 contract multiplier every time your team makes a contract of 8 or more (currently +0) | 6 | -13.7 [-15.1, -12.4] | 15.3 | `make(min=8)|-|growth|mult` |
 | seed-grow-nil | cut | rare |  |  | Nil | This sigil gains +40 nil points every time your team makes a nil (currently +0) | 4 | -10.6 [-12.2, -8.9] | 19.6 | `nilMade|-|growth|nilPoints` |
 | seed-make8-x | cut | rare |  |  | BidHigh | ×2 contract multiplier if your team makes a contract of 8 or more | 4 | -8.9 [-10.3, -7.5] | 15.8 | `make(min=8)|-|-|xmult` |
-| seed-spade-five | cut | rare |  |  | Spades | ×2 contract multiplier when your team wins five tricks with [♠] | 6 | -8.9 [-10.7, -7.1] | 22.6 | `win(count=5)|suit=S|-|xmult` |
-| seed-spade-mult | cut | rare |  |  | Spades | +2 contract multiplier when your team wins a trick with [♠] | 3 | -7.4 [-8.9, -5.8] | 92.2 | `win|suit=S|-|mult` |
-| r1-honors-untrumpable | cut | legendary |  |  | Suits, Ranks, Rainbow, BidHigh | Your team's [10]s through [A]s can't be trumped | 5 | 18.2 [17.1, 19.4] |  | `play|ranks=10-A|-|untrumpable` |
-| r1-low-cards-beat | cut | legendary |  |  | LowCards, Rainbow, BidHigh | Your team's [2]s through [6]s beat every other card of their suit | 5 | 68.2 [67.0, 69.3] |  | `play|ranks=2-6||beats` |
-| r1-low-three-beat | cut | legendary |  |  | LowCards, Rainbow, BidHigh | Your team's [2]s through [4]s beat every other card of their suit | 5 | 49.6 [48.5, 50.8] |  | `play|ranks=2-4||beats` |
+| seed-spade-five | cut | rare |  |  | Spades | ×2 contract multiplier when your team wins five tricks with [♠] | 7 | -8.9 [-10.7, -7.1] | 22.6 | `win(count=5)|suit=S|-|xmult` |
+| seed-spade-mult | cut | rare |  |  | Spades | +2 contract multiplier when your team wins a trick with [♠] | 4 | -7.4 [-8.9, -5.8] | 92.2 | `win|suit=S|-|mult` |
+| r1-honors-untrumpable | cut | legendary |  |  | Suits, Ranks, Rainbow, BidHigh | Your team's [10]s through [A]s can't be trumped | 4 | 18.2 [17.1, 19.4] |  | `play|ranks=10-A|-|untrumpable` |
+| r1-low-cards-beat | cut | legendary |  |  | LowCards, Rainbow, BidHigh | Your team's [2]s through [6]s beat every other card of their suit | 4 | 68.2 [67.0, 69.3] |  | `play|ranks=2-6||beats` |
+| r1-low-three-beat | cut | legendary |  |  | LowCards, Rainbow, BidHigh | Your team's [2]s through [4]s beat every other card of their suit | 4 | 49.6 [48.5, 50.8] |  | `play|ranks=2-4||beats` |
 | r1-trick-growth | cut | legendary |  |  | Generic | This sigil gains +1 contract multiplier every time your team wins a trick (currently +0) | 4 | 0.5 [-0.6, 1.6] | 98.4 | `win|-|growth|mult` |
 | ra-all-diamonds | cut | legendary |  |  | Suits, Spades | Opening: Every card other than [♠] your team holds becomes a [♦] | 4 | -13.8 [-15.4, -12.1] |  | `opening|from:notSuit=S|suit=D|become` |
 | rb-exact-triple | cut | legendary |  |  | Exact | ×3 contract multiplier if your team makes its contract exactly | 2 | -13.1 [-14.7, -11.6] | 23.0 | `make(exact)|-|-|xmult` |
-| rb-side-untrumpable | cut | legendary |  |  | Generic, BidHigh, Ranks, Suits, Rainbow | Your team's cards other than [♠] can't be trumped | 3 |  |  | `play|notSuit=S|-|untrumpable` |
+| rb-side-untrumpable | cut | legendary |  |  | Generic, BidHigh, Ranks, Suits, Rainbow | Your team's cards other than [♠] can't be trumped | 4 |  |  | `play|notSuit=S|-|untrumpable` |
 | rc-low-win-x | cut | legendary | Pocket Rocket | rocket | LowCards, Spades, Streaks | ×1.25 contract multiplier when your team wins a trick with a [2] through [6] | 5 | -4.5 [-5.5, -3.5] | 58.4 | `win|ranks=2-6|-|xmult` |
-| rc-nil-honors-drop | cut | legendary |  |  | Nil, LowCards, Exact | Opening: Every [Q] through [A] your team holds becomes a [2] | 7 |  |  | `opening|from:ranks=Q-A|rank=2|become` |
-| rc-twos-always-win | cut | legendary |  |  | LowCards, BidHigh, Generic | Your team's [2]s win every trick they are played to | 5 | 31.4 [30.5, 32.4] |  | `play|rank=2|trump|beats` |
+| rc-nil-honors-drop | cut | legendary |  |  | Nil, LowCards, Exact | Opening: Every [Q] through [A] your team holds becomes a [2] | 4 |  |  | `opening|from:ranks=Q-A|rank=2|become` |
+| rc-twos-always-win | cut | legendary |  |  | LowCards, BidHigh, Generic | Your team's [2]s win every trick they are played to | 4 | 31.4 [30.5, 32.4] |  | `play|rank=2|trump|beats` |

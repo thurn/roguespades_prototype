@@ -60,18 +60,13 @@
   "simplicity": {
     "items": [
       {
-        "burden": "new term",
-        "detail": "Opening:",
-        "cost": 4
-      },
-      {
-        "burden": "boolean condition",
-        "detail": "rank is 2",
+        "burden": "rank literal",
+        "detail": "[2]",
         "cost": 1
       },
       {
-        "burden": "numeric value",
-        "detail": "rank literal 2",
+        "burden": "suit literal",
+        "detail": "[♠]",
         "cost": 1
       },
       {
@@ -80,8 +75,8 @@
         "cost": 1
       }
     ],
-    "C": 7,
-    "S": 0.125
+    "C": 3,
+    "S": 0.25
   },
   "lint": [],
   "estimates": {

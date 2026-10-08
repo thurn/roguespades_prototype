@@ -93,6 +93,21 @@
   "simplicity": {
     "items": [
       {
+        "burden": "rank literal",
+        "detail": "[J]",
+        "cost": 1
+      },
+      {
+        "burden": "rank literal",
+        "detail": "[A]",
+        "cost": 1
+      },
+      {
+        "burden": "suit literal",
+        "detail": "[♠]",
+        "cost": 1
+      },
+      {
         "burden": "numeric value",
         "detail": "payout 30",
         "cost": 1
@@ -104,27 +119,17 @@
       },
       {
         "burden": "boolean condition",
-        "detail": "suit is S",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "range endpoint J",
-        "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "range endpoint A",
+        "detail": "the card matches",
         "cost": 1
       },
       {
         "burden": "boolean condition",
-        "detail": "rank in J-A",
+        "detail": "rank and suit both match",
         "cost": 1
       }
     ],
-    "C": 6,
-    "S": 0.14285714285714285
+    "C": 7,
+    "S": 0.125
   },
   "lint": [],
   "estimates": {
