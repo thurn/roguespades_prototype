@@ -1,5 +1,9 @@
 # Rogue Spades 2.0: sigil design orchestration plan
 
+> **Historical.** This plan is complete. The GDD was rewritten on 2026-10-08, so its
+> section links below may not resolve; the current process is the
+> [design search plan](design-search-plan.md).
+
 This plan designs the full sigil pool for Rogue Spades 2.0. One
 **orchestrator** session coordinates subagents through three stages:
 
