@@ -65,7 +65,7 @@ source of reusable infrastructure and of evidence, not of design:
     showed no measured gameplay difference. Removing the card shop cost Skill
     about 2 points.
 
-## Phase 0: base game on master (target: 2 hours)
+## Phase 0: base game on master (target: 1 hour)
 
 1. Archive the old worktree: commit its uncommitted S1/S2 work to
    `claude/design-iteration` as-is. Don't merge it.
@@ -88,7 +88,8 @@ source of reusable infrastructure and of evidence, not of design:
 4. **Simplicity scorer.** Compute every sigil's C mechanically from its
    generated text and effect data, per the [GDD rubric](game-design.md#simplicity-rubric):
    +1 per number, rank, and suit literal, +1 per condition, +2 arithmetic,
-   +1 selector or tracked state, +2 jargon (+4 at common). Check it against
+   +1 selector or tracked state, +2 jargon (+4 at common); `Opening:` is
+   free. Check it against
    the rubric's worked examples, then replace every hand-entered
    `simplicity.C`. Expect the pool to read more complex than before, because
    suits now cost.
@@ -99,7 +100,7 @@ source of reusable infrastructure and of evidence, not of design:
 6. Run `scripts/ci`, commit, and deliver with `tg push-master --wait`. Then
    create the search worktree from master.
 
-## Phase 1: does the AI play the new rules? (target: 1 hour)
+## Phase 1: does the AI play the new rules? (target: 30 minutes)
 
 Bags and the symmetric set change bidding incentives, and the AI was badly
 miscalibrated once before. Before trusting any number:
@@ -117,7 +118,7 @@ miscalibrated once before. Before trusting any number:
 - **Baseline:** measure the base game at tiers 1 and 2 on holdout seeds, and
   plain Spades for reference.
 
-## Phase 2: rules and economy (target: 3–4 hours)
+## Phase 2: rules and economy (target: 2 hours)
 
 - **Screen** each lever in the table one factor at a time at tier 1 on dev
   seeds, at 2–4 values each. Start with the levers most likely to matter: set
@@ -131,9 +132,10 @@ miscalibrated once before. Before trusting any number:
 - **Confirm** the leading rules on holdout seeds at tiers 1 and 2 before
   moving on.
 
-## Phase 3: the sigil pool (target: 4 hours)
+## Phase 3: the sigil pool (target: at least 7.5 hours)
 
-On the Phase 2 rules:
+On the Phase 2 rules. This is where most of the time goes: at least 60% of
+the 12 hours, plus any time the other phases leave over.
 
 - **Re-fit amounts** for the new scoring. The symmetric set makes contract
   points risky in a way they weren't, so the global scale and the per-sigil
@@ -151,7 +153,7 @@ On the Phase 2 rules:
 - **Exact and bags.** Bags give Exact a natural reason to exist; check that
   its payoffs now pull their weight before adding to them.
 
-## Phase 4: recommendation (target: 2 hours, never skipped)
+## Phase 4: recommendation (target: 1 hour, never skipped)
 
 1. Run the recommendation and runners-up on fresh **final** seeds at tiers 1
    and 2, three replicates, against the base game.
@@ -195,6 +197,8 @@ On the Phase 2 rules:
 
 ## When time or usage runs out
 
-At 12 hours, stop searching and finish Phase 4 with what you have. If the
+Phases 0–2 and 4 are time-boxed; if one finishes early, the spare time goes
+to Phase 3. At 12 hours, stop searching and finish Phase 4 with what you
+have. If the
 usage limit nears first, write `HANDOFF.md` in the worktree with the current
 phase, the incumbent rules and pool, open experiments, and the next step.

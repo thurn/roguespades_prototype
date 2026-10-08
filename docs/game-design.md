@@ -418,10 +418,10 @@ track costs something:
 | Arithmetic on the rewarded quantity ("beyond five") | +2 |
 | Computed selector ("your longest suit") | +1 |
 | Tracked state (milestone count, streak, growth counter) | +1 |
-| Jargon: any term beyond base Spades vocabulary (`Opening:`, "streak", "high contract", "low cards") | +2, or +4 at common |
+| Jargon: any term beyond base vocabulary ("streak", "high contract", "low cards") | +2, or +4 at common |
 
 Base vocabulary is free: trick, lead, follow, trump, bid, nil, contract, your
-team, hold, and the three scoring labels. Hidden structure is expanded before
+team, hold, `Opening:`, and the three scoring labels. Hidden structure is expanded before
 scoring: "low cards" pays for its rank endpoints and its term.
 
 | Candidate | C |
@@ -430,7 +430,7 @@ scoring: "low cards" pays for its rank endpoints and its term.
 | ×1.5 contract multiplier if your team makes its contract exactly | 2 |
 | +5 contract points for each [♠] your team holds | 3 |
 | +20 contract points when your team wins a trick with an [A] | 4 |
-| Opening: Four cards your team holds become [2]s (common) | 7 |
+| Opening: Four cards your team holds become [2]s | 3 |
 
 ### Diagnostics
 
