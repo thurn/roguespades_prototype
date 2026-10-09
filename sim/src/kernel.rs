@@ -5,7 +5,7 @@ use crate::cards::*;
 use crate::rules::rules;
 use crate::sigil::*;
 
-pub const MAXP: usize = 8;
+pub const MAXP: usize = 10;
 /// Move ids for the lead-choice decision: keep the lead, or pass it to the partner.
 pub const MOVE_KEEP: u8 = 52;
 pub const MOVE_PASS: u8 = 53;

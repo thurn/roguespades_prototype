@@ -311,6 +311,10 @@ pub struct ExpCfg {
     pub true_ids: bool,
     pub bid_discount: Option<f64>,
     pub bid_discount_slope: Option<f64>,
+    /// Per run team: the AI ignores bags when it searches (a control for bag awareness).
+    pub bag_blind: [bool; 2],
+    /// Per run team: never bid nil (a control for nil bidding).
+    pub never_nil: [bool; 2],
     /// Team B's policy override: "hoard" or a committed archetype ("commit:Spades").
     pub policy_b: Option<String>,
 }
@@ -373,6 +377,8 @@ impl Default for ExpCfg {
             true_ids: false,
             bid_discount: None,
             bid_discount_slope: None,
+            bag_blind: [false, false],
+            never_nil: [false, false],
             policy_b: None,
         }
     }
@@ -524,6 +530,8 @@ pub fn run(a: RunArgs) {
             true_ids: c.true_ids,
             bid_discount: c.bid_discount,
             bid_discount_slope: c.bid_discount_slope,
+            bag_blind: c.bag_blind,
+            never_nil: c.never_nil,
         },
     };
     let mut clean = base.clone();

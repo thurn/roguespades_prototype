@@ -1,0 +1,7 @@
+{
+ "exp": {
+  "sigilShop": false,
+  "cards": false
+ },
+ "model": "data/search/models/plain.json"
+}

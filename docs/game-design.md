@@ -383,13 +383,17 @@ sub-metrics, and the fun score is the weighted sum, from 0 to 100.
 | Commitment works | 15 | I can "do the thing" if I commit | Builds committed by shop 2 are online by round 4 in at least 60% of runs; committed teams win at least as often as flexible ones |
 | Archetypes viable | 15 | Every archetype is viable, nothing is forced | Each archetype's committed win rate is 40–60%; no archetype appears in more than 25% of winning flexible builds |
 | Synergy and combos | 15 | Pieces multiply each other | Same-archetype pairs beat the sum of their parts by at least 25% in final margin; at least 15 strong pairs, 5 of them crossing archetypes |
-| Skill and bidding | 10 | Good play wins, and bidding stays tense | Tier 2 beats tier 0 in at least 65% of paired runs; set rate 10–25% |
-| Simplicity | 25 | Each piece is easy to read and track | Mean sigil complexity C: full credit at 3 or less, zero at 7 or more |
+| Skill and bidding | 5 | Good play wins, and bidding stays tense | Tier 2 beats tier 0 in at least 65% of paired runs; set rate 10–25% |
+| Simplicity | 20 | Each piece is easy to read and track | Mean sigil complexity C: full credit at 3 or less, zero at 7 or more |
+| Replayability | 10 | Two runs feel different | On the field runs (both teams, every run): mean Jaccard overlap of two runs' bought sigils at most 0.08 (zero at 0.20); the 10 most-bought sigils take at most 20% of purchases (zero at 40%); at least 95% of pool sigils are bought in 1% or more of runs (zero at 75%) |
 
 - **Online** means holding two of the archetype's payoffs and one of its
   enablers; three owned cards its payoffs reward count as an enabler.
 - **Flexible** teams buy by plain value; **committed** teams add a bonus for
   one archetype's sigils and the cards they reward.
+- **Replayability** pairs builds from different boards, so a board's two
+  seatings don't count as two runs alike. This is fun score v4; v3 had no
+  Replayability and weighted Skill and bidding 10 and Simplicity 25.
 
 ### Sigil metrics
 
@@ -436,7 +440,10 @@ scoring: "low cards" pays for its rank endpoints and its term.
 
 Tracked, not weighted: late overtricks and bags per run, gold unspent at the
 end of a run, purchases and rerolls per shop, and AI play quality (wasted
-overtakes, missed nil covers, nil suicides).
+overtakes, missed nil covers, nil suicides). Two shop diagnostics sit beside
+the fun score: **commons seen**, the share of the common tier offered to a
+team in one run, and **empty offers**, sigil offer slots a shop couldn't fill
+(a variant with any is rejected).
 
 ## 11. Simulation
 

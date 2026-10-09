@@ -1,0 +1,50 @@
+{
+ "sigilsFrom": "41faa5d",
+ "rules": {
+  "rounds": 8,
+  "baseMult": 10,
+  "multRewardScale": 1,
+  "amountScale": 1,
+  "trickValue": 10,
+  "nilValue": 100,
+  "flatSet": false,
+  "startGold": 250,
+  "baseIncome": 100,
+  "contractGold": 10,
+  "nilGold": 100,
+  "sigilOffers": 5,
+  "cardOffers": 3,
+  "offerDraws": "replacement",
+  "rarityOdds": [
+   0.69,
+   0.25,
+   0.05,
+   0.01
+  ],
+  "prices": [
+   50,
+   75,
+   100,
+   150
+  ],
+  "cardPriceScale": 1.5,
+  "sellShare": 0.5,
+  "rerollCost": 50,
+  "rerollStep": 10,
+  "slots": 8,
+  "maxCards": 8,
+  "purchases": 0,
+  "par": [
+   600,
+   850,
+   1150,
+   1600,
+   2250,
+   3100,
+   4300,
+   6000
+  ],
+  "publicDeck": true
+ },
+ "model": "data/search/models/search1-rec.json"
+}

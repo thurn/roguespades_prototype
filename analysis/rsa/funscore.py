@@ -1,4 +1,4 @@
-"""The fun score v3 (GDD §10): six weighted families, each the mean of banded sub-metrics.
+"""The fun score v4 (GDD §10): seven weighted families, each the mean of banded sub-metrics.
 
 Each sub-metric scores 1 inside its band and falls linearly to 0 at its tolerance. A family scores
 the mean of its sub-metrics, and the fun score is the weighted sum, from 0 to 100.
@@ -13,8 +13,11 @@ FAMILIES = [
     "Synergy and combos",
     "Skill and bidding",
     "Simplicity",
+    "Replayability",
 ]
-WEIGHTS = [20, 15, 15, 15, 10, 25]
+WEIGHTS = [20, 15, 15, 15, 5, 20, 10]
+# v3 weights (no Replayability), reported beside v4.
+WEIGHTS_V3 = [20, 15, 15, 15, 10, 25, 0]
 
 
 def band_score(x, lo=None, hi=None, tol_lo=None, tol_hi=None) -> float:
@@ -32,13 +35,16 @@ def _mean(v: list) -> float:
     return float(np.mean(v)) if v else float("nan")
 
 
-def families(gs: dict, commit: dict, syn: dict | None, ladder: float, mean_c: float) -> list:
+def families(
+    gs: dict, commit: dict, syn: dict | None, ladder: float, mean_c: float, rep: dict | None = None
+) -> list:
     """Family scores (0-1) in FAMILIES order.
 
     `gs`: medianMarginShare, trailerAfter5Wins, earlyShare, setRate, winningShare.
     `commit`: online, committed_win, per_archetype.
     `syn`: margin-point synergy: same_arch_gain_pts, strong_pts, strong_pts_cross.
     `mean_c`: the pool's mean sigil complexity C.
+    `rep`: replayability on the field runs: overlap, concentration, inPlay (None for no sigil shop).
     """
     close = [
         # Plain Spades runs about 0.45 of the winner's score (design iteration evidence).
@@ -67,8 +73,20 @@ def families(gs: dict, commit: dict, syn: dict | None, ladder: float, mean_c: fl
         band_score(gs["setRate"], lo=0.10, hi=0.25, tol_lo=0.0, tol_hi=0.40),
     ]
     simp = band_score(mean_c, hi=3.0, tol_hi=7.0)
-    return [_mean(close), _mean(com), _mean(av), _mean(sy), _mean(sk), simp]
+    if rep is None:
+        rp = [float("nan")]
+    else:
+        rp = [
+            band_score(rep["overlap"], hi=0.08, tol_hi=0.20),
+            band_score(rep["concentration"], hi=0.20, tol_hi=0.40),
+            band_score(rep["inPlay"], lo=0.95, tol_lo=0.75),
+        ]
+    return [_mean(close), _mean(com), _mean(av), _mean(sy), _mean(sk), simp, _mean(rp)]
 
 
-def total(fams: list) -> float:
-    return float(sum(w * (0 if np.isnan(f) else f) for w, f in zip(WEIGHTS, fams, strict=True)))
+def total(fams: list, weights: list = WEIGHTS) -> float:
+    return float(sum(w * (0 if np.isnan(f) else f) for w, f in zip(weights, fams, strict=True)))
+
+
+def total_v3(fams: list) -> float:
+    return total(fams, WEIGHTS_V3)

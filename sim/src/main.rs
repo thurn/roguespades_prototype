@@ -80,6 +80,9 @@ enum Cmd {
         /// Also write the session log (JSONL) here.
         #[arg(long)]
         out: Option<String>,
+        /// A rules file to play under (default: data/rules.json as compiled in).
+        #[arg(long)]
+        rules: Option<String>,
     },
 }
 
@@ -105,7 +108,13 @@ fn main() {
             replay,
             view_at,
             out,
-        } => play(seed, tier, &dir, &model, replay, view_at, out),
+            rules,
+        } => {
+            if let Some(r) = rules {
+                rsim::rules::install(rsim::rules::load(&r));
+            }
+            play(seed, tier, &dir, &model, replay, view_at, out)
+        }
     }
 }
 

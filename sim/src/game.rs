@@ -91,6 +91,10 @@ pub struct AiCfg {
     /// Overrides the tier's bid discount and its growth per round.
     pub bid_discount: Option<f64>,
     pub bid_discount_slope: Option<f64>,
+    /// The AI ignores bags when it searches (a control for bag awareness).
+    pub bag_blind: [bool; 2],
+    /// Never bid nil (a control for nil bidding).
+    pub never_nil: [bool; 2],
 }
 
 impl Default for AiCfg {
@@ -105,6 +109,8 @@ impl Default for AiCfg {
             true_ids: false,
             bid_discount: None,
             bid_discount_slope: None,
+            bag_blind: [false, false],
+            never_nil: [false, false],
         }
     }
 }
@@ -278,6 +284,8 @@ pub struct TeamRec {
     pub perturb: Vec<(u8, i32)>,
     pub gold: Vec<i32>,
     pub rerolls: u32,
+    /// Every sigil offer the shop drew, rerolls included: (shop, offered ids).
+    pub offers: Vec<(u8, Vec<String>)>,
     pub rounds: Vec<RoundRec>,
     pub bench: Bench,
 }
@@ -600,6 +608,16 @@ impl<'a> Runner<'a> {
         }
     }
 
+    fn rec_offers(&mut self, ti: usize, shop: u8, sig: &[usize]) {
+        if self.cfg.sigil_shop {
+            let ids = sig
+                .iter()
+                .map(|&d| self.cfg.pool.defs[d].id.clone())
+                .collect();
+            self.recs[ti].offers.push((shop, ids));
+        }
+    }
+
     pub(crate) fn card_offer(&self, _shop: u8, rng: &mut Rng, exclude: Mask) -> Option<CardOffer> {
         let free = FULL_DECK & !self.taken & !exclude;
         if free == 0 {
@@ -788,6 +806,7 @@ impl<'a> Runner<'a> {
         let mut orng = Rng::stream(self.seed, &[S_OFFER, luck, shop as u64, reroll]);
         let mut sig = self.sigil_offers(ti, &mut orng);
         self.note_offers(ti, &sig);
+        self.rec_offers(ti, shop, &sig);
         let mut cards = self.card_offers(shop, &mut orng, other_offers);
         self.log_offers(ti, shop, &sig, &cards);
         if self.cfg.validate > 0.0
@@ -903,6 +922,7 @@ impl<'a> Runner<'a> {
                         orng = Rng::stream(self.seed, &[S_OFFER, luck, shop as u64, reroll]);
                         sig = self.sigil_offers(ti, &mut orng);
                         self.note_offers(ti, &sig);
+                        self.rec_offers(ti, shop, &sig);
                         cards = self.card_offers(shop, &mut orng, other_offers);
                         self.log_shop(json!({"ev": "reroll", "team": ti, "cost": cost}));
                         self.log_offers(ti, shop, &sig, &cards);
@@ -1049,6 +1069,7 @@ impl<'a> Runner<'a> {
             // share of the next penalty when enough rounds remain, and nothing after the last.
             bag_cost: crate::rules::BAG_PENALTY / crate::rules::BAG_LIMIT as f64
                 * (1.5 * nfut / crate::rules::BAG_LIMIT as f64).min(1.0),
+            bags: !self.cfg.ai.bag_blind[ti],
         }
     }
 
@@ -1318,6 +1339,12 @@ impl<'a> Runner<'a> {
         let partner = rs.play.bids[(s as usize + 2) % 4];
         if ai.always_nil[ti] && partner != 0 {
             b = 0;
+        } else if ai.never_nil[ti] && b == 0 {
+            b = v
+                .iter()
+                .filter(|x| x.0 != 0)
+                .max_by(|x, y| x.1.partial_cmp(&y.1).unwrap())
+                .map_or(1, |x| x.0);
         } else if b != 0 && ai.bid_offset[ti] != 0 && partner >= 0 {
             // The team's second bidder shifts the team contract by the offset.
             b = (b + ai.bid_offset[ti]).clamp(1, 13);
@@ -1807,7 +1834,7 @@ fn at(v: &[f64], k: usize) -> f64 {
 /// Cards a committed team wants for its archetype.
 fn committed_card(a: &str, suit: u8, rank: u8) -> bool {
     match a {
-        "Suits" => suit == DIAMONDS,
+        "Suits" => suit != SPADES && rank >= 10,
         "Spades" | "BidHigh" => suit == SPADES || rank >= 13,
         "Ranks" => rank == ACE,
         "Nil" | "LowCards" | "Exact" => rank <= 10 && suit != SPADES,

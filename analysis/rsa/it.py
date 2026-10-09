@@ -21,13 +21,13 @@ import numpy as np
 
 from . import arms as R
 from .common import MODELS, ROOT, RUNS, SIGILS, load_rules, rsim
-from .funscore import FAMILIES, WEIGHTS, families, total
+from .funscore import FAMILIES, WEIGHTS, families, total, total_v3
 
 ITER = ROOT / "data" / "search"
 VARIANTS = ITER / "variants"
 OUT = RUNS / "search"
 ARCHES = R.ARCH
-DEFAULT_MODEL = str(MODELS / "round-3.json")
+DEFAULT_MODEL = str(MODELS / "search-1.json")
 COMPONENT = {"field": 1, "ladder": 2, "pairs": 50}
 
 
@@ -94,7 +94,11 @@ class Variant:
                 d = json.loads(p.read_text())
                 defs[d["id"]] = d
         for sid, over in self.spec.get("sigils", {}).items():
-            defs[sid] = deep_merge(defs[sid], over)
+            merged = deep_merge(defs[sid], over)
+            # An effect override that names its type replaces the effect outright.
+            if "type" in over.get("effect", {}):
+                merged["effect"] = over["effect"]
+            defs[sid] = merged
         for d in self.spec.get("add", []):
             defs[d["id"]] = d
         return defs
@@ -232,7 +236,7 @@ def base_cfg(b: Built, env: Env) -> dict:
         "rules": str(b.rules),
         "model": b.model,
         "riskNeutral": env.util == "rn",
-        "offerable": sorted(b.pool + [f"control-{r}" for r in ("common", "uncommon", "rare", "legendary")]),
+        "offerable": sorted(b.pool),
         "perturb": 0.0,
         "version": f"{b.digest} code {code_version()}",
     } | b.exp
@@ -253,18 +257,13 @@ def run_field(b: Built, env: Env, n: int, extra: dict | None = None, tag: str = 
 
 
 def run_commit(b: Built, env: Env, arch: str, n: int, extra: dict | None = None) -> Path:
-    counter = {s: 1.0 for s in b.pool if b.defs[s].get("touchesOpponents")}
+    # The opponents are a plain flexible team (no forced invalidation grants).
     cfg = base_cfg(b, env) | {
         "seed": env.seed(10 + ARCHES.index(arch)),
         "boards": n,
         "tier": env.tier,
         "cleanShare": 0.0,
-        "arm": {
-            "type": "commitment",
-            "archetype": arch,
-            "counter": counter,
-            "counterProb": 0.4 if counter else 0.0,
-        },
+        "arm": {"type": "commitment", "archetype": arch},
     }
     cfg.update(extra or {})
     tag = (
@@ -328,6 +327,9 @@ class FieldArrays:
     sets_by_round: np.ndarray
     contracts_by_round: np.ndarray
     pm: list  # (predicted, made, round, behind) for calibration
+    seen_commons: np.ndarray  # per run: mean over both teams of the share of pool commons offered
+    empty: np.ndarray  # per run: sigil offer slots the shops couldn't fill, both teams
+    bought: list  # per run: [team A's bought ids, team B's bought ids], repeats kept
 
 
 class TeamView:
@@ -338,11 +340,21 @@ class TeamView:
         self.cards = [tuple(x) for x in t["cards"]]
 
 
-def field_arrays(p: Path, defs: dict) -> FieldArrays:
+def field_arrays(p: Path, defs: dict, pool: list | None = None, n_offers: int = 0) -> FieldArrays:
     cols = {k: [] for k in FieldArrays.__dataclass_fields__}
     nr = 8
+    commons = {s for s in (pool or []) if defs[s]["rarity"] == "common"}
     for r in _lines(p):
         a, b = r["teams"]
+        seen, empty = [], 0
+        for t in (a, b):
+            offers = t.get("offers", [])
+            ids = {x for _shop, o in offers for x in o}
+            seen.append(len(ids & commons) / max(1, len(commons)))
+            empty += sum(max(0, n_offers - len(o)) for _shop, o in offers)
+        cols["seen_commons"].append(float(np.mean(seen)))
+        cols["empty"].append(empty)
+        cols["bought"].append([[s["id"] for s in t["sigils"] if not s["grant"]] for t in (a, b)])
         ra = [x["score"] for x in a["rounds"]]
         rb = [x["score"] for x in b["rounds"]]
         nr = len(ra)
@@ -396,8 +408,66 @@ def field_arrays(p: Path, defs: dict) -> FieldArrays:
                 ocum += o["rounds"][rn - 1]["score"]
     out = {}
     for k, v in cols.items():
-        out[k] = v if k == "pm" else np.array(v, dtype=float)
+        out[k] = v if k in ("pm", "bought") else np.array(v, dtype=float)
     return FieldArrays(**out)
+
+
+class Replay:
+    """Replayability on the field runs (fun score v4), as board-level sums so a cluster-bootstrap
+    resample of boards is a weighted sum.
+
+    Every team-run is one build: the sigils it bought. Overlap is the mean Jaccard overlap of two
+    builds from different boards; concentration is the share of all purchases going to the 10
+    most-bought sigils; in play is the share of pool sigils bought in at least 1% of team-runs.
+    """
+
+    def __init__(self, f: FieldArrays, keys: np.ndarray, pool: list):
+        sid = {s: i for i, s in enumerate(pool)}
+        kix = {k: i for i, k in enumerate(keys)}
+        nb, ns = len(keys), len(pool)
+        rows, tb = [], []
+        purchases = np.zeros((nb, ns))
+        for r, (board, teams) in enumerate(zip(f.board, f.bought, strict=True)):
+            bi = kix[board]
+            for ids in teams:
+                v = np.zeros(ns, dtype=np.float32)
+                for x in ids:
+                    if x in sid:
+                        v[sid[x]] = 1.0
+                        purchases[bi, sid[x]] += 1
+                rows.append(v)
+                tb.append(bi)
+            _ = r
+        x = np.array(rows, dtype=np.float32).reshape(len(rows), ns)
+        tb = np.array(tb)
+        self.n_b = np.bincount(tb, minlength=nb).astype(float)  # team-runs per board
+        self.held = np.zeros((nb, ns))
+        np.add.at(self.held, tb, x)
+        # Board-by-board sums of pairwise Jaccard overlaps, same-board pairs dropped.
+        size = x.sum(1)
+        jb = np.zeros((nb, nb))
+        agg = np.zeros((nb, len(rows)))
+        agg[tb, np.arange(len(rows))] = 1.0
+        step = 2000
+        for i0 in range(0, len(rows), step):
+            inter = x[i0 : i0 + step] @ x.T
+            union = size[i0 : i0 + step, None] + size[None, :] - inter
+            jac = np.where(union > 0, inter / np.maximum(union, 1), 0.0)
+            jb += agg[:, i0 : i0 + step] @ jac @ agg.T
+        np.fill_diagonal(jb, 0.0)
+        self.jb = jb
+        self.purchases = purchases
+
+    def value(self, pick: np.ndarray | None) -> dict:
+        nb = len(self.n_b)
+        w = np.ones(nb) if pick is None else np.bincount(pick, minlength=nb).astype(float)
+        wn = w * self.n_b
+        pairs = wn.sum() ** 2 - (wn**2).sum()
+        overlap = float(w @ self.jb @ w / pairs) if pairs > 0 else float("nan")
+        t = w @ self.purchases
+        conc = float(np.sort(t)[::-1][:10].sum() / t.sum()) if t.sum() > 0 else float("nan")
+        share = (w @ self.held) / max(1.0, wn.sum())
+        return {"overlap": overlap, "concentration": conc, "inPlay": float(np.mean(share >= 0.01))}
 
 
 @dataclass
@@ -458,6 +528,8 @@ def field_stats(f: FieldArrays, idx: np.ndarray) -> dict:
         "lateOvertricks": float(f.ot_late[idx].sum() / max(1.0, f.made_late[idx].sum())),
         "bagsPerRun": float(f.bags[idx].mean()),
         "bagPenaltiesPerRun": float(f.bag_pen[idx].mean()),
+        "commonsSeen": float(f.seen_commons[idx].mean()),
+        "emptyOffers": float(f.empty[idx].sum()),
         "winningShare": shares,
     }
 
@@ -471,6 +543,7 @@ class Measured:
     ladder: tuple | None
     simplicity: float  # the pool's mean complexity C
     synergy: object = None  # a synergy estimator with .sample(rng) and .point()
+    pool: list = field(default_factory=list)
 
     def components(self):
         f_keys, f_rows = _board_index(self.field.board)
@@ -503,10 +576,13 @@ class Measured:
         syn = None
         if self.synergy is not None:
             syn = self.synergy.value(picks.get("syn"))
-        fams = families(gs, commit, syn, lad, self.simplicity)
+        rp = self._replay.value(picks.get("field")) if self._replay is not None else None
+        fams = families(gs, commit, syn, lad, self.simplicity, rp)
         return {
             "score": total(fams),
+            "v3": total_v3(fams),
             "families": fams,
+            "replay": rp,
             "game": gs,
             "commit": commit,
             "ladder": lad,
@@ -516,6 +592,7 @@ class Measured:
 
     def prepare(self):
         self._fidx = _board_index(self.field.board)
+        self._replay = Replay(self.field, self._fidx[0], self.pool) if self.pool else None
         self._cidx = {a: _board_index(ca.board) for a, ca in self.commits.items()}
         return self
 
@@ -544,26 +621,29 @@ def measure(name: str, env: Env, sizes: Sizes | None = None, synergy=None) -> Me
     sizes = sizes or Sizes()
     b = Variant.load(name).materialize()
     fp = run_field(b, env, sizes.field)
-    fa = field_arrays(fp, b.defs)
+    rules = json.loads(b.rules.read_text())
+    fa = field_arrays(fp, b.defs, b.pool, rules["sigilOffers"])
     commits = {}
     for a in archetypes_of(b):
         cp = run_commit(b, env, a, sizes.commit)
         commits[a] = commit_arrays(cp, a, b.defs)
     lad = ladder_arrays(run_ladder(b, env, sizes.ladder)) if sizes.ladder_on else None
     syn = synergy(b, env) if synergy else None
-    return Measured(name, env, fa, commits, lad, simplicity_of(b), syn).prepare()
+    return Measured(name, env, fa, commits, lad, simplicity_of(b), syn, b.pool).prepare()
 
 
 def interval(m: Measured, boot: int = 300, seed: int = 7) -> dict:
     point = m.compute()
     rng = np.random.default_rng(seed)
-    tots, fams = [], []
+    tots, fams, v3 = [], [], []
     for _ in range(boot):
         r = m.compute(draw_picks(m, rng))
         tots.append(r["score"])
+        v3.append(r["v3"])
         fams.append(r["families"])
     fams = np.array(fams)
     point["lo"], point["hi"] = (float(x) for x in np.quantile(tots, [0.05, 0.95]))
+    point["v3_lo"], point["v3_hi"] = (float(x) for x in np.quantile(v3, [0.05, 0.95]))
     point["sd"] = float(np.std(tots))
     point["fam_lo"] = np.nanquantile(fams, 0.05, axis=0).tolist()
     point["fam_hi"] = np.nanquantile(fams, 0.95, axis=0).tolist()
@@ -575,11 +655,12 @@ def paired(a: Measured, b: Measured, boot: int = 300, seed: int = 11) -> dict:
     """B minus A on the same boards, with 90% intervals for the total and every family."""
     pa, pb = a.compute(), b.compute()
     rng = np.random.default_rng(seed)
-    d_tot, d_fam = [], []
+    d_tot, d_fam, d_v3 = [], [], []
     for _ in range(boot):
         picks = draw_picks(a, rng)
         ra, rb = a.compute(picks), b.compute(picks)
         d_tot.append(rb["score"] - ra["score"])
+        d_v3.append(rb["v3"] - ra["v3"])
         d_fam.append(np.array(rb["families"]) - np.array(ra["families"]))
     d_fam = np.array(d_fam) * np.array(WEIGHTS)
     return {
@@ -588,6 +669,9 @@ def paired(a: Measured, b: Measured, boot: int = 300, seed: int = 11) -> dict:
         "diff": pb["score"] - pa["score"],
         "lo": float(np.quantile(d_tot, 0.05)),
         "hi": float(np.quantile(d_tot, 0.95)),
+        "v3_diff": pb["v3"] - pa["v3"],
+        "v3_lo": float(np.quantile(d_v3, 0.05)),
+        "v3_hi": float(np.quantile(d_v3, 0.95)),
         "fam_diff": [w * (y - x) for w, x, y in zip(WEIGHTS, pa["families"], pb["families"], strict=True)],
         "fam_lo": np.nanquantile(d_fam, 0.05, axis=0).tolist(),
         "fam_hi": np.nanquantile(d_fam, 0.95, axis=0).tolist(),
@@ -605,8 +689,15 @@ def fmt_measure(name: str, r: dict) -> str:
         for i, f in enumerate(FAMILIES)
     )
     ci = f" [{r['lo']:.1f}, {r['hi']:.1f}]" if "lo" in r else ""
+    rp = r.get("replay")
+    rps = (
+        f"    overlap {rp['overlap']:.3f} conc {rp['concentration']:.3f} inplay {rp['inPlay']:.3f} "
+        f"commons seen {g['commonsSeen']:.3f} empty offers {g['emptyOffers']:.0f}\n"
+        if rp
+        else ""
+    )
     return (
-        f"{name}: fun {r['score']:.1f}{ci} | {fam}\n"
+        f"{name}: fun {r['score']:.1f}{ci} (v3 {r['v3']:.1f}) | {fam}\n" + rps + ""
         f"    margin {g['medianMarginShare']:.3f} trail5 {g['trailerAfter5Wins']:.3f} early {g['earlyShare']:.3f} "
         f"set {g['setRate']:.3f} ot {g['lateOvertricks']:.2f} bags {g['bagsPerRun']:.1f}/{g['bagPenaltiesPerRun']:.2f} "
         f"meanC {r['meanC']:.2f} ladder {r['ladder']:.3f} "
@@ -625,4 +716,7 @@ def fmt_paired(p: dict) -> str:
         f"{f[:5]} {p['fam_diff'][i]:+.2f} [{p['fam_lo'][i]:+.2f}, {p['fam_hi'][i]:+.2f}]"
         for i, f in enumerate(FAMILIES)
     )
-    return f"diff {p['diff']:+.2f} [{p['lo']:+.2f}, {p['hi']:+.2f}] | {fam}"
+    return (
+        f"diff {p['diff']:+.2f} [{p['lo']:+.2f}, {p['hi']:+.2f}] (v3 {p['v3_diff']:+.2f} "
+        f"[{p['v3_lo']:+.2f}, {p['v3_hi']:+.2f}]) | {fam}"
+    )

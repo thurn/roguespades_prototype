@@ -90,6 +90,8 @@ pub struct Utility {
     /// Margin cost of each bag a team carries after the round (bags still to come may push it
     /// over the limit before the run ends).
     pub bag_cost: f64,
+    /// Whether the search counts bags at all (false: a bag-blind control).
+    pub bags: bool,
     /// Risk-neutral control: the logistic's tangent at the current margin (expected margin)
     /// instead of win probability.
     pub linear: bool,
@@ -99,7 +101,13 @@ impl Utility {
     #[inline]
     pub fn reward(&self, p: &Play, rules: &Rules, team: usize) -> f64 {
         let sc = p.score(rules);
-        let val = |s: &TeamScore| s.score + s.bag_pen - self.bag_cost * s.bags_after as f64;
+        let val = |s: &TeamScore| {
+            if self.bags {
+                s.score + s.bag_pen - self.bag_cost * s.bags_after as f64
+            } else {
+                s.score
+            }
+        };
         let mut d = val(&sc[team]) - val(&sc[1 - team]);
         for (t, sign) in [(team, 1.0), (1 - team, -1.0)] {
             for &(slot, po) in &rules.teams[t].growth {

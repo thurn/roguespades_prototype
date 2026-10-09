@@ -1,5 +1,6 @@
 {
-  "dev": {"base": 11000000, "block": 0},
-  "holdout": {"base": 12000000, "block": 0},
-  "final": {"base": 13000000, "block": 0}
+  "_note": "Block 0 of each set was used by design search 1; search 2 uses block 1.",
+  "dev": {"base": 11000000, "block": 1},
+  "holdout": {"base": 12000000, "block": 1},
+  "final": {"base": 13000000, "block": 1}
 }

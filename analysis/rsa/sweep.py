@@ -26,21 +26,24 @@ def write_level(name: str, spec: dict, incumbent: str) -> None:
 def row(name: str, p: dict) -> str:
     g = p["b"]["game"]
     c = p["b"]["commit"]
+    rp = p["b"]["replay"]
     fams = " | ".join(
         f"{d:+.2f} [{lo:+.1f},{hi:+.1f}]"
         for d, lo, hi in zip(p["fam_diff"], p["fam_lo"], p["fam_hi"], strict=True)
     )
     return (
-        f"| {name} | {p['b']['score']:.1f} | {p['diff']:+.2f} [{p['lo']:+.2f}, {p['hi']:+.2f}] | {p['charge_diff']:+.2f} | "
-        f"{p['v1_diff']:+.2f} | {fams} | "
+        f"| {name} | {p['b']['score']:.1f} | {p['diff']:+.2f} [{p['lo']:+.2f}, {p['hi']:+.2f}] | {p['v3_diff']:+.2f} | {fams} | "
         f"{g['medianMarginShare']:.3f} | {g['trailerAfter5Wins']:.3f} | {g['earlyShare']:.3f} | {g['setRate']:.3f} | "
-        f"{g['lateOvertricks']:.2f} | {c['online']:.3f} | {c['committed_win']:.3f} | {max(g['winningShare'].values()):.3f} |"
+        f"{g['bagsPerRun']:.1f} | {c['online']:.3f} | {c['committed_win']:.3f} | {max(g['winningShare'].values()):.3f} | "
+        f"{p['b']['ladder']:.3f} | {rp['overlap']:.3f} | {rp['concentration']:.3f} | {rp['inPlay']:.3f} | "
+        f"{g['commonsSeen']:.3f} | {g['emptyOffers']:.0f} |"
     )
 
 
 HEADER = (
-    "| Variant | v2 net | Paired v2-net diff (90%) | Charge diff | v1 diff | Close | Commit | Arch | Syn | Skill | "
-    "Simpl | Margin | Trail5 | Early | Set | OT | Online | CWin | TopShare |\n" + "| --- " * 19 + "|"
+    "| Variant | Fun | Paired diff (90%) | v3 diff | Close | Commit | Arch | Syn | Skill | Simpl | Rep | Margin | "
+    "Trail5 | Early | Set | Bags | Online | CWin | TopShare | Ladder | Overlap | Conc | InPlay | Commons seen | "
+    "Empty |\n" + "| --- " * 25 + "|"
 )
 
 
@@ -82,7 +85,7 @@ def main() -> None:
                 f"{a.syn} boards",
             )
     print(it.fmt_measure(inc, base.compute()), flush=True)
-    out = REPORTS / "search" / f"sweep-{sw.get('name', 'sweep')}-{env.key()}.md"
+    out = REPORTS / "search-2" / f"sweep-{sw.get('name', 'sweep')}-{env.key()}.md"
     out.parent.mkdir(parents=True, exist_ok=True)
     lines = [f"# Sweep {sw.get('name', '')} ({env.key()}, incumbent {inc})", "", HEADER]
     for name in levels:
@@ -92,9 +95,7 @@ def main() -> None:
         lines.append(row(name, p))
         out.write_text("\n".join(lines) + "\n")
         itcli.save(f"cmp-{inc}-{name}-{env.key()}", {"a": inc, "b": name, "result": p})
-        itcli.log_use(
-            env, f"compare {inc} vs {name}", f"v2net {p['diff']:+.2f} [{p['lo']:+.2f}, {p['hi']:+.2f}]"
-        )
+        itcli.log_use(env, f"compare {inc} vs {name}", f"{p['diff']:+.2f} [{p['lo']:+.2f}, {p['hi']:+.2f}]")
 
 
 if __name__ == "__main__":

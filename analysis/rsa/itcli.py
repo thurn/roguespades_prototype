@@ -11,8 +11,8 @@ import numpy as np
 from . import it, pairsyn
 from .common import REPORTS, ROOT
 
-LOG = ROOT / "docs" / "search" / "holdout-log.md"
-OUTDIR = REPORTS / "search"
+LOG = ROOT / "docs" / "search-2" / "holdout-log.md"
+OUTDIR = REPORTS / "search-2"
 
 
 def commit() -> str:
@@ -92,7 +92,7 @@ def main() -> None:
             r = it.interval(m, a.boot)
             print(it.fmt_measure(v, r), flush=True)
             save(f"{v}-{env.key()}", stamp | {"variant": v, "result": r})
-            log_use(env, f"measure {v}", f"v2net {r['score']:.1f} [{r['lo']:.1f}, {r['hi']:.1f}]")
+            log_use(env, f"measure {v}", f"{r['score']:.1f} [{r['lo']:.1f}, {r['hi']:.1f}]")
     else:
         base = ms[0]
         print(it.fmt_measure(a.variants[0], base.compute()), flush=True)
@@ -104,7 +104,7 @@ def main() -> None:
             log_use(
                 env,
                 f"compare {a.variants[0]} vs {v}",
-                f"v2net {p['diff']:+.2f} [{p['lo']:+.2f}, {p['hi']:+.2f}]",
+                f"{p['diff']:+.2f} [{p['lo']:+.2f}, {p['hi']:+.2f}]",
             )
     _ = np
 
