@@ -33,7 +33,7 @@
       "elegance": 4
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -83,13 +83,17 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -5.5 [-6.6, -4.4] pts, fire 59%, skill gradient -2.4; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Climbing Steps",
   "icon": "steps-up",
   "iconFamily": "steps-up",
   "iconWord": "Steps",
-  "price": 50,
+  "price": 25,
   "text": "+3 contract multiplier when your team wins three tricks in a row",
   "category": "mult",
   "signature": "win(inRow=3)|-|-|mult",

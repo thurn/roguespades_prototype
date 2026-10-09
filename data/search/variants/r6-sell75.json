@@ -1,0 +1,6 @@
+{
+ "rules": {
+  "sellShare": 0.75
+ },
+ "base": "rec3"
+}

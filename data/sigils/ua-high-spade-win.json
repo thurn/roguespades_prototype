@@ -10,15 +10,11 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "points",
-    "amount": 30,
+    "amount": 20,
     "on": {
       "event": "win",
       "card": {
-        "suit": "S",
-        "ranks": [
-          "J",
-          "A"
-        ]
+        "suit": "S"
       }
     }
   },
@@ -78,6 +74,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +5.4 [+4.4, +6.3] pts, fire 90%, skill gradient -0.3; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 30, \"on\": {\"event\": \"win\", \"card\": {\"suit\": \"S\", \"ranks\": [\"J\", \"A\"]}}} -> {\"type\": \"points\", \"amount\": 20, \"on\": {\"event\": \"win\", \"card\": {\"suit\": \"S\"}}}"
     }
   ],
   "name": "Ink-Dark Octopus",
@@ -85,23 +85,13 @@
   "iconFamily": "octopus",
   "iconWord": "Octopus",
   "price": 75,
-  "text": "+30 contract points when your team wins a trick with a [J] through [A] of [♠]",
+  "text": "+20 contract points when your team wins a trick with [♠]",
   "category": "points",
-  "signature": "win|suit=S,ranks=J-A|-|points",
-  "family": "win|suit=*,ranks=J-A|-|points",
+  "signature": "win|suit=S|-|points",
+  "family": "win|suit=*|-|points",
   "touchesOpponents": false,
   "simplicity": {
     "items": [
-      {
-        "burden": "rank literal",
-        "detail": "[J]",
-        "cost": 1
-      },
-      {
-        "burden": "rank literal",
-        "detail": "[A]",
-        "cost": 1
-      },
       {
         "burden": "suit literal",
         "detail": "[♠]",
@@ -109,7 +99,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 30",
+        "detail": "payout 20",
         "cost": 1
       },
       {
@@ -121,15 +111,10 @@
         "burden": "boolean condition",
         "detail": "the card matches",
         "cost": 1
-      },
-      {
-        "burden": "boolean condition",
-        "detail": "rank and suit both match",
-        "cost": 1
       }
     ],
-    "C": 7,
-    "S": 0.125
+    "C": 4,
+    "S": 0.2
   },
   "lint": [],
   "estimates": {

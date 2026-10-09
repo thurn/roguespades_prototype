@@ -1,0 +1,6 @@
+{
+ "rules": {
+  "startGold": 200
+ },
+ "base": "p2-alive-L"
+}

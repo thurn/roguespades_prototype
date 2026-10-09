@@ -3,14 +3,13 @@
   "rarity": "uncommon",
   "role": "payoff",
   "archetypes": [
-    "Ranks",
-    "Rainbow"
+    "Ranks"
   ],
   "source": "designed",
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "mult",
-    "amount": 2,
+    "amount": 3,
     "on": {
       "event": "hold",
       "card": {
@@ -83,6 +82,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -4.0 [-5.3, -2.8] pts, fire 97%, skill gradient -2.6; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 2, \"on\": {\"event\": \"hold\", \"card\": {\"rank\": \"A\"}}} -> {\"type\": \"mult\", \"amount\": 3, \"on\": {\"event\": \"hold\", \"card\": {\"rank\": \"A\"}}}; archetypes [\"Ranks\", \"Rainbow\"] -> [\"Ranks\"]"
     }
   ],
   "name": "Master Keys",
@@ -90,7 +93,7 @@
   "iconFamily": "key",
   "iconWord": "Keys",
   "price": 75,
-  "text": "+2 contract multiplier for each [A] your team holds",
+  "text": "+3 contract multiplier for each [A] your team holds",
   "category": "mult",
   "signature": "hold|rank=A|-|mult",
   "family": "hold|rank=*|-|mult",
@@ -104,7 +107,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 2",
+        "detail": "payout 3",
         "cost": 1
       },
       {

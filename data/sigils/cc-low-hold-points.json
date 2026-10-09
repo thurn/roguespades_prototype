@@ -10,7 +10,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "points",
-    "amount": 2,
+    "amount": 7.0,
     "on": {
       "event": "hold",
       "card": {
@@ -74,14 +74,18 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -4.0 [-5.0, -3.0] pts, fire 100%, skill gradient -1.3; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 2, \"on\": {\"event\": \"hold\", \"card\": {\"ranks\": [\"2\", \"6\"]}}} -> {\"type\": \"points\", \"amount\": 7.0, \"on\": {\"event\": \"hold\", \"card\": {\"ranks\": [\"2\", \"6\"]}}}"
     }
   ],
   "name": "Humble Acorns",
   "icon": "acorn",
   "iconFamily": "acorn",
   "iconWord": "Acorns",
-  "price": 50,
-  "text": "+2 contract points for each [2] through [6] your team holds",
+  "price": 25,
+  "text": "+7 contract points for each [2] through [6] your team holds",
   "category": "points",
   "signature": "hold|ranks=2-6|-|points",
   "family": "hold|ranks=2-6|-|points",
@@ -100,7 +104,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 2",
+        "detail": "payout 7",
         "cost": 1
       },
       {

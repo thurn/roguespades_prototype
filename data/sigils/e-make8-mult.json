@@ -41,7 +41,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+40 contract multiplier if your team makes a contract of 8 or more",
   "category": "mult",
   "signature": "make(min=8)|-|-|mult",

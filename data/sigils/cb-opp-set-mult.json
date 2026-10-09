@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 15,
+    "amount": 25.0,
     "on": {
       "event": "opponentsSet"
     }
@@ -70,14 +70,18 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -0.1 [-1.1, +0.8] pts, fire 41%, skill gradient -0.2; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 15, \"on\": {\"event\": \"opponentsSet\"}} -> {\"type\": \"mult\", \"amount\": 25.0, \"on\": {\"event\": \"opponentsSet\"}}"
     }
   ],
   "name": "Toppled Rook",
   "icon": "chess-rook",
   "iconFamily": "chess-rook",
   "iconWord": "Rook",
-  "price": 50,
-  "text": "+15 contract multiplier if the opponents miss their contract",
+  "price": 25,
+  "text": "+25 contract multiplier if the opponents miss their contract",
   "category": "mult",
   "signature": "opponentsSet|-|-|mult",
   "family": "opponentsSet|-|-|mult",
@@ -86,7 +90,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 15",
+        "detail": "payout 25",
         "cost": 1
       },
       {

@@ -42,7 +42,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+20 contract multiplier if your team wins tricks with all four suits",
   "category": "mult",
   "signature": "suits(count=4,action=win)|-|-|mult",

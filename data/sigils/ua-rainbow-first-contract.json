@@ -35,7 +35,7 @@
       "elegance": 2
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -81,6 +81,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +6.5 [+5.2, +7.7] pts, fire 99%, skill gradient +0.5; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Charted Map",

@@ -3,15 +3,14 @@
   "rarity": "uncommon",
   "role": "enabler",
   "archetypes": [
-    "Suits",
-    "Rainbow"
+    "Suits"
   ],
   "source": "designed",
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "untrumpable",
     "from": {
-      "suit": "D"
+      "suit": "H"
     }
   },
   "design": {
@@ -52,6 +51,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +2.3 [+1.2, +3.5] pts, fire 0%, skill gradient +0.6; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"untrumpable\", \"from\": {\"suit\": \"D\"}} -> {\"type\": \"untrumpable\", \"from\": {\"suit\": \"H\"}}; archetypes [\"Suits\", \"Rainbow\"] -> [\"Suits\"]"
     }
   ],
   "name": "Unpickable Lock",
@@ -59,16 +62,16 @@
   "iconFamily": "lock",
   "iconWord": "Lock",
   "price": 75,
-  "text": "Your team's [♦]s can't be trumped",
+  "text": "Your team's [♥]s can't be trumped",
   "category": "enabler",
-  "signature": "play|suit=D|-|untrumpable",
+  "signature": "play|suit=H|-|untrumpable",
   "family": "play|suit=*|-|untrumpable",
   "touchesOpponents": false,
   "simplicity": {
     "items": [
       {
         "burden": "suit literal",
-        "detail": "[♦]",
+        "detail": "[♥]",
         "cost": 1
       },
       {

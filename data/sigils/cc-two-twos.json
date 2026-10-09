@@ -49,7 +49,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "Opening: Two cards your team holds become [2]s",
   "category": "enabler",
   "signature": "opening|rank=2|-|become",

@@ -41,7 +41,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+10 contract multiplier when your team wins three tricks in a row",
   "category": "mult",
   "signature": "win(inRow=3)|-|-|mult",

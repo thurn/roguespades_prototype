@@ -33,7 +33,7 @@
       "elegance": 4
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -51,13 +51,17 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +1.7 [+0.4, +2.9] pts, fire 0%, skill gradient +2.1; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Untethered Balloon",
   "icon": "balloon",
   "iconFamily": "balloon",
   "iconWord": "Balloon",
-  "price": 50,
+  "price": 25,
   "text": "Your team can play any suit on the first two tricks",
   "category": "enabler",
   "signature": "play|first=2|-|anySuit",

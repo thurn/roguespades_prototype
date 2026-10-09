@@ -1,0 +1,65 @@
+{
+ "base": "p4ab",
+ "sigils": {},
+ "add": [],
+ "combos": [
+  [
+   "n2-clubs-untrumpable",
+   "n2-club-win-mult-u"
+  ],
+  [
+   "n2-diamonds-untrumpable",
+   "n2-diamond-win-mult-u"
+  ],
+  [
+   "n2-diamonds-untrumpable",
+   "seed-diamond-win"
+  ],
+  [
+   "ua-diamonds-untrumpable",
+   "e-win-suit-d-mult"
+  ],
+  [
+   "ua-diamonds-untrumpable",
+   "r2-diamond-lead-mult"
+  ],
+  [
+   "s-aces-untrumpable",
+   "seed-ace-win"
+  ],
+  [
+   "s-aces-untrumpable",
+   "seed-ace-mult"
+  ],
+  [
+   "ub-low-to-aces",
+   "seed-ace-win"
+  ],
+  [
+   "cb-become-spade",
+   "e-hold-suit-s-mult"
+  ],
+  [
+   "ub-become-four-spades",
+   "seed-spade-hold"
+  ],
+  [
+   "s-exact-x",
+   "r1-exact-points"
+  ],
+  [
+   "uc-low-discard",
+   "uc-low-win-mult"
+  ],
+  [
+   "seed-exact-mult",
+   "r1-exact-xmult"
+  ],
+  [
+   "ra-diamond-hold-x",
+   "seed-diamond-hold"
+  ]
+ ],
+ "drop": [],
+ "include": []
+}

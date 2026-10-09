@@ -1,0 +1,106 @@
+{
+ "add": [
+  {
+   "id": "n2-free-clubs",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "anySuit",
+    "card": {
+     "suit": "C"
+    }
+   },
+   "design": {
+    "rationale": "Shed [♣] at will: build voids or keep [♣] for a [♣] plan."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (common enabler, modest alone)."
+    }
+   ]
+  },
+  {
+   "id": "n2-free-hearts",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "anySuit",
+    "card": {
+     "suit": "H"
+    }
+   },
+   "design": {
+    "rationale": "Same for [♥]."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (common enabler, modest alone)."
+    }
+   ]
+  },
+  {
+   "id": "n2-jacks-untrumpable",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "Ranks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "untrumpable",
+    "from": {
+     "rank": "J"
+    }
+   },
+   "design": {
+    "rationale": "Ranks enabler, modest alone."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (common enabler, modest alone)."
+    }
+   ]
+  }
+ ],
+ "drop": [
+  "cb-contract-mult",
+  "cc-nil-made-points",
+  "seed-win-points",
+  "e-bid8-mult"
+ ],
+ "include": [
+  "n2-free-hearts",
+  "n2-free-clubs",
+  "n2-jacks-untrumpable",
+  "n2-kings-untrumpable-c"
+ ]
+}

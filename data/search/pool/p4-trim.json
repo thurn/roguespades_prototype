@@ -1,0 +1,54 @@
+{
+ "sigils": {
+  "cb-consecutive-mult": {
+   "effect": {
+    "amount": 1.0
+   }
+  },
+  "cb-make-mult": {
+   "effect": {
+    "amount": 6.0
+   }
+  },
+  "cc-low-hold-points": {
+   "effect": {
+    "amount": 7.0
+   }
+  },
+  "cc-small-contract-mult": {
+   "effect": {
+    "amount": 15.0
+   }
+  },
+  "e-lead-rank-k-mult": {
+   "effect": {
+    "amount": 8.0
+   }
+  },
+  "e-make8-pts": {
+   "effect": {
+    "amount": 260.0
+   }
+  },
+  "e-trump-mult": {
+   "effect": {
+    "amount": 4.0
+   }
+  },
+  "s-exact-x": {
+   "effect": {
+    "amount": 1.9
+   }
+  },
+  "seed-diamond-hold": {
+   "effect": {
+    "amount": 10.0
+   }
+  },
+  "seed-diamond-lead": {
+   "effect": {
+    "amount": 30.0
+   }
+  }
+ }
+}

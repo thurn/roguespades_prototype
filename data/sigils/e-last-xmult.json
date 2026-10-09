@@ -69,7 +69,7 @@
   "icon": "flag-chequered",
   "iconFamily": "flag",
   "iconWord": "Flag",
-  "price": 50,
+  "price": 25,
   "text": "×1.2 contract multiplier when your team wins the last trick of a round",
   "category": "xmult",
   "signature": "win(trick=last)|-|-|xmult",

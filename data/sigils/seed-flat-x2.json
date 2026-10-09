@@ -9,7 +9,7 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "xmult",
-    "amount": 3.0
+    "amount": 2.05
   },
   "design": {
     "decision": "",
@@ -44,6 +44,10 @@
     {
       "step": "round-1",
       "note": "round-1: replaced by r1-free-discards (lift +1.8 [+0.8, +2.8] pts, C 2 against lift +18.9 [+17.8, +20.1] pts, C 1): a rule-changing legendary instead of a flat ×multiplier that retuning had pushed over the ceiling."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"xmult\", \"amount\": 3.0} -> {\"type\": \"xmult\", \"amount\": 2.05}"
     }
   ],
   "name": null,
@@ -52,7 +56,7 @@
   "iconWord": null,
   "gddText": "×2 contract multiplier",
   "price": 150,
-  "text": "×3 contract multiplier",
+  "text": "×2.05 contract multiplier",
   "category": "xmult",
   "signature": "always|-|-|xmult",
   "family": "always|-|-|xmult",
@@ -61,7 +65,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 3",
+        "detail": "payout 2.05",
         "cost": 1
       }
     ],

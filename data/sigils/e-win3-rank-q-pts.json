@@ -44,7 +44,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+150 contract points when your team wins three tricks with [Q]s",
   "category": "points",
   "signature": "win(count=3)|rank=Q|-|points",

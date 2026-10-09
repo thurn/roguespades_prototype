@@ -36,7 +36,7 @@
       "elegance": 3
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -74,13 +74,17 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -7.3 [-8.4, -6.2] pts, fire 59%, skill gradient -3.6; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Twin Stars",
   "icon": "star",
   "iconFamily": "star",
   "iconWord": "Stars",
-  "price": 50,
+  "price": 25,
   "text": "+3 contract multiplier when your team wins two tricks with [A]s",
   "category": "mult",
   "signature": "win(count=2)|rank=A|-|mult",

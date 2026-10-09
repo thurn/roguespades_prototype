@@ -9,7 +9,7 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "mult",
-    "amount": 10,
+    "amount": 20,
     "on": {
       "event": "make",
       "exact": true
@@ -68,6 +68,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -4.1 [-5.3, -3.0] pts, fire 23%, skill gradient -0.3; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 10, \"on\": {\"event\": \"make\", \"exact\": true}} -> {\"type\": \"mult\", \"amount\": 20, \"on\": {\"event\": \"make\", \"exact\": true}}"
     }
   ],
   "name": "Fitted Puzzle",
@@ -75,8 +79,8 @@
   "iconFamily": "puzzle",
   "iconWord": "Puzzle",
   "gddText": "+15 contract multiplier if your team makes its contract exactly",
-  "price": 50,
-  "text": "+10 contract multiplier if your team makes its contract exactly",
+  "price": 25,
+  "text": "+20 contract multiplier if your team makes its contract exactly",
   "category": "mult",
   "signature": "make(exact)|-|-|mult",
   "family": "make(exact)|-|-|mult",
@@ -85,7 +89,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 10",
+        "detail": "payout 20",
         "cost": 1
       },
       {

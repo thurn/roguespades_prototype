@@ -1,6 +1,6 @@
 {
   "id": "rb-streak-contract-mult",
-  "rarity": "rare",
+  "rarity": "legendary",
   "role": "payoff",
   "archetypes": [
     "Streaks",
@@ -54,13 +54,17 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +12.9 [+11.6, +14.2] pts, fire 82%, skill gradient +3.8; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: rarity \"rare\" -> \"legendary\""
     }
   ],
   "name": "Gathering Tornado",
   "icon": "tornado",
   "iconFamily": "tornado",
   "iconWord": "Tornado",
-  "price": 100,
+  "price": 150,
   "text": "+1 contract multiplier for each trick in your team's contract when your team wins consecutive tricks",
   "category": "mult",
   "signature": "win(consecutive)|-|contractTrick|mult",

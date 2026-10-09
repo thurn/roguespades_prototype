@@ -1,0 +1,6 @@
+{
+ "rules": {
+  "flatSet": true
+ },
+ "base": "p2-alive-L"
+}

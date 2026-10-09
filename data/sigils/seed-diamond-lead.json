@@ -9,11 +9,11 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "points",
-    "amount": 15,
+    "amount": 30.0,
     "on": {
       "event": "lead",
       "card": {
-        "suit": "D"
+        "suit": "H"
       }
     }
   },
@@ -58,6 +58,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +1.2 [-0.2, +2.5] pts, fire 82%, skill gradient +1.0; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 15, \"on\": {\"event\": \"lead\", \"card\": {\"suit\": \"D\"}}} -> {\"type\": \"points\", \"amount\": 30.0, \"on\": {\"event\": \"lead\", \"card\": {\"suit\": \"H\"}}}"
     }
   ],
   "name": "Ruby Compass",
@@ -65,22 +69,22 @@
   "iconFamily": "compass",
   "iconWord": "Compass",
   "gddText": "+10 contract points when your team leads [♦]",
-  "price": 50,
-  "text": "+15 contract points when your team leads [♦]",
+  "price": 25,
+  "text": "+30 contract points when your team leads [♥]",
   "category": "points",
-  "signature": "lead|suit=D|-|points",
+  "signature": "lead|suit=H|-|points",
   "family": "lead|suit=*|-|points",
   "touchesOpponents": false,
   "simplicity": {
     "items": [
       {
         "burden": "suit literal",
-        "detail": "[♦]",
+        "detail": "[♥]",
         "cost": 1
       },
       {
         "burden": "numeric value",
-        "detail": "payout 15",
+        "detail": "payout 30",
         "cost": 1
       },
       {

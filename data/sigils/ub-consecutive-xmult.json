@@ -33,7 +33,7 @@
       "elegance": 4
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -47,12 +47,16 @@
     {
       "step": "round-1",
       "note": "round-1: cut: lift +1.7 [+0.1, +3.4] pts; Opaque ×1.1 compounding on a near-automatic trigger (fires 85%)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Chain Reaction (explosion); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Chain Reaction",
+  "icon": "explosion",
+  "iconFamily": "explosion",
+  "iconWord": "Explosion",
   "price": 75,
   "text": "×1.1 contract multiplier when your team wins consecutive tricks",
   "category": "xmult",

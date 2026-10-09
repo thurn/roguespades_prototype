@@ -48,7 +48,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "This sigil gains +3 contract multiplier every time the opponents miss their contract (currently +0)",
   "category": "mult",
   "signature": "opponentsSet|-|growth|mult",

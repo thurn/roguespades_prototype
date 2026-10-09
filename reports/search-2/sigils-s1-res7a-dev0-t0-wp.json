@@ -1,0 +1,156 @@
+[
+ {
+  "id": "n2-two-win-x-u",
+  "rarity": "uncommon",
+  "C": 4,
+  "arch": [
+   "LowCards"
+  ],
+  "role": "payoff",
+  "lift": 0.7250000000000001,
+  "lift_ci": 2.0381406443703476,
+  "raw": -1.125,
+  "fire": 0.23641666666666666,
+  "text": "\u00d71.5 contract multiplier when your team wins a trick with a [2]"
+ },
+ {
+  "id": "e-win-rank-2-pts",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "LowCards"
+  ],
+  "role": "payoff",
+  "lift": 4.15,
+  "lift_ci": 2.1035925929080235,
+  "raw": 1.35,
+  "fire": 0.25483333333333336,
+  "text": "+200 contract points when your team wins a trick with a [2]"
+ },
+ {
+  "id": "ub-bid8-xmult",
+  "rarity": "uncommon",
+  "C": 3,
+  "arch": [
+   "BidHigh"
+  ],
+  "role": "hybrid",
+  "lift": 4.2,
+  "lift_ci": 2.0329963954714723,
+  "raw": 2.35,
+  "fire": 0.23958333333333334,
+  "text": "\u00d72.5 contract multiplier when your team bids 8 or more"
+ },
+ {
+  "id": "r1-first-trick-points",
+  "rarity": "uncommon",
+  "C": 3,
+  "arch": [
+   "Streaks"
+  ],
+  "role": "payoff",
+  "lift": 4.75,
+  "lift_ci": 2.0213680079187712,
+  "raw": 2.9000000000000004,
+  "fire": 0.5,
+  "text": "+120 contract points when your team wins the first trick of a round"
+ },
+ {
+  "id": "n2-king-win-mult-u",
+  "rarity": "uncommon",
+  "C": 4,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 5.35,
+  "lift_ci": 2.150410481033215,
+  "raw": 3.5000000000000004,
+  "fire": 0.60375,
+  "text": "+8 contract multiplier when your team wins a trick with a [K]"
+ },
+ {
+  "id": "n2-jack-hold-mult-u",
+  "rarity": "uncommon",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 6.05,
+  "lift_ci": 2.091090393177086,
+  "raw": 4.2,
+  "fire": 0.94175,
+  "text": "+4 contract multiplier for each [J] your team holds"
+ },
+ {
+  "id": "n2-exact-mult-u",
+  "rarity": "uncommon",
+  "C": 2,
+  "arch": [
+   "Exact"
+  ],
+  "role": "payoff",
+  "lift": 8.85,
+  "lift_ci": 2.197277615468173,
+  "raw": 7.000000000000001,
+  "fire": 0.24516666666666667,
+  "text": "+30 contract multiplier if your team makes its contract exactly"
+ },
+ {
+  "id": "n2-last-trick-x",
+  "rarity": "uncommon",
+  "C": 3,
+  "arch": [
+   "Streaks"
+  ],
+  "role": "payoff",
+  "lift": 9.25,
+  "lift_ci": 2.1206707484749963,
+  "raw": 7.3999999999999995,
+  "fire": 0.4755,
+  "text": "\u00d72 contract multiplier when your team wins the last trick of a round"
+ },
+ {
+  "id": "n2-king-hold-mult-u",
+  "rarity": "uncommon",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 9.75,
+  "lift_ci": 2.1177977502437524,
+  "raw": 7.9,
+  "fire": 0.9431666666666667,
+  "text": "+5 contract multiplier for each [K] your team holds"
+ },
+ {
+  "id": "ua-heart-hold-mult",
+  "rarity": "uncommon",
+  "C": 3,
+  "arch": [
+   "Suits"
+  ],
+  "role": "payoff",
+  "lift": 12.65,
+  "lift_ci": 2.105007138215332,
+  "raw": 10.8,
+  "fire": 0.9999166666666667,
+  "text": "+2 contract multiplier for each [\u2665] your team holds"
+ },
+ {
+  "id": "n2-club-hold-mult",
+  "rarity": "uncommon",
+  "C": 3,
+  "arch": [
+   "Suits"
+  ],
+  "role": "payoff",
+  "lift": 13.950000000000001,
+  "lift_ci": 2.063080211101231,
+  "raw": 12.1,
+  "fire": 0.9999166666666667,
+  "text": "+2 contract multiplier for each [\u2663] your team holds"
+ }
+]

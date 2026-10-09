@@ -10,7 +10,7 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "xmult",
-    "amount": 1.5,
+    "amount": 2.0,
     "on": {
       "event": "make",
       "min": 7
@@ -69,6 +69,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -3.1 [-4.1, -2.0] pts, fire 26%, skill gradient -1.8; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"xmult\", \"amount\": 1.5, \"on\": {\"event\": \"make\", \"min\": 7}} -> {\"type\": \"xmult\", \"amount\": 2.0, \"on\": {\"event\": \"make\", \"min\": 7}}"
     }
   ],
   "name": "Popped Champagne",
@@ -76,7 +80,7 @@
   "iconFamily": "champagne",
   "iconWord": "Champagne",
   "price": 75,
-  "text": "×1.5 contract multiplier if your team makes a contract of 7 or more",
+  "text": "×2 contract multiplier if your team makes a contract of 7 or more",
   "category": "xmult",
   "signature": "make(min=7)|-|-|xmult",
   "family": "make(min=7)|-|-|xmult",
@@ -85,7 +89,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 1.5",
+        "detail": "payout 2",
         "cost": 1
       },
       {

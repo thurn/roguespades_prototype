@@ -1,0 +1,31 @@
+[
+ {
+  "id": "n2-opp-win-points-c",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "Exact",
+   "Nil"
+  ],
+  "role": "payoff",
+  "lift": 1.5,
+  "lift_ci": 1.992929550623905,
+  "raw": -2.5,
+  "fire": 0.9761666666666666,
+  "text": "+8 contract points when the opponents win a trick"
+ },
+ {
+  "id": "e-exact-pts",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "Exact"
+  ],
+  "role": "payoff",
+  "lift": 5.3,
+  "lift_ci": 2.123840891580629,
+  "raw": 1.3,
+  "fire": 0.23475,
+  "text": "+200 contract points if your team makes its contract exactly"
+ }
+]

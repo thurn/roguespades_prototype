@@ -9,7 +9,7 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "points",
-    "amount": 75,
+    "amount": 190.0,
     "on": {
       "event": "win",
       "inRow": 4
@@ -33,7 +33,7 @@
       "elegance": 4
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -79,6 +79,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +1.5 [+0.1, +2.9] pts, fire 42%, skill gradient -0.1; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 75, \"on\": {\"event\": \"win\", \"inRow\": 4}} -> {\"type\": \"points\", \"amount\": 190.0, \"on\": {\"event\": \"win\", \"inRow\": 4}}; status kept -> cut"
     }
   ],
   "name": "Sweeping Broom",
@@ -86,7 +90,7 @@
   "iconFamily": "broom",
   "iconWord": "Broom",
   "price": 75,
-  "text": "+75 contract points when your team wins four tricks in a row",
+  "text": "+190 contract points when your team wins four tricks in a row",
   "category": "points",
   "signature": "win(inRow=4)|-|-|points",
   "family": "win(inRow=4)|-|-|points",
@@ -95,7 +99,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 75",
+        "detail": "payout 190",
         "cost": 1
       },
       {

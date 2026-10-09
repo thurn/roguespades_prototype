@@ -47,7 +47,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+10 contract multiplier when your team wins the first trick of a round",
   "category": "hybrid",
   "signature": "win(trick=first)|-|-|mult",

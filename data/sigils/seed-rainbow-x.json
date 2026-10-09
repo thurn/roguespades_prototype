@@ -27,7 +27,7 @@
       "elegance": 4
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -69,6 +69,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +1.9 [+0.5, +3.2] pts, fire 28%, skill gradient -0.6; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Full Rainbow",

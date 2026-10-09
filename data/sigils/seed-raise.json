@@ -3,7 +3,6 @@
   "rarity": "rare",
   "role": "enabler",
   "archetypes": [
-    "BidHigh",
     "Ranks",
     "Streaks"
   ],
@@ -42,6 +41,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +8.6 [+7.6, +9.6] pts, fire 0%, skill gradient +5.1; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: archetypes [\"BidHigh\", \"Ranks\", \"Streaks\"] -> [\"Ranks\", \"Streaks\"]"
     }
   ],
   "name": "Uplifting Hand",

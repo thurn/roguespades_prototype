@@ -23,7 +23,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -37,13 +37,17 @@
     {
       "step": "draft-common",
       "note": "draft-common: cut: lift +2.8 [+1.6, +4.1] pts (n 5607), fire 64%, C 4; the kept pool covers its archetypes with stronger, simpler, or more decision-rich pieces."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Ten Pins (bowling-ball); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
+  "name": "Ten Pins",
+  "icon": "bowling-ball",
+  "iconFamily": "bowling-ball",
+  "iconWord": "Bowling-Ball",
+  "price": 25,
   "text": "+70 contract points when your team leads a [10]",
   "category": "points",
   "signature": "lead|rank=10|-|points",

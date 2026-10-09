@@ -9,7 +9,7 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "points",
-    "amount": 4,
+    "amount": 10.0,
     "on": {
       "event": "hold",
       "card": {
@@ -78,6 +78,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -4.6 [-5.7, -3.4] pts, fire 100%, skill gradient -2.2; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 4, \"on\": {\"event\": \"hold\", \"card\": {\"suit\": \"D\"}}} -> {\"type\": \"points\", \"amount\": 10.0, \"on\": {\"event\": \"hold\", \"card\": {\"suit\": \"D\"}}}"
     }
   ],
   "name": "Jewel Box",
@@ -85,8 +89,8 @@
   "iconFamily": "box",
   "iconWord": "Box",
   "gddText": "+10 contract points for each [♦] your team holds",
-  "price": 50,
-  "text": "+4 contract points for each [♦] your team holds",
+  "price": 25,
+  "text": "+10 contract points for each [♦] your team holds",
   "category": "points",
   "signature": "hold|suit=D|-|points",
   "family": "hold|suit=*|-|points",
@@ -100,7 +104,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 4",
+        "detail": "payout 10",
         "cost": 1
       },
       {

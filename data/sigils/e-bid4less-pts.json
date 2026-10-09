@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "points",
-    "amount": 150,
+    "amount": 120.0,
     "on": {
       "event": "bid",
       "max": 4
@@ -21,7 +21,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -35,14 +35,18 @@
     {
       "step": "draft-common",
       "note": "draft-common: not in the enumerated source's most promising half (pre-tournament lift +8.9 [+5.3, +12.5], slope +5.8/2x, C 3)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Small Wager (piggy-bank); effect {\"type\": \"points\", \"amount\": 150, \"on\": {\"event\": \"bid\", \"max\": 4}} -> {\"type\": \"points\", \"amount\": 120.0, \"on\": {\"event\": \"bid\", \"max\": 4}}; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
-  "text": "+150 contract points when your team bids 4 or less",
+  "name": "Small Wager",
+  "icon": "piggy-bank",
+  "iconFamily": "piggy-bank",
+  "iconWord": "Piggy-Bank",
+  "price": 25,
+  "text": "+120 contract points when your team bids 4 or less",
   "category": "points",
   "signature": "bid(max=4)|-|-|points",
   "family": "bid(max=4)|-|-|points",
@@ -51,7 +55,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 150",
+        "detail": "payout 120",
         "cost": 1
       },
       {

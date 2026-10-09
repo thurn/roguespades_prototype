@@ -44,7 +44,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+1 contract multiplier when your team leads a card other than [♠]",
   "category": "mult",
   "signature": "lead|notSuit=S|-|mult",

@@ -9,7 +9,7 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "points",
-    "amount": 10,
+    "amount": 45.0,
     "on": {
       "event": "win",
       "card": {
@@ -66,6 +66,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -0.5 [-1.7, +0.7] pts, fire 88%, skill gradient -0.3; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 10, \"on\": {\"event\": \"win\", \"card\": {\"rank\": \"A\"}}} -> {\"type\": \"points\", \"amount\": 45.0, \"on\": {\"event\": \"win\", \"card\": {\"rank\": \"A\"}}}"
     }
   ],
   "name": "Winner's Certificate",
@@ -73,8 +77,8 @@
   "iconFamily": "certification",
   "iconWord": "Certificate",
   "gddText": "+20 contract points when your team wins a trick with an [A]",
-  "price": 50,
-  "text": "+10 contract points when your team wins a trick with an [A]",
+  "price": 25,
+  "text": "+45 contract points when your team wins a trick with an [A]",
   "category": "points",
   "signature": "win|rank=A|-|points",
   "family": "win|rank=*|-|points",
@@ -88,7 +92,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 10",
+        "detail": "payout 45",
         "cost": 1
       },
       {

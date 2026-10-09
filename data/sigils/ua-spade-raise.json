@@ -36,7 +36,7 @@
       "elegance": 5
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -58,6 +58,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +4.6 [+3.1, +6.0] pts, fire 0%, skill gradient +1.9; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Midnight Gondola",

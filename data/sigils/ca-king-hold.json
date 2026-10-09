@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "points",
-    "amount": 25,
+    "amount": 30.0,
     "on": {
       "event": "hold",
       "card": {
@@ -81,14 +81,18 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +3.5 [+2.4, +4.7] pts, fire 94%, skill gradient +1.1; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 25, \"on\": {\"event\": \"hold\", \"card\": {\"rank\": \"K\"}}} -> {\"type\": \"points\", \"amount\": 30.0, \"on\": {\"event\": \"hold\", \"card\": {\"rank\": \"K\"}}}"
     }
   ],
   "name": "Gathered Crowns",
   "icon": "crown",
   "iconFamily": "crown",
   "iconWord": "Crowns",
-  "price": 50,
-  "text": "+25 contract points for each [K] your team holds",
+  "price": 25,
+  "text": "+30 contract points for each [K] your team holds",
   "category": "points",
   "signature": "hold|rank=K|-|points",
   "family": "hold|rank=*|-|points",
@@ -102,7 +106,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 25",
+        "detail": "payout 30",
         "cost": 1
       },
       {

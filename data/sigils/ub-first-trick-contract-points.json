@@ -10,7 +10,7 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "points",
-    "amount": 15,
+    "amount": 40.0,
     "per": "contractTrick",
     "on": {
       "event": "win",
@@ -73,6 +73,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +2.0 [+0.9, +3.1] pts, fire 53%, skill gradient -0.9; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 15, \"per\": \"contractTrick\", \"on\": {\"event\": \"win\", \"trick\": \"first\"}} -> {\"type\": \"points\", \"amount\": 40.0, \"per\": \"contractTrick\", \"on\": {\"event\": \"win\", \"trick\": \"first\"}}"
     }
   ],
   "name": "Dawn Alarm",
@@ -80,7 +84,7 @@
   "iconFamily": "alarm",
   "iconWord": "Alarm",
   "price": 75,
-  "text": "+15 contract points for each trick in your team's contract when your team wins the first trick of a round",
+  "text": "+40 contract points for each trick in your team's contract when your team wins the first trick of a round",
   "category": "hybrid",
   "signature": "win(trick=first)|-|contractTrick|points",
   "family": "win(trick=first)|-|contractTrick|points",
@@ -89,7 +93,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 15",
+        "detail": "payout 40",
         "cost": 1
       },
       {

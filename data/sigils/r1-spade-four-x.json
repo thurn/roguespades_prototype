@@ -3,20 +3,18 @@
   "rarity": "rare",
   "role": "payoff",
   "archetypes": [
-    "Spades",
-    "BidHigh"
+    "Spades"
   ],
   "source": "designed",
   "createdIn": "round-1",
   "effect": {
     "type": "xmult",
-    "amount": 2.5,
+    "amount": 1.15,
     "on": {
       "event": "win",
       "card": {
         "suit": "S"
-      },
-      "count": 4
+      }
     }
   },
   "design": {
@@ -72,6 +70,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +8.7 [+7.4, +10.0] pts, fire 44%, skill gradient +5.6; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"xmult\", \"amount\": 2.5, \"on\": {\"event\": \"win\", \"card\": {\"suit\": \"S\"}, \"count\": 4}} -> {\"type\": \"xmult\", \"amount\": 1.15, \"on\": {\"event\": \"win\", \"card\": {\"suit\": \"S\"}}}; archetypes [\"Spades\", \"BidHigh\"] -> [\"Spades\"]"
     }
   ],
   "name": "Fourfold Axe",
@@ -79,10 +81,10 @@
   "iconFamily": "axe",
   "iconWord": "Axe",
   "price": 100,
-  "text": "×2.5 contract multiplier when your team wins four tricks with [♠]",
+  "text": "×1.15 contract multiplier when your team wins a trick with [♠]",
   "category": "xmult",
-  "signature": "win(count=4)|suit=S|-|xmult",
-  "family": "win(count=4)|suit=*|-|xmult",
+  "signature": "win|suit=S|-|xmult",
+  "family": "win|suit=*|-|xmult",
   "touchesOpponents": false,
   "simplicity": {
     "items": [
@@ -93,7 +95,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 2.5",
+        "detail": "payout 1.15",
         "cost": 1
       },
       {
@@ -105,25 +107,10 @@
         "burden": "boolean condition",
         "detail": "the card matches",
         "cost": 1
-      },
-      {
-        "burden": "numeric value",
-        "detail": "milestone 4",
-        "cost": 1
-      },
-      {
-        "burden": "boolean condition",
-        "detail": "count reaches 4",
-        "cost": 1
-      },
-      {
-        "burden": "tracked state",
-        "detail": "milestone count",
-        "cost": 1
       }
     ],
-    "C": 7,
-    "S": 0.125
+    "C": 4,
+    "S": 0.2
   },
   "lint": [],
   "estimates": {

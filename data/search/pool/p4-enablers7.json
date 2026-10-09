@@ -1,0 +1,102 @@
+{
+ "add": [
+  {
+   "id": "n2-free-twos",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "LowCards",
+    "Nil"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "anySuit",
+    "card": {
+     "rank": "2"
+    }
+   },
+   "design": {
+    "rationale": "Shed or keep [2]s at will."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (common enabler, modest alone)."
+    }
+   ]
+  },
+  {
+   "id": "n2-free-threes",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "LowCards",
+    "Nil"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "anySuit",
+    "card": {
+     "rank": "3"
+    }
+   },
+   "design": {
+    "rationale": "Same for [3]s."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (common enabler, modest alone)."
+    }
+   ]
+  },
+  {
+   "id": "n2-free-tens",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "LowCards",
+    "Streaks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "anySuit",
+    "card": {
+     "rank": "10"
+    }
+   },
+   "design": {
+    "rationale": "Play a [10] when it can win."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (common enabler, modest alone)."
+    }
+   ]
+  }
+ ],
+ "sigils": {
+  "uc-trump-freely": {
+   "rarity": "common"
+  }
+ }
+}

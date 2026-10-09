@@ -44,10 +44,19 @@ def build(
     b = it.Variant.load(name).materialize()
     ids = changed(name, vs) if vs else None
     if rows_from:
+        # Each report's raw lift carries its own opportunity cost (granting a sigil displaces a
+        # purchase, which costs more in a stronger pool), so rows from different reports are put on
+        # one scale: lift over the same-rarity control plus the reference report's control offset.
         got: dict = {}
+        ref = json.loads((REPORTS / "search-2" / f"sigils-{rows_from[-1]}-dev0-t0-wp.json").read_text())
+        off = {
+            rar: float(np.mean([x["raw"] - x["lift"] for x in ref if x["rarity"] == rar]))
+            for rar in {x["rarity"] for x in ref}
+        }
         for r in rows_from:
             for row in json.loads((REPORTS / "search-2" / f"sigils-{r}-dev0-t0-wp.json").read_text()):
-                got.setdefault(row["id"], row)
+                if row["id"] not in got:
+                    got[row["id"]] = dict(row, raw=row["lift"] + off[row["rarity"]])
         missing = [s for s in b.pool if s not in got]
         assert not missing, f"no lift rows for {missing}"
         rows = [got[s] for s in b.pool]

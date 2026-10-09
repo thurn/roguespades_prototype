@@ -1,10 +1,9 @@
 {
   "id": "r2-twos-beat-rare",
-  "rarity": "rare",
+  "rarity": "legendary",
   "role": "enabler",
   "archetypes": [
     "LowCards",
-    "Rainbow",
     "Nil"
   ],
   "source": "designed",
@@ -52,13 +51,17 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +11.5 [+10.3, +12.8] pts, fire 0%, skill gradient +4.0; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: rarity \"rare\" -> \"legendary\"; archetypes [\"LowCards\", \"Rainbow\", \"Nil\"] -> [\"LowCards\", \"Nil\"]"
     }
   ],
   "name": "Crowned Pawn",
   "icon": "chess-pawn",
   "iconFamily": "chess-pawn",
   "iconWord": "Pawn",
-  "price": 100,
+  "price": 150,
   "text": "Your team's [2]s beat every other card of their suit",
   "category": "enabler",
   "signature": "play|rank=2||beats",

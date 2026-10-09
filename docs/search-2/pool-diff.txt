@@ -1,0 +1,134 @@
+rec 148 Counter({'common': 62, 'uncommon': 60, 'rare': 20, 'legendary': 6}) meanC 3.16
+  BidHigh   c  6 u  7 r  1 l  1
+  Exact     c  4 u  6 r  1 l  0
+  Generic   c  3 u  2 r  1 l  1
+  LowCards  c  7 u  5 r  3 l  1
+  Nil       c  6 u  7 r  5 l  0
+  Ranks     c 14 u  8 r  4 l  1
+  Spades    c  6 u  7 r  3 l  0
+  Streaks   c  5 u  9 r  0 l  1
+  Suits     c 11 u  9 r  2 l  1
+
+CUT from search 1: 12
+  c cb-become-ace: Opening: Two cards your team holds become [A]s
+  c cb-contract-mult: +1 contract multiplier for each trick in your team's contract
+  c cc-any-suit-first-two: Your team can play any suit on the first two tricks
+  c cc-nil-made-points: +180 contract points if your team makes a nil
+  l r1-faces-untrumpable: Your team's [K]s through [A]s can't be trumped
+  c r1-low-win-points: +20 contract points when your team wins a trick with a [2] through [6]
+  u r2-diamond-seven-x: ×2.5 contract multiplier if your team holds seven [♥]s
+  c seed-win-points: +6 contract points when your team wins a trick
+  u ua-spade-raise: Opening: Raise every [♠] your team holds by two ranks
+  u ua-three-aces-x: ×2 contract multiplier if your team holds three [A]s
+  u ub-four-row-points: +75 contract points when your team wins four tricks in a row
+  u uc-trump-freely: Your team can play [♠]s even when it can follow suit
+
+ADDED: 64
+  c C3 BidHigh   cb-contract-mult-made: +1 contract multiplier for each trick in your team's contract if your team makes its contract
+  c C4 BidHigh   e-make8-pts: +250 contract points if your team makes a contract of 8 or more
+  c C3 Exact     e-bid4less-pts: +120 contract points when your team bids 4 or less
+  c C3 Exact     cb-exact-trick-mult: +3 contract multiplier for each trick in your team's contract if your team makes its contract exactly
+  c C2 LowCards  n2-free-tens: Your team can play [10]s even when it can follow suit
+  c C2 LowCards  n2-free-twos: Your team can play [2]s even when it can follow suit
+  c C4 LowCards  e-lead-low-mult: +2 contract multiplier when your team leads a [2] through [10]
+  c C4 LowCards  e-win-rank-2-pts: +200 contract points when your team wins a trick with a [2]
+  c C2 Nil       cc-nil-bid-points: +160 contract points when your team bids nil
+  c C3 Nil       cc-nil-hold-twos: +75 nil points for each [2] your team holds
+  c C3 Ranks     n2-jacks-untrumpable: Your team's [J]s can't be trumped
+  c C3 Ranks     e-lead-rank-q-mult: +8 contract multiplier when your team leads a [Q]
+  c C3 Ranks     e-hold-rank-j-mult: +4 contract multiplier for each [J] your team holds
+  c C3 Ranks     n2-kings-untrumpable-c: Your team's [K]s can't be trumped
+  c C3 Ranks     e-lead-rank-a-pts: +45 contract points when your team leads an [A]
+  c C3 Ranks     e-lead-rank-10-pts: +70 contract points when your team leads a [10]
+  c C3 Ranks     e-hold-rank-q-mult: +4 contract multiplier for each [Q] your team holds
+  c C3 Ranks     e-lead-rank-j-pts: +70 contract points when your team leads a [J]
+  c C3 Ranks     n2-queens-untrumpable: Your team's [Q]s can't be trumped
+  c C4 Ranks     e-win-rank-10-mult: +11 contract multiplier when your team wins a trick with a [10]
+  c C4 Spades    ca-trump-contract: +6 contract points for each trick in your team's contract when your team wins a trick by trumping
+  c C4 Spades    e-win-suit-s-mult: +2 contract multiplier when your team wins a trick with [♠]
+  c C3 Spades    e-lead-suit-s-pts: +25 contract points when your team leads [♠]
+  c C3 Streaks   e-consecutive-pts: +10 contract points when your team wins consecutive tricks
+  c C3 Streaks   cb-last-trick-points: +80 contract points when your team wins the last trick of a round
+  c C3 Streaks   e-first-pts: +90 contract points when your team wins the first trick of a round
+  c C3 Suits     e-lead-suit-c-pts: +25 contract points when your team leads [♣]
+  c C3 Suits     e-lead-suit-d-mult: +3 contract multiplier when your team leads [♦]
+  c C3 Suits     e-hold-suit-c-mult: +1 contract multiplier for each [♣] your team holds
+  c C2 Suits     n2-free-hearts: Your team can play [♥]s even when it can follow suit
+  c C2 Suits     n2-free-clubs: Your team can play [♣]s even when it can follow suit
+  c C3 Suits     e-hold-suit-h-mult: +1 contract multiplier for each [♥] your team holds
+  r C3 LowCards  rc-two-hold-x: ×1.25 contract multiplier for each [2] your team holds
+  r C4 Nil       rc-nil-grow-x: This sigil gains ×0.5 contract multiplier every time your team makes a nil (currently ×1)
+  r C3 Nil       r1-middle-free: Your team can play [6]s through [9]s even when it can follow suit
+  r C3 Nil       rc-nil-contract-mult: +3 contract multiplier for each trick in your team's contract if your team makes a nil
+  u C3 BidHigh   ub-bid8-xmult: ×2.5 contract multiplier when your team bids 8 or more
+  u C2 BidHigh   ub-outbid-mult: +20 contract multiplier when your team bids more than the opponents
+  u C2 Exact     n2-exact-mult-u: +30 contract multiplier if your team makes its contract exactly
+  u C3 Exact     uc-exact-contract-points: +65 contract points for each trick in your team's contract if your team makes its contract exactly
+  u C2 Generic   ub-trick-xmult: ×1.05 contract multiplier when your team wins a trick
+  u C4 LowCards  uc-low-hold-mult: +2 contract multiplier for each [2] through [4] your team holds
+  u C4 LowCards  n2-two-win-x-u: ×2 contract multiplier when your team wins a trick with a [2]
+  u C3 Nil       uc-nil-contract-mult: +5 contract multiplier for each trick in your team's contract when your team bids nil
+  u C4 Nil       uc-low-lead-nil: +100 nil points when your team leads a [2] through [6]
+  u C3 Nil       uc-small-bid-x: ×2 contract multiplier when your team bids 4 or less
+  u C3 Ranks     n2-king-hold-mult-u: +5 contract multiplier for each [K] your team holds
+  u C3 Ranks     n2-ace-lead-mult: +10 contract multiplier when your team leads an [A]
+  u C3 Ranks     n2-jack-hold-mult-u: +4 contract multiplier for each [J] your team holds
+  u C4 Ranks     n2-king-win-mult-u: +8 contract multiplier when your team wins a trick with a [K]
+  u C5 Ranks     ua-ace-win-contract: +1 contract multiplier for each trick in your team's contract when your team wins a trick with an [A]
+  u C4 Spades    ua-trump-contract-mult: +1 contract multiplier for each trick in your team's contract when your team wins a trick by trumping
+  u C4 Spades    ua-spade-led-win-mult: +4 contract multiplier when your team wins a trick led with [♠]
+  u C5 Spades    ua-spade-last-x: ×1.75 contract multiplier when your team wins the last trick of a round with [♠]
+  u C3 Streaks   n2-last-trick-x: ×2 contract multiplier when your team wins the last trick of a round
+  u C3 Streaks   ub-consecutive-xmult: ×1.1 contract multiplier when your team wins consecutive tricks
+  u C3 Streaks   r1-first-trick-points: +120 contract points when your team wins the first trick of a round
+  u C5 Streaks   r2-last-trick-grow: This sigil gains +8 contract multiplier every time your team wins the last trick of a round (currently +0)
+  u C4 Suits     n2-club-win-mult-u: +8 contract multiplier when your team wins a trick with [♣]
+  u C3 Suits     n2-clubs-untrumpable: Your team's [♣]s can't be trumped
+  u C4 Suits     n2-diamond-win-mult-u: +8 contract multiplier when your team wins a trick with [♦]
+  u C4 Suits     ua-diamond-led-win-mult: +6 contract multiplier when your team wins a trick led with [♦]
+  u C3 Suits     n2-diamonds-untrumpable: Your team's [♦]s can't be trumped
+  u C3 Suits     n2-club-lead-mult: +6 contract multiplier when your team leads [♣]
+
+RETUNED (kept from search 1):
+  ca-diamond-led-win: +15 contract points when your team wins a trick led with [♥]  ->  +30 contract points when your team wins a trick led with [♥]
+  ca-face-win: +30 contract points when your team wins a trick with a [K]  ->  +60 contract points when your team wins a trick with a [K]
+  ca-king-hold: +40 contract points for each [K] your team holds  ->  +30 contract points for each [K] your team holds
+  cb-bid8-trick-mult: +2 contract multiplier for each trick in your team's contract when your team bids 8 or more  ->  +5 contract multiplier for each trick in your team's contract when your team bids 8 or more
+  cb-consecutive-mult: +1 contract multiplier when your team wins consecutive tricks  ->  +1 contract multiplier when your team wins consecutive tricks
+  cb-make-mult: +3 contract multiplier if your team makes its contract  ->  +6 contract multiplier if your team makes its contract
+  cb-make8-mult: +10 contract multiplier if your team makes a contract of 8 or more  ->  +20 contract multiplier if your team makes a contract of 8 or more
+  cb-opp-set-mult: +15 contract multiplier if the opponents miss their contract  ->  +25 contract multiplier if the opponents miss their contract
+  cc-low-hold-points: +4 contract points for each [2] through [6] your team holds  ->  +7 contract points for each [2] through [6] your team holds
+  cc-small-contract-mult: +15 contract multiplier when your team bids 4 or less  ->  +15 contract multiplier when your team bids 4 or less
+  cc-two-win-mult: +10 contract multiplier when your team wins a trick with a [2]  ->  +25 contract multiplier when your team wins a trick with a [2]
+  e-lead-rank-k-mult: +5 contract multiplier when your team leads a [K]  ->  +8 contract multiplier when your team leads a [K]
+  e-trump-mult: +2 contract multiplier when your team wins a trick by trumping  ->  +4 contract multiplier when your team wins a trick by trumping
+  e-win-suit-d-mult: +2 contract multiplier when your team wins a trick with [♥]  ->  +4 contract multiplier when your team wins a trick with [♥]
+  r1-spade-four-x: ×1.15 contract multiplier when your team wins a trick with [♠]  ->  ×1.15 contract multiplier when your team wins a trick with [♠] [tags ['Spades', 'BidHigh']->['Spades']]
+  r2-four-row-x: ×3 contract multiplier when your team wins four tricks in a row  ->  ×3 contract multiplier when your team wins four tricks in a row [tags ['Streaks', 'BidHigh']->['Streaks']]
+  ra-ace-hold-x: ×1.1 contract multiplier for each [A] your team holds  ->  ×1.25 contract multiplier for each [A] your team holds
+  ra-ace-win-x: ×1.3 contract multiplier when your team wins a trick with an [A]  ->  ×1.3 contract multiplier when your team wins a trick with an [A] [tags ['Ranks', 'BidHigh']->['Ranks']]
+  ra-spade-lead-x: ×1.15 contract multiplier when your team leads [♠]  ->  ×1.2 contract multiplier when your team leads [♠]
+  s-exact-x: ×1.5 contract multiplier if your team makes its contract exactly  ->  ×2 contract multiplier if your team makes its contract exactly
+  seed-ace-mult: +4 contract multiplier when your team wins a trick with an [A]  ->  +7 contract multiplier when your team wins a trick with an [A]
+  seed-ace-win: +25 contract points when your team wins a trick with an [A]  ->  +45 contract points when your team wins a trick with an [A]
+  seed-contract-points: +6 contract points for each trick in your team's contract  ->  +15 contract points for each trick in your team's contract
+  seed-diamond-hold: +8 contract points for each [♦] your team holds  ->  +10 contract points for each [♦] your team holds
+  seed-diamond-lead: +15 contract points when your team leads [♥]  ->  +30 contract points when your team leads [♥]
+  seed-diamond-win: +30 contract points when your team wins a trick with [♦]  ->  +75 contract points when your team wins a trick with [♦]
+  seed-nil-bid-mult: +5 contract multiplier when your team bids nil  ->  +10 contract multiplier when your team bids nil
+  seed-nil-made-x: ×1.5 contract multiplier if your team makes a nil  ->  ×2.25 contract multiplier if your team makes a nil
+  seed-nil-points: +80 nil points  ->  +160 nil points
+  seed-spade-hold: +10 contract points for each [♠] your team holds  ->  +15 contract points for each [♠] your team holds
+  seed-trump-points: +20 contract points when your team wins a trick by trumping  ->  +50 contract points when your team wins a trick by trumping
+  seed-two-win: +180 contract points when your team wins a trick with a [2]  ->  +450 contract points when your team wins a trick with a [2]
+  ua-spade-seven-x: ×2 contract multiplier if your team holds seven [♠]s  ->  ×2 contract multiplier if your team holds seven [♠]s [tags ['Spades', 'BidHigh']->['Spades']]
+  ub-bid7-points: +145 contract points when your team bids 7 or more  ->  +350 contract points when your team bids 7 or more
+  ub-bid8-trick-points: +50 contract points for each trick in your team's contract when your team bids 8 or more  ->  +85 contract points for each trick in your team's contract when your team bids 8 or more
+  ub-consecutive-contract-points: +2 contract points for each trick in your team's contract when your team wins consecutive tricks  ->  +3 contract points for each trick in your team's contract when your team wins consecutive tricks
+  ub-first-trick-contract-points: +15 contract points for each trick in your team's contract when your team wins the first trick of a round  ->  +40 contract points for each trick in your team's contract when your team wins the first trick of a round
+  ub-first-trick-xmult: ×1.5 contract multiplier when your team wins the first trick of a round  ->  ×1.75 contract multiplier when your team wins the first trick of a round
+  ub-make7-xmult: ×1.5 contract multiplier if your team makes a contract of 7 or more  ->  ×2 contract multiplier if your team makes a contract of 7 or more
+  uc-nil-cover-points: +25 nil points when your team wins a trick  ->  +35 nil points when your team wins a trick
+  uc-nil-low-hold: +15 nil points for each [2] through [6] your team holds  ->  +30 nil points for each [2] through [6] your team holds
+41

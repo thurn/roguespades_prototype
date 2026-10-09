@@ -3,9 +3,7 @@
   "rarity": "uncommon",
   "role": "payoff",
   "archetypes": [
-    "BidHigh",
-    "Ranks",
-    "Generic"
+    "Ranks"
   ],
   "source": "designed",
   "createdIn": "draft-uncommon",
@@ -82,6 +80,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -1.4 [-2.5, -0.2] pts, fire 100%, skill gradient -1.3; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: archetypes [\"BidHigh\", \"Ranks\", \"Generic\"] -> [\"Ranks\"]"
     }
   ],
   "name": "Hall of Nobles",

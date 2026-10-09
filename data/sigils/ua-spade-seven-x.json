@@ -3,8 +3,7 @@
   "rarity": "uncommon",
   "role": "payoff",
   "archetypes": [
-    "Spades",
-    "BidHigh"
+    "Spades"
   ],
   "source": "designed",
   "createdIn": "draft-uncommon",
@@ -68,6 +67,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +6.8 [+5.6, +8.0] pts, fire 61%, skill gradient +4.8; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: archetypes [\"Spades\", \"BidHigh\"] -> [\"Spades\"]"
     }
   ],
   "name": "Black Bear",

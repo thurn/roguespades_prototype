@@ -1,0 +1,6 @@
+{
+ "rules": {
+  "offerDraws": "shared"
+ },
+ "base": "p2-alive-L"
+}

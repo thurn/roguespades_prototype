@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "xmult",
-    "amount": 1.25,
+    "amount": 1.05,
     "on": {
       "event": "hold",
       "card": {
@@ -37,14 +37,18 @@
     {
       "step": "draft-common",
       "note": "draft-common: set aside: it fires 6.6 times per round, so a balanced per-event factor would be about ×1.06, below any printable ×multiplier."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"xmult\", \"amount\": 1.25, \"on\": {\"event\": \"hold\", \"card\": {\"suit\": \"C\"}}} -> {\"type\": \"xmult\", \"amount\": 1.05, \"on\": {\"event\": \"hold\", \"card\": {\"suit\": \"C\"}}}"
     }
   ],
   "name": null,
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
-  "text": "×1.25 contract multiplier for each [♣] your team holds",
+  "price": 25,
+  "text": "×1.05 contract multiplier for each [♣] your team holds",
   "category": "xmult",
   "signature": "hold|suit=C|-|xmult",
   "family": "hold|suit=*|-|xmult",
@@ -58,7 +62,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 1.25",
+        "detail": "payout 1.05",
         "cost": 1
       },
       {

@@ -38,7 +38,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+5 contract points for each trick in your team's contract",
   "category": "points",
   "signature": "always|-|contractTrick|points",

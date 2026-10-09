@@ -38,7 +38,7 @@
     "target": "adds",
     "replaces": []
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -64,6 +64,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +10.1 [+9.1, +11.1] pts, fire 95%, skill gradient +1.5; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Royal Vault",

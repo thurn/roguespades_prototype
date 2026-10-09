@@ -36,7 +36,7 @@
     "target": "T11",
     "replaces": []
   },
-  "status": "replaced",
+  "status": "kept",
   "replacedBy": "r2-high-middle-free",
   "history": [
     {
@@ -50,12 +50,16 @@
     {
       "step": "round-2",
       "note": "round-2: replaced by r2-high-middle-free (lift +12.3 [+11.4, +13.2] pts, C 4 against lift +14.0 [+13.0, +15.1] pts, C 4): the narrower [7]–[9] range lands at the ceiling instead of over it."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Middle Ground (split); status replaced -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Middle Ground",
+  "icon": "split",
+  "iconFamily": "split",
+  "iconWord": "Split",
   "price": 100,
   "text": "Your team can play [6]s through [9]s even when it can follow suit",
   "category": "enabler",

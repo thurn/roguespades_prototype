@@ -10,7 +10,7 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "mult",
-    "amount": 4,
+    "amount": 6.0,
     "on": {
       "event": "win",
       "led": {
@@ -37,7 +37,7 @@
       "elegance": 4
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -47,14 +47,18 @@
     {
       "step": "draft-uncommon",
       "note": "draft-uncommon: cut: lift -10.3 [-11.7, -8.9] pts (n 3179), fire 82%, C 3; far below the control, and one retune step can't close the gap."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Diamond Escort (car); effect {\"type\": \"mult\", \"amount\": 4, \"on\": {\"event\": \"win\", \"led\": {\"suit\": \"D\"}}} -> {\"type\": \"mult\", \"amount\": 6.0, \"on\": {\"event\": \"win\", \"led\": {\"suit\": \"D\"}}}; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Diamond Escort",
+  "icon": "car",
+  "iconFamily": "car",
+  "iconWord": "Car",
   "price": 75,
-  "text": "+4 contract multiplier when your team wins a trick led with [♦]",
+  "text": "+6 contract multiplier when your team wins a trick led with [♦]",
   "category": "hybrid",
   "signature": "win(led=suit=D)|-|-|mult",
   "family": "win(led=suit=D)|-|-|mult",
@@ -68,7 +72,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 4",
+        "detail": "payout 6",
         "cost": 1
       },
       {

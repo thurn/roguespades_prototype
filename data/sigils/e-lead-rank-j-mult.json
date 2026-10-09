@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 10,
+    "amount": 5.0,
     "on": {
       "event": "lead",
       "card": {
@@ -37,14 +37,18 @@
     {
       "step": "draft-common",
       "note": "draft-common: cut: lift +13.0 [+11.6, +14.3] pts (n 5679), fire 67%, C 4; near-duplicate of kept e-lead-rank-k-mult (same shape up to a named suit, rank, or amount)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 10, \"on\": {\"event\": \"lead\", \"card\": {\"rank\": \"J\"}}} -> {\"type\": \"mult\", \"amount\": 5.0, \"on\": {\"event\": \"lead\", \"card\": {\"rank\": \"J\"}}}"
     }
   ],
   "name": null,
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
-  "text": "+10 contract multiplier when your team leads a [J]",
+  "price": 25,
+  "text": "+5 contract multiplier when your team leads a [J]",
   "category": "mult",
   "signature": "lead|rank=J|-|mult",
   "family": "lead|rank=*|-|mult",
@@ -58,7 +62,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 10",
+        "detail": "payout 5",
         "cost": 1
       },
       {

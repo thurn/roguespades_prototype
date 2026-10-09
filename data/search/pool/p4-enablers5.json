@@ -1,0 +1,126 @@
+{
+ "add": [
+  {
+   "id": "n2-twos-untrumpable",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "LowCards"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "untrumpable",
+    "from": {
+     "rank": "2"
+    }
+   },
+   "design": {
+    "rationale": "LowCards enabler: a [2] led in a side suit can still win."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (common enabler, modest alone)."
+    }
+   ]
+  },
+  {
+   "id": "n2-nines-untrumpable",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "LowCards"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "untrumpable",
+    "from": {
+     "rank": "9"
+    }
+   },
+   "design": {
+    "rationale": "LowCards enabler."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (common enabler, modest alone)."
+    }
+   ]
+  },
+  {
+   "id": "n2-jacks-beat",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "Streaks",
+    "Ranks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "beats",
+    "card": {
+     "rank": "J"
+    }
+   },
+   "design": {
+    "rationale": "Streaks enabler: [J]s become sure winners of their suit."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (common enabler, modest alone)."
+    }
+   ]
+  },
+  {
+   "id": "n2-tens-beat",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "Streaks",
+    "LowCards"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "beats",
+    "card": {
+     "rank": "10"
+    }
+   },
+   "design": {
+    "rationale": "Streaks/LowCards enabler."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (common enabler, modest alone)."
+    }
+   ]
+  }
+ ]
+}

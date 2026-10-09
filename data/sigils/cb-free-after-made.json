@@ -47,7 +47,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "Your team can play any suit once it has won the tricks in its contract",
   "category": "enabler",
   "signature": "play|after=contractMade|-|anySuit",

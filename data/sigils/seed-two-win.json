@@ -9,7 +9,7 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "points",
-    "amount": 180,
+    "amount": 450.0,
     "on": {
       "event": "win",
       "card": {
@@ -74,6 +74,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +3.7 [+2.6, +4.7] pts, fire 25%, skill gradient +0.6; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 180, \"on\": {\"event\": \"win\", \"card\": {\"rank\": \"2\"}}} -> {\"type\": \"points\", \"amount\": 450.0, \"on\": {\"event\": \"win\", \"card\": {\"rank\": \"2\"}}}"
     }
   ],
   "name": "Lucky Penny",
@@ -83,7 +87,7 @@
   "gddText": "+150 contract points when your team wins a trick with a two",
   "gddTypo": "Ranks are bracketed (§5): \"a [2]\".",
   "price": 100,
-  "text": "+180 contract points when your team wins a trick with a [2]",
+  "text": "+450 contract points when your team wins a trick with a [2]",
   "category": "points",
   "signature": "win|rank=2|-|points",
   "family": "win|rank=*|-|points",
@@ -97,7 +101,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 180",
+        "detail": "payout 450",
         "cost": 1
       },
       {

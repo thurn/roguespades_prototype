@@ -41,7 +41,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "×3 contract multiplier when your team bids nil",
   "category": "xmult",
   "signature": "bid(nil)|-|-|xmult",

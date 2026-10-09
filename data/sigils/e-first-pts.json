@@ -21,7 +21,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -35,13 +35,17 @@
     {
       "step": "draft-common",
       "note": "draft-common: cut: lift +3.4 [+2.2, +4.5] pts (n 8083), fire 55%, C 3; the kept pool covers its archetypes with stronger, simpler, or more decision-rich pieces."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Starting Pistol (flag-chequered); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
+  "name": "Starting Pistol",
+  "icon": "flag-chequered",
+  "iconFamily": "flag-chequered",
+  "iconWord": "Flag-Chequered",
+  "price": 25,
   "text": "+90 contract points when your team wins the first trick of a round",
   "category": "points",
   "signature": "win(trick=first)|-|-|points",

@@ -1,0 +1,14 @@
+{
+ "base": "p4i-L",
+ "sigils": {},
+ "add": [],
+ "combos": [],
+ "drop": [
+  "e-bid4less-pts",
+  "seed-diamond-win"
+ ],
+ "include": [
+  "cb-free-after-made",
+  "cc-any-suit-last-four"
+ ]
+}

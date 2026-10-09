@@ -13,9 +13,6 @@
   "effect": {
     "type": "become",
     "count": 4,
-    "from": {
-      "notSuit": "S"
-    },
     "suit": "S"
   },
   "design": {
@@ -55,6 +52,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +8.2 [+7.0, +9.3] pts, fire 0%, skill gradient +6.4; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"become\", \"count\": 4, \"from\": {\"notSuit\": \"S\"}, \"suit\": \"S\"} -> {\"type\": \"become\", \"count\": 4, \"suit\": \"S\"}"
     }
   ],
   "name": "Eclipsed Planet",
@@ -62,18 +63,13 @@
   "iconFamily": "planet",
   "iconWord": "Planet",
   "price": 75,
-  "text": "Opening: Four cards other than [♠] your team holds become [♠]s",
+  "text": "Opening: Four cards your team holds become [♠]s",
   "category": "enabler",
-  "signature": "opening|from:notSuit=S|suit=S|become",
-  "family": "opening|from:notSuit=S|suit=S|become",
+  "signature": "opening|suit=S|-|become",
+  "family": "opening|suit=*|-|become",
   "touchesOpponents": false,
   "simplicity": {
     "items": [
-      {
-        "burden": "suit literal",
-        "detail": "[♠]",
-        "cost": 1
-      },
       {
         "burden": "suit literal",
         "detail": "[♠]",
@@ -86,17 +82,12 @@
       },
       {
         "burden": "boolean condition",
-        "detail": "suit is not S",
-        "cost": 1
-      },
-      {
-        "burden": "boolean condition",
         "detail": "held by your team",
         "cost": 1
       }
     ],
-    "C": 5,
-    "S": 0.16666666666666666
+    "C": 3,
+    "S": 0.25
   },
   "lint": [],
   "estimates": {

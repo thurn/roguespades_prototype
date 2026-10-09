@@ -23,7 +23,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": "seed-spade-lead",
   "history": [
     {
@@ -37,13 +37,17 @@
     {
       "step": "draft-common",
       "note": "draft-common: merged into seed-spade-lead, which has the same signature (D21: credits both sources)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Spade Work (sapling); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
+  "name": "Spade Work",
+  "icon": "sapling",
+  "iconFamily": "sapling",
+  "iconWord": "Sapling",
+  "price": 25,
   "text": "+25 contract points when your team leads [♠]",
   "category": "points",
   "signature": "lead|suit=S|-|points",

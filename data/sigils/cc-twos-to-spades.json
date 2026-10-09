@@ -51,7 +51,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "Opening: Every [2] your team holds becomes a [♠]",
   "category": "enabler",
   "signature": "opening|from:rank=2|suit=S|become",

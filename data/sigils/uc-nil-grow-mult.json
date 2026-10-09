@@ -10,7 +10,7 @@
   "effect": {
     "type": "grow",
     "kind": "mult",
-    "step": 4,
+    "step": 8.0,
     "on": {
       "event": "nilMade"
     }
@@ -43,6 +43,10 @@
     {
       "step": "draft-uncommon",
       "note": "draft-uncommon: cut: lift -18.9 [-20.7, -17.0] pts (n 2198), fire 24%, C 4; far below the control, and one retune step can't close the gap."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"grow\", \"kind\": \"mult\", \"step\": 4, \"on\": {\"event\": \"nilMade\"}} -> {\"type\": \"grow\", \"kind\": \"mult\", \"step\": 8.0, \"on\": {\"event\": \"nilMade\"}}"
     }
   ],
   "name": null,
@@ -50,7 +54,7 @@
   "iconFamily": null,
   "iconWord": null,
   "price": 75,
-  "text": "This sigil gains +4 contract multiplier every time your team makes a nil (currently +0)",
+  "text": "This sigil gains +8 contract multiplier every time your team makes a nil (currently +0)",
   "category": "mult",
   "signature": "nilMade|-|growth|mult",
   "family": "nilMade|-|growth|mult",
@@ -59,7 +63,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "growth step 4",
+        "detail": "growth step 8",
         "cost": 1
       },
       {

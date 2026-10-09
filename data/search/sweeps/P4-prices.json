@@ -1,0 +1,10 @@
+{
+ "name": "P4-prices",
+ "incumbent": "p4i-L",
+ "levels": {
+  "r4-prices-lo": {"rules": {"prices": [25, 40, 50, 75]}},
+  "r4-prices-c25": {"rules": {"prices": [25, 75, 100, 150]}},
+  "r4-prices-hi": {"rules": {"prices": [75, 110, 150, 225]}},
+  "r4-prices-c75": {"rules": {"prices": [75, 75, 100, 150]}}
+ }
+}

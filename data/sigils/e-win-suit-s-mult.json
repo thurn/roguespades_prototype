@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 2,
+    "amount": 2.0,
     "on": {
       "event": "win",
       "card": {
@@ -23,7 +23,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -37,13 +37,17 @@
     {
       "step": "draft-common",
       "note": "draft-common: cut: lift +6.2 [+5.0, +7.4] pts (n 7171), fire 96%, C 3; near-duplicate of kept e-win-suit-d-mult (same shape up to a named suit, rank, or amount)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Black Flag (skull); effect {\"type\": \"mult\", \"amount\": 2, \"on\": {\"event\": \"win\", \"card\": {\"suit\": \"S\"}}} -> {\"type\": \"mult\", \"amount\": 2.0, \"on\": {\"event\": \"win\", \"card\": {\"suit\": \"S\"}}}; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
+  "name": "Black Flag",
+  "icon": "skull",
+  "iconFamily": "skull",
+  "iconWord": "Skull",
+  "price": 25,
   "text": "+2 contract multiplier when your team wins a trick with [♠]",
   "category": "mult",
   "signature": "win|suit=S|-|mult",

@@ -1,0 +1,87 @@
+[
+ {
+  "id": "n2-two-lead-mult-u",
+  "rarity": "uncommon",
+  "C": 3,
+  "arch": [
+   "LowCards",
+   "Nil"
+  ],
+  "role": "payoff",
+  "lift": 0.8500000000000001,
+  "lift_ci": 2.0158986729093056,
+  "raw": -2.45,
+  "fire": 0.5246666666666666,
+  "text": "+6 contract multiplier when your team leads a [2]"
+ },
+ {
+  "id": "s-aces-untrumpable",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "enabler",
+  "lift": 9.025,
+  "lift_ci": 2.1125120326543407,
+  "raw": 4.6,
+  "fire": 0.0,
+  "text": "Your team's [A]s can't be trumped"
+ },
+ {
+  "id": "n2-clubs-untrumpable",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Suits"
+  ],
+  "role": "enabler",
+  "lift": 9.825000000000001,
+  "lift_ci": 2.1755673067292984,
+  "raw": 5.4,
+  "fire": 0.0,
+  "text": "Your team's [\u2663]s can't be trumped"
+ },
+ {
+  "id": "n2-diamonds-untrumpable",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Suits"
+  ],
+  "role": "enabler",
+  "lift": 10.775,
+  "lift_ci": 2.1445175324206085,
+  "raw": 6.35,
+  "fire": 0.0,
+  "text": "Your team's [\u2666]s can't be trumped"
+ },
+ {
+  "id": "ua-diamonds-untrumpable",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Suits"
+  ],
+  "role": "enabler",
+  "lift": 12.325,
+  "lift_ci": 2.1471625978799036,
+  "raw": 7.9,
+  "fire": 0.0,
+  "text": "Your team's [\u2665]s can't be trumped"
+ },
+ {
+  "id": "n2-consec-points-u",
+  "rarity": "uncommon",
+  "C": 3,
+  "arch": [
+   "Streaks"
+  ],
+  "role": "payoff",
+  "lift": 13.900000000000002,
+  "lift_ci": 2.11098434616413,
+  "raw": 10.6,
+  "fire": 0.8325,
+  "text": "+40 contract points when your team wins consecutive tricks"
+ }
+]

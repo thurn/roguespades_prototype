@@ -38,7 +38,7 @@
       "elegance": 2
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -48,12 +48,16 @@
     {
       "step": "draft-uncommon",
       "note": "draft-uncommon: cut: lift -8.2 [-9.2, -7.2] pts (n 7494), fire 87%, C 5; critic: Per-event payout times contract size (each [A] win × contract) is heavy table arithmetic; bid-tension pieces on a once-per-round trigger read more cleanly.."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Ace Ledger (calculator); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Ace Ledger",
+  "icon": "calculator",
+  "iconFamily": "calculator",
+  "iconWord": "Calculator",
   "price": 75,
   "text": "+1 contract multiplier for each trick in your team's contract when your team wins a trick with an [A]",
   "category": "mult",

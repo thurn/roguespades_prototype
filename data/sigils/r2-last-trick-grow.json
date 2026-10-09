@@ -34,7 +34,7 @@
     "target": "adds",
     "replaces": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -44,12 +44,16 @@
     {
       "step": "round-2",
       "note": "round-2: not kept: lift -0.3 [-1.2, +0.6] pts, C 5; near zero: growth on the last trick does not help the AI enough."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Night Watch (moon); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Night Watch",
+  "icon": "moon",
+  "iconFamily": "moon",
+  "iconWord": "Moon",
   "price": 75,
   "text": "This sigil gains +8 contract multiplier every time your team wins the last trick of a round (currently +0)",
   "category": "mult",

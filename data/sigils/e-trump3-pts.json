@@ -42,7 +42,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+145 contract points when your team wins three tricks by trumping",
   "category": "points",
   "signature": "win(by=trump,count=3)|-|-|points",

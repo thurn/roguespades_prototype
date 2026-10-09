@@ -55,7 +55,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+15 contract points for each trick in your team's contract if your team makes its contract exactly",
   "category": "points",
   "signature": "make(exact)|-|contractTrick|points",

@@ -3,8 +3,7 @@
   "rarity": "uncommon",
   "role": "payoff",
   "archetypes": [
-    "Streaks",
-    "BidHigh"
+    "Streaks"
   ],
   "source": "designed",
   "createdIn": "round-2",
@@ -59,6 +58,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +15.0 [+14.0, +16.0] pts, fire 39%, skill gradient +6.5; above the power ceiling in the final fit; kept because a retune can bring it down."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: archetypes [\"Streaks\", \"BidHigh\"] -> [\"Streaks\"]"
     }
   ],
   "name": "Unstoppable Train",

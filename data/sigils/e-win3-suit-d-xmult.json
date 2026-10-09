@@ -44,7 +44,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "×3 contract multiplier when your team wins three tricks with [♦]",
   "category": "xmult",
   "signature": "win(count=3)|suit=D|-|xmult",

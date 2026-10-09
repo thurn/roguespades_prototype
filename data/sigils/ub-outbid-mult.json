@@ -33,7 +33,7 @@
       "elegance": 4
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -43,12 +43,16 @@
     {
       "step": "draft-uncommon",
       "note": "draft-uncommon: cut: lift -11.8 [-13.6, -10.1] pts (n 1634), fire 44%, C 2; far below the control, and one retune step can't close the gap."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Raised Paddle (table-tennis); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Raised Paddle",
+  "icon": "table-tennis",
+  "iconFamily": "table-tennis",
+  "iconWord": "Table-Tennis",
   "price": 75,
   "text": "+20 contract multiplier when your team bids more than the opponents",
   "category": "hybrid",

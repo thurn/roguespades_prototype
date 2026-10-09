@@ -37,7 +37,7 @@
       "elegance": 5
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -75,6 +75,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -0.2 [-1.5, +1.1] pts, fire 59%, skill gradient -1.6; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Three Laurels",

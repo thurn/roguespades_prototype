@@ -90,6 +90,8 @@ export interface TeamResult {
   base: number
   cp: number
   cpLost: number
+  /** A flat set: the contract scores −100 × B, untouched by sigils. */
+  flat: boolean
   add: number
   mult: number
   x: number

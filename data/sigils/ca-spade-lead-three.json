@@ -36,7 +36,7 @@
       "elegance": 4
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -74,13 +74,17 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -1.0 [-2.1, -0.0] pts, fire 34%, skill gradient +0.2; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Measured Footsteps",
   "icon": "footsteps",
   "iconFamily": "footsteps",
   "iconWord": "Footsteps",
-  "price": 50,
+  "price": 25,
   "text": "+10 contract multiplier when your team leads [♠] three times",
   "category": "hybrid",
   "signature": "lead(count=3)|suit=S|-|mult",

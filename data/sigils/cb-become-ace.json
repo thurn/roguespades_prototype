@@ -4,8 +4,7 @@
   "role": "enabler",
   "archetypes": [
     "BidHigh",
-    "Ranks",
-    "Rainbow"
+    "Ranks"
   ],
   "source": "designed",
   "createdIn": "draft-common",
@@ -32,7 +31,7 @@
       "elegance": 4
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -54,13 +53,17 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +2.6 [+1.4, +3.8] pts, fire 0%, skill gradient +2.4; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: archetypes [\"BidHigh\", \"Ranks\", \"Rainbow\"] -> [\"BidHigh\", \"Ranks\"]; status kept -> cut"
     }
   ],
   "name": "Alchemist's Flask",
   "icon": "flask-round",
   "iconFamily": "flask-round",
   "iconWord": "Flask",
-  "price": 50,
+  "price": 25,
   "text": "Opening: Two cards your team holds become [A]s",
   "category": "enabler",
   "signature": "opening|rank=A|-|become",

@@ -1,0 +1,162 @@
+{
+ "env": "holdout0-t2-wp",
+ "commit": "3f615b5",
+ "sizes": {
+  "field": 500,
+  "commit": 125,
+  "ladder": 400,
+  "ladder_on": false
+ },
+ "syn": 0,
+ "a": "search1-L",
+ "b": "p4h",
+ "result": {
+  "a": {
+   "score": 70.34613243262156,
+   "v3": 73.34307347151804,
+   "families": [
+    0.8680963819092354,
+    0.5908333333333333,
+    0.996,
+    NaN,
+    0.8025,
+    0.9661458333333334,
+    0.5846288127770176
+   ],
+   "replay": {
+    "overlap": 0.15288715162934857,
+    "concentration": 0.2839941262848752,
+    "inPlay": 0.90625
+   },
+   "game": {
+    "medianMarginShare": 0.5687132562816881,
+    "trailerAfter5Wins": 0.284,
+    "earlyShare": 0.27874547501635594,
+    "setRate": 0.08025,
+    "lateOvertricks": 2.2578008915304606,
+    "bagsPerRun": 18.572,
+    "bagPenaltiesPerRun": 1.402,
+    "commonsSeen": 0.6794166666666667,
+    "emptyOffers": 0.0,
+    "winningShare": {
+     "Suits": 0.206,
+     "Spades": 0.094,
+     "Ranks": 0.04,
+     "BidHigh": 0.138,
+     "Nil": 0.102,
+     "LowCards": 0.104,
+     "Rainbow": 0.0,
+     "Streaks": 0.054,
+     "Exact": 0.252
+    }
+   },
+   "commit": {
+    "per_archetype": {
+     "Suits": 0.492,
+     "Spades": 0.504,
+     "Ranks": 0.512,
+     "BidHigh": 0.484,
+     "Nil": 0.488,
+     "LowCards": 0.456,
+     "Streaks": 0.48,
+     "Exact": 0.504
+    },
+    "committed_win": 0.49,
+    "online": 0.3745
+   },
+   "ladder": NaN,
+   "synergy": null,
+   "meanC": 3.1354166666666665
+  },
+  "b": {
+   "score": 78.12181805127041,
+   "v3": 76.08127751072988,
+   "families": [
+    0.9491990106716287,
+    0.7908333333333333,
+    1.0,
+    NaN,
+    0.6375,
+    0.9543918918918919,
+    1.0
+   ],
+   "replay": {
+    "overlap": 0.07557155410131675,
+    "concentration": 0.14189402054060865,
+    "inPlay": 1.0
+   },
+   "game": {
+    "medianMarginShare": 0.4957208903955342,
+    "trailerAfter5Wins": 0.308,
+    "earlyShare": 0.32966599026480264,
+    "setRate": 0.06375,
+    "lateOvertricks": 2.3106227106227104,
+    "bagsPerRun": 19.556,
+    "bagPenaltiesPerRun": 1.502,
+    "commonsSeen": 0.4545806451612903,
+    "emptyOffers": 0.0,
+    "winningShare": {
+     "Suits": 0.076,
+     "Spades": 0.06,
+     "Ranks": 0.096,
+     "BidHigh": 0.18,
+     "Nil": 0.232,
+     "LowCards": 0.064,
+     "Rainbow": 0.0,
+     "Streaks": 0.166,
+     "Exact": 0.114
+    }
+   },
+   "commit": {
+    "per_archetype": {
+     "Suits": 0.468,
+     "Spades": 0.572,
+     "Ranks": 0.504,
+     "BidHigh": 0.512,
+     "Nil": 0.524,
+     "LowCards": 0.516,
+     "Streaks": 0.52,
+     "Exact": 0.544
+    },
+    "committed_win": 0.52,
+    "online": 0.4745
+   },
+   "ladder": NaN,
+   "synergy": null,
+   "meanC": 3.1824324324324325
+  },
+  "diff": 7.7756856186488506,
+  "lo": 6.575442516330146,
+  "hi": 9.842705251783114,
+  "v3_diff": 2.738204039211837,
+  "v3_lo": 1.362816629438006,
+  "v3_hi": 4.666224997767185,
+  "fam_diff": [
+   1.6220525752478654,
+   2.999999999999999,
+   0.06000000000000005,
+   NaN,
+   -0.8250000000000002,
+   -0.2350788288288297,
+   4.153711872229824
+  ],
+  "fam_lo": [
+   0.570222276720526,
+   2.1612499999999986,
+   -0.4200000000000004,
+   NaN,
+   -1.1012500000000005,
+   -0.2350788288288297,
+   3.7351825656613995
+  ],
+  "fam_hi": [
+   3.001280125451079,
+   3.988125000000001,
+   1.023,
+   NaN,
+   -0.48750000000000016,
+   -0.2350788288288297,
+   4.780487813737822
+  ]
+ }
+}

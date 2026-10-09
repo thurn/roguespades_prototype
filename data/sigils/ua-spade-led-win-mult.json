@@ -3,8 +3,7 @@
   "rarity": "uncommon",
   "role": "hybrid",
   "archetypes": [
-    "Spades",
-    "BidHigh"
+    "Spades"
   ],
   "source": "designed",
   "createdIn": "draft-uncommon",
@@ -37,7 +36,7 @@
       "elegance": 4
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -47,12 +46,16 @@
     {
       "step": "draft-uncommon",
       "note": "draft-uncommon: cut: lift -5.1 [-6.1, -4.1] pts (n 8352), fire 80%, C 3; the kept pool covers its archetypes with stronger or simpler pieces."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Spade Trail (road); archetypes [\"Spades\", \"BidHigh\"] -> [\"Spades\"]; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Spade Trail",
+  "icon": "road",
+  "iconFamily": "road",
+  "iconWord": "Road",
   "price": 75,
   "text": "+4 contract multiplier when your team wins a trick led with [♠]",
   "category": "hybrid",

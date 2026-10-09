@@ -93,20 +93,33 @@ class Variant:
             for p in sorted(SIGILS.glob("*.json")):
                 d = json.loads(p.read_text())
                 defs[d["id"]] = d
+        for d in self.spec.get("add", []):
+            defs[d["id"]] = d
         for sid, over in self.spec.get("sigils", {}).items():
             merged = deep_merge(defs[sid], over)
             # An effect override that names its type replaces the effect outright.
             if "type" in over.get("effect", {}):
                 merged["effect"] = over["effect"]
             defs[sid] = merged
-        for d in self.spec.get("add", []):
-            defs[d["id"]] = d
         return defs
 
     def pool(self, defs: dict) -> list:
         if self.spec.get("pool"):
             return sorted(self.spec["pool"])
+        if self.spec.get("base") and Variant.load(self.spec["base"]).explicit_pool():
+            # An explicit pool list is inherited, minus "drop" and plus "add" in this spec.
+            base = Variant.load(self.spec["base"])
+            p = base.pool(defs)
+            drop = set(self.spec.get("drop", []))
+            extra = [d["id"] for d in self.spec.get("add", []) if d["id"] not in p]
+            extra += [x for x in self.spec.get("include", []) if x not in p and x not in extra]
+            return sorted([s for s in p if s not in drop] + extra)
         return sorted(s for s, d in defs.items() if d.get("status") == "kept")
+
+    def explicit_pool(self) -> bool:
+        if self.spec.get("pool"):
+            return True
+        return bool(self.spec.get("base")) and Variant.load(self.spec["base"]).explicit_pool()
 
     def exp(self) -> dict:
         base = Variant.load(self.spec["base"]).exp() if self.spec.get("base") else {}
@@ -253,7 +266,7 @@ def run_field(b: Built, env: Env, n: int, extra: dict | None = None, tag: str = 
         "arm": {"type": "tournament"},
     }
     cfg.update(extra or {})
-    return _run(cfg, OUT / b.name / b.digest / env.key() / f"{tag}.jsonl")
+    return _run(cfg, OUT / b.name / b.digest / env.key() / f"{tag}-{n}.jsonl")
 
 
 def run_commit(b: Built, env: Env, arch: str, n: int, extra: dict | None = None) -> Path:
@@ -267,7 +280,7 @@ def run_commit(b: Built, env: Env, arch: str, n: int, extra: dict | None = None)
     }
     cfg.update(extra or {})
     tag = (
-        "commit-"
+        f"commit{n}-"
         + arch
         + ("" if not extra else "-" + hashlib.sha1(json.dumps(extra).encode()).hexdigest()[:6])
     )
@@ -287,7 +300,7 @@ def run_ladder(b: Built, env: Env, n: int) -> Path:
         "arm": {"type": "tournament"},
     }
     e2 = Env(2, env.util, env.seeds, env.rep)
-    return _run(cfg, OUT / b.name / b.digest / e2.key() / "ladder.jsonl")
+    return _run(cfg, OUT / b.name / b.digest / e2.key() / f"ladder-{n}.jsonl")
 
 
 def archetypes_of(b: Built) -> list:

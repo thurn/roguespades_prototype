@@ -23,7 +23,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -37,13 +37,17 @@
     {
       "step": "draft-common",
       "note": "draft-common: cut: lift +8.6 [+7.1, +10.0] pts (n 5795), fire 67%, C 4; the kept pool covers its archetypes with stronger, simpler, or more decision-rich pieces."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Squire's Errand (backpack); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
+  "name": "Squire's Errand",
+  "icon": "backpack",
+  "iconFamily": "backpack",
+  "iconWord": "Backpack",
+  "price": 25,
   "text": "+70 contract points when your team leads a [J]",
   "category": "points",
   "signature": "lead|rank=J|-|points",

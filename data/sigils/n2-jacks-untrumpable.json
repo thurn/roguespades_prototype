@@ -1,0 +1,58 @@
+{
+  "id": "n2-jacks-untrumpable",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "search-2",
+  "status": "kept",
+  "effect": {
+    "type": "untrumpable",
+    "from": {
+      "rank": "J"
+    }
+  },
+  "design": {
+    "rationale": "Ranks enabler, modest alone."
+  },
+  "name": "Steadfast Knave",
+  "icon": "chess-knight",
+  "iconFamily": "chess-knight",
+  "iconWord": "Chess-Knight",
+  "history": [
+    {
+      "step": "design-search-2",
+      "note": "Added in rec2."
+    }
+  ],
+  "price": 25,
+  "text": "Your team's [J]s can't be trumped",
+  "category": "enabler",
+  "signature": "play|rank=J|-|untrumpable",
+  "family": "play|rank=*|-|untrumpable",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "rank literal",
+        "detail": "[J]",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team played it",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "a [♠] played to the trick",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

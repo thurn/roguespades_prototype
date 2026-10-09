@@ -3,14 +3,13 @@
   "rarity": "common",
   "role": "payoff",
   "archetypes": [
-    "Generic",
-    "BidHigh"
+    "Generic"
   ],
   "source": "designed",
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 3,
+    "amount": 6.0,
     "on": {
       "event": "make"
     }
@@ -71,14 +70,18 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -5.9 [-7.0, -4.9] pts, fire 55%, skill gradient -3.0; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 3, \"on\": {\"event\": \"make\"}} -> {\"type\": \"mult\", \"amount\": 6.0, \"on\": {\"event\": \"make\"}}; archetypes [\"Generic\", \"BidHigh\"] -> [\"Generic\"]"
     }
   ],
   "name": "Honest Handshake",
   "icon": "handshake",
   "iconFamily": "handshake",
   "iconWord": "Handshake",
-  "price": 50,
-  "text": "+3 contract multiplier if your team makes its contract",
+  "price": 25,
+  "text": "+6 contract multiplier if your team makes its contract",
   "category": "mult",
   "signature": "make|-|-|mult",
   "family": "make|-|-|mult",
@@ -87,7 +90,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 3",
+        "detail": "payout 6",
         "cost": 1
       },
       {

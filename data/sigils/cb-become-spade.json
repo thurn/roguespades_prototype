@@ -56,7 +56,7 @@
   "icon": "brush",
   "iconFamily": "brush",
   "iconWord": "Brush",
-  "price": 50,
+  "price": 25,
   "text": "Opening: Three cards your team holds become [♠]s",
   "category": "enabler",
   "signature": "opening|suit=S|-|become",

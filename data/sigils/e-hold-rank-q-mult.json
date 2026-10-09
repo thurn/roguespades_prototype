@@ -23,7 +23,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -37,13 +37,17 @@
     {
       "step": "draft-common",
       "note": "draft-common: not in the enumerated source's most promising half (pre-tournament lift +10.6 [+7.4, +13.8], slope +7.8/2x, C 4)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Royal Ballroom (dress); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
+  "name": "Royal Ballroom",
+  "icon": "dress",
+  "iconFamily": "dress",
+  "iconWord": "Dress",
+  "price": 25,
   "text": "+4 contract multiplier for each [Q] your team holds",
   "category": "mult",
   "signature": "hold|rank=Q|-|mult",

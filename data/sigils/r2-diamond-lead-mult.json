@@ -13,7 +13,7 @@
     "on": {
       "event": "lead",
       "card": {
-        "suit": "D"
+        "suit": "H"
       }
     }
   },
@@ -60,6 +60,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +6.2 [+4.8, +7.7] pts, fire 81%, skill gradient +1.1; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 6, \"on\": {\"event\": \"lead\", \"card\": {\"suit\": \"D\"}}} -> {\"type\": \"mult\", \"amount\": 6, \"on\": {\"event\": \"lead\", \"card\": {\"suit\": \"H\"}}}"
     }
   ],
   "name": "Raised Torch",
@@ -67,16 +71,16 @@
   "iconFamily": "torch",
   "iconWord": "Torch",
   "price": 75,
-  "text": "+6 contract multiplier when your team leads [♦]",
+  "text": "+6 contract multiplier when your team leads [♥]",
   "category": "mult",
-  "signature": "lead|suit=D|-|mult",
+  "signature": "lead|suit=H|-|mult",
   "family": "lead|suit=*|-|mult",
   "touchesOpponents": false,
   "simplicity": {
     "items": [
       {
         "burden": "suit literal",
-        "detail": "[♦]",
+        "detail": "[♥]",
         "cost": 1
       },
       {

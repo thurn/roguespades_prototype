@@ -37,7 +37,7 @@
       "elegance": 4
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -55,6 +55,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +8.9 [+7.8, +9.9] pts, fire 0%, skill gradient +6.4; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Unbound Hurricane",

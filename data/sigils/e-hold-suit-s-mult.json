@@ -59,7 +59,7 @@
   "icon": "owl",
   "iconFamily": "owl",
   "iconWord": "Owl",
-  "price": 50,
+  "price": 25,
   "text": "+1 contract multiplier for each [♠] your team holds",
   "category": "mult",
   "signature": "hold|suit=S|-|mult",

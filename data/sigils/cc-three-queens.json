@@ -49,7 +49,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "Opening: Three cards your team holds become [Q]s",
   "category": "enabler",
   "signature": "opening|rank=Q|-|become",

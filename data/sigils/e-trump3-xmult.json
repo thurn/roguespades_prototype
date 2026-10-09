@@ -42,7 +42,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "×3 contract multiplier when your team wins three tricks by trumping",
   "category": "xmult",
   "signature": "win(by=trump,count=3)|-|-|xmult",

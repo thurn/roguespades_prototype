@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "xmult",
-    "amount": 1.25,
+    "amount": 1.05,
     "on": {
       "event": "win",
       "distinct": "suit"
@@ -35,14 +35,18 @@
     {
       "step": "draft-common",
       "note": "draft-common: set aside: it fires 3.0 times per round, so a balanced per-event factor would be about ×1.13, below any printable ×multiplier."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"xmult\", \"amount\": 1.25, \"on\": {\"event\": \"win\", \"distinct\": \"suit\"}} -> {\"type\": \"xmult\", \"amount\": 1.05, \"on\": {\"event\": \"win\", \"distinct\": \"suit\"}}"
     }
   ],
   "name": null,
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
-  "text": "×1.25 contract multiplier when your team wins its first trick with each suit",
+  "price": 25,
+  "text": "×1.05 contract multiplier when your team wins its first trick with each suit",
   "category": "xmult",
   "signature": "win(distinct=suit)|-|-|xmult",
   "family": "win(distinct=suit)|-|-|xmult",
@@ -51,7 +55,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 1.25",
+        "detail": "payout 1.05",
         "cost": 1
       },
       {

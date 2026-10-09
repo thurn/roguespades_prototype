@@ -1,0 +1,762 @@
+[
+ {
+  "id": "e-bid4less-pts",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Exact"
+  ],
+  "role": "payoff",
+  "lift": 0.8,
+  "lift_ci": 1.9073205732125895,
+  "raw": -4.05,
+  "fire": 0.5005833333333334,
+  "text": "+70 contract points when your team bids 4 or less"
+ },
+ {
+  "id": "e-trump-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Spades"
+  ],
+  "role": "payoff",
+  "lift": 1.5,
+  "lift_ci": 2.1778395989489217,
+  "raw": -3.35,
+  "fire": 0.6456666666666667,
+  "text": "+2 contract multiplier when your team wins a trick by trumping"
+ },
+ {
+  "id": "cb-last-trick-points",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Streaks",
+   "Exact"
+  ],
+  "role": "payoff",
+  "lift": 1.55,
+  "lift_ci": 1.9809089043763473,
+  "raw": -3.3000000000000003,
+  "fire": 0.4715,
+  "text": "+50 contract points when your team wins the last trick of a round"
+ },
+ {
+  "id": "cb-exact-trick-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Exact",
+   "BidHigh"
+  ],
+  "role": "payoff",
+  "lift": 2.1,
+  "lift_ci": 2.1325380547014863,
+  "raw": -2.75,
+  "fire": 0.21183333333333335,
+  "text": "+2 contract multiplier for each trick in your team's contract if your team makes its contract exactly"
+ },
+ {
+  "id": "e-lead-rank-j-pts",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 2.1,
+  "lift_ci": 1.9363473809598317,
+  "raw": -2.75,
+  "fire": 0.5318333333333334,
+  "text": "+40 contract points when your team leads a [J]"
+ },
+ {
+  "id": "e-consecutive-pts",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Streaks"
+  ],
+  "role": "payoff",
+  "lift": 2.15,
+  "lift_ci": 1.8631957994095791,
+  "raw": -2.7,
+  "fire": 0.82425,
+  "text": "+6 contract points when your team wins consecutive tricks"
+ },
+ {
+  "id": "e-lead-low-mult",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "LowCards"
+  ],
+  "role": "payoff",
+  "lift": 2.3,
+  "lift_ci": 2.0212157239518,
+  "raw": -2.55,
+  "fire": 0.9814166666666667,
+  "text": "+1 contract multiplier when your team leads a [2] through [10]"
+ },
+ {
+  "id": "s-exact-x",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "Exact"
+  ],
+  "role": "payoff",
+  "lift": 2.4,
+  "lift_ci": 2.2248526178153916,
+  "raw": -2.45,
+  "fire": 0.21066666666666667,
+  "text": "\u00d71.6 contract multiplier if your team makes its contract exactly"
+ },
+ {
+  "id": "ca-trump-contract",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "Spades",
+   "BidHigh"
+  ],
+  "role": "payoff",
+  "lift": 2.6,
+  "lift_ci": 2.050147865642866,
+  "raw": -2.25,
+  "fire": 0.6436666666666667,
+  "text": "+4 contract points for each trick in your team's contract when your team wins a trick by trumping"
+ },
+ {
+  "id": "e-lead-rank-10-pts",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 2.65,
+  "lift_ci": 2.0284107392087773,
+  "raw": -2.1999999999999997,
+  "fire": 0.525,
+  "text": "+40 contract points when your team leads a [10]"
+ },
+ {
+  "id": "e-make8-pts",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "BidHigh"
+  ],
+  "role": "payoff",
+  "lift": 2.7,
+  "lift_ci": 1.9962940859878338,
+  "raw": -2.15,
+  "fire": 0.14041666666666666,
+  "text": "+150 contract points if your team makes a contract of 8 or more"
+ },
+ {
+  "id": "e-first-pts",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Streaks"
+  ],
+  "role": "payoff",
+  "lift": 2.75,
+  "lift_ci": 1.9112730373856843,
+  "raw": -2.1,
+  "fire": 0.47025,
+  "text": "+55 contract points when your team wins the first trick of a round"
+ },
+ {
+  "id": "e-lead-suit-s-pts",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Spades"
+  ],
+  "role": "payoff",
+  "lift": 2.85,
+  "lift_ci": 1.9701424756695898,
+  "raw": -2.0,
+  "fire": 0.7688333333333334,
+  "text": "+15 contract points when your team leads [\u2660]"
+ },
+ {
+  "id": "e-lead-suit-d-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Suits"
+  ],
+  "role": "payoff",
+  "lift": 2.9000000000000004,
+  "lift_ci": 2.0258159972588823,
+  "raw": -1.95,
+  "fire": 0.8296666666666667,
+  "text": "+2 contract multiplier when your team leads [\u2666]"
+ },
+ {
+  "id": "e-win-rank-2-pts",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "LowCards"
+  ],
+  "role": "payoff",
+  "lift": 2.9499999999999997,
+  "lift_ci": 2.0037946825804034,
+  "raw": -1.9,
+  "fire": 0.21366666666666667,
+  "text": "+120 contract points when your team wins a trick with a [2]"
+ },
+ {
+  "id": "seed-trump-points",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Spades"
+  ],
+  "role": "payoff",
+  "lift": 2.9499999999999997,
+  "lift_ci": 2.230657303338525,
+  "raw": -1.9,
+  "fire": 0.6485833333333333,
+  "text": "+30 contract points when your team wins a trick by trumping"
+ },
+ {
+  "id": "ca-king-hold",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 3.0,
+  "lift_ci": 2.048669025245415,
+  "raw": -1.8499999999999999,
+  "fire": 0.944,
+  "text": "+20 contract points for each [K] your team holds"
+ },
+ {
+  "id": "cc-nil-bid-points",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "Nil",
+   "BidHigh"
+  ],
+  "role": "hybrid",
+  "lift": 3.1,
+  "lift_ci": 1.9879265202089338,
+  "raw": -1.7500000000000002,
+  "fire": 0.6211666666666666,
+  "text": "+95 contract points when your team bids nil"
+ },
+ {
+  "id": "ca-face-win",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 3.2,
+  "lift_ci": 2.1759812278602038,
+  "raw": -1.6500000000000001,
+  "fire": 0.5920833333333333,
+  "text": "+35 contract points when your team wins a trick with a [K]"
+ },
+ {
+  "id": "cb-opp-set-mult",
+  "rarity": "common",
+  "C": 2,
+  "arch": [],
+  "role": "payoff",
+  "lift": 3.25,
+  "lift_ci": 2.1958978627061643,
+  "raw": -1.6,
+  "fire": 0.27641666666666664,
+  "text": "+15 contract multiplier if the opponents miss their contract"
+ },
+ {
+  "id": "e-win-suit-s-mult",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "Spades"
+  ],
+  "role": "payoff",
+  "lift": 3.25,
+  "lift_ci": 1.9821652739964697,
+  "raw": -1.6,
+  "fire": 0.865,
+  "text": "+1 contract multiplier when your team wins a trick with [\u2660]"
+ },
+ {
+  "id": "cb-make8-mult",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "BidHigh"
+  ],
+  "role": "payoff",
+  "lift": 3.35,
+  "lift_ci": 2.2260913496389807,
+  "raw": -1.5,
+  "fire": 0.13458333333333333,
+  "text": "+12 contract multiplier if your team makes a contract of 8 or more"
+ },
+ {
+  "id": "e-hold-rank-q-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 3.45,
+  "lift_ci": 1.9572026530069644,
+  "raw": -1.4000000000000001,
+  "fire": 0.9453333333333334,
+  "text": "+2 contract multiplier for each [Q] your team holds"
+ },
+ {
+  "id": "e-win-suit-d-mult",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "Suits"
+  ],
+  "role": "payoff",
+  "lift": 3.45,
+  "lift_ci": 2.1577719643042683,
+  "raw": -1.4000000000000001,
+  "fire": 0.6633333333333333,
+  "text": "+2 contract multiplier when your team wins a trick with [\u2665]"
+ },
+ {
+  "id": "seed-exact-mult",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "Exact"
+  ],
+  "role": "payoff",
+  "lift": 3.5999999999999996,
+  "lift_ci": 2.1897909811212575,
+  "raw": -1.25,
+  "fire": 0.22308333333333333,
+  "text": "+12 contract multiplier if your team makes its contract exactly"
+ },
+ {
+  "id": "e-lead-rank-a-pts",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 3.65,
+  "lift_ci": 1.987101103224871,
+  "raw": -1.2,
+  "fire": 0.63,
+  "text": "+25 contract points when your team leads an [A]"
+ },
+ {
+  "id": "seed-diamond-hold",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Suits"
+  ],
+  "role": "payoff",
+  "lift": 3.65,
+  "lift_ci": 2.0769892078288463,
+  "raw": -1.2,
+  "fire": 0.9999166666666667,
+  "text": "+6 contract points for each [\u2666] your team holds"
+ },
+ {
+  "id": "cc-low-hold-points",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "LowCards",
+   "Nil"
+  ],
+  "role": "payoff",
+  "lift": 3.6999999999999997,
+  "lift_ci": 2.1042565831547257,
+  "raw": -1.15,
+  "fire": 1.0,
+  "text": "+4 contract points for each [2] through [6] your team holds"
+ },
+ {
+  "id": "seed-nil-points",
+  "rarity": "common",
+  "C": 1,
+  "arch": [
+   "Nil"
+  ],
+  "role": "payoff",
+  "lift": 3.8,
+  "lift_ci": 2.182686274754116,
+  "raw": -1.05,
+  "fire": 1.0,
+  "text": "+95 nil points"
+ },
+ {
+  "id": "cc-nil-hold-twos",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Nil",
+   "LowCards"
+  ],
+  "role": "payoff",
+  "lift": 4.1000000000000005,
+  "lift_ci": 2.033548707247997,
+  "raw": -0.75,
+  "fire": 0.9354166666666667,
+  "text": "+45 nil points for each [2] your team holds"
+ },
+ {
+  "id": "e-win-rank-10-mult",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 4.1000000000000005,
+  "lift_ci": 2.0925731993767864,
+  "raw": -0.75,
+  "fire": 0.4365833333333333,
+  "text": "+7 contract multiplier when your team wins a trick with a [10]"
+ },
+ {
+  "id": "e-lead-suit-c-pts",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Suits"
+  ],
+  "role": "payoff",
+  "lift": 4.15,
+  "lift_ci": 1.9673247499936304,
+  "raw": -0.7000000000000001,
+  "fire": 0.8275833333333333,
+  "text": "+15 contract points when your team leads [\u2663]"
+ },
+ {
+  "id": "e-hold-rank-j-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 4.2,
+  "lift_ci": 1.979038237124286,
+  "raw": -0.65,
+  "fire": 0.9435,
+  "text": "+2 contract multiplier for each [J] your team holds"
+ },
+ {
+  "id": "cc-nil-made-mult",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "Nil"
+  ],
+  "role": "payoff",
+  "lift": 4.3,
+  "lift_ci": 2.183275085221741,
+  "raw": -0.5499999999999999,
+  "fire": 0.3035,
+  "text": "+6 contract multiplier if your team makes a nil"
+ },
+ {
+  "id": "seed-contract-points",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "BidHigh"
+  ],
+  "role": "payoff",
+  "lift": 4.5,
+  "lift_ci": 2.228200926476336,
+  "raw": -0.35000000000000003,
+  "fire": 1.0,
+  "text": "+9 contract points for each trick in your team's contract"
+ },
+ {
+  "id": "cc-two-hold-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "LowCards",
+   "Nil"
+  ],
+  "role": "payoff",
+  "lift": 4.55,
+  "lift_ci": 2.198890334904745,
+  "raw": -0.3,
+  "fire": 0.93275,
+  "text": "+2 contract multiplier for each [2] your team holds"
+ },
+ {
+  "id": "seed-diamond-lead",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Suits"
+  ],
+  "role": "payoff",
+  "lift": 4.65,
+  "lift_ci": 2.164208351092265,
+  "raw": -0.2,
+  "fire": 0.8391666666666666,
+  "text": "+20 contract points when your team leads [\u2665]"
+ },
+ {
+  "id": "cb-bid8-trick-mult",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "BidHigh"
+  ],
+  "role": "payoff",
+  "lift": 4.7,
+  "lift_ci": 2.108496035744436,
+  "raw": -0.15,
+  "fire": 0.22683333333333333,
+  "text": "+3 contract multiplier for each trick in your team's contract when your team bids 8 or more"
+ },
+ {
+  "id": "cb-make-mult",
+  "rarity": "common",
+  "C": 2,
+  "arch": [],
+  "role": "payoff",
+  "lift": 4.75,
+  "lift_ci": 2.1884915177897084,
+  "raw": -0.1,
+  "fire": 0.7206666666666667,
+  "text": "+4 contract multiplier if your team makes its contract"
+ },
+ {
+  "id": "cc-small-contract-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Nil",
+   "Exact"
+  ],
+  "role": "hybrid",
+  "lift": 4.75,
+  "lift_ci": 2.225276752100174,
+  "raw": -0.1,
+  "fire": 0.5080833333333333,
+  "text": "+9 contract multiplier when your team bids 4 or less"
+ },
+ {
+  "id": "ca-diamond-led-win",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "Suits",
+   "Spades"
+  ],
+  "role": "payoff",
+  "lift": 4.9,
+  "lift_ci": 2.0846700193915586,
+  "raw": 0.05,
+  "fire": 0.7755,
+  "text": "+20 contract points when your team wins a trick led with [\u2665]"
+ },
+ {
+  "id": "e-lead-rank-k-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 5.1,
+  "lift_ci": 2.20637982105303,
+  "raw": 0.25,
+  "fire": 0.5515833333333333,
+  "text": "+5 contract multiplier when your team leads a [K]"
+ },
+ {
+  "id": "seed-ace-win",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 5.800000000000001,
+  "lift_ci": 2.186278646238855,
+  "raw": 0.95,
+  "fire": 0.7288333333333333,
+  "text": "+25 contract points when your team wins a trick with an [A]"
+ },
+ {
+  "id": "cb-consecutive-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Streaks"
+  ],
+  "role": "payoff",
+  "lift": 6.05,
+  "lift_ci": 2.173578220915341,
+  "raw": 1.2,
+  "fire": 0.82675,
+  "text": "+1 contract multiplier when your team wins consecutive tricks"
+ },
+ {
+  "id": "seed-nil-bid-mult",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "Nil"
+  ],
+  "role": "payoff",
+  "lift": 6.05,
+  "lift_ci": 2.1766884038459664,
+  "raw": 1.2,
+  "fire": 0.6204166666666666,
+  "text": "+6 contract multiplier when your team bids nil"
+ },
+ {
+  "id": "cb-contract-mult-made",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "BidHigh"
+  ],
+  "role": "payoff",
+  "lift": 6.175,
+  "lift_ci": 2.09050595636783,
+  "raw": 1.325,
+  "fire": 0.7075,
+  "text": "+1 contract multiplier for each trick in your team's contract if your team makes its contract"
+ },
+ {
+  "id": "cc-two-win-mult",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "LowCards",
+   "Spades"
+  ],
+  "role": "hybrid",
+  "lift": 6.25,
+  "lift_ci": 2.1875639615648956,
+  "raw": 1.4000000000000001,
+  "fire": 0.21491666666666667,
+  "text": "+15 contract multiplier when your team wins a trick with a [2]"
+ },
+ {
+  "id": "e-hold-suit-h-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Suits"
+  ],
+  "role": "payoff",
+  "lift": 6.3,
+  "lift_ci": 2.0048157004448064,
+  "raw": 1.4500000000000002,
+  "fire": 0.9999166666666667,
+  "text": "+1 contract multiplier for each [\u2665] your team holds"
+ },
+ {
+  "id": "e-lead-rank-q-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 6.45,
+  "lift_ci": 2.1642208545888977,
+  "raw": 1.6,
+  "fire": 0.5199166666666667,
+  "text": "+5 contract multiplier when your team leads a [Q]"
+ },
+ {
+  "id": "e-hold-suit-s-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Spades"
+  ],
+  "role": "payoff",
+  "lift": 7.1,
+  "lift_ci": 2.115977765655868,
+  "raw": 2.25,
+  "fire": 1.0,
+  "text": "+1 contract multiplier for each [\u2660] your team holds"
+ },
+ {
+  "id": "seed-diamond-win",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "Suits"
+  ],
+  "role": "payoff",
+  "lift": 7.1,
+  "lift_ci": 2.2098112260439806,
+  "raw": 2.25,
+  "fire": 0.5969166666666667,
+  "text": "+45 contract points when your team wins a trick with [\u2666]"
+ },
+ {
+  "id": "seed-last-trick",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Streaks"
+  ],
+  "role": "payoff",
+  "lift": 7.1499999999999995,
+  "lift_ci": 2.170762780553762,
+  "raw": 2.3,
+  "fire": 0.469,
+  "text": "+9 contract multiplier when your team wins the last trick of a round"
+ },
+ {
+  "id": "cb-trick-mult",
+  "rarity": "common",
+  "C": 2,
+  "arch": [],
+  "role": "payoff",
+  "lift": 7.9,
+  "lift_ci": 2.2024516691064986,
+  "raw": 3.05,
+  "fire": 0.9806666666666667,
+  "text": "+1 contract multiplier when your team wins a trick"
+ },
+ {
+  "id": "e-hold-suit-c-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Suits"
+  ],
+  "role": "payoff",
+  "lift": 7.95,
+  "lift_ci": 1.9837755398324426,
+  "raw": 3.1,
+  "fire": 0.9999166666666667,
+  "text": "+1 contract multiplier for each [\u2663] your team holds"
+ }
+]

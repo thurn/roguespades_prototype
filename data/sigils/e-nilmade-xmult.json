@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "xmult",
-    "amount": 3.0,
+    "amount": 1.45,
     "on": {
       "event": "nilMade"
     }
@@ -34,14 +34,18 @@
     {
       "step": "draft-common",
       "note": "draft-common: not in the enumerated source's most promising half (pre-tournament lift +16.2 [+15.3, +17.2], slope +11.2/2x, C 2)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"xmult\", \"amount\": 3.0, \"on\": {\"event\": \"nilMade\"}} -> {\"type\": \"xmult\", \"amount\": 1.45, \"on\": {\"event\": \"nilMade\"}}"
     }
   ],
   "name": null,
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
-  "text": "×3 contract multiplier if your team makes a nil",
+  "price": 25,
+  "text": "×1.45 contract multiplier if your team makes a nil",
   "category": "xmult",
   "signature": "nilMade|-|-|xmult",
   "family": "nilMade|-|-|xmult",
@@ -50,7 +54,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 3",
+        "detail": "payout 1.45",
         "cost": 1
       },
       {

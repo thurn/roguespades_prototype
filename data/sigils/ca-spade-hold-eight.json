@@ -53,7 +53,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+15 contract multiplier if your team holds eight [♠]s",
   "category": "mult",
   "signature": "hold(count=8)|suit=S|-|mult",

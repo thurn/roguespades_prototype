@@ -35,7 +35,7 @@
       "elegance": 4
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -53,13 +53,17 @@
     {
       "step": "round-1",
       "note": "round-1: cut: lift -0.1 [-1.3, +1.2] pts, C 3; contract-scaling sprawl; the Exact ladder now runs through the unscaled uncommons r1-exact-points and r1-exact-xmult."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Measuring Spoon (spoon); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
+  "name": "Measuring Spoon",
+  "icon": "spoon",
+  "iconFamily": "spoon",
+  "iconWord": "Spoon",
+  "price": 25,
   "text": "+3 contract multiplier for each trick in your team's contract if your team makes its contract exactly",
   "category": "mult",
   "signature": "make(exact)|-|contractTrick|mult",

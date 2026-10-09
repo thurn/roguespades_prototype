@@ -10,7 +10,7 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "nilPoints",
-    "amount": 50,
+    "amount": 100.0,
     "on": {
       "event": "lead",
       "card": {
@@ -40,7 +40,7 @@
       "elegance": 4
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -50,14 +50,18 @@
     {
       "step": "draft-uncommon",
       "note": "draft-uncommon: cut: lift -10.1 [-11.4, -8.8] pts (n 3299), fire 91%, C 5; far below the control, and one retune step can't close the gap."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Low Profile (glasses); effect {\"type\": \"nilPoints\", \"amount\": 50, \"on\": {\"event\": \"lead\", \"card\": {\"ranks\": [\"2\", \"6\"]}}} -> {\"type\": \"nilPoints\", \"amount\": 100.0, \"on\": {\"event\": \"lead\", \"card\": {\"ranks\": [\"2\", \"6\"]}}}; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Low Profile",
+  "icon": "glasses",
+  "iconFamily": "glasses",
+  "iconWord": "Glasses",
   "price": 75,
-  "text": "+50 nil points when your team leads a [2] through [6]",
+  "text": "+100 nil points when your team leads a [2] through [6]",
   "category": "hybrid",
   "signature": "lead|ranks=2-6|-|nilPoints",
   "family": "lead|ranks=2-6|-|nilPoints",
@@ -76,7 +80,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 50",
+        "detail": "payout 100",
         "cost": 1
       },
       {

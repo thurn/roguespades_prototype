@@ -43,7 +43,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+20 contract points for each [2] your team holds",
   "category": "points",
   "signature": "hold|rank=2|-|points",

@@ -1,10 +1,10 @@
 import { SIGILS } from '../model'
-import model from '../../../data/models/round-3.json'
+import model from '../../../data/models/search-final.json'
 import rules from '../../../data/rules.json'
 import type { Action, GameConfig, Response } from './types'
 
-/** The model the shop and AI read: the last fitted value model of the sigil design run. */
-export const MODEL_STEP = 'round-3'
+/** The model the shop and AI read: design search 2's refit for the recommended pool. */
+export const MODEL_STEP = 'search-final'
 
 /** The parts of each sigil file the engine reads (it ignores estimates and history). */
 const DEFS = SIGILS.filter((s) => s.effect && s.rarity).map((s) => ({

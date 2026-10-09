@@ -1,0 +1,4 @@
+{
+ "base": "p2-value",
+ "model": "data/search/models/p2-value.json"
+}

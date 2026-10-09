@@ -1,0 +1,39 @@
+{
+ "sigils": {
+  "ub-make7-xmult": {
+   "effect": {
+    "amount": 2.0
+   }
+  },
+  "ub-first-trick-xmult": {
+   "effect": {
+    "amount": 1.75
+   }
+  },
+  "ua-spade-last-x": {
+   "effect": {
+    "amount": 1.75
+   }
+  },
+  "s-exact-x": {
+   "effect": {
+    "amount": 2.0
+   }
+  },
+  "e-make8-pts": {
+   "effect": {
+    "amount": 250.0
+   }
+  },
+  "ub-bid7-points": {
+   "effect": {
+    "amount": 350.0
+   }
+  },
+  "cb-opp-set-mult": {
+   "effect": {
+    "amount": 25.0
+   }
+  }
+ }
+}

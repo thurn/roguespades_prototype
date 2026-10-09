@@ -34,7 +34,7 @@
       "ub-first-trick-contract-points"
     ]
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -44,12 +44,16 @@
     {
       "step": "round-1",
       "note": "round-1: not kept: lift +2.0 [+0.6, +3.3] pts, C 3; clearly worse than the version it would replace."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Head Start (running); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Head Start",
+  "icon": "running",
+  "iconFamily": "running",
+  "iconWord": "Running",
   "price": 75,
   "text": "+120 contract points when your team wins the first trick of a round",
   "category": "points",

@@ -52,7 +52,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+10 contract points for each trick in your team's contract if your team wins tricks with all four suits",
   "category": "points",
   "signature": "suits(count=4,action=win)|-|contractTrick|points",

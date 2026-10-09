@@ -1,0 +1,12 @@
+{
+ "name": "P4-c25-rules",
+ "incumbent": "r4-prices-c25",
+ "levels": {
+  "r5-gold200": {"rules": {"startGold": 200}},
+  "r5-soffers4": {"rules": {"sigilOffers": 4}},
+  "r5-slots9": {"rules": {"slots": 9}},
+  "r5-slots7": {"rules": {"slots": 7}},
+  "r5-flatset": {"rules": {"flatSet": true}},
+  "r5-draws-team": {"rules": {"offerDraws": "team"}}
+ }
+}

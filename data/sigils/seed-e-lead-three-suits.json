@@ -59,7 +59,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+40 contract points if your team leads three suits",
   "category": "points",
   "signature": "suits(count=3,action=lead)|-|-|points",

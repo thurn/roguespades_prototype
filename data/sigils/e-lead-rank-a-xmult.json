@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "xmult",
-    "amount": 1.5,
+    "amount": 1.1,
     "on": {
       "event": "lead",
       "card": {
@@ -37,14 +37,18 @@
     {
       "step": "draft-common",
       "note": "draft-common: not in the enumerated source's most promising half (pre-tournament lift +17.8 [+15.0, +20.6], slope +13.8/2x, C 4)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"xmult\", \"amount\": 1.5, \"on\": {\"event\": \"lead\", \"card\": {\"rank\": \"A\"}}} -> {\"type\": \"xmult\", \"amount\": 1.1, \"on\": {\"event\": \"lead\", \"card\": {\"rank\": \"A\"}}}"
     }
   ],
   "name": null,
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
-  "text": "×1.5 contract multiplier when your team leads an [A]",
+  "price": 25,
+  "text": "×1.1 contract multiplier when your team leads an [A]",
   "category": "xmult",
   "signature": "lead|rank=A|-|xmult",
   "family": "lead|rank=*|-|xmult",
@@ -58,7 +62,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 1.5",
+        "detail": "payout 1.1",
         "cost": 1
       },
       {

@@ -49,7 +49,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+40 contract points when your team wins three tricks with [♦]",
   "category": "points",
   "signature": "win(count=3)|suit=D|-|points",

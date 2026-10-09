@@ -9,7 +9,7 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "points",
-    "amount": 30,
+    "amount": 75.0,
     "on": {
       "event": "win",
       "card": {
@@ -70,6 +70,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +1.2 [-0.2, +2.5] pts, fire 60%, skill gradient +0.8; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 30, \"on\": {\"event\": \"win\", \"card\": {\"suit\": \"D\"}}} -> {\"type\": \"points\", \"amount\": 75.0, \"on\": {\"event\": \"win\", \"card\": {\"suit\": \"D\"}}}"
     }
   ],
   "name": "Crimson Bloom",
@@ -77,8 +81,8 @@
   "iconFamily": "flower",
   "iconWord": "Bloom",
   "gddText": "+10 contract points when your team wins a trick with [♦]",
-  "price": 50,
-  "text": "+30 contract points when your team wins a trick with [♦]",
+  "price": 25,
+  "text": "+75 contract points when your team wins a trick with [♦]",
   "category": "points",
   "signature": "win|suit=D|-|points",
   "family": "win|suit=*|-|points",
@@ -92,7 +96,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 30",
+        "detail": "payout 75",
         "cost": 1
       },
       {

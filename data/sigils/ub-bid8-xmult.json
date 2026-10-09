@@ -9,7 +9,7 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "xmult",
-    "amount": 2,
+    "amount": 2.5,
     "on": {
       "event": "bid",
       "min": 8
@@ -34,7 +34,7 @@
       "elegance": 5
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -44,14 +44,18 @@
     {
       "step": "draft-uncommon",
       "note": "draft-uncommon: cut: lift -17.3 [-19.0, -15.5] pts (n 1718), fire 32%, C 3; far below the control, and one retune step can't close the gap."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Grand Promise (rocket); effect {\"type\": \"xmult\", \"amount\": 2, \"on\": {\"event\": \"bid\", \"min\": 8}} -> {\"type\": \"xmult\", \"amount\": 2.5, \"on\": {\"event\": \"bid\", \"min\": 8}}; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Grand Promise",
+  "icon": "rocket",
+  "iconFamily": "rocket",
+  "iconWord": "Rocket",
   "price": 75,
-  "text": "×2 contract multiplier when your team bids 8 or more",
+  "text": "×2.5 contract multiplier when your team bids 8 or more",
   "category": "hybrid",
   "signature": "bid(min=8)|-|-|xmult",
   "family": "bid(min=8)|-|-|xmult",
@@ -60,7 +64,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 2",
+        "detail": "payout 2.5",
         "cost": 1
       },
       {

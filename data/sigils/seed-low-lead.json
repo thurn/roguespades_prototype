@@ -52,7 +52,7 @@
   "iconFamily": null,
   "iconWord": null,
   "gddText": "+10 contract points when your team leads a [2] through [10]",
-  "price": 50,
+  "price": 25,
   "text": "+10 contract points when your team leads a [2] through [10]",
   "category": "points",
   "signature": "lead|ranks=2-10|-|points",

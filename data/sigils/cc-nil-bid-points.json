@@ -3,14 +3,13 @@
   "rarity": "common",
   "role": "hybrid",
   "archetypes": [
-    "Nil",
-    "BidHigh"
+    "Nil"
   ],
   "source": "designed",
   "createdIn": "draft-common",
   "effect": {
     "type": "points",
-    "amount": 80,
+    "amount": 160.0,
     "on": {
       "event": "bid",
       "nil": true
@@ -35,7 +34,7 @@
       "elegance": 3
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -49,14 +48,18 @@
     {
       "step": "draft-common",
       "note": "draft-common: cut: lift +1.1 [+0.1, +2.0] pts (n 3783), fire 50%, C 2; the kept pool covers its archetypes with stronger, simpler, or more decision-rich pieces."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Quiet Pledge (signature); effect {\"type\": \"points\", \"amount\": 80, \"on\": {\"event\": \"bid\", \"nil\": true}} -> {\"type\": \"points\", \"amount\": 160.0, \"on\": {\"event\": \"bid\", \"nil\": true}}; archetypes [\"Nil\", \"BidHigh\"] -> [\"Nil\"]; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
-  "text": "+80 contract points when your team bids nil",
+  "name": "Quiet Pledge",
+  "icon": "signature",
+  "iconFamily": "signature",
+  "iconWord": "Signature",
+  "price": 25,
+  "text": "+160 contract points when your team bids nil",
   "category": "hybrid",
   "signature": "bid(nil)|-|-|points",
   "family": "bid(nil)|-|-|points",
@@ -65,7 +68,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 80",
+        "detail": "payout 160",
         "cost": 1
       },
       {

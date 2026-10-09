@@ -10,7 +10,7 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "xmult",
-    "amount": 1.5,
+    "amount": 2.0,
     "on": {
       "event": "bid",
       "max": 4
@@ -35,7 +35,7 @@
       "elegance": 5
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -45,14 +45,18 @@
     {
       "step": "draft-uncommon",
       "note": "draft-uncommon: cut: lift -12.4 [-13.8, -11.0] pts (n 4041), fire 32%, C 3; far below the control, and one retune step can't close the gap."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Modest Goal (football); effect {\"type\": \"xmult\", \"amount\": 1.5, \"on\": {\"event\": \"bid\", \"max\": 4}} -> {\"type\": \"xmult\", \"amount\": 2.0, \"on\": {\"event\": \"bid\", \"max\": 4}}; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Modest Goal",
+  "icon": "football",
+  "iconFamily": "football",
+  "iconWord": "Football",
   "price": 75,
-  "text": "×1.5 contract multiplier when your team bids 4 or less",
+  "text": "×2 contract multiplier when your team bids 4 or less",
   "category": "hybrid",
   "signature": "bid(max=4)|-|-|xmult",
   "family": "bid(max=4)|-|-|xmult",
@@ -61,7 +65,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 1.5",
+        "detail": "payout 2",
         "cost": 1
       },
       {

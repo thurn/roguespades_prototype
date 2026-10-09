@@ -1,0 +1,62 @@
+{
+  "id": "n2-club-lead-mult",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Suits"
+  ],
+  "source": "designed",
+  "createdIn": "search-2",
+  "status": "kept",
+  "effect": {
+    "type": "mult",
+    "amount": 6,
+    "on": {
+      "event": "lead",
+      "card": {
+        "suit": "C"
+      }
+    }
+  },
+  "design": {
+    "rationale": "Uncommon [♣] lead payoff."
+  },
+  "name": "Club Parade",
+  "icon": "megaphone",
+  "iconFamily": "megaphone",
+  "iconWord": "Megaphone",
+  "history": [
+    {
+      "step": "design-search-2",
+      "note": "Added in rec2."
+    }
+  ],
+  "price": 75,
+  "text": "+6 contract multiplier when your team leads [♣]",
+  "category": "mult",
+  "signature": "lead|suit=C|-|mult",
+  "family": "lead|suit=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "suit literal",
+        "detail": "[♣]",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "payout 6",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team leads",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

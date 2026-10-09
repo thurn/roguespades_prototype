@@ -68,7 +68,7 @@
   "icon": "umbrella",
   "iconFamily": "umbrella",
   "iconWord": "Umbrella",
-  "price": 50,
+  "price": 25,
   "text": "+5 nil points for each trick in your team's contract",
   "category": "hybrid",
   "signature": "always|-|contractTrick|nilPoints",

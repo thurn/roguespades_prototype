@@ -41,7 +41,7 @@
       "elegance": 4
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -79,6 +79,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +2.0 [+0.8, +3.1] pts, fire 58%, skill gradient -0.4; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Golden Chalice",

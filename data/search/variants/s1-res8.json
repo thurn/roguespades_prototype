@@ -1,0 +1,109 @@
+{
+ "base": "s1-res7",
+ "sigils": {
+  "n2-clubs-untrumpable": {
+   "rarity": "common"
+  },
+  "n2-diamonds-untrumpable": {
+   "rarity": "common"
+  },
+  "ua-diamonds-untrumpable": {
+   "rarity": "common"
+  },
+  "s-aces-untrumpable": {
+   "rarity": "common"
+  },
+  "n2-consec-points-u": {
+   "effect": {
+    "amount": 15.0
+   }
+  },
+  "n2-two-lead-mult-u": {
+   "effect": {
+    "amount": 15.0
+   }
+  }
+ },
+ "add": [
+  {
+   "id": "n2-consec-points-u",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Streaks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 40,
+    "on": {
+     "event": "win",
+     "consecutive": true
+    }
+   },
+   "design": {
+    "rationale": "Streaks uncommon."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (uncommon slots freed by common enablers)."
+    }
+   ]
+  },
+  {
+   "id": "n2-two-lead-mult-u",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "LowCards",
+    "Nil"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "mult",
+    "amount": 6,
+    "on": {
+     "event": "lead",
+     "card": {
+      "rank": "2"
+     }
+    }
+   },
+   "design": {
+    "rationale": "LowCards uncommon."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (uncommon slots freed by common enablers)."
+    }
+   ]
+  }
+ ],
+ "combos": [],
+ "drop": [
+  "cb-contract-mult",
+  "cc-nil-made-points",
+  "seed-win-points",
+  "e-bid8-mult"
+ ],
+ "include": [
+  "n2-jack-win-mult",
+  "uc-nil-grow-mult",
+  "n2-consec-points-u",
+  "n2-two-lead-mult-u"
+ ]
+}

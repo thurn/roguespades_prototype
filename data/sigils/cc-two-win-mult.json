@@ -10,7 +10,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 10,
+    "amount": 25.0,
     "on": {
       "event": "win",
       "card": {
@@ -83,14 +83,18 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -4.1 [-4.9, -3.3] pts, fire 22%, skill gradient -2.0; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 10, \"on\": {\"event\": \"win\", \"card\": {\"rank\": \"2\"}}} -> {\"type\": \"mult\", \"amount\": 25.0, \"on\": {\"event\": \"win\", \"card\": {\"rank\": \"2\"}}}"
     }
   ],
   "name": "Stinging Bug",
   "icon": "bug",
   "iconFamily": "bug",
   "iconWord": "Bug",
-  "price": 50,
-  "text": "+10 contract multiplier when your team wins a trick with a [2]",
+  "price": 25,
+  "text": "+25 contract multiplier when your team wins a trick with a [2]",
   "category": "hybrid",
   "signature": "win|rank=2|-|mult",
   "family": "win|rank=*|-|mult",
@@ -104,7 +108,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 10",
+        "detail": "payout 25",
         "cost": 1
       },
       {

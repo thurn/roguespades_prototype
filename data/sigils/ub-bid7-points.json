@@ -9,7 +9,7 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "points",
-    "amount": 145,
+    "amount": 350.0,
     "on": {
       "event": "bid",
       "min": 7
@@ -79,6 +79,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +6.9 [+5.6, +8.2] pts, fire 62%, skill gradient +2.2; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 145, \"on\": {\"event\": \"bid\", \"min\": 7}} -> {\"type\": \"points\", \"amount\": 350.0, \"on\": {\"event\": \"bid\", \"min\": 7}}"
     }
   ],
   "name": "Flexed Biceps",
@@ -86,7 +90,7 @@
   "iconFamily": "biceps",
   "iconWord": "Biceps",
   "price": 75,
-  "text": "+145 contract points when your team bids 7 or more",
+  "text": "+350 contract points when your team bids 7 or more",
   "category": "points",
   "signature": "bid(min=7)|-|-|points",
   "family": "bid(min=7)|-|-|points",
@@ -95,7 +99,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 145",
+        "detail": "payout 350",
         "cost": 1
       },
       {

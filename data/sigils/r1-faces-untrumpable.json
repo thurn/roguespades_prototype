@@ -4,9 +4,7 @@
   "role": "enabler",
   "archetypes": [
     "Suits",
-    "Ranks",
-    "Rainbow",
-    "BidHigh"
+    "Ranks"
   ],
   "source": "designed",
   "createdIn": "round-1",
@@ -14,7 +12,7 @@
     "type": "untrumpable",
     "from": {
       "ranks": [
-        "Q",
+        "K",
         "A"
       ]
     }
@@ -37,7 +35,7 @@
       "ra-team-untrumpable"
     ]
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -55,6 +53,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +1.8 [+0.6, +3.0] pts, fire 0%, skill gradient -1.2; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"untrumpable\", \"from\": {\"ranks\": [\"Q\", \"A\"]}} -> {\"type\": \"untrumpable\", \"from\": {\"ranks\": [\"K\", \"A\"]}}; archetypes [\"Suits\", \"Ranks\", \"Rainbow\", \"BidHigh\"] -> [\"Suits\", \"Ranks\"]; status kept -> cut"
     }
   ],
   "name": "Unbreachable Castle",
@@ -62,16 +64,16 @@
   "iconFamily": "castle",
   "iconWord": "Castle",
   "price": 150,
-  "text": "Your team's [Q]s through [A]s can't be trumped",
+  "text": "Your team's [K]s through [A]s can't be trumped",
   "category": "enabler",
-  "signature": "play|ranks=Q-A|-|untrumpable",
-  "family": "play|ranks=Q-A|-|untrumpable",
+  "signature": "play|ranks=K-A|-|untrumpable",
+  "family": "play|ranks=K-A|-|untrumpable",
   "touchesOpponents": false,
   "simplicity": {
     "items": [
       {
         "burden": "rank literal",
-        "detail": "[Q]",
+        "detail": "[K]",
         "cost": 1
       },
       {

@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 4,
+    "amount": 3.0,
     "on": {
       "event": "lead",
       "card": {
@@ -37,14 +37,18 @@
     {
       "step": "draft-common",
       "note": "draft-common: cut: lift +9.7 [+8.4, +11.0] pts (n 5833), fire 85%, C 3; the kept pool covers its archetypes with stronger, simpler, or more decision-rich pieces."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 4, \"on\": {\"event\": \"lead\", \"card\": {\"suit\": \"C\"}}} -> {\"type\": \"mult\", \"amount\": 3.0, \"on\": {\"event\": \"lead\", \"card\": {\"suit\": \"C\"}}}"
     }
   ],
   "name": null,
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
-  "text": "+4 contract multiplier when your team leads [♣]",
+  "price": 25,
+  "text": "+3 contract multiplier when your team leads [♣]",
   "category": "mult",
   "signature": "lead|suit=C|-|mult",
   "family": "lead|suit=*|-|mult",
@@ -58,7 +62,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 4",
+        "detail": "payout 3",
         "cost": 1
       },
       {

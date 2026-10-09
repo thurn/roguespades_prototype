@@ -1,0 +1,44 @@
+[
+ {
+  "id": "n2-two-win-x-u",
+  "rarity": "uncommon",
+  "C": 4,
+  "arch": [
+   "LowCards"
+  ],
+  "role": "payoff",
+  "lift": 3.2,
+  "lift_ci": 2.112887077910223,
+  "raw": 1.35,
+  "fire": 0.245,
+  "text": "\u00d72 contract multiplier when your team wins a trick with a [2]"
+ },
+ {
+  "id": "n2-club-win-mult-u",
+  "rarity": "uncommon",
+  "C": 4,
+  "arch": [
+   "Suits"
+  ],
+  "role": "payoff",
+  "lift": 5.2,
+  "lift_ci": 2.1340411978216354,
+  "raw": 3.35,
+  "fire": 0.5795,
+  "text": "+8 contract multiplier when your team wins a trick with [\u2663]"
+ },
+ {
+  "id": "n2-diamond-win-mult-u",
+  "rarity": "uncommon",
+  "C": 4,
+  "arch": [
+   "Suits"
+  ],
+  "role": "payoff",
+  "lift": 5.5,
+  "lift_ci": 2.0935816186024376,
+  "raw": 3.65,
+  "fire": 0.5721666666666667,
+  "text": "+8 contract multiplier when your team wins a trick with [\u2666]"
+ }
+]

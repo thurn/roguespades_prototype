@@ -37,7 +37,7 @@
       "elegance": 4
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -79,13 +79,17 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -2.5 [-3.5, -1.5] pts, fire 61%, skill gradient -1.4; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Seven Moons",
   "icon": "moon",
   "iconFamily": "moon",
   "iconWord": "Moons",
-  "price": 50,
+  "price": 25,
   "text": "+10 contract multiplier if your team holds seven [♠]s",
   "category": "mult",
   "signature": "hold(count=7)|suit=S|-|mult",

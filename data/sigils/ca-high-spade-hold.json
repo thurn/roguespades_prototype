@@ -40,7 +40,7 @@
       "elegance": 3
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -70,13 +70,17 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +1.1 [+0.3, +1.9] pts, fire 99%, skill gradient +0.7; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Drawn Swords",
   "icon": "sword",
   "iconFamily": "sword",
   "iconWord": "Swords",
-  "price": 50,
+  "price": 25,
   "text": "+10 contract points for each [10] through [A] of [♠] your team holds",
   "category": "points",
   "signature": "hold|suit=S,ranks=10-A|-|points",

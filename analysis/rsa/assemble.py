@@ -22,6 +22,7 @@ import json
 from . import it
 from .common import REPORTS
 from .compose import POOL
+from .retarget import ALIVE
 
 FLOOR = {"common": 60, "uncommon": 60, "rare": 20, "legendary": 5}
 MAJOR = ["Suits", "Spades", "Ranks", "BidHigh", "Nil"]
@@ -63,6 +64,8 @@ def main() -> None:
     ap.add_argument("--base", default="s1-res")
     ap.add_argument("--incumbent", default="search1")
     ap.add_argument("--lifts", default="s1-res,s1-pool")
+    ap.add_argument("--additive-commons", action="store_true", help="no new ×mult commons")
+    ap.add_argument("--alive", action="store_true", help="add only live candidates; swap dead pool sigils")
     a = ap.parse_args()
     b = it.Variant.load(a.base).materialize()
     inc = it.Variant.load(a.incumbent).materialize()
@@ -72,6 +75,14 @@ def main() -> None:
     pool = list(inc.pool)
     sigs = {defs[s].get("signature") for s in pool}
     cands = [s for s in res if s in lifts and ok(lifts[s], defs[s]) and defs[s].get("signature") not in sigs]
+    # Openings that change the opponents' cards feel like attacks; they stay out.
+    cands = [s for s in cands if not (defs[s].get("touchesOpponents") and defs[s].get("role") == "enabler")]
+    if a.alive:
+        cands = [s for s in cands if lifts[s]["lift"] >= min(3.5, ALIVE[defs[s]["rarity"]])]
+    if a.additive_commons:
+        cands = [
+            s for s in cands if not (defs[s]["rarity"] == "common" and defs[s]["effect"]["type"] == "xmult")
+        ]
     if a.rule != "restore":
         cands = [s for s in cands if "Rainbow" not in defs[s]["archetypes"]]
     cands.sort(key=lambda s: -lifts[s]["lift"])
@@ -126,6 +137,25 @@ def main() -> None:
             if a.rule == "value" and count(tier, primary(d)) >= cap:
                 continue
             take(s)
+    if a.alive:
+        # Commons and uncommons only: they hold almost all the dead sigils, and the reservoir has
+        # live replacements for them.
+        dead = [
+            s
+            for s in pool
+            if defs[s]["rarity"] in ("common", "uncommon")
+            and lifts.get(s, {"lift": 99})["lift"] < ALIVE[defs[s]["rarity"]]
+        ]
+        for s in dead:
+            tier, arch = defs[s]["rarity"], primary(defs[s])
+            alt = [c for c in cands if free(c) and defs[c]["rarity"] == tier]
+            same = [c for c in alt if primary(defs[c]) == arch]
+            if not alt:
+                continue
+            pool.remove(s)
+            sigs.discard(defs[s].get("signature"))
+            take((same or alt)[0])
+            print(f"  swap {s} ({lifts[s]['lift']:+.1f}) -> {(same or alt)[0]}")
     legs = sorted(
         (s for s in pool if defs[s]["rarity"] == "legendary"), key=lambda s: lifts.get(s, {"lift": 0})["lift"]
     )

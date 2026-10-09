@@ -10,7 +10,7 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "mult",
-    "amount": 2,
+    "amount": 5.0,
     "per": "contractTrick",
     "on": {
       "event": "bid",
@@ -36,7 +36,7 @@
       "elegance": 4
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -46,14 +46,18 @@
     {
       "step": "draft-uncommon",
       "note": "draft-uncommon: cut: lift -15.4 [-16.6, -14.2] pts (n 2757), fire 40%, C 3; far below the control, and one retune step can't close the gap."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Zero Sum (circle); effect {\"type\": \"mult\", \"amount\": 2, \"per\": \"contractTrick\", \"on\": {\"event\": \"bid\", \"nil\": true}} -> {\"type\": \"mult\", \"amount\": 5.0, \"per\": \"contractTrick\", \"on\": {\"event\": \"bid\", \"nil\": true}}; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Zero Sum",
+  "icon": "circle",
+  "iconFamily": "circle",
+  "iconWord": "Circle",
   "price": 75,
-  "text": "+2 contract multiplier for each trick in your team's contract when your team bids nil",
+  "text": "+5 contract multiplier for each trick in your team's contract when your team bids nil",
   "category": "hybrid",
   "signature": "bid(nil)|-|contractTrick|mult",
   "family": "bid(nil)|-|contractTrick|mult",
@@ -62,7 +66,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 2",
+        "detail": "payout 5",
         "cost": 1
       },
       {

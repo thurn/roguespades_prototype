@@ -1,0 +1,53 @@
+{
+  "id": "n2-free-hearts",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Suits"
+  ],
+  "source": "designed",
+  "createdIn": "search-2",
+  "status": "kept",
+  "effect": {
+    "type": "anySuit",
+    "card": {
+      "suit": "H"
+    }
+  },
+  "design": {
+    "rationale": "Same for [♥]."
+  },
+  "name": "Open Heart",
+  "icon": "medical-kit",
+  "iconFamily": "medical-kit",
+  "iconWord": "Medical-Kit",
+  "history": [
+    {
+      "step": "design-search-2",
+      "note": "Added in rec2."
+    }
+  ],
+  "price": 25,
+  "text": "Your team can play [♥]s even when it can follow suit",
+  "category": "enabler",
+  "signature": "play|cards:suit=H|-|anySuit",
+  "family": "play|cards:suit=*|-|anySuit",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "suit literal",
+        "detail": "[♥]",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team could follow suit",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

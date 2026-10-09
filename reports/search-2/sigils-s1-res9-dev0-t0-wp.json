@@ -1,0 +1,116 @@
+[
+ {
+  "id": "cb-free-after-made",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "Exact",
+   "Streaks"
+  ],
+  "role": "enabler",
+  "lift": 0.8250000000000001,
+  "lift_ci": 2.104985846712366,
+  "raw": -3.5999999999999996,
+  "fire": 0.0,
+  "text": "Your team can play any suit once it has won the tricks in its contract"
+ },
+ {
+  "id": "n2-raise-diamonds",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Suits"
+  ],
+  "role": "enabler",
+  "lift": 2.35,
+  "lift_ci": 2.099053196250038,
+  "raw": -2.075,
+  "fire": 0.0,
+  "text": "Opening: Raise every [\u2666] your team holds by two ranks"
+ },
+ {
+  "id": "n2-kings-untrumpable-c",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "enabler",
+  "lift": 3.4250000000000003,
+  "lift_ci": 2.0962582799143274,
+  "raw": -1.0,
+  "fire": 0.0,
+  "text": "Your team's [K]s can't be trumped"
+ },
+ {
+  "id": "n2-free-hearts",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "Suits"
+  ],
+  "role": "enabler",
+  "lift": 3.975,
+  "lift_ci": 2.1033011266481494,
+  "raw": -0.44999999999999996,
+  "fire": 0.0,
+  "text": "Your team can play [\u2665]s even when it can follow suit"
+ },
+ {
+  "id": "n2-jacks-untrumpable",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "enabler",
+  "lift": 6.375,
+  "lift_ci": 2.0758859628744966,
+  "raw": 1.95,
+  "fire": 0.0,
+  "text": "Your team's [J]s can't be trumped"
+ },
+ {
+  "id": "n2-free-clubs",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "Suits"
+  ],
+  "role": "enabler",
+  "lift": 6.4750000000000005,
+  "lift_ci": 2.033887589380096,
+  "raw": 2.0500000000000003,
+  "fire": 0.0,
+  "text": "Your team can play [\u2663]s even when it can follow suit"
+ },
+ {
+  "id": "n2-tens-untrumpable",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks",
+   "LowCards"
+  ],
+  "role": "enabler",
+  "lift": 8.125,
+  "lift_ci": 2.0707468662258974,
+  "raw": 3.6999999999999997,
+  "fire": 0.0,
+  "text": "Your team's [10]s can't be trumped"
+ },
+ {
+  "id": "n2-free-diamonds",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "Suits"
+  ],
+  "role": "enabler",
+  "lift": 8.475000000000001,
+  "lift_ci": 2.117070503368836,
+  "raw": 4.05,
+  "fire": 0.0,
+  "text": "Your team can play [\u2666]s even when it can follow suit"
+ }
+]

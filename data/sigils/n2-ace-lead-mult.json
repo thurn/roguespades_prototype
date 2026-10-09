@@ -1,0 +1,62 @@
+{
+  "id": "n2-ace-lead-mult",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "search-2",
+  "status": "kept",
+  "effect": {
+    "type": "mult",
+    "amount": 10.0,
+    "on": {
+      "event": "lead",
+      "card": {
+        "rank": "A"
+      }
+    }
+  },
+  "design": {
+    "rationale": "Lead an [A]."
+  },
+  "name": "First Light",
+  "icon": "light-bulb",
+  "iconFamily": "light-bulb",
+  "iconWord": "Light-Bulb",
+  "history": [
+    {
+      "step": "design-search-2",
+      "note": "Added in rec2."
+    }
+  ],
+  "price": 75,
+  "text": "+10 contract multiplier when your team leads an [A]",
+  "category": "mult",
+  "signature": "lead|rank=A|-|mult",
+  "family": "lead|rank=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "rank literal",
+        "detail": "[A]",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "payout 10",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team leads",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

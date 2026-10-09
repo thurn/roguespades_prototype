@@ -35,7 +35,7 @@
       "elegance": 3
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -45,12 +45,16 @@
     {
       "step": "draft-rare",
       "note": "draft-rare: cut: lift -11.6 [-12.8, -10.4] pts (n 5300), fire 25%, C 3; far below the control, and one retune step can't close the gap."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Silent Partner (incognito); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Silent Partner",
+  "icon": "incognito",
+  "iconFamily": "incognito",
+  "iconWord": "Incognito",
   "price": 100,
   "text": "+3 contract multiplier for each trick in your team's contract if your team makes a nil",
   "category": "mult",

@@ -10,7 +10,7 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "xmult",
-    "amount": 1.5,
+    "amount": 1.85,
     "on": {
       "event": "win",
       "count": 7
@@ -44,6 +44,10 @@
     {
       "step": "draft-uncommon",
       "note": "draft-uncommon: cut: lift -9.6 [-10.7, -8.5] pts (n 8128), fire 42%, C 5; far below the control, and one retune step can't close the gap."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"xmult\", \"amount\": 1.5, \"on\": {\"event\": \"win\", \"count\": 7}} -> {\"type\": \"xmult\", \"amount\": 1.85, \"on\": {\"event\": \"win\", \"count\": 7}}"
     }
   ],
   "name": null,
@@ -51,7 +55,7 @@
   "iconFamily": null,
   "iconWord": null,
   "price": 75,
-  "text": "×1.5 contract multiplier when your team wins seven tricks",
+  "text": "×1.85 contract multiplier when your team wins seven tricks",
   "category": "xmult",
   "signature": "win(count=7)|-|-|xmult",
   "family": "win(count=7)|-|-|xmult",
@@ -60,7 +64,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 1.5",
+        "detail": "payout 1.85",
         "cost": 1
       },
       {

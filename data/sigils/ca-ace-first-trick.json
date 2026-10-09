@@ -52,7 +52,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+10 contract multiplier when your team wins the first trick of a round with an [A]",
   "category": "mult",
   "signature": "win(trick=first)|rank=A|-|mult",

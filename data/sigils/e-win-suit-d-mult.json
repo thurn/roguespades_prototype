@@ -9,11 +9,11 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 2,
+    "amount": 4.0,
     "on": {
       "event": "win",
       "card": {
-        "suit": "D"
+        "suit": "H"
       }
     }
   },
@@ -73,28 +73,32 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -3.9 [-5.0, -2.7] pts, fire 60%, skill gradient -2.5; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 2, \"on\": {\"event\": \"win\", \"card\": {\"suit\": \"D\"}}} -> {\"type\": \"mult\", \"amount\": 4.0, \"on\": {\"event\": \"win\", \"card\": {\"suit\": \"H\"}}}"
     }
   ],
   "name": "Glowing Ember",
   "icon": "fire",
   "iconFamily": "fire",
   "iconWord": "Ember",
-  "price": 50,
-  "text": "+2 contract multiplier when your team wins a trick with [♦]",
+  "price": 25,
+  "text": "+4 contract multiplier when your team wins a trick with [♥]",
   "category": "mult",
-  "signature": "win|suit=D|-|mult",
+  "signature": "win|suit=H|-|mult",
   "family": "win|suit=*|-|mult",
   "touchesOpponents": false,
   "simplicity": {
     "items": [
       {
         "burden": "suit literal",
-        "detail": "[♦]",
+        "detail": "[♥]",
         "cost": 1
       },
       {
         "burden": "numeric value",
-        "detail": "payout 2",
+        "detail": "payout 4",
         "cost": 1
       },
       {

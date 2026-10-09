@@ -103,12 +103,11 @@ ten times the point scale: a made contract of 7 scores 700, a set scores
 
 - **Made:** the team's non-nil bidders win at least B tricks and score
   +10 × B plus their contract points, times their multipliers.
-- **Set:** the sign flips. The team scores −10 × B minus its contract points,
-  times its multipliers. A strong build that overreaches loses as much as it
-  would have won.
-- A multiplier whose condition requires making the contract ("if your team
-  makes its contract exactly") doesn't fire on a set. Every other multiplier
-  that fired applies.
+- **Set:** the team scores **−100 × B**, flat: contract points, multipliers,
+  and every other sigil leave a set untouched (a nil score that round is
+  still multiplied). A strong build risks only the
+  contract it bid, so it can bid boldly. (Before design search 2 a set flipped
+  the sign of the whole multiplied score.)
 - Contract points earned on an overtrick count. Contract points triggered by a
   trick a nil bidder wins don't.
 - **The nil score** counts whether the contract is made or set, and it is
@@ -147,12 +146,13 @@ ten times the point scale: a made contract of 7 scores 700, a set scores
 | Situation | Calculation | Score | Bags |
 | --- | --- | --- | --- |
 | Bids 4 + 3, win 9, no sigils | 70 × 10 | 700 | +2 |
-| Bids 4 + 3, win 6, no sigils | −70 × 10 | −700 | 0 |
+| Bids 4 + 3, win 6, no sigils | −100 × 7 | −700 | 0 |
 | Bid 7, win 8; "[A]s: +20" fires twice; one +15 | (70 + 40) × 25 | 2,750 | +1 |
-| Bid 7, win 6; "[A]s: +20" fires twice; one +15 | (−70 − 40) × 25 | −2,750 | 0 |
+| Bid 7, win 6; "[A]s: +20" fires twice; one +15 | −100 × 7 | −700 | 0 |
 | Partner bids 5 and wins 6; you make nil; "+50 nil points"; one +15 | (50 + 100 + 50) × 25 | 5,000 | +1 |
 | Partner bids 5 and wins 6; your nil takes a trick; same sigils | (50 − 100) × 25 | −1,250 | +2 |
 | Late run: bid 9 and make it; 210 contract points; +35 from sigils; one ×1.5 | (90 + 210) × 45 × 1.5 | 20,250 | — |
+| Same, but set | −100 × 9 | −900 | 0 |
 
 ### Keeping bids tense
 
@@ -187,8 +187,8 @@ more". Bid High is a major archetype ([§8](#8-archetypes)).
 | Term | Meaning |
 | --- | --- |
 | **your team** | Both partners. Team wins count tricks either partner wins, except tricks a nil bidder wins |
-| **contract points** | Points added to your team's contract: gained when it's made, lost when it's set |
-| **contract multiplier** | Written `+15` when it adds up with others, or `×1.5` when it compounds. It multiplies your team's round score, made or set |
+| **contract points** | Points added to your team's contract when it's made; a set scores −100 × B whatever they were |
+| **contract multiplier** | Written `+15` when it adds up with others, or `×1.5` when it compounds. It multiplies your team's round score when the contract is made, and a nil score either way |
 | **nil points** | Points added to each nil your team makes |
 | **your team holds** | Cards in either partner's hand; Hold payoffs count once after bidding, after Opening |
 | **Opening:** | Resolves after dealing and before the first bid |
@@ -269,10 +269,15 @@ text is generated from the sigil's data.
 
 | Rarity | Offer odds | Price | Pool size (soft target) |
 | --- | --- | --- | --- |
-| Common | 69% | 50 | About 60 |
-| Uncommon | 25% | 75 | About 60 |
-| Rare | 5% | 100 | About 20 |
-| Legendary | 1% | 150 | About 5 |
+| Common | 69% | **25** | About 60 (62 in the pool) |
+| Uncommon | 25% | 75 | About 60 (60) |
+| Rare | 5% | 100 | About 20 (20) |
+| Legendary | 1% | 150 | About 5 (6) |
+
+Commons are cheap and worth buying on their own: at 25 gold a common gives
+about twice an uncommon's win-rate lift per gold, which lets a committed team
+afford its plan's common pieces beside its uncommons. Commons add (`+` points
+or `+` multiplier) rather than compound; ×multipliers start at uncommon.
 
 The pool lives in `data/sigils/`, the [registry](sigils/registry.md), and the
 viewer (`npm --prefix viewer run dev`, then `/sigils`).
@@ -293,14 +298,14 @@ viewer (`npm --prefix viewer run dev`, then `/sigils`).
 
 | Rank | [A] | [K] | [Q] | [J] | [10] | [2]–[9] |
 | --- | --- | --- | --- | --- | --- | --- |
-| [♣] [♦] [♥] | 80 | 60 | 45 | 35 | 25 | 15 |
-| [♠] | 120 | 90 | 70 | 50 | 40 | 25 |
+| [♣] [♦] [♥] | 120 | 90 | 70 | 55 | 40 | 25 |
+| [♠] | 180 | 135 | 105 | 75 | 60 | 40 |
 
 ## 7. Shop and economy
 
 ### Shop
 
-- Each team has one shop per round, shared by both partners, with **3 sigil
+- Each team has one shop per round, shared by both partners, with **5 sigil
   offers and 3 card offers**.
 - Purchases are unlimited, bounded by gold, 7 sigil slots, and 8 owned cards
   per player. A bought offer leaves an empty slot until the next reroll.
@@ -312,13 +317,13 @@ viewer (`npm --prefix viewer run dev`, then `/sigils`).
 
 ### Gold
 
-- Each team starts with **150 gold**.
+- Each team starts with **250 gold**.
 - After each round, a team gains:
   - **100 base income**;
   - **10 gold per trick in its contract**, if it made the contract;
   - **100 gold per made nil**.
 - There is no interest.
-- A typical round earns about 165 gold, so a run has about 1,300 to spend.
+- A typical round earns about 165 gold, so a run has about 1,400 to spend.
 
 ## 8. Archetypes
 
@@ -334,7 +339,6 @@ steers offers by them.
 | Bid High | Major | Bid 8 or more and make the contract |
 | Nil | Major | Bid nil and make it |
 | Low Cards | Minor | Win with [2]s through [10]s |
-| Rainbow | Minor | Win tricks with all four suits |
 | Streaks | Minor | Win tricks in a row |
 | Exact | Minor | Make exactly your contract, taking no bags |
 
@@ -456,8 +460,10 @@ team in one run, and **empty offers**, sigil offer slots a shop couldn't fill
 - **Rules file.** Every lever in [Open for testing](#open-for-testing) is a
   value in `data/rules.json`, read by both the simulator and the game.
 - **No AI component has sigil-specific knowledge.** Play and bidding search
-  the real rules through the kernel. The shop values offers with a model
-  fitted to randomized simulation.
+  the real rules through the kernel. The shop values each sigil by its
+  win-rate lift when granted at shop 3 under the current rules and pool
+  (`rsa.liftmodel`), and the bid search charges a nil 1,100 margin points
+  because rollouts flatter nils.
 - **Information.** AI seats see exactly what a human in their seat would see,
   and searches sample hidden hands consistent with voids, bids, and known
   cards.
@@ -479,25 +485,29 @@ Everything not in this table is fixed. The [design search
 plan](design-search-plan.md) searches these levers; a change outside the
 table needs the designer's approval first.
 
-| Lever | Base | Values to test |
-| --- | --- | --- |
-| Set rule | Symmetric: a set loses its contract points, and multipliers apply | Flat: a set scores −100 × B, untouched by sigils |
-| Starting contract multiplier | ×10 | ×20 |
-| Sigil offer draws | With replacement, never one the team owns | Without replacement per team per run; shared between teams (never one either team owns) |
-| Rounds per run | 8 | 6–10 |
-| Owned cards per player | 8 | 4, 6 |
-| Sigil slots | 7 | 5–9 |
-| Sigil offers per shop | 3 | 2–5 |
-| Card offers per shop | 3 | 2–5 |
-| Purchases per shop | Unlimited | 1, 2 |
-| Reroll cost | 50, +10 per further reroll | Base 25–100; step 0–25 |
-| Sell value | Half price | 25–75% |
-| Starting gold | 150 | 100, 200, 250 |
-| Base income | 100 | 10, 25, 50 |
-| Rarity odds | 69 / 25 / 5 / 1% | Each tier halved or doubled |
-| Sigil prices | 50 / 75 / 100 / 150 | ±50% |
-| Card prices | The [§6](#6-cards) table | Retuned toward equal value per gold |
-| Sigil pool | Master's pool | Amounts (+points, +mult, ×mult); simpler same-slot replacements; cuts; new sigils within the grammar and §5 rules; archetype roster and suit coverage through those changes |
+Design search 2 ([report](search-2/report.md)) settled every lever at a pool of
+at least 60 / 60 / 20 / 5 sigils; the first column is the recommendation the
+rest of this document describes.
+
+| Lever | Recommended | Master's base game | Values tested |
+| --- | --- | --- | --- |
+| Set rule | **Flat: a set scores −100 × B, untouched by sigils** | Symmetric: a set loses its contract points, and multipliers apply | Symmetric (runner-up) |
+| Starting contract multiplier | ×10 | Same | ×20 (search 1) |
+| Sigil offer draws | With replacement, never one the team owns | Same | Without replacement per team per run (no empty offers at 148 sigils; no measured difference; runner-up); shared between teams |
+| Rounds per run | 8 | Same | 6–10 (search 1) |
+| Owned cards per player | 8 | Same | 4, 6 (search 1) |
+| Sigil slots | 7 | Same | 8 (runner-up, with the flat set), 9 |
+| Sigil offers per shop | **5** | 3 | 3, 4 |
+| Card offers per shop | 3 | Same | 2–5 (search 1) |
+| Purchases per shop | Unlimited | Same | 1, 2 (search 1) |
+| Reroll cost | 50, +10 per further reroll | Same | Base 25–100; step 0–25 (search 1; the shop AI never rerolls twice) |
+| Sell value | Half price | Same | 25–75% (search 1) |
+| Starting gold | **250** | 150 | 150, 200 |
+| Base income | 100 | Same | 10, 25, 50 (search 1) |
+| Rarity odds | 69 / 25 / 5 / 1% | Same | 38 / 50 / 10 / 2% |
+| Sigil prices | **25** / 75 / 100 / 150 | 50 / 75 / 100 / 150 | All ±50%; commons 35 and 75; commons 25 with uncommons 50 |
+| Card prices | **×1.5** (the [§6](#6-cards) table) | The 1.0 table | ×1 |
+| Sigil pool | **148 sigils** (62 / 60 / 20 / 6), Rainbow out, additive commons, every sigil worth buying (the [report](search-2/report.md#the-pool)) | Master's 117 | Amounts, global scale ×0.8 / ×1.25, simpler same-slot versions, swaps, new sigils, ×mult commons, Rainbow restored |
 
 **Fixed, not to be searched:** Spades scoring with bags (10 per contract
 trick, −1,000 per 10 bags), the nil score of ±100 in the base, contract gold

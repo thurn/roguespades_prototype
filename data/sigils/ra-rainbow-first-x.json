@@ -36,7 +36,7 @@
       "elegance": 3
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -70,6 +70,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +4.4 [+3.3, +5.5] pts, fire 99%, skill gradient +1.8; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Spinning Color Wheel",

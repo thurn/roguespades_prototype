@@ -50,7 +50,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "Your team leads the first trick of a round",
   "category": "enabler",
   "signature": "play|-|-|firstLead",

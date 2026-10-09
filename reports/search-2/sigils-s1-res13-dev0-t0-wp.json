@@ -1,0 +1,17 @@
+[
+ {
+  "id": "n2-opp-win-points-c",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "Exact",
+   "Nil"
+  ],
+  "role": "payoff",
+  "lift": 3.75,
+  "lift_ci": 2.0959633729952207,
+  "raw": -0.25,
+  "fire": 0.976,
+  "text": "+15 contract points when the opponents win a trick"
+ }
+]

@@ -52,7 +52,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+50 contract points when your team wins the last trick of a round",
   "category": "hybrid",
   "signature": "win(trick=last)|-|-|points",

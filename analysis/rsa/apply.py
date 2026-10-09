@@ -14,9 +14,13 @@ import sys
 from . import it
 from .common import MODELS, ROOT, RULES_PATH, SIGILS
 
+# Names and icons for pool sigils that have none (data/search/pool/rec2-names.tsv: id, name, icon).
 NAMES = {
-    "s-aces-untrumpable": ("Steady Anchor", "anchor"),
-    "s-exact-x": ("True Target", "target"),
+    r[0]: (r[1], r[2])
+    for r in (
+        line.split("\t")
+        for line in (ROOT / "data" / "search" / "pool" / "rec2-names.tsv").read_text().strip().splitlines()
+    )
 }
 
 
@@ -33,14 +37,21 @@ def main(name: str) -> None:
             if sid not in pool:
                 continue
             new = dict(d)
-            nm, icon = NAMES.get(sid, (None, None))
+            nm, icon = (d["name"], d.get("icon")) if d.get("name") else NAMES.get(sid, (None, None))
             new.update(
                 {"name": nm, "icon": icon, "iconFamily": icon, "iconWord": icon.title() if icon else None}
             )
-            new["history"] = [{"step": "design-search", "note": f"Added in {name}."}]
+            new["status"] = "kept"
+            new["history"] = [{"step": "design-search-2", "note": f"Added in {name}."}]
         else:
             new = dict(old)
             notes = []
+            if sid in pool and not old.get("name") and (d.get("name") or sid in NAMES):
+                nm, icon = (d["name"], d.get("icon")) if d.get("name") else NAMES[sid]
+                new.update(
+                    {"name": nm, "icon": icon, "iconFamily": icon, "iconWord": icon.title() if icon else None}
+                )
+                notes.append(f"named {nm} ({icon})")
             for k in ("effect", "rarity", "archetypes"):
                 if json.dumps(old.get(k), sort_keys=True) != json.dumps(d.get(k), sort_keys=True):
                     new[k] = d[k]
@@ -52,7 +63,7 @@ def main(name: str) -> None:
             if not notes:
                 continue
             new.setdefault("history", []).append(
-                {"step": "design-search", "note": f"{name}: " + "; ".join(notes)}
+                {"step": "design-search-2", "note": f"{name}: " + "; ".join(notes)}
             )
         p.write_text(json.dumps(new, indent=2, ensure_ascii=False) + "\n")
         changed += 1

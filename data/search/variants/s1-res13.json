@@ -1,0 +1,53 @@
+{
+ "base": "s1-res12",
+ "sigils": {
+  "e-exact-pts": {
+   "effect": {
+    "amount": 200.0
+   }
+  },
+  "n2-opp-win-points-c": {
+   "effect": {
+    "amount": 15.0
+   }
+  }
+ },
+ "add": [
+  {
+   "id": "n2-opp-win-points-c",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Exact",
+    "Nil"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 8,
+    "on": {
+     "event": "win",
+     "whose": "opponents"
+    }
+   },
+   "design": {
+    "rationale": "Exact/Nil common: rewards the tricks you let go."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (Exact common payoff)."
+    }
+   ]
+  }
+ ],
+ "combos": [],
+ "drop": [],
+ "include": []
+}

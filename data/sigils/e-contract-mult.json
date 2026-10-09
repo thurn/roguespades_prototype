@@ -38,7 +38,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+1 contract multiplier for each trick in your team's contract",
   "category": "mult",
   "signature": "always|-|contractTrick|mult",

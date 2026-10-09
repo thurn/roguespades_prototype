@@ -3,15 +3,13 @@
   "rarity": "legendary",
   "role": "payoff",
   "archetypes": [
-    "Ranks",
-    "Rainbow",
-    "BidHigh"
+    "Ranks"
   ],
   "source": "designed",
   "createdIn": "draft-rare",
   "effect": {
     "type": "xmult",
-    "amount": 1.2,
+    "amount": 1.3,
     "on": {
       "event": "win",
       "card": {
@@ -76,6 +74,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +1.6 [+0.6, +2.6] pts, fire 91%, skill gradient +2.6; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"xmult\", \"amount\": 1.2, \"on\": {\"event\": \"win\", \"card\": {\"rank\": \"A\"}}} -> {\"type\": \"xmult\", \"amount\": 1.3, \"on\": {\"event\": \"win\", \"card\": {\"rank\": \"A\"}}}; archetypes [\"Ranks\", \"Rainbow\", \"BidHigh\"] -> [\"Ranks\"]"
     }
   ],
   "name": "Victor's Trophy",
@@ -83,7 +85,7 @@
   "iconFamily": "trophy",
   "iconWord": "Trophy",
   "price": 150,
-  "text": "×1.2 contract multiplier when your team wins a trick with an [A]",
+  "text": "×1.3 contract multiplier when your team wins a trick with an [A]",
   "category": "xmult",
   "signature": "win|rank=A|-|xmult",
   "family": "win|rank=*|-|xmult",
@@ -97,7 +99,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 1.2",
+        "detail": "payout 1.3",
         "cost": 1
       },
       {

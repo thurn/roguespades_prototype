@@ -23,7 +23,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -37,13 +37,17 @@
     {
       "step": "draft-common",
       "note": "draft-common: cut: lift +8.5 [+7.2, +9.8] pts (n 5815), fire 99%, C 3; near-duplicate of kept e-hold-suit-s-mult (same shape up to a named suit, rank, or amount)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Clover Patch (clover); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
+  "name": "Clover Patch",
+  "icon": "clover",
+  "iconFamily": "clover",
+  "iconWord": "Clover",
+  "price": 25,
   "text": "+1 contract multiplier for each [♣] your team holds",
   "category": "mult",
   "signature": "hold|suit=C|-|mult",

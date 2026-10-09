@@ -23,7 +23,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": "seed-ace-lead",
   "history": [
     {
@@ -37,13 +37,17 @@
     {
       "step": "draft-common",
       "note": "draft-common: merged into seed-ace-lead, which has the same signature (D21: credits both sources)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Opening Gambit (strategy); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
+  "name": "Opening Gambit",
+  "icon": "strategy",
+  "iconFamily": "strategy",
+  "iconWord": "Strategy",
+  "price": 25,
   "text": "+45 contract points when your team leads an [A]",
   "category": "points",
   "signature": "lead|rank=A|-|points",

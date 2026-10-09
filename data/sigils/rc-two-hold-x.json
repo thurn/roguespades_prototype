@@ -37,7 +37,7 @@
       "elegance": 3
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -47,12 +47,16 @@
     {
       "step": "draft-rare",
       "note": "draft-rare: cut: lift -8.7 [-9.9, -7.4] pts (n 4817), fire 76%, C 4; near-duplicate of kept ra-ace-hold-x."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Twin Sparks (sparkles); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Twin Sparks",
+  "icon": "sparkles",
+  "iconFamily": "sparkles",
+  "iconWord": "Sparkles",
   "price": 100,
   "text": "×1.25 contract multiplier for each [2] your team holds",
   "category": "xmult",

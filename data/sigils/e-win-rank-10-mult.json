@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 15,
+    "amount": 11.0,
     "on": {
       "event": "win",
       "card": {
@@ -23,7 +23,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -37,14 +37,18 @@
     {
       "step": "draft-common",
       "note": "draft-common: cut: lift +10.7 [+9.4, +12.0] pts (n 5554), fire 47%, C 4; near-duplicate of kept cc-two-win-mult (same shape up to a named suit, rank, or amount)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Perfect Ten (medal); effect {\"type\": \"mult\", \"amount\": 15, \"on\": {\"event\": \"win\", \"card\": {\"rank\": \"10\"}}} -> {\"type\": \"mult\", \"amount\": 11.0, \"on\": {\"event\": \"win\", \"card\": {\"rank\": \"10\"}}}; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
-  "text": "+15 contract multiplier when your team wins a trick with a [10]",
+  "name": "Perfect Ten",
+  "icon": "medal",
+  "iconFamily": "medal",
+  "iconWord": "Medal",
+  "price": 25,
+  "text": "+11 contract multiplier when your team wins a trick with a [10]",
   "category": "mult",
   "signature": "win|rank=10|-|mult",
   "family": "win|rank=*|-|mult",
@@ -58,7 +62,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 15",
+        "detail": "payout 11",
         "cost": 1
       },
       {

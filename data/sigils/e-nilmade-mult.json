@@ -40,7 +40,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+40 contract multiplier if your team makes a nil",
   "category": "mult",
   "signature": "nilMade|-|-|mult",

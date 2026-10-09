@@ -36,7 +36,7 @@
       "elegance": 4
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -78,13 +78,17 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -4.0 [-5.3, -2.8] pts, fire 22%, skill gradient -1.8; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Overflowing Treasure",
   "icon": "treasure-chest",
   "iconFamily": "treasure-chest",
   "iconWord": "Treasure",
-  "price": 50,
+  "price": 25,
   "text": "+20 contract multiplier if your team holds eight [♦]s",
   "category": "mult",
   "signature": "hold(count=8)|suit=D|-|mult",

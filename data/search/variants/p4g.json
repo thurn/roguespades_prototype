@@ -1,0 +1,76 @@
+{
+ "base": "p4f-L",
+ "sigils": {},
+ "add": [
+  {
+   "id": "n2-nines-untrumpable",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "LowCards"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "untrumpable",
+    "from": {
+     "rank": "9"
+    }
+   },
+   "design": {
+    "rationale": "LowCards enabler."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (common enabler, modest alone)."
+    }
+   ]
+  },
+  {
+   "id": "n2-jacks-beat",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "Streaks",
+    "Ranks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "beats",
+    "card": {
+     "rank": "J"
+    }
+   },
+   "design": {
+    "rationale": "Streaks enabler: [J]s become sure winners of their suit."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (common enabler, modest alone)."
+    }
+   ]
+  }
+ ],
+ "combos": [],
+ "drop": [
+  "e-first-pts",
+  "e-consecutive-pts"
+ ],
+ "include": [
+  "n2-nines-untrumpable",
+  "n2-jacks-beat"
+ ]
+}

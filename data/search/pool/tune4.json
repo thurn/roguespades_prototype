@@ -1,0 +1,69 @@
+{
+ "sigils": {
+  "e-bid4less-pts": {
+   "effect": {
+    "amount": 120.0
+   }
+  },
+  "e-win-suit-s-mult": {
+   "effect": {
+    "amount": 2.0
+   }
+  },
+  "e-lead-suit-d-mult": {
+   "effect": {
+    "amount": 3.0
+   }
+  },
+  "e-lead-suit-c-mult": {
+   "effect": {
+    "amount": 3.0
+   }
+  },
+  "e-lead-rank-q-mult": {
+   "effect": {
+    "amount": 8.0
+   }
+  },
+  "e-lead-rank-q-pts": {
+   "effect": {
+    "amount": 50.0
+   }
+  },
+  "e-win-rank-10-mult": {
+   "effect": {
+    "amount": 11.0
+   }
+  },
+  "e-lead-low-mult": {
+   "effect": {
+    "amount": 2.0
+   }
+  },
+  "ca-king-hold": {
+   "effect": {
+    "amount": 30.0
+   }
+  },
+  "ub-seven-tricks-xmult": {
+   "effect": {
+    "amount": 1.85
+   }
+  },
+  "seed-ace-mult": {
+   "effect": {
+    "amount": 7.0
+   }
+  },
+  "ra-ace-win-x": {
+   "effect": {
+    "amount": 1.5
+   }
+  },
+  "ra-spade-lead-x": {
+   "effect": {
+    "amount": 1.2
+   }
+  }
+ }
+}

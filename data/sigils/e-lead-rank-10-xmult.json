@@ -43,7 +43,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "×1.5 contract multiplier when your team leads a [10]",
   "category": "xmult",
   "signature": "lead|rank=10|-|xmult",

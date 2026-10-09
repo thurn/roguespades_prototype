@@ -5,8 +5,7 @@
   "archetypes": [
     "Streaks",
     "Ranks",
-    "BidHigh",
-    "Rainbow"
+    "BidHigh"
   ],
   "source": "designed",
   "createdIn": "round-2",
@@ -51,6 +50,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +12.9 [+11.8, +14.0] pts, fire 0%, skill gradient +6.3; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: archetypes [\"Streaks\", \"Ranks\", \"BidHigh\", \"Rainbow\"] -> [\"Streaks\", \"Ranks\", \"BidHigh\"]"
     }
   ],
   "name": "Ascendant Queen",

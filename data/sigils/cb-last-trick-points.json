@@ -10,7 +10,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "points",
-    "amount": 40,
+    "amount": 80.0,
     "on": {
       "event": "win",
       "trick": "last"
@@ -34,7 +34,7 @@
       "elegance": 5
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -52,14 +52,18 @@
     {
       "step": "draft-common",
       "note": "draft-common: cut: lift -5.5 [-6.7, -4.3] pts (n 6478), fire 51%, C 3; well below the control with no clear reshaping path at common."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Closing Bell (bell); effect {\"type\": \"points\", \"amount\": 40, \"on\": {\"event\": \"win\", \"trick\": \"last\"}} -> {\"type\": \"points\", \"amount\": 80.0, \"on\": {\"event\": \"win\", \"trick\": \"last\"}}; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
-  "text": "+40 contract points when your team wins the last trick of a round",
+  "name": "Closing Bell",
+  "icon": "bell",
+  "iconFamily": "bell",
+  "iconWord": "Bell",
+  "price": 25,
+  "text": "+80 contract points when your team wins the last trick of a round",
   "category": "points",
   "signature": "win(trick=last)|-|-|points",
   "family": "win(trick=last)|-|-|points",
@@ -68,7 +72,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 40",
+        "detail": "payout 80",
         "cost": 1
       },
       {

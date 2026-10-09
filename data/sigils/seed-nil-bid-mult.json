@@ -9,7 +9,7 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "mult",
-    "amount": 5,
+    "amount": 10.0,
     "on": {
       "event": "bid",
       "nil": true
@@ -64,6 +64,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -3.7 [-5.0, -2.3] pts, fire 41%, skill gradient -1.4; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 5, \"on\": {\"event\": \"bid\", \"nil\": true}} -> {\"type\": \"mult\", \"amount\": 10.0, \"on\": {\"event\": \"bid\", \"nil\": true}}"
     }
   ],
   "name": "Vanishing Ghost",
@@ -71,8 +75,8 @@
   "iconFamily": "ghost",
   "iconWord": "Ghost",
   "gddText": "+15 contract multiplier when your team bids nil",
-  "price": 50,
-  "text": "+5 contract multiplier when your team bids nil",
+  "price": 25,
+  "text": "+10 contract multiplier when your team bids nil",
   "category": "mult",
   "signature": "bid(nil)|-|-|mult",
   "family": "bid(nil)|-|-|mult",
@@ -81,7 +85,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 5",
+        "detail": "payout 10",
         "cost": 1
       },
       {

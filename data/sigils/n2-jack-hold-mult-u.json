@@ -1,0 +1,62 @@
+{
+  "id": "n2-jack-hold-mult-u",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "search-2",
+  "status": "kept",
+  "effect": {
+    "type": "mult",
+    "amount": 4,
+    "on": {
+      "event": "hold",
+      "card": {
+        "rank": "J"
+      }
+    }
+  },
+  "design": {
+    "rationale": "C3 for wins with [J]–[A] (C5)."
+  },
+  "name": "Knave's Hoard",
+  "icon": "safe",
+  "iconFamily": "safe",
+  "iconWord": "Safe",
+  "history": [
+    {
+      "step": "design-search-2",
+      "note": "Added in rec2."
+    }
+  ],
+  "price": 75,
+  "text": "+4 contract multiplier for each [J] your team holds",
+  "category": "mult",
+  "signature": "hold|rank=J|-|mult",
+  "family": "hold|rank=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "rank literal",
+        "detail": "[J]",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "payout 4",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "held by your team",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

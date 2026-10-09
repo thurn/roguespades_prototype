@@ -10,11 +10,11 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "points",
-    "amount": 15,
+    "amount": 30.0,
     "on": {
       "event": "win",
       "led": {
-        "suit": "D"
+        "suit": "H"
       }
     }
   },
@@ -78,28 +78,32 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -0.9 [-1.8, -0.0] pts, fire 80%, skill gradient -0.2; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 15, \"on\": {\"event\": \"win\", \"led\": {\"suit\": \"D\"}}} -> {\"type\": \"points\", \"amount\": 30.0, \"on\": {\"event\": \"win\", \"led\": {\"suit\": \"H\"}}}"
     }
   ],
   "name": "Hooked Fish",
   "icon": "fish",
   "iconFamily": "fish",
   "iconWord": "Fish",
-  "price": 50,
-  "text": "+15 contract points when your team wins a trick led with [♦]",
+  "price": 25,
+  "text": "+30 contract points when your team wins a trick led with [♥]",
   "category": "points",
-  "signature": "win(led=suit=D)|-|-|points",
-  "family": "win(led=suit=D)|-|-|points",
+  "signature": "win(led=suit=H)|-|-|points",
+  "family": "win(led=suit=H)|-|-|points",
   "touchesOpponents": false,
   "simplicity": {
     "items": [
       {
         "burden": "suit literal",
-        "detail": "[♦]",
+        "detail": "[♥]",
         "cost": 1
       },
       {
         "burden": "numeric value",
-        "detail": "payout 15",
+        "detail": "payout 30",
         "cost": 1
       },
       {

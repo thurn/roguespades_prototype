@@ -1,0 +1,17 @@
+{
+ "name": "P3-rules",
+ "incumbent": "p2-alive-L",
+ "levels": {
+  "r-soffers3": {"rules": {"sigilOffers": 3}},
+  "r-soffers4": {"rules": {"sigilOffers": 4}},
+  "r-slots7": {"rules": {"slots": 7}},
+  "r-slots9": {"rules": {"slots": 9}},
+  "r-draws-team": {"rules": {"offerDraws": "team"}},
+  "r-draws-shared": {"rules": {"offerDraws": "shared"}},
+  "r-gold200": {"rules": {"startGold": 200}},
+  "r-gold150": {"rules": {"startGold": 150}},
+  "r-cprice1": {"rules": {"cardPriceScale": 1.0}},
+  "r-odds-richer": {"rules": {"rarityOdds": [0.38, 0.5, 0.1, 0.02]}},
+  "r-flatset": {"rules": {"flatSet": true}}
+ }
+}

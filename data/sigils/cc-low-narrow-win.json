@@ -68,7 +68,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+30 contract points when your team wins a trick with a [2] through [7]",
   "category": "hybrid",
   "signature": "win|ranks=2-7|-|points",

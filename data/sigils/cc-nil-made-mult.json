@@ -85,7 +85,7 @@
   "icon": "snowflake",
   "iconFamily": "snowflake",
   "iconWord": "Snow",
-  "price": 50,
+  "price": 25,
   "text": "+10 contract multiplier if your team makes a nil",
   "category": "mult",
   "signature": "nilMade|-|-|mult",

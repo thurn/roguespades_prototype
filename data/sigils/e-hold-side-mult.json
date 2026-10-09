@@ -10,7 +10,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 1,
+    "amount": 1.0,
     "on": {
       "event": "hold",
       "card": {
@@ -38,13 +38,17 @@
     {
       "step": "draft-common",
       "note": "draft-common: not in the enumerated source's most promising half (pre-tournament lift +21.0 [+18.9, +23.1], slope +14.0/2x, C 3)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 1, \"on\": {\"event\": \"hold\", \"card\": {\"notSuit\": \"S\"}}} -> {\"type\": \"mult\", \"amount\": 1.0, \"on\": {\"event\": \"hold\", \"card\": {\"notSuit\": \"S\"}}}"
     }
   ],
   "name": null,
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+1 contract multiplier for each card other than [♠] your team holds",
   "category": "mult",
   "signature": "hold|notSuit=S|-|mult",

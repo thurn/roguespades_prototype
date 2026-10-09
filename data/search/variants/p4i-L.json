@@ -1,0 +1,4 @@
+{
+ "base": "p4i",
+ "model": "data/search/models/p4i.json"
+}

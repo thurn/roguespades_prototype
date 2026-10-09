@@ -76,7 +76,7 @@
   "icon": "bell",
   "iconFamily": "bell",
   "iconWord": "Bell",
-  "price": 50,
+  "price": 25,
   "text": "+5 contract multiplier when your team leads [♦] three times",
   "category": "hybrid",
   "signature": "lead(count=3)|suit=D|-|mult",

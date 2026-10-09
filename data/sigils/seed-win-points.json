@@ -9,7 +9,7 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "points",
-    "amount": 3,
+    "amount": 10.0,
     "on": {
       "event": "win"
     }
@@ -25,7 +25,7 @@
       "elegance": 4
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -67,6 +67,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -1.7 [-2.9, -0.5] pts, fire 99%, skill gradient -0.4; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 3, \"on\": {\"event\": \"win\"}} -> {\"type\": \"points\", \"amount\": 10.0, \"on\": {\"event\": \"win\"}}; status kept -> cut"
     }
   ],
   "name": "Plump Piggy",
@@ -74,8 +78,8 @@
   "iconFamily": "piggy-bank",
   "iconWord": "Piggy",
   "gddText": "+5 contract points when your team wins a trick",
-  "price": 50,
-  "text": "+3 contract points when your team wins a trick",
+  "price": 25,
+  "text": "+10 contract points when your team wins a trick",
   "category": "points",
   "signature": "win|-|-|points",
   "family": "win|-|-|points",
@@ -84,7 +88,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 3",
+        "detail": "payout 10",
         "cost": 1
       },
       {

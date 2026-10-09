@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 10,
+    "amount": 20.0,
     "on": {
       "event": "make",
       "min": 8
@@ -75,14 +75,18 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -2.9 [-4.0, -1.7] pts, fire 17%, skill gradient -1.9; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 10, \"on\": {\"event\": \"make\", \"min\": 8}} -> {\"type\": \"mult\", \"amount\": 20.0, \"on\": {\"event\": \"make\", \"min\": 8}}"
     }
   ],
   "name": "Conquered Mountain",
   "icon": "mountain",
   "iconFamily": "mountain",
   "iconWord": "Mountain",
-  "price": 50,
-  "text": "+10 contract multiplier if your team makes a contract of 8 or more",
+  "price": 25,
+  "text": "+20 contract multiplier if your team makes a contract of 8 or more",
   "category": "mult",
   "signature": "make(min=8)|-|-|mult",
   "family": "make(min=8)|-|-|mult",
@@ -91,7 +95,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 10",
+        "detail": "payout 20",
         "cost": 1
       },
       {

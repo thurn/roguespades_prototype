@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 1,
+    "amount": 5.0,
     "per": "contractTrick",
     "on": {
       "event": "bid",
@@ -64,14 +64,18 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -8.1 [-9.4, -6.9] pts, fire 35%, skill gradient -2.9; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 1, \"per\": \"contractTrick\", \"on\": {\"event\": \"bid\", \"min\": 8}} -> {\"type\": \"mult\", \"amount\": 5.0, \"per\": \"contractTrick\", \"on\": {\"event\": \"bid\", \"min\": 8}}"
     }
   ],
   "name": "Towering Pyramid",
   "icon": "pyramid",
   "iconFamily": "pyramid",
   "iconWord": "Pyramid",
-  "price": 50,
-  "text": "+1 contract multiplier for each trick in your team's contract when your team bids 8 or more",
+  "price": 25,
+  "text": "+5 contract multiplier for each trick in your team's contract when your team bids 8 or more",
   "category": "mult",
   "signature": "bid(min=8)|-|contractTrick|mult",
   "family": "bid(min=8)|-|contractTrick|mult",
@@ -80,7 +84,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 1",
+        "detail": "payout 5",
         "cost": 1
       },
       {

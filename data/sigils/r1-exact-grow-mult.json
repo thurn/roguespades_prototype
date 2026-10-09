@@ -50,7 +50,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "This sigil gains +6 contract multiplier every time your team makes its contract exactly (currently +0)",
   "category": "mult",
   "signature": "make(exact)|-|growth|mult",

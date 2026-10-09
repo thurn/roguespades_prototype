@@ -13,7 +13,7 @@
     "on": {
       "event": "hold",
       "card": {
-        "suit": "D"
+        "suit": "H"
       },
       "count": 7
     }
@@ -35,7 +35,7 @@
     "target": "adds",
     "replaces": []
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -53,6 +53,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +1.7 [+0.3, +3.2] pts, fire 44%, skill gradient -0.4; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"xmult\", \"amount\": 2.5, \"on\": {\"event\": \"hold\", \"card\": {\"suit\": \"D\"}, \"count\": 7}} -> {\"type\": \"xmult\", \"amount\": 2.5, \"on\": {\"event\": \"hold\", \"card\": {\"suit\": \"H\"}, \"count\": 7}}; status kept -> cut"
     }
   ],
   "name": "Crystal Cube",
@@ -60,16 +64,16 @@
   "iconFamily": "cube",
   "iconWord": "Cube",
   "price": 75,
-  "text": "×2.5 contract multiplier if your team holds seven [♦]s",
+  "text": "×2.5 contract multiplier if your team holds seven [♥]s",
   "category": "xmult",
-  "signature": "hold(count=7)|suit=D|-|xmult",
+  "signature": "hold(count=7)|suit=H|-|xmult",
   "family": "hold(count=7)|suit=*|-|xmult",
   "touchesOpponents": false,
   "simplicity": {
     "items": [
       {
         "burden": "suit literal",
-        "detail": "[♦]",
+        "detail": "[♥]",
         "cost": 1
       },
       {

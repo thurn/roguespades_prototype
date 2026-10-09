@@ -34,7 +34,7 @@
       "elegance": 4
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -48,13 +48,17 @@
     {
       "step": "round-1",
       "note": "round-1: cut: lift +0.9 [-0.1, +2.0] pts; Same sentence as cb-contract-mult with a make condition few players will notice."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Paid Invoice (receipt); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
+  "name": "Paid Invoice",
+  "icon": "receipt",
+  "iconFamily": "receipt",
+  "iconWord": "Receipt",
+  "price": 25,
   "text": "+1 contract multiplier for each trick in your team's contract if your team makes its contract",
   "category": "mult",
   "signature": "make|-|contractTrick|mult",

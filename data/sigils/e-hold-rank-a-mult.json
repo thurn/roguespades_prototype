@@ -43,7 +43,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+3 contract multiplier for each [A] your team holds",
   "category": "mult",
   "signature": "hold|rank=A|-|mult",

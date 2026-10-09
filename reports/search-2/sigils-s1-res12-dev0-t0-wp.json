@@ -1,0 +1,79 @@
+[
+ {
+  "id": "cb-free-after-made",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "Exact",
+   "Streaks"
+  ],
+  "role": "enabler",
+  "lift": 1.2,
+  "lift_ci": 2.2546463855780137,
+  "raw": -2.8000000000000003,
+  "fire": 0.0,
+  "text": "Your team can play any suit once it has won the tricks in its contract"
+ },
+ {
+  "id": "n2-free-threes",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "LowCards",
+   "Nil"
+  ],
+  "role": "enabler",
+  "lift": 5.55,
+  "lift_ci": 2.1173249284031725,
+  "raw": 1.55,
+  "fire": 0.0,
+  "text": "Your team can play [3]s even when it can follow suit"
+ },
+ {
+  "id": "n2-free-twos",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "LowCards",
+   "Nil"
+  ],
+  "role": "enabler",
+  "lift": 6.15,
+  "lift_ci": 2.154056680298246,
+  "raw": 2.15,
+  "fire": 0.0,
+  "text": "Your team can play [2]s even when it can follow suit"
+ },
+ {
+  "id": "n2-free-tens",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "LowCards",
+   "Streaks"
+  ],
+  "role": "enabler",
+  "lift": 7.1499999999999995,
+  "lift_ci": 2.2382747372557956,
+  "raw": 3.15,
+  "fire": 0.0,
+  "text": "Your team can play [10]s even when it can follow suit"
+ },
+ {
+  "id": "uc-trump-freely",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "Spades",
+   "LowCards",
+   "Streaks",
+   "BidHigh"
+  ],
+  "role": "enabler",
+  "lift": 8.0,
+  "lift_ci": 2.2440838943765007,
+  "raw": 4.0,
+  "fire": 0.0,
+  "text": "Your team can play [\u2660]s even when it can follow suit"
+ }
+]

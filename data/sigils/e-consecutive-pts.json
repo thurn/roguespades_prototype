@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "points",
-    "amount": 15,
+    "amount": 10.0,
     "on": {
       "event": "win",
       "consecutive": true
@@ -21,7 +21,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": "seed-consecutive",
   "history": [
     {
@@ -35,14 +35,18 @@
     {
       "step": "draft-common",
       "note": "draft-common: merged into seed-consecutive, which has the same signature (D21: credits both sources)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Footprints (footsteps); effect {\"type\": \"points\", \"amount\": 15, \"on\": {\"event\": \"win\", \"consecutive\": true}} -> {\"type\": \"points\", \"amount\": 10.0, \"on\": {\"event\": \"win\", \"consecutive\": true}}; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
-  "text": "+15 contract points when your team wins consecutive tricks",
+  "name": "Footprints",
+  "icon": "footsteps",
+  "iconFamily": "footsteps",
+  "iconWord": "Footsteps",
+  "price": 25,
+  "text": "+10 contract points when your team wins consecutive tricks",
   "category": "points",
   "signature": "win(consecutive)|-|-|points",
   "family": "win(consecutive)|-|-|points",
@@ -51,7 +55,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 15",
+        "detail": "payout 10",
         "cost": 1
       },
       {

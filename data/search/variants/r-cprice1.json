@@ -1,0 +1,6 @@
+{
+ "rules": {
+  "cardPriceScale": 1.0
+ },
+ "base": "p2-alive-L"
+}

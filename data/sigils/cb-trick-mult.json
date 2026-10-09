@@ -3,8 +3,7 @@
   "rarity": "common",
   "role": "payoff",
   "archetypes": [
-    "Generic",
-    "BidHigh"
+    "Generic"
   ],
   "source": "designed",
   "createdIn": "draft-common",
@@ -55,13 +54,17 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -1.5 [-2.8, -0.3] pts, fire 99%, skill gradient -1.6; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: archetypes [\"Generic\", \"BidHigh\"] -> [\"Generic\"]"
     }
   ],
   "name": "Gathering Basket",
   "icon": "basket",
   "iconFamily": "basket",
   "iconWord": "Basket",
-  "price": 50,
+  "price": 25,
   "text": "+1 contract multiplier when your team wins a trick",
   "category": "mult",
   "signature": "win|-|-|mult",

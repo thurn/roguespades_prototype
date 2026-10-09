@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 1,
+    "amount": 1.0,
     "on": {
       "event": "win",
       "consecutive": true
@@ -75,13 +75,17 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -1.5 [-2.7, -0.3] pts, fire 84%, skill gradient -0.5; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 1, \"on\": {\"event\": \"win\", \"consecutive\": true}} -> {\"type\": \"mult\", \"amount\": 1.0, \"on\": {\"event\": \"win\", \"consecutive\": true}}"
     }
   ],
   "name": "Linked Chain",
   "icon": "link",
   "iconFamily": "link",
   "iconWord": "Chain",
-  "price": 50,
+  "price": 25,
   "text": "+1 contract multiplier when your team wins consecutive tricks",
   "category": "mult",
   "signature": "win(consecutive)|-|-|mult",

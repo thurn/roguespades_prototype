@@ -1,0 +1,74 @@
+{
+ "sigils": {
+  "e-bid4less-pts": {
+   "effect": {
+    "amount": 90.0
+   }
+  },
+  "e-consecutive-pts": {
+   "effect": {
+    "amount": 10.0
+   }
+  },
+  "e-bid8-mult": {
+   "effect": {
+    "amount": 25.0
+   }
+  },
+  "e-win-suit-s-mult": {
+   "effect": {
+    "amount": 1.0
+   }
+  },
+  "e-lead-suit-d-mult": {
+   "effect": {
+    "amount": 2.0
+   }
+  },
+  "e-lead-rank-10-mult": {
+   "effect": {
+    "amount": 5.0
+   }
+  },
+  "e-win-rank-q-mult": {
+   "effect": {
+    "amount": 5.0
+   }
+  },
+  "e-lead-suit-c-mult": {
+   "effect": {
+    "amount": 2.0
+   }
+  },
+  "e-lead-rank-q-mult": {
+   "effect": {
+    "amount": 5.0
+   }
+  },
+  "e-lead-rank-q-pts": {
+   "effect": {
+    "amount": 30.0
+   }
+  },
+  "e-lead-rank-j-mult": {
+   "effect": {
+    "amount": 5.0
+   }
+  },
+  "e-win-rank-10-mult": {
+   "effect": {
+    "amount": 7.0
+   }
+  },
+  "e-lead-low-mult": {
+   "effect": {
+    "amount": 1.0
+   }
+  },
+  "ca-king-hold": {
+   "effect": {
+    "amount": 20.0
+   }
+  }
+ }
+}

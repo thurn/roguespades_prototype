@@ -52,7 +52,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+15 contract multiplier when your team leads an [A] three times",
   "category": "hybrid",
   "signature": "lead(count=3)|rank=A|-|mult",

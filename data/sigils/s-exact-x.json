@@ -1,0 +1,61 @@
+{
+  "id": "s-exact-x",
+  "rarity": "common",
+  "role": "payoff",
+  "archetypes": [
+    "Exact"
+  ],
+  "source": "designed",
+  "createdIn": "search-p3l",
+  "status": "kept",
+  "effect": {
+    "type": "xmult",
+    "amount": 2.0,
+    "on": {
+      "event": "make",
+      "exact": true
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "The GDD's example Exact payoff as a common, so Exact can find two payoffs early; bags give it a reason.",
+    "partners": [
+      "r1-exact-points",
+      "seed-exact-mult"
+    ]
+  },
+  "history": [
+    {
+      "step": "design-search-2",
+      "note": "Added in rec2."
+    }
+  ],
+  "name": "True Target",
+  "icon": "target",
+  "iconFamily": "target",
+  "iconWord": "Target",
+  "price": 25,
+  "text": "×2 contract multiplier if your team makes its contract exactly",
+  "category": "xmult",
+  "signature": "make(exact)|-|-|xmult",
+  "family": "make(exact)|-|-|xmult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 2",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract exactly",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

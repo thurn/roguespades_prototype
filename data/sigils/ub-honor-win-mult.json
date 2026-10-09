@@ -3,7 +3,6 @@
   "rarity": "uncommon",
   "role": "payoff",
   "archetypes": [
-    "BidHigh",
     "Generic",
     "Ranks"
   ],
@@ -50,6 +49,10 @@
     {
       "step": "draft-uncommon",
       "note": "draft-uncommon: cut: lift -5.6 [-6.6, -4.6] pts (n 10023), fire 98%, C 5; the kept pool covers its archetypes with stronger or simpler pieces."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: archetypes [\"BidHigh\", \"Generic\", \"Ranks\"] -> [\"Generic\", \"Ranks\"]"
     }
   ],
   "name": null,

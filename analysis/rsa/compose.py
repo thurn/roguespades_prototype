@@ -32,6 +32,9 @@ def main() -> None:
         added = {d["id"] for d in fr.get("add", [])}
         spec["add"] = [d for d in spec["add"] if d["id"] not in added] + fr.get("add", [])
         spec["combos"] += [c for c in fr.get("combos", []) if c not in spec["combos"]]
+        # Pool swaps (only for a base with an explicit pool): "drop" ids, "include" existing defs.
+        for k in ("drop", "include"):
+            spec[k] = spec.get(k, []) + [x for x in fr.get(k, []) if x not in spec.get(k, [])]
     if a.rules:
         spec["rules"] = json.loads(a.rules)
     (it.VARIANTS / f"{a.name}.json").write_text(json.dumps(spec, indent=1, ensure_ascii=False) + "\n")

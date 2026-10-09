@@ -3,5 +3,6 @@
   "sigilShop": false,
   "cards": false
  },
- "model": "data/search/models/plain.json"
+ "model": "data/search/models/plain.json",
+ "sigilsFrom": "999086c"
 }

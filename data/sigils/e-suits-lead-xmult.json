@@ -42,7 +42,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "×2 contract multiplier if your team leads all four suits",
   "category": "xmult",
   "signature": "suits(count=4,action=lead)|-|-|xmult",

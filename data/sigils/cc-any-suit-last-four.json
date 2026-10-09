@@ -49,7 +49,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "Your team can play any suit on the last four tricks",
   "category": "enabler",
   "signature": "play|last=4|-|anySuit",

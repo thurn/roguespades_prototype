@@ -1,0 +1,10 @@
+{
+ "name": "P4-rec3",
+ "incumbent": "rec3",
+ "levels": {
+  "r6-reroll25": {"rules": {"rerollCost": 25}},
+  "r6-coffers4": {"rules": {"cardOffers": 4}},
+  "r6-sell75": {"rules": {"sellShare": 0.75}},
+  "r6-coffers2": {"rules": {"cardOffers": 2}}
+ }
+}

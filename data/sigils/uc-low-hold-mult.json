@@ -10,7 +10,7 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "mult",
-    "amount": 4,
+    "amount": 2.0,
     "on": {
       "event": "hold",
       "card": {
@@ -39,7 +39,7 @@
       "elegance": 3
     }
   },
-  "status": "replaced",
+  "status": "kept",
   "replacedBy": "r1-low-hold-mult",
   "history": [
     {
@@ -61,14 +61,18 @@
     {
       "step": "round-1",
       "note": "round-1: replaced by r1-low-hold-mult (lift +17.4 [+16.3, +18.6] pts, C 5 against lift +12.6 [+11.5, +13.7] pts, C 5): matches the standard [2]–[6] range; over the ceiling for now, so retuning scales it down."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Small Change (coffee-beans); effect {\"type\": \"mult\", \"amount\": 4, \"on\": {\"event\": \"hold\", \"card\": {\"ranks\": [\"2\", \"4\"]}}} -> {\"type\": \"mult\", \"amount\": 2.0, \"on\": {\"event\": \"hold\", \"card\": {\"ranks\": [\"2\", \"4\"]}}}; status replaced -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Small Change",
+  "icon": "coffee-beans",
+  "iconFamily": "coffee-beans",
+  "iconWord": "Coffee-Beans",
   "price": 75,
-  "text": "+4 contract multiplier for each [2] through [4] your team holds",
+  "text": "+2 contract multiplier for each [2] through [4] your team holds",
   "category": "mult",
   "signature": "hold|ranks=2-4|-|mult",
   "family": "hold|ranks=2-4|-|mult",
@@ -87,7 +91,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 4",
+        "detail": "payout 2",
         "cost": 1
       },
       {

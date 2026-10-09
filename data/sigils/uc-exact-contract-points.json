@@ -35,7 +35,7 @@
       "elegance": 4
     }
   },
-  "status": "replaced",
+  "status": "kept",
   "replacedBy": "r1-exact-points",
   "history": [
     {
@@ -61,12 +61,16 @@
     {
       "step": "round-1",
       "note": "round-1: replaced by r1-exact-points (lift +5.9 [+4.6, +7.3] pts, C 2 against lift +6.1 [+5.0, +7.3] pts, C 3): the same strength without the contract-scaling rider (simpler, C 2 against 3)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Exact Change (currency-note); status replaced -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Exact Change",
+  "icon": "currency-note",
+  "iconFamily": "currency-note",
+  "iconWord": "Currency-Note",
   "price": 75,
   "text": "+65 contract points for each trick in your team's contract if your team makes its contract exactly",
   "category": "points",

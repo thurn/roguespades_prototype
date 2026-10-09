@@ -27,7 +27,7 @@
       "elegance": 5
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -69,6 +69,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -3.4 [-4.5, -2.2] pts, fire 27%, skill gradient -1.4; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Mixed Bouquet",
@@ -76,7 +80,7 @@
   "iconFamily": "florist",
   "iconWord": "Bouquet",
   "gddText": "+15 contract multiplier if your team wins tricks with all four suits",
-  "price": 50,
+  "price": 25,
   "text": "+10 contract multiplier if your team wins tricks with all four suits",
   "category": "mult",
   "signature": "suits(count=4,action=win)|-|-|mult",

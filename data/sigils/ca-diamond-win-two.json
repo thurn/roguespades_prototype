@@ -36,7 +36,7 @@
       "elegance": 4
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -66,13 +66,17 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -7.7 [-9.0, -6.4] pts, fire 25%, skill gradient -3.1; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Twin Sparkles",
   "icon": "sparkles",
   "iconFamily": "sparkles",
   "iconWord": "Sparkles",
-  "price": 50,
+  "price": 25,
   "text": "+5 contract multiplier when your team wins two tricks with [♦]",
   "category": "mult",
   "signature": "win(count=2)|suit=D|-|mult",

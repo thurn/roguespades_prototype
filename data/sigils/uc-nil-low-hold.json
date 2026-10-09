@@ -10,7 +10,7 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "nilPoints",
-    "amount": 15,
+    "amount": 30.0,
     "on": {
       "event": "hold",
       "card": {
@@ -77,6 +77,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +4.3 [+3.2, +5.4] pts, fire 100%, skill gradient +0.1; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"nilPoints\", \"amount\": 15, \"on\": {\"event\": \"hold\", \"card\": {\"ranks\": [\"2\", \"6\"]}}} -> {\"type\": \"nilPoints\", \"amount\": 30.0, \"on\": {\"event\": \"hold\", \"card\": {\"ranks\": [\"2\", \"6\"]}}}"
     }
   ],
   "name": "Light Luggage",
@@ -84,7 +88,7 @@
   "iconFamily": "luggage",
   "iconWord": "Luggage",
   "price": 75,
-  "text": "+15 nil points for each [2] through [6] your team holds",
+  "text": "+30 nil points for each [2] through [6] your team holds",
   "category": "points",
   "signature": "hold|ranks=2-6|-|nilPoints",
   "family": "hold|ranks=2-6|-|nilPoints",
@@ -103,7 +107,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 15",
+        "detail": "payout 30",
         "cost": 1
       },
       {

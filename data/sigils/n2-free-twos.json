@@ -1,0 +1,54 @@
+{
+  "id": "n2-free-twos",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "LowCards",
+    "Nil"
+  ],
+  "source": "designed",
+  "createdIn": "search-2",
+  "status": "kept",
+  "effect": {
+    "type": "anySuit",
+    "card": {
+      "rank": "2"
+    }
+  },
+  "design": {
+    "rationale": "Shed or keep [2]s at will."
+  },
+  "name": "Penny Toss",
+  "icon": "ball-throw",
+  "iconFamily": "ball-throw",
+  "iconWord": "Ball-Throw",
+  "history": [
+    {
+      "step": "design-search-2",
+      "note": "Added in rec2."
+    }
+  ],
+  "price": 25,
+  "text": "Your team can play [2]s even when it can follow suit",
+  "category": "enabler",
+  "signature": "play|cards:rank=2|-|anySuit",
+  "family": "play|cards:rank=*|-|anySuit",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "rank literal",
+        "detail": "[2]",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team could follow suit",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

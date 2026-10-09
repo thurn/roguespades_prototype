@@ -40,7 +40,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+1 contract multiplier when your team wins a trick",
   "category": "mult",
   "signature": "win|-|-|mult",

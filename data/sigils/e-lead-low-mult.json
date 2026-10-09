@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 2,
+    "amount": 2.0,
     "on": {
       "event": "lead",
       "card": {
@@ -26,7 +26,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -40,13 +40,17 @@
     {
       "step": "draft-common",
       "note": "draft-common: cut: lift +11.7 [+10.4, +12.9] pts (n 9251), fire 98%, C 5; the kept pool covers its archetypes with stronger, simpler, or more decision-rich pieces."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Paper Plane (paper-plane); effect {\"type\": \"mult\", \"amount\": 2, \"on\": {\"event\": \"lead\", \"card\": {\"ranks\": [\"2\", \"10\"]}}} -> {\"type\": \"mult\", \"amount\": 2.0, \"on\": {\"event\": \"lead\", \"card\": {\"ranks\": [\"2\", \"10\"]}}}; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
+  "name": "Paper Plane",
+  "icon": "paper-plane",
+  "iconFamily": "paper-plane",
+  "iconWord": "Paper-Plane",
+  "price": 25,
   "text": "+2 contract multiplier when your team leads a [2] through [10]",
   "category": "mult",
   "signature": "lead|ranks=2-10|-|mult",

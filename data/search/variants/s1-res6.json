@@ -1,0 +1,12 @@
+{
+ "base": "s1-res5",
+ "sigils": {
+  "ra-ace-win-x": {
+   "effect": {
+    "amount": 1.3
+   }
+  }
+ },
+ "add": [],
+ "combos": []
+}

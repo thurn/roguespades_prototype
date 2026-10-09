@@ -1,0 +1,65 @@
+{
+  "id": "s-aces-untrumpable",
+  "rarity": "uncommon",
+  "role": "enabler",
+  "archetypes": [
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "search-p3i",
+  "status": "kept",
+  "effect": {
+    "type": "untrumpable",
+    "from": {
+      "rank": "A"
+    }
+  },
+  "design": {
+    "decision": "",
+    "opponent": "",
+    "rationale": "A Ranks enabler that is good alone (your [A]s always win) and multiplies every [A]-win payoff.",
+    "partners": [
+      "seed-ace-win",
+      "seed-ace-mult",
+      "ra-ace-win-x"
+    ]
+  },
+  "history": [
+    {
+      "step": "design-search-2",
+      "note": "Added in rec2."
+    }
+  ],
+  "name": "Steady Anchor",
+  "icon": "anchor",
+  "iconFamily": "anchor",
+  "iconWord": "Anchor",
+  "price": 75,
+  "text": "Your team's [A]s can't be trumped",
+  "category": "enabler",
+  "signature": "play|rank=A|-|untrumpable",
+  "family": "play|rank=*|-|untrumpable",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "rank literal",
+        "detail": "[A]",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team played it",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "a [♠] played to the trick",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

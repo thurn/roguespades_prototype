@@ -1,0 +1,289 @@
+{
+ "sigils": {
+  "uc-low-hold-mult": {
+   "effect": {
+    "amount": 2.0
+   }
+  },
+  "uc-small-bid-x": {
+   "effect": {
+    "amount": 2.0
+   }
+  },
+  "seed-four-aces": {
+   "effect": {
+    "amount": 40.0
+   }
+  },
+  "uc-nil-grow-mult": {
+   "effect": {
+    "step": 8.0
+   }
+  },
+  "n2-jack-win-mult": {
+   "effect": {
+    "amount": 10.0
+   }
+  },
+  "uc-low-lead-nil": {
+   "effect": {
+    "amount": 100.0
+   }
+  },
+  "cb-last-trick-points": {
+   "effect": {
+    "amount": 80.0
+   }
+  },
+  "cc-nil-bid-points": {
+   "effect": {
+    "amount": 160.0
+   }
+  },
+  "cc-nil-hold-twos": {
+   "effect": {
+    "amount": 75.0
+   }
+  },
+  "e-make8-pts": {
+   "effect": {
+    "amount": 375.0
+   }
+  },
+  "uc-nil-contract-mult": {
+   "effect": {
+    "amount": 5.0
+   }
+  },
+  "ub-seven-tricks-xmult": {
+   "effect": {
+    "amount": 2.2
+   }
+  },
+  "n2-ace-lead-mult": {
+   "effect": {
+    "amount": 10.0
+   }
+  },
+  "ca-trump-contract": {
+   "effect": {
+    "amount": 6.0
+   }
+  },
+  "n2-queen-hold-mult": {
+   "effect": {
+    "amount": 4.0
+   }
+  },
+  "ua-diamond-led-win-mult": {
+   "effect": {
+    "amount": 6.0
+   }
+  },
+  "ca-diamond-led-win": {
+   "effect": {
+    "amount": 30.0
+   }
+  },
+  "cb-make8-mult": {
+   "effect": {
+    "amount": 20.0
+   }
+  },
+  "e-win-suit-d-mult": {
+   "effect": {
+    "amount": 4.0
+   }
+  },
+  "cc-nil-made-points": {
+   "effect": {
+    "amount": 360.0
+   }
+  },
+  "r1-low-win-points": {
+   "effect": {
+    "amount": 40.0
+   }
+  },
+  "seed-nil-bid-mult": {
+   "effect": {
+    "amount": 10.0
+   }
+  },
+  "seed-nil-points": {
+   "effect": {
+    "amount": 160.0
+   }
+  },
+  "ca-face-win": {
+   "effect": {
+    "amount": 60.0
+   }
+  },
+  "cb-bid8-trick-mult": {
+   "effect": {
+    "amount": 5.0
+   }
+  },
+  "ra-ace-hold-x": {
+   "effect": {
+    "amount": 1.25
+   }
+  },
+  "e-lead-rank-k-mult": {
+   "effect": {
+    "amount": 12.0
+   }
+  },
+  "seed-contract-points": {
+   "effect": {
+    "amount": 15.0
+   }
+  },
+  "cc-two-win-mult": {
+   "effect": {
+    "amount": 25.0
+   }
+  },
+  "ub-first-trick-contract-points": {
+   "effect": {
+    "amount": 40.0
+   }
+  },
+  "cb-make-mult": {
+   "effect": {
+    "amount": 8.0
+   }
+  },
+  "s-exact-x": {
+   "effect": {
+    "amount": 2.25
+   }
+  },
+  "cc-low-hold-points": {
+   "effect": {
+    "amount": 10.0
+   }
+  },
+  "seed-diamond-win": {
+   "effect": {
+    "amount": 75.0
+   }
+  },
+  "seed-trump-points": {
+   "effect": {
+    "amount": 50.0
+   }
+  },
+  "ub-bid7-points": {
+   "effect": {
+    "amount": 360.0
+   }
+  },
+  "ub-four-row-points": {
+   "effect": {
+    "amount": 190.0
+   }
+  },
+  "e-trump-mult": {
+   "effect": {
+    "amount": 5.0
+   }
+  },
+  "seed-diamond-lead": {
+   "effect": {
+    "amount": 40.0
+   }
+  },
+  "seed-nil-made-x": {
+   "effect": {
+    "amount": 2.25
+   }
+  },
+  "seed-two-win": {
+   "effect": {
+    "amount": 450.0
+   }
+  },
+  "seed-ace-win": {
+   "effect": {
+    "amount": 45.0
+   }
+  },
+  "seed-win-points": {
+   "effect": {
+    "amount": 10.0
+   }
+  },
+  "cb-consecutive-mult": {
+   "effect": {
+    "amount": 2.0
+   }
+  },
+  "seed-diamond-hold": {
+   "effect": {
+    "amount": 15.0
+   }
+  },
+  "cb-opp-set-mult": {
+   "effect": {
+    "amount": 24.0
+   }
+  },
+  "ub-make7-xmult": {
+   "effect": {
+    "amount": 2.05
+   }
+  },
+  "cc-small-contract-mult": {
+   "effect": {
+    "amount": 21.0
+   }
+  },
+  "uc-nil-low-hold": {
+   "effect": {
+    "amount": 30.0
+   }
+  },
+  "seed-ace-mult": {
+   "effect": {
+    "amount": 10.0
+   }
+  },
+  "ub-bid8-trick-points": {
+   "effect": {
+    "amount": 85.0
+   }
+  },
+  "ub-first-trick-xmult": {
+   "effect": {
+    "amount": 1.85
+   }
+  },
+  "seed-spade-hold": {
+   "effect": {
+    "amount": 15.0
+   }
+  },
+  "ra-ace-win-x": {
+   "effect": {
+    "amount": 1.75
+   }
+  },
+  "uc-nil-cover-points": {
+   "effect": {
+    "amount": 35.0
+   }
+  },
+  "ra-spade-lead-x": {
+   "effect": {
+    "amount": 1.3
+   }
+  },
+  "ub-consecutive-contract-points": {
+   "effect": {
+    "amount": 3.0
+   }
+  }
+ }
+}

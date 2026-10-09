@@ -9,7 +9,7 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "xmult",
-    "amount": 1.1,
+    "amount": 1.05,
     "on": {
       "event": "win"
     }
@@ -32,7 +32,7 @@
       "elegance": 4
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -50,14 +50,18 @@
     {
       "step": "round-1",
       "note": "round-1: cut: lift +8.5 [+6.8, +10.2] pts; ×1.05 per trick is opaque; cb-trick-mult already pays per trick additively."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Snowball (beach-ball); effect {\"type\": \"xmult\", \"amount\": 1.1, \"on\": {\"event\": \"win\"}} -> {\"type\": \"xmult\", \"amount\": 1.05, \"on\": {\"event\": \"win\"}}; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Snowball",
+  "icon": "beach-ball",
+  "iconFamily": "beach-ball",
+  "iconWord": "Beach-Ball",
   "price": 75,
-  "text": "×1.1 contract multiplier when your team wins a trick",
+  "text": "×1.05 contract multiplier when your team wins a trick",
   "category": "xmult",
   "signature": "win|-|-|xmult",
   "family": "win|-|-|xmult",
@@ -66,7 +70,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 1.1",
+        "detail": "payout 1.05",
         "cost": 1
       },
       {

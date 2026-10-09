@@ -1,0 +1,45 @@
+{
+ "base": "p4b-L",
+ "sigils": {
+  "r1-spade-four-x": {
+   "archetypes": [
+    "Spades"
+   ]
+  },
+  "r2-four-row-x": {
+   "archetypes": [
+    "Streaks"
+   ]
+  },
+  "ra-ace-win-x": {
+   "archetypes": [
+    "Ranks"
+   ]
+  },
+  "ua-spade-led-win-mult": {
+   "archetypes": [
+    "Spades"
+   ]
+  },
+  "ua-spade-seven-x": {
+   "archetypes": [
+    "Spades"
+   ]
+  },
+  "ub-honor-win-mult": {
+   "archetypes": [
+    "Generic",
+    "Ranks"
+   ]
+  },
+  "cc-nil-bid-points": {
+   "archetypes": [
+    "Nil"
+   ]
+  }
+ },
+ "add": [],
+ "combos": [],
+ "drop": [],
+ "include": []
+}

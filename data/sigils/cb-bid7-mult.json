@@ -61,7 +61,7 @@
   "icon": "megaphone",
   "iconFamily": "megaphone",
   "iconWord": "Megaphone",
-  "price": 50,
+  "price": 25,
   "text": "+5 contract multiplier when your team bids 7 or more",
   "category": "mult",
   "signature": "bid(min=7)|-|-|mult",

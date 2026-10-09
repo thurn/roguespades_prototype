@@ -10,7 +10,7 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "xmult",
-    "amount": 1.5,
+    "amount": 1.75,
     "on": {
       "event": "win",
       "trick": "first"
@@ -76,6 +76,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -2.3 [-3.4, -1.1] pts, fire 50%, skill gradient -1.5; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"xmult\", \"amount\": 1.5, \"on\": {\"event\": \"win\", \"trick\": \"first\"}} -> {\"type\": \"xmult\", \"amount\": 1.75, \"on\": {\"event\": \"win\", \"trick\": \"first\"}}"
     }
   ],
   "name": "Swift Stopwatch",
@@ -83,7 +87,7 @@
   "iconFamily": "stopwatch",
   "iconWord": "Stopwatch",
   "price": 75,
-  "text": "×1.5 contract multiplier when your team wins the first trick of a round",
+  "text": "×1.75 contract multiplier when your team wins the first trick of a round",
   "category": "hybrid",
   "signature": "win(trick=first)|-|-|xmult",
   "family": "win(trick=first)|-|-|xmult",
@@ -92,7 +96,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 1.5",
+        "detail": "payout 1.75",
         "cost": 1
       },
       {

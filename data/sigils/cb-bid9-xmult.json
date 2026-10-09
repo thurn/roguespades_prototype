@@ -49,7 +49,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "×1.5 contract multiplier when your team bids 9 or more",
   "category": "xmult",
   "signature": "bid(min=9)|-|-|xmult",

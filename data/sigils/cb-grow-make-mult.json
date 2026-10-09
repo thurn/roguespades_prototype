@@ -64,7 +64,7 @@
   "icon": "sapling",
   "iconFamily": "sapling",
   "iconWord": "Sapling",
-  "price": 50,
+  "price": 25,
   "text": "This sigil gains +3 contract multiplier every time your team makes its contract (currently +0)",
   "category": "mult",
   "signature": "make|-|growth|mult",

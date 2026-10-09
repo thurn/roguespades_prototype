@@ -10,7 +10,7 @@
   "createdIn": "draft-rare",
   "effect": {
     "type": "xmult",
-    "amount": 1.15,
+    "amount": 1.2,
     "on": {
       "event": "lead",
       "card": {
@@ -75,6 +75,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +0.1 [-1.0, +1.1] pts, fire 78%, skill gradient +0.4; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"xmult\", \"amount\": 1.15, \"on\": {\"event\": \"lead\", \"card\": {\"suit\": \"S\"}}} -> {\"type\": \"xmult\", \"amount\": 1.2, \"on\": {\"event\": \"lead\", \"card\": {\"suit\": \"S\"}}}"
     }
   ],
   "name": "Vanguard Helmet",
@@ -82,7 +86,7 @@
   "iconFamily": "helmet",
   "iconWord": "Helmet",
   "price": 100,
-  "text": "×1.15 contract multiplier when your team leads [♠]",
+  "text": "×1.2 contract multiplier when your team leads [♠]",
   "category": "hybrid",
   "signature": "lead|suit=S|-|xmult",
   "family": "lead|suit=*|-|xmult",
@@ -96,7 +100,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 1.15",
+        "detail": "payout 1.2",
         "cost": 1
       },
       {

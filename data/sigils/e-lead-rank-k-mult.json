@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 3,
+    "amount": 8.0,
     "on": {
       "event": "lead",
       "card": {
@@ -65,14 +65,18 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -6.0 [-7.1, -4.8] pts, fire 51%, skill gradient -2.6; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 3, \"on\": {\"event\": \"lead\", \"card\": {\"rank\": \"K\"}}} -> {\"type\": \"mult\", \"amount\": 8.0, \"on\": {\"event\": \"lead\", \"card\": {\"rank\": \"K\"}}}"
     }
   ],
   "name": "Advancing Monarch",
   "icon": "chess-king",
   "iconFamily": "chess-king",
   "iconWord": "Monarch",
-  "price": 50,
-  "text": "+3 contract multiplier when your team leads a [K]",
+  "price": 25,
+  "text": "+8 contract multiplier when your team leads a [K]",
   "category": "mult",
   "signature": "lead|rank=K|-|mult",
   "family": "lead|rank=*|-|mult",
@@ -86,7 +90,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 3",
+        "detail": "payout 8",
         "cost": 1
       },
       {

@@ -673,7 +673,7 @@ impl Session {
                 let d = *self.r.cfg.pool.by_id.get(id).ok_or("unknown sigil")?;
                 let tm = &self.r.teams[team];
                 if tm.sigils.len() >= max_sigils() {
-                    return Err("all 7 sigil slots are full".into());
+                    return Err(format!("all {} sigil slots are full", max_sigils()));
                 }
                 if tm.sigils.iter().any(|o| o.def == d) {
                     return Err("that team already owns it".into());
@@ -1227,8 +1227,23 @@ impl Session {
             let rl = crate::rules::rules();
             let (_, add_eff, x_eff) = rl.parts(s.contract, s.tricks, s.cp, s.add, s.x);
             let mult = (rl.base_mult + add_eff) * x_eff;
+            // A flat set scores −10 × trick value × B, untouched by sigils; nil is still multiplied.
+            let flat = rl.flat_set && s.contract > 0 && s.tricks < s.contract;
+            let flat_base = -(rl.trick_value * rl.base_mult * s.contract as f64);
             let formula = if s.contract == 0 && s.nil_bids == 0 {
                 "no contract".to_string()
+            } else if flat && s.nil_bids == 0 {
+                format!("{} flat set", num(flat_base))
+            } else if flat {
+                format!(
+                    "{} flat set + {} nil × ({} + {}) × {} = {}",
+                    num(flat_base),
+                    num(s.nil_score),
+                    num(rl.base_mult),
+                    num(add_eff),
+                    num(x_eff),
+                    num(s.score)
+                )
             } else {
                 format!(
                     "({} base{} + {} nil) × ({} + {}) × {} = {}",
@@ -1270,8 +1285,8 @@ impl Session {
             let entry = json!({
                 "bids": bids, "contract": s.contract, "tricks": s.tricks, "made": s.made,
                 "exact": s.exact, "set": s.set, "nilBids": s.nil_bids, "nilMade": s.nil_made,
-                "base": s.base - if s.made { s.cp } else { -cp_raw },
-                "cp": s.cp, "cpLost": if s.made { 0.0 } else { cp_raw },
+                "base": if flat { flat_base } else { s.base - if s.made { s.cp } else { -cp_raw } },
+                "cp": s.cp, "cpLost": if s.made || flat { 0.0 } else { cp_raw }, "flat": flat,
                 "add": add_eff, "mult": rl.base_mult + add_eff, "x": x_eff, "multTotal": mult,
                 "nilScore": s.nil_score, "score": s.score, "total": self.r.teams[t].score,
                 "bags": s.bags, "bagPenalty": s.bag_pen, "bagsCarried": self.r.teams[t].bags,

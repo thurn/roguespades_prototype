@@ -1,0 +1,198 @@
+[
+ {
+  "id": "e-lead-rank-q-pts",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": -0.2,
+  "lift_ci": 2.100169638148309,
+  "raw": -2.8000000000000003,
+  "fire": 0.5195833333333333,
+  "text": "+30 contract points when your team leads a [Q]"
+ },
+ {
+  "id": "ca-king-hold",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": -0.15,
+  "lift_ci": 2.0297443624598395,
+  "raw": -2.75,
+  "fire": 0.9433333333333334,
+  "text": "+20 contract points for each [K] your team holds"
+ },
+ {
+  "id": "e-lead-suit-d-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Suits"
+  ],
+  "role": "payoff",
+  "lift": 0.05,
+  "lift_ci": 2.033087903273614,
+  "raw": -2.55,
+  "fire": 0.8265,
+  "text": "+2 contract multiplier when your team leads [\u2666]"
+ },
+ {
+  "id": "e-win-rank-10-mult",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 0.5,
+  "lift_ci": 2.135175781698078,
+  "raw": -2.1,
+  "fire": 0.42991666666666667,
+  "text": "+7 contract multiplier when your team wins a trick with a [10]"
+ },
+ {
+  "id": "e-lead-suit-c-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Suits"
+  ],
+  "role": "payoff",
+  "lift": 0.65,
+  "lift_ci": 2.049380520288387,
+  "raw": -1.95,
+  "fire": 0.8259166666666666,
+  "text": "+2 contract multiplier when your team leads [\u2663]"
+ },
+ {
+  "id": "e-lead-low-mult",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "LowCards"
+  ],
+  "role": "payoff",
+  "lift": 1.35,
+  "lift_ci": 1.9881221873761932,
+  "raw": -1.25,
+  "fire": 0.9855,
+  "text": "+1 contract multiplier when your team leads a [2] through [10]"
+ },
+ {
+  "id": "e-lead-rank-q-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 1.4500000000000002,
+  "lift_ci": 2.0647191140534105,
+  "raw": -1.15,
+  "fire": 0.5214166666666666,
+  "text": "+5 contract multiplier when your team leads a [Q]"
+ },
+ {
+  "id": "e-bid4less-pts",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Exact"
+  ],
+  "role": "payoff",
+  "lift": 1.9,
+  "lift_ci": 2.0751725530061345,
+  "raw": -0.7000000000000001,
+  "fire": 0.4563333333333333,
+  "text": "+90 contract points when your team bids 4 or less"
+ },
+ {
+  "id": "e-win-suit-s-mult",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "Spades"
+  ],
+  "role": "payoff",
+  "lift": 2.45,
+  "lift_ci": 2.022411931936098,
+  "raw": -0.15,
+  "fire": 0.9268333333333333,
+  "text": "+1 contract multiplier when your team wins a trick with [\u2660]"
+ },
+ {
+  "id": "e-lead-rank-j-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 2.55,
+  "lift_ci": 2.0683855443165085,
+  "raw": -0.05,
+  "fire": 0.5119166666666667,
+  "text": "+5 contract multiplier when your team leads a [J]"
+ },
+ {
+  "id": "e-win-rank-q-mult",
+  "rarity": "common",
+  "C": 4,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 2.9499999999999997,
+  "lift_ci": 2.1472118269834253,
+  "raw": 0.35000000000000003,
+  "fire": 0.58425,
+  "text": "+5 contract multiplier when your team wins a trick with a [Q]"
+ },
+ {
+  "id": "e-consecutive-pts",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Streaks"
+  ],
+  "role": "payoff",
+  "lift": 3.0,
+  "lift_ci": 1.9746852977120177,
+  "raw": 0.4,
+  "fire": 0.83125,
+  "text": "+10 contract points when your team wins consecutive tricks"
+ },
+ {
+  "id": "e-bid8-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "BidHigh"
+  ],
+  "role": "payoff",
+  "lift": 3.15,
+  "lift_ci": 2.0889411263694098,
+  "raw": 0.5499999999999999,
+  "fire": 0.22991666666666666,
+  "text": "+25 contract multiplier when your team bids 8 or more"
+ },
+ {
+  "id": "e-lead-rank-10-mult",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks"
+  ],
+  "role": "payoff",
+  "lift": 3.25,
+  "lift_ci": 2.0917632032420634,
+  "raw": 0.65,
+  "fire": 0.5095833333333334,
+  "text": "+5 contract multiplier when your team leads a [10]"
+ }
+]

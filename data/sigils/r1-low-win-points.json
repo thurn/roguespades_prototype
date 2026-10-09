@@ -10,7 +10,7 @@
   "createdIn": "round-1",
   "effect": {
     "type": "points",
-    "amount": 20,
+    "amount": 40.0,
     "on": {
       "event": "win",
       "card": {
@@ -40,7 +40,7 @@
       "cc-low-narrow-win"
     ]
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -74,14 +74,18 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -0.0 [-0.8, +0.8] pts, fire 61%, skill gradient +0.6; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 20, \"on\": {\"event\": \"win\", \"card\": {\"ranks\": [\"2\", \"6\"]}}} -> {\"type\": \"points\", \"amount\": 40.0, \"on\": {\"event\": \"win\", \"card\": {\"ranks\": [\"2\", \"6\"]}}}; status kept -> cut"
     }
   ],
   "name": "Lucky Clover",
   "icon": "clover",
   "iconFamily": "clover",
   "iconWord": "Clover",
-  "price": 50,
-  "text": "+20 contract points when your team wins a trick with a [2] through [6]",
+  "price": 25,
+  "text": "+40 contract points when your team wins a trick with a [2] through [6]",
   "category": "points",
   "signature": "win|ranks=2-6|-|points",
   "family": "win|ranks=2-6|-|points",
@@ -100,7 +104,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 20",
+        "detail": "payout 40",
         "cost": 1
       },
       {

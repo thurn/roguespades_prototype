@@ -49,7 +49,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "This sigil gains +3 contract multiplier every time your team wins four tricks in a row (currently +0)",
   "category": "mult",
   "signature": "win(inRow=4)|-|growth|mult",

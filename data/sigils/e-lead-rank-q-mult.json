@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 10,
+    "amount": 8.0,
     "on": {
       "event": "lead",
       "card": {
@@ -23,7 +23,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -37,14 +37,18 @@
     {
       "step": "draft-common",
       "note": "draft-common: not in the enumerated source's most promising half (pre-tournament lift +11.5 [+8.2, +14.8], slope +7.5/2x, C 4)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Queen's Banner (flag); effect {\"type\": \"mult\", \"amount\": 10, \"on\": {\"event\": \"lead\", \"card\": {\"rank\": \"Q\"}}} -> {\"type\": \"mult\", \"amount\": 8.0, \"on\": {\"event\": \"lead\", \"card\": {\"rank\": \"Q\"}}}; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
-  "text": "+10 contract multiplier when your team leads a [Q]",
+  "name": "Queen's Banner",
+  "icon": "flag",
+  "iconFamily": "flag",
+  "iconWord": "Flag",
+  "price": 25,
+  "text": "+8 contract multiplier when your team leads a [Q]",
   "category": "mult",
   "signature": "lead|rank=Q|-|mult",
   "family": "lead|rank=*|-|mult",
@@ -58,7 +62,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 10",
+        "detail": "payout 8",
         "cost": 1
       },
       {

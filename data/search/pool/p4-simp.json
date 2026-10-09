@@ -1,0 +1,256 @@
+{
+ "drop": [
+  "seed-four-row",
+  "ub-four-row-points",
+  "n2-three-row-x",
+  "seed-four-aces",
+  "ua-three-aces-x",
+  "ub-honor-win-mult",
+  "r2-diamond-seven-x",
+  "ub-make8-trick-mult",
+  "ub-seven-tricks-xmult",
+  "uc-led-low-win",
+  "r1-low-win-points"
+ ],
+ "include": [
+  "r1-first-trick-points",
+  "n2-last-trick-x",
+  "ub-bid8-xmult",
+  "n2-exact-mult-u",
+  "e-win-rank-2-pts",
+  "n2-king-hold-mult-u",
+  "n2-king-win-mult-u",
+  "n2-jack-hold-mult-u",
+  "n2-two-win-x-u",
+  "n2-club-win-mult-u",
+  "n2-diamond-win-mult-u"
+ ],
+ "sigils": {
+  "n2-last-trick-x": {
+   "effect": {
+    "amount": 2.0
+   }
+  },
+  "ub-bid8-xmult": {
+   "effect": {
+    "amount": 2.5
+   }
+  },
+  "e-win-rank-2-pts": {
+   "effect": {
+    "amount": 200.0
+   }
+  },
+  "n2-two-win-x-u": {
+   "effect": {
+    "amount": 2.0
+   }
+  }
+ },
+ "add": [
+  {
+   "id": "n2-king-hold-mult-u",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Ranks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "mult",
+    "amount": 5,
+    "on": {
+     "event": "hold",
+     "card": {
+      "rank": "K"
+     }
+    }
+   },
+   "design": {
+    "rationale": "C3 Ranks uncommon for four [A]s held (C5)."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (simpler same-slot version)."
+    }
+   ]
+  },
+  {
+   "id": "n2-king-win-mult-u",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Ranks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "mult",
+    "amount": 8,
+    "on": {
+     "event": "win",
+     "card": {
+      "rank": "K"
+     }
+    }
+   },
+   "design": {
+    "rationale": "C4 Ranks uncommon for three [A]s held (C5)."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (simpler same-slot version)."
+    }
+   ]
+  },
+  {
+   "id": "n2-jack-hold-mult-u",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Ranks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "mult",
+    "amount": 4,
+    "on": {
+     "event": "hold",
+     "card": {
+      "rank": "J"
+     }
+    }
+   },
+   "design": {
+    "rationale": "C3 for wins with [J]–[A] (C5)."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (simpler same-slot version)."
+    }
+   ]
+  },
+  {
+   "id": "n2-two-win-x-u",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "LowCards"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "xmult",
+    "amount": 1.5,
+    "on": {
+     "event": "win",
+     "card": {
+      "rank": "2"
+     }
+    }
+   },
+   "design": {
+    "rationale": "C4 LowCards uncommon for wins led with [2]–[6] (C5)."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (simpler same-slot version)."
+    }
+   ]
+  },
+  {
+   "id": "n2-club-win-mult-u",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "mult",
+    "amount": 8,
+    "on": {
+     "event": "win",
+     "card": {
+      "suit": "C"
+     }
+    }
+   },
+   "design": {
+    "rationale": "C4 Suits uncommon for holding seven [♥]s (C5)."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (simpler same-slot version)."
+    }
+   ]
+  },
+  {
+   "id": "n2-diamond-win-mult-u",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "mult",
+    "amount": 8,
+    "on": {
+     "event": "win",
+     "card": {
+      "suit": "D"
+     }
+    }
+   },
+   "design": {
+    "rationale": "C4 Suits uncommon for holding seven [♥]s (C5)."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 4 (simpler same-slot version)."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+{
+  "id": "n2-kings-untrumpable-c",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "Ranks"
+  ],
+  "source": "designed",
+  "createdIn": "search-2",
+  "status": "kept",
+  "effect": {
+    "type": "untrumpable",
+    "from": {
+      "rank": "K"
+    }
+  },
+  "design": {
+    "rationale": "Cheap Ranks enabler at common."
+  },
+  "name": "Castle Wall",
+  "icon": "castle",
+  "iconFamily": "castle",
+  "iconWord": "Castle",
+  "history": [
+    {
+      "step": "design-search-2",
+      "note": "Added in rec2."
+    }
+  ],
+  "price": 25,
+  "text": "Your team's [K]s can't be trumped",
+  "category": "enabler",
+  "signature": "play|rank=K|-|untrumpable",
+  "family": "play|rank=*|-|untrumpable",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "rank literal",
+        "detail": "[K]",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team played it",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "a [♠] played to the trick",
+        "cost": 1
+      }
+    ],
+    "C": 3,
+    "S": 0.25
+  },
+  "lint": []
+}

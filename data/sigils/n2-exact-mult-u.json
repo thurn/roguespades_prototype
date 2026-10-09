@@ -1,0 +1,55 @@
+{
+  "id": "n2-exact-mult-u",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Exact"
+  ],
+  "source": "designed",
+  "createdIn": "search-2",
+  "status": "kept",
+  "effect": {
+    "type": "mult",
+    "amount": 30,
+    "on": {
+      "event": "make",
+      "exact": true
+    }
+  },
+  "design": {
+    "rationale": "Exact multiplier at uncommon."
+  },
+  "name": "Bullseye Bonus",
+  "icon": "crosshair",
+  "iconFamily": "crosshair",
+  "iconWord": "Crosshair",
+  "history": [
+    {
+      "step": "design-search-2",
+      "note": "Added in rec2."
+    }
+  ],
+  "price": 75,
+  "text": "+30 contract multiplier if your team makes its contract exactly",
+  "category": "mult",
+  "signature": "make(exact)|-|-|mult",
+  "family": "make(exact)|-|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "numeric value",
+        "detail": "payout 30",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "makes its contract exactly",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

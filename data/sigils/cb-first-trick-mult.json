@@ -78,7 +78,7 @@
   "icon": "bird",
   "iconFamily": "bird",
   "iconWord": "Bird",
-  "price": 50,
+  "price": 25,
   "text": "+3 contract multiplier when your team wins the first trick of a round",
   "category": "mult",
   "signature": "win(trick=first)|-|-|mult",

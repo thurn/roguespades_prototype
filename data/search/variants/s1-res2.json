@@ -1,0 +1,122 @@
+{
+ "base": "s1-res",
+ "sigils": {
+  "e-lead-suit-s-xmult": {
+   "effect": {
+    "amount": 1.05
+   }
+  },
+  "ua-spade-last-x": {
+   "effect": {
+    "amount": 1.8
+   }
+  },
+  "ub-trick-xmult": {
+   "effect": {
+    "amount": 1.05
+   }
+  },
+  "e-hold-low-mult": {
+   "effect": {
+    "amount": 1.0
+   }
+  },
+  "e-distinct-xmult": {
+   "effect": {
+    "amount": 1.05
+   }
+  },
+  "e-lead-rank-a-xmult": {
+   "effect": {
+    "amount": 1.1
+   }
+  },
+  "e-hold-side-mult": {
+   "effect": {
+    "amount": 1.0
+   }
+  },
+  "e-nilmade-xmult": {
+   "effect": {
+    "amount": 1.45
+   }
+  },
+  "uc-low-hold-mult": {
+   "effect": {
+    "amount": 1.0
+   }
+  },
+  "seed-flat-x2": {
+   "effect": {
+    "amount": 2.05
+   }
+  },
+  "e-win-suit-s-xmult": {
+   "effect": {
+    "amount": 1.05
+   }
+  },
+  "r1-spade-win-mult": {
+   "effect": {
+    "amount": 3.0
+   }
+  },
+  "e-consecutive-xmult": {
+   "effect": {
+    "amount": 1.05
+   }
+  },
+  "ra-spade-win-contract": {
+   "effect": {
+    "amount": 1.0
+   }
+  },
+  "e-lead-low-xmult": {
+   "effect": {
+    "amount": 1.05
+   }
+  },
+  "e-lead-side-xmult": {
+   "effect": {
+    "amount": 1.05
+   }
+  },
+  "e-hold-suit-c-xmult": {
+   "effect": {
+    "amount": 1.05
+   }
+  },
+  "e-hold-suit-d-xmult": {
+   "effect": {
+    "amount": 1.05
+   }
+  },
+  "e-hold-suit-s-xmult": {
+   "effect": {
+    "amount": 1.05
+   }
+  },
+  "e-hold-suit-h-xmult": {
+   "effect": {
+    "amount": 1.05
+   }
+  },
+  "e-win-xmult": {
+   "effect": {
+    "amount": 1.05
+   }
+  },
+  "e-hold-side-xmult": {
+   "effect": {
+    "amount": 1.05
+   }
+  },
+  "e-hold-low-xmult": {
+   "effect": {
+    "amount": 1.05
+   }
+  }
+ },
+ "add": [],
+ "combos": []
+}

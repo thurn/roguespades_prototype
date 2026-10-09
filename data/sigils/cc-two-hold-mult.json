@@ -89,7 +89,7 @@
   "icon": "duck",
   "iconFamily": "duck",
   "iconWord": "Ducks",
-  "price": 50,
+  "price": 25,
   "text": "+3 contract multiplier for each [2] your team holds",
   "category": "mult",
   "signature": "hold|rank=2|-|mult",

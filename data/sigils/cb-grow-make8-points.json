@@ -50,7 +50,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "This sigil gains +25 contract points every time your team makes a contract of 8 or more (currently +0)",
   "category": "points",
   "signature": "make(min=8)|-|growth|points",

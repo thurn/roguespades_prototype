@@ -88,7 +88,7 @@ function ledgerCell(e: LedgerV | undefined, r: TeamResult) {
   if (e.nilp) parts.push(`${signed(e.nilp)} nil`)
   if (!parts.length) parts.push(`fired ×${e.fires}`)
   const onlyPoints = e.cp !== 0 && !e.add && e.x === 1 && !e.nilp
-  return { text: parts.join(' '), sign: 1, void: !r.made && onlyPoints }
+  return { text: parts.join(' '), sign: 1, void: !r.made && (onlyPoints || (r.flat && !e.nilp)) }
 }
 
 export function RoundSummary({
@@ -157,14 +157,16 @@ export function RoundSummary({
           {row(
             'Base',
             result.map((r) => signed(r.base)),
-            { tip: '10 per trick in the contract; negative when set' },
+            {
+              tip: '10 per trick in the contract; a set scores −100 per trick, untouched by sigils',
+            },
           )}
           {row(
             'Points',
-            result.map((r) => signed(r.made ? r.cp : r.cpLost)),
+            result.map((r) => (r.flat ? '—' : signed(r.made ? r.cp : r.cpLost))),
             {
               voids: result.map((r) => !r.made && r.cpLost !== 0),
-              tip: 'Contract points; a set team loses them',
+              tip: 'Contract points; a set ignores them',
             },
           )}
           {result.some((r) => r.nilBids > 0) &&
@@ -176,13 +178,19 @@ export function RoundSummary({
           {row(
             'Mult',
             result.map((r) => `×${fmt(r.mult)}`),
-            { tip: 'Contract multiplier: 10 plus every +multiplier' },
+            {
+              voids: result.map((r) => r.flat && !r.nilBids),
+              tip: 'Contract multiplier: 10 plus every +multiplier; a set ignores it',
+            },
           )}
           {result.some((r) => r.x !== 1) &&
             row(
               '×Mult',
               result.map((r) => `×${fmt(r.x)}`),
-              { tip: 'Compounding multipliers, applied last' },
+              {
+                voids: result.map((r) => r.flat && !r.nilBids),
+                tip: 'Compounding multipliers, applied last; a set ignores them',
+              },
             )}
           {(ids.length > 0 || eng) && (
             <tr className={styles.ledgerHead}>

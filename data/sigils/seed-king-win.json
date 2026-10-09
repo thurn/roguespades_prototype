@@ -49,7 +49,7 @@
   "iconFamily": null,
   "iconWord": null,
   "gddText": "+15 contract points when your team wins a trick with a [K]",
-  "price": 50,
+  "price": 25,
   "text": "+15 contract points when your team wins a trick with a [K]",
   "category": "points",
   "signature": "win|rank=K|-|points",

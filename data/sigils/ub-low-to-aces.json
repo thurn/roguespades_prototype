@@ -5,20 +5,13 @@
   "archetypes": [
     "BidHigh",
     "Ranks",
-    "Streaks",
-    "Rainbow"
+    "Streaks"
   ],
   "source": "designed",
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "become",
     "count": 3,
-    "from": {
-      "ranks": [
-        "2",
-        "9"
-      ]
-    },
     "rank": "A"
   },
   "design": {
@@ -62,6 +55,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +7.0 [+5.7, +8.3] pts, fire 0%, skill gradient +3.0; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"become\", \"count\": 3, \"from\": {\"ranks\": [\"2\", \"9\"]}, \"rank\": \"A\"} -> {\"type\": \"become\", \"count\": 3, \"rank\": \"A\"}; archetypes [\"BidHigh\", \"Ranks\", \"Streaks\", \"Rainbow\"] -> [\"BidHigh\", \"Ranks\", \"Streaks\"]"
     }
   ],
   "name": "Winning Ticket",
@@ -69,23 +66,13 @@
   "iconFamily": "ticket",
   "iconWord": "Ticket",
   "price": 75,
-  "text": "Opening: Three [2]s through [9]s your team holds become [A]s",
+  "text": "Opening: Three cards your team holds become [A]s",
   "category": "enabler",
-  "signature": "opening|from:ranks=2-9|rank=A|become",
-  "family": "opening|from:ranks=2-9|rank=*|become",
+  "signature": "opening|rank=A|-|become",
+  "family": "opening|rank=*|-|become",
   "touchesOpponents": false,
   "simplicity": {
     "items": [
-      {
-        "burden": "rank literal",
-        "detail": "[2]",
-        "cost": 1
-      },
-      {
-        "burden": "rank literal",
-        "detail": "[9]",
-        "cost": 1
-      },
       {
         "burden": "rank literal",
         "detail": "[A]",
@@ -102,8 +89,8 @@
         "cost": 1
       }
     ],
-    "C": 5,
-    "S": 0.16666666666666666
+    "C": 3,
+    "S": 0.25
   },
   "lint": [],
   "estimates": {

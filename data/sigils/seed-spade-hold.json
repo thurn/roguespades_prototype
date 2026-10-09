@@ -9,7 +9,7 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "points",
-    "amount": 10,
+    "amount": 15.0,
     "on": {
       "event": "hold",
       "card": {
@@ -58,6 +58,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +6.2 [+5.2, +7.1] pts, fire 100%, skill gradient +0.0; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 10, \"on\": {\"event\": \"hold\", \"card\": {\"suit\": \"S\"}}} -> {\"type\": \"points\", \"amount\": 15.0, \"on\": {\"event\": \"hold\", \"card\": {\"suit\": \"S\"}}}"
     }
   ],
   "name": "Dark Forest",
@@ -66,7 +70,7 @@
   "iconWord": "Forest",
   "gddText": "+5 contract points for each [♠] your team holds",
   "price": 75,
-  "text": "+10 contract points for each [♠] your team holds",
+  "text": "+15 contract points for each [♠] your team holds",
   "category": "points",
   "signature": "hold|suit=S|-|points",
   "family": "hold|suit=*|-|points",
@@ -80,7 +84,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 10",
+        "detail": "payout 15",
         "cost": 1
       },
       {

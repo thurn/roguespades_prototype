@@ -1,0 +1,54 @@
+{
+  "id": "n2-free-tens",
+  "rarity": "common",
+  "role": "enabler",
+  "archetypes": [
+    "LowCards",
+    "Streaks"
+  ],
+  "source": "designed",
+  "createdIn": "search-2",
+  "status": "kept",
+  "effect": {
+    "type": "anySuit",
+    "card": {
+      "rank": "10"
+    }
+  },
+  "design": {
+    "rationale": "Play a [10] when it can win."
+  },
+  "name": "Spare Ten",
+  "icon": "wallet",
+  "iconFamily": "wallet",
+  "iconWord": "Wallet",
+  "history": [
+    {
+      "step": "design-search-2",
+      "note": "Added in rec2."
+    }
+  ],
+  "price": 25,
+  "text": "Your team can play [10]s even when it can follow suit",
+  "category": "enabler",
+  "signature": "play|cards:rank=10|-|anySuit",
+  "family": "play|cards:rank=*|-|anySuit",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "rank literal",
+        "detail": "[10]",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team could follow suit",
+        "cost": 1
+      }
+    ],
+    "C": 2,
+    "S": 0.3333333333333333
+  },
+  "lint": []
+}

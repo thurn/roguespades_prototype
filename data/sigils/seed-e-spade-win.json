@@ -29,7 +29,7 @@
       "elegance": 4
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -71,13 +71,17 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -2.2 [-3.2, -1.1] pts, fire 95%, skill gradient -1.3; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: status kept -> cut"
     }
   ],
   "name": "Black Cat",
   "icon": "cat",
   "iconFamily": "cat",
   "iconWord": "Cat",
-  "price": 50,
+  "price": 25,
   "text": "+5 contract points when your team wins a trick with [♠]",
   "category": "points",
   "signature": "win|suit=S|-|points",

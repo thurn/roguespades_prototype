@@ -3,14 +3,13 @@
   "rarity": "rare",
   "role": "payoff",
   "archetypes": [
-    "Ranks",
-    "Rainbow"
+    "Ranks"
   ],
   "source": "designed",
   "createdIn": "draft-rare",
   "effect": {
     "type": "xmult",
-    "amount": 1.1,
+    "amount": 1.25,
     "on": {
       "event": "hold",
       "card": {
@@ -75,6 +74,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +1.5 [+0.5, +2.4] pts, fire 99%, skill gradient +1.3; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"xmult\", \"amount\": 1.1, \"on\": {\"event\": \"hold\", \"card\": {\"rank\": \"A\"}}} -> {\"type\": \"xmult\", \"amount\": 1.25, \"on\": {\"event\": \"hold\", \"card\": {\"rank\": \"A\"}}}; archetypes [\"Ranks\", \"Rainbow\"] -> [\"Ranks\"]"
     }
   ],
   "name": "Hoarded Suns",
@@ -82,7 +85,7 @@
   "iconFamily": "sun",
   "iconWord": "Suns",
   "price": 100,
-  "text": "×1.1 contract multiplier for each [A] your team holds",
+  "text": "×1.25 contract multiplier for each [A] your team holds",
   "category": "xmult",
   "signature": "hold|rank=A|-|xmult",
   "family": "hold|rank=*|-|xmult",
@@ -96,7 +99,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 1.1",
+        "detail": "payout 1.25",
         "cost": 1
       },
       {

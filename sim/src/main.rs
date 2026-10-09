@@ -69,7 +69,7 @@ enum Cmd {
         tier: u8,
         #[arg(long, default_value = "../data/sigils")]
         dir: String,
-        #[arg(long, default_value = "../data/models/round-3.json")]
+        #[arg(long, default_value = "../data/models/search-final.json")]
         model: String,
         /// A game client log (logs/*.jsonl) to replay instead of autoplaying.
         #[arg(long)]

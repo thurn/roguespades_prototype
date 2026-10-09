@@ -9,7 +9,7 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "points",
-    "amount": 35,
+    "amount": 85.0,
     "per": "contractTrick",
     "on": {
       "event": "bid",
@@ -80,6 +80,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +9.3 [+7.9, +10.7] pts, fire 48%, skill gradient +1.6; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 35, \"per\": \"contractTrick\", \"on\": {\"event\": \"bid\", \"min\": 8}} -> {\"type\": \"points\", \"amount\": 85.0, \"per\": \"contractTrick\", \"on\": {\"event\": \"bid\", \"min\": 8}}"
     }
   ],
   "name": "Soaring Tower",
@@ -87,7 +91,7 @@
   "iconFamily": "building",
   "iconWord": "Tower",
   "price": 75,
-  "text": "+35 contract points for each trick in your team's contract when your team bids 8 or more",
+  "text": "+85 contract points for each trick in your team's contract when your team bids 8 or more",
   "category": "points",
   "signature": "bid(min=8)|-|contractTrick|points",
   "family": "bid(min=8)|-|contractTrick|points",
@@ -96,7 +100,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 35",
+        "detail": "payout 85",
         "cost": 1
       },
       {

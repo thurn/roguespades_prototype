@@ -1,0 +1,4 @@
+{
+ "base": "p2-coverage",
+ "model": "data/search/models/p2-coverage.json"
+}

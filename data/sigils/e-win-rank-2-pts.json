@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "points",
-    "amount": 150,
+    "amount": 200.0,
     "on": {
       "event": "win",
       "card": {
@@ -23,7 +23,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -37,14 +37,18 @@
     {
       "step": "draft-common",
       "note": "draft-common: not in the enumerated source's most promising half (pre-tournament lift -2.6 [-5.4, +0.2], slope +1.5/2x, C 4)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Underdog (dog); effect {\"type\": \"points\", \"amount\": 150, \"on\": {\"event\": \"win\", \"card\": {\"rank\": \"2\"}}} -> {\"type\": \"points\", \"amount\": 200.0, \"on\": {\"event\": \"win\", \"card\": {\"rank\": \"2\"}}}; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
-  "text": "+150 contract points when your team wins a trick with a [2]",
+  "name": "Underdog",
+  "icon": "dog",
+  "iconFamily": "dog",
+  "iconWord": "Dog",
+  "price": 25,
+  "text": "+200 contract points when your team wins a trick with a [2]",
   "category": "points",
   "signature": "win|rank=2|-|points",
   "family": "win|rank=*|-|points",
@@ -58,7 +62,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 150",
+        "detail": "payout 200",
         "cost": 1
       },
       {

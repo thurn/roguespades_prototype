@@ -9,7 +9,7 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "xmult",
-    "amount": 2.0
+    "amount": 1.75
   },
   "design": {
     "decision": "A stat stick: changes only the purchase.",
@@ -60,6 +60,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +11.4 [+10.3, +12.6] pts, fire 100%, skill gradient +6.4; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"xmult\", \"amount\": 2.0} -> {\"type\": \"xmult\", \"amount\": 1.75}"
     }
   ],
   "name": "Double Helix",
@@ -68,7 +72,7 @@
   "iconWord": "Helix",
   "gddText": "×1.5 contract multiplier",
   "price": 100,
-  "text": "×2 contract multiplier",
+  "text": "×1.75 contract multiplier",
   "category": "xmult",
   "signature": "always|-|-|xmult",
   "family": "always|-|-|xmult",
@@ -77,7 +81,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 2",
+        "detail": "payout 1.75",
         "cost": 1
       }
     ],

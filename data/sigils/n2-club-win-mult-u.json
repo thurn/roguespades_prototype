@@ -1,0 +1,67 @@
+{
+  "id": "n2-club-win-mult-u",
+  "rarity": "uncommon",
+  "role": "payoff",
+  "archetypes": [
+    "Suits"
+  ],
+  "source": "designed",
+  "createdIn": "search-2",
+  "status": "kept",
+  "effect": {
+    "type": "mult",
+    "amount": 8,
+    "on": {
+      "event": "win",
+      "card": {
+        "suit": "C"
+      }
+    }
+  },
+  "design": {
+    "rationale": "C4 Suits uncommon for holding seven [♥]s (C5)."
+  },
+  "name": "Cudgel",
+  "icon": "hand-rock",
+  "iconFamily": "hand-rock",
+  "iconWord": "Hand-Rock",
+  "history": [
+    {
+      "step": "design-search-2",
+      "note": "Added in rec2."
+    }
+  ],
+  "price": 75,
+  "text": "+8 contract multiplier when your team wins a trick with [♣]",
+  "category": "mult",
+  "signature": "win|suit=C|-|mult",
+  "family": "win|suit=*|-|mult",
+  "touchesOpponents": false,
+  "simplicity": {
+    "items": [
+      {
+        "burden": "suit literal",
+        "detail": "[♣]",
+        "cost": 1
+      },
+      {
+        "burden": "numeric value",
+        "detail": "payout 8",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "your team wins the trick",
+        "cost": 1
+      },
+      {
+        "burden": "boolean condition",
+        "detail": "the card matches",
+        "cost": 1
+      }
+    ],
+    "C": 4,
+    "S": 0.2
+  },
+  "lint": []
+}

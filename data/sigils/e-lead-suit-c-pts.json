@@ -23,7 +23,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -37,13 +37,17 @@
     {
       "step": "draft-common",
       "note": "draft-common: cut: lift +2.0 [+0.4, +3.7] pts (n 1944), fire 83%, C 3; near-duplicate of kept seed-diamond-lead (same shape up to a named suit, rank, or amount)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Club House (building-house); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
+  "name": "Club House",
+  "icon": "building-house",
+  "iconFamily": "building-house",
+  "iconWord": "Building-House",
+  "price": 25,
   "text": "+25 contract points when your team leads [♣]",
   "category": "points",
   "signature": "lead|suit=C|-|points",

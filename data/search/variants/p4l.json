@@ -1,0 +1,287 @@
+{
+ "base": "p4i-L",
+ "sigils": {
+  "ca-diamond-led-win": {
+   "effect": {
+    "amount": 20.0
+   }
+  },
+  "ca-face-win": {
+   "effect": {
+    "amount": 35.0
+   }
+  },
+  "ca-king-hold": {
+   "effect": {
+    "amount": 20.0
+   }
+  },
+  "ca-trump-contract": {
+   "effect": {
+    "amount": 4.0
+   }
+  },
+  "cb-bid8-trick-mult": {
+   "effect": {
+    "amount": 3.0
+   }
+  },
+  "cb-consecutive-mult": {
+   "effect": {
+    "amount": 1.0
+   }
+  },
+  "cb-contract-mult-made": {
+   "effect": {
+    "amount": 1.0
+   }
+  },
+  "cb-exact-trick-mult": {
+   "effect": {
+    "amount": 2.0
+   }
+  },
+  "cb-last-trick-points": {
+   "effect": {
+    "amount": 50.0
+   }
+  },
+  "cb-make-mult": {
+   "effect": {
+    "amount": 4.0
+   }
+  },
+  "cb-make8-mult": {
+   "effect": {
+    "amount": 12.0
+   }
+  },
+  "cb-opp-set-mult": {
+   "effect": {
+    "amount": 15.0
+   }
+  },
+  "cb-trick-mult": {
+   "effect": {
+    "amount": 1.0
+   }
+  },
+  "cc-low-hold-points": {
+   "effect": {
+    "amount": 4.0
+   }
+  },
+  "cc-nil-bid-points": {
+   "effect": {
+    "amount": 95.0
+   }
+  },
+  "cc-nil-hold-twos": {
+   "effect": {
+    "amount": 45.0
+   }
+  },
+  "cc-nil-made-mult": {
+   "effect": {
+    "amount": 6.0
+   }
+  },
+  "cc-small-contract-mult": {
+   "effect": {
+    "amount": 9.0
+   }
+  },
+  "cc-two-hold-mult": {
+   "effect": {
+    "amount": 2.0
+   }
+  },
+  "cc-two-win-mult": {
+   "effect": {
+    "amount": 15.0
+   }
+  },
+  "e-bid4less-pts": {
+   "effect": {
+    "amount": 70.0
+   }
+  },
+  "e-consecutive-pts": {
+   "effect": {
+    "amount": 6.0
+   }
+  },
+  "e-first-pts": {
+   "effect": {
+    "amount": 55.0
+   }
+  },
+  "e-hold-rank-j-mult": {
+   "effect": {
+    "amount": 2.0
+   }
+  },
+  "e-hold-rank-q-mult": {
+   "effect": {
+    "amount": 2.0
+   }
+  },
+  "e-hold-suit-c-mult": {
+   "effect": {
+    "amount": 1.0
+   }
+  },
+  "e-hold-suit-h-mult": {
+   "effect": {
+    "amount": 1.0
+   }
+  },
+  "e-hold-suit-s-mult": {
+   "effect": {
+    "amount": 1.0
+   }
+  },
+  "e-lead-low-mult": {
+   "effect": {
+    "amount": 1.0
+   }
+  },
+  "e-lead-rank-10-pts": {
+   "effect": {
+    "amount": 40.0
+   }
+  },
+  "e-lead-rank-a-pts": {
+   "effect": {
+    "amount": 25.0
+   }
+  },
+  "e-lead-rank-j-pts": {
+   "effect": {
+    "amount": 40.0
+   }
+  },
+  "e-lead-rank-k-mult": {
+   "effect": {
+    "amount": 5.0
+   }
+  },
+  "e-lead-rank-q-mult": {
+   "effect": {
+    "amount": 5.0
+   }
+  },
+  "e-lead-suit-c-pts": {
+   "effect": {
+    "amount": 15.0
+   }
+  },
+  "e-lead-suit-d-mult": {
+   "effect": {
+    "amount": 2.0
+   }
+  },
+  "e-lead-suit-s-pts": {
+   "effect": {
+    "amount": 15.0
+   }
+  },
+  "e-make8-pts": {
+   "effect": {
+    "amount": 150.0
+   }
+  },
+  "e-trump-mult": {
+   "effect": {
+    "amount": 2.0
+   }
+  },
+  "e-win-rank-10-mult": {
+   "effect": {
+    "amount": 7.0
+   }
+  },
+  "e-win-rank-2-pts": {
+   "effect": {
+    "amount": 120.0
+   }
+  },
+  "e-win-suit-d-mult": {
+   "effect": {
+    "amount": 2.0
+   }
+  },
+  "e-win-suit-s-mult": {
+   "effect": {
+    "amount": 1.0
+   }
+  },
+  "s-exact-x": {
+   "effect": {
+    "amount": 1.6
+   }
+  },
+  "seed-ace-win": {
+   "effect": {
+    "amount": 25.0
+   }
+  },
+  "seed-contract-points": {
+   "effect": {
+    "amount": 9.0
+   }
+  },
+  "seed-diamond-hold": {
+   "effect": {
+    "amount": 6.0
+   }
+  },
+  "seed-diamond-lead": {
+   "effect": {
+    "amount": 20.0
+   }
+  },
+  "seed-diamond-win": {
+   "effect": {
+    "amount": 45.0
+   }
+  },
+  "seed-exact-mult": {
+   "effect": {
+    "amount": 12.0
+   }
+  },
+  "seed-last-trick": {
+   "effect": {
+    "amount": 9.0
+   }
+  },
+  "seed-nil-bid-mult": {
+   "effect": {
+    "amount": 6.0
+   }
+  },
+  "seed-nil-points": {
+   "effect": {
+    "amount": 95.0
+   }
+  },
+  "seed-trump-points": {
+   "effect": {
+    "amount": 30.0
+   }
+  }
+ },
+ "add": [],
+ "combos": [],
+ "drop": [],
+ "include": [],
+ "rules": {
+  "prices": [
+   25,
+   75,
+   100,
+   150
+  ]
+ }
+}

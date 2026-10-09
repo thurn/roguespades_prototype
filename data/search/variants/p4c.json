@@ -1,0 +1,14 @@
+{
+ "base": "p4ab",
+ "sigils": {},
+ "add": [],
+ "combos": [],
+ "drop": [
+  "cc-nil-made-points",
+  "cb-contract-mult"
+ ],
+ "include": [
+  "cc-swap-five",
+  "n2-kings-untrumpable-c"
+ ]
+}

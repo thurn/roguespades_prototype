@@ -9,7 +9,7 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "mult",
-    "amount": 4,
+    "amount": 7.0,
     "on": {
       "event": "win",
       "card": {
@@ -66,6 +66,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -0.0 [-1.4, +1.4] pts, fire 84%, skill gradient -2.1; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 4, \"on\": {\"event\": \"win\", \"card\": {\"rank\": \"A\"}}} -> {\"type\": \"mult\", \"amount\": 7.0, \"on\": {\"event\": \"win\", \"card\": {\"rank\": \"A\"}}}"
     }
   ],
   "name": "Hero's Badge",
@@ -74,7 +78,7 @@
   "iconWord": "Badge",
   "gddText": "+5 contract multiplier when your team wins a trick with an [A]",
   "price": 100,
-  "text": "+4 contract multiplier when your team wins a trick with an [A]",
+  "text": "+7 contract multiplier when your team wins a trick with an [A]",
   "category": "mult",
   "signature": "win|rank=A|-|mult",
   "family": "win|rank=*|-|mult",
@@ -88,7 +92,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 4",
+        "detail": "payout 7",
         "cost": 1
       },
       {

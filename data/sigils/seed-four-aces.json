@@ -9,7 +9,7 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "mult",
-    "amount": 20,
+    "amount": 40.0,
     "on": {
       "event": "hold",
       "card": {
@@ -39,6 +39,10 @@
     {
       "step": "draft-uncommon",
       "note": "draft-uncommon: cut: lift -12.0 [-14.1, -10.0] pts (n 1996), fire 25%, C 6; far below the control, and one retune step can't close the gap."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 20, \"on\": {\"event\": \"hold\", \"card\": {\"rank\": \"A\"}, \"count\": 4}} -> {\"type\": \"mult\", \"amount\": 40.0, \"on\": {\"event\": \"hold\", \"card\": {\"rank\": \"A\"}, \"count\": 4}}"
     }
   ],
   "name": null,
@@ -47,7 +51,7 @@
   "iconWord": null,
   "gddText": "+20 contract multiplier if your team holds four [A]s",
   "price": 75,
-  "text": "+20 contract multiplier if your team holds four [A]s",
+  "text": "+40 contract multiplier if your team holds four [A]s",
   "category": "mult",
   "signature": "hold(count=4)|rank=A|-|mult",
   "family": "hold(count=4)|rank=*|-|mult",
@@ -61,7 +65,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 20",
+        "detail": "payout 40",
         "cost": 1
       },
       {

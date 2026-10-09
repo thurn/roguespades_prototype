@@ -9,7 +9,7 @@
   "createdIn": "round-1",
   "effect": {
     "type": "mult",
-    "amount": 8,
+    "amount": 3.0,
     "on": {
       "event": "win",
       "card": {
@@ -45,6 +45,10 @@
     {
       "step": "round-1",
       "note": "round-1: not kept: lift +18.9 [+17.5, +20.2] pts, C 3; over the ceiling; r1-spade-four-x is the in-band option."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 8, \"on\": {\"event\": \"win\", \"card\": {\"suit\": \"S\"}}} -> {\"type\": \"mult\", \"amount\": 3.0, \"on\": {\"event\": \"win\", \"card\": {\"suit\": \"S\"}}}"
     }
   ],
   "name": null,
@@ -52,7 +56,7 @@
   "iconFamily": null,
   "iconWord": null,
   "price": 100,
-  "text": "+8 contract multiplier when your team wins a trick with [♠]",
+  "text": "+3 contract multiplier when your team wins a trick with [♠]",
   "category": "mult",
   "signature": "win|suit=S|-|mult",
   "family": "win|suit=*|-|mult",
@@ -66,7 +70,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 8",
+        "detail": "payout 3",
         "cost": 1
       },
       {

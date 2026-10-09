@@ -1,0 +1,6 @@
+{
+ "rules": {
+  "rerollCost": 25
+ },
+ "base": "rec3"
+}

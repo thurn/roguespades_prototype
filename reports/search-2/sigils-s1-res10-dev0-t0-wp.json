@@ -1,0 +1,89 @@
+[
+ {
+  "id": "n2-nines-untrumpable",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "LowCards"
+  ],
+  "role": "enabler",
+  "lift": 7.475,
+  "lift_ci": 2.1650658454154175,
+  "raw": 3.05,
+  "fire": 0.0,
+  "text": "Your team's [9]s can't be trumped"
+ },
+ {
+  "id": "n2-tens-untrumpable",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Ranks",
+   "LowCards"
+  ],
+  "role": "enabler",
+  "lift": 8.125,
+  "lift_ci": 2.0707468662258974,
+  "raw": 3.6999999999999997,
+  "fire": 0.0,
+  "text": "Your team's [10]s can't be trumped"
+ },
+ {
+  "id": "n2-free-diamonds",
+  "rarity": "common",
+  "C": 2,
+  "arch": [
+   "Suits"
+  ],
+  "role": "enabler",
+  "lift": 8.475000000000001,
+  "lift_ci": 2.117070503368836,
+  "raw": 4.05,
+  "fire": 0.0,
+  "text": "Your team can play [\u2666]s even when it can follow suit"
+ },
+ {
+  "id": "n2-twos-untrumpable",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "LowCards"
+  ],
+  "role": "enabler",
+  "lift": 10.274999999999999,
+  "lift_ci": 2.095389981002194,
+  "raw": 5.8500000000000005,
+  "fire": 0.0,
+  "text": "Your team's [2]s can't be trumped"
+ },
+ {
+  "id": "n2-jacks-beat",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Streaks",
+   "Ranks"
+  ],
+  "role": "enabler",
+  "lift": 10.424999999999999,
+  "lift_ci": 2.1397298374699956,
+  "raw": 6.0,
+  "fire": 0.0,
+  "text": "Your team's [J]s beat every other card of their suit"
+ },
+ {
+  "id": "n2-tens-beat",
+  "rarity": "common",
+  "C": 3,
+  "arch": [
+   "Streaks",
+   "LowCards"
+  ],
+  "role": "enabler",
+  "lift": 14.224999999999998,
+  "lift_ci": 2.123117307901138,
+  "raw": 9.8,
+  "fire": 0.0,
+  "text": "Your team's [10]s beat every other card of their suit"
+ }
+]

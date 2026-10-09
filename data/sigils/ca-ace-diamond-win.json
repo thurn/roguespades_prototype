@@ -53,7 +53,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+40 contract points when your team wins a trick with the [A♦]",
   "category": "points",
   "signature": "win|suit=D,rank=A|-|points",

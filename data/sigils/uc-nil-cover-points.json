@@ -10,7 +10,7 @@
   "createdIn": "draft-uncommon",
   "effect": {
     "type": "nilPoints",
-    "amount": 25,
+    "amount": 35.0,
     "on": {
       "event": "win"
     }
@@ -76,6 +76,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +1.7 [+0.4, +3.0] pts, fire 99%, skill gradient -1.2; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"nilPoints\", \"amount\": 25, \"on\": {\"event\": \"win\"}} -> {\"type\": \"nilPoints\", \"amount\": 35.0, \"on\": {\"event\": \"win\"}}"
     }
   ],
   "name": "Guardian Shield",
@@ -83,7 +87,7 @@
   "iconFamily": "shield",
   "iconWord": "Shield",
   "price": 75,
-  "text": "+25 nil points when your team wins a trick",
+  "text": "+35 nil points when your team wins a trick",
   "category": "hybrid",
   "signature": "win|-|-|nilPoints",
   "family": "win|-|-|nilPoints",
@@ -92,7 +96,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 25",
+        "detail": "payout 35",
         "cost": 1
       },
       {

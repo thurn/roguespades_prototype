@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "points",
-    "amount": 90,
+    "amount": 360.0,
     "on": {
       "event": "nilMade"
     }
@@ -33,7 +33,7 @@
       "elegance": 5
     }
   },
-  "status": "kept",
+  "status": "cut",
   "replacedBy": null,
   "history": [
     {
@@ -83,14 +83,18 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -2.4 [-3.7, -1.1] pts, fire 25%, skill gradient -1.3; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 90, \"on\": {\"event\": \"nilMade\"}} -> {\"type\": \"points\", \"amount\": 360.0, \"on\": {\"event\": \"nilMade\"}}; status kept -> cut"
     }
   ],
   "name": "Goose Egg",
   "icon": "egg",
   "iconFamily": "egg",
   "iconWord": "Egg",
-  "price": 50,
-  "text": "+90 contract points if your team makes a nil",
+  "price": 25,
+  "text": "+360 contract points if your team makes a nil",
   "category": "points",
   "signature": "nilMade|-|-|points",
   "family": "nilMade|-|-|points",
@@ -99,7 +103,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 90",
+        "detail": "payout 360",
         "cost": 1
       },
       {

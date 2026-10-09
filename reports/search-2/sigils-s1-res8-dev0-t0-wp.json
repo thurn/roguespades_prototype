@@ -1,0 +1,31 @@
+[
+ {
+  "id": "n2-consec-points-u",
+  "rarity": "uncommon",
+  "C": 3,
+  "arch": [
+   "Streaks"
+  ],
+  "role": "payoff",
+  "lift": 5.1499999999999995,
+  "lift_ci": 1.9951195175822176,
+  "raw": 1.8499999999999999,
+  "fire": 0.83225,
+  "text": "+15 contract points when your team wins consecutive tricks"
+ },
+ {
+  "id": "n2-two-lead-mult-u",
+  "rarity": "uncommon",
+  "C": 3,
+  "arch": [
+   "LowCards",
+   "Nil"
+  ],
+  "role": "payoff",
+  "lift": 10.299999999999999,
+  "lift_ci": 2.153574541953447,
+  "raw": 7.000000000000001,
+  "fire": 0.5715,
+  "text": "+15 contract multiplier when your team leads a [2]"
+ }
+]

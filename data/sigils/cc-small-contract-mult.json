@@ -10,7 +10,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 10,
+    "amount": 15.0,
     "on": {
       "event": "bid",
       "max": 4
@@ -77,14 +77,18 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -2.0 [-3.0, -1.1] pts, fire 33%, skill gradient -0.1; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 10, \"on\": {\"event\": \"bid\", \"max\": 4}} -> {\"type\": \"mult\", \"amount\": 15.0, \"on\": {\"event\": \"bid\", \"max\": 4}}"
     }
   ],
   "name": "Modest Cottage",
   "icon": "tiny-home",
   "iconFamily": "tiny-home",
   "iconWord": "Cottage",
-  "price": 50,
-  "text": "+10 contract multiplier when your team bids 4 or less",
+  "price": 25,
+  "text": "+15 contract multiplier when your team bids 4 or less",
   "category": "hybrid",
   "signature": "bid(max=4)|-|-|mult",
   "family": "bid(max=4)|-|-|mult",
@@ -93,7 +97,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 10",
+        "detail": "payout 15",
         "cost": 1
       },
       {

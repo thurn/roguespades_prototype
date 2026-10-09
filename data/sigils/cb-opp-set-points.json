@@ -51,7 +51,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+60 contract points if the opponents miss their contract",
   "category": "points",
   "signature": "opponentsSet|-|-|points",

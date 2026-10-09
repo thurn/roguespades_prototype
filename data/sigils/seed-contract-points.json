@@ -9,7 +9,7 @@
   "createdIn": "phase-0",
   "effect": {
     "type": "points",
-    "amount": 3,
+    "amount": 15.0,
     "per": "contractTrick"
   },
   "design": {
@@ -65,6 +65,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift -4.7 [-5.9, -3.4] pts, fire 100%, skill gradient -2.5; below the control in the final fit; kept for archetype coverage and because its amount slope leaves room to retune, a target for any further round."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 3, \"per\": \"contractTrick\"} -> {\"type\": \"points\", \"amount\": 15.0, \"per\": \"contractTrick\"}"
     }
   ],
   "name": "Measured Ruler",
@@ -72,8 +76,8 @@
   "iconFamily": "ruler",
   "iconWord": "Ruler",
   "gddText": "+5 contract points for each trick in your team's contract",
-  "price": 50,
-  "text": "+3 contract points for each trick in your team's contract",
+  "price": 25,
+  "text": "+15 contract points for each trick in your team's contract",
   "category": "points",
   "signature": "always|-|contractTrick|points",
   "family": "always|-|contractTrick|points",
@@ -82,7 +86,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 3",
+        "detail": "payout 15",
         "cost": 1
       },
       {

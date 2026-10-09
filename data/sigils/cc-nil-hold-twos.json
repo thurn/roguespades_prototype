@@ -10,7 +10,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "nilPoints",
-    "amount": 30,
+    "amount": 75.0,
     "on": {
       "event": "hold",
       "card": {
@@ -37,7 +37,7 @@
       "elegance": 4
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -47,14 +47,18 @@
     {
       "step": "draft-common",
       "note": "draft-common: cut: lift -1.2 [-2.3, -0.0] pts (n 4410), fire 93%, C 4; the kept pool covers its archetypes with stronger, simpler, or more decision-rich pieces."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Pocket Lint (sock); effect {\"type\": \"nilPoints\", \"amount\": 30, \"on\": {\"event\": \"hold\", \"card\": {\"rank\": \"2\"}}} -> {\"type\": \"nilPoints\", \"amount\": 75.0, \"on\": {\"event\": \"hold\", \"card\": {\"rank\": \"2\"}}}; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
-  "text": "+30 nil points for each [2] your team holds",
+  "name": "Pocket Lint",
+  "icon": "sock",
+  "iconFamily": "sock",
+  "iconWord": "Sock",
+  "price": 25,
+  "text": "+75 nil points for each [2] your team holds",
   "category": "points",
   "signature": "hold|rank=2|-|nilPoints",
   "family": "hold|rank=*|-|nilPoints",
@@ -68,7 +72,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 30",
+        "detail": "payout 75",
         "cost": 1
       },
       {

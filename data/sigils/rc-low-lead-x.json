@@ -4,8 +4,7 @@
   "role": "payoff",
   "archetypes": [
     "LowCards",
-    "Nil",
-    "Rainbow"
+    "Nil"
   ],
   "source": "designed",
   "createdIn": "draft-rare",
@@ -83,6 +82,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +2.6 [+1.5, +3.6] pts, fire 86%, skill gradient +2.9; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: archetypes [\"LowCards\", \"Nil\", \"Rainbow\"] -> [\"LowCards\", \"Nil\"]"
     }
   ],
   "name": "Quiet Sneakers",

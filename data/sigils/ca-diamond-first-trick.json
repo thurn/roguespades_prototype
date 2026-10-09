@@ -51,7 +51,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+40 contract points when your team wins the first trick of a round with [♦]",
   "category": "points",
   "signature": "win(trick=first)|suit=D|-|points",

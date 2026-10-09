@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "points",
-    "amount": 65,
+    "amount": 50.0,
     "on": {
       "event": "lead",
       "card": {
@@ -37,14 +37,18 @@
     {
       "step": "draft-common",
       "note": "draft-common: not in the enumerated source's most promising half (pre-tournament lift +7.7 [+5.4, +10.1], slope +5.0/2x, C 4)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"points\", \"amount\": 65, \"on\": {\"event\": \"lead\", \"card\": {\"rank\": \"Q\"}}} -> {\"type\": \"points\", \"amount\": 50.0, \"on\": {\"event\": \"lead\", \"card\": {\"rank\": \"Q\"}}}"
     }
   ],
   "name": null,
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
-  "text": "+65 contract points when your team leads a [Q]",
+  "price": 25,
+  "text": "+50 contract points when your team leads a [Q]",
   "category": "points",
   "signature": "lead|rank=Q|-|points",
   "family": "lead|rank=*|-|points",
@@ -58,7 +62,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 65",
+        "detail": "payout 50",
         "cost": 1
       },
       {

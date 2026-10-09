@@ -12,17 +12,19 @@ from .funscore import FAMILIES, WEIGHTS
 
 NAMES = {
     "base-game": "Base game",
-    "rr-s8": "**Recommendation**",
-    "ru-flat": "Runner-up: flat set",
-    "ru-rainbow": "Runner-up: keep Rainbow",
+    "rec3": "**Recommendation**",
+    "ru3-sym": "Runner-up: symmetric set, 8 slots",
+    "ru3-slots8": "Runner-up: flat set, 8 slots",
+    "search1": "Search 1 (its own shop model)",
+    "search1-L": "Search 1 (this search's shop model)",
     "plain": "Plain Spades",
 }
 
 
 def load(tier: int) -> list:
     out = []
-    for rep in range(3):
-        p = REPORTS / "search-2" / f"phase4-final{rep}-t{tier}-wp.json"
+    for rep in range(5):
+        p = REPORTS / "search-2" / f"phase5-final{rep}-t{tier}-wp.json"
         if p.exists():
             out.append(json.loads(p.read_text()))
     return out

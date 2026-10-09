@@ -10,7 +10,7 @@
   "createdIn": "draft-rare",
   "effect": {
     "type": "xmult",
-    "amount": 4.0,
+    "amount": 3,
     "on": {
       "event": "bid",
       "vs": "opponents"
@@ -81,6 +81,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +10.2 [+9.0, +11.5] pts, fire 42%, skill gradient +6.7; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"xmult\", \"amount\": 4.0, \"on\": {\"event\": \"bid\", \"vs\": \"opponents\"}} -> {\"type\": \"xmult\", \"amount\": 3, \"on\": {\"event\": \"bid\", \"vs\": \"opponents\"}}"
     }
   ],
   "name": "Auctioneer's Gavel",
@@ -88,7 +92,7 @@
   "iconFamily": "gavel",
   "iconWord": "Gavel",
   "price": 100,
-  "text": "×4 contract multiplier when your team bids more than the opponents",
+  "text": "×3 contract multiplier when your team bids more than the opponents",
   "category": "xmult",
   "signature": "bid(vs=opponents)|-|-|xmult",
   "family": "bid(vs=opponents)|-|-|xmult",
@@ -97,7 +101,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 4",
+        "detail": "payout 3",
         "cost": 1
       },
       {

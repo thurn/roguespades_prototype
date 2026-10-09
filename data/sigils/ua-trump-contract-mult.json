@@ -36,7 +36,7 @@
       "elegance": 3
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -46,12 +46,16 @@
     {
       "step": "draft-uncommon",
       "note": "draft-uncommon: cut: lift -13.9 [-15.2, -12.7] pts (n 2666), fire 80%, C 4; far below the control, and one retune step can't close the gap."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Trump Card (tag); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Trump Card",
+  "icon": "tag",
+  "iconFamily": "tag",
+  "iconWord": "Tag",
   "price": 75,
   "text": "+1 contract multiplier for each trick in your team's contract when your team wins a trick by trumping",
   "category": "mult",

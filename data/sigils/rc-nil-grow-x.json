@@ -34,7 +34,7 @@
       "elegance": 3
     }
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -44,12 +44,16 @@
     {
       "step": "draft-rare",
       "note": "draft-rare: cut: lift -13.6 [-14.9, -12.3] pts (n 4851), fire 26%, C 4; far below the control, and one retune step can't close the gap."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Vanishing Act (ufo); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
+  "name": "Vanishing Act",
+  "icon": "ufo",
+  "iconFamily": "ufo",
+  "iconWord": "Ufo",
   "price": 100,
   "text": "This sigil gains ×0.5 contract multiplier every time your team makes a nil (currently ×1)",
   "category": "xmult",

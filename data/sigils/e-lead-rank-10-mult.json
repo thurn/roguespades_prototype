@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "mult",
-    "amount": 10,
+    "amount": 5.0,
     "on": {
       "event": "lead",
       "card": {
@@ -37,14 +37,18 @@
     {
       "step": "draft-common",
       "note": "draft-common: not in the enumerated source's most promising half (pre-tournament lift +10.3 [+7.3, +13.2], slope +6.4/2x, C 4)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: effect {\"type\": \"mult\", \"amount\": 10, \"on\": {\"event\": \"lead\", \"card\": {\"rank\": \"10\"}}} -> {\"type\": \"mult\", \"amount\": 5.0, \"on\": {\"event\": \"lead\", \"card\": {\"rank\": \"10\"}}}"
     }
   ],
   "name": null,
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
-  "text": "+10 contract multiplier when your team leads a [10]",
+  "price": 25,
+  "text": "+5 contract multiplier when your team leads a [10]",
   "category": "mult",
   "signature": "lead|rank=10|-|mult",
   "family": "lead|rank=*|-|mult",
@@ -58,7 +62,7 @@
       },
       {
         "burden": "numeric value",
-        "detail": "payout 10",
+        "detail": "payout 5",
         "cost": 1
       },
       {

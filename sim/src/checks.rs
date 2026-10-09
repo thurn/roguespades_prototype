@@ -171,6 +171,8 @@ fn scored(bids: [i8; 4], won: [u8; 4], slots: Vec<(Effect, f64)>, fires: &[(usiz
 }
 
 fn worked_examples() -> Vec<(&'static str, f64, f64)> {
+    // A flat set scores −100 × B whatever the sigils; a symmetric set flips the multiplied score.
+    let flat = crate::rules::rules().flat_set;
     let aces =
         eff(json!({"type": "points", "amount": 20, "on": {"event": "win", "card": {"rank": "A"}}}));
     let plus15 = eff(json!({"type": "mult", "amount": 15}));
@@ -207,7 +209,7 @@ fn worked_examples() -> Vec<(&'static str, f64, f64)> {
                 vec![(aces, 0.0), (plus15.clone(), 0.0)],
                 &[(0, 2)],
             ),
-            -2750.0,
+            if flat { -700.0 } else { -2750.0 },
         ),
         (
             "Partner bids 5, wins 6; nil made; +50 nil points; one +15",
@@ -251,7 +253,7 @@ fn worked_examples() -> Vec<(&'static str, f64, f64)> {
                 vec![(cp210, 0.0), (plus35, 0.0), (x15, 0.0)],
                 &[],
             ),
-            -20250.0,
+            if flat { -900.0 } else { -20250.0 },
         ),
     ]
 }

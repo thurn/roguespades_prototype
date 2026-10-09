@@ -9,7 +9,7 @@
   "createdIn": "draft-common",
   "effect": {
     "type": "points",
-    "amount": 150,
+    "amount": 250.0,
     "on": {
       "event": "make",
       "min": 8
@@ -21,7 +21,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -35,14 +35,18 @@
     {
       "step": "draft-common",
       "note": "draft-common: cut: lift -1.6 [-3.2, +0.0] pts (n 2191), fire 19%, C 4; the kept pool covers its archetypes with stronger, simpler, or more decision-rich pieces."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named High Rise (apartment); effect {\"type\": \"points\", \"amount\": 150, \"on\": {\"event\": \"make\", \"min\": 8}} -> {\"type\": \"points\", \"amount\": 250.0, \"on\": {\"event\": \"make\", \"min\": 8}}; status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
-  "text": "+150 contract points if your team makes a contract of 8 or more",
+  "name": "High Rise",
+  "icon": "apartment",
+  "iconFamily": "apartment",
+  "iconWord": "Apartment",
+  "price": 25,
+  "text": "+250 contract points if your team makes a contract of 8 or more",
   "category": "points",
   "signature": "make(min=8)|-|-|points",
   "family": "make(min=8)|-|-|points",
@@ -51,7 +55,7 @@
     "items": [
       {
         "burden": "numeric value",
-        "detail": "payout 150",
+        "detail": "payout 250",
         "cost": 1
       },
       {

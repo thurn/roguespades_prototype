@@ -50,7 +50,7 @@
   "icon": null,
   "iconFamily": null,
   "iconWord": null,
-  "price": 50,
+  "price": 25,
   "text": "+10 contract points for each trick in your team's contract when your team bids 8 or more",
   "category": "points",
   "signature": "bid(min=8)|-|contractTrick|points",

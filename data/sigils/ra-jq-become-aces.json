@@ -4,8 +4,7 @@
   "role": "enabler",
   "archetypes": [
     "Ranks",
-    "BidHigh",
-    "Rainbow"
+    "BidHigh"
   ],
   "source": "designed",
   "createdIn": "draft-rare",
@@ -60,6 +59,10 @@
     {
       "step": "round-3",
       "note": "round-3: final reading lift +11.3 [+10.2, +12.5] pts, fire 0%, skill gradient +6.1; inside or overlapping its band in the final fit."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: archetypes [\"Ranks\", \"BidHigh\", \"Rainbow\"] -> [\"Ranks\", \"BidHigh\"]"
     }
   ],
   "name": "Wand of Ascension",

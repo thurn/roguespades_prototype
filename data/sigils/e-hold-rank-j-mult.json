@@ -23,7 +23,7 @@
     "rationale": "Enumerated from the grammar (D21).",
     "partners": []
   },
-  "status": "cut",
+  "status": "kept",
   "replacedBy": null,
   "history": [
     {
@@ -37,13 +37,17 @@
     {
       "step": "draft-common",
       "note": "draft-common: cut: lift +11.4 [+10.0, +12.9] pts (n 5659), fire 95%, C 4; near-duplicate of kept cc-two-hold-mult (same shape up to a named suit, rank, or amount)."
+    },
+    {
+      "step": "design-search-2",
+      "note": "rec2: named Jester's Cap (beanie); status cut -> kept"
     }
   ],
-  "name": null,
-  "icon": null,
-  "iconFamily": null,
-  "iconWord": null,
-  "price": 50,
+  "name": "Jester's Cap",
+  "icon": "beanie",
+  "iconFamily": "beanie",
+  "iconWord": "Beanie",
+  "price": 25,
   "text": "+4 contract multiplier for each [J] your team holds",
   "category": "mult",
   "signature": "hold|rank=J|-|mult",
