@@ -16,7 +16,7 @@ import json
 import numpy as np
 
 from . import it, sigilmetrics
-from .common import ROOT, category
+from .common import REPORTS, ROOT, category
 
 MODELS = ROOT / "data" / "search" / "models"
 
@@ -29,13 +29,30 @@ def changed(name: str, vs: str) -> list:
     return [s for s in a.pool if s not in b.defs or key(a.defs[s]) != key(b.defs[s])]
 
 
-def build(name: str, n: int, seeds: str = "dev", vs: str | None = None, src_model: str | None = None) -> str:
+def build(
+    name: str,
+    n: int,
+    seeds: str = "dev",
+    vs: str | None = None,
+    src_model: str | None = None,
+    rows_from: list | None = None,
+) -> str:
     """With `vs` and `src_model`, measures only sigils changed from `vs` and keeps the rest of
-    `src_model`'s values."""
+    `src_model`'s values. With `rows_from`, reads lifts from earlier sigil-metrics reports
+    (reports/search-2/sigils-<name>-dev0-t0-wp.json, first report wins) instead of measuring."""
     env = it.Env(0, "wp", seeds, 0)
     b = it.Variant.load(name).materialize()
     ids = changed(name, vs) if vs else None
-    rows = sigilmetrics.measure(name, env, n, 0, 3, ids) if ids is None or ids else []
+    if rows_from:
+        got: dict = {}
+        for r in rows_from:
+            for row in json.loads((REPORTS / "search-2" / f"sigils-{r}-dev0-t0-wp.json").read_text()):
+                got.setdefault(row["id"], row)
+        missing = [s for s in b.pool if s not in got]
+        assert not missing, f"no lift rows for {missing}"
+        rows = [got[s] for s in b.pool]
+    else:
+        rows = sigilmetrics.measure(name, env, n, 0, 3, ids) if ids is None or ids else []
     src = json.loads(open(src_model or b.model).read())
     u = {r["id"]: 2 * r["raw"] / 100 for r in rows}
     se = {r["id"]: 2 * r["lift_ci"] / 1.645 / 100 for r in rows}
@@ -98,8 +115,9 @@ def main() -> None:
     ap.add_argument("--n", type=int, default=1000)
     ap.add_argument("--vs", default=None, help="re-measure only sigils changed from this variant")
     ap.add_argument("--src", default=None, help="the model to keep values from (with --vs)")
+    ap.add_argument("--rows", default="", help="sigil-metrics reports to read lifts from")
     a = ap.parse_args()
-    build(a.variant, a.n, vs=a.vs, src_model=a.src)
+    build(a.variant, a.n, vs=a.vs, src_model=a.src, rows_from=[x for x in a.rows.split(",") if x])
 
 
 if __name__ == "__main__":

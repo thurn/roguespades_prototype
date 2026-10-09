@@ -1,0 +1,2114 @@
+{
+ "ids": [
+  "ca-diamond-become-from-clubs",
+  "ca-diamond-lead-contract",
+  "ca-king-lead",
+  "ca-lead-spades",
+  "ca-rainbow-first-mult",
+  "ca-raise-one",
+  "ca-trump-contract",
+  "cb-bid7-mult",
+  "cb-bid8-trick-points",
+  "cb-bid9-xmult",
+  "cb-contract-mult-made",
+  "cb-exact-trick-mult",
+  "cb-exact-trick-points",
+  "cb-first-lead",
+  "cb-first-trick-mult",
+  "cb-free-after-made",
+  "cb-grow-exact-points",
+  "cb-grow-make-mult",
+  "cb-grow-make-points",
+  "cb-honor-hold",
+  "cb-last-trick-points",
+  "cb-make-x",
+  "cb-opp-set-grow",
+  "cb-opp-set-points",
+  "cc-any-suit-last-four",
+  "cc-lead-a-two",
+  "cc-nil-bid-points",
+  "cc-nil-bid-xmult",
+  "cc-nil-contract-trick",
+  "cc-nil-hold-twos",
+  "cc-swap-five",
+  "cc-twos-to-spades",
+  "e-bid4less-pts",
+  "e-bid4less-xmult",
+  "e-bid8-mult",
+  "e-bid8-pts",
+  "e-bid8-xmult",
+  "e-consecutive-pts",
+  "e-consecutive-xmult",
+  "e-distinct-pts",
+  "e-distinct-xmult",
+  "e-exact-pts",
+  "e-first-pts",
+  "e-first-xmult",
+  "e-hold-low-mult",
+  "e-hold-low-pts",
+  "e-hold-low-xmult",
+  "e-hold-rank-10-mult",
+  "e-hold-rank-10-pts",
+  "e-hold-rank-10-xmult",
+  "e-hold-rank-2-pts",
+  "e-hold-rank-2-xmult",
+  "e-hold-rank-a-mult",
+  "e-hold-rank-a-pts",
+  "e-hold-rank-a-xmult",
+  "e-hold-rank-j-mult",
+  "e-hold-rank-j-pts",
+  "e-hold-rank-j-xmult",
+  "e-hold-rank-k-mult",
+  "e-hold-rank-k-xmult",
+  "e-hold-rank-q-mult",
+  "e-hold-rank-q-pts",
+  "e-hold-rank-q-xmult",
+  "e-hold-side-mult",
+  "e-hold-side-pts",
+  "e-hold-side-xmult",
+  "e-hold-suit-c-mult",
+  "e-hold-suit-c-pts",
+  "e-hold-suit-c-xmult",
+  "e-hold-suit-d-mult",
+  "e-hold-suit-d-xmult",
+  "e-hold-suit-h-mult",
+  "e-hold-suit-h-pts",
+  "e-hold-suit-h-xmult",
+  "e-hold-suit-s-pts",
+  "e-hold-suit-s-xmult",
+  "e-last-xmult",
+  "e-lead-low-mult",
+  "e-lead-low-pts",
+  "e-lead-low-xmult",
+  "e-lead-rank-10-mult",
+  "e-lead-rank-10-pts",
+  "e-lead-rank-10-xmult",
+  "e-lead-rank-2-mult",
+  "e-lead-rank-2-xmult",
+  "e-lead-rank-a-mult",
+  "e-lead-rank-a-pts",
+  "e-lead-rank-a-xmult",
+  "e-lead-rank-j-mult",
+  "e-lead-rank-j-pts",
+  "e-lead-rank-j-xmult",
+  "e-lead-rank-k-xmult",
+  "e-lead-rank-q-mult",
+  "e-lead-rank-q-pts",
+  "e-lead-rank-q-xmult",
+  "e-lead-side-mult",
+  "e-lead-side-pts",
+  "e-lead-side-xmult",
+  "e-lead-suit-c-mult",
+  "e-lead-suit-c-pts",
+  "e-lead-suit-c-xmult",
+  "e-lead-suit-d-mult",
+  "e-lead-suit-d-pts",
+  "e-lead-suit-d-xmult",
+  "e-lead-suit-h-mult",
+  "e-lead-suit-h-xmult",
+  "e-lead-suit-s-mult",
+  "e-lead-suit-s-pts",
+  "e-lead-suit-s-xmult",
+  "e-make-pts",
+  "e-make8-pts",
+  "e-make8-xmult",
+  "e-nilmade-xmult",
+  "e-oppset-xmult",
+  "e-trump-xmult",
+  "e-win-rank-10-mult",
+  "e-win-rank-10-pts",
+  "e-win-rank-10-xmult",
+  "e-win-rank-2-pts",
+  "e-win-rank-2-xmult",
+  "e-win-rank-a-mult",
+  "e-win-rank-a-xmult",
+  "e-win-rank-j-mult",
+  "e-win-rank-j-pts",
+  "e-win-rank-j-xmult",
+  "e-win-rank-k-mult",
+  "e-win-rank-k-xmult",
+  "e-win-rank-q-mult",
+  "e-win-rank-q-pts",
+  "e-win-rank-q-xmult",
+  "e-win-suit-c-mult",
+  "e-win-suit-c-pts",
+  "e-win-suit-c-xmult",
+  "e-win-suit-d-xmult",
+  "e-win-suit-h-pts",
+  "e-win-suit-h-xmult",
+  "e-win-suit-s-mult",
+  "e-win-suit-s-pts",
+  "e-win-suit-s-xmult",
+  "e-win-xmult",
+  "n2-ace-lead-mult",
+  "n2-club-hold-mult",
+  "n2-club-lead-mult",
+  "n2-club-led-win",
+  "n2-club-win-x",
+  "n2-clubs-untrumpable",
+  "n2-diamonds-untrumpable",
+  "n2-exact-free-after",
+  "n2-exact-mult-u",
+  "n2-jack-win-mult",
+  "n2-kings-untrumpable-c",
+  "n2-last-trick-x",
+  "n2-low-lead-points",
+  "n2-make7-points",
+  "n2-nil-hold-twos-points",
+  "n2-nil-made-points-u",
+  "n2-queen-hold-mult",
+  "n2-queens-untrumpable",
+  "n2-rainbow-first-points-u",
+  "n2-raise-clubs",
+  "n2-raise-diamonds",
+  "n2-raise-hearts",
+  "n2-raise-low-spades",
+  "n2-raise-twos",
+  "n2-spade-lead-x",
+  "n2-ten-win-mult",
+  "n2-three-row-x",
+  "r1-any-suit-last-three",
+  "r1-exact-grow-mult",
+  "r1-exact-growth",
+  "r1-first-trick-points",
+  "r1-honors-untrumpable",
+  "r1-lead-choice",
+  "r1-low-cards-beat",
+  "r1-low-three-beat",
+  "r1-spade-win-mult",
+  "r1-trick-growth",
+  "r2-kings-untrumpable",
+  "r2-last-trick-grow",
+  "r2-last-trump-x",
+  "r2-queens-become-aces",
+  "ra-all-diamonds",
+  "ra-clubs-to-diamonds",
+  "ra-rainbow-first-x",
+  "ra-side-win-points",
+  "rb-exact-triple",
+  "rb-last-contract-x",
+  "rb-low-raise",
+  "rb-make-grow-x",
+  "rb-opp-contract-set",
+  "rb-side-untrumpable",
+  "rb-streak-grow",
+  "rc-honor-free",
+  "rc-junk-raise",
+  "rc-low-beats",
+  "rc-low-untrumpable",
+  "rc-low-win-x",
+  "rc-nil-contract-mult",
+  "rc-nil-grow-x",
+  "rc-nil-honors-drop",
+  "rc-opp-aces-fall",
+  "rc-two-hold-x",
+  "rc-twos-always-win",
+  "seed-any-suit",
+  "seed-bid10-mult",
+  "seed-contract-points-u",
+  "seed-diamond-mult",
+  "seed-e-last-heart",
+  "seed-five-row-x",
+  "seed-flat-points",
+  "seed-four-aces",
+  "seed-four-row",
+  "seed-grow-exact",
+  "seed-grow-nil",
+  "seed-make8-x",
+  "seed-rainbow-lead-x",
+  "seed-rainbow-x",
+  "ua-ace-first-x",
+  "ua-ace-win-contract",
+  "ua-diamond-led-win-mult",
+  "ua-four-kings-x",
+  "ua-heart-hold-mult",
+  "ua-kings-become-aces",
+  "ua-lead-three-suits-x",
+  "ua-low-become-spades",
+  "ua-rainbow-first-contract",
+  "ua-rainbow-first-mult",
+  "ua-side-raise",
+  "ua-side-win-mult",
+  "ua-spade-last-x",
+  "ua-spade-led-win-mult",
+  "ua-trump-contract-mult",
+  "ua-twos-become-aces",
+  "ub-bid8-xmult",
+  "ub-consecutive-xmult",
+  "ub-contract-trick-xmult",
+  "ub-exact-grow-x",
+  "ub-exact-nil-points",
+  "ub-exact-trick-xmult",
+  "ub-honor-win-mult",
+  "ub-last-trick-contract-mult",
+  "ub-make8-trick-mult",
+  "ub-opp-set-contract-mult",
+  "ub-opp-set-xmult",
+  "ub-outbid-mult",
+  "ub-seven-tricks-xmult",
+  "ub-trick-xmult",
+  "uc-exact-grow-points",
+  "uc-led-low-win",
+  "uc-low-lead-nil",
+  "uc-low-to-twos",
+  "uc-nil-contract-mult",
+  "uc-nil-grow-mult",
+  "uc-nil-last-cover",
+  "uc-small-bid-x",
+  "uc-three-twos-x",
+  "r1-middle-free",
+  "ra-spade-win-contract",
+  "ra-team-untrumpable",
+  "seed-flat-x2",
+  "uc-exact-contract-points",
+  "uc-low-hold-mult",
+  "uc-twos-beat"
+ ],
+ "screened": {
+  "ca-ace-become": "random Opening",
+  "ca-ace-diamond-win": "C 6 above the common ceiling",
+  "ca-ace-first-trick": "C 5 above the common ceiling",
+  "ca-ace-lead-three": "C 6 above the common ceiling",
+  "ca-ace-win-contract": "C 5 above the common ceiling",
+  "ca-ace-win-two-mult": "C 7 above the common ceiling",
+  "ca-become-spades": "random Opening",
+  "ca-diamond-first-trick": "C 5 above the common ceiling",
+  "ca-diamond-hold-eight": "C 5 above the common ceiling",
+  "ca-diamond-hold-nine-x": "C 5 above the common ceiling",
+  "ca-diamond-lead-three": "C 6 above the common ceiling",
+  "ca-diamond-win-two": "C 7 above the common ceiling",
+  "ca-four-aces-x": "C 5 above the common ceiling",
+  "ca-heart-hold-eight": "C 5 above the common ceiling",
+  "ca-high-spade-hold": "C 6 above the common ceiling",
+  "ca-rainbow-contract": "C 6 above the common ceiling",
+  "ca-rainbow-lead-mult": "C 5 above the common ceiling",
+  "ca-side-win": "C 5 above the common ceiling",
+  "ca-spade-hold-eight": "C 5 above the common ceiling",
+  "ca-spade-last-trick": "C 5 above the common ceiling",
+  "ca-spade-lead-three": "C 6 above the common ceiling",
+  "ca-three-aces-mult": "C 5 above the common ceiling",
+  "ca-two-spade-win": "C 6 above the common ceiling",
+  "cb-five-row-mult": "C 5 above the common ceiling",
+  "cb-grow-four-row": "C 7 above the common ceiling",
+  "cb-grow-make8-points": "C 6 above the common ceiling",
+  "cb-lead-spades": "repeats a signature at its rarity",
+  "cb-raise-one": "repeats a signature at its rarity",
+  "cb-spade-seven": "C 5 above the common ceiling",
+  "cb-three-row-mult": "C 5 above the common ceiling",
+  "cb-three-row-points": "C 5 above the common ceiling",
+  "cc-exact-per-trick": "repeats a signature at its rarity",
+  "cc-first-lead": "repeats a signature at its rarity",
+  "cc-first-trick-mult": "repeats a signature at its rarity",
+  "cc-lead-spades": "repeats a signature at its rarity",
+  "cc-low-diamond-win": "C 7 above the common ceiling",
+  "cc-low-last-mult": "C 6 above the common ceiling",
+  "cc-low-lead-mult": "C 7 above the common ceiling",
+  "cc-low-spade-win": "C 7 above the common ceiling",
+  "cc-low-three-win": "C 8 above the common ceiling",
+  "cc-mult-per-trick": "repeats a signature at its rarity",
+  "cc-raise-one": "repeats a signature at its rarity",
+  "cc-set-them-mult": "repeats a signature at its rarity",
+  "cc-swap-one": "repeats a signature at its rarity",
+  "cc-three-queens": "random Opening",
+  "cc-two-aces": "random Opening",
+  "cc-two-spades": "random Opening",
+  "cc-two-twos": "random Opening",
+  "cc-win-last-points": "repeats a signature at its rarity",
+  "control-blank-common": "control",
+  "control-blank-legendary": "control",
+  "control-blank-rare": "control",
+  "control-blank-uncommon": "control",
+  "control-common": "control",
+  "control-legendary": "control",
+  "control-rare": "control",
+  "control-uncommon": "control",
+  "e-bid4less-mult": "repeats a signature at its rarity",
+  "e-bidnil-mult": "repeats a signature at its rarity",
+  "e-bidnil-pts": "repeats a signature at its rarity",
+  "e-bidnil-xmult": "repeats a signature at its rarity",
+  "e-consecutive-mult": "repeats a signature at its rarity",
+  "e-contract-mult": "repeats a signature at its rarity",
+  "e-contract-pts": "repeats a signature at its rarity",
+  "e-distinct-mult": "repeats a signature at its rarity",
+  "e-exact-mult": "repeats a signature at its rarity",
+  "e-exact-xmult": "repeats a signature at its rarity",
+  "e-first-mult": "repeats a signature at its rarity",
+  "e-hold-rank-2-mult": "repeats a signature at its rarity",
+  "e-hold-rank-k-pts": "repeats a signature at its rarity",
+  "e-hold-suit-d-pts": "repeats a signature at its rarity",
+  "e-last-mult": "repeats a signature at its rarity",
+  "e-last-pts": "repeats a signature at its rarity",
+  "e-lead-rank-2-pts": "repeats a signature at its rarity",
+  "e-lead-rank-k-pts": "repeats a signature at its rarity",
+  "e-lead-suit-h-pts": "repeats a signature at its rarity",
+  "e-make-mult": "repeats a signature at its rarity",
+  "e-make-xmult": "repeats a signature at its rarity",
+  "e-make8-mult": "repeats a signature at its rarity",
+  "e-nil-points": "repeats a signature at its rarity",
+  "e-nilmade-mult": "repeats a signature at its rarity",
+  "e-nilmade-pts": "repeats a signature at its rarity",
+  "e-oppset-mult": "repeats a signature at its rarity",
+  "e-oppset-pts": "repeats a signature at its rarity",
+  "e-row3-mult": "C 5 above the common ceiling",
+  "e-row3-pts": "C 5 above the common ceiling",
+  "e-row3-xmult": "C 5 above the common ceiling",
+  "e-suits-lead-mult": "C 5 above the common ceiling",
+  "e-suits-lead-pts": "C 5 above the common ceiling",
+  "e-suits-lead-xmult": "C 5 above the common ceiling",
+  "e-suits-win-mult": "C 5 above the common ceiling",
+  "e-suits-win-pts": "C 5 above the common ceiling",
+  "e-suits-win-xmult": "C 5 above the common ceiling",
+  "e-trump-pts": "repeats a signature at its rarity",
+  "e-trump3-mult": "C 6 above the common ceiling",
+  "e-trump3-pts": "C 6 above the common ceiling",
+  "e-trump3-xmult": "C 6 above the common ceiling",
+  "e-win-low-mult": "C 5 above the common ceiling",
+  "e-win-low-pts": "C 5 above the common ceiling",
+  "e-win-low-xmult": "C 5 above the common ceiling",
+  "e-win-mult": "repeats a signature at its rarity",
+  "e-win-pts": "repeats a signature at its rarity",
+  "e-win-rank-2-mult": "repeats a signature at its rarity",
+  "e-win-rank-a-pts": "repeats a signature at its rarity",
+  "e-win-rank-k-pts": "repeats a signature at its rarity",
+  "e-win-side-mult": "C 5 above the common ceiling",
+  "e-win-side-pts": "C 5 above the common ceiling",
+  "e-win-side-xmult": "C 5 above the common ceiling",
+  "e-win-suit-d-pts": "repeats a signature at its rarity",
+  "e-win-suit-h-mult": "repeats a signature at its rarity",
+  "e-win3-low-mult": "C 8 above the common ceiling",
+  "e-win3-low-pts": "C 8 above the common ceiling",
+  "e-win3-low-xmult": "C 8 above the common ceiling",
+  "e-win3-rank-10-mult": "C 7 above the common ceiling",
+  "e-win3-rank-10-pts": "C 7 above the common ceiling",
+  "e-win3-rank-10-xmult": "C 7 above the common ceiling",
+  "e-win3-rank-2-mult": "C 7 above the common ceiling",
+  "e-win3-rank-2-pts": "C 7 above the common ceiling",
+  "e-win3-rank-2-xmult": "C 7 above the common ceiling",
+  "e-win3-rank-a-mult": "C 7 above the common ceiling",
+  "e-win3-rank-a-pts": "C 7 above the common ceiling",
+  "e-win3-rank-a-xmult": "C 7 above the common ceiling",
+  "e-win3-rank-j-mult": "C 7 above the common ceiling",
+  "e-win3-rank-j-pts": "C 7 above the common ceiling",
+  "e-win3-rank-j-xmult": "C 7 above the common ceiling",
+  "e-win3-rank-k-mult": "C 7 above the common ceiling",
+  "e-win3-rank-k-pts": "C 7 above the common ceiling",
+  "e-win3-rank-k-xmult": "C 7 above the common ceiling",
+  "e-win3-rank-q-mult": "C 7 above the common ceiling",
+  "e-win3-rank-q-pts": "C 7 above the common ceiling",
+  "e-win3-rank-q-xmult": "C 7 above the common ceiling",
+  "e-win3-side-mult": "C 8 above the common ceiling",
+  "e-win3-side-pts": "C 8 above the common ceiling",
+  "e-win3-side-xmult": "C 8 above the common ceiling",
+  "e-win3-suit-c-mult": "C 7 above the common ceiling",
+  "e-win3-suit-c-pts": "C 7 above the common ceiling",
+  "e-win3-suit-c-xmult": "C 7 above the common ceiling",
+  "e-win3-suit-d-mult": "C 7 above the common ceiling",
+  "e-win3-suit-d-pts": "C 7 above the common ceiling",
+  "e-win3-suit-d-xmult": "C 7 above the common ceiling",
+  "e-win3-suit-h-mult": "C 7 above the common ceiling",
+  "e-win3-suit-h-pts": "C 7 above the common ceiling",
+  "e-win3-suit-h-xmult": "C 7 above the common ceiling",
+  "e-win3-suit-s-mult": "C 7 above the common ceiling",
+  "e-win3-suit-s-pts": "C 7 above the common ceiling",
+  "e-win3-suit-s-xmult": "C 7 above the common ceiling",
+  "n2-bid7-mult-c": "repeats a signature at its rarity",
+  "n2-club-hold-points": "repeats a signature at its rarity",
+  "n2-club-lead-points": "repeats a signature at its rarity",
+  "n2-club-win-points": "repeats a signature at its rarity",
+  "n2-exact-points-c": "repeats a signature at its rarity",
+  "n2-first-trick-points-c": "repeats a signature at its rarity",
+  "n2-heart-hold-points": "repeats a signature at its rarity",
+  "n2-heart-win-points": "repeats a signature at its rarity",
+  "n2-jack-hold-points": "repeats a signature at its rarity",
+  "n2-jack-win-points": "repeats a signature at its rarity",
+  "n2-last-trick-points-c": "repeats a signature at its rarity",
+  "n2-low-win-points-c": "C 5 above the common ceiling",
+  "n2-nil-bid-points-c": "repeats a signature at its rarity",
+  "n2-queen-hold-points": "repeats a signature at its rarity",
+  "n2-queen-win-points": "repeats a signature at its rarity",
+  "n2-rainbow-lead-mult": "C 5 above the common ceiling",
+  "n2-small-bid-points": "repeats a signature at its rarity",
+  "n2-spade-hold-points-c": "repeats a signature at its rarity",
+  "n2-spade-win-mult-c": "repeats a signature at its rarity",
+  "n2-ten-hold-points": "repeats a signature at its rarity",
+  "n2-ten-win-points": "repeats a signature at its rarity",
+  "n2-two-row-points": "repeats a signature at its rarity",
+  "r1-exact-points-common": "repeats a signature at its rarity",
+  "r2-diamond-honor-hold": "C 6 above the uncommon ceiling",
+  "r2-diamond-honor-lead": "C 6 above the uncommon ceiling",
+  "r2-low-to-two-aces": "random Opening",
+  "rb-trailing-x": "catch-up trigger",
+  "rc-low-win-contract-points": "C 6 above the rare ceiling",
+  "seed-ace-hold": "repeats a signature at its rarity",
+  "seed-ace-lead": "repeats a signature at its rarity",
+  "seed-ace-three": "C 7 above the uncommon ceiling",
+  "seed-become-heart": "random Opening",
+  "seed-become-king": "random Opening",
+  "seed-become-two": "random Opening",
+  "seed-bid8-mult": "repeats a signature at its rarity",
+  "seed-bid8-points": "repeats a signature at its rarity",
+  "seed-consecutive": "repeats a signature at its rarity",
+  "seed-diamond-five": "C 7 above the uncommon ceiling",
+  "seed-diamond-three": "C 7 above the uncommon ceiling",
+  "seed-e-diamond-three": "C 7 above the common ceiling",
+  "seed-e-heart-three": "C 7 above the uncommon ceiling",
+  "seed-e-lead-three-suits": "C 5 above the common ceiling",
+  "seed-e-side-four": "C 8 above the uncommon ceiling",
+  "seed-e-spade-win": "repeats a signature at its rarity",
+  "seed-exact-points": "repeats a signature at its rarity",
+  "seed-exact-x": "repeats a signature at its rarity",
+  "seed-grow-make8": "C 6 above the rare ceiling",
+  "seed-king-win": "repeats a signature at its rarity",
+  "seed-lead-choice": "repeats a signature at its rarity",
+  "seed-low-four": "C 8 above the uncommon ceiling",
+  "seed-low-lead": "repeats a signature at its rarity",
+  "seed-low-win": "C 5 above the common ceiling",
+  "seed-rainbow-first": "repeats a signature at its rarity",
+  "seed-rainbow-mult": "C 5 above the common ceiling",
+  "seed-spade-five": "C 7 above the rare ceiling",
+  "seed-spade-lead": "repeats a signature at its rarity",
+  "seed-spade-mult": "repeats a signature at its rarity",
+  "seed-swap": "repeats a signature at its rarity",
+  "seed-trump-three": "C 6 above the uncommon ceiling",
+  "ua-aces-untrumpable": "repeats a signature at its rarity",
+  "ua-become-three-aces": "random Opening",
+  "ua-diamond-eight-contract": "C 6 above the uncommon ceiling",
+  "ua-diamond-honor-win": "C 7 above the uncommon ceiling",
+  "ua-diamond-lead-three-x": "C 6 above the uncommon ceiling",
+  "ua-diamond-two-x": "C 7 above the uncommon ceiling",
+  "ua-king-two-x": "C 7 above the uncommon ceiling",
+  "ua-queen-two-x": "C 7 above the uncommon ceiling",
+  "ua-rainbow-contract": "C 6 above the uncommon ceiling",
+  "ua-trump-two-x": "C 6 above the uncommon ceiling",
+  "ub-four-row-xmult": "repeats a signature at its rarity",
+  "ub-make8-grow-x": "C 6 above the uncommon ceiling",
+  "ub-raise-spades": "repeats a signature at its rarity",
+  "ub-spade-seven-xmult": "repeats a signature at its rarity",
+  "ub-three-row-contract-mult": "C 6 above the uncommon ceiling",
+  "uc-clubs-to-spades": "random Opening",
+  "uc-first-trick-x": "repeats a signature at its rarity",
+  "uc-junk-to-aces": "random Opening",
+  "uc-kings-to-aces": "repeats a signature at its rarity",
+  "uc-low-last-x": "C 6 above the uncommon ceiling",
+  "uc-low-lead-three-x": "C 7 above the uncommon ceiling",
+  "uc-low-spade-win": "C 7 above the uncommon ceiling",
+  "uc-low-three-x": "C 8 above the uncommon ceiling",
+  "uc-low-to-spade": "repeats a signature at its rarity",
+  "uc-opp-set-x": "repeats a signature at its rarity",
+  "uc-opp-twos": "random Opening",
+  "uc-two-grow-points": "C 6 above the uncommon ceiling",
+  "cc-low-narrow-win": "C 5 above the common ceiling"
+ },
+ "add": [
+  {
+   "id": "n2-club-hold-points",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 8,
+    "on": {
+     "event": "hold",
+     "card": {
+      "suit": "C"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Hold payoff for ♣: good alone, every hand has some."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-club-win-points",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 30,
+    "on": {
+     "event": "win",
+     "card": {
+      "suit": "C"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Win payoff for ♣."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-heart-hold-points",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 8,
+    "on": {
+     "event": "hold",
+     "card": {
+      "suit": "H"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Hold payoff for ♥: good alone, every hand has some."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-heart-win-points",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 30,
+    "on": {
+     "event": "win",
+     "card": {
+      "suit": "H"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Win payoff for ♥."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-club-lead-points",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 15,
+    "on": {
+     "event": "lead",
+     "card": {
+      "suit": "C"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Lead payoff for [♣]."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-club-hold-mult",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "mult",
+    "amount": 2,
+    "on": {
+     "event": "hold",
+     "card": {
+      "suit": "C"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Uncommon [♣] hold payoff."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-club-lead-mult",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "mult",
+    "amount": 6,
+    "on": {
+     "event": "lead",
+     "card": {
+      "suit": "C"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Uncommon [♣] lead payoff."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-club-win-x",
+   "rarity": "rare",
+   "role": "payoff",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "xmult",
+    "amount": 1.2,
+    "on": {
+     "event": "win",
+     "card": {
+      "suit": "C"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Rare [♣] win payoff."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-raise-clubs",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "raise",
+    "amount": 2,
+    "from": {
+     "suit": "C"
+    }
+   },
+   "design": {
+    "rationale": "Cheap ♣ enabler, good alone: higher ♣ win more."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-raise-hearts",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "raise",
+    "amount": 2,
+    "from": {
+     "suit": "H"
+    }
+   },
+   "design": {
+    "rationale": "Cheap ♥ enabler, good alone: higher ♥ win more."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-raise-diamonds",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "raise",
+    "amount": 2,
+    "from": {
+     "suit": "D"
+    }
+   },
+   "design": {
+    "rationale": "Cheap ♦ enabler, good alone: higher ♦ win more."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-clubs-untrumpable",
+   "rarity": "uncommon",
+   "role": "enabler",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "untrumpable",
+    "from": {
+     "suit": "C"
+    }
+   },
+   "design": {
+    "rationale": "[♣] enabler mirroring [♥]s can't be trumped."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-diamonds-untrumpable",
+   "rarity": "uncommon",
+   "role": "enabler",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "untrumpable",
+    "from": {
+     "suit": "D"
+    }
+   },
+   "design": {
+    "rationale": "[♦] enabler."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-club-led-win",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Suits"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 15,
+    "on": {
+     "event": "win",
+     "led": {
+      "suit": "C"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Win a trick led with [♣]."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-queen-hold-points",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Ranks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 30,
+    "on": {
+     "event": "hold",
+     "card": {
+      "rank": "Q"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Hold payoff for [Q]."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-queen-win-points",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Ranks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 30,
+    "on": {
+     "event": "win",
+     "card": {
+      "rank": "Q"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Win payoff for [Q]."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-jack-hold-points",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Ranks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 25,
+    "on": {
+     "event": "hold",
+     "card": {
+      "rank": "J"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Hold payoff for [J]."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-jack-win-points",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Ranks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 35,
+    "on": {
+     "event": "win",
+     "card": {
+      "rank": "J"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Win payoff for [J]."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-ten-hold-points",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Ranks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 20,
+    "on": {
+     "event": "hold",
+     "card": {
+      "rank": "10"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Hold payoff for [10]."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-ten-win-points",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Ranks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 40,
+    "on": {
+     "event": "win",
+     "card": {
+      "rank": "10"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Win payoff for [10]."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-queen-hold-mult",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Ranks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "mult",
+    "amount": 3,
+    "on": {
+     "event": "hold",
+     "card": {
+      "rank": "Q"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Uncommon [Q] hold payoff."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-jack-win-mult",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Ranks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "mult",
+    "amount": 5,
+    "on": {
+     "event": "win",
+     "card": {
+      "rank": "J"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Uncommon [J] win payoff."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-ten-win-mult",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Ranks",
+    "LowCards"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "mult",
+    "amount": 5,
+    "on": {
+     "event": "win",
+     "card": {
+      "rank": "10"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Uncommon [10] win payoff."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-queens-untrumpable",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "Ranks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "untrumpable",
+    "from": {
+     "rank": "Q"
+    }
+   },
+   "design": {
+    "rationale": "Cheap Ranks enabler."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-kings-untrumpable-c",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "Ranks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "untrumpable",
+    "from": {
+     "rank": "K"
+    }
+   },
+   "design": {
+    "rationale": "Cheap Ranks enabler at common."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-ace-lead-mult",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Ranks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "mult",
+    "amount": 5,
+    "on": {
+     "event": "lead",
+     "card": {
+      "rank": "A"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Lead an [A]."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-spade-hold-points-c",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Spades"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 5,
+    "on": {
+     "event": "hold",
+     "card": {
+      "suit": "S"
+     }
+    }
+   },
+   "design": {
+    "rationale": "The GDD's own example, at common."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-spade-win-mult-c",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Spades"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "mult",
+    "amount": 1,
+    "on": {
+     "event": "win",
+     "card": {
+      "suit": "S"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Spades win multiplier at common."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-raise-low-spades",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "Spades"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "raise",
+    "amount": 1,
+    "from": {
+     "suit": "S"
+    }
+   },
+   "design": {
+    "rationale": "Cheap Spades enabler."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-spade-lead-x",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Spades"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "xmult",
+    "amount": 1.1,
+    "on": {
+     "event": "lead",
+     "card": {
+      "suit": "S"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Uncommon spade lead."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-last-trick-x",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Streaks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "xmult",
+    "amount": 1.5,
+    "on": {
+     "event": "win",
+     "trick": "last"
+    }
+   },
+   "design": {
+    "rationale": "Last trick, compounding."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-last-trick-points-c",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Streaks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 60,
+    "on": {
+     "event": "win",
+     "trick": "last"
+    }
+   },
+   "design": {
+    "rationale": "Last trick points at common."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-first-trick-points-c",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Streaks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 60,
+    "on": {
+     "event": "win",
+     "trick": "first"
+    }
+   },
+   "design": {
+    "rationale": "First trick points at common."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-two-row-points",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Streaks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 15,
+    "on": {
+     "event": "win",
+     "consecutive": true
+    }
+   },
+   "design": {
+    "rationale": "Consecutive-trick points."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-three-row-x",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Streaks"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "xmult",
+    "amount": 1.5,
+    "on": {
+     "event": "win",
+     "inRow": 3
+    }
+   },
+   "design": {
+    "rationale": "Three in a row, compounding."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-nil-made-points-u",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Nil"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 300,
+    "on": {
+     "event": "nilMade"
+    }
+   },
+   "design": {
+    "rationale": "Bigger made-nil payoff at uncommon."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-nil-bid-points-c",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Nil"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 60,
+    "on": {
+     "event": "bid",
+     "nil": true
+    }
+   },
+   "design": {
+    "rationale": "Nil bid points."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-nil-hold-twos-points",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Nil",
+    "LowCards"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "nilPoints",
+    "amount": 40,
+    "on": {
+     "event": "hold",
+     "card": {
+      "rank": "2"
+     }
+    }
+   },
+   "design": {
+    "rationale": "Nil points per [2]."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-low-win-points-c",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "LowCards"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 15,
+    "on": {
+     "event": "win",
+     "card": {
+      "ranks": [
+       "2",
+       "9"
+      ]
+     }
+    }
+   },
+   "design": {
+    "rationale": "Low win points at common."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-raise-twos",
+   "rarity": "common",
+   "role": "enabler",
+   "archetypes": [
+    "LowCards"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "become",
+    "from": {
+     "rank": "2"
+    },
+    "rank": "10"
+   },
+   "design": {
+    "rationale": "Every [2] becomes a [10]: a deterministic low enabler."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-low-lead-points",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "LowCards",
+    "Nil"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 10,
+    "on": {
+     "event": "lead",
+     "card": {
+      "ranks": [
+       "2",
+       "6"
+      ]
+     }
+    }
+   },
+   "design": {
+    "rationale": "Lead low."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-exact-points-c",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Exact"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 120,
+    "on": {
+     "event": "make",
+     "exact": true
+    }
+   },
+   "design": {
+    "rationale": "Exact points at common."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-exact-mult-u",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Exact"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "mult",
+    "amount": 30,
+    "on": {
+     "event": "make",
+     "exact": true
+    }
+   },
+   "design": {
+    "rationale": "Exact multiplier at uncommon."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-exact-free-after",
+   "rarity": "uncommon",
+   "role": "enabler",
+   "archetypes": [
+    "Exact"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "anySuit",
+    "after": "contractMade"
+   },
+   "design": {
+    "rationale": "Dump cards after making: the Exact enabler at uncommon."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-small-bid-points",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Exact"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 60,
+    "on": {
+     "event": "bid",
+     "max": 4
+    }
+   },
+   "design": {
+    "rationale": "Small contract points."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-rainbow-first-points-u",
+   "rarity": "uncommon",
+   "role": "payoff",
+   "archetypes": [
+    "Rainbow"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 40,
+    "on": {
+     "event": "win",
+     "distinct": "suit"
+    }
+   },
+   "design": {
+    "rationale": "Rainbow at uncommon."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-rainbow-lead-mult",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "Rainbow"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "mult",
+    "amount": 3,
+    "on": {
+     "event": "suits",
+     "action": "lead",
+     "count": 3
+    }
+   },
+   "design": {
+    "rationale": "Lead three suits."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-bid7-mult-c",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "BidHigh"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "mult",
+    "amount": 8,
+    "on": {
+     "event": "bid",
+     "min": 7
+    }
+   },
+   "design": {
+    "rationale": "Bid 7 multiplier at common."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  },
+  {
+   "id": "n2-make7-points",
+   "rarity": "common",
+   "role": "payoff",
+   "archetypes": [
+    "BidHigh"
+   ],
+   "source": "designed",
+   "createdIn": "search-2",
+   "status": "candidate",
+   "effect": {
+    "type": "points",
+    "amount": 120,
+    "on": {
+     "event": "make",
+     "min": 7
+    }
+   },
+   "design": {
+    "rationale": "Make 7 points."
+   },
+   "name": null,
+   "icon": null,
+   "iconFamily": null,
+   "iconWord": null,
+   "history": [
+    {
+     "step": "search-2",
+     "note": "Drafted in Phase 1."
+    }
+   ]
+  }
+ ]
+}
